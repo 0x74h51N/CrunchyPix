@@ -40,11 +40,12 @@ const Footer = () => {
             together!
           </p>
         </div>
-        <div className="flex flex-wrap gap-12 mt-5">
+        <div className="flex flex-wrap gap-10 mt-5">
           <FooterColumn
             title={footerLinks[0].title}
             links={footerLinks[0].links}
-          />
+          />{" "}
+          <div className="border border-stone-400" />
           <div className="flex-1 flex flex-col gap-4">
             <FooterColumn
               title={footerLinks[1].title}
@@ -55,10 +56,12 @@ const Footer = () => {
               links={footerLinks[2].links}
             />
           </div>
+          <div className="border border-stone-400" />
           <FooterColumn
             title={footerLinks[3].title}
             links={footerLinks[3].links}
           />
+          <div className="border border-stone-400" />
           <div className="flex-1 flex flex-col gap-4">
             <FooterColumn
               title={footerLinks[4].title}
@@ -69,6 +72,7 @@ const Footer = () => {
               links={footerLinks[5].links}
             />
           </div>
+          <div className="border border-stone-400" />
           <FooterColumn
             title={footerLinks[6].title}
             links={footerLinks[6].links}
