@@ -52,7 +52,7 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         <section
           key={index}
           ref={sectionRefs[index]}
-          className={`h-screen ${section.className}`}
+          className={`${section.className}`}
           style={{ backgroundImage: `url(${section.image})` }}
         >
           {section.title && <h1>{section.title}</h1>}

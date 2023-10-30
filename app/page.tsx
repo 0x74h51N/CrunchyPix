@@ -10,19 +10,19 @@ interface SectionData {
 
 const sectionsData: SectionData[] = [
   {
-    className: "bg-red-500",
+    className: "h-screen bg-red-500",
     name: "About Me",
   },
   {
-    className: "bg-green-500",
+    className: "h-screen bg-green-500",
     name: "Coding",
   },
   {
-    className: "bg-blue-500",
+    className: "h-screen bg-blue-500",
     name: "Forking",
   },
   {
-    className: "bg-yellow-500",
+    className: "h-screen bg-yellow-500",
     name: "Portfolio",
   },
   {
