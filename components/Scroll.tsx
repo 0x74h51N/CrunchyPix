@@ -30,10 +30,12 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
     const handleScroll = (event: { deltaY: number }) => {
       if (event.deltaY > 0) {
         if (currentSectionIndex < sectionsData.length - 1) {
+          console.log("downed");
           scrollToSection(currentSectionIndex + 1);
         }
       } else {
         if (currentSectionIndex > 0) {
+          console.log("upped");
           scrollToSection(currentSectionIndex - 1);
         }
       }
@@ -62,8 +64,11 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
           {section.children}
           {index < sectionsData.length - 1 && (
             <div className="flex items-center justify-center h-screen">
-              <div className="p-6 bg-amber-200 opacity-50 hover:opacity-100 transition-opacity rounded-lg shadow-lg">
-                <button onClick={() => scrollToSection(index + 1)}>
+              <div>
+                <button
+                  onClick={() => scrollToSection(index + 1)}
+                  className="p-6 bg-amber-200 opacity-50 hover:opacity-100 transition-opacity rounded-lg shadow-lg"
+                >
                   Go to the {sectionsData[index + 1].name}
                 </button>
               </div>

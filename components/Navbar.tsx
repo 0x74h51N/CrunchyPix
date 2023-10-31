@@ -1,14 +1,34 @@
+"use client";
 import { NavLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AuthProviders from "./AuthProviders";
 
 export const Navbar = () => {
   const session = {};
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  const handleScroll = () => {
+    if (window.scrollY > 100) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <nav className="fleBetween navbar">
+    <nav
+      className={` bg-slate-200 bg-opacity-70 fleBetween navbar fixed w-full top-0 z-10 shadow-lg ${
+        isScrolled ? "smallNavbar" : ""
+      }`}
+    >
       <div className="flex-1 flexStart gap-10">
         <Link href="/">
           <Image
@@ -28,14 +48,14 @@ export const Navbar = () => {
         </ul>
       </div>
       <div className="flexCenter gap-4">
-        {session ? (
+        {/* {session ? (
           <>
             UserPhoto
             <Link href="/create-project">Share Work</Link>
           </>
         ) : (
           <AuthProviders />
-        )}
+        )} */}
       </div>
     </nav>
   );
