@@ -25,7 +25,7 @@ export const Navbar = () => {
   }, []);
   return (
     <nav
-      className={` bg-slate-200 bg-opacity-70 fleBetween navbar fixed w-full top-0 z-10 shadow-lg ${
+      className={` bg-slate-200 bg-opacity-70 fleBetween navbar fixed w-full top-0 z-0 shadow-lg ${
         isScrolled ? "smallNavbar" : ""
       }`}
     >

@@ -2,12 +2,12 @@ import React from "react";
 import TypingText from "../typeText";
 import ArrowButton from "../Button";
 
-const AboutMe = () => {
+const Portfolio = () => {
   const codeString = `import React from "react";
   import TypingText from "../typeText";
   import ArrowButton from "../Button";
   
-  const AboutMe = () => {
+  const Portfolio = () => {
     
     return (
       <div className="h-screen flex flex-row items-center justify-center bg-zinc-700">
@@ -39,7 +39,7 @@ const AboutMe = () => {
     );
   };
   
-  export default AboutMe;    
+  export default Portfolio;    
   `;
 
   return (
@@ -51,11 +51,16 @@ const AboutMe = () => {
         <div className="flex flex-row items-start  ml-4 mb-4 gap-2">
           <div className="rotate-180">
             <ArrowButton
-              index={1}
+              index={2}
               arrow={true}
               className="flex flex-row  opacity-50 hover:opacity-100 transition-opacity rounded-full shadow-lg hover:animate-bounce"
             />
           </div>
+          <ArrowButton
+            index={0}
+            arrow={true}
+            className="flex flex-row  opacity-50 hover:opacity-100 transition-opacity rounded-full shadow-lg hover:animate-bounce"
+          />
         </div>
       </div>
       <div className="box flex flex-col items-start justify-start bg-neutral-900 h-full p-4  shadow-md shadow-black ml-auto overflow-auto w-1/5">
@@ -67,4 +72,4 @@ const AboutMe = () => {
   );
 };
 
-export default AboutMe;
+export default Portfolio;
