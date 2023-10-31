@@ -1,16 +1,20 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useContext, createContext } from "react";
+import CusButton from "./Button";
 
 interface SectionData {
   name: string;
+  auto?: boolean;
   className?: string;
   image?: string;
-  title?: string;
-  text?: string;
   textStyle?: string;
   children?: React.ReactNode;
 }
 
-const sectionsData: SectionData[] = [];
+const ScrollContext = createContext({
+  scrollToSection: (index: number) => {},
+});
+
+export const useScroll = () => useContext(ScrollContext);
 
 const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const sectionRefs = sectionsData.map(() =>
@@ -30,12 +34,10 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
     const handleScroll = (event: { deltaY: number }) => {
       if (event.deltaY > 0) {
         if (currentSectionIndex < sectionsData.length - 1) {
-          console.log("downed");
           scrollToSection(currentSectionIndex + 1);
         }
       } else {
         if (currentSectionIndex > 0) {
-          console.log("upped");
           scrollToSection(currentSectionIndex - 1);
         }
       }
@@ -49,34 +51,27 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   }, [currentSectionIndex]);
 
   return (
-    <>
-      {sectionsData.map((section, index) => (
-        <section
-          key={index}
-          ref={sectionRefs[index]}
-          className={`${section.className}`}
-          style={{ backgroundImage: `url(${section.image})` }}
-        >
-          {section.title && <h1>{section.title}</h1>}
-          {section.text && (
-            <p className={`${section.textStyle}`}>{section.text}</p>
-          )}
-          {section.children}
-          {index < sectionsData.length - 1 && (
-            <div className="flex items-center justify-center h-screen">
-              <div>
-                <button
-                  onClick={() => scrollToSection(index + 1)}
-                  className="p-6 bg-amber-200 opacity-50 hover:opacity-100 transition-opacity rounded-lg shadow-lg"
-                >
-                  Go to the {sectionsData[index + 1].name}
-                </button>
-              </div>
-            </div>
-          )}
-        </section>
-      ))}
-    </>
+    <ScrollContext.Provider value={{ scrollToSection }}>
+      <>
+        {sectionsData.map((section, index) => (
+          <section
+            key={index}
+            ref={sectionRefs[index]}
+            className={`${section.className} ${
+              section.auto !== undefined
+                ? section.auto
+                  ? "h-auto"
+                  : "h-screen"
+                : "h-screen"
+            }`}
+            style={{ backgroundImage: `url(${section.image})` }}
+          >
+            {section.children}
+          </section>
+        ))}
+      </>
+    </ScrollContext.Provider>
   );
 };
+
 export default Scroll;

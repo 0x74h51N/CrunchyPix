@@ -168,3 +168,21 @@ body {
 .profile_projects {
   @apply grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 mt-5;
 }
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0); /* Başlangıç konumu (kaydırma yok) */
+  }
+  100% {
+    transform: translateX(100%); /* Bitiş konumu (resmi sağa kaydır) */
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%); /* Başlangıç konumu (resmi sağa kaydır) */
+  }
+  100% {
+    transform: translateX(0); /* Bitiş konumu (kaydırma yok) */
+  }
+}
