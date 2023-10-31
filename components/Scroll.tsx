@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState, useContext, createContext } from "react";
-import CusButton from "./Button";
 
 interface SectionData {
   name: string;
@@ -25,7 +24,11 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const scrollToSection = (index: number) => {
     const ref = sectionRefs[index];
     if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth" });
+      const top = ref.current.offsetTop;
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
       setCurrentSectionIndex(index);
     }
   };
@@ -43,13 +46,26 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
       }
     };
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowDown") {
+        if (currentSectionIndex < sectionsData.length - 1) {
+          scrollToSection(currentSectionIndex + 1);
+        }
+      } else if (event.key === "ArrowUp") {
+        if (currentSectionIndex > 0) {
+          scrollToSection(currentSectionIndex - 1);
+        }
+      }
+    };
+
     window.addEventListener("wheel", handleScroll);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [currentSectionIndex]);
-
   return (
     <ScrollContext.Provider value={{ scrollToSection }}>
       <>
