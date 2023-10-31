@@ -8,7 +8,6 @@ const AboutMe = () => {
   import ArrowButton from "../Button";
   
   const AboutMe = () => {
-    
     return (
       <div className="h-screen flex flex-row items-center justify-center bg-zinc-700">
         <div className="flex flex-col items-start justify-center w-4/5 h-full">
