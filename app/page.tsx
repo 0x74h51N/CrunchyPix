@@ -1,6 +1,7 @@
 "use client";
 import Footer from "@/components/Footer";
 import Scroll from "@/components/Scroll";
+import AboutMe from "@/components/Sections/AboutMe";
 import Portfolio from "@/components/Sections/Portfolio";
 
 interface SectionData {
@@ -13,6 +14,7 @@ const sectionsData: SectionData[] = [
   {
     className: " bg-red-500",
     name: "About Me",
+    children: <AboutMe />,
   },
   {
     className: " bg-green-500",
