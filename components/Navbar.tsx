@@ -6,26 +6,22 @@ import React, { useEffect, useState } from "react";
 
 export const Navbar = () => {
   const session = {};
-  const [isScrolled, setIsScrolled] = useState(window.scrollY > 100);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleScroll = () => {
-    if (typeof window !== "undefined") {
-      if (window.scrollY > 100) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+    if (window.scrollY > 100) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
     }
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      window.addEventListener("scroll", handleScroll);
-      handleScroll();
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
   return (
     <nav
