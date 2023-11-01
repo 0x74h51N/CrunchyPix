@@ -9,10 +9,12 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(window.scrollY > 100);
 
   const handleScroll = () => {
-    if (window.scrollY > 100) {
-      setIsScrolled(true);
-    } else {
-      setIsScrolled(false);
+    if (typeof window !== "undefined") {
+      if (window.scrollY > 100) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
     }
   };
 
