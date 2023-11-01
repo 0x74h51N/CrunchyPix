@@ -1,17 +1,19 @@
-// Handles scrolling of Element to view
-export function scrollElementToView(scrollToId: string) {
-  const element = document.querySelector(`#${scrollToId}`) as HTMLElement;
+import { useState, useEffect } from "react";
 
-  const elRect = element.getBoundingClientRect();
+const [isScrolled, setIsScrolled] = useState(false);
 
-  const scrollDistance = elRect.top + window.scrollY;
+const handleScroll = () => {
+  if (window.scrollY > 100) {
+    setIsScrolled(true);
+  } else {
+    setIsScrolled(false);
+  }
+};
 
-  // Incase you want to offset the scroll To view Position.
-  const offset =
-    Number(element.getAttribute("data-scroll-to-view-offset")) || 0;
-
-  window.scrollTo({
-    top: scrollDistance + offset,
-    behavior: "smooth",
-  });
-}
+useEffect(() => {
+  window.addEventListener("scroll", handleScroll);
+  return () => {
+    window.removeEventListener("scroll", handleScroll);
+  };
+}, []);
+export default handleScroll;

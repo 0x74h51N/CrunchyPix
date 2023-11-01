@@ -1,33 +1,30 @@
 "use client";
 import Footer from "@/components/Footer";
 import Scroll from "@/components/Scroll";
+import AboutMe from "@/components/Sections/AboutMe";
+import Portfolio from "@/components/Sections/Portfolio";
 
 interface SectionData {
-  className: string;
+  className?: string;
   name: string;
+  auto?: boolean;
   children?: React.ReactNode;
 }
-
 const sectionsData: SectionData[] = [
   {
-    className: "h-screen bg-red-500",
     name: "About Me",
+    children: <AboutMe />,
   },
   {
-    className: "h-screen bg-green-500",
-    name: "Coding",
+    name: "Portfolio",
+    children: <Portfolio />,
   },
   {
-    className: "h-screen bg-blue-500",
     name: "Forking",
   },
   {
-    className: "h-screen bg-yellow-500",
-    name: "Portfolio",
-  },
-  {
-    className: "h-auto",
     name: "Contact Me",
+    auto: true,
     children: <Footer />,
   },
 ];
