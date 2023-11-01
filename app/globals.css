@@ -103,7 +103,7 @@ body {
 
 /* Footer */
 .footer {
-  @apply flex-col paddings w-full gap-20 bg-light-white;
+  @apply flex-col paddings w-full gap-5 bg-back-col;
 }
 
 .footer_copyright {
@@ -130,7 +130,12 @@ body {
 
 /* Navbar */
 .navbar {
-  @apply py-5 px-8 border-b border-nav-border gap-4;
+  @apply py-5 px-10  gap-4;
+  transition: all 1s ease;
+}
+.smallNavbar {
+  @apply py-2 px-10 gap-4;
+  transition: all 1s ease;
 }
 
 /* Profile Menu */
@@ -163,4 +168,30 @@ body {
 /* Profile Projects */
 .profile_projects {
   @apply grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8 mt-5;
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.dotted-background {
+  background-image: radial-gradient(circle, #8f8f8f 1px, transparent 1px);
+  background-size: 5px 5px;
 }

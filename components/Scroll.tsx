@@ -1,16 +1,19 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useContext, createContext } from "react";
 
 interface SectionData {
   name: string;
+  auto?: boolean;
   className?: string;
   image?: string;
-  title?: string;
-  text?: string;
   textStyle?: string;
   children?: React.ReactNode;
 }
 
-const sectionsData: SectionData[] = [];
+const ScrollContext = createContext({
+  scrollToSection: (index: number) => {},
+});
+
+export const useScroll = () => useContext(ScrollContext);
 
 const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const sectionRefs = sectionsData.map(() =>
@@ -21,7 +24,11 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const scrollToSection = (index: number) => {
     const ref = sectionRefs[index];
     if (ref.current) {
-      ref.current.scrollIntoView({ behavior: "smooth" });
+      const top = ref.current.offsetTop;
+      window.scrollTo({
+        top,
+        behavior: "smooth",
+      });
       setCurrentSectionIndex(index);
     }
   };
@@ -39,39 +46,48 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
       }
     };
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowDown") {
+        if (currentSectionIndex < sectionsData.length - 1) {
+          scrollToSection(currentSectionIndex + 1);
+        }
+      } else if (event.key === "ArrowUp") {
+        if (currentSectionIndex > 0) {
+          scrollToSection(currentSectionIndex - 1);
+        }
+      }
+    };
+
     window.addEventListener("wheel", handleScroll);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [currentSectionIndex]);
-
   return (
-    <>
-      {sectionsData.map((section, index) => (
-        <section
-          key={index}
-          ref={sectionRefs[index]}
-          className={`${section.className}`}
-          style={{ backgroundImage: `url(${section.image})` }}
-        >
-          {section.title && <h1>{section.title}</h1>}
-          {section.text && (
-            <p className={`${section.textStyle}`}>{section.text}</p>
-          )}
-          {section.children}
-          {index < sectionsData.length - 1 && (
-            <div className="flex items-center justify-center h-screen">
-              <div className="p-6 bg-amber-200 opacity-50 hover:opacity-100 transition-opacity rounded-lg shadow-lg">
-                <button onClick={() => scrollToSection(index + 1)}>
-                  Go to the {sectionsData[index + 1].name}
-                </button>
-              </div>
-            </div>
-          )}
-        </section>
-      ))}
-    </>
+    <ScrollContext.Provider value={{ scrollToSection }}>
+      <>
+        {sectionsData.map((section, index) => (
+          <section
+            key={index}
+            ref={sectionRefs[index]}
+            className={`${section.className} ${
+              section.auto !== undefined
+                ? section.auto
+                  ? "h-auto"
+                  : "h-screen"
+                : "h-screen"
+            }`}
+            style={{ backgroundImage: `url(${section.image})` }}
+          >
+            {section.children}
+          </section>
+        ))}
+      </>
+    </ScrollContext.Provider>
   );
 };
+
 export default Scroll;

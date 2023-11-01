@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { footerLinks } from "@/constants";
 import Link from "next/link";
+import Contact from "./Contact";
 
 type ColumnProps = {
   title: string;
@@ -23,60 +24,39 @@ const FooterColumn = ({ title, links }: ColumnProps) => (
 const Footer = () => {
   return (
     <footer className="flexStart footer">
-      <div className="flex flex-col gap12 w-full">
-        <div className="flex items-start flex-col">
-          <Image
-            src="/logo-purple.svg"
-            width={115}
-            height={38}
-            alt="Flexibble"
-          />
-          <p className="text-start text-l font-medium mt-5 max-w-xs">
-            Unleash the Power of Web Innovation
-          </p>
-          <p className="text-start text-sm font-normal mt-3 max-w-xs">
-            We're your trusted partner in web development. Our mission is to
-            bring your digital dreams to life. Let's create something amazing
-            together!
-          </p>
+      <div className="w-full">
+        <Image src="/logoL.png" width={250} height={38} alt="Flexibble" />
+      </div>
+      <div className="flex flex-row  w-full">
+        <div className="flex flex-col gap12 w-1/5">
+          <div className="flex items-start flex-col">
+            <p className="text-start text-white text-l font-medium mt-5 max-w-xs">
+              Unleash the Power of Web Innovation
+            </p>
+            <p className="text-start text-white text-sm font-normal mt-3 max-w-xs">
+              We're your trusted partner in web development. Our mission is to
+              bring your digital dreams to life. Let's create something amazing
+              together!
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-10 mt-5">
+            <div className="flex-1 flex flex-col gap-4">
+              <FooterColumn
+                title={footerLinks[1].title}
+                links={footerLinks[1].links}
+              />
+              <FooterColumn
+                title={footerLinks[2].title}
+                links={footerLinks[2].links}
+              />
+            </div>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-10 mt-5">
-          <FooterColumn
-            title={footerLinks[0].title}
-            links={footerLinks[0].links}
-          />{" "}
-          <div className="border border-stone-400" />
-          <div className="flex-1 flex flex-col gap-4">
-            <FooterColumn
-              title={footerLinks[1].title}
-              links={footerLinks[1].links}
-            />
-            <FooterColumn
-              title={footerLinks[2].title}
-              links={footerLinks[2].links}
-            />
-          </div>
-          <div className="border border-stone-400" />
-          <FooterColumn
-            title={footerLinks[3].title}
-            links={footerLinks[3].links}
-          />
-          <div className="border border-stone-400" />
-          <div className="flex-1 flex flex-col gap-4">
-            <FooterColumn
-              title={footerLinks[4].title}
-              links={footerLinks[4].links}
-            />
-            <FooterColumn
-              title={footerLinks[5].title}
-              links={footerLinks[5].links}
-            />
-          </div>
-          <div className="border border-stone-400" />
-          <FooterColumn
-            title={footerLinks[6].title}
-            links={footerLinks[6].links}
-          />
+        <div className="flex flex-col gap-7 w-3/5 ml-auto">
+          <p className="text-start text-zinc-200 text-xl font-medium mt-5 max-w-xs">
+            Contact with me!
+          </p>
+          <Contact />
         </div>
       </div>
       <div className="flexBetween footer_copyright">

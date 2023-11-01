@@ -17,13 +17,16 @@
     "next": "13.5.6",
     "next-auth": "^4.24.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.47.0",
+    "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
     "@grafbase/sdk": "^0.7.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-syntax-highlighter": "^15.5.9",
     "autoprefixer": "^10.4.16",
     "postcss": "^8",
     "tailwindcss": "^3.3.4",
