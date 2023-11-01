@@ -25,8 +25,10 @@ export const Navbar = () => {
   }, []);
   return (
     <nav
-      className={`bg-back-col fleBetween navbar fixed w-full top-0 z-0 ${
-        isScrolled ? "bg-opacity-100 smallNavbar shadow-lg" : "bg-opacity-0"
+      className={`bg-back-col fleBetween navbar fixed w-full top-0 z-10 ${
+        isScrolled
+          ? "bg-opacity-100 smallNavbar shadow-black shadow-md"
+          : "bg-opacity-0"
       }`}
     >
       <div className="flex flexCenter gap-10 ">
