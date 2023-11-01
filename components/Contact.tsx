@@ -1,6 +1,5 @@
 "use client";
 
-import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { sendEmail } from "@/utils/send-email";
 
@@ -10,7 +9,7 @@ export type FormData = {
   message: string;
 };
 
-const Contact: FC = () => {
+const Contact = () => {
   const { register, handleSubmit } = useForm<FormData>();
 
   function onSubmit(data: FormData) {
