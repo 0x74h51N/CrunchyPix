@@ -19,13 +19,7 @@ const Contact: FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-5">
-        <label
-          htmlFor="name"
-          className="mb-3 block text-base font-medium text-white"
-        >
-          Full Name
-        </label>
+      <div className="mb-3">
         <input
           type="text"
           placeholder="Full Name"
@@ -33,13 +27,7 @@ const Contact: FC = () => {
           {...register("name", { required: true })}
         />
       </div>
-      <div className="mb-5">
-        <label
-          htmlFor="email"
-          className="mb-3 block text-base font-medium text-white"
-        >
-          Email Address
-        </label>
+      <div className="mb-3">
         <input
           type="email"
           placeholder="example@domain.com"
@@ -47,13 +35,7 @@ const Contact: FC = () => {
           {...register("email", { required: true })}
         />
       </div>
-      <div className="mb-5">
-        <label
-          htmlFor="message"
-          className="mb-3 block text-base font-medium text-white"
-        >
-          Message
-        </label>
+      <div className="mb-3">
         <textarea
           rows={4}
           placeholder="Type your message"
