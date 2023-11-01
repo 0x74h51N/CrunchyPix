@@ -3,11 +3,10 @@ import { NavLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import AuthProviders from "./AuthProviders";
 
 export const Navbar = () => {
   const session = {};
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(window.scrollY > 100);
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
@@ -19,33 +18,44 @@ export const Navbar = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
     <nav
-      className={` bg-slate-200 bg-opacity-70 fleBetween navbar fixed w-full top-0 z-0 shadow-lg ${
-        isScrolled ? "smallNavbar" : ""
+      className={`bg-back-col fleBetween navbar fixed w-full top-0 z-0 ${
+        isScrolled ? "bg-opacity-100 smallNavbar shadow-lg" : "bg-opacity-0"
       }`}
     >
-      <div className="flex-1 flexStart gap-10">
+      <div className="flex flexCenter gap-10 ">
         <Link href="/">
           <Image
-            src="/logo.svg"
-            width={115}
-            height={43}
+            src={isScrolled ? "/logoS.png" : "/logoL.png"}
+            width={isScrolled ? 50 : 200}
+            height={100}
             alt="Flexible"
             loading="lazy"
           />
         </Link>
-        <ul className="xl:flex hidden text-small gap-7">
-          {NavLinks.map((link) => (
-            <Link href={link.href} key={link.key}>
-              {link.text}
-            </Link>
-          ))}
-        </ul>
+        <div className="  ml-auto">
+          <ul
+            className={`xl:flex hidden  ${
+              isScrolled ? "text-small" : "text-lg font-semibold"
+            }  text-stone-200 antialiased gap-12`}
+          >
+            {NavLinks.map((link) => (
+              <Link
+                href={link.href}
+                key={link.key}
+                className=" hover:text-slate-500"
+              >
+                {link.text}
+              </Link>
+            ))}
+          </ul>
+        </div>
       </div>
       <div className="flexCenter gap-4">
         {/* {session ? (

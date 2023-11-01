@@ -12,17 +12,14 @@ interface SectionData {
 }
 const sectionsData: SectionData[] = [
   {
-    className: " bg-red-500",
     name: "About Me",
     children: <AboutMe />,
   },
   {
-    className: " bg-green-500",
     name: "Portfolio",
     children: <Portfolio />,
   },
   {
-    className: " bg-blue-500",
     name: "Forking",
   },
   {
