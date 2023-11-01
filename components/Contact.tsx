@@ -26,7 +26,7 @@ const Contact = () => {
         <input
           type="text"
           placeholder="Full Name"
-          className={`w-full rounded-md border  bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
+          className={`w-full rounded-md border border-transparent bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
             errors.name ? "focus:border-red-500" : "focus:border-slate-300"
           } focus:shadow-md`}
           {...register("name", { required: true })}
@@ -36,7 +36,7 @@ const Contact = () => {
         <input
           type="email"
           placeholder="example@domain.com"
-          className={`w-full rounded-md border  bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
+          className={`w-full rounded-md border border-transparent bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
             errors.name ? "focus:border-red-500" : "focus:border-slate-300"
           } focus:shadow-md`}
           {...register("email", { required: true })}
@@ -46,7 +46,7 @@ const Contact = () => {
         <textarea
           rows={4}
           placeholder="Type your message"
-          className={`w-full rounded-md border  bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
+          className={`w-full rounded-md border border-transparent bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
             errors.name ? "focus:border-red-500" : "focus:border-slate-300"
           } focus:shadow-md`}
           {...register("message", { required: true })}
