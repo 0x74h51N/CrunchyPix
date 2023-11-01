@@ -10,7 +10,11 @@ export type FormData = {
 };
 
 const Contact = () => {
-  const { register, handleSubmit } = useForm<FormData>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
 
   function onSubmit(data: FormData) {
     sendEmail(data);
@@ -22,7 +26,9 @@ const Contact = () => {
         <input
           type="text"
           placeholder="Full Name"
-          className="w-full rounded-md border border-transparent bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-slate-300 focus:shadow-md"
+          className={`w-full rounded-md border  bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
+            errors.name ? "focus:border-red-500" : "focus:border-slate-300"
+          } focus:shadow-md`}
           {...register("name", { required: true })}
         />
       </div>
@@ -30,7 +36,9 @@ const Contact = () => {
         <input
           type="email"
           placeholder="example@domain.com"
-          className="w-full rounded-md border border-transparent bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-slate-300 focus:shadow-md"
+          className={`w-full rounded-md border  bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
+            errors.name ? "focus:border-red-500" : "focus:border-slate-300"
+          } focus:shadow-md`}
           {...register("email", { required: true })}
         />
       </div>
@@ -38,7 +46,9 @@ const Contact = () => {
         <textarea
           rows={4}
           placeholder="Type your message"
-          className="w-full resize-none rounded-md border border-transparent bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-slate-300 focus:shadow-md"
+          className={`w-full rounded-md border  bg-zinc-600 py-3 px-6 text-base font-medium text-gray-700 outline-none ${
+            errors.name ? "focus:border-red-500" : "focus:border-slate-300"
+          } focus:shadow-md`}
           {...register("message", { required: true })}
         ></textarea>
       </div>
