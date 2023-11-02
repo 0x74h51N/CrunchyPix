@@ -64,7 +64,7 @@ export const Navbar = () => {
       <div className="flex flex-row ">
         <div>
           <Image
-            src={"/logo_le.svg"}
+            src={"/logo_left.svg"}
             width={isMobile || isScrolled ? 35 : 50}
             height={100}
             alt="Flexible"
@@ -72,19 +72,19 @@ export const Navbar = () => {
             className={isScrolled ? "" : "navImage"}
           />
         </div>
-        <div className="flex flex-row mr-2">
+        <div className="flex flex-row flex-center items-center mr-2">
           {isScrolled || isMobile ? null : textHide ? null : (
             <TypingText text="CruncyPix" _code={false} textClass="logo_text" />
           )}
         </div>
         <div>
           <Image
-            src={"logo_r.svg"}
+            src={"logo_right.svg"}
             width={isMobile || isScrolled ? 35 : 50}
             height={100}
             alt="Flexible"
             loading="lazy"
-            className={isScrolled ? "" : "navImage"}
+            className={` ${isScrolled ? "" : "ml-2 navImage"}`}
           />
         </div>
 

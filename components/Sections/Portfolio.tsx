@@ -44,8 +44,7 @@ const Portfolio = () => {
 
   return (
     <div className="h-screen flex flex-row items-center justify-center bg-zinc-700">
-      <div className="flex flex-col items-start justify-center w-4/5 h-full"></div>
-      <div className="flex flex-col items-center justify-center h-auto w-full z-0 ">
+      <div className="flex flex-col items-start justify-center w-4/5 h-full">
         Text
       </div>
       <div className="box flex flex-col items-start justify-start bg-neutral-900 h-full p-4  shadow-md shadow-black ml-auto overflow-auto w-1/5">
