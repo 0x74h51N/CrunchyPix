@@ -18,7 +18,7 @@ const ArrowButton = ({ index, text, className, arrow }: CusButtonProps) => {
       {text}
       {arrow && (
         <Image
-          src="arrow.svg"
+          src="arrow-down.svg"
           alt="Arrow"
           width={50}
           height={50}

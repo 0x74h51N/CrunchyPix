@@ -1,9 +1,17 @@
+import { type } from "os";
 import React, { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
-const TypingText = ({ text }: { text: string }) => {
+type TypingText = {
+  text: string;
+  _code?: boolean;
+  textClass?: string;
+};
+
+const TypingText = ({ text, _code = true, textClass = "text" }: TypingText) => {
   const [displayText, setDisplayText] = useState("");
+  const pixIndex = text.indexOf("Pix");
 
   useEffect(() => {
     let charIndex = 0;
@@ -24,17 +32,20 @@ const TypingText = ({ text }: { text: string }) => {
 
   return (
     <div>
-      {" "}
-      <SyntaxHighlighter
-        language="typescript"
-        style={vscDarkPlus}
-        customStyle={{
-          backgroundColor: "transparent",
-          opacity: "1",
-        }}
-      >
-        {displayText}
-      </SyntaxHighlighter>
+      {_code ? (
+        <SyntaxHighlighter
+          language="typescript"
+          style={vscDarkPlus}
+          customStyle={{
+            backgroundColor: "transparent",
+            opacity: "1",
+          }}
+        >
+          {displayText}
+        </SyntaxHighlighter>
+      ) : (
+        <div className={textClass}>{displayText}</div>
+      )}
     </div>
   );
 };

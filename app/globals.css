@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
-
+@import url("https://db.onlinewebfonts.com/c/8be4a2f403c2dc27187d892cca388e24?family=Britannic+Bold");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -103,7 +103,7 @@ body {
 
 /* Footer */
 .footer {
-  @apply flex-col paddings w-full gap-5 bg-back-col;
+  @apply flex-col w-full gap-5;
 }
 
 .footer_copyright {
@@ -136,6 +136,10 @@ body {
 .smallNavbar {
   @apply py-2 px-10 gap-4;
   transition: all 1s ease;
+}
+
+.navImage {
+  transition: width 1s ease;
 }
 
 /* Profile Menu */
@@ -194,4 +198,89 @@ body {
 .dotted-background {
   background-image: radial-gradient(circle, #8f8f8f 1px, transparent 1px);
   background-size: 5px 5px;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.box {
+  z-index: "0";
+}
+
+@media (max-width: 600px) {
+  .navbarHidden {
+    display: none;
+  }
+}
+
+.burger-icon {
+  @apply bg-stone-700 w-6 h-1 rounded-sm;
+  transition: all 1s ease;
+}
+
+.mobile-menu {
+  opacity: 0;
+  background-color: white;
+  transform: translateY(-20px);
+  transition: opacity 1s ease, transform 1s ease;
+  @apply absolute p-10 rounded-xl mt-4 right-0 z-50;
+}
+.mobile-menu.open {
+  opacity: 1;
+  background-color: white;
+  transform: translateY(0);
+
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.burger-icon.open {
+  transition: all 1s ease;
+  @apply mt-2;
+}
+
+@keyframes my-bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-my-bounce-slow {
+  animation: my-bounce 2s infinite;
+}
+@font-face {
+  font-family: "Britannic Bold";
+  src: url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.eot");
+  src: url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.svg#Britannic Bold")
+      format("svg");
+}
+.logo_text {
+  font-family: "Britannic Bold";
+  font-size: 55px;
+}
+.pix-text {
+  color: #eeb30d;
 }
