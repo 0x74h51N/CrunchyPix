@@ -68,32 +68,39 @@ export const Navbar = () => {
       }`}
     >
       <div className="flex flex-row ">
-        <div>
-          <Image
-            src={"/logo_left.svg"}
-            width={isMobile || isScrolled ? 20 : 50}
-            height={100}
-            alt="Flexible"
-            loading="lazy"
-            className={isScrolled ? "" : "navImage"}
-          />
-        </div>
-        <div className="flex flex-row flex-center items-center mr-2">
-          {isScrolled || isMobile ? null : textHide ? null : (
-            <TypingText text="CruncyPix" _code={false} textClass="logo_text" />
-          )}
-        </div>
-        <div>
-          <Image
-            src={"logo_right.svg"}
-            width={isMobile || isScrolled ? 20 : 50}
-            height={100}
-            alt="Flexible"
-            loading="lazy"
-            className={` ${isScrolled ? "" : "ml-2 navImage"}`}
-          />
-        </div>
-
+        <Link href="/">
+          <div className="flex flex-row ">
+            <div>
+              <Image
+                src={"/logo_left.svg"}
+                width={isMobile || isScrolled ? 20 : 50}
+                height={100}
+                alt="Flexible"
+                loading="lazy"
+                className={isScrolled ? "" : "navImage"}
+              />
+            </div>
+            <div className="flex flex-row flex-center items-center mr-2">
+              {isScrolled || isMobile ? null : textHide ? null : (
+                <TypingText
+                  text="CruncyPix"
+                  _code={false}
+                  textClass="logo_text"
+                />
+              )}
+            </div>
+            <div>
+              <Image
+                src={"logo_right.svg"}
+                width={isMobile || isScrolled ? 20 : 50}
+                height={100}
+                alt="Flexible"
+                loading="lazy"
+                className={` ${isScrolled ? "" : "ml-2 navImage"}`}
+              />
+            </div>
+          </div>
+        </Link>
         <div className="flex flex-center items-center  ml-auto">
           {isMobile ? (
             <div className="flex flex-col  ">
