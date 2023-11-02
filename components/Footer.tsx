@@ -75,7 +75,7 @@ const Footer = () => {
         </div>
         <div className="lg:px-20 pt-0 pe-6 px-5 ">
           <div className="w-full  relative z-10">
-            <Image src="/logo_L.png" width={250} height={38} alt="Flexibble" />
+            <Image src="/logo_L.svg" width={250} height={38} alt="Flexibble" />
           </div>
           <div className="flex flex-row  w-full z-10">
             <div className="flex flex-col gap12 w-1/5">
