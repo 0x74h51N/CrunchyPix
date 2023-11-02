@@ -21,7 +21,11 @@ export const Navbar = () => {
   };
   const toggleMenu = () => {
     console.log("Toggle menu clicked");
-    setIsMenuOpen(!isMenuOpen);
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    } else {
+      setIsMenuOpen(true);
+    }
   };
 
   useEffect(() => {
@@ -55,17 +59,19 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`bg-back-col fleBetween navbar fixed w-full top-0 z-50 ${
+      className={`${
+        isMobile ? "bg-opacity-100" : "bg-opacity-0 "
+      }( bg-white fleBetween navbar fixed w-full top-0 z-50 ${
         isScrolled
           ? "bg-opacity-100 smallNavbar shadow-stone-900 shadow-sm"
-          : "bg-opacity-0"
+          : ""
       }`}
     >
       <div className="flex flex-row ">
         <div>
           <Image
             src={"/logo_left.svg"}
-            width={isMobile || isScrolled ? 35 : 50}
+            width={isMobile || isScrolled ? 20 : 50}
             height={100}
             alt="Flexible"
             loading="lazy"
@@ -80,7 +86,7 @@ export const Navbar = () => {
         <div>
           <Image
             src={"logo_right.svg"}
-            width={isMobile || isScrolled ? 35 : 50}
+            width={isMobile || isScrolled ? 20 : 50}
             height={100}
             alt="Flexible"
             loading="lazy"
@@ -91,12 +97,15 @@ export const Navbar = () => {
         <div className="flex flex-center items-center  ml-auto">
           {isMobile ? (
             <div className="flex flex-col  ">
-              <button className="flex flex-col  p-3 gap-1" onClick={toggleMenu}>
+              <button
+                className="flex flex-col burger-button p-3 gap-1"
+                onClick={toggleMenu}
+              >
                 <div
                   className={`burger-icon ${isMenuOpen ? "open" : ""}`}
                 ></div>
                 <div
-                  className={`burger-icon ${isMenuOpen ? "open" : ""}`}
+                  className={`ml-2 burger-icon ${isMenuOpen ? "open" : ""}`}
                 ></div>
                 <div
                   className={`burger-icon ${isMenuOpen ? "open" : ""}`}
@@ -125,7 +134,7 @@ export const Navbar = () => {
               </div>
             </div>
           ) : (
-            <div className="navbarHidden ">
+            <div className="navbarHidden">
               <ul
                 className={`flex  ${
                   isScrolled ? "text-small" : "text-lg font-semibold"

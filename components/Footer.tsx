@@ -80,10 +80,10 @@ const Footer = () => {
           <div className="flex flex-row  w-full z-10">
             <div className="flex flex-col gap12 w-1/5">
               <div className="flex items-start flex-col">
-                <p className="text-start text-white text-l font-medium mt-5 max-w-xs">
+                <p className="text-start text-stone-900 text-l font-medium mt-5 max-w-xs">
                   Unleash the Power of Web Innovation
                 </p>
-                <p className="text-start text-white text-sm font-normal mt-3 max-w-xs">
+                <p className="text-start text-stone-700 text-sm font-normal mt-3 max-w-xs">
                   We're your trusted partner in web development. Our mission is
                   to bring your digital dreams to life. Let's create something
                   amazing together!
@@ -103,7 +103,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex flex-col gap-7 w-3/5 ml-auto z-10">
-              <p className="text-start text-zinc-200 text-xl font-medium mt-5 max-w-xs">
+              <p className="text-start text-stone-700 text-xl font-medium mt-5 max-w-xs">
                 Contact with me!
               </p>
               <Contact />

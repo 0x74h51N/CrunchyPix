@@ -1,7 +1,7 @@
-import { type } from "os";
 import React, { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import PixHighlight from "./PixHighlight";
 
 type TypingText = {
   text: string;
@@ -44,7 +44,9 @@ const TypingText = ({ text, _code = true, textClass = "text" }: TypingText) => {
           {displayText}
         </SyntaxHighlighter>
       ) : (
-        <div className={textClass}>{displayText}</div>
+        <div className={textClass}>
+          <PixHighlight>{displayText}</PixHighlight>
+        </div>
       )}
     </div>
   );

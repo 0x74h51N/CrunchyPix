@@ -4,7 +4,7 @@ import ArrowButton from "../Button";
 
 const AboutMe = () => {
   return (
-    <div className="h-screen flex flex-row items-center justify-center bg-back-col p-5">
+    <div className="h-screen flex flex-row items-center justify-center">
       <div className="flex flex-col items-center justify-center h-full w-full">
         <div className="flex flex-col items-center justify-center h-full w-full ">
           Text

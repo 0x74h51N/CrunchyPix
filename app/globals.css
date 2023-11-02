@@ -220,28 +220,49 @@ body {
 }
 
 .burger-icon {
-  @apply bg-stone-700 w-6 h-1 rounded-sm;
+  @apply bg-stone-700 w-8 rounded-sm;
+  height: 2px;
   transition: all 1s ease;
 }
 
+.burger-button:hover {
+  :first-child {
+    transform: translateX(10px);
+  }
+  :nth-child(2) {
+    transform: translateX(-10px);
+  }
+  :last-child {
+    transform: translateX(10px);
+  }
+}
+
 .mobile-menu {
-  opacity: 0;
   background-color: white;
-  transform: translateY(-20px);
-  transition: opacity 1s ease, transform 1s ease;
-  @apply absolute p-10 rounded-xl mt-4 right-0 z-50;
+  max-height: 0;
+  overflow: hidden;
+  display: none;
+  transition: max-height 2s ease;
+  @apply absolute w-full p-10 mt-4 right-0 z-50;
 }
 .mobile-menu.open {
-  opacity: 1;
-  background-color: white;
-  transform: translateY(0);
-
-  transition: opacity 1s ease, transform 1s ease;
+  display: block;
+  max-height: 300px;
+  transition: max-height 2s ease;
 }
 
 .burger-icon.open {
   transition: all 1s ease;
-  @apply mt-2;
+}
+.burger-icon.open:first-child {
+  transform: translateX(5px) translateY(5px) rotate(45deg);
+}
+.burger-icon.open:nth-child(2) {
+  transform: translateX(-4px) translateY(1px) rotate(-45deg);
+}
+
+.burger-icon.open:last-child {
+  transform: translateX(5px) translateY(-6px) rotate(45deg);
 }
 
 @keyframes my-bounce {
@@ -280,6 +301,7 @@ body {
 .logo_text {
   font-family: "Britannic Bold";
   font-size: 55px;
+  @apply text-stone-700;
 }
 .pix-text {
   color: #eeb30d;
