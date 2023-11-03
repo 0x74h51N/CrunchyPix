@@ -16,11 +16,11 @@ const sectionsData: SectionData[] = [
     children: <AboutMe />,
   },
   {
-    name: "Portfolio",
-    children: <Portfolio />,
+    name: "Forking",
   },
   {
-    name: "Forking",
+    name: "Portfolio",
+    children: <Portfolio />,
   },
   {
     name: "Contact Me",
