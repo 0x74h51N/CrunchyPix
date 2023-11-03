@@ -226,7 +226,7 @@ body {
 }
 
 .burger-icon {
-  @apply bg-stone-700 w-8 rounded-sm;
+  @apply bg-neutral-100 w-8 rounded-sm;
   height: 2px;
   transition: all 1s ease;
 }
@@ -244,10 +244,9 @@ body {
 }
 
 .mobile-menu {
-  background-color: white;
   max-height: 0;
   overflow: hidden;
-  @apply absolute w-full p-10 mt-2 right-0 z-50;
+  @apply bg-neutral-700 absolute w-full p-10 mt-2 right-0 z-50;
 }
 
 .burger-icon.open {
