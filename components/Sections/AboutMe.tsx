@@ -1,21 +1,13 @@
 import React from "react";
-import TypingText from "../typeText";
 import ArrowButton from "../Button";
+import FullScreenSlider from "../FullSlider";
 
 const AboutMe = () => {
   return (
-    <div className="h-screen flex flex-row items-center justify-center">
-      <div className="flex flex-col items-center justify-center h-full w-full">
-        <div className="flex flex-col items-center justify-center h-full w-full ">
-          Text
-        </div>
-        <div className="w-full flex items-center justify-center">
-          <ArrowButton
-            index={1}
-            arrow={true}
-            className="opacity-50 hover:opacity-100 transition-opacity animate-my-bounce-slow"
-          />
-        </div>
+    <div className=" justify-center h-screen w-full ">
+      <div className="relative overflow-hidden w-full h-full z-0">
+        <FullScreenSlider />
+        <div className="static h-full w-full"></div>
       </div>
     </div>
   );

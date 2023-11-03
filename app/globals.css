@@ -103,7 +103,7 @@ body {
 
 /* Footer */
 .footer {
-  @apply flex-col w-full gap-5;
+  @apply bg-neutral-700 flex-col w-full gap-5;
 }
 
 .footer_copyright {
@@ -130,6 +130,7 @@ body {
 
 /* Navbar */
 .navbar {
+  backdrop-filter: blur(5px);
   @apply py-5 px-10  gap-4;
   transition: all 1s ease;
 }
@@ -176,10 +177,10 @@ body {
 
 @keyframes slideRight {
   0% {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
 }
 
@@ -188,8 +189,13 @@ body {
     transform: translateX(100%);
   }
   100% {
-    transform: translateX(0);
+    opacity: 100;
+    transform: translateX(0%);
   }
+}
+
+.animate-slideLeft {
+  animation: slideLeft 1s ease 1s forwards;
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -298,4 +304,9 @@ body {
 }
 .pix-text {
   color: #eeb30d;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  color: #3b3b3b;
 }
