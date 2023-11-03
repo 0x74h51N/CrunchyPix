@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import TypingText from "./typeText";
+import MobileMenu from "./MobileMenu";
 
 export const Navbar = () => {
   const session = {};
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [textHide, setTextHide] = useState(false);
 
@@ -17,14 +17,6 @@ export const Navbar = () => {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
-    }
-  };
-  const toggleMenu = () => {
-    console.log("Toggle menu clicked");
-    if (isMenuOpen) {
-      setIsMenuOpen(false);
-    } else {
-      setIsMenuOpen(true);
     }
   };
 
@@ -103,43 +95,7 @@ export const Navbar = () => {
         </Link>
         <div className="flex flex-center items-center  ml-auto">
           {isMobile ? (
-            <div className="flex flex-col  ">
-              <button
-                className="flex flex-col burger-button p-3 gap-1"
-                onClick={toggleMenu}
-              >
-                <div
-                  className={`burger-icon ${isMenuOpen ? "open" : ""}`}
-                ></div>
-                <div
-                  className={`ml-2 burger-icon ${isMenuOpen ? "open" : ""}`}
-                ></div>
-                <div
-                  className={`burger-icon ${isMenuOpen ? "open" : ""}`}
-                ></div>
-              </button>
-              <div>
-                {isMobile && (
-                  <div className={` mobile-menu ${isMenuOpen ? "open" : ""}`}>
-                    <ul>
-                      {NavLinks.map((link) => (
-                        <li key={link.key}>
-                          <Link
-                            href={link.href}
-                            key={link.key}
-                            className={`block py-2 ${
-                              isScrolled ? "text" : "text-lg font-semibold"
-                            }  text-stone-700 antialiased gap-12 hover:text-log-col`}
-                          >
-                            {link.text}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
+            <MobileMenu />
           ) : (
             <div className="navbarHidden">
               <ul

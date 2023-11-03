@@ -241,14 +241,7 @@ body {
   background-color: white;
   max-height: 0;
   overflow: hidden;
-  display: none;
-  transition: max-height 2s ease;
-  @apply absolute w-full p-10 mt-4 right-0 z-50;
-}
-.mobile-menu.open {
-  display: block;
-  max-height: 300px;
-  transition: max-height 2s ease;
+  @apply absolute w-full p-10 mt-2 right-0 z-50;
 }
 
 .burger-icon.open {
