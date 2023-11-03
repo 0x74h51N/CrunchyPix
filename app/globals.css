@@ -299,7 +299,7 @@ body {
 .logo_text {
   font-family: "Britannic Bold";
   font-size: 55px;
-  @apply text-stone-700;
+  @apply text-neutral-200;
 }
 .pix-text {
   color: #eeb30d;
@@ -307,5 +307,19 @@ body {
 
 .swiper-button-next::after,
 .swiper-button-prev::after {
-  color: #3b3b3b;
+  color: white;
+}
+
+.arrowButton {
+  color: white;
+  @apply opacity-50 hover:opacity-100 transition-opacity animate-my-bounce-slow z-10;
+}
+
+.arrow {
+  bottom: 0;
+  left: 50%;
+  margin-left: -20px;
+  width: 40px;
+  height: 40px;
+  background-size: contain;
 }
