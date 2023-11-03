@@ -9,7 +9,8 @@ module.exports = {
     extend: {
       colors: {
         "nav-border": "#EBEAEA",
-        "back-col": "#383838",
+        "back-col": "#ffffff",
+        "log-col": "#eeb30d",
         "light-white": "#FAFAFB",
         "light-white-100": "#F1F4F5",
         "light-white-200": "#d7d7d7",
