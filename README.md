@@ -1,3 +1,5 @@
+This project started with the aim of creating a personal website. I have chosen to use CrunchyPix as the website and brand name. This project is being developed using Next.js, TypeScript, Tailwind CSS, and custom components.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
