@@ -54,7 +54,7 @@ const Footer = () => {
     }
   }, []);
   return (
-    <footer className="flexflex-col justify-center footer ">
+    <footer className="flex justify-center footer ">
       <div className="relative overflow-hidden">
         <div className="grid grid-cols-3">
           <div className="h-1 line"></div>
@@ -73,24 +73,27 @@ const Footer = () => {
           <div className="h-1 line"></div>
           <div className="h-1 line"></div>
         </div>
-        <div className="lg:px-20 pt-0 pe-6 px-5 ">
-          <div className="w-full  relative z-10">
-            <Image src="/logo_L.svg" width={250} height={38} alt="Flexibble" />
-          </div>
+        <div className="lg:px-20 pt-5 pe-6 px-5 ">
           <div className="flex flex-row  w-full z-10">
-            <div className="flex flex-col gap12 w-1/5">
+            <div className="flex flex-col gap12 w-1/5 z-10">
+              <Image
+                src="/logo_L.svg"
+                width={250}
+                height={38}
+                alt="Flexibble"
+              />
               <div className="flex items-start flex-col">
-                <p className="text-start text-stone-900 text-l font-medium mt-5 max-w-xs">
+                <p className="text-start text-stone-200 text-l font-medium mt-5 max-w-xs">
                   Unleash the Power of Web Innovation
                 </p>
-                <p className="text-start text-stone-700 text-sm font-normal mt-3 max-w-xs">
+                <p className="text-start text-stone-200 text-sm font-normal mt-3 max-w-xs">
                   We're your trusted partner in web development. Our mission is
                   to bring your digital dreams to life. Let's create something
                   amazing together!
                 </p>
               </div>
               <div className="flex flex-wrap gap-10 mt-5 z-10">
-                <div className="flex-1 flex flex-col gap-4">
+                <div className="text-neutral-200 flex-1 flex flex-col gap-4">
                   <FooterColumn
                     title={footerLinks[1].title}
                     links={footerLinks[1].links}
@@ -102,18 +105,18 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-7 w-3/5 ml-auto z-10">
-              <p className="text-start text-stone-700 text-xl font-medium mt-5 max-w-xs">
+            <div className="flex flex-col justify-center gap-7 w-3/5 ml-auto z-10">
+              <p className="text-start text-stone-200 text-xl font-medium mt-5 max-w-xs">
                 Contact with me!
               </p>
               <Contact />
             </div>
           </div>
-          <div className="flexBetween footer_copyright">
+          <div className="text-neutral-200 flexBetween mt-10 footer_copyright">
             <p>@ 2023 CrunchyPix. All right reserved</p>
-            <p className="text-gray">
-              <span className="text-black font-semibold">10</span> projects
-              submitted
+            <p className=" text-neutral-200">
+              <span className=" text-neutral-200 font-semibold">10</span>{" "}
+              projects submitted
             </p>
           </div>
         </div>
