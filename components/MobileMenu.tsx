@@ -44,7 +44,7 @@ const MobileMenu = () => {
                 <Link
                   href={link.href}
                   key={link.key}
-                  className={`block py-2 text-lg font-semibold text-stone-700 antialiased gap-12 hover:text-log-col`}
+                  className={`block py-2 text-lg font-semibold text-neutral-200 antialiased gap-12 hover:text-log-col`}
                 >
                   {link.text}
                 </Link>

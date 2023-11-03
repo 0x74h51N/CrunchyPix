@@ -53,10 +53,8 @@ export const Navbar = () => {
     <nav
       className={`${
         isMobile ? "bg-opacity-100" : "bg-opacity-0 "
-      }( bg-white fleBetween navbar fixed w-full top-0 z-50 ${
-        isScrolled
-          ? "bg-opacity-100 smallNavbar shadow-stone-900 shadow-sm"
-          : ""
+      }( bg-neutral-700 fleBetween navbar fixed w-full top-0 z-50 ${
+        isScrolled ? "bg-opacity-100 smallNavbar" : ""
       }`}
     >
       <div className="flex flex-row ">
@@ -101,7 +99,7 @@ export const Navbar = () => {
               <ul
                 className={`flex  ${
                   isScrolled ? "text-small" : "text-lg font-semibold"
-                }  text-stone-700 antialiased gap-12`}
+                }  text-stone-200 antialiased gap-12`}
               >
                 {NavLinks.map((link) => (
                   <Link
