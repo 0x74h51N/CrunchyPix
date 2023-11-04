@@ -114,6 +114,21 @@ body {
   @apply flex-1 flex flex-col gap-3 text-sm min-w-max;
 }
 
+.max-w-1 {
+  max-width: 20%;
+}
+
+.max-w-2 {
+  max-width: 40%;
+}
+.max-w-3 {
+  max-width: 60%;
+}
+
+.max-w-half {
+  max-width: 50%;
+}
+
 /* Form Field */
 .form_field-input {
   @apply w-full outline-0 bg-light-white-100 rounded-xl p-4;
@@ -299,7 +314,7 @@ body {
 .logo_text {
   font-family: "Britannic Bold";
   font-size: 55px;
-  @apply text-neutral-200;
+  @apply max-md:text-2xl text-neutral-200;
 }
 .pix-text {
   color: #eeb30d;

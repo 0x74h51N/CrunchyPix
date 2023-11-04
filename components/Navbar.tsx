@@ -10,7 +10,7 @@ export const Navbar = () => {
   const session = {};
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [textHide, setTextHide] = useState(false);
+  const [isTablet, setTablet] = useState(false);
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
@@ -29,18 +29,13 @@ export const Navbar = () => {
   }, []);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 950) {
-        setTextHide(true);
-        if (window.innerWidth <= 710) {
-          setIsMobile(true);
-        } else {
-          setIsMobile(false);
-        }
+      if (window.innerWidth <= 770) {
+        setIsMobile(true);
       } else {
-        setTextHide(false);
         setIsMobile(false);
       }
     };
+
     window.addEventListener("resize", handleResize);
     handleResize();
 
@@ -59,19 +54,19 @@ export const Navbar = () => {
     >
       <div className="flex flex-row ">
         <Link href="/">
-          <div className="flex flex-row ">
+          <div className="flex flex-row items-center">
             <div>
               <Image
                 src={"/logo_left.svg"}
-                width={isMobile || isScrolled ? 20 : 50}
+                width={isScrolled ? 20 : isMobile ? 28 : 50}
                 height={100}
                 alt="Flexible"
                 loading="lazy"
                 className={isScrolled ? "" : "navImage"}
               />
             </div>
-            <div className="flex flex-row flex-center items-center mr-2">
-              {isScrolled || isMobile ? null : textHide ? null : (
+            <div className="flex justify-center items-center mr-2">
+              {isScrolled ? null : (
                 <TypingText
                   text="CruncyPix"
                   _code={false}
@@ -82,11 +77,11 @@ export const Navbar = () => {
             <div>
               <Image
                 src={"logo_right.svg"}
-                width={isMobile || isScrolled ? 20 : 50}
+                width={isScrolled ? 20 : isMobile ? 28 : 50}
                 height={100}
                 alt="Flexible"
                 loading="lazy"
-                className={` ${isScrolled ? "" : "ml-2 navImage"}`}
+                className={isScrolled ? "" : "navImage"}
               />
             </div>
           </div>
@@ -97,7 +92,7 @@ export const Navbar = () => {
           ) : (
             <div className="navbarHidden">
               <ul
-                className={`flex  ${
+                className={`flex max-lg:text-base max-lg:gap-5 ${
                   isScrolled ? "text-small" : "text-lg font-semibold"
                 }  text-stone-200 antialiased gap-12`}
               >
