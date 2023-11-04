@@ -74,19 +74,19 @@ const Footer = () => {
           <div className="h-1 line"></div>
         </div>
         <div className="lg:px-20 pt-5 pe-6 px-5 ">
-          <div className="flex flex-row  w-full z-10">
-            <div className="flex flex-col gap12 w-1/5 z-10">
+          <div className="flexBetween max-md:flex-col w-full z-10">
+            <div className="flex flex-col gap12  z-10 w-1/5 max-md:w-full">
               <Image
                 src="/logo_L.svg"
                 width={250}
                 height={38}
                 alt="Flexibble"
               />
-              <div className="flex items-start flex-col">
-                <p className="text-start text-stone-200 text-l font-medium mt-5 max-w-xs">
+              <div className="flex items-start flex-col w-full">
+                <p className="text-start text-stone-200 text-l font-medium mt-5 ">
                   Unleash the Power of Web Innovation
                 </p>
-                <p className="text-start text-stone-200 text-sm font-normal mt-3 max-w-xs">
+                <p className="text-start text-stone-200 text-sm font-normal mt-3 max-md:w-3/5">
                   We're your trusted partner in web development. Our mission is
                   to bring your digital dreams to life. Let's create something
                   amazing together!
@@ -105,11 +105,13 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-7 w-3/5 ml-auto z-10">
-              <p className="text-start text-stone-200 text-xl font-medium mt-5 max-w-xs">
+            <div className="flex flex-col justify-center gap-7 z-10 w-3/6  max-lg:mx-20 max-xl:w-4/6 max-lg:w-full ">
+              <p className="text-start text-stone-200 text-xl font-medium mt-5">
                 Contact with me!
               </p>
-              <Contact />
+              <div>
+                <Contact />
+              </div>
             </div>
           </div>
           <div className="text-neutral-200 flexBetween mt-10 footer_copyright">
