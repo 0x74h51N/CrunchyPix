@@ -103,7 +103,7 @@ body {
 
 /* Footer */
 .footer {
-  @apply bg-neutral-700 flex-col w-full gap-5;
+  @apply bg-zinc-600 flex-col w-full gap-5;
 }
 
 .footer_copyright {
