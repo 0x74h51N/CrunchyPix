@@ -48,7 +48,7 @@ export const Navbar = () => {
     <nav
       className={`${
         isMobile ? "bg-opacity-100" : "bg-opacity-0 "
-      }( bg-neutral-700 fleBetween navbar fixed w-full top-0 z-50 ${
+      }( bg-zinc-600 fleBetween navbar fixed w-full top-0 z-50 ${
         isScrolled ? "bg-opacity-100 smallNavbar" : ""
       }`}
     >
