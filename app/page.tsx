@@ -1,4 +1,3 @@
-"use client";
 import Scroll from "@/components/Scroll";
 import AboutMe from "@/components/Sections/AboutMe";
 import Portfolio from "@/components/Sections/Portfolio";

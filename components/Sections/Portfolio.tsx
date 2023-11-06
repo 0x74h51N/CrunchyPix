@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import TypingText from "../typeText";
 import { ColorfulBorder } from "../ColorfulBorder";
