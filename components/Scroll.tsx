@@ -1,5 +1,5 @@
+"use client";
 import { useRef, useEffect, useState, useContext, createContext } from "react";
-
 interface SectionData {
   name: string;
   auto?: boolean;

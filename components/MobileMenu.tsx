@@ -12,29 +12,29 @@ const MobileMenu = () => {
   };
   const menuHeight = isMenuOpen
     ? ` ${
-        _Scrolled ? `${NavLinks.length * 52}px` : `${NavLinks.length * 60}px`
+        _Scrolled ? `${NavLinks.length * 53}px` : `${NavLinks.length * 53}px`
       }`
     : "0";
-  const paddingTop = isMenuOpen ? (_Scrolled ? "20px" : "60px") : "0";
+
   const mobileMenuStyle: CSSProperties = {
     position: "absolute",
-    top: 0,
     left: 0,
     display: "flex",
     height: menuHeight,
-    transition: "height 1s ease, padding 1s ease",
+    transition:
+      "height 0.5s ease, padding 1s ease, margin 0.7s ease, background-color 1s ease",
     width: "100vw",
     flexDirection: "column",
-    padding: 0,
-    paddingTop: paddingTop,
-    marginTop: 50,
+    paddingTop: isMenuOpen ? "18px" : "0",
+    marginTop: Scrolled ? 50 : 80,
     zIndex: -10,
+    backdropFilter: "blur(10px)",
+    backgroundColor: _Scrolled ? "#3b3b3b" : "transparent",
   };
   const listStyle: CSSProperties = {
     opacity: 0,
     animation: "1s appear forwards",
     animationDelay: "0.5s",
-    marginLeft: 15,
   };
 
   return (
@@ -46,7 +46,7 @@ const MobileMenu = () => {
         isToggled={isMenuOpen}
         onClick={toggleMenu}
       />
-      <div style={mobileMenuStyle} className="bg-nav-col">
+      <div style={mobileMenuStyle}>
         {isMenuOpen && (
           <div>
             <ul style={listStyle}>
@@ -55,7 +55,7 @@ const MobileMenu = () => {
                   <Link
                     href={link.href}
                     key={link.key}
-                    className={`w-20 block py-2 text-lg font-semibold text-neutral-200 antialiased gap-12 ml-6 hover:text-log-col hover:border-b hover:border-log-col`}
+                    className={`w-20 block py-2 text-lg font-semibold text-right mr-14 text-neutral-200 antialiased gap-12 ml-auto hover:text-log-col hover:border-b hover:border-log-col`}
                   >
                     {link.text}
                   </Link>
