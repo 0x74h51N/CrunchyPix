@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
 import Image from "next/image";
 import { footerLinks } from "@/constants";
 import Link from "next/link";
 import Contact from "./Contact";
+import BoxFall from "./BoxFall";
 
 type ColumnProps = {
   title: string;
@@ -22,64 +22,16 @@ const FooterColumn = ({ title, links }: ColumnProps) => (
   </div>
 );
 const Footer = () => {
-  useEffect(() => {
-    const lines = document.querySelectorAll(".line");
-    const footerElement = document.querySelector("footer");
-
-    if (footerElement) {
-      const footerHeight = footerElement.clientHeight;
-
-      const randomColor = () => {
-        const letters = "0123456789ABCDEF";
-        let color = "#";
-        for (let i = 0; i < 6; i++) {
-          color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-      };
-
-      lines.forEach((line) => {
-        for (let i = 0; i < 50; i++) {
-          const box = document.createElement("div");
-          box.className = "w-1 h-1 relative z-0 box";
-          box.style.top = `-${footerHeight}px`;
-          box.style.left = `${Math.random() * 100}vw`;
-          box.style.backgroundColor = randomColor();
-          box.style.animation = `fall ${
-            Math.random() * 4 + 1
-          }s linear infinite`;
-          line.appendChild(box);
-        }
-      });
-    }
-  }, []);
   return (
     <footer className="flex justify-center footer ">
       <div className="relative overflow-hidden">
-        <div className="grid grid-cols-3">
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-          <div className="h-1 line"></div>
-        </div>
-        <div className="lg:px-20 pt-5 pe-6 px-5 ">
+        <div className="lg:px-20 pt-14 pe-6 px-5  ">
           <div className="flexBetween max-md:flex-col w-full z-10">
             <div className="flex flex-col gap12  z-10 w-1/5 max-md:w-full">
               <Image
-                src="/logo_L.svg"
+                src="/LogoL.svg"
                 width={250}
-                height={38}
+                height={100}
                 alt="Flexibble"
               />
               <div className="flex items-start flex-col w-full">
@@ -95,18 +47,14 @@ const Footer = () => {
               <div className="flex flex-wrap gap-10 mt-5 z-10">
                 <div className="text-neutral-200 flex-1 flex flex-col gap-4">
                   <FooterColumn
-                    title={footerLinks[1].title}
-                    links={footerLinks[1].links}
-                  />
-                  <FooterColumn
-                    title={footerLinks[2].title}
-                    links={footerLinks[2].links}
+                    title={footerLinks[0].title}
+                    links={footerLinks[0].links}
                   />
                 </div>
               </div>
             </div>
-            <div className="flex flex-col justify-center gap-7 z-10 w-3/6  max-lg:mx-20 max-xl:w-4/6 max-lg:w-full ">
-              <p className="text-start text-stone-200 text-xl font-medium mt-5">
+            <div className="flex flex-col justify-center gap-7 z-10 w-3/6 max-lg:mx-6 max-xl:w-4/6  max-md:w-full ">
+              <p className="text-start text-stone-200 text-xl font-medium mt-5 ">
                 Contact with me!
               </p>
               <div>

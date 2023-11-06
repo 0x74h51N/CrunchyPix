@@ -1,6 +1,6 @@
 import { useRef, useEffect, CSSProperties } from "react";
 
-export const AnimatedGradientBorderTW: React.FC<{
+export const ColorfulBorder: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
   const boxRef = useRef<HTMLDivElement>(null);

@@ -6,10 +6,16 @@ import PixHighlight from "./PixHighlight";
 type TypingText = {
   text: string;
   _code?: boolean;
+  _logo?: boolean;
   textClass?: string;
 };
 
-const TypingText = ({ text, _code = true, textClass = "text" }: TypingText) => {
+const TypingText = ({
+  text,
+  _code = true,
+  _logo = false,
+  textClass = "text",
+}: TypingText) => {
   const [displayText, setDisplayText] = useState("");
   const pixIndex = text.indexOf("Pix");
 
@@ -43,10 +49,12 @@ const TypingText = ({ text, _code = true, textClass = "text" }: TypingText) => {
         >
           {displayText}
         </SyntaxHighlighter>
-      ) : (
+      ) : _logo ? (
         <div className={textClass}>
           <PixHighlight>{displayText}</PixHighlight>
         </div>
+      ) : (
+        <div className={textClass}>{displayText}</div>
       )}
     </div>
   );

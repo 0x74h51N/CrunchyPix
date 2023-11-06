@@ -103,7 +103,7 @@ body {
 
 /* Footer */
 .footer {
-  @apply bg-zinc-600 flex-col w-full gap-5;
+  @apply bg-nav-col flex-col w-full gap-5;
 }
 
 .footer_copyright {
@@ -155,6 +155,7 @@ body {
 }
 
 .navImage {
+  margin-left: 5px;
   transition: width 1s ease;
 }
 
@@ -201,6 +202,7 @@ body {
 
 @keyframes slideLeft {
   0% {
+    opacity: 0;
     transform: translateX(100%);
   }
   100% {
@@ -210,7 +212,7 @@ body {
 }
 
 .animate-slideLeft {
-  animation: slideLeft 1s ease 1s forwards;
+  animation: slideLeft 1s ease 1s forwards, opacity 1s ease 1s forwards;
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -233,35 +235,19 @@ body {
 .box {
   z-index: "0";
 }
-
 @media (max-width: 600px) {
   .navbarHidden {
     display: none;
   }
 }
 
-.burger-icon {
-  @apply bg-neutral-100 w-8 rounded-sm;
-  height: 2px;
-  transition: all 1s ease;
-}
-
-.burger-button:hover {
-  :first-child {
-    transform: translateX(10px);
+@keyframes appear {
+  0% {
+    opacity: 0;
   }
-  :nth-child(2) {
-    transform: translateX(-10px);
+  100% {
+    opacity: 1;
   }
-  :last-child {
-    transform: translateX(10px);
-  }
-}
-
-.mobile-menu {
-  max-height: 0;
-  overflow: hidden;
-  @apply bg-neutral-700 absolute w-full p-10 mt-2 right-0 z-50;
 }
 
 .burger-icon.open {
@@ -314,17 +300,22 @@ body {
 .logo_text {
   font-family: "Britannic Bold";
   font-size: 55px;
-  @apply max-md:text-2xl text-neutral-200;
+  margin-top: 8px;
+  @apply max-md:text-3xl text-neutral-200;
 }
 .pix-text {
   color: #eeb30d;
 }
-
 .swiper-button-next::after,
 .swiper-button-prev::after {
+  opacity: 0.5;
   color: white;
 }
 
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
+  opacity: 1;
+}
 .arrowButton {
   color: white;
   @apply opacity-50 hover:opacity-100 transition-opacity animate-my-bounce-slow z-10;

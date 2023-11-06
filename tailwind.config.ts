@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         "nav-border": "#EBEAEA",
         "back-col": "#ffffff",
+        "nav-col": "#3b3b3b",
         "log-col": "#eeb30d",
         "light-white": "#FAFAFB",
         "light-white-100": "#F1F4F5",

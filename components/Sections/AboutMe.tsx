@@ -1,5 +1,4 @@
 import React from "react";
-import ArrowButton from "../Button";
 import FullScreenSlider from "../FullSlider";
 
 const AboutMe = () => {

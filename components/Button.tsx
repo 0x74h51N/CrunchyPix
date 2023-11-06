@@ -4,7 +4,7 @@ import { useScroll } from "./Scroll";
 import Image from "next/image";
 
 interface CusButtonProps {
-  index: number;
+  index?: number;
   text?: string;
   className?: string;
   arrow?: boolean;
@@ -14,7 +14,10 @@ const ArrowButton = ({ index, text, className, arrow }: CusButtonProps) => {
   const { scrollToSection } = useScroll();
 
   return (
-    <button onClick={() => scrollToSection(index)} className={className}>
+    <button
+      onClick={() => index && scrollToSection(index)}
+      className={className}
+    >
       {text}
       {arrow && (
         <Image
