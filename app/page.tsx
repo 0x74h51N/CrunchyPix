@@ -1,5 +1,4 @@
 "use client";
-import Footer from "@/components/Footer";
 import Scroll from "@/components/Scroll";
 import AboutMe from "@/components/Sections/AboutMe";
 import Portfolio from "@/components/Sections/Portfolio";
