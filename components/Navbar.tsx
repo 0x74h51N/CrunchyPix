@@ -29,7 +29,7 @@ export const Navbar = () => {
   }, []);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 800) {
+      if (window.innerWidth < 768) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
@@ -47,9 +47,7 @@ export const Navbar = () => {
   return (
     <Scrolled.Provider value={isScrolled}>
       <nav
-        className={`${
-          isMobile ? "bg-opacity-100" : "bg-opacity-0 "
-        }( bg-nav-col fleBetween navbar fixed w-full top-0 z-50 ${
+        className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50 ${
           isScrolled ? "bg-opacity-100 smallNavbar" : ""
         }`}
       >
@@ -59,7 +57,7 @@ export const Navbar = () => {
               <div>
                 <Image
                   src={"/logo_leftw.svg"}
-                  width={isScrolled ? 13.4 : isMobile ? 18.5 : 32.5}
+                  width={isScrolled ? 12.5 : isMobile ? 18.5 : 32.5}
                   height={100}
                   alt="Flexible"
                   loading="lazy"
