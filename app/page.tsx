@@ -25,7 +25,6 @@ const sectionsData: SectionData[] = [
   {
     name: "Contact Me",
     auto: true,
-    children: <Footer />,
   },
 ];
 

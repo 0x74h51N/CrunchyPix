@@ -7,10 +7,8 @@ import TypingText from "./typeText";
 import MobileMenu from "./MobileMenu";
 
 export const Navbar = () => {
-  const session = {};
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setTablet] = useState(false);
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
@@ -29,7 +27,7 @@ export const Navbar = () => {
   }, []);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 770) {
+      if (window.innerWidth <= 800) {
         setIsMobile(true);
       } else {
         setIsMobile(false);
@@ -48,7 +46,7 @@ export const Navbar = () => {
     <nav
       className={`${
         isMobile ? "bg-opacity-100" : "bg-opacity-0 "
-      }( bg-zinc-600 fleBetween navbar fixed w-full top-0 z-50 ${
+      }( bg-nav-col fleBetween navbar fixed w-full top-0 z-50 ${
         isScrolled ? "bg-opacity-100 smallNavbar" : ""
       }`}
     >
@@ -57,23 +55,24 @@ export const Navbar = () => {
           <div className="flex flex-row items-center">
             <div>
               <Image
-                src={"/logo_left.svg"}
-                width={isScrolled ? 20 : isMobile ? 28 : 50}
+                src={"/logo_leftw.svg"}
+                width={isScrolled ? 13.4 : isMobile ? 18.5 : 32.5}
                 height={100}
                 alt="Flexible"
                 loading="lazy"
                 className={isScrolled ? "" : "navImage"}
               />
             </div>
-            <div className="flex justify-center items-center mr-2">
-              {isScrolled ? null : (
-                <TypingText
-                  text="CruncyPix"
-                  _code={false}
-                  textClass="logo_text"
-                />
-              )}
-            </div>
+
+            {isScrolled ? null : (
+              <TypingText
+                text="CruncyPix"
+                _code={false}
+                _logo={true}
+                textClass="logo_text"
+              />
+            )}
+
             <div>
               <Image
                 src={"logo_right.svg"}
@@ -90,17 +89,19 @@ export const Navbar = () => {
           {isMobile ? (
             <MobileMenu />
           ) : (
-            <div className="navbarHidden">
+            <div>
               <ul
                 className={`flex max-lg:text-base max-lg:gap-5 ${
-                  isScrolled ? "text-small" : "text-lg font-semibold"
+                  isScrolled
+                    ? "text-md font-medium gap-8"
+                    : "text-lg font-semibold"
                 }  text-stone-200 antialiased gap-12`}
               >
                 {NavLinks.map((link) => (
                   <Link
                     href={link.href}
                     key={link.key}
-                    className=" hover:text-log-col"
+                    className=" hover:text-log-col transition duration-1000 ease-in-out"
                   >
                     {link.text}
                   </Link>

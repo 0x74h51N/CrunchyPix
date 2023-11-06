@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -8,53 +8,38 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/effect-creative";
+import { slides } from "@/constants";
 
 const FullScreenSlider = () => {
   const progressCircle = useRef<HTMLDivElement | null>(null);
   const progressContent = useRef<HTMLDivElement | null>(null);
-  const [slideActiveIndexes, setSlideActiveIndexes] = useState([0, 1]);
-  const slides = [
-    {
-      imageUrl: "/slider-0.jpg",
-      title: "Unleash the Power of Web Innovation",
-      description:
-        "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!",
-    },
-    {
-      imageUrl: "/slide-1_.jpg",
-      title: "Unleash the Power of Web Innovation",
-      description:
-        "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!",
-    },
-  ];
+  const [activeIndex, setActiveIndex] = useState(0);
+
   const onSlideChange = (swiper: any) => {
-    setSlideActiveIndexes([swiper.activeIndex]);
+    setActiveIndex(swiper.realIndex);
   };
-  const onAutoplayTimeLeft = (s: any, time: number, progress: number) => {
-    if (progressCircle.current && progressContent.current) {
-      progressCircle.current.style.setProperty(
-        "--progress",
-        String(1 - progress)
-      );
-      progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-    }
-  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setActiveIndex(0);
+    }, 1000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <>
       <Swiper
         cssMode={true}
         navigation={true}
         loop
+        onSlideChange={onSlideChange}
         centeredSlides={true}
         autoplay={{
-          delay: 12000,
+          delay: 15000,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
+        speed={5000}
         modules={[Navigation, Autoplay, Pagination]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="w-full h-full flex flex-center justify-center  text-center bg-stone-900"
       >
         {slides.map((slide, index) => (
@@ -70,12 +55,9 @@ const FullScreenSlider = () => {
                   className="z-0"
                 ></Image>
                 <div
-                  className="animate-slideLeft opacity-0 absolute bottom-24 right-0 w-auto h-auto flex flex-col justify-center items-center bg-stone-700 bg-opacity-10 rounded-bl-xl rounded-tl-xl hover:bg-opacity-60 hover:transition-opacity duration-300 z-30 px-24 py-14 backdrop-blur-sm"
-                  style={{
-                    display: slideActiveIndexes.includes(index)
-                      ? "block"
-                      : "none",
-                  }}
+                  className={`${
+                    activeIndex === index ? "animate-slideLeft" : ""
+                  } opacity-0 absolute bottom-24 right-0 w-auto h-auto flex flex-col justify-center items-center bg-stone-700 bg-opacity-10 rounded-bl-xl rounded-tl-xl hover:bg-opacity-60 hover:transition-opacity duration-300 z-30 px-24 py-14 backdrop-blur-sm`}
                 >
                   <p className="text-start text-stone-200 text-xl font-medium">
                     {slide.title}

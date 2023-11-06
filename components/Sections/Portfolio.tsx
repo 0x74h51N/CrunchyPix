@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import TypingText from "../typeText";
-import { AnimatedGradientBorderTW } from "../ColorfulBorder";
+import { ColorfulBorder } from "../ColorfulBorder";
 
 const Portfolio = () => {
   const codeString = `import React from "react";
@@ -45,11 +45,11 @@ const Portfolio = () => {
   return (
     <div className="h-screen flex flex-row items-center justify-center bg-zinc-700">
       <div className="w-2/6 h-4/6">
-        <AnimatedGradientBorderTW>
+        <ColorfulBorder>
           <div className="box flex flex-col items-start justify-start overflow-auto w-full h-full">
             <TypingText text={codeString}></TypingText>
           </div>
-        </AnimatedGradientBorderTW>
+        </ColorfulBorder>
       </div>
     </div>
   );
