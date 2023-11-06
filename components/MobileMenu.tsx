@@ -12,7 +12,7 @@ const MobileMenu = () => {
   };
   const menuHeight = isMenuOpen
     ? ` ${
-        _Scrolled ? `${NavLinks.length * 50}px` : `${NavLinks.length * 60}px`
+        _Scrolled ? `${NavLinks.length * 52}px` : `${NavLinks.length * 60}px`
       }`
     : "0";
   const paddingTop = isMenuOpen ? (_Scrolled ? "20px" : "60px") : "0";
@@ -34,6 +34,7 @@ const MobileMenu = () => {
     opacity: 0,
     animation: "1s appear forwards",
     animationDelay: "0.5s",
+    marginLeft: 15,
   };
 
   return (
