@@ -1,8 +1,10 @@
-import { NavLinks } from "@/constants";
+import { Links } from "@/constants";
 import Link from "next/link";
 import React, { CSSProperties, useContext, useState } from "react";
 import BurgerButton from "./BurgerButton";
 import { Scrolled } from "./Navbar";
+import { useTranslation } from "react-i18next";
+import LanguageMenu from "./LanguageMenu";
 
 const MobileMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,25 +12,20 @@ const MobileMenu = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const menuHeight = isMenuOpen
-    ? ` ${
-        _Scrolled ? `${NavLinks.length * 53}px` : `${NavLinks.length * 53}px`
-      }`
-    : "0";
+  const { t } = useTranslation(["translation"]);
 
   const mobileMenuStyle: CSSProperties = {
     position: "absolute",
+    top: 0,
     left: 0,
-    display: "flex",
-    height: menuHeight,
-    transition:
-      "height 0.5s ease, padding 1s ease, margin 0.7s ease, background-color 1s ease",
+    backdropFilter: "blur(15px)",
+    height: isMenuOpen ? `${Links.length * 63}px` : "0",
+    transition: "height 1s ease, padding 1s ease, background-color 1s ease",
     width: "100vw",
     flexDirection: "column",
-    paddingTop: isMenuOpen ? "18px" : "0",
-    marginTop: Scrolled ? 50 : 80,
+    paddingTop: isMenuOpen ? "35px" : "0",
+    marginTop: 50,
     zIndex: -10,
-    backdropFilter: "blur(10px)",
     backgroundColor: _Scrolled ? "#3b3b3b" : "transparent",
   };
   const listStyle: CSSProperties = {
@@ -50,14 +47,17 @@ const MobileMenu = () => {
         {isMenuOpen && (
           <div>
             <ul style={listStyle}>
-              {NavLinks.map((link) => (
+              <div className="flex justify-end mr-14 mb-3">
+                <LanguageMenu />
+              </div>
+              {Links.map((link) => (
                 <li key={link.key}>
                   <Link
                     href={link.href}
                     key={link.key}
-                    className={`w-20 block py-2 text-lg font-semibold text-right mr-14 text-neutral-200 antialiased gap-12 ml-auto hover:text-log-col hover:border-b hover:border-log-col`}
+                    className={`w-20 block py-2 rtl text-lg font-semibold text-right mr-14 text-neutral-200 antialiased ml-auto hover:text-log-col hover:border-b hover:border-log-col whitespace-nowrap`}
                   >
-                    {link.text}
+                    {t(link.text)}
                   </Link>
                 </li>
               ))}
