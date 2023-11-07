@@ -1,0 +1,35 @@
+{
+  "links": {
+    "Home": "Home",
+    "Services": "Services",
+    "Portfolio": "Portfolio",
+    "About": "About",
+    "Contact": "Contact"
+  },
+  "home": {
+    "title": "Homepage",
+    "description": "This is the homepage"
+  },
+  "slides": [
+    {
+      "title": "Unleash the Power of Web Innovation",
+      "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
+    },
+    {
+      "title": "Crativity, innovation and perfection",
+      "description": "Power of the knowledge."
+    }
+  ],
+
+  "contact": {
+    "title": "Contact With Me",
+    "description": "Get in touch with us",
+    "placeName": "Full Name",
+    "placeMessage": "Type your message...",
+    "button": "Submit"
+  },
+  "footer": {
+    "title": "Unleash the Power of Web Innovation",
+    "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
+  }
+}

@@ -1,10 +1,12 @@
 "use client";
-import { NavLinks } from "@/constants";
+import { Links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState, createContext } from "react";
 import TypingText from "./typeText";
 import MobileMenu from "./MobileMenu";
+import LanguageMenu from "./LanguageMenu";
+import { useTranslation } from "react-i18next";
 
 export const Scrolled = createContext(false);
 
@@ -43,6 +45,21 @@ export const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  const { t, i18n } = useTranslation(["translation"]);
+
+  const [isTranslationsLoaded, setIsTranslationsLoaded] = useState(false);
+  useEffect(() => {
+    if (i18n.isInitialized) {
+      setIsTranslationsLoaded(true);
+    } else {
+      i18n.on("initialized", () => {
+        setIsTranslationsLoaded(true);
+      });
+    }
+  }, [i18n]);
+  if (!isTranslationsLoaded) {
+    return null;
+  }
 
   return (
     <Scrolled.Provider value={isScrolled}>
@@ -98,15 +115,16 @@ export const Navbar = () => {
                       : "text-lg font-semibold"
                   }  text-stone-200 antialiased gap-12`}
                 >
-                  {NavLinks.map((link) => (
+                  {Links.map((link) => (
                     <Link
                       href={link.href}
                       key={link.key}
                       className="hover:text-log-col transition duration-1000 ease-in-out"
                     >
-                      {link.text}
+                      {t(link.text)}
                     </Link>
                   ))}
+                  <LanguageMenu />
                 </ul>
               </div>
             )}

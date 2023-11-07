@@ -336,3 +336,6 @@ body {
   height: 40px;
   background-size: contain;
 }
+.rtl {
+  direction: rtl;
+}

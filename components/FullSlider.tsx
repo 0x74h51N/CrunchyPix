@@ -9,16 +9,14 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/effect-creative";
 import { slides } from "@/constants";
+import { useTranslation } from "react-i18next";
 
 const FullScreenSlider = () => {
-  const progressCircle = useRef<HTMLDivElement | null>(null);
-  const progressContent = useRef<HTMLDivElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const { t } = useTranslation(["translation"]);
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
   };
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setActiveIndex(0);
@@ -60,10 +58,10 @@ const FullScreenSlider = () => {
                   } opacity-0 absolute bottom-24 right-0 w-auto h-auto flex flex-col justify-center items-center bg-stone-700 bg-opacity-10 rounded-bl-xl rounded-tl-xl hover:bg-opacity-60 hover:transition-opacity duration-300 z-30 px-24 py-14 backdrop-blur-sm`}
                 >
                   <p className="text-start text-stone-200 text-xl font-medium">
-                    {slide.title}
+                    {t(slide.title)}
                   </p>
                   <p className="text-start text-stone-200 text-l font-normal mt-2 max-w-sm">
-                    {slide.description}
+                    {t(slide.description)}
                   </p>
                 </div>
               </div>

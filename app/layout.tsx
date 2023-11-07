@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { AppI18nProvider } from "@/components/i18Provider";
+import { AppReduxProvider } from "@/store/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,10 +22,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Analytics />
-        <Footer />
+        <AppReduxProvider>
+          <AppI18nProvider>
+            <Navbar />
+            <main>{children}</main>
+            <Analytics />
+            <Footer />
+          </AppI18nProvider>
+        </AppReduxProvider>
       </body>
     </html>
   );
