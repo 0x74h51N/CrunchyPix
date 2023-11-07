@@ -1,27 +1,32 @@
+"use client";
 import Image from "next/image";
-import { footerLinks } from "@/constants";
+import { Links } from "@/constants";
 import Link from "next/link";
 import Contact from "./Contact";
-import BoxFall from "./BoxFall";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 type ColumnProps = {
   title: string;
   links: Array<string>;
 };
 
-const FooterColumn = ({ title, links }: ColumnProps) => (
-  <div className="footer_column">
-    <h4 className="font-semibold">{title}</h4>
-    <ul className="flex flex-col gap-2 font-normal">
-      {links.map((link) => (
-        <Link href="/" key={link}>
-          {link}
-        </Link>
-      ))}
-    </ul>
-  </div>
-);
 const Footer = () => {
+  const { t, i18n } = useTranslation(["translation"]);
+
+  const [isTranslationsLoaded, setIsTranslationsLoaded] = useState(false);
+  useEffect(() => {
+    if (i18n.isInitialized) {
+      setIsTranslationsLoaded(true);
+    } else {
+      i18n.on("initialized", () => {
+        setIsTranslationsLoaded(true);
+      });
+    }
+  }, [i18n]);
+  if (!isTranslationsLoaded) {
+    return null;
+  }
   return (
     <footer className="flex justify-center footer ">
       <div className="relative overflow-hidden">
@@ -36,20 +41,29 @@ const Footer = () => {
               />
               <div className="flex items-start flex-col w-full">
                 <p className="text-start text-stone-200 text-l font-medium mt-5 ">
-                  Unleash the Power of Web Innovation
+                  {t("footer.title")}
                 </p>
                 <p className="text-start text-stone-200 text-sm font-normal mt-3 max-md:w-3/5">
-                  We're your trusted partner in web development. Our mission is
-                  to bring your digital dreams to life. Let's create something
-                  amazing together!
+                  {t("footer.description")}
                 </p>
               </div>
               <div className="flex flex-wrap gap-10 mt-5 z-10">
                 <div className="text-neutral-200 flex-1 flex flex-col gap-4">
-                  <FooterColumn
-                    title={footerLinks[0].title}
-                    links={footerLinks[0].links}
-                  />
+                  <div>
+                    <ul>
+                      {Links.map((link) => (
+                        <li key={link.key}>
+                          <Link
+                            href={link.href}
+                            key={link.key}
+                            className={`w-20 block text-sm  text-neutral-200 antialiased mt-2 hover:text-log-col hover:border-b hover:border-log-col`}
+                          >
+                            {t(link.text)}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
