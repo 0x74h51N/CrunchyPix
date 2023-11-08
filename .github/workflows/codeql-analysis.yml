@@ -3,11 +3,11 @@ name: CodeQL Analysis
 on:
   push:
     branches:
-      - staging
+      - Staging
       - master
   pull_request:
     branches:
-      - staging
+      - Staging
       - master
 
 
