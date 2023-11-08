@@ -358,7 +358,7 @@ body {
 .mobile-menu.open2 {
   height: 100px;
   left: unset;
-  padding: 5px 10px 5px 20px;
+  padding: 5px 10px 5px 10px;
   z-index: 0;
 }
 .mobile-menu.openM {
