@@ -55,9 +55,9 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50 ${
-        isScrolled ? "bg-opacity-100 smallNavbar" : ""
-      }`}
+      className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50  gap-4  ${
+        isScrolled ? "bg-opacity-100 py-2 px-10" : "py-5 px-10"
+      } transition-all duration-1000 ease-in-out`}
     >
       <div className="flex flex-row ">
         <Link href="/">
@@ -69,7 +69,9 @@ export const Navbar = () => {
                 height={100}
                 alt="Flexible"
                 loading="lazy"
-                className={isScrolled ? "" : "navImage"}
+                className={`${
+                  isScrolled ? "" : "navImage"
+                } transition-all duration-700 ease-in-out`}
               />
             </div>
 
@@ -89,7 +91,9 @@ export const Navbar = () => {
                 height={100}
                 alt="Flexible"
                 loading="lazy"
-                className={isScrolled ? "" : "navImage"}
+                className={`${
+                  isScrolled ? "" : "navImage"
+                } transition-all duration-700 ease-in-out`}
               />
             </div>
           </div>
@@ -100,11 +104,11 @@ export const Navbar = () => {
           ) : (
             <div>
               <ul
-                className={`flex max-lg:text-base max-lg:gap-5 ${
+                className={`flex max-lg:text-base max-lg:gap-5 transition-all delay-200 duration-1000 ease-in-out ${
                   isScrolled
                     ? "text-md font-medium gap-8"
                     : "text-lg font-semibold"
-                }  text-stone-200 antialiased gap-12`}
+                }  text-stone-200 antialiased gap-12 `}
               >
                 {Links.map((link) => (
                   <Link

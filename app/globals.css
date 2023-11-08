@@ -146,12 +146,6 @@ body {
 /* Navbar */
 .navbar {
   backdrop-filter: blur(10px);
-  @apply py-5 px-10  gap-4;
-  transition: all 1s ease;
-}
-.smallNavbar {
-  @apply py-2 px-10 gap-4;
-  transition: all 1s ease;
 }
 
 .navImage {
