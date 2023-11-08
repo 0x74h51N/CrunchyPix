@@ -339,3 +339,51 @@ body {
 .rtl {
   direction: rtl;
 }
+
+.mobile-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(15px);
+  height: 0;
+  transition: height 1s ease, padding 1s ease, background-color 1s ease,
+    margin 1s ease;
+  flex-direction: column;
+  padding-top: 0;
+  padding-bottom: 0;
+  z-index: -10;
+  background-color: transparent;
+}
+
+.mobile-menu.open {
+  height: 300px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.mobile-menu.open2 {
+  height: 100px;
+  left: unset;
+  padding: 5px 10px 5px 20px;
+  z-index: 0;
+}
+.mobile-menu.openM {
+  height: 85px;
+}
+.mobile-menu.close {
+  height: 0px;
+  left: unset;
+  padding: 0px;
+  z-index: 0;
+  transition: height 1s ease, padding 1s ease, background-color 1s ease,
+    margin 1s ease;
+}
+
+.mobile-menu.scrolled {
+  background-color: #3b3b3b;
+}
+.mobile-menu ul {
+  opacity: 0;
+  animation: 1s appear forwards, 1s disappear forwards;
+  animation-delay: 0.5s;
+}
