@@ -1,6 +1,9 @@
 name: CodeQL Analysis
 
 on: [push, pull_request]
+branches:
+      - staging
+      - master
 
 jobs:
   analyze:
