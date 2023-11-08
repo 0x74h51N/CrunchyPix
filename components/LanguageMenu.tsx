@@ -6,6 +6,7 @@ import React, { CSSProperties, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
+import Button from "./Button";
 
 const LanguageMenu = () => {
   const dispatch = useDispatch();
@@ -39,9 +40,9 @@ const LanguageMenu = () => {
     <div className="flex flex-center items-center">
       <button
         onClick={handleToggleDropdown}
-        className="flex flex-row gap-1 items-center"
+        className="flex flex-row gap-1 items-center bg-transparent"
       >
-        <div className=" w-6 bg-transparent text-base text-neutral-200 cursor-pointer hover:text-log-col transition duration-1000 ease-in-out">
+        <div className="w-6">
           {currentLanguage === "en" ? (
             <span>
               <US title="United States" />
@@ -79,39 +80,35 @@ const LanguageMenu = () => {
       >
         {isDropdownOpen && (
           <ul style={listStyle}>
-            <Link href={""}>
-              <li
-                className="hover:text-log-col transition duration-1000 ease-in-out"
-                onClick={() => handleChange("en")}
-              >
-                <div className="flex items-center gap-1">
-                  <US title="United States" />
-                  <span>EN</span>
-                </div>
-              </li>
-            </Link>
-            <Link href={""}>
-              <li
-                className="hover:text-log-col transition duration-1000 ease-in-out"
-                onClick={() => handleChange("de")}
-              >
-                <div className="flex items-center gap-1">
-                  <DE title="Germany" />
-                  <span>DE</span>
-                </div>
-              </li>
-            </Link>
-            <Link href={""}>
-              <li
-                className="hover:text-log-col transition duration-1000 ease-in-out"
-                onClick={() => handleChange("tr")}
-              >
-                <div className="flex items-center gap-1">
-                  <TR title="Turkey" />
-                  <span>TR</span>
-                </div>
-              </li>
-            </Link>
+            <li
+              className="hover:text-log-col transition duration-1000 ease-in-out cursor-pointer"
+              onClick={() => handleChange("en")}
+            >
+              <div className="flex items-center gap-1">
+                <US title="United States" />
+                <span>EN</span>
+              </div>
+            </li>
+
+            <li
+              className="hover:text-log-col transition duration-1000 ease-in-out cursor-pointer"
+              onClick={() => handleChange("de")}
+            >
+              <div className="flex items-center gap-1">
+                <DE title="Germany" />
+                <span>DE</span>
+              </div>
+            </li>
+
+            <li
+              className="hover:text-log-col transition duration-1000 ease-in-out cursor-pointer"
+              onClick={() => handleChange("tr")}
+            >
+              <div className="flex items-center gap-1">
+                <TR title="Turkey" />
+                <span>TR</span>
+              </div>
+            </li>
           </ul>
         )}
       </div>
