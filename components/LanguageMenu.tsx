@@ -55,9 +55,7 @@ const LanguageMenu = () => {
               <TR title="Turkey" />
             </span>
           ) : (
-            <span>
-              <US title="United States" />
-            </span>
+            ""
           )}
         </div>
         <div>
