@@ -38,7 +38,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1024) {
         dispatch(mobileChange(true));
       } else {
         dispatch(mobileChange(false));
@@ -104,7 +104,7 @@ export const Navbar = () => {
           ) : (
             <div>
               <ul
-                className={`flex max-lg:text-base max-lg:gap-5 transition-all delay-200 duration-1000 ease-in-out ${
+                className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all delay-200 duration-1000 ease-in-out ${
                   isScrolled
                     ? "text-md font-medium gap-8"
                     : "text-lg font-semibold"
@@ -114,7 +114,7 @@ export const Navbar = () => {
                   <Link
                     href={link.href}
                     key={link.key}
-                    className="hover:text-log-col transition duration-1000 ease-in-out"
+                    className="hover:text-log-col transition duration-1000 ease-in-out whitespace-nowrap"
                   >
                     {t(link.text)}
                   </Link>

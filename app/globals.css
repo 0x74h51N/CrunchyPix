@@ -295,7 +295,7 @@ body {
   font-family: "Britannic Bold";
   font-size: 55px;
   margin-top: 7px;
-  @apply max-md:text-3xl text-neutral-200;
+  @apply max-lg:text-3xl text-neutral-200;
   transition: font-size 0.5s ease-in-out;
 }
 

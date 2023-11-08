@@ -26,7 +26,6 @@ export default function RootLayout({
           <AppI18nProvider>
             <Navbar />
             <main>{children}</main>
-            <Analytics />
             <Footer />
           </AppI18nProvider>
         </AppReduxProvider>
