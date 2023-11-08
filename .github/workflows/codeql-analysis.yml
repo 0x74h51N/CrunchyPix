@@ -1,32 +1,32 @@
 name: CodeQL Analysis
 
-on:
-  pull_request:
-    branches:
-      - master
-      - Staging
+on: [push, pull_request]
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        language: [javascript, typescript] -
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+    - name: Set up CodeQL
+      uses: github/codeql-action/setup@v1
+      with:
+        languages: ${{ matrix.language }}
 
-      - name: Build and analyze
-        run: |
-          npm install
-          npm run build
-          codeql database create --language=javascript/typescript
-          codeql analyze --sarif sarif-codeql.sarif
-        env:
-          CODEQL_ACTION: analyze
+    - name: Build and analyze
+      run: |
+        npm install
+        npm run build
+        codeql database create -l ${{ matrix.language }} -s . -o mycode.db
+        codeql analyze -d mycode.db ${{ matrix.language }}
 
-      - name: Upload SARIF results
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: sarif-codeql.sarif
+    - name: Upload CodeQL Analysis
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: mycode.db/results.sarif
