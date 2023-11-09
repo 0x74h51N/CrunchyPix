@@ -205,8 +205,22 @@ body {
   }
 }
 
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
 .animate-slideLeft {
   animation: slideLeft 1s ease 1s forwards, opacity 1s ease 1s forwards;
+}
+.animate-slideRight {
+  animation: slideRight 1s ease 1s forwards, opacity 1s ease 1s forwards;
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;

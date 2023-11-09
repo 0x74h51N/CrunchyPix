@@ -91,7 +91,11 @@ const LanguageMenu = () => {
       <div
         className={`relative mobile-menu text-neutral-200 w-20 right-10 ${
           isMobile ? "openM mt-11 mr-2" : ""
-        } ${isDropdownOpen ? "open2 border-2 border-nav-col" : "close"} ${
+        } ${
+          isDropdownOpen
+            ? "open2 border-2 border-nav-col border-opacity-40"
+            : "close"
+        } ${
           isScrolled ? "scrolled openM mt-11" : isMobile ? " mt-11" : " mt-24"
         }`}
       >
