@@ -358,11 +358,11 @@ body {
 .mobile-menu.open2 {
   height: 100px;
   left: unset;
-  padding: 5px 10px 5px 10px;
+  padding: 7px 12px 7px 12px;
   z-index: 0;
 }
 .mobile-menu.openM {
-  height: 85px;
+  height: 90px;
 }
 .mobile-menu.close {
   height: 0px;
@@ -380,4 +380,8 @@ body {
   opacity: 0;
   animation: 1s appear forwards, 1s disappear forwards;
   animation-delay: 0.5s;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
