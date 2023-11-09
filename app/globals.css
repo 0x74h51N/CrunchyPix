@@ -205,8 +205,22 @@ body {
   }
 }
 
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
 .animate-slideLeft {
   animation: slideLeft 1s ease 1s forwards, opacity 1s ease 1s forwards;
+}
+.animate-slideRight {
+  animation: slideRight 1s ease 1s forwards, opacity 1s ease 1s forwards;
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;
@@ -358,11 +372,11 @@ body {
 .mobile-menu.open2 {
   height: 100px;
   left: unset;
-  padding: 5px 10px 5px 10px;
+  padding: 7px 12px 7px 12px;
   z-index: 0;
 }
 .mobile-menu.openM {
-  height: 85px;
+  height: 90px;
 }
 .mobile-menu.close {
   height: 0px;
@@ -380,4 +394,8 @@ body {
   opacity: 0;
   animation: 1s appear forwards, 1s disappear forwards;
   animation-delay: 0.5s;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }

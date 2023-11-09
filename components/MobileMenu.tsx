@@ -1,14 +1,17 @@
 import { Links } from "@/constants";
 import Link from "next/link";
-import React, { CSSProperties, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import BurgerButton from "./BurgerButton";
 import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
 import { RootState } from "@/store";
 import { useSelector } from "react-redux";
+import { DropdownContext } from "./LanguageMenuContext";
 
 const MobileMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const { isDropdownOpen } = useContext(DropdownContext)!;
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -17,14 +20,26 @@ const MobileMenu = () => {
   );
   const { t } = useTranslation(["translation"]);
 
-  const listStyle: CSSProperties = {
-    opacity: 0,
-    animation: "1s appear forwards, 1s disappear forwards",
-    animationDelay: "0.5s",
-  };
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        isDropdownOpen == false
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [menuRef, isDropdownOpen]);
 
   return (
-    <div className="flex flex-col">
+    <div ref={menuRef} className="flex flex-col">
       <BurgerButton
         color={"#FFFFFF"}
         width={40}
@@ -39,7 +54,7 @@ const MobileMenu = () => {
       >
         {isMenuOpen && (
           <div>
-            <ul style={listStyle}>
+            <ul className="ul">
               <div className="flex justify-end mr-14 mb-3">
                 <LanguageMenu />
               </div>
