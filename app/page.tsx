@@ -1,6 +1,7 @@
 import Scroll from "@/components/Scroll";
-import AboutMe from "@/components/Sections/AboutMe";
-import Portfolio from "@/components/Sections/Portfolio";
+import AboutMeSect from "@/components/Sections/AboutMeSect";
+import PortfolioSect from "@/components/Sections/PortfolioSect";
+import SliderSect from "@/components/Sections/SliderSect";
 
 interface SectionData {
   className?: string;
@@ -10,15 +11,16 @@ interface SectionData {
 }
 const sectionsData: SectionData[] = [
   {
-    name: "About Me",
-    children: <AboutMe />,
+    name: "Slider Page",
+    children: <SliderSect />,
   },
   {
-    name: "Forking",
+    name: "About Me",
+    children: <AboutMeSect />,
   },
   {
     name: "Portfolio",
-    children: <Portfolio />,
+    children: <PortfolioSect />,
   },
   {
     name: "Contact Me",

@@ -2,7 +2,7 @@
 import React from "react";
 import FullScreenSlider from "../FullSlider";
 
-const AboutMe = () => {
+const SliderSect = () => {
   return (
     <div className=" justify-center h-screen w-full ">
       <div className="relative overflow-hidden w-full h-full z-0">
@@ -12,4 +12,4 @@ const AboutMe = () => {
     </div>
   );
 };
-export default AboutMe;
+export default SliderSect;

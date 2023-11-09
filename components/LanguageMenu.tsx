@@ -1,15 +1,18 @@
 import { RootState } from "@/store";
 import { langChange } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import Link from "next/link";
-import React, { CSSProperties, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
-import Button from "./Button";
+import { DropdownContext } from "./LanguageMenuContext";
 
 const LanguageMenu = () => {
+  const [isRotated, setIsRotated] = useState(false);
   const dispatch = useDispatch();
+  const langMenuRef = useRef<HTMLDivElement | null>(null);
+  const { isDropdownOpen, setIsDropdownOpen } = useContext(DropdownContext)!;
+
   const currentLanguage = useSelector(
     (state: RootState) => state.language.language
   );
@@ -18,26 +21,37 @@ const LanguageMenu = () => {
     (state: RootState) => state.isScrolled.scrolled
   );
 
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const handleToggleDropdown = () => {
-    setDropdownOpen(!isDropdownOpen);
+    setIsRotated(!isRotated);
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   const handleChange = (selectedLanguage: string) => {
     dispatch(langChange(selectedLanguage));
     i18n.changeLanguage(selectedLanguage);
-    setDropdownOpen(false);
+    setIsRotated(!isRotated);
+    setIsDropdownOpen(!isDropdownOpen);
   };
+  useEffect(() => {
+    const handleOutsideClick = (event: { target: any }) => {
+      if (
+        langMenuRef.current &&
+        !langMenuRef.current.contains(event.target) &&
+        isDropdownOpen
+      ) {
+        setIsRotated(false);
+        setIsDropdownOpen(!isDropdownOpen);
+      }
+    };
 
-  const listStyle: CSSProperties = {
-    opacity: 0,
-    animation: "1s appear forwards",
-    animationDelay: "0.5s",
-    color: "white",
-  };
+    document.addEventListener("click", handleOutsideClick);
 
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [langMenuRef, isDropdownOpen]);
   return (
-    <div className="flex flex-center items-center">
+    <div ref={langMenuRef} className="flex flex-center items-center">
       <button
         onClick={handleToggleDropdown}
         className="flex flex-row gap-1 items-center bg-transparent"
@@ -68,18 +82,25 @@ const LanguageMenu = () => {
             width={8}
             height={8}
             loading="lazy"
+            className={`transition-transform duration-500 ease-in-out ${
+              isRotated ? "rotate" : ""
+            }`}
           />
         </div>
       </button>
       <div
-        className={`relative mobile-menu w-20 right-10 ${
+        className={`relative mobile-menu text-neutral-200 w-20 right-10 ${
           isMobile ? "openM mt-11 mr-2" : ""
-        } ${isDropdownOpen ? "open2 border-2 border-nav-col" : "close"} ${
+        } ${
+          isDropdownOpen
+            ? "open2 border-2 border-nav-col border-opacity-40"
+            : "close"
+        } ${
           isScrolled ? "scrolled openM mt-11" : isMobile ? " mt-11" : " mt-24"
         }`}
       >
         {isDropdownOpen && (
-          <ul style={listStyle}>
+          <ul className="ul">
             <li
               className="hover:text-log-col transition duration-1000 ease-in-out cursor-pointer"
               onClick={() => handleChange("en")}
