@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
 import { RootState } from "@/store";
 import { useSelector } from "react-redux";
-import { DropdownContext } from "./LanguageMenuContext";
+import { DropdownContext } from "../app/context/DropdownContext";
 
 const MobileMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
