@@ -9,10 +9,20 @@ import "swiper/css/effect-creative";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const FullScreenSlider = () => {
   const { t } = useTranslation(["translation"]);
-
+  const [activeIndex, setActiveIndex] = useState(0);
+  const onSlideChange = (swiper: any) => {
+    setActiveIndex(swiper.realIndex);
+  };
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setActiveIndex(0);
+    }, 1000);
+    return () => clearTimeout(timeout);
+  }, []);
   return (
     <>
       <Swiper
@@ -20,6 +30,7 @@ const FullScreenSlider = () => {
         navigation={true}
         loop
         centeredSlides={true}
+        onSlideChange={onSlideChange}
         autoplay={{
           delay: 15000,
           disableOnInteraction: false,
@@ -37,21 +48,23 @@ const FullScreenSlider = () => {
             loading="lazy"
             className="z-0"
           ></Image>
-          <motion.div
-            className={`
+          {activeIndex === 0 && (
+            <motion.div
+              className={`
          absolute bottom-24 boxStyle flex flex-col px-24 py-14 bg-stone-900 w-auto h-auto bg-opacity-30  hover:bg-opacity-60 rounded-br-xl rounded-tr-xl`}
-            initial={{ opacity: 0, x: "-100%" }}
-            transition={{ duration: 1.5 }}
-            whileInView={{ opacity: 1, x: "0%" }}
-            whileHover={{ scale: 1.1 }}
-          >
-            <p className="text-start text-stone-200 text-xl font-medium">
-              {t("slides.0.title")}
-            </p>
-            <p className="text-start text-stone-200 text-l font-normal mt-2 max-w-sm">
-              {t("slides.0.description")}
-            </p>
-          </motion.div>
+              initial={{ opacity: 0, x: "-100%" }}
+              transition={{ delay: 0.5, duration: 1 }}
+              animate={{ opacity: 1, x: "0%" }}
+              whileHover={{ scale: 1.1 }}
+            >
+              <p className="text-start text-stone-200 text-xl font-medium">
+                {t("slides.0.title")}
+              </p>
+              <p className="text-start text-stone-200 text-l font-normal mt-2 max-w-sm">
+                {t("slides.0.description")}
+              </p>
+            </motion.div>
+          )}
         </SwiperSlide>
         <SwiperSlide>
           <Image
@@ -62,21 +75,23 @@ const FullScreenSlider = () => {
             loading="lazy"
             className="z-0"
           ></Image>
-          <motion.div
-            className={`
+          {activeIndex === 1 && (
+            <motion.div
+              className={`
          absolute right-0 bottom-24 boxStyle flex flex-col px-24 py-14 bg-stone-900 w-auto h-auto bg-opacity-30 hover:bg-opacity-60 rounded-bl-xl rounded-tl-xl`}
-            initial={{ opacity: 0, x: "100%" }}
-            transition={{ duration: 1.5 }}
-            whileInView={{ opacity: 1, x: "0%" }}
-            whileHover={{ scale: 1.1 }}
-          >
-            <p className="text-start text-stone-200 text-xl font-medium">
-              {t("slides.1.title")}
-            </p>
-            <p className="text-start text-stone-200 text-l font-normal mt-2 max-w-sm">
-              {t("slides.1.description")}
-            </p>
-          </motion.div>
+              initial={{ opacity: 0, x: "100%" }}
+              transition={{ delay: 0.5, duration: 1 }}
+              animate={{ opacity: 1, x: "0%" }}
+              whileHover={{ scale: 1.1 }}
+            >
+              <p className="text-start text-stone-200 text-xl font-medium">
+                {t("slides.1.title")}
+              </p>
+              <p className="text-start text-stone-200 text-l font-normal mt-2 max-w-sm">
+                {t("slides.1.description")}
+              </p>
+            </motion.div>
+          )}
         </SwiperSlide>
         <div className="absolute  bottom-0 w-full items-center z-30">
           <ArrowButton
