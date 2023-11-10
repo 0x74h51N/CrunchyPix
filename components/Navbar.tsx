@@ -2,7 +2,7 @@
 import { Links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect } from "react";
 import TypingText from "./typeText";
 import MobileMenu from "./MobileMenu";
 import LanguageMenu from "./LanguageMenu";
@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { mobileChange } from "@/store/redux/isMobile";
 import { RootState } from "@/store";
 import { scrollChange } from "@/store/redux/isScrolled";
-import { DropdownProvider } from "@/components/LanguageMenuContext";
+import { DropdownProvider } from "@/app/context/DropdownContext";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
