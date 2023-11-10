@@ -17,6 +17,7 @@ const sectionsData: SectionData[] = [
   {
     name: "About Me",
     children: <AboutMeSect />,
+    auto: true,
   },
   {
     name: "Portfolio",

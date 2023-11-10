@@ -82,7 +82,7 @@ body {
 
 /* Navbar */
 .navbar {
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
 }
 
 .navImage {
@@ -306,5 +306,5 @@ body {
 }
 
 .boxStyle {
-  @apply items-center hover:transition-all duration-1000 ease-in-out z-20  backdrop-blur-sm;
+  @apply items-center hover:transition-all duration-1000 ease-in-out z-20 backdrop-blur-sm;
 }
