@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import ArrowButton from "./Button";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/effect-creative";
-import { slides } from "@/constants/index";
 import { useTranslation } from "react-i18next";
 import SlideCreator from "./SlideCreator";
+import ArrowButton from "../ArrowButton";
+import { slides } from "@/constants";
 
 const FullScreenSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -48,11 +48,10 @@ const FullScreenSlider = () => {
               imageUrl={slide.imageUrl}
               active={activeIndex === index}
               left={slide.left}
-              children={slide.children}
             />
           </SwiperSlide>
         ))}
-        <div className="absolute  bottom-0 w-full items-center z-30">
+        <div className="absolute bottom-0 w-full items-center z-30">
           <ArrowButton
             index={1}
             arrow={true}

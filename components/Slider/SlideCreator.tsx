@@ -1,23 +1,14 @@
 import React from "react";
 import Image from "next/image";
 import SlideBox from "./SlideBox";
+import { slide } from "@/app/common.types";
 
-interface SlideProps {
-  title: string;
-  description: string;
-  imageUrl: string;
-  active: boolean;
-  left?: boolean;
-  children?: React.ReactNode | null;
-}
-
-const SlideCreator: React.FC<SlideProps> = ({
+const SlideCreator: React.FC<slide> = ({
   title,
   description,
   imageUrl,
-  active,
+  active = false,
   left,
-  children,
 }) => {
   return (
     <div className="h-full">
@@ -34,8 +25,8 @@ const SlideCreator: React.FC<SlideProps> = ({
         title={title}
         description={description}
         left={left}
+        imageUrl={""}
       />
-      {children && children}
     </div>
   );
 };
