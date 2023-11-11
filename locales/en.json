@@ -8,7 +8,7 @@
   },
   "home": {
     "title": "Homepage",
-    "description": "This is the homepage"
+    "description": "Welcome to our homepage, where digital possibilities come to life."
   },
   "slides": [
     {
@@ -16,18 +16,18 @@
       "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
     },
     {
-      "title": "Crativity, innovation and perfection",
-      "description": "Power of the knowledge."
+      "title": "Creativity, Innovation, and Perfection",
+      "description": "At the heart of our philosophy lies the power of knowledge. We strive for creative solutions, innovative approaches, and perfection in every detail."
     },
     {
       "title": "Contact With Me",
-      "description": "Lets find optimum solutions."
+      "description": "Let's connect and find optimum solutions for your needs. Your success is our priority."
     }
   ],
 
   "contact": {
     "title": "Contact With Me",
-    "description": "Get in touch with us",
+    "description": "Get in touch with us. We're here to listen, collaborate, and turn your ideas into reality.",
     "placeName": "Full Name",
     "placeMessage": "Type your message...",
     "button": "Submit"
@@ -35,5 +35,24 @@
   "footer": {
     "title": "Unleash the Power of Web Innovation",
     "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
-  }
+  },
+
+  "robust": [
+    {
+      "title": "Responsive Design",
+      "description": "Optimized for various devices, ensuring a seamless and visually appealing experience on every screen size."
+    },
+    {
+      "title": "Mobile Optimization",
+      "description": "Fast and smooth performance on mobile devices, with responsive and adaptive design features to enhance user experience."
+    },
+    {
+      "title": "Clean Code",
+      "description": "We take pride in maintaining a well-organized and easily maintainable codebase, ensuring the longevity and scalability of your project."
+    },
+    {
+      "title": "Creative Design",
+      "description": "Our designs are not just visually appealing; they are also user-friendly, creating an engaging and delightful experience for your audience."
+    }
+  ]
 }

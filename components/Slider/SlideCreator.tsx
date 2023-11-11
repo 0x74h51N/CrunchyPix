@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import SlideBox from "./SlideBox";
 import { slide } from "@/app/common.types";
-import ContactSlide from "./Childeren/ContactSlide";
 
 const SlideCreator: React.FC<slide> = ({
   title,
