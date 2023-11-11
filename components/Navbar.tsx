@@ -116,7 +116,7 @@ export const Navbar = () => {
                     <Link
                       href={link.href}
                       key={link.key}
-                      className="hover:text-log-col relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap"
+                      className="hover:text-log-col relative group transition-all duration-500 ease-in-out transform origin-bottom whitespace-nowrap"
                     >
                       {t(link.text)}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-log-col transition-all group-hover:w-full"></span>
