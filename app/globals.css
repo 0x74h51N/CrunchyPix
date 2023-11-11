@@ -217,7 +217,10 @@ body {
   @apply max-lg:text-3xl text-neutral-200;
   transition: font-size 0.5s ease-in-out;
 }
-
+.logo_text.small {
+  font-size: 30px;
+  margin-top: 5px;
+}
 .logo_text:hover {
   font-size: 60px;
   @apply max-md:text-4xl;
@@ -257,7 +260,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
   height: 0;
   transition: height 1s ease, padding 1s ease, background-color 1s ease,
     margin 1s ease;

@@ -63,9 +63,10 @@ const MobileMenu = () => {
                   <Link
                     href={link.href}
                     key={link.key}
-                    className={`w-20 block py-2 rtl text-lg font-semibold text-right mr-14 text-neutral-200 antialiased ml-auto hover:text-log-col transition duration-1000 ease-in-out hover:border-b hover:border-log-col whitespace-nowrap`}
+                    className={`w-20 block relative group py-2 rtl text-lg font-semibold text-right mr-14 text-neutral-200 antialiased ml-auto hover:text-log-col transition duration-500 ease-in-out  whitespace-nowrap`}
                   >
                     {t(link.text)}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-log-col transition-all group-hover:w-full"></span>
                   </Link>
                 </li>
               ))}

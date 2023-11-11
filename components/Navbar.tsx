@@ -2,7 +2,7 @@
 import { Links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TypingText from "./typeText";
 import MobileMenu from "./MobileMenu";
 import LanguageMenu from "./LanguageMenu";
@@ -15,6 +15,8 @@ import { DropdownProvider } from "@/context/DropdownContext";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const [selectedLink, setSelectedLink] = useState("");
+  const specialPages = ["Portfolio", "Services", "About", "Contact"];
   const isScrolled = useSelector(
     (state: RootState) => state.isScrolled.scrolled
   );
@@ -53,12 +55,25 @@ export const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [dispatch]);
+  useEffect(() => {
+    const storedSelectedLink = localStorage.getItem("selectedLink");
+    if (storedSelectedLink) {
+      setSelectedLink(storedSelectedLink);
+    }
+  }, []);
+
+  const handleLinkClick = (linkKey: string) => {
+    setSelectedLink(linkKey);
+    localStorage.setItem("selectedLink", linkKey);
+  };
 
   return (
     <DropdownProvider>
       <nav
         className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50  gap-4  ${
-          isScrolled ? "bg-opacity-100 py-2 px-10" : "py-5 px-10"
+          isScrolled || specialPages.includes(selectedLink)
+            ? "bg-opacity-100 py-2 px-10"
+            : "py-5 px-10"
         } transition-all duration-1000 ease-in-out`}
       >
         <div className="flex flex-row ">
@@ -67,12 +82,20 @@ export const Navbar = () => {
               <div>
                 <Image
                   src={"/logo_leftw.svg"}
-                  width={isScrolled ? 12.5 : isMobile ? 18.5 : 32.5}
+                  width={
+                    isScrolled || specialPages.includes(selectedLink)
+                      ? 12.5
+                      : isMobile
+                      ? 18.5
+                      : 32.5
+                  }
                   height={100}
                   alt="Flexible"
                   loading="lazy"
                   className={`${
-                    isScrolled ? "" : "navImage"
+                    isScrolled || specialPages.includes(selectedLink)
+                      ? ""
+                      : "navImage"
                   } transition-all duration-700 ease-in-out`}
                 />
               </div>
@@ -82,14 +105,22 @@ export const Navbar = () => {
                   text="CruncyPix"
                   _code={false}
                   _logo={true}
-                  textClass="logo_text"
+                  textClass={`logo_text ${
+                    specialPages.includes(selectedLink) ? "small" : ""
+                  }`}
                 />
               )}
 
               <div>
                 <Image
                   src={"logo_right.svg"}
-                  width={isScrolled ? 20 : isMobile ? 28 : 50}
+                  width={
+                    isScrolled || specialPages.includes(selectedLink)
+                      ? 20
+                      : isMobile
+                      ? 28
+                      : 50
+                  }
                   height={100}
                   alt="Flexible"
                   loading="lazy"
@@ -106,8 +137,8 @@ export const Navbar = () => {
             ) : (
               <div>
                 <ul
-                  className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all delay-200 duration-1000 ease-in-out ${
-                    isScrolled
+                  className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all  delay-200 duration-1000 ease-in-out ${
+                    isScrolled || specialPages.includes(selectedLink)
                       ? "text-md font-medium gap-8"
                       : "text-lg font-semibold"
                   }  text-stone-200 antialiased gap-12 `}
@@ -116,9 +147,23 @@ export const Navbar = () => {
                     <Link
                       href={link.href}
                       key={link.key}
-                      className="hover:text-log-col transition duration-1000 ease-in-out whitespace-nowrap"
+                      className={`hover:text-log-col ${
+                        selectedLink === link.key &&
+                        link.key.toLowerCase() !== "home"
+                          ? "text-log-col"
+                          : ""
+                      } relative group transition-all duration-500 ease-in-out transform origin-bottom whitespace-nowrap`}
+                      onClick={() => handleLinkClick(link.key)}
                     >
                       {t(link.text)}
+                      <span
+                        className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
+                          selectedLink === link.key &&
+                          link.key.toLowerCase() !== "home"
+                            ? "w-full"
+                            : "w-0 transition-all group-hover:w-full"
+                        }`}
+                      ></span>
                     </Link>
                   ))}
                   <LanguageMenu />

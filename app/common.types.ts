@@ -19,5 +19,5 @@ export type slide = {
 export type RobustSection = {
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
 };

@@ -1,13 +1,13 @@
-import { slide } from "@/app/common.types";
+import { RobustSection, slide } from "@/app/common.types";
 import ContactSlide from "@/components/Slider/Childeren/ContactSlide";
 import { FaCode, FaDesktop, FaMobileAlt, FaPaintBrush } from "react-icons/fa";
 
 export const Links = [
   { href: "/", key: "Home", text: "links.Home" },
-  { href: "/", key: "Portfolio", text: "links.Portfolio" },
-  { href: "/", key: "Services", text: "links.Services" },
-  { href: "/", key: "About", text: "links.About" },
-  { href: "/", key: "Contact", text: "links.Contact" },
+  { href: "/portfolio", key: "Portfolio", text: "links.Portfolio" },
+  { href: "/services", key: "Services", text: "links.Services" },
+  { href: "/about", key: "About", text: "links.About" },
+  { href: "/contact", key: "Contact", text: "links.Contact" },
 ];
 
 export const slides: slide[] = [
@@ -32,25 +32,25 @@ export const slides: slide[] = [
   },
 ];
 
-export const robustSections = [
+export const robustSections: RobustSection[] = [
   {
-    title: "Responsive Design",
-    description: "Optimized for various devices",
+    title: "robust.0.title",
+    description: "robust.0.description",
     icon: <FaDesktop size={50} color={"#e91e63"} />,
   },
   {
-    title: "Mobile Optimization",
-    description: "Fast and smooth on mobile devices",
+    title: "robust.1.title",
+    description: "robust.1.description",
     icon: <FaMobileAlt size={50} color={"#e91e63"} />,
   },
   {
-    title: "Clean Code",
-    description: "Well-organized and maintainable codebase",
+    title: "robust.2.title",
+    description: "robust.2.description",
     icon: <FaCode size={50} color={"#e91e63"} />,
   },
   {
-    title: "Creative Design",
-    description: "Visually appealing and user-friendly",
+    title: "robust.3.title",
+    description: "robust.3.description",
     icon: <FaPaintBrush size={50} color={"#e91e63"} />,
   },
 ];

@@ -1,34 +1,58 @@
 {
   "links": {
-    "Home": "Ana Sayfa",
+    "Home": "Anasayfa",
     "Services": "Hizmetler",
-    "Portfolio": "Referanslar",
-    "About": "Hakkımda",
+    "Portfolio": "Portföy",
+    "About": "Hakkımızda",
     "Contact": "İletişim"
   },
   "home": {
-    "title": "Homepage",
-    "description": "This is the homepage"
+    "title": "Anasayfa",
+    "description": "Hoş geldiniz! Dijital olanakların hayat bulduğu anasayfamıza hoş geldiniz."
   },
   "slides": [
     {
-      "title": "Web İnovasyonun Gücünü Ortaya Koyun",
-      "description": "Web geliştirme konusunda güvendiğiniz ortağınızız. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika bir şeyler yaratalım!"
+      "title": "Web İnovasyonun Gücünü Ortaya Çıkarın",
+      "description": "Web geliştirme konusundaki güvenilir ortağınız biziz. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika şeyler yaratalım!"
     },
     {
       "title": "Yaratıcılık, İnovasyon ve Mükemmellik",
-      "description": "Bilgi gücü."
+      "description": "Felsefemizin kalbinde bilginin gücü yatar. Yaratıcı çözümler, yenilikçi yaklaşımlar ve her ayrıntıda mükemmellik için çaba gösteriyoruz."
+    },
+    {
+      "title": "Benimle İletişime Geçin",
+      "description": "Bağlantı kurup ihtiyaçlarınız için en iyi çözümleri bulalım. Başarınız bizim önceliğimizdir."
     }
   ],
+
   "contact": {
-    "title": "Benimle İletişime Geç",
-    "description": "Teklif veya ortaklıklar için yazınız.",
-    "placeName": "İsim Soyisim",
-    "placeMessage": "Mesajınızı yazınız...",
+    "title": "Benimle İletişime Geçin",
+    "description": "Bizimle iletişime geçin. Buradayız, dinlemeye, işbirliği yapmaya ve fikirlerinizi gerçeğe dönüştürmeye hazırız.",
+    "placeName": "Tam Adınız",
+    "placeMessage": "Mesajınızı yazın...",
     "button": "Gönder"
   },
   "footer": {
-    "title": "Web İnovasyonun Gücünü Ortaya Koyun",
-    "description": "Web geliştirme konusunda güvendiğiniz ortağınızız. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika bir şeyler yaratalım!"
-  }
+    "title": "Web İnovasyonun Gücünü Ortaya Çıkarın",
+    "description": "Web geliştirmede güvenilir ortağınız biziz. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika şeyler yaratalım!"
+  },
+
+  "robust": [
+    {
+      "title": "Duyarlı Tasarım",
+      "description": "Çeşitli cihazlar için optimize edilmiş, her ekran boyutunda sorunsuz ve görsel açıdan çekici bir deneyim sağlar."
+    },
+    {
+      "title": "Mobil Optimizasyon",
+      "description": "Mobil cihazlarda hızlı ve düzgün performans, kullanıcı deneyimini artırmak için duyarlı ve adaptif tasarım özellikleri."
+    },
+    {
+      "title": "Temiz Kod",
+      "description": "Düzenli ve kolay bakım yapılabilir kod tabanını sürdürmekte gurur duyuyoruz, projenizin uzun ömürlülüğünü ve ölçeklenebilirliğini sağlamak için."
+    },
+    {
+      "title": "Yaratıcı Tasarım",
+      "description": "Tasarımlarımız sadece görsel olarak çekici değil; aynı zamanda kullanıcı dostu, izleyicileriniz için etkileyici ve keyifli bir deneyim sunar."
+    }
+  ]
 }
