@@ -48,6 +48,7 @@ const FullScreenSlider = () => {
               imageUrl={slide.imageUrl}
               active={activeIndex === index}
               left={slide.left}
+              children={slide.children}
             />
           </SwiperSlide>
         ))}

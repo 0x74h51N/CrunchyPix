@@ -1,13 +1,6 @@
 "use client";
 import { useRef, useEffect, useState, useContext, createContext } from "react";
-interface SectionData {
-  name: string;
-  auto?: boolean;
-  className?: string;
-  image?: string;
-  textStyle?: string;
-  children?: React.ReactNode;
-}
+import { SectionData } from "@/app/common.types";
 
 const ScrollContext = createContext({
   scrollToSection: (index: number) => {},
@@ -34,36 +27,43 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   };
 
   useEffect(() => {
-    const handleScroll = (event: { deltaY: number }) => {
-      if (event.deltaY > 0) {
-        if (currentSectionIndex < sectionsData.length - 1) {
+    const handleScroll = (event: WheelEvent) => {
+      const scrollDirection = event.deltaY > 0 ? "down" : "up";
+
+      if (
+        scrollDirection === "down" &&
+        currentSectionIndex < sectionsData.length - 1
+      ) {
+        const currentSectionRef = sectionRefs[currentSectionIndex].current;
+        const currentSectionBottom =
+          currentSectionRef &&
+          window.scrollY + window.innerHeight >=
+            currentSectionRef.offsetTop + currentSectionRef.clientHeight;
+
+        if (!currentSectionBottom) {
+          event.preventDefault();
+        } else {
           scrollToSection(currentSectionIndex + 1);
-        }
-      } else {
-        if (currentSectionIndex > 0) {
-          scrollToSection(currentSectionIndex - 1);
         }
       }
-    };
 
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "ArrowDown") {
-        if (currentSectionIndex < sectionsData.length - 1) {
-          scrollToSection(currentSectionIndex + 1);
-        }
-      } else if (event.key === "ArrowUp") {
-        if (currentSectionIndex > 0) {
+      if (scrollDirection === "up" && currentSectionIndex > 0) {
+        const currentSectionRef = sectionRefs[currentSectionIndex].current;
+        const currentSectionTop =
+          currentSectionRef && window.scrollY <= currentSectionRef.offsetTop;
+
+        if (!currentSectionTop) {
+          event.preventDefault();
+        } else {
           scrollToSection(currentSectionIndex - 1);
         }
       }
     };
 
     window.addEventListener("wheel", handleScroll);
-    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [currentSectionIndex]);
   return (
@@ -80,7 +80,6 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   : "h-screen"
                 : "h-screen"
             }`}
-            style={{ backgroundImage: `url(${section.image})` }}
           >
             {section.children}
           </section>

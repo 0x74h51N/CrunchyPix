@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { mobileChange } from "@/store/redux/isMobile";
 import { RootState } from "@/store";
 import { scrollChange } from "@/store/redux/isScrolled";
-import { DropdownProvider } from "@/app/context/DropdownContext";
+import { DropdownProvider } from "@/context/DropdownContext";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
