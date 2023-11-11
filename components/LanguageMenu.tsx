@@ -5,7 +5,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
-import { DropdownContext } from "../app/context/DropdownContext";
+import { DropdownContext } from "@/context/DropdownContext";
 
 const LanguageMenu = () => {
   const [isRotated, setIsRotated] = useState(false);
