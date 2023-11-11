@@ -106,7 +106,7 @@ export const Navbar = () => {
             ) : (
               <div>
                 <ul
-                  className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all delay-200 duration-1000 ease-in-out ${
+                  className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all  delay-200 duration-1000 ease-in-out ${
                     isScrolled
                       ? "text-md font-medium gap-8"
                       : "text-lg font-semibold"
@@ -116,9 +116,10 @@ export const Navbar = () => {
                     <Link
                       href={link.href}
                       key={link.key}
-                      className="hover:text-log-col transition duration-1000 ease-in-out whitespace-nowrap"
+                      className="hover:text-log-col relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap"
                     >
                       {t(link.text)}
+                      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-log-col transition-all group-hover:w-full"></span>
                     </Link>
                   ))}
                   <LanguageMenu />

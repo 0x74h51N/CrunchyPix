@@ -257,7 +257,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
   height: 0;
   transition: height 1s ease, padding 1s ease, background-color 1s ease,
     margin 1s ease;

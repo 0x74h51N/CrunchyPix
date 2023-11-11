@@ -34,8 +34,8 @@ const LanguageMenu = () => {
   };
   useEffect(() => {
     if (isMobile && isDropdownOpen) {
-      setIsDropdownOpen(!isDropdownOpen);
-      setIsRotated(!isRotated);
+      setIsDropdownOpen(false);
+      setIsRotated(false);
     }
   }, [isMobile]);
 
