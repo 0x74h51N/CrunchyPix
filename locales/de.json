@@ -1,35 +1,58 @@
 {
   "links": {
-    "Home": "Home",
-    "Services": "Services",
+    "Home": "Startseite",
+    "Services": "Dienstleistungen",
     "Portfolio": "Portfolio",
-    "About": "About",
-    "Contact": "Contact"
+    "About": "Über uns",
+    "Contact": "Kontakt"
   },
   "home": {
-    "title": "Homepage",
-    "description": "This is the homepage"
+    "title": "Startseite",
+    "description": "Willkommen auf unserer Startseite, wo digitale Möglichkeiten zum Leben erwachen."
   },
   "slides": [
     {
-      "title": "Unleash the Power of Web Innovation",
-      "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
+      "title": "Entfesseln Sie die Kraft der Web-Innovation",
+      "description": "Wir sind Ihr vertrauenswürdiger Partner in der Webentwicklung. Unsere Mission ist es, Ihre digitalen Träume Wirklichkeit werden zu lassen. Lassen Sie uns gemeinsam etwas Erstaunliches erschaffen!"
     },
     {
-      "title": "Crativity, innovation and perfection",
-      "description": "Power of the knowledge."
+      "title": "Kreativität, Innovation und Perfektion",
+      "description": "Im Herzen unserer Philosophie liegt die Kraft des Wissens. Wir streben nach kreativen Lösungen, innovativen Ansätzen und Perfektion in jedem Detail."
+    },
+    {
+      "title": "Kontakt mit mir aufnehmen",
+      "description": "Lassen Sie uns in Verbindung treten und optimale Lösungen für Ihre Bedürfnisse finden. Ihr Erfolg hat für uns oberste Priorität."
     }
   ],
 
   "contact": {
-    "title": "Contact With Me",
-    "description": "Get in touch with us",
-    "placeName": "Full Name",
-    "placeMessage": "Type your message...",
-    "button": "Submit"
+    "title": "Kontakt mit mir aufnehmen",
+    "description": "Treten Sie mit uns in Kontakt. Wir sind hier, um zuzuhören, zusammenzuarbeiten und Ihre Ideen in die Realität umzusetzen.",
+    "placeName": "Vollständiger Name",
+    "placeMessage": "Geben Sie Ihre Nachricht ein...",
+    "button": "Senden"
   },
   "footer": {
-    "title": "Unleash the Power of Web Innovation",
-    "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
-  }
+    "title": "Entfesseln Sie die Kraft der Web-Innovation",
+    "description": "Wir sind Ihr vertrauenswürdiger Partner in der Webentwicklung. Unsere Mission ist es, Ihre digitalen Träume Wirklichkeit werden zu lassen. Lassen Sie uns gemeinsam etwas Erstaunliches erschaffen!"
+  },
+
+  "robust": [
+    {
+      "title": "Responsives Design",
+      "description": "Optimiert für verschiedene Geräte und gewährleistet eine nahtlose und visuell ansprechende Erfahrung auf jeder Bildschirmgröße."
+    },
+    {
+      "title": "Mobile Optimierung",
+      "description": "Schnelle und reibungslose Leistung auf mobilen Geräten mit responsiven und adaptiven Designmerkmalen, um die Benutzererfahrung zu verbessern."
+    },
+    {
+      "title": "Sauberer Code",
+      "description": "Wir sind stolz darauf, eine gut organisierte und leicht wartbare Codebasis zu pflegen, um die Langlebigkeit und Skalierbarkeit Ihres Projekts sicherzustellen."
+    },
+    {
+      "title": "Kreatives Design",
+      "description": "Unsere Designs sind nicht nur visuell ansprechend; sie sind auch benutzerfreundlich und schaffen eine ansprechende und erfreuliche Erfahrung für Ihr Publikum."
+    }
+  ]
 }
