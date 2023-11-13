@@ -20,4 +20,5 @@ export type RobustSection = {
   title: string;
   description: string;
   icon?: React.ReactNode;
+  index?: number;
 };

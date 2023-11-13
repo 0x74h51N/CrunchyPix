@@ -11,9 +11,25 @@
 }
 
 body {
+  background: #050816;
   font-family: Inter;
 }
 
+.gradiantBack {
+  background: radial-gradient(
+    circle,
+    theme("colors.gra-blue"),
+    theme("colors.gra-black")
+  );
+}
+
+.gradiantBackbl {
+  background: radial-gradient(
+    circle at 50% 50%,
+    theme("colors.gra-blue"),
+    theme("colors.gra-black")
+  );
+}
 .flexCenter {
   @apply flex justify-center items-center;
 }
@@ -54,7 +70,8 @@ body {
 
 /* Footer */
 .footer {
-  @apply bg-nav-col flex-col w-full gap-5;
+  background: linear-gradient("transparent", "#050816");
+  @apply flex-col w-full gap-5;
 }
 
 .footer_copyright {
@@ -82,7 +99,7 @@ body {
 
 /* Navbar */
 .navbar {
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(5px);
 }
 
 .navImage {
@@ -217,6 +234,9 @@ body {
   @apply max-lg:text-3xl text-neutral-200;
   transition: font-size 0.5s ease-in-out;
 }
+.logo_text.color {
+  color: #eeb30d;
+}
 .logo_text.small {
   font-size: 30px;
   margin-top: 5px;
@@ -226,9 +246,7 @@ body {
   @apply max-md:text-4xl;
   transition: font-size 0.5s ease-in-out;
 }
-.pix-text {
-  color: #eeb30d;
-}
+
 .swiper-button-next::after,
 .swiper-button-prev::after {
   opacity: 0.5;
@@ -281,7 +299,7 @@ body {
   height: 100px;
   left: unset;
   padding: 7px 12px 7px 12px;
-  z-index: 0;
+  z-index: 10;
 }
 .mobile-menu.openM {
   height: 90px;
@@ -310,4 +328,8 @@ body {
 
 .boxStyle {
   @apply items-center hover:transition-all duration-1000 ease-in-out z-20 backdrop-blur-sm;
+}
+
+.contactBox {
+  @apply w-full rounded-md border border-transparent bg-zinc-500 py-3 px-6 text-base font-medium text-gray-100 outline-none;
 }
