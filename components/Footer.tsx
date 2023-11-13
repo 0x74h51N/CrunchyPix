@@ -5,11 +5,8 @@ import Link from "next/link";
 import Contact from "./Contact";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
-type ColumnProps = {
-  title: string;
-  links: Array<string>;
-};
+import { motion } from "framer-motion";
+import { slideIn, staggerContainer } from "@/utils/motion";
 
 const Footer = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -29,10 +26,19 @@ const Footer = () => {
   }
   return (
     <footer className="flex justify-center footer ">
-      <div className="relative overflow-hidden">
+      <motion.div
+        variants={staggerContainer(0, 0.2)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="relative overflow-hidden"
+      >
         <div className="lg:px-20 pt-14 pe-6 px-5  ">
           <div className="flexBetween max-md:flex-col w-full z-10">
-            <div className="flex flex-col gap12  z-10 w-1/5 max-md:w-full">
+            <motion.div
+              variants={slideIn("left", "tween", 0.3, 1)}
+              className="flex flex-col gap12  z-10 w-1/5 max-md:w-full"
+            >
               <Image
                 src="/LogoL.svg"
                 width={250}
@@ -66,25 +72,16 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
             <div className="flex flex-col justify-center gap-7 z-10 w-3/6 max-lg:mx-6 max-xl:w-4/6  max-md:w-full ">
-              <p className="text-start text-stone-200 text-xl font-medium mt-5 ">
-                Contact with me!
-              </p>
-              <div>
-                <Contact />
-              </div>
+              <Contact />
             </div>
           </div>
           <div className="text-neutral-200 flexBetween mt-10 footer_copyright">
-            <p>@ 2023 CrunchyPix. All right reserved</p>
-            <p className=" text-neutral-200">
-              <span className=" text-neutral-200 font-semibold">10</span>{" "}
-              projects submitted
-            </p>
+            <p>@ 2023 Tahsin O.. All right reserved</p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };

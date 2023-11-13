@@ -36,7 +36,7 @@ export const robustSections: RobustSection[] = [
   {
     title: "robust.0.title",
     description: "robust.0.description",
-    icon: <FaDesktop size={50} color={"#e91e63"} />,
+    icon: <FaDesktop size={50} color={"#4f52a2"} />,
   },
   {
     title: "robust.1.title",
@@ -46,11 +46,11 @@ export const robustSections: RobustSection[] = [
   {
     title: "robust.2.title",
     description: "robust.2.description",
-    icon: <FaCode size={50} color={"#e91e63"} />,
+    icon: <FaCode size={50} color={"#2196f3"} />,
   },
   {
     title: "robust.3.title",
     description: "robust.3.description",
-    icon: <FaPaintBrush size={50} color={"#e91e63"} />,
+    icon: <FaPaintBrush size={50} color={"#8bc34a"} />,
   },
 ];
