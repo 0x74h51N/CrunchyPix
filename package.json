@@ -34,7 +34,7 @@
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
-    "swiper": "^11.0.3",
+    "swiper": "^11.0.4",
     "tsparticles": "^2.12.0"
   },
   "devDependencies": {
