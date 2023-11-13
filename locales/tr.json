@@ -37,6 +37,12 @@
     "description": "Web geliştirmede güvenilir ortağınız biziz. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika şeyler yaratalım!"
   },
 
+  "introduction": {
+    "intro": "Giriş",
+    "title": "Hakkımda",
+    "description": "TypeScript ve JavaScript üzerinde yetenekli bir Front-end developer'ım. Uzmanlık alanlarım arasında React, Node.js, Redux gibi popüler framework'ler ve Tailwind CSS ile stil oluşturma bulunuyor. Hızlı öğrenme becerilerim ve mükemmel iletişim yeteneğimle, müşterilerle yakın işbirliği yaparak gerçek dünya problemlerine çözüm üretebilen, verimli, ölçeklenebilir ve kullanıcı dostu çözümler geliştiriyorum. Fikirlerinizi gerçeğe dönüştürmek için birlikte çalışalım!"
+  },
+
   "robust": [
     {
       "title": "Duyarlı Tasarım",

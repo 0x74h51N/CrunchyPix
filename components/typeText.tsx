@@ -1,31 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import PixHighlight from "./PixHighlight";
 
-type TypingText = {
+type TypingTextProps = {
   text: string;
   _code?: boolean;
-  _logo?: boolean;
   textClass?: string;
+  delay?: number;
 };
 
-const TypingText = ({
+const TypingText: React.FC<TypingTextProps> = ({
   text,
   _code = true,
-  _logo = false,
   textClass = "text",
-}: TypingText) => {
+  delay = 0,
+}) => {
   const [displayText, setDisplayText] = useState("");
-  const pixIndex = text.indexOf("Pix");
+  const [isDelayed, setIsDelayed] = useState(false);
 
   useEffect(() => {
     let charIndex = 0;
 
     const typingInterval = setInterval(() => {
-      if (charIndex < text.length) {
+      if (isDelayed && charIndex < text.length) {
         setDisplayText(text.substring(0, charIndex + 1));
         charIndex++;
+      } else if (!isDelayed) {
+        setDisplayText("");
       } else {
         clearInterval(typingInterval);
       }
@@ -34,7 +35,17 @@ const TypingText = ({
     return () => {
       clearInterval(typingInterval);
     };
-  }, [text]);
+  }, [text, isDelayed]);
+
+  useEffect(() => {
+    const delayTimeout = setTimeout(() => {
+      setIsDelayed(true);
+    }, delay);
+
+    return () => {
+      clearTimeout(delayTimeout);
+    };
+  }, [delay]);
 
   return (
     <div>
@@ -49,10 +60,6 @@ const TypingText = ({
         >
           {displayText}
         </SyntaxHighlighter>
-      ) : _logo ? (
-        <div className={textClass}>
-          <PixHighlight>{displayText}</PixHighlight>
-        </div>
       ) : (
         <div className={textClass}>{displayText}</div>
       )}

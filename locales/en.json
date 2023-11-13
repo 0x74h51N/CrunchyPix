@@ -37,6 +37,12 @@
     "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
   },
 
+  "introduction": {
+    "intro": "Introduction",
+    "title": "About Me",
+    "description": "I'm a talented front-end web developer with experience in TypeScript and JavaScript. My expertise extends to popular frameworks such as React, Node.js, Redux, and styling with Tailwind CSS. As a quick learner with excellent communication skills, I collaborate closely with clients to craft efficient, scalable, and user-friendly solutions that address real-world challenges. Let's collaborate to transform your ideas into reality!"
+  },
+
   "robust": [
     {
       "title": "Responsive Design",

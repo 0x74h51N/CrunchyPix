@@ -1,6 +1,8 @@
 "use client";
 import { useRef, useEffect, useState, useContext, createContext } from "react";
 import { SectionData } from "@/app/common.types";
+import { staggerContainer } from "@/utils/motion";
+import { motion } from "framer-motion";
 
 const ScrollContext = createContext({
   scrollToSection: (index: number) => {},
@@ -35,12 +37,17 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         currentSectionIndex < sectionsData.length - 1
       ) {
         const currentSectionRef = sectionRefs[currentSectionIndex].current;
+        const nextSectionRef = sectionRefs[currentSectionIndex + 1].current;
+
         const currentSectionBottom =
           currentSectionRef &&
           window.scrollY + window.innerHeight >=
             currentSectionRef.offsetTop + currentSectionRef.clientHeight;
+        const nextSectionTop =
+          nextSectionRef &&
+          window.scrollY + window.innerHeight >= nextSectionRef.offsetTop;
 
-        if (!currentSectionBottom) {
+        if (!currentSectionBottom && !nextSectionTop) {
           event.preventDefault();
         } else {
           scrollToSection(currentSectionIndex + 1);
@@ -49,10 +56,16 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
 
       if (scrollDirection === "up" && currentSectionIndex > 0) {
         const currentSectionRef = sectionRefs[currentSectionIndex].current;
+        const prevSectionRef = sectionRefs[currentSectionIndex - 1].current;
+
         const currentSectionTop =
           currentSectionRef && window.scrollY <= currentSectionRef.offsetTop;
+        const prevSectionBottom =
+          prevSectionRef &&
+          window.scrollY <=
+            prevSectionRef.offsetTop + prevSectionRef.clientHeight;
 
-        if (!currentSectionTop) {
+        if (!currentSectionTop && !prevSectionBottom) {
           event.preventDefault();
         } else {
           scrollToSection(currentSectionIndex - 1);
@@ -65,15 +78,20 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, [currentSectionIndex]);
+  }, [currentSectionIndex, sectionRefs, sectionsData]);
+
   return (
     <ScrollContext.Provider value={{ scrollToSection }}>
       <>
         {sectionsData.map((section, index) => (
-          <section
+          <motion.section
+            variants={staggerContainer(0.2, 0.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.25 }}
             key={index}
             ref={sectionRefs[index]}
-            className={`${section.className} ${
+            className={`${section.className} flex items-center justify-center ${
               section.auto !== undefined
                 ? section.auto
                   ? "h-auto"
@@ -82,7 +100,7 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             }`}
           >
             {section.children}
-          </section>
+          </motion.section>
         ))}
       </>
     </ScrollContext.Provider>
