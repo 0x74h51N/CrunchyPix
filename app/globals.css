@@ -314,7 +314,7 @@ body {
 }
 
 .mobile-menu.scrolled {
-  background-color: #3b3b3b;
+  background-color: theme(colors.nav-col);
 }
 .mobile-menu ul {
   opacity: 0;

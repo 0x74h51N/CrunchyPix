@@ -33,11 +33,11 @@ const Footer = () => {
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden"
       >
-        <div className="lg:px-20 pt-14 pe-6 px-5  ">
+        <div className="lg:px-20 pt-10 pe-6 px-5  ">
           <div className="flexBetween max-md:flex-col w-full z-10">
             <motion.div
               variants={slideIn("left", "tween", 0.3, 1)}
-              className="flex flex-col gap12  z-10 w-1/5 max-md:w-full"
+              className="flex flex-col gap12  z-10 w-1/5 max-md:w-full px-8"
             >
               <Image
                 src="/LogoL.svg"

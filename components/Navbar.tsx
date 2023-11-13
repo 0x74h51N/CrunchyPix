@@ -70,7 +70,7 @@ export const Navbar = () => {
   return (
     <DropdownProvider>
       <nav
-        className={`bg-opacity-0 bg-gra-black fleBetween navbar fixed w-full top-0 z-50 gap-4 shadow-menu  ${
+        className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50 gap-4 shadow-menu  ${
           isScrolled || specialPages.includes(selectedLink)
             ? "bg-opacity-100 py-2 px-10"
             : "py-5 px-10"

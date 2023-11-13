@@ -91,7 +91,9 @@ const Scroll = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             viewport={{ once: true, amount: 0.25 }}
             key={index}
             ref={sectionRefs[index]}
-            className={`${section.className} flex items-center justify-center ${
+            className={`${
+              section.className
+            } flex items-center justify-center overflow-hidden ${
               section.auto !== undefined
                 ? section.auto
                   ? "h-auto"
