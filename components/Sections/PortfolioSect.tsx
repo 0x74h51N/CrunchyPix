@@ -43,7 +43,7 @@ const PortfolioSect = () => {
   export default Portfolio;    
   `;
   return (
-    <div className="h-screen flex flex-row items-center justify-center ">
+    <div className="h-auto flex flex-row items-center justify-center ">
       <div className="w-2/6 h-4/6">
         <ColorfulBorder>
           <div className="box flex flex-col items-start justify-start overflow-auto w-full h-full">
