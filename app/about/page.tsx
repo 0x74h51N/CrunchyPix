@@ -1,7 +1,11 @@
 import React from "react";
 
 const page = () => {
-  return <div className="h-screen w-screen">page</div>;
+  return (
+    <section>
+      <div className="h-screen w-screen">page</div>
+    </section>
+  );
 };
 
 export default page;
