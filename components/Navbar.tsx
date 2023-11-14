@@ -15,8 +15,10 @@ import { DropdownProvider } from "@/context/DropdownContext";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const [selectedLink, setSelectedLink] = useState("");
-  const specialPages = ["Portfolio", "Services", "About", "Contact"];
+  const specialPages = ["/portfolio", "/services", "/about", "/contact"];
+  const selectedLink = useSelector(
+    (state: RootState) => state.page.currentPage
+  );
   const isScrolled = useSelector(
     (state: RootState) => state.isScrolled.scrolled
   );
@@ -55,17 +57,6 @@ export const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [dispatch]);
-  useEffect(() => {
-    const storedSelectedLink = localStorage.getItem("selectedLink");
-    if (storedSelectedLink) {
-      setSelectedLink(storedSelectedLink);
-    }
-  }, []);
-
-  const handleLinkClick = (linkKey: string) => {
-    setSelectedLink(linkKey);
-    localStorage.setItem("selectedLink", linkKey);
-  };
 
   return (
     <DropdownProvider>
@@ -157,18 +148,13 @@ export const Navbar = () => {
                       href={link.href}
                       key={link.key}
                       className={`hover:text-log-col ${
-                        selectedLink === link.key &&
-                        link.key.toLowerCase() !== "home"
-                          ? "text-log-col"
-                          : ""
+                        selectedLink === link.href ? "text-log-col" : ""
                       } relative group transition-all duration-500 ease-in-out transform origin-bottom whitespace-nowrap`}
-                      onClick={() => handleLinkClick(link.key)}
                     >
                       {t(link.text)}
                       <span
                         className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
-                          selectedLink === link.key &&
-                          link.key.toLowerCase() !== "home"
+                          selectedLink === link.href
                             ? "w-full"
                             : "w-0 transition-all group-hover:w-full"
                         }`}

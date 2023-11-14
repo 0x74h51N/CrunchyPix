@@ -1,5 +1,5 @@
 import React from "react";
-import { useScroll } from "./Scroll";
+import { useScroll } from "./Section";
 import Image from "next/image";
 
 interface CusButtonProps {

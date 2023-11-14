@@ -49,7 +49,7 @@ const MobileMenu = () => {
       />
       <div
         className={`mobile-menu w-full ${isMenuOpen ? "open" : ""} ${
-          isScrolled ? "mt-10 scrolled" : "mt-24"
+          isScrolled ? "mt-10 bg-nav-col" : "mt-24"
         }`}
       >
         {isMenuOpen && (
