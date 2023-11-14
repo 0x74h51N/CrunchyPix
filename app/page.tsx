@@ -1,7 +1,7 @@
-import ParticlesBack from "@/components/ParticlesBack/ParticlesBack";
-import Scroll from "@/components/Scroll";
+import Section from "@/components/Section";
 import AboutMeSect from "@/components/Sections/AboutMeSect";
 import PortfolioSect from "@/components/Sections/PortfolioSect";
+import LandingSect from "@/components/Sections/LandingSect";
 
 interface SectionData {
   className?: string;
@@ -11,9 +11,8 @@ interface SectionData {
 }
 const sectionsData: SectionData[] = [
   {
-    name: "Slider Page",
-    children: <ParticlesBack />,
-    className: "gradiantBack",
+    name: "Landing Section",
+    children: <LandingSect />,
   },
   {
     name: "About Me",
@@ -24,17 +23,13 @@ const sectionsData: SectionData[] = [
     name: "Portfolio",
     children: <PortfolioSect />,
   },
-  {
-    name: "Contact Me",
-    auto: true,
-  },
 ];
 
 const Home = () => {
   return (
     <>
       <div>
-        <Scroll sectionsData={sectionsData}></Scroll>
+        <Section sectionsData={sectionsData}></Section>
       </div>
     </>
   );
