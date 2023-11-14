@@ -1,6 +1,5 @@
 export type SectionData = {
   name: string;
-  auto?: boolean;
   className?: string;
   image?: string;
   textStyle?: string;
