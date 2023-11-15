@@ -1,37 +1,41 @@
 "use client";
-import { createContext, useContext, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SectionData } from "@/app/common.types";
 import { staggerContainer } from "@/utils/motion";
 import { motion } from "framer-motion";
-
-const ScrollContext = createContext({
-  scrollToSection: (index: number) => {},
-});
-
-export const useScroll = () => useContext(ScrollContext);
+import { handleScroll } from "@/utils/handleScroll";
+import { ScrollProvider } from "@/context/ScrollContext";
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const sectionRefs = sectionsData.map(() =>
     useRef<null | HTMLDivElement>(null)
   );
-
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
 
-  const scrollToSection = (index: number) => {
-    const ref = sectionRefs[index];
-    if (ref.current) {
-      const top = ref.current.offsetTop;
-      window.scrollTo({
-        top,
-        behavior: "smooth",
+  useEffect(() => {
+    const handleScrollEvent = (event: WheelEvent) => {
+      handleScroll({
+        event,
+        currentSectionIndex,
+        sectionsData,
+        sectionRefs,
+        setCurrentSectionIndex,
       });
-      setCurrentSectionIndex(index);
-    }
-  };
+    };
+
+    window.addEventListener("wheel", handleScrollEvent);
+
+    return () => {
+      window.removeEventListener("wheel", handleScrollEvent);
+    };
+  }, [currentSectionIndex, sectionRefs, sectionsData, setCurrentSectionIndex]);
 
   return (
-    <>
-      <ScrollContext.Provider value={{ scrollToSection }}>
+    <ScrollProvider
+      sectionRefs={sectionRefs}
+      setCurrentSectionIndex={setCurrentSectionIndex}
+    >
+      <div>
         {sectionsData.map((section, index) => (
           <motion.section
             variants={staggerContainer(0.2, 0.2)}
@@ -45,8 +49,8 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             {section.children}
           </motion.section>
         ))}
-      </ScrollContext.Provider>
-    </>
+      </div>
+    </ScrollProvider>
   );
 };
 

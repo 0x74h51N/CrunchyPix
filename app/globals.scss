@@ -9,16 +9,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-section {
-  scroll-snap-align: start;
-  overflow: hidden;
-  height: auto;
-  scroll-behavior: smooth;
-}
+
 body {
   font-family: Inter;
   background: radial-gradient(
