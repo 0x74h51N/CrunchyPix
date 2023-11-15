@@ -17,7 +17,7 @@ export type HandleScroll = {
 };
 
 export type slide = {
-  imageUrl?: string;
+  imageUrl: string;
   title?: string;
   description?: string;
   left?: boolean;

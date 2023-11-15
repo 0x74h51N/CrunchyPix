@@ -30,6 +30,9 @@ export const slides: slide[] = [
     children: <ContactSlide active={false} />,
   },
   {
+    imageUrl: "/",
+    title: "title",
+    description: "description",
     children: <TypingText text={codeString} />,
   },
 ];
