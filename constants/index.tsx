@@ -31,8 +31,8 @@ export const slides: slide[] = [
   },
   {
     imageUrl: "/",
-    title: "title",
-    description: "description",
+    title: "slides.2.title",
+    description: "slides.2.description",
     children: <TypingText text={codeString} />,
   },
 ];

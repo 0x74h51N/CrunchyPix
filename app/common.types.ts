@@ -18,8 +18,8 @@ export type HandleScroll = {
 
 export type slide = {
   imageUrl: string;
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
   left?: boolean;
   active?: boolean;
   children?: React.ReactNode | React.ReactElement<{ active: boolean }>;
