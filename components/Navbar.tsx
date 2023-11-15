@@ -2,7 +2,7 @@
 import { Links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import TypingText from "./typeText";
 import MobileMenu from "./MobileMenu";
 import LanguageMenu from "./LanguageMenu";
@@ -15,7 +15,9 @@ import { DropdownProvider } from "@/context/DropdownContext";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const specialPages = ["/portfolio", "/services", "/about", "/contact"];
+  const specialPages = Links.filter((link) => link.href !== "/").map(
+    (link) => link.href
+  );
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
@@ -148,13 +150,15 @@ export const Navbar = () => {
                       href={link.href}
                       key={link.key}
                       className={`hover:text-log-col ${
-                        selectedLink === link.href ? "text-log-col" : ""
+                        selectedLink === link.href && link.href !== "/"
+                          ? "text-log-col"
+                          : ""
                       } relative group transition-all duration-500 ease-in-out transform origin-bottom whitespace-nowrap`}
                     >
                       {t(link.text)}
                       <span
                         className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
-                          selectedLink === link.href
+                          selectedLink === link.href && link.href !== "/"
                             ? "w-full"
                             : "w-0 transition-all group-hover:w-full"
                         }`}

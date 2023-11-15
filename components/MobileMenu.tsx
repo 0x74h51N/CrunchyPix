@@ -15,6 +15,12 @@ const MobileMenu = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  const specialPages = Links.filter((link) => link.href !== "/").map(
+    (link) => link.href
+  );
+  const selectedLink = useSelector(
+    (state: RootState) => state.page.currentPage
+  );
   const isScrolled = useSelector(
     (state: RootState) => state.isScrolled.scrolled
   );
@@ -49,7 +55,9 @@ const MobileMenu = () => {
       />
       <div
         className={`mobile-menu w-full ${isMenuOpen ? "open" : ""} ${
-          isScrolled ? "mt-10 bg-nav-col" : "mt-24"
+          isScrolled || specialPages.includes(selectedLink)
+            ? "mt-12 bg-nav-col"
+            : "mt-24"
         }`}
       >
         {isMenuOpen && (
@@ -63,10 +71,20 @@ const MobileMenu = () => {
                   <Link
                     href={link.href}
                     key={link.key}
-                    className={`w-20 block relative group py-2 rtl text-lg font-semibold text-right mr-14 text-neutral-200 antialiased ml-auto hover:text-log-col transition duration-500 ease-in-out  whitespace-nowrap`}
+                    className={`hover:text-log-col ${
+                      selectedLink === link.href && link.href !== "/"
+                        ? "text-log-col"
+                        : "text-neutral-200"
+                    } w-20 block relative group py-2 rtl text-lg font-semibold text-right mr-14  antialiased ml-auto transition duration-500 ease-in-out  whitespace-nowrap`}
                   >
                     {t(link.text)}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-log-col transition-all group-hover:w-full"></span>
+                    <span
+                      className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
+                        selectedLink === link.href && link.href !== "/"
+                          ? "w-full"
+                          : "w-0 transition-all group-hover:w-full"
+                      }`}
+                    ></span>
                   </Link>
                 </li>
               ))}
