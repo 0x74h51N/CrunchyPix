@@ -23,6 +23,7 @@ const sectionsData: SectionData[] = [
     name: "Portfolio",
     children: <PortfolioSect />,
   },
+  { name: "Contact", className: "h-auto" },
 ];
 
 const Home = () => {

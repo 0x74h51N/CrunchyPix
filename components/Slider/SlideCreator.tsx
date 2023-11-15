@@ -10,6 +10,7 @@ const SlideCreator: React.FC<slide> = ({
   active = false,
   left,
   children,
+  box = false,
 }) => {
   return (
     <div className="h-full w-full">
@@ -22,13 +23,15 @@ const SlideCreator: React.FC<slide> = ({
           loading="lazy"
         />
       </div>
-      <SlideBox
-        active={active}
-        title={title}
-        description={description}
-        left={left}
-        imageUrl={""}
-      />
+      {box && (
+        <SlideBox
+          active={active}
+          title={title}
+          description={description}
+          left={left}
+          imageUrl={""}
+        />
+      )}
       {children &&
         React.cloneElement(children as React.ReactElement, { active })}
     </div>

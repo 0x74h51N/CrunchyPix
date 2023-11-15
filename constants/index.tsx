@@ -1,8 +1,11 @@
 import { RobustSection, slide } from "@/app/common.types";
 import ContactSlide from "@/components/Slider/Childeren/ContactSlide";
 import { FaCode, FaDesktop, FaMobileAlt, FaPaintBrush } from "react-icons/fa";
+import { codeString } from "./codeString";
+import TypingText from "@/components/typeText";
 
 export const Links = [
+  { href: "/", key: "Home", text: "links.Home" },
   { href: "/portfolio", key: "Portfolio", text: "links.Portfolio" },
   { href: "/services", key: "Services", text: "links.Services" },
   { href: "/about", key: "About", text: "links.About" },
@@ -14,20 +17,23 @@ export const slides: slide[] = [
     imageUrl: "/slider-0.jpg",
     title: "slides.0.title",
     description: "slides.0.description",
-    left: true,
   },
   {
     imageUrl: "/slide-1_.jpg",
     title: "slides.1.title",
     description: "slides.1.description",
-    left: true,
   },
   {
     imageUrl: "/",
     title: "slides.2.title",
     description: "slides.2.description",
-    left: true,
     children: <ContactSlide active={false} />,
+  },
+  {
+    imageUrl: "/",
+    title: "slides.2.title",
+    description: "slides.2.description",
+    children: <TypingText text={codeString} />,
   },
 ];
 

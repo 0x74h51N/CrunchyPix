@@ -1,22 +1,26 @@
 import React from "react";
-import { useScroll } from "./Section";
 import Image from "next/image";
+import { scrollToSection } from "@/utils/scrollToSection";
+import { useScrollContext } from "@/context/ScrollContext";
 
-interface CusButtonProps {
+interface ArrowButtonProps {
   index?: number;
   text?: string;
   className?: string;
   arrow?: boolean;
 }
 
-const ArrowButton = ({ index, text, className, arrow }: CusButtonProps) => {
-  const { scrollToSection } = useScroll();
+const ArrowButton = ({ index, text, className, arrow }: ArrowButtonProps) => {
+  const { sectionRefs, setCurrentSectionIndex } = useScrollContext();
+
+  const handleButtonClick = () => {
+    if (index !== undefined) {
+      scrollToSection(index, sectionRefs, setCurrentSectionIndex);
+    }
+  };
 
   return (
-    <button
-      onClick={() => index && scrollToSection(index)}
-      className={className}
-    >
+    <button className={className} onClick={handleButtonClick}>
       {text}
       {arrow && (
         <Image

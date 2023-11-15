@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+export const codeString = `import React, { useEffect, useState } from "react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -39,7 +39,7 @@ const FullScreenSlider = ({ className }: { className?: string }) => {
       onSlideChange={onSlideChange}
       centeredSlides={true}
       speed={700}
-      className={`w-full h-full flex flex-center justify-center  text-center bg-stone-900 ${className} cursor-pointer`}
+      className="w-full h-full flex flex-center justify-center  text-center bg-stone-900  cursor-pointer"
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
@@ -58,3 +58,4 @@ const FullScreenSlider = ({ className }: { className?: string }) => {
 };
 
 export default FullScreenSlider;
+`;

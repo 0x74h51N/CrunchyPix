@@ -6,13 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
 import { DropdownContext } from "@/context/DropdownContext";
+import { Links } from "@/constants";
 
 const LanguageMenu = () => {
   const [isRotated, setIsRotated] = useState(false);
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
   const { isDropdownOpen, setIsDropdownOpen } = useContext(DropdownContext)!;
-
+  const specialPages = Links.filter((link) => link.href !== "/").map(
+    (link) => link.href
+  );
+  const selectedLink = useSelector(
+    (state: RootState) => state.page.currentPage
+  );
   const currentLanguage = useSelector(
     (state: RootState) => state.language.language
   );
@@ -97,13 +103,15 @@ const LanguageMenu = () => {
       </button>
       <div
         className={`relative mobile-menu text-neutral-200 w-20 right-10 ${
-          isMobile ? "openM mt-11 mr-2" : ""
+          isMobile ? "openM mt-12 mr-2" : ""
         } ${
           isDropdownOpen
             ? "open2 border-2 border-nav-col border-opacity-40"
             : "close"
         } ${
-          isScrolled ? "scrolled openM mt-11" : isMobile ? " mt-11" : " mt-24"
+          isScrolled || specialPages.includes(selectedLink)
+            ? "mt-12 bg-nav-col flex justify-center"
+            : "mt-24"
         }`}
       >
         {isDropdownOpen && (
