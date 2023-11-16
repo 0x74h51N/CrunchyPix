@@ -1,3 +1,4 @@
+"use client";
 import { RootState } from "@/store";
 import { langChange } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
@@ -7,21 +8,22 @@ import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
 import { DropdownContext } from "@/context/DropdownContext";
 import { Links } from "@/constants";
+import RootLayout from "@/app/layout";
 
 const LanguageMenu = () => {
   const [isRotated, setIsRotated] = useState(false);
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
   const { isDropdownOpen, setIsDropdownOpen } = useContext(DropdownContext)!;
+  const [currentLanguage, setCurrentLanguage] = useState("");
+
   const specialPages = Links.filter((link) => link.href !== "/").map(
     (link) => link.href
   );
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
-  const currentLanguage = useSelector(
-    (state: RootState) => state.language.language
-  );
+
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isScrolled = useSelector(
     (state: RootState) => state.isScrolled.scrolled
@@ -35,9 +37,20 @@ const LanguageMenu = () => {
   const handleChange = (selectedLanguage: string) => {
     dispatch(langChange(selectedLanguage));
     i18n.changeLanguage(selectedLanguage);
+    setCurrentLanguage(selectedLanguage);
+    localStorage.setItem("selectedLanguage", selectedLanguage);
     setIsRotated(!isRotated);
     setIsDropdownOpen(!isDropdownOpen);
   };
+  useEffect(() => {
+    const storedLanguage = localStorage.getItem("selectedLanguage");
+    if (storedLanguage) {
+      dispatch(langChange(storedLanguage));
+      i18n.changeLanguage(storedLanguage);
+      setCurrentLanguage(storedLanguage);
+    }
+  }, [dispatch]);
+
   useEffect(() => {
     if (isMobile && isDropdownOpen) {
       setIsDropdownOpen(false);

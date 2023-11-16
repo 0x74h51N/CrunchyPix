@@ -30,9 +30,7 @@ export default function RootLayout({
             </Suspense>
             <Navbar />
             <main>{children}</main>
-            <section>
-              <Footer />
-            </section>
+            <Footer />
           </AppI18nProvider>
         </AppReduxProvider>
       </body>
