@@ -40,7 +40,7 @@
     "tsparticles": "^2.12.0"
   },
   "devDependencies": {
-    "@grafbase/sdk": "^0.7.2",
+    "@grafbase/sdk": "^0.9.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
