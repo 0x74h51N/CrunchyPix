@@ -6,6 +6,7 @@ export type SectionData = {
   image?: string;
   textStyle?: string;
   children?: React.ReactNode;
+  auto?: boolean;
 };
 
 export type HandleScroll = {
@@ -17,9 +18,9 @@ export type HandleScroll = {
 };
 
 export type slide = {
-  imageUrl: string;
-  title: string;
-  description: string;
+  imageUrl?: string;
+  title?: string;
+  description?: string;
   left?: boolean;
   active?: boolean;
   children?: React.ReactNode | React.ReactElement<{ active: boolean }>;

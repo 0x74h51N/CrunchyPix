@@ -32,7 +32,7 @@ export const ColorfulBorder: React.FC<{
           "--bg-color": "linear-gradient(#202020, #131219)",
         } as CSSProperties
       }
-      className="flex h-auto w-auto items-center justify-center rounded-2xl border-4 border-[#0000] p-1 [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+      className="flex h-auto w-auto items-center justify-center rounded-2xl border-2 border-transparent p-1 [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
     >
       {children}
     </div>
