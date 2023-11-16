@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
-import Robust from "../Robust";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/utils/motion";
 import { useTranslation } from "react-i18next";
+import { robustSections } from "@/constants";
+import RobustSection from "../Robust";
 
 const AboutMeSect = () => {
   const { t } = useTranslation(["translation"]);
@@ -26,8 +27,19 @@ const AboutMeSect = () => {
           {t("introduction.description")}
         </motion.p>
       </div>
-      <div className="flex flex-wrap gap-10 ">
-        <Robust />
+      <div className="flex flex-wrap gap-10s">
+        <div className=" flex flex-wrap justify-center gap-10 w-full p-8 ">
+          {robustSections.map((section, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: index * 0.3 }}
+            >
+              <RobustSection {...section} />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   );

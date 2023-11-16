@@ -44,9 +44,9 @@ const FullScreenSlider = ({ className }: { className?: string }) => {
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>
           <SlideCreator
-            title={t(slide.title)}
-            description={t(slide.description)}
-            imageUrl={slide.imageUrl}
+            title={slide.title && t(slide.title)}
+            description={slide.description && t(slide.description)}
+            imageUrl={slide.imageUrl && slide.imageUrl}
             active={activeIndex === index}
             left={slide.left}
             children={slide.children}

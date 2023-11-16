@@ -6,7 +6,7 @@ import { slide } from "@/app/common.types";
 const SlideCreator: React.FC<slide> = ({
   title,
   description,
-  imageUrl,
+  imageUrl = "",
   active = false,
   left,
   children,

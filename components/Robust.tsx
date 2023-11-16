@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { robustSections } from "@/constants";
 import { RobustSection } from "@/app/common.types";
 import { useTranslation } from "react-i18next";
 import { Tilt } from "react-tilt";
@@ -9,7 +8,7 @@ const RobustSection = ({ title, description, icon }: RobustSection) => {
   const { t } = useTranslation(["translation"]);
   return (
     <>
-      <div className=" shadow-card">
+      <div className="shadow-card rounded-3xl">
         <Tilt>
           <ColorfulBorder>
             <motion.div className=" flex justify-evenly items-center w-[250px] h-[300px] flex-col rounded-xl bg-transparent p-4 relative overflow-hidden cursor-pointer">
@@ -44,28 +43,11 @@ const RobustSection = ({ title, description, icon }: RobustSection) => {
                 </p>
               </motion.div>
             </motion.div>
-          </ColorfulBorder>{" "}
+          </ColorfulBorder>
         </Tilt>
       </div>
     </>
   );
 };
 
-const Robust = () => {
-  return (
-    <div className=" flex flex-wrap justify-center gap-10 w-full p-8 ">
-      {robustSections.map((section, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: index * 0.3 }}
-        >
-          <RobustSection {...section} />
-        </motion.div>
-      ))}
-    </div>
-  );
-};
-
-export default Robust;
+export default RobustSection;

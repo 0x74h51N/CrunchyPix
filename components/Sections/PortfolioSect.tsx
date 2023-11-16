@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-import { ColorfulBorder } from "../ColorfulBorder";
 import PhoneFrame from "../PhoneFrame";
 import FullScreenSlider from "../Slider/FullScreenSlider";
 
@@ -9,7 +8,7 @@ const PortfolioSect = () => {
     <div className="h-auto min-h-screen flex flex-row items-center justify-center ">
       <div className="box flex flex-col items-start justify-start overflow-auto w-full h-full">
         <PhoneFrame>
-          <FullScreenSlider className="w-full h-full object-cover rounded-[42px] " />
+          <FullScreenSlider className="w-full h-full object-cover rounded-[42px]" />
         </PhoneFrame>
       </div>
     </div>

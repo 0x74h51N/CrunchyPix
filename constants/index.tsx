@@ -1,8 +1,12 @@
-import { RobustSection, slide } from "@/app/common.types";
+"use client";
+import { RobustSection, SectionData, slide } from "@/app/common.types";
 import ContactSlide from "@/components/Slider/Childeren/ContactSlide";
 import { FaCode, FaDesktop, FaMobileAlt, FaPaintBrush } from "react-icons/fa";
 import { codeString } from "./codeString";
 import TypingText from "@/components/typeText";
+import AboutMeSect from "@/components/Sections/AboutMeSect";
+import LandingSect from "@/components/Sections/LandingSect";
+import PortfolioSect from "@/components/Sections/PortfolioSect";
 
 export const Links = [
   { href: "/", key: "Home", text: "links.Home" },
@@ -10,6 +14,23 @@ export const Links = [
   { href: "/services", key: "Services", text: "links.Services" },
   { href: "/about", key: "About", text: "links.About" },
   { href: "/contact", key: "Contact", text: "links.Contact" },
+];
+
+export const sectionsData = [
+  {
+    name: "Landing Section",
+    children: <LandingSect />,
+  },
+  {
+    name: "About Me",
+    children: <AboutMeSect />,
+    auto: true,
+  },
+  {
+    name: "Portfolio",
+    children: <PortfolioSect />,
+  },
+  { name: "Contact", className: "h-auto" },
 ];
 
 export const slides: slide[] = [
@@ -24,15 +45,11 @@ export const slides: slide[] = [
     description: "slides.1.description",
   },
   {
-    imageUrl: "/",
     title: "slides.2.title",
     description: "slides.2.description",
     children: <ContactSlide active={false} />,
   },
   {
-    imageUrl: "/",
-    title: "slides.2.title",
-    description: "slides.2.description",
     children: <TypingText text={codeString} />,
   },
 ];
