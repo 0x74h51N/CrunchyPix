@@ -7,6 +7,7 @@ import { AppI18nProvider } from "@/utils/i18Provider";
 import { AppReduxProvider } from "@/store/provider";
 import PageTracker from "@/components/PageTracker";
 import { Suspense } from "react";
+import LoadingComponent from "@/components/Loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,16 +24,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppReduxProvider>
-          <AppI18nProvider>
-            <Suspense fallback={null}>
+        <Suspense fallback={<LoadingComponent />}>
+          <AppReduxProvider>
+            <AppI18nProvider>
               <PageTracker />
-            </Suspense>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </AppI18nProvider>
-        </AppReduxProvider>
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+            </AppI18nProvider>
+          </AppReduxProvider>
+        </Suspense>
       </body>
     </html>
   );

@@ -12,9 +12,9 @@ const LoadingComponent = () => {
         ariaLabel="hourglass-loading"
         wrapperStyle={{}}
         wrapperClass=""
-        colors={["#gra-blue", "#gra-black"]}
+        colors={["#FFFFFF", "#050816"]}
       />
-      <p>Loading...</p>
+      <p className=" text-stone-200">Loading...</p>
     </div>
   );
 };

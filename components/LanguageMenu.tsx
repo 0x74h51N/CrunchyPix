@@ -8,7 +8,6 @@ import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
 import { DropdownContext } from "@/context/DropdownContext";
 import { Links } from "@/constants";
-import RootLayout from "@/app/layout";
 
 const LanguageMenu = () => {
   const [isRotated, setIsRotated] = useState(false);
@@ -41,13 +40,21 @@ const LanguageMenu = () => {
     localStorage.setItem("selectedLanguage", selectedLanguage);
     setIsRotated(!isRotated);
     setIsDropdownOpen(!isDropdownOpen);
+    console.log(selectedLanguage);
   };
   useEffect(() => {
     const storedLanguage = localStorage.getItem("selectedLanguage");
-    if (storedLanguage) {
+    if (
+      storedLanguage &&
+      (storedLanguage === "en" ||
+        storedLanguage === "de" ||
+        storedLanguage === "tr")
+    ) {
       dispatch(langChange(storedLanguage));
       i18n.changeLanguage(storedLanguage);
       setCurrentLanguage(storedLanguage);
+    } else {
+      null;
     }
   }, [dispatch]);
 
@@ -116,16 +123,17 @@ const LanguageMenu = () => {
       </button>
       <div
         className={`relative mobile-menu text-neutral-200 w-20 right-10 ${
-          isMobile ? "openM mt-12 mr-2" : ""
-        } ${
           isDropdownOpen
             ? "open2 border-2 border-nav-col border-opacity-40"
             : "close"
         } ${
           isScrolled || specialPages.includes(selectedLink)
             ? "mt-12 bg-nav-col flex justify-center"
+            : isMobile
+            ? "openM mt-12 mr-2"
             : "mt-24"
-        }`}
+        } 
+        `}
       >
         {isDropdownOpen && (
           <ul className="ul">
