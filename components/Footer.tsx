@@ -33,17 +33,18 @@ const Footer = () => {
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden"
       >
-        <div className="lg:px-20 pt-10 pe-6 px-5  ">
+        <div className="lg:px-10 pt-10 pe-6 px-5  ">
           <div className="flexBetween max-md:flex-col w-full z-10">
             <motion.div
               variants={slideIn("left", "tween", 0.3, 1)}
-              className="flex flex-col gap12  z-10 w-1/5 max-md:w-full px-8"
+              className="flex flex-col gap12 z-10 xl:w-1/5 w-1/4 max-md:w-full px-8 max-xs:px-3"
             >
               <Image
                 src="/LogoL.svg"
                 width={250}
                 height={100}
                 alt="Flexibble"
+                className="min-w-[180px] h-auto"
               />
               <div className="flex items-start flex-col w-full">
                 <p className="text-start text-stone-200 text-l font-medium mt-5 ">
@@ -73,7 +74,7 @@ const Footer = () => {
                 </div>
               </div>
             </motion.div>
-            <div className="flex flex-col justify-center gap-7 z-10 w-3/6 max-lg:mx-6 max-xl:w-4/6  max-md:w-full ">
+            <div className="flex flex-col p-8 justify-center gap-7 z-10 w-3/6 max-lg:mx-6 max-xl:w-4/6 max-md:w-full max-xs:px-3">
               <Contact />
             </div>
           </div>

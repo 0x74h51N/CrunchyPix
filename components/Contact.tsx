@@ -26,7 +26,7 @@ const Contact = () => {
   return (
     <motion.div
       variants={slideIn("right", "tween", 0.3, 1)}
-      className="flex-[0.75]  p-8 rounded-2xl"
+      className="flex-[0.75] rounded-2xl"
     >
       <h1 className="text-start text-stone-200 text-2xl font-medium mb-3">
         {t("contact.title")}

@@ -79,7 +79,7 @@ const MobileMenu = () => {
                   >
                     {t(link.text)}
                     <span
-                      className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
+                      className={`absolute -bottom-1 right-0 h-0.5 bg-log-col ${
                         selectedLink === link.href && link.href !== "/"
                           ? "w-full"
                           : "w-0 transition-all group-hover:w-full"

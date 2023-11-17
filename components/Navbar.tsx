@@ -45,7 +45,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth <= 1024) {
         dispatch(mobileChange(true));
       } else {
         dispatch(mobileChange(false));
@@ -63,11 +63,11 @@ export const Navbar = () => {
   return (
     <DropdownProvider>
       <nav
-        className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50 gap-4 shadow-menu  ${
+        className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50 gap-4 transition-all duration-1000 ease-in-out ${
           isScrolled || specialPages.includes(selectedLink)
             ? "bg-opacity-100 py-2 px-10"
             : "py-5 px-10"
-        } transition-all duration-1000 ease-in-out`}
+        }`}
       >
         <div className="flex flex-row ">
           <Link href="/">
@@ -99,7 +99,9 @@ export const Navbar = () => {
                     text="Crunchy"
                     _code={false}
                     textClass={`logo_text ${
-                      specialPages.includes(selectedLink) ? "small" : ""
+                      specialPages.includes(selectedLink) || isMobile
+                        ? "small"
+                        : ""
                     }`}
                   />
                   <TypingText
@@ -107,7 +109,9 @@ export const Navbar = () => {
                     _code={false}
                     delay={800}
                     textClass={`logo_text color ${
-                      specialPages.includes(selectedLink) ? "small" : ""
+                      specialPages.includes(selectedLink) || isMobile
+                        ? "small"
+                        : ""
                     }`}
                   />
                 </>
@@ -139,7 +143,7 @@ export const Navbar = () => {
             ) : (
               <div>
                 <ul
-                  className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all  delay-200 duration-1000 ease-in-out ${
+                  className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all duration-1000 ease-in-out ${
                     isScrolled || specialPages.includes(selectedLink)
                       ? "text-md font-medium gap-8"
                       : "text-lg font-semibold"
@@ -149,11 +153,11 @@ export const Navbar = () => {
                     <Link
                       href={link.href}
                       key={link.key}
-                      className={`hover:text-log-col ${
+                      className={`hover:text-log-col hover:scale-110 ${
                         selectedLink === link.href && link.href !== "/"
                           ? "text-log-col"
                           : ""
-                      } relative group transition-all duration-500 ease-in-out transform origin-bottom whitespace-nowrap`}
+                      } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap`}
                     >
                       {t(link.text)}
                       <span

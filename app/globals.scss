@@ -215,14 +215,13 @@ body {
   padding-top: 0;
   padding-bottom: 0;
   z-index: 0;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
 }
 
 .mobile-menu.open {
   height: 300px;
   padding-top: 20px;
   padding-bottom: 20px;
-  backdrop-filter: blur(15px);
 }
 
 .mobile-menu.open2 {

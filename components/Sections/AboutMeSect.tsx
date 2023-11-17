@@ -10,7 +10,7 @@ const AboutMeSect = () => {
   const { t } = useTranslation(["translation"]);
   return (
     <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-screen max-w-[80vw] pt-14">
-      <div className="flex flex-col items-start w-full px-8 ">
+      <div className="flex flex-col items-start w-full p-8 max-xs:px-2 pb-0">
         <motion.div variants={textVariant(0)}>
           <p className="text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
             {t("introduction.intro")}
@@ -27,8 +27,8 @@ const AboutMeSect = () => {
           {t("introduction.description")}
         </motion.p>
       </div>
-      <div className="flex flex-wrap gap-10s">
-        <div className=" flex flex-wrap justify-center gap-10 w-full p-8 ">
+      <div className="flex flex-wrap gap-10">
+        <div className=" flex flex-wrap justify-center gap-10 w-full p-8 max-xs:px-2 pb-0">
           {robustSections.map((section, index) => (
             <motion.div
               key={index}
