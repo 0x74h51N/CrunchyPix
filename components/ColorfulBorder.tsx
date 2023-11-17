@@ -2,7 +2,8 @@ import { useRef, useEffect, CSSProperties } from "react";
 
 export const ColorfulBorder: React.FC<{
   children: React.ReactNode;
-}> = ({ children }) => {
+  className?: string;
+}> = ({ children, className }) => {
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,7 +33,7 @@ export const ColorfulBorder: React.FC<{
           "--bg-color": "linear-gradient(#202020, #131219)",
         } as CSSProperties
       }
-      className="flex h-auto w-auto items-center justify-center rounded-2xl border-2 border-transparent p-1 [background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+      className={`${className} flex h-auto w-auto items-center justify-center rounded-2xl border-2 border-transparent  [background:padding-box_var(--bg-color),border-box_var(--border-color)]`}
     >
       {children}
     </div>

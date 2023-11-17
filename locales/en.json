@@ -37,6 +37,13 @@
     "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
   },
 
+  "landing": {
+    "intro": "Hey there!",
+    "title": "I'm Tahsin,",
+    "title2": "Front-End Developer",
+    "description": "Welcome to my corner of the web!"
+  },
+
   "introduction": {
     "intro": "Introduction",
     "title": "About Me",

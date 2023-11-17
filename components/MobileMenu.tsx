@@ -56,7 +56,7 @@ const MobileMenu = () => {
       <div
         className={`mobile-menu w-full ${isMenuOpen ? "open" : ""} ${
           isScrolled || specialPages.includes(selectedLink)
-            ? "mt-12 bg-nav-col"
+            ? "mt-14 bg-nav-col"
             : "mt-24"
         }`}
       >

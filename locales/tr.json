@@ -20,21 +20,28 @@
       "description": "Felsefemizin kalbinde bilginin gücü yatar. Yaratıcı çözümler, yenilikçi yaklaşımlar ve her ayrıntıda mükemmellik için çaba gösteriyoruz."
     },
     {
-      "title": "Benimle İletişime Geçin",
+      "title": "Benimle İletişime Geç",
       "description": "Bağlantı kurup ihtiyaçlarınız için en iyi çözümleri bulalım. Başarınız bizim önceliğimizdir."
     }
   ],
 
   "contact": {
-    "title": "Benimle İletişime Geçin",
+    "title": "Benimle İletişime Geç",
     "description": "Bizimle iletişime geçin. Buradayız, dinlemeye, işbirliği yapmaya ve fikirlerinizi gerçeğe dönüştürmeye hazırız.",
     "placeName": "Tam Adınız",
     "placeMessage": "Mesajınızı yazın...",
     "button": "Gönder"
   },
   "footer": {
-    "title": "Web İnovasyonun Gücünü Ortaya Çıkarın",
+    "title": "Web İnovasyonun Gücünü Ortaya Çıkar!",
     "description": "Web geliştirmede güvenilir ortağınız biziz. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika şeyler yaratalım!"
+  },
+
+  "landing": {
+    "intro": "Selam!",
+    "title": "Ben Tahsin,",
+    "title2": "Front-End Developer",
+    "description": "Web siteme hoş geldiniz!"
   },
 
   "introduction": {
@@ -45,7 +52,7 @@
 
   "robust": [
     {
-      "title": "Duyarlı Tasarım",
+      "title": "Responsive Tasarım",
       "description": "Çeşitli cihazlar için optimize edilmiş, her ekran boyutunda sorunsuz ve görsel açıdan çekici bir deneyim sağlar."
     },
     {
