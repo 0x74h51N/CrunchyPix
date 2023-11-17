@@ -19,36 +19,43 @@ const LandingSect = () => {
       <div className="absolute inset-0 z-0">
         <ParticlesBack />
       </div>
-      <div className="h-full w-full flex flex-row max-md:flex-col m-10 gap-6 max-md:gap-4 justify-center max-md:m-8 max-md:justify-center items-center z-10">
-        <Tilt>
-          <ColorfulBorder className="rounded-full">
+      <div className="h-full w-full flex flex-row max-md:flex-col md:gap-10 gap-0 m-10 justify-center max-md:m-8 items-center z-10">
+        <Tilt
+          options={{
+            transition: true,
+            speed: 50,
+            scale: 1.05,
+            max: 25,
+          }}
+        >
+          <ColorfulBorder className="rounded-[100px] max-xs:rounded-[60px]">
             <Image
               src="/head.png"
               alt="Photo"
               layout="filled"
-              width={280}
-              height={280}
+              width={320}
+              height={320}
               objectFit="cover"
               loading="lazy"
-              className="object-center rounded-full bg-opacity-0 grayscale max-md:w-[200px] h-auto"
+              className="object-center rounded-[100px] bg-opacity-0 grayscale max-md:w-[240px] max-sm:w-[215px] max-xs:w-[180px] max-xs:rounded-[60px] h-auto"
             />
           </ColorfulBorder>
         </Tilt>
         <div className="flex flex-col m-8">
           <motion.div variants={textVariant(0)}>
-            <p className="text-[#baaeff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
+            <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px]">
               {generateSpans(t("landing.intro"))}
             </p>
             <motion.p
               variants={fadeIn("", "", 0.1, 1)}
-              className="mt-4 text-white lg:text-[17px] text-[14px] max-w-3xl leading-[30px]"
+              className="mt-4 text-white lg:text-[25px] text-[15px] max-w-3xl leading-[30px]"
             >
               {generateSpans(t("landing.description"))}
             </motion.p>
-            <h1 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl">
+            <h1 className="text-white font-black md:text-[65x] sm:text-[55px] xs:text-[45px] text-[35px] max-w-2xl">
               {generateSpans(t("landing.title"))}
             </h1>
-            <h1 className="text-white font-black md:text-[50px] sm:text-[40px] xs:text-[30px] text-[20px]">
+            <h1 className="text-white font-black md:text-[55px] sm:text-[45px] xs:text-[35px] text-[25px]">
               {generateSpans(t("landing.title2"))}
             </h1>
           </motion.div>

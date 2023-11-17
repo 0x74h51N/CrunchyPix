@@ -122,16 +122,16 @@ const LanguageMenu = () => {
         </div>
       </button>
       <div
-        className={`relative mobile-menu text-neutral-200 w-20 right-10 ${
+        className={`relative mobile-menu text-neutral-200 w-20 right-10 bg-nav-col  ${
           isDropdownOpen
             ? "open2 border-2 border-nav-col border-opacity-40"
             : "close"
         } ${
           isScrolled || specialPages.includes(selectedLink)
-            ? "mt-12 bg-nav-col flex justify-center"
+            ? "mt-12 flex justify-center"
             : isMobile
-            ? "openM mt-12 mr-2"
-            : "mt-24"
+            ? "mt-12 mr-2 flex justify-center"
+            : "  mt-24"
         } 
         `}
       >
