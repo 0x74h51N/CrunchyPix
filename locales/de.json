@@ -37,6 +37,13 @@
     "description": "Wir sind Ihr vertrauenswürdiger Partner in der Webentwicklung. Unsere Mission ist es, Ihre digitalen Träume Wirklichkeit werden zu lassen. Lassen Sie uns gemeinsam etwas Erstaunliches erschaffen!"
   },
 
+  "landing": {
+    "intro": "Hallo!",
+    "title": "Ich bin Tahsin,",
+    "title2": "Front-End Entwickler",
+    "description": "Willkommen in meiner kleinen Ecke im Web!"
+  },
+
   "introduction": {
     "intro": "Einleitung",
     "title": "Über mich",

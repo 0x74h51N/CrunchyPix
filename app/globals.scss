@@ -260,3 +260,12 @@ body {
 .contactBox {
   @apply w-full rounded-md border border-transparent bg-zinc-500 py-3 px-6 text-base font-medium text-gray-100 outline-none;
 }
+
+.grayscale {
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.grayscale:hover {
+  filter: grayscale(0%);
+}

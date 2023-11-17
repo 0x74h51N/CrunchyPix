@@ -37,6 +37,13 @@
     "description": "Web geliştirmede güvenilir ortağınız biziz. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika şeyler yaratalım!"
   },
 
+  "landing": {
+    "intro": "Selam!",
+    "title": "Ben Tahsin,",
+    "title2": "Front-End Developer",
+    "description": "Web siteme hoş geldiniz!"
+  },
+
   "introduction": {
     "intro": "Giriş",
     "title": "Hakkımda",
