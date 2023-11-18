@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { generateSpans } from "../DelayedHover";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import LoadingComponent from "../Loading";
 
 const LandingSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -23,7 +24,7 @@ const LandingSect = () => {
     }
   }, [i18n]);
   if (!isTranslationsLoaded) {
-    return null;
+    return <LoadingComponent />;
   }
   return (
     <div className="flex flex-center justify-center h-screen w-full ">
