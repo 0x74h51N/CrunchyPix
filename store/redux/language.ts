@@ -1,4 +1,3 @@
-"use client";
 import { createSlice } from "@reduxjs/toolkit";
 interface LanguageState {
   language: string;

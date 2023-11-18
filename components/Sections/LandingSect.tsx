@@ -8,9 +8,24 @@ import { textVariant, fadeIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { generateSpans } from "../DelayedHover";
+import { useState, useEffect } from "react";
 
 const LandingSect = () => {
-  const { t } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["translation"]);
+
+  const [isTranslationsLoaded, setIsTranslationsLoaded] = useState(false);
+  useEffect(() => {
+    if (i18n.isInitialized) {
+      setIsTranslationsLoaded(true);
+    } else {
+      i18n.on("initialized", () => {
+        setIsTranslationsLoaded(true);
+      });
+    }
+  }, [i18n]);
+  if (!isTranslationsLoaded) {
+    return null;
+  }
 
   return (
     <div className="flex flex-center justify-center h-screen w-full ">
