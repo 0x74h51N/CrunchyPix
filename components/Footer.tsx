@@ -52,7 +52,7 @@ const Footer = () => {
                 className="min-w-[180px] h-auto"
               />
               <div className="flex items-start flex-col w-full">
-                <p className="text-start text-stone-200 text-l font-medium mt-5 ">
+                <p className="text-start text-stone-200 text-l font-medium mt-5 whitespace-normal">
                   {t("footer.title")}
                 </p>
                 <p className="text-start text-stone-200 text-sm font-normal mt-3 max-md:w-3/5">
