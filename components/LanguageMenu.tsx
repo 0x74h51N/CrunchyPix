@@ -53,10 +53,8 @@ const LanguageMenu = () => {
       dispatch(langChange(storedLanguage));
       i18n.changeLanguage(storedLanguage);
       setCurrentLanguage(storedLanguage);
-    } else {
-      null;
     }
-  }, []);
+  }, [dispatch, i18n]);
 
   useEffect(() => {
     if (isMobile && isDropdownOpen) {
