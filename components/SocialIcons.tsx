@@ -82,7 +82,7 @@ export const SocialIcons = () => {
         return (
           <motion.div
             key={icon.title || index}
-            className="social-icon cursor-pointer pointer-events-auto"
+            className="social-icon cursor-pointer pointer-events-auto w-8"
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
             animate={controls}
