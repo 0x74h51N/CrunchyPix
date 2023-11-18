@@ -3,25 +3,30 @@ import Image from "next/image";
 import { Links } from "@/constants";
 import Link from "next/link";
 import Contact from "./Contact";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { slideIn, staggerContainer } from "@/utils/motion";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { setIsTranslationsLoaded } from "@/store/redux/language";
 
 const Footer = () => {
   const { t, i18n } = useTranslation(["translation"]);
-
-  const [isTranslationsLoaded, setIsTranslationsLoaded] = useState(false);
+  const isTranslationsLoadedRedux = useSelector(
+    (state: RootState) => state.language.isTranslationsLoaded
+  );
+  const dispatch = useDispatch();
   useEffect(() => {
     if (i18n.isInitialized) {
-      setIsTranslationsLoaded(true);
+      dispatch(setIsTranslationsLoaded(true));
     } else {
       i18n.on("initialized", () => {
-        setIsTranslationsLoaded(true);
+        dispatch(setIsTranslationsLoaded(true));
       });
     }
-  }, [i18n]);
-  if (!isTranslationsLoaded) {
+  }, [i18n, dispatch]);
+  if (!isTranslationsLoadedRedux) {
     return null;
   }
   return (

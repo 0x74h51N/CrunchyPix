@@ -7,24 +7,29 @@ import { Tilt } from "react-tilt";
 import { textVariant, fadeIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../DelayedHover";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import LoadingComponent from "../Loading";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsTranslationsLoaded } from "@/store/redux/language";
+import { RootState } from "@/store";
 
 const LandingSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
-  const [isTranslationsLoaded, setIsTranslationsLoaded] = useState(false);
+  const isTranslationsLoadedRedux = useSelector(
+    (state: RootState) => state.language.isTranslationsLoaded
+  );
+  const dispatch = useDispatch();
   useEffect(() => {
     if (i18n.isInitialized) {
-      setIsTranslationsLoaded(true);
+      dispatch(setIsTranslationsLoaded(true));
     } else {
       i18n.on("initialized", () => {
-        setIsTranslationsLoaded(true);
+        dispatch(setIsTranslationsLoaded(true));
       });
     }
-  }, [i18n]);
-  if (!isTranslationsLoaded) {
-    return <LoadingComponent />;
+  }, [i18n, dispatch]);
+  if (!isTranslationsLoadedRedux) {
+    return null;
   }
   return (
     <div className="flex flex-center justify-center h-screen w-full ">

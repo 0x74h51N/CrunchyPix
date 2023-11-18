@@ -5,21 +5,26 @@ import { fadeIn, textVariant } from "@/utils/motion";
 import { robustSections } from "@/constants";
 import RobustSection from "../Robust";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { setIsTranslationsLoaded } from "@/store/redux/language";
 
 const AboutMeSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
-
-  const [isTranslationsLoaded, setIsTranslationsLoaded] = useState(false);
+  const isTranslationsLoadedRedux = useSelector(
+    (state: RootState) => state.language.isTranslationsLoaded
+  );
+  const dispatch = useDispatch();
   useEffect(() => {
     if (i18n.isInitialized) {
-      setIsTranslationsLoaded(true);
+      dispatch(setIsTranslationsLoaded(true));
     } else {
       i18n.on("initialized", () => {
-        setIsTranslationsLoaded(true);
+        dispatch(setIsTranslationsLoaded(true));
       });
     }
-  }, [i18n]);
-  if (!isTranslationsLoaded) {
+  }, [i18n, dispatch]);
+  if (!isTranslationsLoadedRedux) {
     return null;
   }
   return (
