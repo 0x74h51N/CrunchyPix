@@ -1,12 +1,18 @@
 import { Dispatch, SetStateAction } from "react";
 
 export type SectionData = {
-  name: string;
+  name?: string;
   className?: string;
   image?: string;
   textStyle?: string;
   children?: React.ReactNode;
   auto?: boolean;
+};
+
+export type SocialIcons = {
+  title: string;
+  url: string;
+  icon: React.ReactNode;
 };
 
 export type HandleScroll = {

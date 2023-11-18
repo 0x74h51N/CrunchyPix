@@ -1,7 +1,21 @@
 "use client";
-import { RobustSection, SectionData, slide } from "@/app/common.types";
+import {
+  RobustSection,
+  SectionData,
+  SocialIcons,
+  slide,
+} from "@/app/common.types";
 import ContactSlide from "@/components/Slider/Childeren/ContactSlide";
-import { FaCode, FaDesktop, FaMobileAlt, FaPaintBrush } from "react-icons/fa";
+import {
+  FaCode,
+  FaDesktop,
+  FaEnvelope,
+  FaGithub,
+  FaInstagram,
+  FaMobileAlt,
+  FaPaintBrush,
+  FaTelegram,
+} from "react-icons/fa";
 import { codeString } from "./codeString";
 import TypingText from "@/components/typeText";
 import AboutMeSect from "@/components/Sections/AboutMeSect";
@@ -16,7 +30,7 @@ export const Links = [
   { href: "/contact", key: "Contact", text: "links.Contact" },
 ];
 
-export const sectionsData = [
+export const sectionsData: SectionData[] = [
   {
     name: "Landing Section",
     children: <LandingSect />,
@@ -31,6 +45,29 @@ export const sectionsData = [
     children: <PortfolioSect />,
   },
   { name: "Contact", className: "h-auto" },
+];
+
+export const socialIcons: SocialIcons[] = [
+  {
+    title: "Instagram",
+    url: "https://www.instagram.com/thetahsin_/",
+    icon: <FaInstagram />,
+  },
+  {
+    title: "Telegram",
+    url: "https://t.me/Ox74h51N",
+    icon: <FaTelegram />,
+  },
+  {
+    title: "Mail",
+    url: "mailto:mr.tahsin@windowslive.com",
+    icon: <FaEnvelope />,
+  },
+  {
+    title: "Github",
+    url: "https://github.com/0x74h51N",
+    icon: <FaGithub />,
+  },
 ];
 
 export const slides: slide[] = [
