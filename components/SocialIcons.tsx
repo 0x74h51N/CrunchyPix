@@ -72,7 +72,7 @@ export const SocialIcons = () => {
           controls.start({
             color: isHovered ? getRandomColor() : "#dfd9ff",
             scale: isHovered ? 1.2 : 1,
-            transition: { duration: isHovered ? 0.2 : 4 },
+            transition: { duration: isHovered ? 0.2 : 2 },
             originX: 0,
             originY: 0,
           });
