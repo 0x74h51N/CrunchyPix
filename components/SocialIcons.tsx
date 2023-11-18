@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { socialIcons } from "@/constants";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 
 export const SocialIcons = () => {
   const [windowSize, setWindowSize] = useState({
@@ -61,18 +61,31 @@ export const SocialIcons = () => {
           ? -iconRadius * Math.sin(angle) + windowSize.height / 2
           : startingHeight + index * 30;
         const fontSize = isMobile ? "35px" : "50px";
-        const iconStyle = { x, y, fontSize };
 
+        const controls = useAnimation();
+        const [isHovered, setIsHovered] = useState(false);
+        const handleHover = () => {
+          setIsHovered(!isHovered);
+        };
+
+        useEffect(() => {
+          controls.start({
+            color: isHovered ? getRandomColor() : "#dfd9ff",
+            scale: isHovered ? 1.2 : 1,
+            transition: { duration: isHovered ? 0.2 : 4 },
+            originX: 0,
+            originY: 0,
+          });
+        }, [isHovered, controls]);
+
+        const iconStyle = { x, y, fontSize };
         return (
           <motion.div
             key={icon.title || index}
             className="social-icon cursor-pointer pointer-events-auto"
-            whileHover={{
-              color: getRandomColor(),
-              scale: 1.2,
-              originX: 0,
-              originY: 0,
-            }}
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
+            animate={controls}
             onClick={() => handleIconClick(icon.url)}
             initial={{ color: "#e3ddff", scale: 1 }}
             style={iconStyle}
