@@ -7,10 +7,21 @@ import { Tilt } from "react-tilt";
 import { textVariant, fadeIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../DelayedHover";
-import { useTranslationWithLoader } from "@/utils/i18nUtils";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const LandingSect = () => {
-  const { t, isTranslationsLoaded } = useTranslationWithLoader();
+  const { t, i18n } = useTranslation(["translation"]);
+  const [isTranslationsLoaded, setIsTranslationsLoaded] = useState(false);
+  useEffect(() => {
+    if (i18n.isInitialized) {
+      setIsTranslationsLoaded(true);
+    } else {
+      i18n.on("initialized", () => {
+        setIsTranslationsLoaded(true);
+      });
+    }
+  }, [i18n]);
   if (!isTranslationsLoaded) {
     return null;
   }
