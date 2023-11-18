@@ -2,23 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/utils/motion";
-import { useTranslation } from "react-i18next";
 import { robustSections } from "@/constants";
 import RobustSection from "../Robust";
+import { useTranslationWithLoader } from "@/utils/i18nUtils";
 
 const AboutMeSect = () => {
-  const { t, i18n } = useTranslation(["translation"]);
-
-  const [isTranslationsLoaded, setIsTranslationsLoaded] = useState(false);
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      setIsTranslationsLoaded(true);
-    } else {
-      i18n.on("initialized", () => {
-        setIsTranslationsLoaded(true);
-      });
-    }
-  }, [i18n]);
+  const { t, isTranslationsLoaded } = useTranslationWithLoader();
   if (!isTranslationsLoaded) {
     return null;
   }

@@ -6,12 +6,12 @@ import React, { useEffect } from "react";
 import TypingText from "./typeText";
 import MobileMenu from "./MobileMenu";
 import LanguageMenu from "./LanguageMenu";
-import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { mobileChange } from "@/store/redux/isMobile";
 import { RootState } from "@/store";
 import { scrollChange } from "@/store/redux/isScrolled";
 import { DropdownProvider } from "@/context/DropdownContext";
+import { useTranslationWithLoader } from "@/utils/i18nUtils";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
@@ -25,7 +25,10 @@ export const Navbar = () => {
     (state: RootState) => state.isScrolled.scrolled
   );
   const dispatch = useDispatch();
-  const { t } = useTranslation(["translation"]);
+  const { t, isTranslationsLoaded } = useTranslationWithLoader();
+  if (!isTranslationsLoaded) {
+    return null;
+  }
 
   const handleScroll = () => {
     if (window.scrollY > 100) {
