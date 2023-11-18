@@ -1,15 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import ParticlesBack from "../ParticlesBack/ParticlesBack";
 import ArrowButton from "../ArrowButton";
 import Image from "next/image";
 import { ColorfulBorder } from "../ColorfulBorder";
 import { Tilt } from "react-tilt";
 import { textVariant, fadeIn } from "@/utils/motion";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { generateSpans } from "../DelayedHover";
-import LoadingComponent from "../Loading";
 
 const LandingSect = () => {
   const { t } = useTranslation(["translation"]);
