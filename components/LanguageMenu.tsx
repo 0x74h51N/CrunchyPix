@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/store";
-import { langChange } from "@/store/redux/language";
+import { langChange, setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -42,6 +42,7 @@ const LanguageMenu = () => {
     setIsDropdownOpen(!isDropdownOpen);
     console.log(selectedLanguage);
   };
+
   useEffect(() => {
     const storedLanguage = localStorage.getItem("selectedLanguage");
     if (
@@ -51,10 +52,12 @@ const LanguageMenu = () => {
         storedLanguage === "tr")
     ) {
       dispatch(langChange(storedLanguage));
-      i18n.changeLanguage(storedLanguage);
-      setCurrentLanguage(storedLanguage);
+      i18n.changeLanguage(storedLanguage).then(() => {
+        setCurrentLanguage(storedLanguage);
+        setIsTranslationsLoaded(true);
+      });
     } else {
-      null;
+      setIsTranslationsLoaded(true);
     }
   }, []);
 

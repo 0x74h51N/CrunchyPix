@@ -1,19 +1,36 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import ParticlesBack from "../ParticlesBack/ParticlesBack";
 import ArrowButton from "../ArrowButton";
 import Image from "next/image";
 import { ColorfulBorder } from "../ColorfulBorder";
 import { Tilt } from "react-tilt";
 import { textVariant, fadeIn } from "@/utils/motion";
-import { motion, useAnimation } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import { generateSpans } from "../DelayedHover";
-import LoadingComponent from "../Loading";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsTranslationsLoaded } from "@/store/redux/language";
+import { RootState } from "@/store";
 
 const LandingSect = () => {
-  const { t } = useTranslation(["translation"]);
-
+  const { t, i18n } = useTranslation(["translation"]);
+  const isTranslationsLoadedRedux = useSelector(
+    (state: RootState) => state.language.isTranslationsLoaded
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (i18n.isInitialized) {
+      dispatch(setIsTranslationsLoaded(true));
+    } else {
+      i18n.on("initialized", () => {
+        dispatch(setIsTranslationsLoaded(true));
+      });
+    }
+  }, [i18n, dispatch]);
+  if (!isTranslationsLoadedRedux) {
+    return null;
+  }
   return (
     <div className="flex flex-center justify-center h-screen w-full ">
       <div className="absolute inset-0 z-0">

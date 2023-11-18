@@ -1,13 +1,32 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/utils/motion";
-import { useTranslation } from "react-i18next";
 import { robustSections } from "@/constants";
 import RobustSection from "../Robust";
+import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { setIsTranslationsLoaded } from "@/store/redux/language";
 
 const AboutMeSect = () => {
-  const { t } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["translation"]);
+  const isTranslationsLoadedRedux = useSelector(
+    (state: RootState) => state.language.isTranslationsLoaded
+  );
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (i18n.isInitialized) {
+      dispatch(setIsTranslationsLoaded(true));
+    } else {
+      i18n.on("initialized", () => {
+        dispatch(setIsTranslationsLoaded(true));
+      });
+    }
+  }, [i18n, dispatch]);
+  if (!isTranslationsLoadedRedux) {
+    return null;
+  }
   return (
     <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-screen max-w-[80vw] pt-14">
       <div className="flex flex-col items-start w-full p-8 max-xs:px-2 pb-0">

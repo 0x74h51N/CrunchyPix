@@ -1,5 +1,4 @@
 "use client";
-import React, { useEffect } from "react";
 import PhoneFrame from "../PhoneFrame";
 import FullScreenSlider from "../Slider/FullScreenSlider";
 

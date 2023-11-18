@@ -1,23 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import language from "./redux/language";
-import isMobile from "./redux/isMobile";
-import isScrolled from "./redux/isScrolled";
-import page from "./redux/pageReducer";
+import languageReducer from "./redux/language";
+import isMobileReducer from "./redux/isMobile";
+import isScrolledReducer from "./redux/isScrolled";
+import pageReducer from "./redux/pageReducer";
+
+const rootReducer = combineReducers({
+  language: languageReducer,
+  isMobile: isMobileReducer,
+  isScrolled: isScrolledReducer,
+  page: pageReducer,
+});
 
 const store = configureStore({
-  reducer: {
-    language: language,
-    isMobile: isMobile,
-    isScrolled: isScrolled,
-    page: page,
-  },
-});
-const rootReducer = combineReducers({
-  language: language,
-  isMobile: isMobile,
-  isScrolled: isScrolled,
-  page: page,
+  reducer: rootReducer,
 });
 
 export default store;
