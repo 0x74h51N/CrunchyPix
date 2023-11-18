@@ -56,7 +56,7 @@ const LanguageMenu = () => {
     } else {
       null;
     }
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     if (isMobile && isDropdownOpen) {

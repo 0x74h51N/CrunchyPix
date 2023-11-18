@@ -36,7 +36,7 @@ const LandingSect = () => {
               width={320}
               height={320}
               objectFit="cover"
-              loading="lazy"
+              loading="eager"
               className="object-center rounded-[100px] bg-opacity-0 grayscale max-md:w-[240px] max-sm:w-[215px] max-xs:w-[180px] max-xs:rounded-[60px] h-auto"
             />
           </ColorfulBorder>
