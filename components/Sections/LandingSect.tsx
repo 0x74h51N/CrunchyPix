@@ -35,7 +35,7 @@ const LandingSect = () => {
     return null;
   }
   return (
-    <div className="anaDiv flex flex-center justify-center h-full min-h-screen w-auto relative">
+    <div className="anaDiv flex flex-center justify-center h-full min-h-screen w-screen relative">
       <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center z-10 ">
         <Tilt
           options={{
@@ -94,7 +94,7 @@ const LandingSect = () => {
       <div className="absolute inset-0 z-0 h-full w-screen">
         <ParticlesBack />
       </div>
-      <div className="ico absolute bottom-0 z-10 h-full w-full pointer-events-none">
+      <div className="absolute bottom-0 right-0 z-10 h-full w-full pointer-events-none">
         <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />
       </div>
       <div className="absolute bottom-0 w-full flex justify-center items-end z-30">
