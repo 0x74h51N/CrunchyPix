@@ -13,6 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
 import { SocialIcons } from "../SocialIcons";
+import TypingText from "../typeText";
+import { socialIcons } from "@/constants";
 
 const LandingSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -59,19 +61,32 @@ const LandingSect = () => {
         <div className="flex flex-col m-8 ">
           <motion.div variants={textVariant(0)}>
             <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px]">
-              {generateSpans(t("landing.intro"))}
+              <TypingText
+                generateSpan={true}
+                _code={false}
+                text={t("landing.intro")}
+              />
             </p>
             <motion.p
               variants={fadeIn("", "", 0.1, 1)}
               className="mt-3 text-stone-200 lg:text-[18px] text-[15px] min-w-[219] leading-[30px] whitespace-pre-wrap"
             >
-              {generateSpans(t("landing.description"))}
+              {generateSpans({
+                text: t("landing.description"),
+                colorType: "vibrantColors",
+              })}
             </motion.p>
             <h1 className="text-stone-200 font-black md:text-[65x] sm:text-[55px] xs:text-[40px] text-[30px] max-w-2xl">
-              {generateSpans(t("landing.title"))}
+              {generateSpans({
+                text: t("landing.title"),
+                colorType: "vibrantColors",
+              })}
             </h1>
             <h1 className="text-stone-200 font-black md:text-[55px] sm:text-[45px] xs:text-[30px] text-[20px]">
-              {generateSpans(t("landing.title2"))}
+              {generateSpans({
+                text: t("landing.title2"),
+                colorType: "vibrantColors",
+              })}
             </h1>
           </motion.div>
         </div>
@@ -80,7 +95,7 @@ const LandingSect = () => {
         <ParticlesBack />
       </div>
       <div className="ico absolute bottom-0 z-10 h-full w-full pointer-events-none">
-        <SocialIcons />
+        <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />
       </div>
       <div className="absolute bottom-0 w-full flex justify-center items-end z-30">
         <ArrowButton

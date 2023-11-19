@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
-import { socialIcons } from "@/constants";
 import { ColorfulHover } from "./ColorfulHover";
+import { ColorfulHoverType, SocialIconsType } from "@/app/common.types";
+import { socialIcons } from "@/constants";
 
-export const SocialIcons = () => {
+type SocialIconProp = {
+  iconPack: SocialIconsType[];
+};
+
+export const SocialIcons = ({
+  iconPack,
+  _colorType,
+  randomCount = 6,
+}: SocialIconProp & ColorfulHoverType) => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -37,14 +46,16 @@ export const SocialIcons = () => {
 
   iconRadius = Math.min(iconRadius, maxIconRadius);
   const startingHeight = 250;
-  const totalIcons = socialIcons.length;
+
+  const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
   const handleIconClick = (url: string) => {
     window.open(url, "_blank");
   };
+
   return (
     <>
-      {socialIcons.map((icon, index) => {
+      {iconPack.map((icon: any, index: number) => {
         const angle = index * angleIncrement;
         const x = isCircularLayout
           ? iconRadius * Math.cos(angle) + 500
@@ -63,6 +74,8 @@ export const SocialIcons = () => {
             style={iconStyle}
             key={icon.title || index}
             span={false}
+            _colorType={_colorType}
+            randomCount={randomCount}
           />
         );
       })}

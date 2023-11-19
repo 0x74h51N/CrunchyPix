@@ -25,7 +25,7 @@ const ParticlesBack = () => {
             value: "transparent",
           },
         },
-        fpsLimit: 140,
+        fpsLimit: 120,
         interactivity: {
           events: {
             onClick: {
@@ -40,11 +40,11 @@ const ParticlesBack = () => {
           },
           modes: {
             push: {
-              quantity: 5,
+              quantity: 3,
             },
             repulse: {
               distance: 150,
-              duration: 0.8,
+              duration: 0.7,
             },
           },
         },
@@ -75,9 +75,9 @@ const ParticlesBack = () => {
           number: {
             density: {
               enable: true,
-              area: 1400,
+              area: 1200,
             },
-            value: 60,
+            value: 40,
           },
           opacity: {
             value: 0.7,

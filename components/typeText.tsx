@@ -2,20 +2,26 @@
 import React, { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { generateSpans } from "./GenerateSpans";
+import { generateSpanType } from "@/app/common.types";
 
 type TypingTextProps = {
   text: string;
   _code?: boolean;
   textClass?: string;
   delay?: number;
+  generateSpan?: boolean;
 };
 
-const TypingText: React.FC<TypingTextProps> = ({
+const TypingText = ({
   text,
   _code = true,
   textClass = "text",
   delay = 0,
-}) => {
+  generateSpan = false,
+  colorType,
+  randomCount,
+}: TypingTextProps & generateSpanType) => {
   const [displayText, setDisplayText] = useState("");
   const [isDelayed, setIsDelayed] = useState(false);
 
@@ -61,6 +67,14 @@ const TypingText: React.FC<TypingTextProps> = ({
         >
           {displayText}
         </SyntaxHighlighter>
+      ) : generateSpan ? (
+        <div className={textClass}>
+          {generateSpans({
+            text: displayText,
+            colorType: colorType,
+            randomCount: randomCount,
+          })}
+        </div>
       ) : (
         <div className={textClass}>{displayText}</div>
       )}

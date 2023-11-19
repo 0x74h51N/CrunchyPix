@@ -9,7 +9,7 @@ export type SectionData = {
   auto?: boolean;
 };
 
-export type SocialIcons = {
+export type SocialIconsType = {
   title: string;
   url: string;
   icon: React.ReactNode;
@@ -38,4 +38,29 @@ export type RobustSection = {
   description: string;
   icon?: React.ReactNode;
   index?: number;
+};
+
+export type ColorPacks = {
+  [key: string]: string[];
+};
+
+export type ColorType = keyof ColorPacks;
+
+export type generateSpanType = {
+  text: string;
+  colorType?: ColorType;
+  randomCount?: number;
+};
+
+export type ColorfulHoverType = {
+  char?: string;
+  icon?: React.ReactNode;
+  initial?: any;
+  style?: React.CSSProperties;
+  className?: string;
+  key?: string | number;
+  span?: boolean;
+  onClick?: () => void;
+  _colorType?: ColorType;
+  randomCount?: number;
 };

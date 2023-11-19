@@ -1,7 +1,12 @@
-import { useAnimation, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ColorfulHover } from "./ColorfulHover";
+import { generateSpanType } from "@/app/common.types";
 
-export const generateSpans = (text: string) => {
+export const generateSpans = ({
+  text,
+  colorType,
+  randomCount,
+}: generateSpanType) => {
   const spans = [];
   let currentSpan = [];
 
@@ -13,7 +18,13 @@ export const generateSpans = (text: string) => {
         spans.push(
           <motion.span className="whitespace-normal inline-block cursor-pointer">
             {currentSpan.map((char, index) => (
-              <ColorfulHover key={index} char={char} span={true} />
+              <ColorfulHover
+                key={index}
+                char={char}
+                span={true}
+                _colorType={colorType}
+                randomCount={randomCount}
+              />
             ))}
           </motion.span>
         );
@@ -29,7 +40,13 @@ export const generateSpans = (text: string) => {
     spans.push(
       <motion.span className="whitespace-nowrap cursor-pointer">
         {currentSpan.map((char, index) => (
-          <ColorfulHover key={index} char={char} span={true} />
+          <ColorfulHover
+            key={index}
+            char={char}
+            span={true}
+            _colorType={colorType}
+            randomCount={randomCount}
+          />
         ))}
       </motion.span>
     );
