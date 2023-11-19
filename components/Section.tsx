@@ -44,7 +44,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             viewport={{ once: true, amount: 0.25 }}
             key={index}
             ref={sectionRefs[index]}
-            className={`${section.className} h-auto flex items-center justify-center overflow-hidden`}
+            className={`${section.className} h-auto w-screen flex items-center justify-center overflow-hidden`}
           >
             {section.children}
           </motion.section>
