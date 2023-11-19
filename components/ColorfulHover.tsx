@@ -1,16 +1,7 @@
+import { ColorfulHoverType } from "@/app/common.types";
+import { getRandomColor } from "@/utils/getRandomColor";
 import { useAnimation, motion } from "framer-motion";
 import { useState, useEffect } from "react";
-
-type ColorfulHover = {
-  char?: string;
-  icon?: React.ReactNode;
-  initial?: any;
-  style?: React.CSSProperties;
-  className?: string;
-  key?: string | number;
-  span?: boolean;
-  onClick?: () => void;
-};
 
 export const ColorfulHover = ({
   char,
@@ -21,22 +12,11 @@ export const ColorfulHover = ({
   key,
   span,
   onClick,
-}: ColorfulHover) => {
+  _colorType = "themeColors",
+  randomCount = 6,
+}: ColorfulHoverType) => {
   const controls = useAnimation();
   const [isHovered, setIsHovered] = useState(false);
-
-  const getRandomColor = () => {
-    const colors = [
-      "#E40303",
-      "#FF8C00",
-      "#FFED00",
-      "#008026",
-      "#004DFF",
-      "#750787",
-    ];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  };
 
   const handleHover = () => {
     setIsHovered(!isHovered);
@@ -44,12 +24,17 @@ export const ColorfulHover = ({
 
   useEffect(() => {
     controls.start({
-      color: isHovered ? getRandomColor() : "#dfd9ff",
+      color: isHovered
+        ? getRandomColor(
+            _colorType === "random"
+              ? { colorType: "random", randomCount: randomCount }
+              : { colorType: _colorType }
+          )
+        : "#dfd9ff",
       scale: isHovered ? 1.2 : 1,
       transition: { duration: isHovered ? 0.2 : 3 },
     });
-  }, [isHovered, controls]);
-
+  }, [isHovered, controls, _colorType]);
   if (span) {
     return (
       <motion.span
