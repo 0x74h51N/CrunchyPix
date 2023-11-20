@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ColorfulHover } from "./ColorfulHover";
 import { ColorfulHoverType, SocialIconsType } from "@/app/common.types";
-import { socialIcons } from "@/constants";
 
 type SocialIconProp = {
   iconPack: SocialIconsType[];
@@ -34,7 +33,7 @@ export const SocialIcons = ({
 
   const responsiveFactor = 0.5;
   const iconRadiusRatio = 0.5;
-  const minScreenWidthForCircle = 1020;
+  const minScreenWidthForCircle = 1028;
   const maxScreenWidthForSmallIcons = 620;
   const maxIconRadius = 420;
   const isCircularLayout = windowSize.width >= minScreenWidthForCircle;
@@ -45,25 +44,25 @@ export const SocialIcons = ({
     : 0;
 
   iconRadius = Math.min(iconRadius, maxIconRadius);
-  const startingHeight = 250;
+  const startingHeight = isMobile ? (window.innerHeight / 5) * 3 : 250;
 
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
   const handleIconClick = (url: string) => {
     window.open(url, "_blank");
   };
-
+  const iconList = isCircularLayout ? iconPack : [...iconPack].reverse();
   return (
     <>
-      {iconPack.map((icon: any, index: number) => {
+      {iconList.map((icon: any, index: number) => {
         const angle = index * angleIncrement;
         const x = isCircularLayout
-          ? iconRadius * Math.cos(angle) + windowSize.width / 2
+          ? iconRadius * Math.cos(angle) + windowSize.width / 2.1
           : isMobile
           ? windowSize.width - 50
           : windowSize.width - windowSize.width / 4;
         const y = isCircularLayout
-          ? -iconRadius * Math.sin(angle) + windowSize.height / 2
+          ? -iconRadius * Math.sin(angle) + windowSize.height / 1.8
           : startingHeight + index * 30;
         const fontSize = isMobile ? "35px" : "50px";
 

@@ -35,6 +35,7 @@ export const sectionsData: SectionData[] = [
   {
     name: "Landing Section",
     children: <LandingSect />,
+    smoothScroll: false,
   },
   {
     name: "About Me",

@@ -7,6 +7,7 @@ import { generateSpanType } from "@/app/common.types";
 
 type TypingTextProps = {
   text: string;
+  duration?: number;
   _code?: boolean;
   textClass?: string;
   delay?: number;
@@ -15,6 +16,7 @@ type TypingTextProps = {
 
 const TypingText = ({
   text,
+  duration = 50,
   _code = true,
   textClass = "text",
   delay = 0,
@@ -37,7 +39,7 @@ const TypingText = ({
       } else {
         clearInterval(typingInterval);
       }
-    }, 100);
+    }, duration);
 
     return () => {
       clearInterval(typingInterval);

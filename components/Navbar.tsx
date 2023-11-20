@@ -107,7 +107,7 @@ export const Navbar = () => {
                   <TypingText
                     text="Pix"
                     _code={false}
-                    delay={800}
+                    delay={500}
                     textClass={`logo_text color ${
                       specialPages.includes(selectedLink) || isMobile
                         ? "small"

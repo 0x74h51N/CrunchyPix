@@ -7,6 +7,7 @@ export const handleScroll = ({
   sectionsData,
   sectionRefs,
   setCurrentSectionIndex,
+  smoothScroll = true,
 }: HandleScroll) => {
   const scrollDirection = event.deltaY > 0 ? "down" : "up";
 
@@ -28,11 +29,15 @@ export const handleScroll = ({
     if (!currentSectionBottom && !nextSectionTop) {
       event.preventDefault();
     } else {
-      scrollToSection(
-        currentSectionIndex + 1,
-        sectionRefs,
-        setCurrentSectionIndex
-      );
+      if (smoothScroll) {
+        scrollToSection(
+          currentSectionIndex + 1,
+          sectionRefs,
+          setCurrentSectionIndex
+        );
+      } else {
+        setCurrentSectionIndex(currentSectionIndex + 1);
+      }
     }
   }
 
@@ -49,11 +54,15 @@ export const handleScroll = ({
     if (!currentSectionTop && !prevSectionBottom) {
       event.preventDefault();
     } else {
-      scrollToSection(
-        currentSectionIndex - 1,
-        sectionRefs,
-        setCurrentSectionIndex
-      );
+      if (smoothScroll) {
+        scrollToSection(
+          currentSectionIndex - 1,
+          sectionRefs,
+          setCurrentSectionIndex
+        );
+      } else {
+        setCurrentSectionIndex(currentSectionIndex - 1);
+      }
     }
   }
 };

@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         "nav-border": "#EBEAEA",
         "back-col": "#ffffff",
-        "nav-col": "#050816",
+        "nav-col": "#2a2a2a",
         "log-col": "#eeb30d",
         "gra-blue": "#3f4183",
         "gra-black": "#050816",
@@ -28,7 +28,7 @@ module.exports = {
       },
       boxShadow: {
         menu: "0px 159px 95px rgba(13,12,34,0.01), 0px 71px 71px rgba(13,12,34,0.02), 0px 18px 39px rgba(13,12,34,0.02), 0px 0px 0px rgba(13,12,34,0.02)",
-        card: "0px 35px 120px -15px #211e35",
+        card: "0px 15px 12px -15px #211e35",
       },
       screens: {
         xs: "400px",
