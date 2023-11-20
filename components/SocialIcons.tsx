@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { ColorfulHover } from "./ColorfulHover";
 import { ColorfulHoverType, SocialIconsType } from "@/app/common.types";
-import { socialIcons } from "@/constants";
 
 type SocialIconProp = {
   iconPack: SocialIconsType[];
@@ -52,10 +51,10 @@ export const SocialIcons = ({
   const handleIconClick = (url: string) => {
     window.open(url, "_blank");
   };
-
+  const iconList = isCircularLayout ? iconPack : [...iconPack].reverse();
   return (
     <>
-      {iconPack.map((icon: any, index: number) => {
+      {iconList.map((icon: any, index: number) => {
         const angle = index * angleIncrement;
         const x = isCircularLayout
           ? iconRadius * Math.cos(angle) + windowSize.width / 2
@@ -63,7 +62,7 @@ export const SocialIcons = ({
           ? windowSize.width - 50
           : windowSize.width - windowSize.width / 4;
         const y = isCircularLayout
-          ? -iconRadius * Math.sin(angle) + windowSize.height / 2
+          ? -iconRadius * Math.sin(angle) + windowSize.height / 1.8
           : startingHeight + index * 30;
         const fontSize = isMobile ? "35px" : "50px";
 

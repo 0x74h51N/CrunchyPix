@@ -34,31 +34,39 @@ const LandingSect = () => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
+
+  const containerStyle = {
+    backgroundImage: `url(/backy.jpg)`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
   return (
-    <div className="anaDiv flex flex-center justify-center h-full min-h-screen w-screen relative">
-      <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center z-10 ">
-        <Tilt
+    <div
+      className="anaDiv flex flex-center justify-center h-full min-h-screen w-screen relative"
+      style={containerStyle}
+    >
+      <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-10 ">
+        {/* <Tilt
           options={{
             transition: true,
             speed: 50,
             scale: 1.05,
             max: 25,
           }}
-        >
-          <ColorfulBorder className="rounded-[100px] max-sm:rounded-[60px]">
-            <Image
-              src="/head.png"
-              alt="Photo"
-              layout="filled"
-              width={320}
-              height={320}
-              objectFit="cover"
-              loading="eager"
-              className="object-center rounded-[100px] bg-opacity-0 grayscale max-lg:w-[240px] max-sm:w-[200px] max-xs:w-[180px] max-sm:rounded-[60px] h-auto"
-            />
-          </ColorfulBorder>
-        </Tilt>
-        <div className="flex flex-col m-8 ">
+        > */}
+
+        <Image
+          src="/headColor.png"
+          alt="Photo"
+          layout="filled"
+          width={320}
+          height={320}
+          objectFit="cover"
+          loading="eager"
+          className="object-center bg-opacity-0 grayscale max-lg:w-[240px] max-sm:w-[200px] h-auto"
+        />
+        {/* </Tilt> */}
+        <div className="flex flex-col m-8 mt-28 max-lg:mt-0">
           <motion.div variants={textVariant(0)}>
             <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px]">
               <TypingText

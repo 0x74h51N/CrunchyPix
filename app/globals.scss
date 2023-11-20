@@ -12,11 +12,13 @@
 
 body {
   font-family: Inter;
-  background: radial-gradient(
-    circle,
-    theme("colors.gra-blue"),
-    theme("colors.gra-black")
-  );
+  background: black;
+
+  // background: radial-gradient(
+  //   circle,
+  //   theme("colors.gra-blue"),
+  //   theme("colors.gra-black")
+  // );
 }
 
 .gradiantBackbl {
@@ -70,7 +72,7 @@ body {
 
 /* Navbar */
 .navbar {
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(0px);
 }
 
 .navImage {
@@ -267,4 +269,10 @@ body {
 
 .grayscale:hover {
   filter: grayscale(0%);
+}
+
+@media (max-width: 1020px) {
+  .grayscale {
+    filter: grayscale(0%);
+  }
 }
