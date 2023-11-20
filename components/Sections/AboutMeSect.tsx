@@ -28,7 +28,7 @@ const AboutMeSect = () => {
     return null;
   }
   return (
-    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-screen max-w-[80vw] pt-14">
+    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-screen max-w-[80vw]">
       <div className="flex flex-col items-start w-full p-8 max-xs:px-2 pb-0">
         <motion.div variants={textVariant(0)}>
           <p className="text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
@@ -38,7 +38,6 @@ const AboutMeSect = () => {
             {t("introduction.title")}
           </h2>
         </motion.div>
-
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
           className="mt-4 text-white lg:text-[17px] text-[14px] max-w-3xl leading-[30px]"

@@ -20,6 +20,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         sectionsData,
         sectionRefs,
         setCurrentSectionIndex,
+        smoothScroll: sectionsData[currentSectionIndex].smoothScroll ?? true,
       });
     };
 

@@ -29,7 +29,7 @@ export const ColorfulBorder: React.FC<{
       style={
         {
           "--angle": "0deg",
-          "--border-color": "linear-gradient(var(--angle), #171717, #687aff)",
+          "--border-color": "linear-gradient(var(--angle), #000000, #687aff)",
           "--bg-color": "linear-gradient(#202020, #131219)",
         } as CSSProperties
       }

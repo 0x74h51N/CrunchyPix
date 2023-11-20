@@ -54,10 +54,12 @@ const MobileMenu = () => {
         onClick={toggleMenu}
       />
       <div
-        className={`mobile-menu w-full ${isMenuOpen ? "open" : ""} ${
+        className={`mobile-menu w-full backdrop-blur ${
+          isMenuOpen ? "open " : ""
+        } ${
           isScrolled || specialPages.includes(selectedLink)
             ? "mt-14 bg-nav-col"
-            : "mt-24"
+            : "mt-24 "
         }`}
       >
         {isMenuOpen && (

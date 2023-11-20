@@ -205,6 +205,11 @@ body {
 .rtl {
   direction: rtl;
 }
+@layer utilities {
+  .backdrop-blur {
+    backdrop-filter: blur(5px);
+  }
+}
 
 .mobile-menu {
   position: absolute;
@@ -217,7 +222,6 @@ body {
   padding-top: 0;
   padding-bottom: 0;
   z-index: 0;
-  backdrop-filter: blur(10px);
 }
 
 .mobile-menu.open {
@@ -259,7 +263,7 @@ body {
 }
 
 .contactBox {
-  @apply w-full rounded-md border border-transparent bg-zinc-500 py-3 px-6 text-base font-medium text-gray-100 outline-none;
+  @apply w-full rounded-md border border-transparent bg-nav-col py-3 px-6 text-base font-medium text-gray-100 outline-none;
 }
 
 .grayscale {
@@ -275,4 +279,16 @@ body {
   .grayscale {
     filter: grayscale(0%);
   }
+}
+
+.galata0 {
+  background-image: url("/galata0_.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.galata1 {
+  background-image: url("/galata1.png");
+  background-size: cover;
+  background-position: center;
 }

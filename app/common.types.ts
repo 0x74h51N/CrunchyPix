@@ -7,6 +7,7 @@ export type SectionData = {
   textStyle?: string;
   children?: React.ReactNode;
   auto?: boolean;
+  smoothScroll?: boolean | true;
 };
 
 export type SocialIconsType = {
@@ -21,6 +22,7 @@ export type HandleScroll = {
   sectionsData: SectionData[];
   sectionRefs: React.RefObject<HTMLDivElement>[];
   setCurrentSectionIndex: Dispatch<SetStateAction<number>>;
+  smoothScroll?: boolean;
 };
 
 export type slide = {
