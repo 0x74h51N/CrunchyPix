@@ -50,7 +50,7 @@ const LandingSect = () => {
               </p>
               <motion.p
                 variants={fadeIn("", "", 0.1, 1)}
-                className="mt-3 text-stone-200 lg:text-[18px] text-[15px] min-w-[219] leading-[30px] whitespace-pre-wrap"
+                className="mt-3 text-stone-100  lg:text-[19px] text-[18px] min-w-[219] leading-[12px] whitespace-pre-wrap"
               >
                 <TypingText
                   generateSpan={true}
