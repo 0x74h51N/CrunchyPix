@@ -26,7 +26,7 @@ const ParallaxImage = ({ imageSource, alt }: ParallaxImageType) => {
     <div>
       <motion.div
         style={{ y: offsetY * -1, height: "100%", width: "100%" }}
-        className={`absolute w-full h-full overflow-hidden ${imageSource}`}
+        className={`absolute w-full h-full overflow-hidden shadow-2xl shadow-black ${imageSource}`}
       ></motion.div>
     </div>
   );

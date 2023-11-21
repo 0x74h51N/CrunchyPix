@@ -291,4 +291,6 @@ body {
   background-image: url("/galata_1.png");
   background-size: cover;
   background-position: center;
+  -webkit-filter: drop-shadow(5px 5px 3px #141414);
+  filter: drop-shadow(5px 5px 3px #141414);
 }
