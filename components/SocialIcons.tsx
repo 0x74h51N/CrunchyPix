@@ -44,7 +44,7 @@ export const SocialIcons = ({
     : 0;
 
   iconRadius = Math.min(iconRadius, maxIconRadius);
-  const startingHeight = isMobile ? (window.innerHeight / 5) * 3 : 250;
+  const startingHeight = isMobile ? window.innerHeight / 4 : 150;
 
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;

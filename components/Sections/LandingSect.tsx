@@ -36,7 +36,7 @@ const LandingSect = () => {
   return (
     <>
       <div className="anaDiv flex flex-center justify-center h-full min-h-screen w-full relative galata0">
-        <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-10 pb-[165px]">
+        <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[165px]">
           <div className="flex flex-col m-8 max-lg:mt-0">
             <motion.div variants={textVariant(0)}>
               <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px]">
