@@ -34,12 +34,6 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
     };
   }, [currentSectionIndex, sectionRefs, sectionsData, setCurrentSectionIndex]);
 
-  useEffect(() => {
-    controls.start({
-      y: -scrollOffset * 1,
-    });
-  }, [scrollOffset, controls]);
-
   return (
     <ScrollProvider
       sectionRefs={sectionRefs}

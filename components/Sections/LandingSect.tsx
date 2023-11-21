@@ -19,6 +19,10 @@ const LandingSect = () => {
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
+  const screenHeight = useSelector(
+    (state: RootState) => state.screenHeight.height
+  );
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (i18n.isInitialized) {
@@ -35,8 +39,12 @@ const LandingSect = () => {
 
   return (
     <>
-      <div className="anaDiv flex flex-center justify-center h-full min-h-screen w-full relative galata0">
-        <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[165px]">
+      <div className="anaDiv flex flex-center justify-center h-auto min-h-[100svh] w-full relative galata0">
+        <div
+          className={`pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[165px] ${
+            screenHeight <= 500 ? "pb-0 z-40" : ""
+          }`}
+        >
           <div className="flex flex-col m-8 max-lg:mt-0">
             <motion.div variants={textVariant(0)}>
               <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px]">
@@ -95,9 +103,9 @@ const LandingSect = () => {
             </motion.div>
           </div>
         </div>
-        <div className="absolute inset-0 z-30 h-full w-full pointer-events-none">
+        {/* <div className="absolute inset-0 z-30 h-full w-full pointer-events-none">
           <ParticlesBack />
-        </div>
+        </div> */}
         <div className="absolute h-full w-full z-30 pointer-events-none">
           <ParallaxImage imageSource="galata1" alt="galata" />
         </div>
@@ -109,7 +117,9 @@ const LandingSect = () => {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           }}
           transition={{ delay: 2.5, duration: 1 }}
-          className="absolute bottom-0 right-0 h-full w-full pointer-events-none"
+          className={`absolute bottom-0 right-0 h-full w-full pointer-events-none ${
+            screenHeight <= 810 ? "z-30" : ""
+          } `}
         >
           <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />
         </motion.div>

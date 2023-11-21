@@ -2,35 +2,36 @@
 import { RootState } from "@/store";
 import { langChange, setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
-import { DropdownContext } from "@/context/DropdownContext";
 import { Links } from "@/constants";
+import { languageMenuChange } from "@/store/redux/isLanguageMenu";
 
 const LanguageMenu = () => {
+  const isDropdownOpen = useSelector(
+    (state: RootState) => state.isLanguageMenu.languageMenu
+  );
   const [isRotated, setIsRotated] = useState(false);
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
-  const { isDropdownOpen, setIsDropdownOpen } = useContext(DropdownContext)!;
   const [currentLanguage, setCurrentLanguage] = useState("");
-
   const specialPages = Links.filter((link) => link.href !== "/").map(
     (link) => link.href
   );
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
-
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const isScrolled = useSelector(
     (state: RootState) => state.isScrolled.scrolled
   );
 
   const handleToggleDropdown = () => {
     setIsRotated(!isRotated);
-    setIsDropdownOpen(!isDropdownOpen);
+    dispatch(languageMenuChange(!isDropdownOpen));
   };
 
   const handleChange = (selectedLanguage: string) => {
@@ -39,8 +40,7 @@ const LanguageMenu = () => {
     setCurrentLanguage(selectedLanguage);
     localStorage.setItem("selectedLanguage", selectedLanguage);
     setIsRotated(!isRotated);
-    setIsDropdownOpen(!isDropdownOpen);
-    console.log(selectedLanguage);
+    dispatch(languageMenuChange(!isDropdownOpen));
   };
 
   useEffect(() => {
@@ -62,11 +62,11 @@ const LanguageMenu = () => {
   }, []);
 
   useEffect(() => {
-    if (isMobile && isDropdownOpen) {
-      setIsDropdownOpen(false);
+    if ((isMobile || isTablet) && isDropdownOpen) {
+      dispatch(languageMenuChange(false));
       setIsRotated(false);
     }
-  }, [isMobile]);
+  }, [isMobile, isTablet]);
 
   useEffect(() => {
     const handleOutsideClick = (event: { target: any }) => {
@@ -76,7 +76,7 @@ const LanguageMenu = () => {
         isDropdownOpen
       ) {
         setIsRotated(false);
-        setIsDropdownOpen(!isDropdownOpen);
+        dispatch(languageMenuChange(!isDropdownOpen));
       }
     };
 
@@ -131,10 +131,10 @@ const LanguageMenu = () => {
             : "close"
         } ${
           isScrolled || specialPages.includes(selectedLink)
-            ? "mt-12 flex justify-center"
-            : isMobile
-            ? "mt-12 mr-2 flex justify-center"
-            : "  mt-24"
+            ? `mt-12 flex justify-center ${isMobile && "mt-8"}`
+            : isMobile || isTablet
+            ? "mt-8 mr-2 flex justify-center"
+            : "mt-24"
         } 
         `}
       >

@@ -1,19 +1,26 @@
 import { Links } from "@/constants";
 import Link from "next/link";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import BurgerButton from "./BurgerButton";
 import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
 import { RootState } from "@/store";
-import { useSelector } from "react-redux";
-import { DropdownContext } from "@/context/DropdownContext";
+import { useDispatch, useSelector } from "react-redux";
+import { mobileMenuChange } from "@/store/redux/isMobileMenu";
 
 const MobileMenu = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch = useDispatch();
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isMenuOpen = useSelector(
+    (state: RootState) => state.isMobileMenu.mobileMenu
+  );
   const menuRef = useRef<HTMLDivElement | null>(null);
-  const { isDropdownOpen } = useContext(DropdownContext)!;
+  const isDropdownOpen = useSelector(
+    (state: RootState) => state.isLanguageMenu.languageMenu
+  );
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    dispatch(mobileMenuChange(!isMenuOpen));
   };
   const specialPages = Links.filter((link) => link.href !== "/").map(
     (link) => link.href
@@ -25,6 +32,11 @@ const MobileMenu = () => {
     (state: RootState) => state.isScrolled.scrolled
   );
   const { t } = useTranslation(["translation"]);
+  useEffect(() => {
+    if (!isMobile || !isTablet) {
+      dispatch(mobileMenuChange(false));
+    }
+  }, [isMobile, isTablet]);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
@@ -33,7 +45,7 @@ const MobileMenu = () => {
         !menuRef.current.contains(event.target as Node) &&
         isDropdownOpen == false
       ) {
-        setIsMenuOpen(false);
+        dispatch(mobileMenuChange(false));
       }
     };
 
@@ -55,17 +67,15 @@ const MobileMenu = () => {
       />
       <div
         className={`mobile-menu w-full backdrop-blur ${
-          isMenuOpen ? "open " : ""
-        } ${
           isScrolled || specialPages.includes(selectedLink)
-            ? "mt-14 bg-nav-col"
+            ? "mt-20 "
             : "mt-24 "
         }`}
       >
         {isMenuOpen && (
           <div>
             <ul className="ul">
-              <div className="flex justify-end mr-14 mb-3">
+              <div className="flex justify-end mr-14 mb-3 z-50">
                 <LanguageMenu />
               </div>
               {Links.map((link) => (
@@ -77,7 +87,7 @@ const MobileMenu = () => {
                       selectedLink === link.href && link.href !== "/"
                         ? "text-log-col"
                         : "text-neutral-200"
-                    } w-20 block relative group py-2 rtl text-lg font-semibold text-right mr-14  antialiased ml-auto transition duration-500 ease-in-out  whitespace-nowrap`}
+                    } w-20 block relative group py-2 rtl text-lg font-semibold text-right mr-14  antialiased ml-auto transition duration-500 ease-in-out whitespace-nowrap`}
                   >
                     {t(link.text)}
                     <span
