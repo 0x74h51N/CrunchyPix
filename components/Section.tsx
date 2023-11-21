@@ -1,27 +1,30 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
 import { SectionData } from "@/app/common.types";
 import { staggerContainer } from "@/utils/motion";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { handleScroll } from "@/utils/handleScroll";
 import { ScrollProvider } from "@/context/ScrollContext";
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const sectionRefs = sectionsData.map(() =>
-    useRef<null | HTMLDivElement>(null)
+    useRef<any | HTMLDivElement>(null)
   );
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
+  const controls = useAnimation();
+  const [scrollOffset, setScrollOffset] = useState<number>(0);
 
   useEffect(() => {
     const handleScrollEvent = (event: WheelEvent) => {
+      const currentSection = sectionsData[currentSectionIndex];
       handleScroll({
         event,
         currentSectionIndex,
         sectionsData,
         sectionRefs,
         setCurrentSectionIndex,
-        smoothScroll: sectionsData[currentSectionIndex].smoothScroll ?? true,
+        smoothScroll: !currentSection.parallax ?? true,
       });
+      setScrollOffset(window.scrollY);
     };
 
     window.addEventListener("wheel", handleScrollEvent);
@@ -30,6 +33,12 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
       window.removeEventListener("wheel", handleScrollEvent);
     };
   }, [currentSectionIndex, sectionRefs, sectionsData, setCurrentSectionIndex]);
+
+  useEffect(() => {
+    controls.start({
+      y: -scrollOffset * 1,
+    });
+  }, [scrollOffset, controls]);
 
   return (
     <ScrollProvider
@@ -40,12 +49,18 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         {sectionsData.map((section, index) => (
           <motion.section
             variants={staggerContainer(0.2, 0.2)}
-            initial="hidden"
-            whileInView="show"
             viewport={{ once: true, amount: 0.25 }}
             key={index}
             ref={sectionRefs[index]}
-            className={`${section.className} h-auto w-screen flex items-center justify-center overflow-hidden`}
+            className={`
+              ${section.className} 
+              h-auto w-screen flex items-center justify-center overflow-hidden 
+              ${
+                section.parallax
+                  ? "sticky top-0 h-screen z-0 "
+                  : "bg-black relative"
+              } 
+            `}
           >
             {section.children}
           </motion.section>

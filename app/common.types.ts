@@ -6,8 +6,9 @@ export type SectionData = {
   image?: string;
   textStyle?: string;
   children?: React.ReactNode;
-  auto?: boolean;
-  smoothScroll?: boolean | true;
+  parallax?: boolean | false;
+  parallaxImageSrc?: string;
+  parallaxImageAlt?: string;
 };
 
 export type SocialIconsType = {

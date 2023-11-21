@@ -1,7 +1,6 @@
 "use client";
 import ParticlesBack from "../ParticlesBack/ParticlesBack";
 import ArrowButton from "../ArrowButton";
-import Image from "next/image";
 import { textVariant, fadeIn, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../GenerateSpans";
@@ -13,6 +12,7 @@ import { RootState } from "@/store";
 import { SocialIcons } from "../SocialIcons";
 import TypingText from "../typeText";
 import { socialIcons } from "@/constants";
+import ParallaxImage from "../ParallaxImage";
 
 const LandingSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -36,18 +36,8 @@ const LandingSect = () => {
   return (
     <>
       <div className="anaDiv flex flex-center justify-center h-full min-h-screen w-full relative galata0">
-        <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-10 ">
-          <Image
-            src="/headColor.png"
-            alt="Photo"
-            layout="filled"
-            width={320}
-            height={320}
-            objectFit="cover"
-            loading="eager"
-            className="object-center bg-opacity-0 grayscale max-lg:w-[240px] max-sm:w-[200px] h-auto"
-          />
-          <div className="flex flex-col m-8 mt-28 max-lg:mt-0">
+        <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-10 pb-[280px] max-lg:pl-0 max-lg:pr-20 pl-[200px]">
+          <div className="flex flex-col m-8 max-lg:mt-0">
             <motion.div variants={textVariant(0)}>
               <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px]">
                 <TypingText
@@ -97,17 +87,19 @@ const LandingSect = () => {
                 transition={{ delay: 2.2, duration: 0.5 }}
                 className="text-stone-200 font-black md:text-[55px] sm:text-[45px] xs:text-[30px] text-[20px]"
               >
-                {generateSpans({
+                {/* {generateSpans({
                   text: t("landing.title2"),
                   colorType: "vibrantColors",
-                })}
+                })} */}
               </motion.h2>
             </motion.div>
           </div>
         </div>
-        <div className="absolute h-full w-full galata1 z-0 pointer-events-none"></div>
-        <div className="absolute inset-0 z-0 h-full w-full">
+        <div className="absolute inset-0 z-40 h-full w-full">
           <ParticlesBack />
+        </div>
+        <div className="absolute h-full w-full z-30">
+          <ParallaxImage imageSource="galata1" alt="galata" />
         </div>
         <motion.div
           initial={{
@@ -121,7 +113,7 @@ const LandingSect = () => {
         >
           <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />
         </motion.div>
-        <div className="absolute bottom-0 w-full flex justify-center items-end z-30">
+        <div className="absolute bottom-0 w-full flex justify-center items-end z-50">
           <ArrowButton
             index={1}
             arrow={true}
