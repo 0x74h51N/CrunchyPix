@@ -9,11 +9,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import Image from "next/image";
+import { Tilt } from "react-tilt";
 
 const AboutMeSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
+  );
+  const isMobileRedux = useSelector(
+    (state: RootState) => state.isMobile.mobile
   );
   const dispatch = useDispatch();
   useEffect(() => {
@@ -59,7 +63,7 @@ const AboutMeSect = () => {
         </div>
       </div>
       <div className="flex flex-wrap gap-10">
-        <div className=" flex flex-wrap justify-center gap-10 w-full p-8 max-xs:px-2">
+        <div className=" flex flex-wrap justify-center gap-10 w-full p-8 max-xs:px-2 max-2xl:max-w-[700px]">
           {robustSections.map((section, index) => (
             <motion.div
               key={index}
@@ -67,7 +71,13 @@ const AboutMeSect = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: index * 0.3 }}
             >
-              <RobustSection {...section} />
+              {isMobileRedux ? (
+                <RobustSection {...section} />
+              ) : (
+                <Tilt>
+                  <RobustSection {...section} />
+                </Tilt>
+              )}
             </motion.div>
           ))}
         </div>

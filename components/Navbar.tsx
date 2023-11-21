@@ -11,10 +11,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { mobileChange } from "@/store/redux/isMobile";
 import { RootState } from "@/store";
 import { scrollChange } from "@/store/redux/isScrolled";
-import { DropdownProvider } from "@/context/DropdownContext";
+import { tabletChange } from "@/store/redux/isTablet";
+import { setScreenHeight } from "@/store/redux/screenHeight";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isMenuOpen = useSelector(
+    (state: RootState) => state.isMobileMenu.mobileMenu
+  );
   const specialPages = Links.filter((link) => link.href !== "/").map(
     (link) => link.href
   );
@@ -45,10 +50,15 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 1024) {
+      dispatch(setScreenHeight(window.innerHeight));
+      const windowWidth = window.innerWidth;
+      if (windowWidth <= 768) {
         dispatch(mobileChange(true));
+      } else if (windowWidth > 768 && windowWidth <= 1030) {
+        dispatch(tabletChange(true));
       } else {
         dispatch(mobileChange(false));
+        dispatch(tabletChange(false));
       }
     };
 
@@ -61,121 +71,131 @@ export const Navbar = () => {
   }, [dispatch]);
 
   return (
-    <DropdownProvider>
-      <nav
-        className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50 gap-4 transition-all duration-1000 ease-in-out pointer-events-none ${
-          isScrolled || specialPages.includes(selectedLink)
-            ? "bg-opacity-100 py-2 px-10"
-            : "py-5 px-10"
-        }`}
-      >
-        <div className="flex flex-row ">
-          <Link href="/">
-            <div className="flex flex-row items-center pointer-events-auto">
-              <div>
-                <Image
-                  src={"/logo_leftw.svg"}
-                  width={
-                    isScrolled || specialPages.includes(selectedLink)
-                      ? 12.5
-                      : isMobile
-                      ? 18.5
-                      : 32.5
-                  }
-                  height={100}
-                  alt="Flexible"
-                  loading="lazy"
-                  className={`${
-                    isScrolled || specialPages.includes(selectedLink)
-                      ? ""
-                      : "navImage"
-                  } transition-all duration-700 ease-in-out`}
-                />
-              </div>
-
-              {isScrolled ? null : (
-                <>
-                  <TypingText
-                    text="Crunchy"
-                    _code={false}
-                    textClass={`logo_text ${
-                      specialPages.includes(selectedLink) || isMobile
-                        ? "small"
-                        : ""
-                    }`}
-                  />
-                  <TypingText
-                    text="Pix"
-                    _code={false}
-                    delay={500}
-                    textClass={`logo_text color ${
-                      specialPages.includes(selectedLink) || isMobile
-                        ? "small"
-                        : ""
-                    }`}
-                  />
-                </>
-              )}
-
-              <div>
-                <Image
-                  src={"logo_right.svg"}
-                  width={
-                    isScrolled || specialPages.includes(selectedLink)
-                      ? 20
-                      : isMobile
-                      ? 28
-                      : 50
-                  }
-                  height={100}
-                  alt="Flexible"
-                  loading="lazy"
-                  className={`${
-                    isScrolled ? "" : "navImage"
-                  } transition-all duration-700 ease-in-out`}
-                />
-              </div>
+    <nav
+      className={` fleBetween fixed w-full top-0 z-50 gap-4 transition-all duration-1000 ease-in-out pointer-events-none ${
+        isMenuOpen
+          ? `navbar pointer-events-auto h-[360px] py-5 px-10 ${
+              isScrolled && "h-[320px] bg-opacity-100 py-2 px-10  bg-nav-col"
+            }`
+          : isScrolled || specialPages.includes(selectedLink)
+          ? "bg-opacity-100 py-2 px-10  bg-nav-col h-[60px]"
+          : "py-5 px-10"
+      }`}
+    >
+      <div className="flex flex-row ">
+        <Link href="/">
+          <div className="flex flex-row items-center pointer-events-auto">
+            <div>
+              <Image
+                src={"/logo_leftw.svg"}
+                width={
+                  isScrolled || specialPages.includes(selectedLink)
+                    ? 12.5
+                    : isMobile
+                    ? 18.5
+                    : isTablet
+                    ? 27.5
+                    : 32.5
+                }
+                height={100}
+                alt="Flexible"
+                loading="lazy"
+                className={`${
+                  isScrolled || specialPages.includes(selectedLink)
+                    ? ""
+                    : "navImage"
+                } transition-all duration-700 ease-in-out`}
+              />
             </div>
-          </Link>
-          <div className="flex flex-center items-center ml-auto pointer-events-auto">
-            {isMobile ? (
-              <MobileMenu />
-            ) : (
-              <div>
-                <ul
-                  className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all duration-1000 ease-in-out ${
-                    isScrolled || specialPages.includes(selectedLink)
-                      ? "text-md font-medium gap-8"
-                      : "text-lg font-semibold"
-                  }  text-stone-200 antialiased gap-12 `}
-                >
-                  {Links.map((link) => (
-                    <Link
-                      href={link.href}
-                      key={link.key}
-                      className={`hover:text-log-col hover:scale-110 ${
-                        selectedLink === link.href && link.href !== "/"
-                          ? "text-log-col"
-                          : ""
-                      } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap`}
-                    >
-                      {t(link.text)}
-                      <span
-                        className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
-                          selectedLink === link.href && link.href !== "/"
-                            ? "w-full"
-                            : "w-0 transition-all group-hover:w-full"
-                        }`}
-                      ></span>
-                    </Link>
-                  ))}
-                  <LanguageMenu />
-                </ul>
-              </div>
+
+            {isScrolled ? null : (
+              <>
+                <TypingText
+                  text="Crunchy"
+                  _code={false}
+                  textClass={`logo_text ${
+                    specialPages.includes(selectedLink) || isMobile
+                      ? "small"
+                      : isTablet
+                      ? "medium"
+                      : ""
+                  }`}
+                />
+                <TypingText
+                  text="Pix"
+                  _code={false}
+                  delay={500}
+                  textClass={`logo_text color ${
+                    specialPages.includes(selectedLink) || isMobile
+                      ? "small"
+                      : isTablet
+                      ? "medium"
+                      : ""
+                  }`}
+                />
+              </>
             )}
+
+            <div>
+              <Image
+                src={"logo_right.svg"}
+                width={
+                  isScrolled || specialPages.includes(selectedLink)
+                    ? 20
+                    : isMobile
+                    ? 28
+                    : isTablet
+                    ? 40
+                    : 50
+                }
+                height={100}
+                alt="Flexible"
+                loading="lazy"
+                className={`${
+                  isScrolled ? "" : "navImage"
+                } transition-all duration-700 ease-in-out`}
+              />
+            </div>
           </div>
+        </Link>
+        <div className="flex flex-center items-center ml-auto pointer-events-auto">
+          {isMobile || isTablet ? (
+            <MobileMenu />
+          ) : (
+            <div>
+              <ul
+                className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all duration-1000 ease-in-out ${
+                  isScrolled || specialPages.includes(selectedLink)
+                    ? "text-md font-medium gap-8"
+                    : "text-lg font-semibold"
+                }  text-stone-200 antialiased gap-12 `}
+              >
+                {Links.map((link) => (
+                  <Link
+                    href={link.href}
+                    key={link.key}
+                    className={`hover:text-log-col hover:scale-110 ${
+                      selectedLink === link.href && link.href !== "/"
+                        ? "text-log-col"
+                        : ""
+                    } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap`}
+                  >
+                    {t(link.text)}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
+                        selectedLink === link.href && link.href !== "/"
+                          ? "w-full"
+                          : "w-0 transition-all group-hover:w-full"
+                      }`}
+                    ></span>
+                  </Link>
+                ))}
+                <LanguageMenu />
+              </ul>
+            </div>
+          )}
         </div>
-      </nav>
-    </DropdownProvider>
+      </div>
+    </nav>
   );
 };

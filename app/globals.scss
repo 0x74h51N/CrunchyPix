@@ -72,7 +72,7 @@ body {
 
 /* Navbar */
 .navbar {
-  backdrop-filter: blur(0px);
+  backdrop-filter: blur(5px);
 }
 
 .navImage {
@@ -173,6 +173,13 @@ body {
 .logo_text.color {
   color: #eeb30d;
 }
+
+.logo_text.medium {
+  font-size: 40px;
+  margin-top: 6px;
+  @apply hover:text-[45px];
+}
+
 .logo_text.small {
   font-size: 30px;
   margin-top: 5px;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { ColorfulHover } from "./ColorfulHover";
 import { ColorfulHoverType, SocialIconsType } from "@/app/common.types";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 type SocialIconProp = {
   iconPack: SocialIconsType[];
@@ -15,7 +17,9 @@ export const SocialIcons = ({
     width: window.innerWidth,
     height: window.innerHeight,
   });
-
+  const screenHeight = useSelector(
+    (state: RootState) => state.screenHeight.height
+  );
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -44,7 +48,8 @@ export const SocialIcons = ({
     : 0;
 
   iconRadius = Math.min(iconRadius, maxIconRadius);
-  const startingHeight = isMobile ? window.innerHeight / 4 : 150;
+  const startingHeight =
+    isMobile || screenHeight <= 500 ? window.innerHeight / 4 : 150;
 
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
@@ -64,7 +69,7 @@ export const SocialIcons = ({
         const y = isCircularLayout
           ? -iconRadius * Math.sin(angle) + windowSize.height / 2.2
           : startingHeight + index * 30;
-        const fontSize = isMobile ? "35px" : "50px";
+        const fontSize = isMobile || screenHeight <= 500 ? "35px" : "50px";
 
         const iconStyle = { x, y, fontSize };
         return (
