@@ -35,18 +35,19 @@ export const sectionsData: SectionData[] = [
   {
     name: "Landing Section",
     children: <LandingSect />,
-    smoothScroll: false,
+    parallax: true,
   },
   {
     name: "About Me",
     children: <AboutMeSect />,
-    auto: true,
+    parallax: false,
   },
   {
     name: "Portfolio",
     children: <PortfolioSect />,
+    parallax: false,
   },
-  { name: "Contact", className: "h-auto" },
+  { name: "contact" },
 ];
 
 export const socialIcons: SocialIconsType[] = [
