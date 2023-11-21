@@ -57,12 +57,12 @@ export const SocialIcons = ({
       {iconList.map((icon: any, index: number) => {
         const angle = index * angleIncrement;
         const x = isCircularLayout
-          ? iconRadius * Math.cos(angle) + windowSize.width / 2
+          ? iconRadius * Math.cos(angle) + windowSize.width / 2.35
           : isMobile
           ? windowSize.width - 50
           : windowSize.width - windowSize.width / 4;
         const y = isCircularLayout
-          ? -iconRadius * Math.sin(angle) + windowSize.height / 2.6
+          ? -iconRadius * Math.sin(angle) + windowSize.height / 2.2
           : startingHeight + index * 30;
         const fontSize = isMobile ? "35px" : "50px";
 

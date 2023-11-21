@@ -16,7 +16,7 @@ export const generateSpans = ({
     if (char === " ") {
       if (currentSpan.length > 0) {
         spans.push(
-          <motion.span className="whitespace-normal inline-block cursor-pointer">
+          <motion.span className="whitespace-normal inline-block cursor-pointer ">
             {currentSpan.map((char, index) => (
               <ColorfulHover
                 key={index}
