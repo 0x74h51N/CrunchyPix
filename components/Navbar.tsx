@@ -63,7 +63,7 @@ export const Navbar = () => {
   return (
     <DropdownProvider>
       <nav
-        className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50 gap-4 transition-all duration-1000 ease-in-out ${
+        className={`bg-opacity-0 bg-nav-col fleBetween navbar fixed w-full top-0 z-50 gap-4 transition-all duration-1000 ease-in-out pointer-events-none ${
           isScrolled || specialPages.includes(selectedLink)
             ? "bg-opacity-100 py-2 px-10"
             : "py-5 px-10"
@@ -71,7 +71,7 @@ export const Navbar = () => {
       >
         <div className="flex flex-row ">
           <Link href="/">
-            <div className="flex flex-row items-center">
+            <div className="flex flex-row items-center pointer-events-auto">
               <div>
                 <Image
                   src={"/logo_leftw.svg"}
@@ -137,7 +137,7 @@ export const Navbar = () => {
               </div>
             </div>
           </Link>
-          <div className="flex flex-center items-center ml-auto">
+          <div className="flex flex-center items-center ml-auto pointer-events-auto">
             {isMobile ? (
               <MobileMenu />
             ) : (

@@ -36,7 +36,7 @@ const LandingSect = () => {
   return (
     <>
       <div className="anaDiv flex flex-center justify-center h-full min-h-screen w-full relative galata0">
-        <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-10 pb-[280px] max-lg:pl-0 max-lg:pr-20 pl-[200px]">
+        <div className=" h-auto w-auto pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[165px]">
           <div className="flex flex-col m-8 max-lg:mt-0">
             <motion.div variants={textVariant(0)}>
               <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px]">
@@ -50,7 +50,7 @@ const LandingSect = () => {
               </p>
               <motion.p
                 variants={fadeIn("", "", 0.1, 1)}
-                className="mt-3 text-stone-200 lg:text-[18px] text-[15px] min-w-[219] leading-[30px] whitespace-pre-wrap"
+                className="mt-3 text-stone-100  lg:text-[19px] text-[18px] min-w-[219] leading-[12px] whitespace-pre-wrap"
               >
                 <TypingText
                   generateSpan={true}
@@ -95,10 +95,10 @@ const LandingSect = () => {
             </motion.div>
           </div>
         </div>
-        <div className="absolute inset-0 z-40 h-full w-full">
+        <div className="absolute inset-0 z-30 h-full w-full pointer-events-none">
           <ParticlesBack />
         </div>
-        <div className="absolute h-full w-full z-30">
+        <div className="absolute h-full w-full z-30 pointer-events-none">
           <ParallaxImage imageSource="galata1" alt="galata" />
         </div>
         <motion.div
@@ -109,7 +109,7 @@ const LandingSect = () => {
             clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
           }}
           transition={{ delay: 2.5, duration: 1 }}
-          className="absolute bottom-0 right-0 z-10 h-full w-full pointer-events-none"
+          className="absolute bottom-0 right-0 h-full w-full pointer-events-none"
         >
           <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />
         </motion.div>
