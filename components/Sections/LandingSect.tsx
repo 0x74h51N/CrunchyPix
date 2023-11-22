@@ -37,7 +37,7 @@ const LandingSect = () => {
 
   return (
     <>
-      <div className="anaDiv flex flex-center justify-center h-auto min-h-screen w-full relative">
+      <div className="anaDiv flex flex-center justify-center h-auto min-h-full w-full relative">
         <div
           className={`pt-10 flex flex-row max-lg:flex-col m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[160px] ${
             screenHeight <= 500 ? "pb-0 z-40" : ""
