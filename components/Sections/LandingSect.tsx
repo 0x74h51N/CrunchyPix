@@ -57,7 +57,7 @@ const LandingSect = () => {
               </p>
               <motion.p
                 variants={fadeIn("", "", 0.1, 1)}
-                className="mt-3 text-stone-100  lg:text-[19px] text-[18px] min-w-[219] leading-[12px] whitespace-pre-wrap"
+                className="mt-3 text-stone-100  lg:text-[19px] text-[18px] min-w-[219] leading-[25px] whitespace-pre-wrap"
               >
                 <TypingText
                   generateSpan={true}
@@ -112,7 +112,7 @@ const LandingSect = () => {
           }}
           transition={{ delay: 2.5, duration: 1 }}
           className={`absolute bottom-0 right-0 h-full w-full pointer-events-none ${
-            screenHeight <= 810 ? "z-30" : ""
+            screenHeight <= 670 ? "z-30" : ""
           } `}
         >
           <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />
