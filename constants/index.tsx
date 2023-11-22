@@ -19,9 +19,6 @@ import {
 } from "react-icons/fa";
 import { codeString } from "./codeString";
 import TypingText from "@/components/typeText";
-import AboutMeSect from "@/components/Sections/AboutMeSect";
-import LandingSect from "@/components/Sections/LandingSect";
-import PortfolioSect from "@/components/Sections/PortfolioSect";
 
 export const Links = [
   { href: "/", key: "Home", text: "links.Home" },
@@ -29,25 +26,6 @@ export const Links = [
   { href: "/services", key: "Services", text: "links.Services" },
   { href: "/about", key: "About", text: "links.About" },
   { href: "/contact", key: "Contact", text: "links.Contact" },
-];
-
-export const sectionsData: SectionData[] = [
-  {
-    name: "Landing Section",
-    children: <LandingSect />,
-    parallax: true,
-  },
-  {
-    name: "About Me",
-    children: <AboutMeSect />,
-    parallax: false,
-  },
-  {
-    name: "Portfolio",
-    children: <PortfolioSect />,
-    parallax: false,
-  },
-  { name: "contact" },
 ];
 
 export const socialIcons: SocialIconsType[] = [

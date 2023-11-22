@@ -9,6 +9,8 @@ export type SectionData = {
   parallax?: boolean | false;
   parallaxImageSrc?: string;
   parallaxImageAlt?: string;
+  background?: string;
+  topImage?: string;
 };
 
 export type SocialIconsType = {
