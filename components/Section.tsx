@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useState } from "react";
 import { SectionData } from "@/app/common.types";
 import { staggerContainer } from "@/utils/motion";
@@ -48,7 +49,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             ref={sectionRefs[index]}
             className={`
       ${section.className} 
-      h-auto min-h-[100svh] w-screen flex items-center justify-center overflow-visible 
+      h-auto min-h-[100svh] w-screen min-w-[350px] flex items-center justify-center overflow-visible 
       ${section.parallax ? "sticky top-0 h-screen z-0 " : "bg-black relative"} 
     `}
           >
@@ -60,7 +61,9 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   top: 0,
                   left: 0,
                   width: "100vw",
-                  height: "100svh",
+                  height: "auto",
+                  minHeight: "100svh",
+                  minWidth: "350px",
                   zIndex: 0,
                   pointerEvents: "none",
                 }}
@@ -86,7 +89,9 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   top: 0,
                   left: 0,
                   width: "100vw",
-                  height: "100svh",
+                  height: "auto",
+                  minHeight: "100svh",
+                  minWidth: "350px",
                   zIndex: 10,
                   pointerEvents: "none",
                 }}

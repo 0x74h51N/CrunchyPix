@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import ArrowButton from "../ArrowButton";
 import { textVariant, fadeIn, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
@@ -38,15 +37,15 @@ const LandingSect = () => {
 
   return (
     <>
-      <div className="anaDiv flex flex-center justify-center h-auto min-h-screen w-full relative overflow-hidden">
+      <div className="anaDiv flex flex-center justify-center h-auto min-h-screen w-full relative">
         <div
-          className={`pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[165px] ${
+          className={`pt-10 flex flex-row max-lg:flex-col m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[160px] ${
             screenHeight <= 500 ? "pb-0 z-40" : ""
           }`}
         >
-          <div className="flex flex-col m-8 max-lg:mt-0">
+          <div className="flex flex-col text-right">
             <motion.div variants={textVariant(0)}>
-              <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px]">
+              <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px] ">
                 <TypingText
                   generateSpan={true}
                   _code={false}
@@ -55,7 +54,7 @@ const LandingSect = () => {
                   colorType="vibrantColors"
                 />
               </p>
-              <motion.p
+              <motion.div
                 variants={fadeIn("", "", 0.1, 1)}
                 className="mt-3 text-stone-100  lg:text-[19px] text-[18px] min-w-[219] leading-[25px] whitespace-pre-wrap"
               >
@@ -67,38 +66,19 @@ const LandingSect = () => {
                   colorType="vibrantColors"
                   delay={500}
                 />
-              </motion.p>
+              </motion.div>
 
               <motion.h1
-                initial={{
-                  clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-                }}
-                animate={{
-                  clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-                }}
-                transition={{ delay: 2.2, duration: 0.5 }}
-                className="text-stone-200 font-black md:text-[65x] sm:text-[55px] xs:text-[40px] text-[30px] max-w-2xl"
+                variants={slideIn("up", "spring", 2, 1.25)}
+                initial="hidden"
+                animate="show"
+                className="text-stone-200 font-black md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[60px]"
               >
                 {generateSpans({
                   text: t("landing.title"),
                   colorType: "vibrantColors",
                 })}
               </motion.h1>
-              <motion.h2
-                initial={{
-                  clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-                }}
-                animate={{
-                  clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-                }}
-                transition={{ delay: 2.2, duration: 0.5 }}
-                className="text-stone-200 font-black md:text-[55px] sm:text-[45px] xs:text-[30px] text-[20px]"
-              >
-                {/* {generateSpans({
-                  text: t("landing.title2"),
-                  colorType: "vibrantColors",
-                })} */}
-              </motion.h2>
             </motion.div>
           </div>
         </div>
@@ -112,7 +92,7 @@ const LandingSect = () => {
           }}
           transition={{ delay: 2.5, duration: 1 }}
           className={`absolute bottom-0 right-0 h-full w-full pointer-events-none ${
-            screenHeight <= 670 ? "z-30" : ""
+            screenHeight <= 750 ? "z-30" : ""
           } `}
         >
           <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />

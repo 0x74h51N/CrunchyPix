@@ -1,4 +1,3 @@
-"use client";
 import Section from "@/components/Section";
 import { SectionData } from "./common.types";
 import AboutMeSect from "@/components/Sections/AboutMeSect";
