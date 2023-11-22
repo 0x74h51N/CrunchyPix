@@ -18,10 +18,6 @@ const ParallaxImage = ({ imageSource, alt }: ParallaxImageType) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    controls.start({ y: offsetY * -1 });
-  }, [offsetY, controls]);
-
   return (
     <div>
       <motion.div

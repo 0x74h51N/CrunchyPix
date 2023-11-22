@@ -1,5 +1,5 @@
 "use client";
-import ParticlesBack from "../ParticlesBack/ParticlesBack";
+import Image from "next/image";
 import ArrowButton from "../ArrowButton";
 import { textVariant, fadeIn, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
@@ -12,7 +12,6 @@ import { RootState } from "@/store";
 import { SocialIcons } from "../SocialIcons";
 import TypingText from "../typeText";
 import { socialIcons } from "@/constants";
-import ParallaxImage from "../ParallaxImage";
 
 const LandingSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -39,7 +38,7 @@ const LandingSect = () => {
 
   return (
     <>
-      <div className="anaDiv flex flex-center justify-center h-auto min-h-[100svh] w-full relative galata0">
+      <div className="anaDiv flex flex-center justify-center h-auto min-h-screen w-full relative overflow-hidden">
         <div
           className={`pt-10 flex flex-row max-lg:flex-col lg:gap-0 gap-0 m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[165px] ${
             screenHeight <= 500 ? "pb-0 z-40" : ""
@@ -103,12 +102,7 @@ const LandingSect = () => {
             </motion.div>
           </div>
         </div>
-        {/* <div className="absolute inset-0 z-30 h-full w-full pointer-events-none">
-          <ParticlesBack />
-        </div> */}
-        <div className="absolute h-full w-full z-30 pointer-events-none">
-          <ParallaxImage imageSource="galata1" alt="galata" />
-        </div>
+
         <motion.div
           initial={{
             clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
