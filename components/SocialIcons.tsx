@@ -20,6 +20,9 @@ export const SocialIcons = ({
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height
   );
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -33,45 +36,52 @@ export const SocialIcons = ({
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [windowSize]);
-
+  }, [windowSize, setWindowSize, isMobile, isTablet]);
   const responsiveFactor = 0.5;
   const iconRadiusRatio = 0.5;
-  const minScreenWidthForCircle = 1028;
-  const maxScreenWidthForSmallIcons = 620;
   const maxIconRadius = 370;
-  const isCircularLayout = windowSize.width >= minScreenWidthForCircle;
-  const isMobile = windowSize.width <= maxScreenWidthForSmallIcons;
 
-  let iconRadius = isCircularLayout
-    ? Math.max(350, windowSize.width * responsiveFactor * iconRadiusRatio)
+  const iconRadius = isTablet
+    ? 0
+    : Math.max(
+        isMobile ? 300 : 350,
+        (windowSize.width * responsiveFactor * iconRadiusRatio) / 4
+      );
+  const startingHeight = isTablet
+    ? window.innerHeight / 4
+    : isMobile
+    ? window.innerHeight / 2
+    : windowSize.height <= 490
+    ? window.innerHeight / 5
     : 0;
-
-  iconRadius = Math.min(iconRadius, maxIconRadius);
-  const startingHeight =
-    isMobile || screenHeight <= 500 ? window.innerHeight / 4 : 150;
 
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
+
   const handleIconClick = (url: string) => {
     window.open(url, "_blank");
   };
-  const iconList = isCircularLayout ? iconPack : [...iconPack].reverse();
+
+  const iconList = isTablet ? [...iconPack].reverse() : iconPack;
+
   return (
     <>
       {iconList.map((icon: any, index: number) => {
         const angle = index * angleIncrement;
-        const x = isCircularLayout
-          ? iconRadius * Math.cos(angle) + windowSize.width / 2.35
-          : isMobile
-          ? windowSize.width - 50
-          : windowSize.width - windowSize.width / 4;
-        const y = isCircularLayout
-          ? -iconRadius * Math.sin(angle) + windowSize.height / 2.2
-          : startingHeight + index * 30;
+        const x =
+          !isTablet && !isMobile
+            ? iconRadius * Math.cos(angle) + windowSize.width / 2.35
+            : isMobile
+            ? windowSize.width - 60
+            : windowSize.width - windowSize.width / 4;
+        const y =
+          !isTablet && !isMobile
+            ? -iconRadius * Math.sin(angle) + windowSize.height / 2.2
+            : startingHeight + index * 30;
         const fontSize = isMobile || screenHeight <= 500 ? "35px" : "50px";
 
         const iconStyle = { x, y, fontSize };
+
         return (
           <ColorfulHover
             icon={icon.icon}

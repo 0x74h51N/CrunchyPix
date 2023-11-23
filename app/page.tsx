@@ -16,12 +16,10 @@ const Home = () => {
     {
       name: "About Me",
       children: <AboutMeSect />,
-      parallax: false,
     },
     {
       name: "Portfolio",
       children: <PortfolioSect />,
-      parallax: false,
     },
   ];
 

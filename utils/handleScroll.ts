@@ -8,7 +8,11 @@ export const handleScroll = ({
   sectionRefs,
   setCurrentSectionIndex,
   smoothScroll = true,
+  duration = 0,
 }: HandleScroll) => {
+  if (!event) {
+    return;
+  }
   const scrollDirection = event.deltaY > 0 ? "down" : "up";
 
   if (
@@ -32,6 +36,7 @@ export const handleScroll = ({
       if (smoothScroll) {
         scrollToSection(
           currentSectionIndex + 1,
+          duration,
           sectionRefs,
           setCurrentSectionIndex
         );
@@ -57,6 +62,7 @@ export const handleScroll = ({
       if (smoothScroll) {
         scrollToSection(
           currentSectionIndex - 1,
+          duration,
           sectionRefs,
           setCurrentSectionIndex
         );
