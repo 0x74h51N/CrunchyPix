@@ -26,6 +26,7 @@ export type HandleScroll = {
   sectionRefs: React.RefObject<HTMLDivElement>[];
   setCurrentSectionIndex: Dispatch<SetStateAction<number>>;
   smoothScroll?: boolean;
+  scrollY?: number;
 };
 
 export type slide = {

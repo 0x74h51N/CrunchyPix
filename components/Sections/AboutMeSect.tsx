@@ -33,7 +33,7 @@ const AboutMeSect = () => {
     return null;
   }
   return (
-    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-screen max-w-[80vw]">
+    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-[100svh] max-w-[80vw] p-10">
       <div className="flex flex-row max-lg:flex-col max-lg:items-center items-end justify-center w-auto h-auto">
         <Image
           src="/headColor.png"

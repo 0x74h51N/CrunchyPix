@@ -13,7 +13,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   );
   const [currentSectionIndex, setCurrentSectionIndex] = useState<number>(0);
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 2000], [0, -2000]);
+  const y = useTransform(scrollY, [0, 2000], [0, -900]);
 
   useEffect(() => {
     const handleScrollEvent = (event: WheelEvent) => {
@@ -49,14 +49,13 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             ref={sectionRefs[index]}
             className={`
       ${section.className} 
-      h-auto min-h-[100svh] w-screen min-w-[350px] flex items-center justify-center overflow-visible 
-      ${section.parallax ? "sticky top-0 h-screen z-0 " : "bg-black relative"} 
+      h-auto min-h-[100svh] w-auto min-w-[350px] flex items-center justify-center overflow-hidden bg-black 
+      ${section.parallax ? "sticky top-0 z-0 " : " relative"} 
     `}
           >
             {section.background && (
               <motion.div
                 style={{
-                  y: section.parallax ? -y : 0,
                   position: "absolute",
                   top: 0,
                   left: 0,
