@@ -37,13 +37,13 @@ const LandingSect = () => {
 
   return (
     <>
-      <div className="anaDiv flex flex-center justify-center h-auto min-h-full w-full relative">
+      <div className="anaDiv flex flex-center justify-center h-auto min-h-[100svh] w-screen relative overflow-hidden">
         <div
           className={`pt-10 flex flex-row max-lg:flex-col m-10 justify-center max-md:m-8 items-center max-lg:items-start z-0 pb-[160px] ${
             screenHeight <= 500 ? "pb-0 z-40" : ""
           }`}
         >
-          <div className="flex flex-col text-right">
+          <div className="flex flex-col text-center">
             <motion.div variants={textVariant(0)}>
               <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px] ">
                 <TypingText
@@ -69,7 +69,7 @@ const LandingSect = () => {
               </motion.div>
 
               <motion.h1
-                variants={slideIn("up", "spring", 2, 1.25)}
+                variants={slideIn("up", "spring", 2, 1.6)}
                 initial="hidden"
                 animate="show"
                 className="text-stone-200 font-black md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[60px]"
