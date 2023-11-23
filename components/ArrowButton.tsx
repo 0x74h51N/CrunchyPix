@@ -8,14 +8,20 @@ interface ArrowButtonProps {
   text?: string;
   className?: string;
   arrow?: boolean;
+  duration?: number;
 }
 
-const ArrowButton = ({ index, text, className, arrow }: ArrowButtonProps) => {
+const ArrowButton = ({
+  index,
+  text,
+  className,
+  arrow,
+  duration = 0,
+}: ArrowButtonProps) => {
   const { sectionRefs, setCurrentSectionIndex } = useScrollContext();
-
   const handleButtonClick = () => {
     if (index !== undefined) {
-      scrollToSection(index, sectionRefs, setCurrentSectionIndex);
+      scrollToSection(index, duration, sectionRefs, setCurrentSectionIndex);
     }
   };
 

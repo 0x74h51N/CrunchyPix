@@ -11,6 +11,7 @@ export type SectionData = {
   parallaxImageAlt?: string;
   background?: string;
   topImage?: string;
+  smoothScroll?: boolean | false;
 };
 
 export type SocialIconsType = {
@@ -27,6 +28,7 @@ export type HandleScroll = {
   setCurrentSectionIndex: Dispatch<SetStateAction<number>>;
   smoothScroll?: boolean;
   scrollY?: number;
+  duration?: number;
 };
 
 export type slide = {
