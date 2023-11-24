@@ -98,9 +98,9 @@ const LandingSect = () => {
           className={`absolute bottom-0 right-0 h-full w-full pointer-events-none ${
             screenHeight <= 750 && isMobile
               ? "z-30"
-              : screenHeight <= 940
+              : screenHeight <= 880 && isTablet
               ? "z-30"
-              : "max-md:z-30"
+              : ""
           } `}
         >
           <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />

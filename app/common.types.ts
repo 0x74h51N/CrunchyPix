@@ -39,6 +39,8 @@ export type slide = {
   active?: boolean;
   children?: React.ReactNode | React.ReactElement<{ active: boolean }>;
   box?: boolean;
+  githubLink?: string;
+  labels?: string[];
 };
 
 export type RobustSection = {

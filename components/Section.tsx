@@ -56,7 +56,11 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             ${section.className} 
             h-auto min-h-[100svh] w-auto min-w-[350px] flex items-center justify-center overflow-hidden bg-black ${
               index !== 0
-                ? `p-10 px-20 ${screenHeight <= 600 ? "pt-20" : ""}`
+                ? !section.className
+                  ? `p-10 px-20 max-md:px-8 ${
+                      screenHeight <= 600 ? "pt-20" : ""
+                    }`
+                  : ""
                 : ""
             }
             ${section.parallax ? "sticky top-0 z-0 " : " relative"} 

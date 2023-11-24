@@ -16,10 +16,12 @@ const Home = () => {
     {
       name: "About Me",
       children: <AboutMeSect />,
+      smoothScroll: true,
     },
     {
       name: "Portfolio",
       children: <PortfolioSect />,
+      className: "p-0 px-0 w-full",
     },
   ];
 

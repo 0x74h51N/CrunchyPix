@@ -33,8 +33,8 @@ const AboutMeSect = () => {
     return null;
   }
   return (
-    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-[100svh]">
-      <div className="flex flex-row max-md:flex-col max-lg:gap-6 max-lg:items-start items-end justify-center w-auto h-auto">
+    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-[100svh] ">
+      <div className="flex flex-row gap-12 max-sm:flex-col max-lg:gap-6 max-lg:items-start max-xs:items-center items-end justify-center w-auto h-auto">
         <Image
           src="/headColor.png"
           alt="Photo"
@@ -45,7 +45,7 @@ const AboutMeSect = () => {
           loading="lazy"
           className="object-center bg-opacity-0 grayscale max-lg:w-[240px] max-sm:w-[200px] h-auto"
         />
-        <div className="flex flex-col items-start h-full w-full max-xs:px-2">
+        <div className="flex flex-col items-start h-full w-auto p-5">
           <motion.div variants={textVariant(0)}>
             <p className="text-[#dfd9ff] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
               {t("introduction.intro")}
