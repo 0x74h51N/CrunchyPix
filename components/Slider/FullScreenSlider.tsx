@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -8,7 +8,6 @@ import "swiper/css/navigation";
 import "swiper/css/effect-creative";
 import { useTranslation } from "react-i18next";
 import SlideCreator from "./SlideCreator";
-import ArrowButton from "../ArrowButton";
 import { slides } from "@/constants";
 
 const FullScreenSlider = ({ className }: { className?: string }) => {

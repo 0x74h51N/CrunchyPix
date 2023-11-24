@@ -5,7 +5,7 @@ import React from "react";
 import ReactModal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import GitHubButton from "./githubButton";
-import Label from "../Labels";
+import Label from "../../../Labels";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 

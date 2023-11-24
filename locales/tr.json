@@ -80,6 +80,10 @@
     {
       "title": "Minting UI",
       "description": "Bu proje, Binance Smart Chain'e (BSC) dağıtılmış NNN ve NVM tokenları için minting ve burning fonksiyonlarını kullanan bir kullanıcı arayüzü oluşturmak amacıyla geliştirildi. Eth-2 scaffold'u kullanılarak oluşturulan bu uygulamada, NNN ve NVM tokenlarının sözleşmeleri doğrudan BSC üzerinden alındı ve deploy edilerek ABI oluşturuldu. Wagmi ile BSC entegrasyonu sağlandı ve minting ve burning fonksiyonları kullanılabilir hale getirildi. Ayrıca, hata ayıklama sayfasında diğer fonksiyonları kullanılabilir hale getirdim."
+    },
+    {
+      "title": "KYK Eletric A.Ş.",
+      "description": "Wordpress ve kısıtlı kod kullanarak geliştirdiğim ilk web site. Bir çok custom tasarım öğeleri kullanılarak geliştirildi."
     }
   ]
 }

@@ -1,9 +1,6 @@
 "use client";
-import { useSelector } from "react-redux";
-import PhoneFrame from "../PhoneFrame";
-import CarouselSlider from "../Slider/CarouselSlider";
-import FullScreenSlider from "../Slider/FullScreenSlider";
-import SlideModal from "../Slider/SlideModal";
+import CarouselSlider from "../Slider/Portfolio Slider/CarouselSlider";
+import SlideModal from "../Slider/Portfolio Slider/Child/SlideModal";
 import { projectSlides } from "@/constants";
 import { motion } from "framer-motion";
 import { generateSpans } from "../GenerateSpans";
@@ -11,7 +8,7 @@ import { slideIn, textVariant } from "@/utils/motion";
 
 const PortfolioSect = () => {
   return (
-    <div className="h-auto min-h-screen flex flex-col items-center justify-center w-full">
+    <div className="h-auto min-h-[100svh] flex flex-col items-center justify-center w-full">
       <motion.div
         variants={textVariant(0)}
         className="flex flex-col text-center"

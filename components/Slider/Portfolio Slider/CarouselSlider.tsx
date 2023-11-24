@@ -1,16 +1,24 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import { EffectCoverflow, Navigation } from "swiper/modules";
+import {
+  EffectCoverflow,
+  Navigation,
+  Pagination,
+  Autoplay,
+} from "swiper/modules";
 import "swiper/css";
-import Label from "../Labels";
-import GitHubButton from "./githubButton";
+import Label from "../../Labels";
+import GitHubButton from "./Child/githubButton";
 import { slide } from "@/app/common.types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSlide } from "@/store/redux/selectedSlide";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
-import LoadingComponent from "../Loading";
+import { RootState } from "@/store";
+import { setIsTranslationsLoaded } from "@/store/redux/language";
+import i18n from "@/utils/i18n";
+import { useEffect, useState } from "react";
 
 SwiperCore.use([EffectCoverflow, Navigation]);
 
@@ -19,39 +27,67 @@ interface CarouselSliderProps {
 }
 
 const CarouselSlider = ({ slides }: CarouselSliderProps) => {
-  const { t } = useTranslation(["translation"]);
-
+  const [activeIndex, setActiveIndex] = useState(0);
   const dispatch = useDispatch();
+  const { t } = useTranslation(["translation"]);
+  const isTranslationsLoadedRedux = useSelector(
+    (state: RootState) => state.language.isTranslationsLoaded
+  );
+  useEffect(() => {
+    if (i18n.isInitialized) {
+      dispatch(setIsTranslationsLoaded(true));
+    } else {
+      i18n.on("initialized", () => {
+        dispatch(setIsTranslationsLoaded(true));
+      });
+    }
+  }, [i18n, dispatch]);
+  if (!isTranslationsLoadedRedux) {
+    return null;
+  }
 
   const selectedSlide = (slide: slide) => {
     dispatch(setSlide(slide));
-    console.log(slide);
+  };
+
+  const onSlideChange = (swiper: any) => {
+    setActiveIndex(swiper.realIndex);
   };
 
   return (
-    <div className=" h-auto">
+    <div className="h-auto">
       <Swiper
+        modules={[Autoplay, Pagination, Navigation]}
         effect="coverflow"
         grabCursor
         centeredSlides
-        slidesPerView={3}
+        slidesPerView={2}
         spaceBetween={0}
-        loop
         coverflowEffect={{
-          rotate: 50,
+          rotate: 0,
           stretch: 0,
-          depth: 100,
-          modifier: 0.5,
-          slideShadows: true,
+          depth: 150,
+          modifier: 3,
+          slideShadows: false,
         }}
-        navigation
+        initialSlide={1}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
         pagination={{ clickable: true }}
+        onSlideChange={onSlideChange}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
+        speed={1000}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
               className="relative shadow-2xl shadow-black"
-              onClick={() => selectedSlide(slide)}
+              onClick={() => index === activeIndex && selectedSlide(slide)}
             >
               <Image
                 loading="lazy"
@@ -60,7 +96,7 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
                 width={1000}
                 height={1000}
                 quality={100}
-                className="w-full h-auto my-5"
+                className="w-auto h-full my-5"
               />
               <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                 <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>
