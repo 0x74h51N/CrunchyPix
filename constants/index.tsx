@@ -2,7 +2,6 @@
 import {
   ColorPacks,
   RobustSection,
-  SectionData,
   SocialIconsType,
   slide,
 } from "@/app/common.types";
@@ -153,3 +152,41 @@ export const colorPacks: ColorPacks = {
   ],
   themeColors: ["#050816", "#3f4183"],
 };
+
+export const projectSlides = [
+  {
+    title: "projectSlides.1.title",
+    imageUrl: "/ccorder.jpg",
+    description: "projectSlides.1.description",
+    labels: ["TypeScript", "Next.js", "CSS", "Redux"],
+    githubLink: "https://github.com/",
+  },
+  {
+    title: "projectSlides.0.title",
+    imageUrl: "/crunchypix.jpg",
+    description: "projectSlides.0.description",
+    labels: ["TypeScript", "Next.js", "Tailwind", "React", "Redux"],
+    githubLink: "https://github.com/0x74h51N/My-Webpage",
+  },
+  {
+    title: "projectSlides.2.title",
+    imageUrl: "/mintingui.jpg",
+    description: "projectSlides.2.description",
+    labels: [
+      "TypeScript",
+      "Solidity",
+      "Next.js",
+      "Tailwind",
+      "Hardhat",
+      "Wagmi",
+    ],
+    githubLink: "https://github.com/0x74h51N/SEth2-minting-N",
+  },
+  {
+    title: "projectSlides.3.title",
+    imageUrl: "/kykelectric.jpg",
+    description: "projectSlides.3.description",
+    labels: ["HTML", "CSS", "WordPress"],
+    githubLink: "https://github.com/0x74h51N/",
+  },
+];

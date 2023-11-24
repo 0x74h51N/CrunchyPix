@@ -292,3 +292,26 @@ body {
   -webkit-filter: drop-shadow(5px 5px 3px #141414);
   filter: drop-shadow(5px 5px 3px #141414);
 }
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  height: 70vh;
+  transform: translate(-50%, -55%);
+  outline: none;
+}
+
+.modal-content {
+  position: relative;
+  z-index: 1000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

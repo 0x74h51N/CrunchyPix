@@ -8,6 +8,7 @@ import isTabletReducer from "./redux/isTablet";
 import screenHeightReducer from "./redux/screenHeight";
 import isMobileMenuReducer from "./redux/isMobileMenu";
 import isLanguageMenuReducer from "./redux/isLanguageMenu";
+import selectedSlideReducer from "./redux/selectedSlide";
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   isScrolled: isScrolledReducer,
   page: pageReducer,
   screenHeight: screenHeightReducer,
+  selectedSlide: selectedSlideReducer,
 });
 
 const store = configureStore({
