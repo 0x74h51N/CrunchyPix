@@ -21,7 +21,7 @@ const PortfolioSect = () => {
           variants={slideIn("up", "spring", 0.5, 1.6)}
           initial="hidden"
           whileInView="show"
-          className="text-stone-200 font-black md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[60px] z-0"
+          className="text-stone-200 font-black md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[60px] z-auto"
         >
           {generateSpans({
             text: "Portfolio",
@@ -29,7 +29,7 @@ const PortfolioSect = () => {
           })}
         </motion.h1>
       </motion.div>
-      <div className="w-full h-auto min-w-[100sv] z-10">
+      <div className="w-full h-auto min-w-[100sv] z-0">
         <CarouselSlider slides={projectSlides} />
       </div>
       <div className="z-50">
