@@ -13,6 +13,8 @@ import { RootState } from "@/store";
 import { scrollChange } from "@/store/redux/isScrolled";
 import { tabletChange } from "@/store/redux/isTablet";
 import { setScreenHeight } from "@/store/redux/screenHeight";
+import { setScreenWidth } from "@/store/redux/screenWidth";
+import { navbarChange } from "@/store/redux/navbarChange";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
@@ -26,48 +28,69 @@ export const Navbar = () => {
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
-  const isScrolled = useSelector(
-    (state: RootState) => state.isScrolled.scrolled
+  const smallNav = useSelector(
+    (state: RootState) => state.navbarChange.smallNav
+  );
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width
+  );
+  const screenHeight = useSelector(
+    (state: RootState) => state.screenHeight.height
   );
   const dispatch = useDispatch();
   const { t } = useTranslation(["translation"]);
 
-  const handleScroll = () => {
-    if (window.scrollY > 100) {
-      dispatch(scrollChange(true));
-    } else {
-      dispatch(scrollChange(false));
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    if (typeof window !== "undefined") {
+      const handleScroll = () => {
+        dispatch(scrollChange(true));
+        setTimeout(() => {
+          dispatch(scrollChange(false));
+        }, 500);
+        if (window.scrollY > 100) {
+          dispatch(navbarChange(true));
+        } else {
+          dispatch(navbarChange(false));
+        }
+      };
+
+      window.addEventListener("scroll", handleScroll);
+      handleScroll();
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      dispatch(setScreenHeight(window.innerHeight));
-      const windowWidth = window.innerWidth;
-      if (windowWidth <= 768) {
-        dispatch(mobileChange(true));
-      } else if (windowWidth > 768 && windowWidth <= 1030) {
-        dispatch(tabletChange(true));
-      } else {
-        dispatch(mobileChange(false));
-        dispatch(tabletChange(false));
-      }
-    };
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
+        dispatch(setScreenHeight(screenHeight));
+        dispatch(setScreenWidth(screenWidth));
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+        if (screenWidth <= 768) {
+          dispatch(mobileChange(true));
+          dispatch(tabletChange(false));
+        } else if (screenWidth <= 1030) {
+          dispatch(mobileChange(false));
+          dispatch(tabletChange(true));
+        } else {
+          dispatch(mobileChange(false));
+          dispatch(tabletChange(false));
+        }
+      };
+
+      window.addEventListener("resize", handleResize);
+      handleResize();
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, [dispatch]);
 
   return (
@@ -75,9 +98,9 @@ export const Navbar = () => {
       className={` fleBetween fixed w-full top-0 z-50 gap-4 transition-all duration-1000 ease-in-out pointer-events-none ${
         isMenuOpen
           ? `navbar pointer-events-auto h-[360px] py-5 px-10 ${
-              isScrolled && "h-[320px] bg-opacity-100 py-2 px-10  bg-nav-col"
+              smallNav && "h-[320px] bg-opacity-100 py-2 px-10  bg-nav-col"
             }`
-          : isScrolled || specialPages.includes(selectedLink)
+          : smallNav || specialPages.includes(selectedLink)
           ? "bg-opacity-100 py-2 px-10  bg-nav-col h-[60px]"
           : "py-5 px-10"
       }`}
@@ -89,7 +112,7 @@ export const Navbar = () => {
               <Image
                 src={"/logo_leftw.svg"}
                 width={
-                  isScrolled || specialPages.includes(selectedLink)
+                  smallNav || specialPages.includes(selectedLink)
                     ? 12.5
                     : isMobile
                     ? 18.5
@@ -101,14 +124,14 @@ export const Navbar = () => {
                 alt="Flexible"
                 loading="lazy"
                 className={`${
-                  isScrolled || specialPages.includes(selectedLink)
+                  smallNav || specialPages.includes(selectedLink)
                     ? ""
                     : "navImage"
                 } transition-all duration-700 ease-in-out`}
               />
             </div>
 
-            {isScrolled ? null : (
+            {smallNav ? null : (
               <>
                 <TypingText
                   text="Crunchy"
@@ -140,7 +163,7 @@ export const Navbar = () => {
               <Image
                 src={"logo_right.svg"}
                 width={
-                  isScrolled || specialPages.includes(selectedLink)
+                  smallNav || specialPages.includes(selectedLink)
                     ? 20
                     : isMobile
                     ? 28
@@ -152,7 +175,7 @@ export const Navbar = () => {
                 alt="Flexible"
                 loading="lazy"
                 className={`${
-                  isScrolled ? "" : "navImage"
+                  smallNav ? "" : "navImage"
                 } transition-all duration-700 ease-in-out`}
               />
             </div>
@@ -165,7 +188,7 @@ export const Navbar = () => {
             <div>
               <ul
                 className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all duration-1000 ease-in-out ${
-                  isScrolled || specialPages.includes(selectedLink)
+                  smallNav || specialPages.includes(selectedLink)
                     ? "text-md font-medium gap-8"
                     : "text-lg font-semibold"
                 }  text-stone-200 antialiased gap-12 `}

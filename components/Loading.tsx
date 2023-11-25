@@ -4,7 +4,7 @@ import { Hourglass } from "react-loader-spinner";
 
 const LoadingComponent = () => {
   return (
-    <div className="loading-container w-full h-full flex flex-row justify-center items-center">
+    <div className="absolute loading-container top-1/2 left-1/2">
       <Hourglass
         visible={true}
         height="80"

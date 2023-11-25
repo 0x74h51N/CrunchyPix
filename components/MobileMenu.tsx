@@ -1,6 +1,6 @@
 import { Links } from "@/constants";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import BurgerButton from "./BurgerButton";
 import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
@@ -28,8 +28,8 @@ const MobileMenu = () => {
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
-  const isScrolled = useSelector(
-    (state: RootState) => state.isScrolled.scrolled
+  const smallNav = useSelector(
+    (state: RootState) => state.navbarChange.smallNav
   );
   const { t } = useTranslation(["translation"]);
   useEffect(() => {
@@ -67,9 +67,7 @@ const MobileMenu = () => {
       />
       <div
         className={`mobile-menu w-full backdrop-blur ${
-          isScrolled || specialPages.includes(selectedLink)
-            ? "mt-20 "
-            : "mt-24 "
+          smallNav || specialPages.includes(selectedLink) ? "mt-20 " : "mt-24 "
         }`}
       >
         {isMenuOpen && (

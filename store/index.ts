@@ -6,9 +6,11 @@ import isScrolledReducer from "./redux/isScrolled";
 import pageReducer from "./redux/pageReducer";
 import isTabletReducer from "./redux/isTablet";
 import screenHeightReducer from "./redux/screenHeight";
+import screenWidthReducer from "./redux/screenWidth";
 import isMobileMenuReducer from "./redux/isMobileMenu";
 import isLanguageMenuReducer from "./redux/isLanguageMenu";
 import selectedSlideReducer from "./redux/selectedSlide";
+import navbarChangeReducer from "./redux/navbarChange";
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -19,7 +21,9 @@ const rootReducer = combineReducers({
   isScrolled: isScrolledReducer,
   page: pageReducer,
   screenHeight: screenHeightReducer,
+  screenWidth: screenWidthReducer,
   selectedSlide: selectedSlideReducer,
+  navbarChange: navbarChangeReducer,
 });
 
 const store = configureStore({
