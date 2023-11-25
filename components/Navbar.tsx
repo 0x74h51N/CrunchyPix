@@ -95,7 +95,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-[100svw] top-0 z-50 gap-4 transition-all duration-800 ease-in-out pointer-events-none ${
+      className={`fixed w-[100svw] top-0 z-50 gap-4 transition-all duration-1000 ease-in-out pointer-events-none ${
         isMenuOpen
           ? `navbar pointer-events-auto h-[360px] py-5 px-10 ${
               smallNav && "h-[320px] bg-opacity-100 py-2 px-10  bg-nav-col"
@@ -187,7 +187,7 @@ export const Navbar = () => {
           ) : (
             <div>
               <ul
-                className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all duration-1000 ease-in-out ${
+                className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all delay-150 duration-800 ease-in-out ${
                   smallNav || specialPages.includes(selectedLink)
                     ? "text-md font-medium gap-8"
                     : "text-lg font-semibold"

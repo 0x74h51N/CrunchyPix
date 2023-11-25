@@ -90,6 +90,13 @@ const LandingSect = () => {
         </div>
 
         <motion.div
+          initial={{
+            clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+          }}
+          animate={{
+            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          }}
+          transition={{ delay: 2.5, duration: 1 }}
           className={`absolute bottom-0 left-0 h-[100svh] w-[100svw] pointer-events-none flex  ${
             isMobile || screenHeight <= 600
               ? `flex-row gap-4 justify-center items-center pb-6 ${
