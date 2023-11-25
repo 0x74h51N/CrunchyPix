@@ -49,7 +49,7 @@ export const ColorfulHover = ({
     return (
       <motion.div
         key={key}
-        className={`cursor-pointer pointer-events-auto w-8 ${className}`}
+        className={`cursor-pointer pointer-events-auto w-auto h-auto ${className}`}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
         animate={controls}

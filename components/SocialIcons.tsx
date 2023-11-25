@@ -20,22 +20,10 @@ export const SocialIcons = ({
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const responsiveFactor = 0.5;
-  const iconRadiusRatio = 0.5;
 
-  const iconRadius = isTablet
+  const iconRadius = isMobile
     ? 0
-    : Math.max(
-        isMobile ? 300 : 350,
-        (screenWidth * responsiveFactor * iconRadiusRatio) / 4
-      );
-  const startingHeight = isTablet
-    ? window.innerHeight / 4
-    : isMobile
-    ? window.innerHeight / 2
-    : screenHeight <= 490
-    ? window.innerHeight / 5
-    : 0;
+    : Math.max(isTablet ? 250 : 290, screenWidth / 6);
 
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
@@ -44,23 +32,21 @@ export const SocialIcons = ({
     window.open(url, "_blank");
   };
 
-  const iconList = isTablet ? [...iconPack].reverse() : iconPack;
+  const iconList = isMobile ? [...iconPack].reverse() : iconPack;
 
   return (
     <>
       {iconList.map((icon: any, index: number) => {
         const angle = index * angleIncrement;
-        const x =
-          !isTablet && !isMobile
-            ? iconRadius * Math.cos(angle) + screenWidth / 2.35
-            : isMobile
-            ? screenWidth - 60
-            : screenWidth - screenWidth / 4;
-        const y =
-          !isTablet && !isMobile
-            ? -iconRadius * Math.sin(angle) + screenHeight / 2.2
-            : startingHeight + index * 30;
-        const fontSize = isMobile || screenHeight <= 500 ? "35px" : "50px";
+        const x = isMobile
+          ? 0
+          : iconRadius * Math.cos(angle) + screenWidth / 2.35;
+        const y = isMobile
+          ? 0
+          : -iconRadius * Math.sin(angle) + screenHeight / 2.2;
+
+        const fontSize =
+          isTablet || isMobile || screenHeight <= 500 ? "35px" : "50px";
 
         const iconStyle = { x, y, fontSize };
 
@@ -74,6 +60,7 @@ export const SocialIcons = ({
             span={false}
             _colorType={_colorType}
             randomCount={randomCount}
+            className="w-9 h-9"
           />
         );
       })}

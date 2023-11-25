@@ -1,12 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import {
-  EffectCoverflow,
-  Navigation,
-  Pagination,
-  Autoplay,
-} from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import Label from "../../Labels";
 import GitHubButton from "./Child/githubButton";
@@ -20,7 +15,7 @@ import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import { useEffect, useState } from "react";
 
-SwiperCore.use([EffectCoverflow, Navigation]);
+SwiperCore.use([EffectCoverflow]);
 
 interface CarouselSliderProps {
   slides: slide[];
@@ -57,14 +52,15 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
   };
 
   return (
-    <div className="h-auto ">
+    <div className="h-auto">
       <Swiper
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Pagination]}
         effect="coverflow"
         grabCursor
         centeredSlides
         slidesPerView={isMobile ? 1.2 : isTablet ? 1.5 : 2}
         spaceBetween={0}
+        loop
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -72,15 +68,10 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
           modifier: 3,
           slideShadows: false,
         }}
-        initialSlide={1}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
         pagination={{ clickable: true }}
         onSlideChange={onSlideChange}
         autoplay={{
-          delay: 5000,
+          delay: 2000,
           disableOnInteraction: false,
         }}
         speed={1000}
