@@ -33,6 +33,12 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const selectedSlide = (slide: slide) => {
+    dispatch(setSlide(slide));
+  };
+
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -46,22 +52,18 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
     return null;
   }
 
-  const selectedSlide = (slide: slide) => {
-    dispatch(setSlide(slide));
-  };
-
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
   };
 
   return (
-    <div className="h-auto">
+    <div className="h-auto ">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         effect="coverflow"
         grabCursor
         centeredSlides
-        slidesPerView={2}
+        slidesPerView={isMobile ? 1.2 : isTablet ? 1.5 : 2}
         spaceBetween={0}
         coverflowEffect={{
           rotate: 0,
@@ -82,25 +84,28 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
           disableOnInteraction: false,
         }}
         speed={1000}
+        className="min-h-[650px]"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
-              className="relative shadow-2xl shadow-black"
+              className={`relative ${
+                isTablet && !isMobile ? "h-[340px]" : "h-[480px]"
+              } w-auto shadow-2xl shadow-black`}
               onClick={() => index === activeIndex && selectedSlide(slide)}
             >
               <Image
                 loading="lazy"
                 src={slide.imageUrl || ""}
                 alt={slide.title || ""}
-                width={1000}
-                height={1000}
+                layout="fill"
+                objectFit="cover"
                 quality={100}
                 className="w-auto h-full my-5"
               />
               <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                 <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>
-                <p className="text-[13px] font-extralight overflow-hidden overflow-ellipsis line-clamp-1">
+                <p className="text-[12px] overflow-hidden overflow-ellipsis line-clamp-1">
                   {t(`${slide.description}`)}
                 </p>
                 <div className="flex flex-wrap">

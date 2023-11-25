@@ -25,8 +25,8 @@ const LanguageMenu = () => {
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const isScrolled = useSelector(
-    (state: RootState) => state.isScrolled.scrolled
+  const smallNav = useSelector(
+    (state: RootState) => state.navbarChange.smallNav
   );
 
   const handleToggleDropdown = () => {
@@ -130,7 +130,7 @@ const LanguageMenu = () => {
             ? "open2 border-2 border-nav-col border-opacity-40"
             : "close"
         } ${
-          isScrolled || specialPages.includes(selectedLink)
+          smallNav || specialPages.includes(selectedLink)
             ? `mt-12 flex justify-center ${isMobile && "mt-8"}`
             : isMobile || isTablet
             ? "mt-8 mr-2 flex justify-center"

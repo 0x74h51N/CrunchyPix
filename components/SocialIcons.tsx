@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ColorfulHover } from "./ColorfulHover";
 import { ColorfulHoverType, SocialIconsType } from "@/app/common.types";
 import { useSelector } from "react-redux";
@@ -13,45 +12,28 @@ export const SocialIcons = ({
   _colorType,
   randomCount = 6,
 }: SocialIconProp & ColorfulHoverType) => {
-  const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width
+  );
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [windowSize, setWindowSize, isMobile, isTablet]);
   const responsiveFactor = 0.5;
   const iconRadiusRatio = 0.5;
-  const maxIconRadius = 370;
 
   const iconRadius = isTablet
     ? 0
     : Math.max(
         isMobile ? 300 : 350,
-        (windowSize.width * responsiveFactor * iconRadiusRatio) / 4
+        (screenWidth * responsiveFactor * iconRadiusRatio) / 4
       );
   const startingHeight = isTablet
     ? window.innerHeight / 4
     : isMobile
     ? window.innerHeight / 2
-    : windowSize.height <= 490
+    : screenHeight <= 490
     ? window.innerHeight / 5
     : 0;
 
@@ -70,13 +52,13 @@ export const SocialIcons = ({
         const angle = index * angleIncrement;
         const x =
           !isTablet && !isMobile
-            ? iconRadius * Math.cos(angle) + windowSize.width / 2.35
+            ? iconRadius * Math.cos(angle) + screenWidth / 2.35
             : isMobile
-            ? windowSize.width - 60
-            : windowSize.width - windowSize.width / 4;
+            ? screenWidth - 60
+            : screenWidth - screenWidth / 4;
         const y =
           !isTablet && !isMobile
-            ? -iconRadius * Math.sin(angle) + windowSize.height / 2.2
+            ? -iconRadius * Math.sin(angle) + screenHeight / 2.2
             : startingHeight + index * 30;
         const fontSize = isMobile || screenHeight <= 500 ? "35px" : "50px";
 
