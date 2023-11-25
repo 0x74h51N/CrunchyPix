@@ -23,10 +23,10 @@ export const SocialIcons = ({
 
   const iconRadius = isMobile
     ? 0
-    : Math.max(isTablet ? 250 : 290, screenWidth / 6);
+    : Math.max(isTablet ? 280 : 300, screenWidth / 5.8);
 
   const totalIcons = iconPack.length;
-  const angleIncrement = Math.PI / 2 / totalIcons;
+  const angleIncrement = Math.PI / 2.1 / totalIcons;
 
   const handleIconClick = (url: string) => {
     window.open(url, "_blank");
@@ -45,7 +45,7 @@ export const SocialIcons = ({
         const y =
           isMobile || screenHeight <= 600
             ? 0
-            : -iconRadius * Math.sin(angle) + screenHeight / 2.25;
+            : -iconRadius * Math.sin(angle) + screenHeight / 2.15;
 
         const fontSize =
           isTablet || isMobile || screenHeight <= 600 ? "35px" : "50px";
