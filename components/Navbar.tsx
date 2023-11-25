@@ -64,7 +64,7 @@ export const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window != "undefined") {
       const handleResize = () => {
         const screenWidth = window.innerWidth;
         const screenHeight = window.innerHeight;
@@ -91,11 +91,11 @@ export const Navbar = () => {
         window.removeEventListener("resize", handleResize);
       };
     }
-  }, [dispatch]);
+  }, [dispatch, isTablet, isTablet, screenWidth, screenHeight]);
 
   return (
     <nav
-      className={` fleBetween fixed w-full top-0 z-50 gap-4 transition-all duration-1000 ease-in-out pointer-events-none ${
+      className={`fixed w-[100svw] top-0 z-50 gap-4 transition-all duration-800 ease-in-out pointer-events-none ${
         isMenuOpen
           ? `navbar pointer-events-auto h-[360px] py-5 px-10 ${
               smallNav && "h-[320px] bg-opacity-100 py-2 px-10  bg-nav-col"
@@ -131,7 +131,7 @@ export const Navbar = () => {
               />
             </div>
 
-            {smallNav ? null : (
+            {smallNav || screenWidth <= 300 ? null : (
               <>
                 <TypingText
                   text="Crunchy"

@@ -39,18 +39,20 @@ const LandingSect = () => {
   return (
     <>
       <div
-        className={`anaDiv flex justify-center min-h-[100svh] w-screen relative overflow-hidden `}
+        className={`anaDiv flex justify-center items-center min-h-[100svh] min-w-[100svw] relative overflow-hidden `}
       >
         <div
-          className={`flex flex-row max-lg:flex-col m-10 justify-center items-center max-md:m-8 z-0 pb-28 ${
-            screenHeight <= 500 ? "pb-[0px] pt-12 z-40" : ""
+          className={`flex flex-row max-lg:flex-col justify-center items-center max-md:m-8 z-0 pb-32 ${
+            isMobile ? "pb-[180px]" : ""
           }`}
         >
           <motion.div
             variants={textVariant(0)}
             className="flex flex-col text-center"
           >
-            <p className="text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] xs:text-[20px] text-[16px] lg:leading-[40px] ">
+            <p
+              className={`text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] text-[25px]`}
+            >
               <TypingText
                 generateSpan={true}
                 _code={false}
@@ -61,7 +63,7 @@ const LandingSect = () => {
             </p>
             <motion.div
               variants={fadeIn("", "", 0.1, 1)}
-              className="mt-3 text-stone-100  lg:text-[19px] text-[18px] min-w-[219] leading-[30px] whitespace-pre-wrap"
+              className="mt-3 text-stone-100  lg:text-[19px] text-[18px] min-w-[219] leading-[30px] max-lg:leading-[10px] whitespace-pre-wrap"
             >
               <TypingText
                 generateSpan={true}
@@ -88,19 +90,12 @@ const LandingSect = () => {
         </div>
 
         <motion.div
-          initial={{
-            clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-          }}
-          animate={{
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-          }}
-          transition={{ delay: 2.5, duration: 1 }}
-          className={`absolute bottom-0 right-0 h-full w-full pointer-events-none ${
-            screenHeight <= 750 && isMobile
-              ? "z-30"
-              : screenHeight <= 880 && isTablet
-              ? "z-30"
-              : ""
+          className={`absolute bottom-0 left-0 h-[100svh] w-[100svw] pointer-events-none flex  ${
+            isMobile || screenHeight <= 600
+              ? `flex-row gap-4 justify-center items-center pb-6 ${
+                  screenHeight <= 600 && " pb-0 pt-20 z-50"
+                }`
+              : " flex-col"
           } `}
         >
           <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />

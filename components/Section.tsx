@@ -88,6 +88,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   objectFit="cover"
                   quality={100}
                   loading="eager"
+                  priority={true}
                   className="z-0"
                 />
               </motion.div>
@@ -116,6 +117,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   objectFit="cover"
                   quality={100}
                   loading="eager"
+                  priority={true}
                   className="galata1 bottom-0"
                 />
               </motion.div>
