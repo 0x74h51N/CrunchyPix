@@ -42,7 +42,7 @@ const LandingSect = () => {
         className={`anaDiv flex justify-center items-center min-h-[100svh] min-w-[100svw] relative overflow-hidden `}
       >
         <div
-          className={`flex flex-row max-lg:flex-col justify-center items-center max-md:m-8 z-0 pb-28 ${
+          className={`flex flex-row max-lg:flex-col justify-center items-center max-md:m-8 z-0 pb-32 ${
             isMobile ? "pb-[180px]" : ""
           }`}
         >
@@ -91,8 +91,10 @@ const LandingSect = () => {
 
         <motion.div
           className={`absolute bottom-0 left-0 h-[100svh] w-[100svw] pointer-events-none flex  ${
-            isMobile
-              ? "flex-row gap-4 justify-center items-center pb-6"
+            isMobile || screenHeight <= 600
+              ? `flex-row gap-4 justify-center items-center pb-6 ${
+                  screenHeight <= 600 && " pb-0 pt-20 z-50"
+                }`
               : " flex-col"
           } `}
         >

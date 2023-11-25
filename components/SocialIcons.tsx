@@ -38,15 +38,17 @@ export const SocialIcons = ({
     <>
       {iconList.map((icon: any, index: number) => {
         const angle = index * angleIncrement;
-        const x = isMobile
-          ? 0
-          : iconRadius * Math.cos(angle) + screenWidth / 2.35;
-        const y = isMobile
-          ? 0
-          : -iconRadius * Math.sin(angle) + screenHeight / 2.2;
+        const x =
+          isMobile || screenHeight <= 600
+            ? 0
+            : iconRadius * Math.cos(angle) + screenWidth / 2.3;
+        const y =
+          isMobile || screenHeight <= 600
+            ? 0
+            : -iconRadius * Math.sin(angle) + screenHeight / 2.25;
 
         const fontSize =
-          isTablet || isMobile || screenHeight <= 500 ? "35px" : "50px";
+          isTablet || isMobile || screenHeight <= 600 ? "35px" : "50px";
 
         const iconStyle = { x, y, fontSize };
 
