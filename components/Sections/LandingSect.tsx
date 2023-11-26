@@ -10,7 +10,7 @@ import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
 import { SocialIcons } from "../SocialIcons";
 import TypingText from "../typeText";
-import { socialIcons } from "@/constants";
+import { socialIcons } from "@/constants/socialIcons";
 
 const LandingSect = () => {
   const { t, i18n } = useTranslation(["translation"]);

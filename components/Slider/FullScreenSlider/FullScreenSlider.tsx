@@ -8,9 +8,14 @@ import "swiper/css/navigation";
 import "swiper/css/effect-creative";
 import { useTranslation } from "react-i18next";
 import SlideCreator from "./SlideCreator";
-import { slides } from "@/constants";
+import { slide } from "@/app/common.types";
 
-const FullScreenSlider = ({ className }: { className?: string }) => {
+interface FullScreenSlideProps {
+  slides: slide[];
+  className: string;
+}
+
+const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const { t } = useTranslation(["translation"]);
   const onSlideChange = (swiper: any) => {

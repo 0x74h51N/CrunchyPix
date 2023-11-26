@@ -1,7 +1,3 @@
-import React from "react";
-import { Tilt } from "react-tilt";
-import FullScreenSlider from "./Slider/FullScreenSlider";
-
 interface PhoneFrameProps {
   screenImage?: string;
   children?: React.ReactNode;

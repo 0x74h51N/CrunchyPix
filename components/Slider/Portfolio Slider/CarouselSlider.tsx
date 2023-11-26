@@ -4,7 +4,6 @@ import SwiperCore from "swiper";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import Label from "../../Labels";
-import GitHubButton from "./Child/githubButton";
 import { slide } from "@/app/common.types";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlide } from "@/store/redux/selectedSlide";
@@ -14,6 +13,7 @@ import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import { useEffect, useState } from "react";
+import IconButton from "../../IconButton";
 
 SwiperCore.use([EffectCoverflow]);
 
@@ -58,7 +58,7 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
         effect="coverflow"
         grabCursor
         centeredSlides
-        slidesPerView={isMobile ? 1.2 : isTablet ? 1.5 : 2}
+        slidesPerView={isMobile ? 1.2 : isTablet ? 1.5 : 2.5}
         spaceBetween={0}
         loop
         coverflowEffect={{
@@ -81,7 +81,7 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
           <SwiperSlide key={index}>
             <div
               className={`relative ${
-                isTablet && !isMobile ? "h-[340px]" : "h-[480px]"
+                isTablet && !isMobile ? "h-[340px]" : "h-[520px]"
               } w-auto shadow-2xl shadow-black`}
               onClick={() => index === activeIndex && selectedSlide(slide)}
             >
@@ -99,14 +99,19 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
                 <p className="text-[12px] overflow-hidden overflow-ellipsis line-clamp-1">
                   {t(`${slide.description}`)}
                 </p>
-                <div className="flex flex-wrap">
-                  {slide.labels &&
-                    slide.labels.map((label, labelIndex) => (
-                      <Label key={labelIndex} text={label} />
-                    ))}
-                  {slide.githubLink && (
-                    <GitHubButton githubLink={slide.githubLink} />
-                  )}
+                <div className="flex">
+                  <div className="flex flex-wrap items-start mr-auto">
+                    {slide.labels &&
+                      slide.labels.map((label, labelIndex) => (
+                        <Label key={labelIndex} text={label} />
+                      ))}
+                  </div>
+                  <div className="flex items-end gap-2">
+                    {slide.icons &&
+                      slide.icons.map((icon, iconIndex) => (
+                        <IconButton key={iconIndex} icon={icon} />
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>

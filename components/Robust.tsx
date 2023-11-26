@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { RobustSection } from "@/app/common.types";
 import { useTranslation } from "react-i18next";
 import { ColorfulBorder } from "./ColorfulBorder";
+import IconButton from "./IconButton";
 
 const RobustSection = ({ title, description, icon }: RobustSection) => {
   const { t } = useTranslation(["translation"]);
@@ -12,7 +13,9 @@ const RobustSection = ({ title, description, icon }: RobustSection) => {
         <ColorfulBorder>
           <motion.div className=" flex justify-evenly items-center w-[250px] h-[300px] flex-col rounded-xl bg-transparent p-4 relative overflow-hidden cursor-pointer">
             <div className="absolute inset-0" />
-            {icon}
+            <div className="flex flex-row justify-center items-center">
+              {icon && <IconButton icon={icon} />}
+            </div>
             <motion.div
               initial={{
                 clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
