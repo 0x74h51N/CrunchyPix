@@ -15,7 +15,7 @@ import i18n from "@/utils/i18n";
 import { useEffect, useState } from "react";
 import IconButton from "../../IconButton";
 
-SwiperCore.use([EffectCoverflow]);
+SwiperCore.use([Autoplay, Pagination, EffectCoverflow]);
 
 interface CarouselSliderProps {
   slides: slide[];
@@ -30,10 +30,9 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const selectedSlide = (slide: slide) => {
+  const _selectedSlide = (slide: slide) => {
     dispatch(setSlide(slide));
   };
-
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -54,11 +53,10 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
   return (
     <div className="h-auto">
       <Swiper
-        modules={[Autoplay, Pagination]}
         effect="coverflow"
         grabCursor
         centeredSlides
-        slidesPerView={isMobile ? 1.2 : isTablet ? 1.5 : 2.5}
+        slidesPerView={isMobile ? 1.2 : isTablet ? 1.5 : 2}
         spaceBetween={0}
         loop
         coverflowEffect={{
@@ -73,17 +71,18 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
         speed={1000}
-        className="min-h-[650px]"
+        className="h-auto min-h-[500px]"
       >
-        {slides.map((slide, index) => (
+        {slides.map((slide: slide, index: number) => (
           <SwiperSlide key={index}>
             <div
               className={`relative ${
-                isTablet && !isMobile ? "h-[340px]" : "h-[520px]"
+                isTablet && !isMobile ? "h-[340px]" : "h-[485px]"
               } w-auto shadow-2xl shadow-black`}
-              onClick={() => index === activeIndex && selectedSlide(slide)}
+              onClick={() => index === activeIndex && _selectedSlide(slide)}
             >
               <Image
                 loading="lazy"
