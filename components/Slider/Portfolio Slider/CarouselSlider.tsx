@@ -4,7 +4,6 @@ import SwiperCore from "swiper";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import Label from "../../Labels";
-import GitHubButton from "./Child/githubButton";
 import { slide } from "@/app/common.types";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlide } from "@/store/redux/selectedSlide";
@@ -14,8 +13,9 @@ import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import { useEffect, useState } from "react";
+import IconButton from "../../IconButton";
 
-SwiperCore.use([EffectCoverflow]);
+SwiperCore.use([Autoplay, Pagination, EffectCoverflow]);
 
 interface CarouselSliderProps {
   slides: slide[];
@@ -30,10 +30,9 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const selectedSlide = (slide: slide) => {
+  const _selectedSlide = (slide: slide) => {
     dispatch(setSlide(slide));
   };
-
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -54,7 +53,6 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
   return (
     <div className="h-auto">
       <Swiper
-        modules={[Autoplay, Pagination]}
         effect="coverflow"
         grabCursor
         centeredSlides
@@ -73,17 +71,18 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
+          pauseOnMouseEnter: true,
         }}
         speed={1000}
-        className="min-h-[650px]"
+        className="h-auto min-h-[500px]"
       >
-        {slides.map((slide, index) => (
+        {slides.map((slide: slide, index: number) => (
           <SwiperSlide key={index}>
             <div
               className={`relative ${
-                isTablet && !isMobile ? "h-[340px]" : "h-[480px]"
+                isTablet && !isMobile ? "h-[340px]" : "h-[485px]"
               } w-auto shadow-2xl shadow-black`}
-              onClick={() => index === activeIndex && selectedSlide(slide)}
+              onClick={() => index === activeIndex && _selectedSlide(slide)}
             >
               <Image
                 loading="lazy"
@@ -99,14 +98,19 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
                 <p className="text-[12px] overflow-hidden overflow-ellipsis line-clamp-1">
                   {t(`${slide.description}`)}
                 </p>
-                <div className="flex flex-wrap">
-                  {slide.labels &&
-                    slide.labels.map((label, labelIndex) => (
-                      <Label key={labelIndex} text={label} />
-                    ))}
-                  {slide.githubLink && (
-                    <GitHubButton githubLink={slide.githubLink} />
-                  )}
+                <div className="flex">
+                  <div className="flex flex-wrap items-start mr-auto">
+                    {slide.labels &&
+                      slide.labels.map((label, labelIndex) => (
+                        <Label key={labelIndex} text={label} />
+                      ))}
+                  </div>
+                  <div className="flex items-end gap-2">
+                    {slide.icons &&
+                      slide.icons.map((icon, iconIndex) => (
+                        <IconButton key={iconIndex} icon={icon} />
+                      ))}
+                  </div>
                 </div>
               </div>
             </div>

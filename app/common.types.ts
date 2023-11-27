@@ -14,12 +14,6 @@ export type SectionData = {
   smoothScroll?: boolean | false;
 };
 
-export type SocialIconsType = {
-  title: string;
-  url: string;
-  icon: React.ReactNode;
-};
-
 export type HandleScroll = {
   event: WheelEvent;
   currentSectionIndex: number;
@@ -40,13 +34,14 @@ export type slide = {
   children?: React.ReactNode | React.ReactElement<{ active: boolean }>;
   box?: boolean;
   githubLink?: string;
+  icons?: Icon[];
   labels?: string[];
 };
 
 export type RobustSection = {
   title: string;
   description: string;
-  icon?: React.ReactNode;
+  icon?: Icon;
   index?: number;
 };
 
@@ -64,7 +59,7 @@ export type generateSpanType = {
 
 export type ColorfulHoverType = {
   char?: string;
-  icon?: React.ReactNode;
+  icon?: Icon;
   initial?: any;
   style?: React.CSSProperties;
   className?: string;
@@ -73,4 +68,11 @@ export type ColorfulHoverType = {
   onClick?: () => void;
   _colorType?: ColorType;
   randomCount?: number;
+};
+
+export type Icon = {
+  type: string;
+  link?: string;
+  size?: number;
+  color?: string;
 };

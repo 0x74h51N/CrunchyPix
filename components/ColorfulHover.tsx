@@ -2,6 +2,7 @@ import { ColorfulHoverType } from "@/app/common.types";
 import { getRandomColor } from "@/utils/getRandomColor";
 import { useAnimation, motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import IconButton from "./IconButton";
 
 export const ColorfulHover = ({
   char,
@@ -11,7 +12,6 @@ export const ColorfulHover = ({
   className,
   key,
   span,
-  onClick,
   _colorType = "themeColors",
   randomCount = 6,
 }: ColorfulHoverType) => {
@@ -53,11 +53,10 @@ export const ColorfulHover = ({
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
         animate={controls}
-        onClick={onClick}
         initial={initial}
         style={style}
       >
-        {icon}
+        {icon && <IconButton icon={icon} />}
       </motion.div>
     );
   }

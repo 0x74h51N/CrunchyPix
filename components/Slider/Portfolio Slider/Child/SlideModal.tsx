@@ -1,10 +1,10 @@
-import { slide } from "@/app/common.types";
+import { Icon, slide } from "@/app/common.types";
 import { RootState } from "@/store";
 import { clearSlide } from "@/store/redux/selectedSlide";
 import React, { useEffect } from "react";
 import ReactModal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
-import GitHubButton from "./githubButton";
+import IconButton from "../../../IconButton";
 import Label from "../../../Labels";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -14,8 +14,8 @@ const SlideModal = () => {
   const { t } = useTranslation(["translation"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const dispatch = useDispatch();
-  const selectedSlide: slide | any = useSelector(
-    (state: RootState) => state.selectedSlide
+  const selectedSlide = useSelector(
+    (state: RootState) => state.selectedSlide.selectedSlide
   );
   const isScrolled = useSelector(
     (state: RootState) => state.isScrolled.scrolled
@@ -77,16 +77,23 @@ const SlideModal = () => {
                 >
                   {t(`${selectedSlide.description}`)}
                 </p>
-                <div className="flex flex-wrap">
-                  {selectedSlide.labels &&
-                    selectedSlide.labels.map(
-                      (label: string, labelIndex: number) => (
-                        <Label key={labelIndex} text={label} />
-                      )
-                    )}
-                  {selectedSlide.githubLink && (
-                    <GitHubButton githubLink={selectedSlide.githubLink} />
-                  )}
+                <div className="flex">
+                  <div className="flex flex-wrap items-start mr-auto">
+                    {selectedSlide.labels &&
+                      selectedSlide.labels.map(
+                        (label: string, labelIndex: number) => (
+                          <Label key={labelIndex} text={label} />
+                        )
+                      )}
+                  </div>
+                  <div className="flex items-end gap-2">
+                    {selectedSlide.icons &&
+                      selectedSlide.icons.map(
+                        (icon: Icon, iconIndex: number) => (
+                          <IconButton key={iconIndex} icon={icon} />
+                        )
+                      )}
+                  </div>
                 </div>
               </div>
             </motion.div>

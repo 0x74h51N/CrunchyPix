@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn, textVariant } from "@/utils/motion";
-import { robustSections } from "@/constants";
+import { robustSections } from "@/constants/robustSections";
 import RobustSection from "../Robust";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";

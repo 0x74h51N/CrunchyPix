@@ -1,10 +1,10 @@
 import { ColorfulHover } from "./ColorfulHover";
-import { ColorfulHoverType, SocialIconsType } from "@/app/common.types";
+import { ColorfulHoverType, Icon } from "@/app/common.types";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
 type SocialIconProp = {
-  iconPack: SocialIconsType[];
+  iconPack: Icon[];
 };
 
 export const SocialIcons = ({
@@ -27,16 +27,11 @@ export const SocialIcons = ({
 
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2.1 / totalIcons;
-
-  const handleIconClick = (url: string) => {
-    window.open(url, "_blank");
-  };
-
   const iconList = isMobile ? [...iconPack].reverse() : iconPack;
 
   return (
     <>
-      {iconList.map((icon: any, index: number) => {
+      {iconList.map((icon: Icon, index: number) => {
         const angle = index * angleIncrement;
         const x =
           isMobile || screenHeight <= 600
@@ -54,11 +49,10 @@ export const SocialIcons = ({
 
         return (
           <ColorfulHover
-            icon={icon.icon}
-            onClick={() => handleIconClick(icon.url)}
+            icon={icon}
             initial={{ color: "#e3ddff", scale: 1 }}
             style={iconStyle}
-            key={icon.title || index}
+            key={index}
             span={false}
             _colorType={_colorType}
             randomCount={randomCount}

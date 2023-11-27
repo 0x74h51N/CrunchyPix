@@ -1,6 +1,6 @@
 import { ColorType } from "@/app/common.types";
 import { randomColor } from "./randomColors";
-import { colorPacks } from "@/constants";
+import { colorPacks } from "@/constants/colorPacks";
 
 type getRandomColorType = {
   colorType: ColorType;

@@ -1,14 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { slide } from "@/app/common.types";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
+interface SelectedSlideState {
+  selectedSlide: slide | undefined;
+}
+
+const initialState: SelectedSlideState = {
+  selectedSlide: undefined,
+};
 
 const selectedSlideSlice = createSlice({
   name: "selectedSlide",
-  initialState: null,
+  initialState,
   reducers: {
-    setSlide: (state, action) => {
-      return action.payload;
+    setSlide: (state, action: PayloadAction<slide>) => {
+      state.selectedSlide = action.payload;
     },
     clearSlide: (state) => {
-      return null;
+      state.selectedSlide = undefined;
     },
   },
 });
