@@ -13,22 +13,23 @@ const Home = () => {
       parallax: true,
       background: "/galata_0.png",
       topImage: "/galata_1.png",
+      className: "h-auto min-h-[100svh]",
     },
     {
       name: "About Me",
       children: <AboutMeSect />,
       smoothScroll: true,
-      className: "bg-cool-gray-900",
+      className: "h-auto min-h-[100svh] bg-cool-gray-900 py-20",
     },
     {
       name: "Portfolio",
       children: <PortfolioSect />,
-      className: "p-0 px-0 w-full",
+      className: "h-auto min-h-[100svh] py-10 w-full",
     },
     {
       name: "Logo",
       children: <LogoSect />,
-      className: "h-auto min-h-0 bg-cool-gray-900 py-10",
+      className: "h-auto min-h-auto bg-cool-gray-900 py-10",
     },
   ];
 

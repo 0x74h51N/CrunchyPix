@@ -54,15 +54,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             ref={sectionRefs[index]}
             className={`
             ${section.className} 
-            h-auto min-h-[100svh] w-auto min-w-[350px] flex items-center justify-center overflow-hidden bg-cool-gray-800 ${
-              index !== 0
-                ? !section.className
-                  ? `p-10 px-20 max-md:px-8 ${
-                      screenHeight <= 600 ? "pt-20" : ""
-                    }`
-                  : ""
-                : ""
-            }
+            w-fullmin-w-[350px] flex items-center justify-center overflow-hidden bg-cool-gray-800 
             ${section.parallax ? "sticky top-0 z-0 " : " relative"} 
           `}
           >
