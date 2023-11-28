@@ -1,4 +1,17 @@
-import { slide } from "@/app/common.types";
+import { Icon, slide } from "@/app/common.types";
+
+const commonIcons: Record<string, Icon> = {
+  github: {
+    type: "github",
+    size: 24,
+    color: "#FFFFFF",
+  },
+  web: {
+    type: "web",
+    size: 24,
+    color: "#FFFFFF",
+  },
+};
 
 export const projectSlides: slide[] = [
   {
@@ -8,15 +21,11 @@ export const projectSlides: slide[] = [
     labels: ["TypeScript", "Next.js", "Tailwind", "React", "Redux"],
     icons: [
       {
-        type: "github",
-        size: 24,
-        color: "#FFFFFF",
+        ...commonIcons.github,
         link: "https://github.com/0x74h51N/My-Webpage",
       },
       {
-        type: "web",
-        size: 24,
-        color: "#FFFFFF",
+        ...commonIcons.web,
         link: "https://crunchypix.vercel.app/",
       },
     ],
@@ -28,15 +37,11 @@ export const projectSlides: slide[] = [
     labels: ["TypeScript", "Next.js", "CSS", "Redux"],
     icons: [
       {
-        type: "github",
-        size: 24,
-        color: "#FFFFFF",
+        ...commonIcons.github,
         link: "https://github.com/0x74h51N/",
       },
       {
-        type: "web",
-        size: 24,
-        color: "#FFFFFF",
+        ...commonIcons.web,
         link: "https://signup-project-rosy.vercel.app/",
       },
     ],
@@ -48,15 +53,11 @@ export const projectSlides: slide[] = [
     labels: ["TypeScript", "Next.js", "Tailwind", "Hardhat", "Wagmi"],
     icons: [
       {
-        type: "github",
-        size: 24,
-        color: "#FFFFFF",
+        ...commonIcons.github,
         link: "https://github.com/0x74h51N/SEth2-minting-N",
       },
       {
-        type: "web",
-        size: 24,
-        color: "#FFFFFF",
+        ...commonIcons.web,
         link: "https://minting-ui.vercel.app/",
       },
     ],
@@ -68,15 +69,11 @@ export const projectSlides: slide[] = [
     labels: ["HTML", "CSS", "WordPress"],
     icons: [
       {
-        type: "github",
-        size: 24,
-        color: "#FFFFFF",
+        ...commonIcons.github,
         link: "https://github.com/0x74h51N/",
       },
       {
-        type: "web",
-        size: 24,
-        color: "#FFFFFF",
+        ...commonIcons.web,
         link: "https://kykelektrik.com/",
       },
     ],

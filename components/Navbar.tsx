@@ -95,7 +95,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-[100svw] top-0 z-50 gap-4 bg-nav-col transition-all duration-1000 ease-in-out pointer-events-none ${
+      className={`fixed w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out pointer-events-none ${
         isMenuOpen
           ? `navbar pointer-events-auto h-[360px] py-5 px-10 bg-opacity-0 ${
               smallNav && "h-[320px] bg-opacity-100 py-2 px-10  "

@@ -54,7 +54,9 @@ export type ColorType = keyof ColorPacks;
 export type generateSpanType = {
   text: string;
   colorType?: ColorType;
+  zeroColor?: string;
   randomCount?: number;
+  _className?: string;
 };
 
 export type ColorfulHoverType = {
@@ -68,6 +70,7 @@ export type ColorfulHoverType = {
   onClick?: () => void;
   _colorType?: ColorType;
   randomCount?: number;
+  zeroColor?: string;
 };
 
 export type Icon = {

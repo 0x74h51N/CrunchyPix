@@ -12,13 +12,7 @@
 
 body {
   font-family: Inter;
-  background: black;
-
-  // background: radial-gradient(
-  //   circle,
-  //   theme("colors.gra-blue"),
-  //   theme("colors.gra-black")
-  // );
+  @apply bg-cool-gray-800;
 }
 
 .gradiantBackbl {

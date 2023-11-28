@@ -51,7 +51,7 @@ const LandingSect = () => {
             className="flex flex-col text-center"
           >
             <p
-              className={`text-[#baaeff] font-medium lg:text-[40px] sm:text-[30px] text-[25px]`}
+              className={`font-medium lg:text-[40px] sm:text-[30px] text-[25px]`}
             >
               <TypingText
                 generateSpan={true}
@@ -59,11 +59,12 @@ const LandingSect = () => {
                 text={t("landing.intro")}
                 duration={40}
                 colorType="vibrantColors"
+                zeroColor="white"
               />
             </p>
             <motion.div
               variants={fadeIn("", "", 0.1, 1)}
-              className="mt-3 text-stone-100  lg:text-[19px] text-[18px] min-w-[219] leading-[30px] max-lg:leading-[10px] whitespace-pre-wrap"
+              className="mt-3 lg:text-[19px] text-[18px] min-w-[219] leading-[30px] max-lg:leading-[10px] whitespace-pre-wrap"
             >
               <TypingText
                 generateSpan={true}
@@ -72,6 +73,7 @@ const LandingSect = () => {
                 duration={40}
                 colorType="vibrantColors"
                 delay={500}
+                zeroColor="white"
               />
             </motion.div>
 
@@ -79,11 +81,12 @@ const LandingSect = () => {
               variants={slideIn("up", "spring", 2, 1.6)}
               initial="hidden"
               animate="show"
-              className="text-stone-200 font-black md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[60px]"
+              className="font-black md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[60px]"
             >
               {generateSpans({
                 text: t("landing.title"),
                 colorType: "vibrantColors",
+                zeroColor: "white",
               })}
             </motion.h1>
           </motion.div>

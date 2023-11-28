@@ -52,20 +52,20 @@
 
   "robust": [
     {
-      "title": "Responsive Design",
-      "description": "Optimized for various devices, ensuring a seamless and visually appealing experience on every screen size."
+      "title": "Responsive & Adaptive",
+      "description": "Tailored for seamless experiences on any device, effortlessly adapting to diverse screen sizes for accessibility and visual appeal."
     },
     {
-      "title": "Mobile Optimization",
-      "description": "Fast and smooth performance on mobile devices, with responsive and adaptive design features to enhance user experience."
+      "title": "Efficient & Clean",
+      "description": "Built on a foundation of clean, efficient code, featuring a well-organized structure, custom components, and utilities, facilitating easy maintenance and scalability for projects."
     },
     {
-      "title": "Clean Code",
-      "description": "We take pride in maintaining a well-organized and easily maintainable codebase, ensuring the longevity and scalability of your project."
+      "title": "User-Centric & Creative",
+      "description": "Beyond aesthetics, our designs prioritize user engagement, fostering an enjoyable digital experience for your audience."
     },
     {
-      "title": "Creative Design",
-      "description": "Our designs are not just visually appealing; they are also user-friendly, creating an engaging and delightful experience for your audience."
+      "title": "SEO Optimization",
+      "description": "Boost online visibility with our SEO-optimized approach, propelling your website to higher ranks on search engines for organic audience reach."
     }
   ],
 

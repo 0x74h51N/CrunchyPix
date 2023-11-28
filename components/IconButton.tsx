@@ -18,6 +18,7 @@ import {
   FaCoffee,
   FaBook,
   FaHeart,
+  FaSearch,
 } from "react-icons/fa";
 
 const iconComponents: { [key: string]: IconType } = {
@@ -38,6 +39,7 @@ const iconComponents: { [key: string]: IconType } = {
   mobile: FaMobileAlt,
   code: FaCode,
   paintbrush: FaPaintBrush,
+  search: FaSearch,
 };
 
 const IconButton = ({ icon }: { icon: Icon }) => {

@@ -23,6 +23,7 @@ const TypingText = ({
   generateSpan = false,
   colorType,
   randomCount,
+  zeroColor,
 }: TypingTextProps & generateSpanType) => {
   const [displayText, setDisplayText] = useState("");
   const [isDelayed, setIsDelayed] = useState(false);
@@ -75,6 +76,7 @@ const TypingText = ({
             text: displayText,
             colorType: colorType,
             randomCount: randomCount,
+            zeroColor: zeroColor,
           })}
         </div>
       ) : (

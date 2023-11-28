@@ -3,51 +3,59 @@ import { RobustSection } from "@/app/common.types";
 import { useTranslation } from "react-i18next";
 import { ColorfulBorder } from "./ColorfulBorder";
 import IconButton from "./IconButton";
+import { fadeIn } from "@/utils/motion";
 
-const RobustSection = ({ title, description, icon }: RobustSection) => {
+const RobustSection = ({
+  robustSections,
+}: {
+  robustSections: RobustSection[];
+}) => {
   const { t } = useTranslation(["translation"]);
 
   return (
-    <>
-      <div className="shadow-card rounded-3xl">
-        <ColorfulBorder>
-          <motion.div className=" flex justify-evenly items-center w-[250px] h-[300px] flex-col rounded-xl bg-transparent p-4 relative overflow-hidden cursor-pointer">
-            <div className="absolute inset-0" />
-            <div className="flex flex-row justify-center items-center">
-              {icon && <IconButton icon={icon} />}
-            </div>
-            <motion.div
-              initial={{
-                clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-              }}
-              animate={{
-                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-              }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="overflow-hidden h-auto"
-            >
-              <h2 className="font-medium lg:text-[22px] sm:text-[20px] xs:text-[18px] text-[16px]  mt-4 text-stone-200">
-                {t(title)}
-              </h2>
+    <div className="flex flex-wrap justify-center gap-10 w-auto">
+      {robustSections.map((section, index) => (
+        <motion.div
+          key={section.title}
+          variants={fadeIn("down", "spring", index * 0.5, 0.6)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="m-0"
+        >
+          <ColorfulBorder>
+            <motion.div className="flex justify-evenly items-center w-[260px] h-[350px] flex-col bg-transparent p-4 relative overflow-hidden cursor-pointer">
+              <div className="absolute inset-0" />
+              <div className="flex justify-center items-center">
+                {section.icon && <IconButton icon={section.icon} />}
+              </div>
+              <motion.div
+                variants={fadeIn("down", "spring", index * 0.65, 0.6)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.25 }}
+                className="overflow-hidden h-[auto]"
+              >
+                <motion.h2 className="font-medium lg:text-[20px] sm:text-[18px] xs:text-[16px] text-[14px] mt-4 text-cool-gray-100 text-center">
+                  {t(section.title)}
+                </motion.h2>
+              </motion.div>
+              <motion.div
+                variants={fadeIn("up", "spring", index * 0.65, 0.6)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.25 }}
+                className="overflow-hidden h-[130px] flex items-center"
+              >
+                <motion.p className="text-center text-[14px] mt-2 text-cool-gray-200 whitespace-normal">
+                  {t(section.description)}
+                </motion.p>
+              </motion.div>
             </motion.div>
-            <motion.div
-              initial={{
-                clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-              }}
-              animate={{
-                clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-              }}
-              transition={{ delay: 1.1, duration: 0.5 }}
-              className="overflow-hidden h-auto"
-            >
-              <p className="text-center text-[14px] mt-2 text-stone-200 whitespace-normal">
-                {t(description)}
-              </p>
-            </motion.div>
-          </motion.div>
-        </ColorfulBorder>
-      </div>
-    </>
+          </ColorfulBorder>
+        </motion.div>
+      ))}
+    </div>
   );
 };
 
