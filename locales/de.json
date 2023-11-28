@@ -52,20 +52,20 @@
 
   "robust": [
     {
-      "title": "Responsives Design",
-      "description": "Optimiert für verschiedene Geräte und gewährleistet eine nahtlose und visuell ansprechende Erfahrung auf jeder Bildschirmgröße."
+      "title": "Responsive Design",
+      "description": "Optimiert für nahtlose Erlebnisse auf verschiedenen Geräten, passt es sich leicht an verschiedene Bildschirmgrößen an."
     },
     {
-      "title": "Mobile Optimierung",
-      "description": "Schnelle und reibungslose Leistung auf mobilen Geräten mit responsiven und adaptiven Designmerkmalen, um die Benutzererfahrung zu verbessern."
+      "title": "Effiziente Codebasis",
+      "description": "Aufgebaut auf sauberem, effizientem Code, mit einer gut organisierten Struktur und benutzerdefinierten Komponenten für einfache Wartung und Skalierbarkeit."
     },
     {
-      "title": "Sauberer Code",
-      "description": "Wir sind stolz darauf, eine gut organisierte und leicht wartbare Codebasis zu pflegen, um die Langlebigkeit und Skalierbarkeit Ihres Projekts sicherzustellen."
+      "title": "Benutzerfreundliches & Kreatives",
+      "description": "Jenseits der Ästhetik liegt der Fokus unserer Designs auf Benutzerbindung, um ein angenehmes digitales Erlebnis für Ihr Publikum zu schaffen."
     },
     {
-      "title": "Kreatives Design",
-      "description": "Unsere Designs sind nicht nur visuell ansprechend; sie sind auch benutzerfreundlich und schaffen eine ansprechende und erfreuliche Erfahrung für Ihr Publikum."
+      "title": "SEO-Optimierung",
+      "description": "Steigern Sie die Online-Sichtbarkeit mit unserem SEO-optimierten Ansatz für besseres Ranking in Suchmaschinen."
     }
   ],
   "projectSlides": [

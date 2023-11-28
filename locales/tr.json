@@ -52,20 +52,20 @@
 
   "robust": [
     {
-      "title": "Responsive Tasarım",
-      "description": "Çeşitli cihazlar için optimize edilmiş, her ekran boyutunda sorunsuz ve görsel açıdan çekici bir deneyim sağlar."
+      "title": "Esnek & Uyumlu",
+      "description": "Her cihazda sorunsuz deneyimler için özel olarak tasarlanmış, çeşitli ekran boyutlarına kolayca uyum sağlayarak erişilebilirlik ve görsel çekicilik sunar."
     },
     {
-      "title": "Mobil Optimizasyon",
-      "description": "Mobil cihazlarda hızlı ve düzgün performans, kullanıcı deneyimini artırmak için duyarlı ve adaptif tasarım özellikleri."
+      "title": "Verimli & Temiz",
+      "description": "Temiz, verimli bir kod temeli üzerine inşa edilmiş olup, iyi organize edilmiş bir yapı, özel bileşenler ve yardımcı programlar içerir; projelerin kolay bakımını ve ölçeklenebilirliğini sağlar."
     },
     {
-      "title": "Temiz Kod",
-      "description": "Düzenli ve kolay bakım yapılabilir kod tabanını sürdürmekte gurur duyuyoruz, projenizin uzun ömürlülüğünü ve ölçeklenebilirliğini sağlamak için."
+      "title": "Kullanıcı Odaklı & Yaratıcı",
+      "description": "Estetiğin ötesinde, tasarımlarımız kullanıcı etkileşimini önceliklendirir ve kitleniz için keyifli bir dijital deneyim sağlar."
     },
     {
-      "title": "Yaratıcı Tasarım",
-      "description": "Tasarımlarımız sadece görsel olarak çekici değil; aynı zamanda kullanıcı dostu, izleyicileriniz için etkileyici ve keyifli bir deneyim sunar."
+      "title": "SEO Optimizasyonu",
+      "description": "SEO-optimizasyonu odaklı yaklaşımımızla online görünürlüğünüzü artırarak, web sitenizi organik bir izleyici kitlesi için arama motorlarında daha yüksek sıralara taşır."
     }
   ],
   "projectSlides": [

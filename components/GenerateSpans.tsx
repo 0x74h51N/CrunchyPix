@@ -5,7 +5,9 @@ import { generateSpanType } from "@/app/common.types";
 export const generateSpans = ({
   text,
   colorType,
+  zeroColor,
   randomCount,
+  _className,
 }: generateSpanType) => {
   const spans = [];
   let currentSpan = [];
@@ -24,6 +26,8 @@ export const generateSpans = ({
                 span={true}
                 _colorType={colorType}
                 randomCount={randomCount}
+                zeroColor={zeroColor}
+                className={_className}
               />
             ))}
           </motion.span>
@@ -46,6 +50,8 @@ export const generateSpans = ({
             span={true}
             _colorType={colorType}
             randomCount={randomCount}
+            zeroColor={zeroColor}
+            className={_className}
           />
         ))}
       </motion.span>

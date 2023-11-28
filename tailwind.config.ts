@@ -8,8 +8,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "cool-gray": {
+          50: "#F7F7F7",
+          100: "#E1E1E1",
+          200: "#CFCFCF",
+          300: "#B1B1B1",
+          400: "#737373",
+          500: "#525252",
+          600: "#404040",
+          700: "#2D2D2D",
+          800: "#161616",
+          900: "#111111",
+        },
         "nav-border": "#EBEAEA",
-        "back-col": "#ffffff",
+        "back-col": "#111111",
         "nav-col": "#2a2a2a",
         "log-col": "#eeb30d",
         "gra-blue": "#3f4183",
@@ -19,7 +31,7 @@ module.exports = {
         "light-white-200": "#d7d7d7",
         "light-white-300": "#F3F3F4",
         "light-white-400": "#E2E5F1",
-        "light-white-500": "#E4E4E4",
+        "light-white-500": "#e0e0e0",
         gray: "#4D4A4A",
         "gray-100": "#3d3d4e",
         "black-100": "#252525",

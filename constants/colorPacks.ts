@@ -56,5 +56,5 @@ export const colorPacks: ColorPacks = {
     "#5F9EA0",
     "#B0C4DE",
   ],
-  themeColors: ["#050816", "#3f4183"],
+  themeColors: ["#eeb30d"],
 };
