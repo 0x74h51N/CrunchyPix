@@ -41,15 +41,15 @@ const RobustSection = ({
                 </motion.h2>
               </motion.div>
               <motion.div
-                variants={fadeIn("up", "spring", index * 0.65, 0.6)}
+                variants={fadeIn("up", "spring", index * 0.4, 0.6)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.25 }}
                 className="overflow-hidden h-[130px] flex items-center"
               >
-                <motion.p className="text-center text-[14px] mt-2 text-cool-gray-200 whitespace-normal">
+                <p className="text-center text-[14px] mt-2 text-cool-gray-200 whitespace-normal">
                   {t(section.description)}
-                </motion.p>
+                </p>
               </motion.div>
             </motion.div>
           </ColorfulBorder>
