@@ -6,13 +6,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { handleScroll } from "@/utils/handleScroll";
 import { ScrollProvider } from "@/context/ScrollContext";
 import Image from "next/image";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
-  const screenHeight = useSelector(
-    (state: RootState) => state.screenHeight.height
-  );
   const sectionRefs = sectionsData.map(() =>
     useRef<any | HTMLDivElement>(null)
   );
@@ -54,7 +49,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             ref={sectionRefs[index]}
             className={`
             ${section.className} 
-            w-fullmin-w-[350px] flex items-center justify-center overflow-hidden bg-cool-gray-800 
+            w-full min-w-[350px] flex items-center justify-center overflow-hidden bg-cool-gray-800 
             ${section.parallax ? "sticky top-0 z-0 " : " relative"} 
           `}
           >

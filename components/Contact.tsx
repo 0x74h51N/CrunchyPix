@@ -2,8 +2,6 @@
 import { useForm } from "react-hook-form";
 import { sendEmail } from "@/utils/send-email";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
-import { slideIn } from "@/utils/motion";
 
 export type FormData = {
   name: string;
@@ -24,10 +22,7 @@ const Contact = () => {
   const { t } = useTranslation(["translation"]);
 
   return (
-    <motion.div
-      variants={slideIn("right", "tween", 0.3, 1)}
-      className="flex-[0.75] rounded-2xl"
-    >
+    <>
       <h1 className="text-start text-stone-200 text-2xl font-medium mb-3">
         {t("contact.title")}
       </h1>
@@ -71,7 +66,7 @@ const Contact = () => {
           {t("contact.button")}
         </button>
       </form>
-    </motion.div>
+    </>
   );
 };
 

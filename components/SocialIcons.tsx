@@ -50,7 +50,6 @@ export const SocialIcons = ({
         return (
           <ColorfulHover
             icon={icon}
-            initial={{ color: "#e3ddff", scale: 1 }}
             style={iconStyle}
             key={index}
             span={false}

@@ -79,3 +79,8 @@ export type Icon = {
   size?: number;
   color?: string;
 };
+
+export type logoType = {
+  text: string;
+  icon: string;
+};
