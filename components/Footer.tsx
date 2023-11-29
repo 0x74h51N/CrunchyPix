@@ -30,19 +30,19 @@ const Footer = () => {
     return null;
   }
   return (
-    <footer className="flex justify-center footer ">
+    <footer className="flex justify-center footer">
       <motion.div
-        variants={staggerContainer(0, 0.2)}
+        variants={staggerContainer(2, 2)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
         className="relative overflow-hidden"
       >
-        <div className="lg:px-10 pt-10 pe-6 px-5  ">
+        <div className="lg:px-10 pt-14 pe-6 px-5  ">
           <div className="flexBetween max-md:flex-col w-full z-10">
             <motion.div
               variants={slideIn("left", "tween", 0.3, 1)}
-              className="flex flex-col gap12 z-10 xl:w-1/5 w-1/4 max-md:w-full px-8 max-xs:px-3"
+              className="flex flex-col gap12 z-10 xl:w-1/5 w-1/4 max-md:w-full px-8"
             >
               <Image
                 src="/LogoL.svg"
@@ -79,8 +79,13 @@ const Footer = () => {
                 </div>
               </div>
             </motion.div>
-            <div className="flex flex-col p-8 justify-center gap-7 z-10 w-3/6 max-lg:mx-6 max-xl:w-4/6 max-md:w-full max-xs:px-3">
-              <Contact />
+            <div className="flex flex-col p-8 justify-center gap-7 z-10 w-3/6 max-lg:mx-6 max-xl:w-4/6 max-md:w-full max-xs:px-8">
+              <motion.div
+                variants={slideIn("right", "tween", 0.3, 1)}
+                className="flex-[0.75]"
+              >
+                <Contact />
+              </motion.div>
             </div>
           </div>
           <div className="text-neutral-200 flexBetween mt-10 footer_copyright">

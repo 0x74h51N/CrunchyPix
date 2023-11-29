@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { slideIn, textVariant } from "@/utils/motion";
+import { slideIn, staggerContainer, textVariant } from "@/utils/motion";
 import { robustSections } from "@/constants/robustSections";
 import RobustSection from "../Robust";
 import { useTranslation } from "react-i18next";
@@ -9,16 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import Image from "next/image";
-import { Tilt } from "react-tilt";
 
 const AboutMeSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
-  const isMobileRedux = useSelector(
-    (state: RootState) => state.isMobile.mobile
-  );
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const dispatch = useDispatch();
   useEffect(() => {
     if (i18n.isInitialized) {
@@ -43,15 +40,16 @@ const AboutMeSect = () => {
           height={280}
           objectFit="cover"
           loading="lazy"
-          className="object-center bg-opacity-0 grayscale max-lg:w-[240px] max-sm:w-[200px] h-auto z-30"
+          className="object-center bg-opacity-0 grayscale max-lg:w-[240px] max-sm:w-[220px] h-auto z-30"
         />
-        <div className="flex flex-col items-start h-full w-auto p-5 z-10">
-          <motion.h1
-            variants={slideIn("left", "spring", 0.2, 1.6)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
-          >
+        <motion.div
+          variants={staggerContainer(2, 0.5)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.5 }}
+          className="flex flex-col items-start h-full w-auto p-5 z-10"
+        >
+          <motion.h1 variants={slideIn("left", "spring", 0.2, 1.6)}>
             <p className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
               {t("introduction.intro")}
             </p>
@@ -61,14 +59,11 @@ const AboutMeSect = () => {
           </motion.h1>
           <motion.p
             variants={textVariant(0.8)}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.25 }}
             className="mt-4 text-cool-gray-50 lg:text-[17px] sm:text-[14px] text-[13px] max-w-3xl leading-[30px]"
           >
             {t("introduction.description")}
           </motion.p>
-        </div>
+        </motion.div>
       </div>
       <div className="flex flex-wrap gap-10">
         <div className=" flex flex-wrap justify-center gap-10 w-auto p-8 max-xs:px-2 max-2xl:max-w-[700px]">

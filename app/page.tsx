@@ -4,6 +4,8 @@ import AboutMeSect from "@/components/Sections/AboutMeSect";
 import LandingSect from "@/components/Sections/LandingSect";
 import PortfolioSect from "@/components/Sections/PortfolioSect";
 import LogoSect from "@/components/Sections/LogoSect";
+import ResponsiveSect from "@/components/Sections/ResponsiveSect";
+import CodeSect from "@/components/Sections/CodeSect";
 
 const Home = () => {
   const sectionsData: SectionData[] = [
@@ -22,14 +24,26 @@ const Home = () => {
       className: "h-auto min-h-[100svh] bg-cool-gray-900 py-20",
     },
     {
+      name: "Responsive Design",
+      children: <ResponsiveSect />,
+      smoothScroll: true,
+      className: "h-auto min-h-[100svh] py-20",
+    },
+    {
+      name: "Code Sect",
+      children: <CodeSect />,
+      smoothScroll: true,
+      className: "h-auto min-h-[100svh] bg-cool-gray-900 py-20",
+    },
+    {
       name: "Portfolio",
       children: <PortfolioSect />,
-      className: "h-auto min-h-[100svh] py-10 w-full",
+      className: "h-auto py-16 w-full",
     },
     {
       name: "Logo",
       children: <LogoSect />,
-      className: "h-auto min-h-auto bg-cool-gray-900 py-10",
+      className: "h-auto min-h-auto bg-cool-gray-900 py-5",
     },
   ];
 

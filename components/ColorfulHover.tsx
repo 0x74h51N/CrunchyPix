@@ -20,7 +20,9 @@ export const ColorfulHover = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
-    setIsHovered(!isHovered);
+    if (isHovered === false) {
+      setIsHovered(true);
+    } else setIsHovered(false);
   };
 
   useEffect(() => {
@@ -33,14 +35,17 @@ export const ColorfulHover = ({
           )
         : zeroColor,
 
-      transition: { duration: isHovered ? 0.05 : 2 },
+      transition: { duration: isHovered ? 0.5 : 1.5 },
     });
   }, [isHovered, controls, _colorType]);
   if (span) {
     return (
       <motion.span
+        key={key}
+        className={`cursor-pointer pointer-events-auto ${className}`}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
+        initial={initial}
         animate={controls}
       >
         {char === " " ? "\u00A0" : char}

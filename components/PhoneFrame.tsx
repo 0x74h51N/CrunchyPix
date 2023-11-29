@@ -3,7 +3,7 @@ interface PhoneFrameProps {
   children?: React.ReactNode;
 }
 
-const PhoneFrame: React.FC<PhoneFrameProps> = ({ screenImage, children }) => {
+const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
   return (
     <div className="relative w-[300px] h-[600px]">
       <img

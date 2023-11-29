@@ -18,7 +18,7 @@ const TypingText = ({
   text,
   duration = 50,
   _code = true,
-  textClass = "text",
+  textClass,
   delay = 0,
   generateSpan = false,
   colorType,
@@ -58,18 +58,21 @@ const TypingText = ({
   }, [delay]);
 
   return (
-    <div>
+    <>
       {_code ? (
-        <SyntaxHighlighter
-          language="typescript"
-          style={vscDarkPlus}
-          customStyle={{
-            backgroundColor: "transparent",
-            opacity: "1",
-          }}
-        >
-          {displayText}
-        </SyntaxHighlighter>
+        <div className={textClass}>
+          <SyntaxHighlighter
+            language="typescript"
+            style={vscDarkPlus}
+            customStyle={{
+              backgroundColor: "transparent",
+              opacity: "1",
+              overflow: "hidden",
+            }}
+          >
+            {displayText}
+          </SyntaxHighlighter>
+        </div>
       ) : generateSpan ? (
         <div className={textClass}>
           {generateSpans({
@@ -82,7 +85,7 @@ const TypingText = ({
       ) : (
         <div className={textClass}>{displayText}</div>
       )}
-    </div>
+    </>
   );
 };
 

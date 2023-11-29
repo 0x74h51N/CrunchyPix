@@ -53,7 +53,6 @@ export const Navbar = () => {
           dispatch(navbarChange(false));
         }
       };
-
       window.addEventListener("scroll", handleScroll);
       handleScroll();
 

@@ -18,7 +18,7 @@ export const generateSpans = ({
     if (char === " ") {
       if (currentSpan.length > 0) {
         spans.push(
-          <motion.span className="whitespace-normal inline-block cursor-pointer ">
+          <span className="whitespace-normal inline-block cursor-pointer ">
             {currentSpan.map((char, index) => (
               <ColorfulHover
                 key={index}
@@ -30,7 +30,7 @@ export const generateSpans = ({
                 className={_className}
               />
             ))}
-          </motion.span>
+          </span>
         );
         currentSpan = [];
       }
@@ -42,7 +42,7 @@ export const generateSpans = ({
 
   if (currentSpan.length > 0) {
     spans.push(
-      <motion.span className="whitespace-nowrap cursor-pointer">
+      <span className="whitespace-nowrap cursor-pointer">
         {currentSpan.map((char, index) => (
           <ColorfulHover
             key={index}
@@ -54,7 +54,7 @@ export const generateSpans = ({
             className={_className}
           />
         ))}
-      </motion.span>
+      </span>
     );
   }
 

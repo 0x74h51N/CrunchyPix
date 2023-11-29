@@ -1,7 +1,7 @@
 "use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
-import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
+import { EffectCoverflow, Autoplay } from "swiper/modules";
 import "swiper/css";
 import Label from "../../Labels";
 import { slide } from "@/app/common.types";
@@ -15,7 +15,7 @@ import i18n from "@/utils/i18n";
 import { useEffect, useState } from "react";
 import IconButton from "../../IconButton";
 
-SwiperCore.use([Autoplay, Pagination, EffectCoverflow]);
+SwiperCore.use([Autoplay, EffectCoverflow]);
 
 interface CarouselSliderProps {
   slides: slide[];
@@ -66,7 +66,6 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
           modifier: 3,
           slideShadows: false,
         }}
-        pagination={{ clickable: true }}
         onSlideChange={onSlideChange}
         autoplay={{
           delay: 2000,

@@ -21,7 +21,6 @@ const LandingSect = () => {
     (state: RootState) => state.screenHeight.height
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const dispatch = useDispatch();
   useEffect(() => {
     if (i18n.isInitialized) {
@@ -39,7 +38,7 @@ const LandingSect = () => {
   return (
     <>
       <div
-        className={`anaDiv flex justify-center items-center min-h-[100svh] min-w-[100svw] relative overflow-hidden `}
+        className={`anaDiv flex justify-center items-center min-h-[100svh] min-w-[100svw] relative overflow-hidden`}
       >
         <div
           className={`flex flex-row max-lg:flex-col justify-center items-center max-md:m-8 z-0 pb-32 ${
