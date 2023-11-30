@@ -31,7 +31,7 @@ export const ColorfulHover = ({
               : { colorType: _colorType }
           )
         : zeroColor,
-      transition: { duration: isHovered ? 0.5 : 1.5 },
+      transition: { duration: isHovered ? 0.1 : 1.5 },
     });
   }, [isHovered, controls, _colorType]);
 

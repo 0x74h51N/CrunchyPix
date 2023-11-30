@@ -54,11 +54,17 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
           `}
           >
             {section.background && (
-              <motion.div
+              <Image
+                src={section.background}
+                alt={section.background}
+                width={2000}
+                height={2000}
+                quality={100}
+                loading="eager"
+                priority={true}
                 style={{
-                  backgroundImage: `url(${section.background})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  objectFit: "cover",
+                  objectPosition: "center",
                   width: "100%",
                   height: "100%",
                   position: "absolute",
@@ -66,7 +72,6 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   left: 0,
                   zIndex: 0,
                 }}
-                key={section.background}
               />
             )}
             {section.children}
@@ -74,19 +79,35 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
               <motion.div
                 style={{
                   y,
-                  backgroundImage: `url(${section.topImage})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
                   width: "100%",
-                  height: "100%",
+                  height: "auto",
+                  minHeight: "100%",
+                  minWidth: "350px",
+                  pointerEvents: "none",
                   position: "absolute",
                   top: 0,
                   left: 0,
                   zIndex: 10,
+                  overflow: "hidden",
                 }}
-                className="galata1 bottom-0 pointer-events-none"
                 key={section.topImage}
-              />
+                className="relative"
+              >
+                <Image
+                  src={section.topImage}
+                  alt={section.topImage}
+                  width={2000}
+                  height={2000}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center",
+                  }}
+                  priority={true}
+                  className="galata1 absolute bottom-0 pointer-events-none"
+                />
+              </motion.div>
             )}
           </motion.section>
         ))}
