@@ -57,13 +57,14 @@ const SlideModal = () => {
             onClick={closeModal}
           >
             <Image
-              loading="lazy"
+              loading="eager"
               src={selectedSlide.imageUrl || ""}
               alt={selectedSlide.title || ""}
               width={1150}
               height={850}
               style={{ objectFit: isMobile ? "cover" : "contain" }}
               quality={100}
+              priority={true}
               className="object-fill w-auto h-auto"
             />
             <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
