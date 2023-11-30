@@ -3,7 +3,7 @@ import { SectionData } from "./common.types";
 import AboutMeSect from "@/components/Sections/AboutMeSect";
 import LandingSect from "@/components/Sections/LandingSect";
 import PortfolioSect from "@/components/Sections/PortfolioSect";
-import LogoSect from "@/components/Sections/LogoSect";
+import LogoSect from "@/components/Sections/LogoSection/LogoSect";
 import ResponsiveSect from "@/components/Sections/ResponsiveSect";
 import CodeSect from "@/components/Sections/CodeSect";
 
@@ -15,7 +15,7 @@ const Home = () => {
       parallax: true,
       background: "/galata_0.png",
       topImage: "/galata_1.png",
-      className: "h-auto min-h-[100svh]",
+      className: "h-auto min-h-[100svh] ",
     },
     {
       name: "About Me",
@@ -38,6 +38,7 @@ const Home = () => {
     {
       name: "Portfolio",
       children: <PortfolioSect />,
+      smoothScroll: true,
       className: "h-auto py-16 w-full",
     },
     {

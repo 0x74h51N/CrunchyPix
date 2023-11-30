@@ -49,7 +49,7 @@ const LandingSect = () => {
             variants={textVariant(0)}
             className="flex flex-col text-center"
           >
-            <p
+            <div
               className={`font-medium lg:text-[40px] sm:text-[30px] text-[25px]`}
             >
               <TypingText
@@ -58,9 +58,9 @@ const LandingSect = () => {
                 text={t("landing.intro")}
                 duration={40}
                 colorType="vibrantColors"
-                zeroColor="white"
+                zeroColor="#FFFFFF"
               />
-            </p>
+            </div>
             <motion.div
               variants={fadeIn("", "", 0.1, 1)}
               className="mt-3 lg:text-[19px] text-[18px] min-w-[219] leading-[30px] max-lg:leading-[10px] whitespace-pre-wrap"
@@ -72,7 +72,7 @@ const LandingSect = () => {
                 duration={40}
                 colorType="vibrantColors"
                 delay={500}
-                zeroColor="white"
+                zeroColor="#FFFFFF"
               />
             </motion.div>
 
@@ -85,7 +85,7 @@ const LandingSect = () => {
               {generateSpans({
                 text: t("landing.title"),
                 colorType: "vibrantColors",
-                zeroColor: "white",
+                zeroColor: "#FFFFFF",
               })}
             </motion.h1>
           </motion.div>

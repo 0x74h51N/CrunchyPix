@@ -3,6 +3,8 @@ import { codeString } from "@/constants/codeString";
 import React from "react";
 import MonitorFrame from "../MonitorFrame";
 import TypingText from "../typeText";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
 const CodeSect = () => {
   return (
@@ -11,7 +13,18 @@ const CodeSect = () => {
       <div>
         <MonitorFrame>
           <div className="h-full w-full overflow-scroll overflow-x-scroll scrollbar-thin scrollbar-thumb scrollbar-track">
-            <TypingText text={codeString} duration={10} />
+            {/* <TypingText text= duration={10} /> */}
+            <SyntaxHighlighter
+              language="typescript"
+              style={vscDarkPlus}
+              customStyle={{
+                backgroundColor: "transparent",
+                opacity: "1",
+                overflow: "hidden",
+              }}
+            >
+              {codeString}
+            </SyntaxHighlighter>
           </div>
         </MonitorFrame>
       </div>

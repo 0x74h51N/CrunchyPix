@@ -20,7 +20,7 @@ const PortfolioSect = () => {
           {generateSpans({
             text: "Portfolio",
             colorType: "vibrantColors",
-            zeroColor: "white",
+            zeroColor: "#FFFFFF",
           })}
         </motion.h1>
       </div>
@@ -35,6 +35,3 @@ const PortfolioSect = () => {
 };
 
 export default PortfolioSect;
-function dispatch(arg0: any) {
-  throw new Error("Function not implemented.");
-}

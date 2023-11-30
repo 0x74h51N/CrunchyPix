@@ -56,58 +56,37 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             {section.background && (
               <motion.div
                 style={{
+                  backgroundImage: `url(${section.background})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  width: "100%",
+                  height: "100%",
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "100%",
-                  height: "auto",
-                  minHeight: "100%",
-                  minWidth: "350px",
                   zIndex: 0,
-                  pointerEvents: "none",
                 }}
-                key={index}
-              >
-                <Image
-                  src={section.background}
-                  alt={section.background}
-                  layout="fill"
-                  objectFit="cover"
-                  quality={100}
-                  loading="eager"
-                  priority={true}
-                  className="z-0"
-                />
-              </motion.div>
+                key={section.background}
+              />
             )}
             {section.children}
             {section.topImage && (
               <motion.div
                 style={{
                   y,
+                  backgroundImage: `url(${section.topImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  width: "100%",
+                  height: "100%",
                   position: "absolute",
                   top: 0,
                   left: 0,
-                  width: "100%",
-                  height: "auto",
-                  minHeight: "100%",
-                  minWidth: "350px",
                   zIndex: 10,
-                  pointerEvents: "none",
                 }}
-                key={index}
-              >
-                <Image
-                  src={section.topImage}
-                  alt={section.topImage}
-                  layout="fill"
-                  objectFit="cover"
-                  quality={100}
-                  loading="eager"
-                  priority={true}
-                  className="galata1 bottom-0"
-                />
-              </motion.div>
+                className="galata1 bottom-0 pointer-events-none"
+                key={section.topImage}
+              />
             )}
           </motion.section>
         ))}

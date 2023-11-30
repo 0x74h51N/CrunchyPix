@@ -8,16 +8,17 @@ import FullScreenSlider from "../Slider/FullScreenSlider/FullScreenSlider";
 const ResponsiveSect = () => {
   const sampleSlides: slide[] = [
     {
-      imageUrl: "",
+      imageUrl: "/",
       title: "",
       description: "",
     },
     {
-      imageUrl: "",
+      imageUrl: "/",
       title: "",
       description: "",
     },
     {
+      imageUrl: "/",
       title: "",
       description: "",
     },
