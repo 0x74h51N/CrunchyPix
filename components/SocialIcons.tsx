@@ -5,12 +5,14 @@ import { RootState } from "@/store";
 
 type SocialIconProp = {
   iconPack: Icon[];
+  row?: boolean;
 };
 
 export const SocialIcons = ({
   iconPack,
   _colorType,
   randomCount = 6,
+  row = false,
 }: SocialIconProp & ColorfulHoverType) => {
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
@@ -27,18 +29,19 @@ export const SocialIcons = ({
 
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2.1 / totalIcons;
-  const iconList = isMobile ? [...iconPack].reverse() : iconPack;
+  const iconList =
+    isMobile || screenHeight <= 600 || row ? [...iconPack].reverse() : iconPack;
 
   return (
     <>
       {iconList.map((icon: Icon, index: number) => {
         const angle = index * angleIncrement;
         const x =
-          isMobile || screenHeight <= 600
+          isMobile || screenHeight <= 600 || row
             ? 0
             : iconRadius * Math.cos(angle) + screenWidth / 2.3;
         const y =
-          isMobile || screenHeight <= 600
+          isMobile || screenHeight <= 600 || row
             ? 0
             : -iconRadius * Math.sin(angle) + screenHeight / 2.15;
 

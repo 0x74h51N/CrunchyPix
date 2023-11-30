@@ -42,7 +42,7 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
       grabCursor
       loop
       autoplay={{
-        delay: 0,
+        delay: 300,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       }}

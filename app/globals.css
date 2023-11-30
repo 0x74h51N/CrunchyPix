@@ -287,3 +287,16 @@ body {
 ::-webkit-scrollbar-track {
   @apply bg-cool-gray-600;
 }
+
+@keyframes smoothScroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.scroll-container {
+  animation: smoothScroll 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}

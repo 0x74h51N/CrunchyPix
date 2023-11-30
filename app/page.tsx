@@ -21,7 +21,7 @@ const Home = () => {
       name: "About Me",
       children: <AboutMeSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[100svh] bg-cool-gray-900 py-20",
+      className: "h-auto min-h-[100svh] bg-cool-gray-900 py-12",
     },
     {
       name: "Responsive Design",
