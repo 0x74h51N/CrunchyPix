@@ -1,6 +1,6 @@
 "use client";
 import ArrowButton from "../ArrowButton";
-import { textVariant, fadeIn, slideIn } from "@/utils/motion";
+import { slideIn, staggerContainer, polygonIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../GenerateSpans";
 import { useEffect } from "react";
@@ -37,7 +37,11 @@ const LandingSect = () => {
 
   return (
     <>
-      <div
+      <motion.div
+        variants={staggerContainer(0, 0.5)}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.5 }}
         className={`anaDiv flex justify-center items-center min-h-[100svh] min-w-[100svw] relative overflow-hidden`}
       >
         <div
@@ -45,10 +49,7 @@ const LandingSect = () => {
             isMobile ? "pb-[180px]" : ""
           }`}
         >
-          <motion.div
-            variants={textVariant(0)}
-            className="flex flex-col text-center"
-          >
+          <div className="flex flex-col text-center">
             <div
               className={`font-medium lg:text-[40px] sm:text-[30px] text-[25px]`}
             >
@@ -56,30 +57,25 @@ const LandingSect = () => {
                 generateSpan={true}
                 _code={false}
                 text={t("landing.intro")}
-                duration={40}
+                duration={50}
                 colorType="vibrantColors"
                 zeroColor="#FFFFFF"
               />
             </div>
-            <motion.div
-              variants={fadeIn("", "", 0.1, 1)}
-              className="mt-3 lg:text-[19px] text-[18px] min-w-[219] leading-[30px] max-lg:leading-[10px] whitespace-pre-wrap"
-            >
+            <div className="mt-3 lg:text-[19px] text-[18px] min-w-[219] leading-[30px] max-lg:leading-[10px] whitespace-pre-wrap">
               <TypingText
                 generateSpan={true}
                 _code={false}
                 text={t("landing.description")}
-                duration={40}
+                duration={50}
                 colorType="vibrantColors"
-                delay={500}
+                delay={550}
                 zeroColor="#FFFFFF"
               />
-            </motion.div>
+            </div>
 
             <motion.h1
-              variants={slideIn("up", "spring", 2, 1.6)}
-              initial="hidden"
-              animate="show"
+              variants={slideIn("up", "spring", 2.5, 1.5)}
               className="font-black md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[60px]"
             >
               {generateSpans({
@@ -88,17 +84,14 @@ const LandingSect = () => {
                 zeroColor: "#FFFFFF",
               })}
             </motion.h1>
-          </motion.div>
+          </div>
         </div>
-
         <motion.div
-          initial={{
-            clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
-          }}
-          animate={{
-            clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-          }}
-          transition={{ delay: 2.5, duration: 1 }}
+          variants={
+            isMobile || screenHeight <= 600
+              ? slideIn("up", "spring", 2.8, 2.5)
+              : polygonIn("down", "spring", 2.8, 2.5)
+          }
           className={`absolute bottom-0 left-0 h-[100svh] w-[100svw] pointer-events-none flex  ${
             isMobile || screenHeight <= 600
               ? `flex-row gap-4 justify-center items-center pb-6 ${
@@ -117,7 +110,7 @@ const LandingSect = () => {
             className="opacity-50 hover:opacity-100 transition-opacity animate-my-bounce-slow z-10"
           />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };

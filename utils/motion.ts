@@ -71,7 +71,7 @@ export const slideIn = (
     hidden: {
       opacity: 0,
       x: direction === "left" ? "-100%" : direction === "right" ? "100%" : 0,
-      y: direction === "up" ? "100%" : direction === "down" ? "100%" : 0,
+      y: direction === "up" ? "100%" : direction === "down" ? "-100%" : 0,
     },
     show: {
       opacity: 1,
@@ -98,6 +98,47 @@ export const staggerContainer = (
       transition: {
         staggerChildren: staggerChildren,
         delayChildren: delayChildren || 0,
+      },
+    },
+  };
+};
+
+export const polygonIn = (
+  direction: string,
+  type: string,
+  delay: number,
+  duration: number
+) => {
+  const clipPath0 =
+    direction === "down"
+      ? "polygon(0 0, 100% 0, 100% 0, 0 0)"
+      : direction === "up"
+      ? "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)"
+      : direction === "left"
+      ? "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)"
+      : direction === "right"
+      ? "polygon(0 0, 0 0, 0 100%, 0 100%)"
+      : "";
+  const clipPath1 =
+    direction === "down"
+      ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+      : direction === "up"
+      ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+      : direction === "left"
+      ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+      : direction === "right"
+      ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
+      : "";
+
+  return {
+    hidden: { clipPath: clipPath0 },
+    show: {
+      clipPath: clipPath1,
+      transition: {
+        type: type,
+        delay: delay,
+        duration: duration,
+        ease: "easeOut",
       },
     },
   };

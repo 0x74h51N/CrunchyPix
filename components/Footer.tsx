@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Links } from "@/constants";
 import Link from "next/link";
 import Contact from "./Contact";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { slideIn, staggerContainer } from "@/utils/motion";
@@ -30,7 +30,7 @@ const Footer = () => {
     return null;
   }
   return (
-    <footer className="flex justify-center footer">
+    <div className="flex justify-center ">
       <motion.div
         variants={staggerContainer(2, 2)}
         initial="hidden"
@@ -48,6 +48,7 @@ const Footer = () => {
                 src="/LogoL.svg"
                 width={250}
                 height={100}
+                loading={"lazy"}
                 alt="Flexibble"
                 className="min-w-[180px] h-auto"
               />
@@ -93,7 +94,7 @@ const Footer = () => {
           </div>
         </div>
       </motion.div>
-    </footer>
+    </div>
   );
 };
 
