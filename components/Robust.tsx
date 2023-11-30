@@ -54,11 +54,9 @@ const RobustSection = ({
                     isMobile ? 0.6 : index * 0.6,
                     0.6
                   )}
-                  className="overflow-hidden h-[auto]"
+                  className="overflow-hidden h-[auto] font-medium lg:text-[20px] sm:text-[18px] text-[16px]  mt-4 text-cool-gray-100 text-center"
                 >
-                  <h2 className="font-medium lg:text-[20px] sm:text-[18px] text-[16px]  mt-4 text-cool-gray-100 text-center">
-                    {t(section.title)}
-                  </h2>
+                  {t(section.title)}
                 </motion.h2>
                 <motion.p
                   variants={fadeIn(
@@ -67,11 +65,9 @@ const RobustSection = ({
                     isMobile ? 0.6 : index * 0.6,
                     0.6
                   )}
-                  className="overflow-hidden h-[130px] flex items-center"
+                  className="overflow-hidden h-[130px] flex items-center text-center xs:text-[14px] text-[12px] mt-2 text-cool-gray-200 whitespace-normal"
                 >
-                  <p className="text-center xs:text-[14px] text-[12px] mt-2 text-cool-gray-200 whitespace-normal">
-                    {t(section.description)}
-                  </p>
+                  {t(section.description)}
                 </motion.p>
               </motion.div>
             </motion.div>

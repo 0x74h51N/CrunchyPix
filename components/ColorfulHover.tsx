@@ -10,7 +10,6 @@ export const ColorfulHover = ({
   initial,
   style,
   className,
-  key,
   span,
   _colorType = "themeColors",
   randomCount = 6,
@@ -20,9 +19,7 @@ export const ColorfulHover = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
-    if (isHovered === false) {
-      setIsHovered(true);
-    } else setIsHovered(false);
+    setIsHovered(!isHovered);
   };
 
   useEffect(() => {
@@ -34,14 +31,13 @@ export const ColorfulHover = ({
               : { colorType: _colorType }
           )
         : zeroColor,
-
-      transition: { duration: isHovered ? 0.5 : 1.5 },
+      transition: { duration: isHovered ? 0.1 : 1.5 },
     });
   }, [isHovered, controls, _colorType]);
+
   if (span) {
     return (
       <motion.span
-        key={key}
         className={`cursor-pointer pointer-events-auto ${className}`}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
@@ -54,7 +50,6 @@ export const ColorfulHover = ({
   } else {
     return (
       <motion.div
-        key={key}
         className={`cursor-pointer pointer-events-auto ${className}`}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}

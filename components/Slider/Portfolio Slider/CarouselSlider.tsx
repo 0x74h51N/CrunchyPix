@@ -87,10 +87,10 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
                 loading="lazy"
                 src={slide.imageUrl || ""}
                 alt={slide.title || ""}
-                layout="fill"
-                objectFit="cover"
+                width="1000"
+                height="1000"
+                className="object-cover w-full h-full my-5"
                 quality={100}
-                className="w-auto h-full my-5"
               />
               <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                 <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>
@@ -101,13 +101,19 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
                   <div className="flex flex-wrap items-start mr-auto">
                     {slide.labels &&
                       slide.labels.map((label, labelIndex) => (
-                        <Label key={labelIndex} text={label} />
+                        <Label
+                          key={`label-${index}-${labelIndex}`}
+                          text={label}
+                        />
                       ))}
                   </div>
                   <div className="flex items-end gap-2">
                     {slide.icons &&
                       slide.icons.map((icon, iconIndex) => (
-                        <IconButton key={iconIndex} icon={icon} />
+                        <IconButton
+                          key={`icon-${index}-${iconIndex}`}
+                          icon={icon}
+                        />
                       ))}
                   </div>
                 </div>

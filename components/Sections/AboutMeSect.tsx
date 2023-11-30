@@ -35,10 +35,8 @@ const AboutMeSect = () => {
         <Image
           src="/headColor.png"
           alt="Photo"
-          layout="filled"
           width={280}
           height={280}
-          objectFit="cover"
           loading="lazy"
           className="object-center bg-opacity-0 grayscale max-lg:w-[240px] max-sm:w-[220px] h-auto z-30"
         />
@@ -50,12 +48,12 @@ const AboutMeSect = () => {
           className="flex flex-col items-start h-full w-auto p-5 z-10"
         >
           <motion.h1 variants={slideIn("left", "spring", 0.2, 1.6)}>
-            <p className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
+            <div className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
               {t("introduction.intro")}
-            </p>
-            <h2 className="text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
+            </div>
+            <div className="text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
               {t("introduction.title")}
-            </h2>
+            </div>
           </motion.h1>
           <motion.p
             variants={textVariant(0.8)}

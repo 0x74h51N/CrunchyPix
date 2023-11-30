@@ -1,5 +1,5 @@
 import { logoSlide } from "@/constants/logoSlide";
-import LogoSlide from "../Slider/LogoSlide";
+import LogoSlide from "../../Slider/LogoSlide";
 
 const LogoSect = () => {
   return (

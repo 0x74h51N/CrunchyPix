@@ -254,11 +254,11 @@ body {
   filter: grayscale(0%);
 }
 
-// @media (max-width: 1020px) {
-//   .grayscale {
-//     filter: grayscale(0%);
-//   }
-// }
+/* @media (max-width: 1020px) {
+   .grayscale {
+     filter: grayscale(0%);
+   }
+ } */
 
 .galata1 {
   -webkit-filter: drop-shadow(5px 5px 3px #141414);
@@ -271,6 +271,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  backdrop-filter: blur(5px);
 }
 
 ::-webkit-scrollbar {

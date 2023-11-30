@@ -18,9 +18,10 @@ const SlideCreator: React.FC<slide> = ({
         <Image
           src={imageUrl}
           alt={"Image"}
-          layout="fill"
-          objectFit="cover"
+          width={1250}
+          height={1250}
           loading="lazy"
+          className=" object-cover"
         />
       </div>
       {box && (
