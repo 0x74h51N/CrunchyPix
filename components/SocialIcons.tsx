@@ -23,12 +23,10 @@ export const SocialIcons = ({
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
 
-  const iconRadius = isMobile
-    ? 0
-    : Math.max(isTablet ? 280 : 300, screenWidth / 5.8);
+  const iconRadius = isMobile ? 0 : Math.max(300, screenWidth / 7);
 
   const totalIcons = iconPack.length;
-  const angleIncrement = Math.PI / 2.1 / totalIcons;
+  const angleIncrement = Math.PI / 2.2 / totalIcons;
   const iconList =
     isMobile || screenHeight <= 600 || row ? [...iconPack].reverse() : iconPack;
 
@@ -39,14 +37,14 @@ export const SocialIcons = ({
         const x =
           isMobile || screenHeight <= 600 || row
             ? 0
-            : iconRadius * Math.cos(angle) + screenWidth / 2.3;
+            : iconRadius * Math.cos(angle) +
+              (isTablet ? screenWidth / 2.5 : screenWidth / 2.25);
         const y =
           isMobile || screenHeight <= 600 || row
             ? 0
-            : -iconRadius * Math.sin(angle) + screenHeight / 2.15;
+            : -iconRadius * Math.sin(angle) + screenHeight / 2.2;
 
-        const fontSize =
-          isTablet || isMobile || screenHeight <= 600 ? "35px" : "50px";
+        const fontSize = isMobile || screenHeight <= 600 ? "35px" : "50px";
 
         const iconStyle = { x, y, fontSize };
 

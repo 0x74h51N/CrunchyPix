@@ -1,8 +1,8 @@
 "use client";
 import { codeString } from "@/constants/codeString";
 import React from "react";
-import MonitorFrame from "../MonitorFrame";
-import TypingText from "../typeText";
+import MonitorFrame from "../../MonitorFrame";
+import TypingText from "../../typeText";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 

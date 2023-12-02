@@ -1,9 +1,9 @@
 "use client";
-import CarouselSlider from "../Slider/Portfolio Slider/CarouselSlider";
-import SlideModal from "../Slider/Portfolio Slider/Child/SlideModal";
+import CarouselSlider from "../../Slider/Portfolio Slider/CarouselSlider";
+import SlideModal from "../../Slider/Portfolio Slider/Child/SlideModal";
 import { projectSlides } from "@/constants/projectSlides";
 import { motion } from "framer-motion";
-import { generateSpans } from "../GenerateSpans";
+import { generateSpans } from "../../GenerateSpans";
 import { slideIn } from "@/utils/motion";
 
 const PortfolioSect = () => {

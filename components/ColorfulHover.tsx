@@ -13,7 +13,7 @@ export const ColorfulHover = ({
   span,
   _colorType = "themeColors",
   randomCount = 6,
-  zeroColor = "#E1E1E1",
+  zeroColor = "#FFFFFF",
 }: ColorfulHoverType) => {
   const controls = useAnimation();
   const [isHovered, setIsHovered] = useState(false);

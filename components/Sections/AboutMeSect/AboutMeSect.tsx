@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { slideIn, staggerContainer, textVariant } from "@/utils/motion";
 import { robustSections } from "@/constants/robustSections";
-import RobustSection from "../Robust";
+import RobustSection from "../../Robust";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";

@@ -13,6 +13,7 @@ export const handleScroll = ({
   if (!event) {
     return;
   }
+
   const scrollDirection = event.deltaY > 0 ? "down" : "up";
 
   if (
@@ -31,7 +32,6 @@ export const handleScroll = ({
       window.scrollY + window.innerHeight >= nextSectionRef.offsetTop;
 
     if (!currentSectionBottom && !nextSectionTop) {
-      event.preventDefault();
     } else {
       if (smoothScroll) {
         scrollToSection(
@@ -57,7 +57,6 @@ export const handleScroll = ({
       window.scrollY <= prevSectionRef.offsetTop + prevSectionRef.clientHeight;
 
     if (!currentSectionTop && !prevSectionBottom) {
-      event.preventDefault();
     } else {
       if (smoothScroll) {
         scrollToSection(
