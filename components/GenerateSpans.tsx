@@ -8,34 +8,26 @@ export const generateSpans = ({
   randomCount,
   _className,
 }: generateSpanType) => {
-  const spans = [];
+  const words = text.split(" ");
 
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    const isWhitespace = char === " ";
+  const spans = words.map((word, index) => {
+    const isLastWord = index === words.length - 1;
 
-    spans.push(
-      <span
-        key={`char-${i}`}
-        className={`${
-          isWhitespace ? "whitespace-normal" : "whitespace-nowrap"
-        } cursor-pointer`}
-      >
-        {isWhitespace ? (
-          <span>&nbsp;</span>
-        ) : (
-          <ColorfulHover
-            char={char}
-            span={true}
-            _colorType={colorType}
-            randomCount={randomCount}
-            zeroColor={zeroColor}
-            className={_className}
-          />
-        )}
+    const characters = word.split("").map((char, charIndex) => (
+      <span key={`char-${charIndex}`} className={`cursor-pointer`}>
+        <ColorfulHover
+          char={char}
+          span={true}
+          _colorType={colorType}
+          randomCount={randomCount}
+          zeroColor={zeroColor}
+          className={_className}
+        />
       </span>
-    );
-  }
+    ));
+
+    return <span key={`word-${index}`}>{characters} </span>;
+  });
 
   return spans;
 };

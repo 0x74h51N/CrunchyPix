@@ -1,11 +1,11 @@
 import Section from "@/components/Section";
 import { SectionData } from "./common.types";
-import AboutMeSect from "@/components/Sections/AboutMeSect";
-import LandingSect from "@/components/Sections/LandingSect";
-import PortfolioSect from "@/components/Sections/PortfolioSect";
+import AboutMeSect from "@/components/Sections/AboutMeSect/AboutMeSect";
+import LandingSect from "@/components/Sections/LandingSect/LandingSect";
+import PortfolioSect from "@/components/Sections/PortfolioSect/PortfolioSect";
 import LogoSect from "@/components/Sections/LogoSection/LogoSect";
-import ResponsiveSect from "@/components/Sections/ResponsiveSect";
-import CodeSect from "@/components/Sections/CodeSect";
+import ResponsiveSect from "@/components/Sections/ResponsiveSect/ResponsiveSect";
+import CodeSect from "@/components/Sections/CodeSect/CodeSect";
 
 const Home = () => {
   const sectionsData: SectionData[] = [
@@ -15,7 +15,7 @@ const Home = () => {
       parallax: true,
       background: "/galata_0.png",
       topImage: "/galata_1.png",
-      className: "h-auto min-h-[100svh] ",
+      className: "h-auto min-h-[100svh] w-[100svw]",
     },
     {
       name: "About Me",
