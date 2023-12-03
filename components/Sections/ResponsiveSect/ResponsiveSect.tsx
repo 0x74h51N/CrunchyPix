@@ -1,7 +1,7 @@
 "use client";
 import { slide } from "@/app/common.types";
 import React from "react";
-import PhoneFrame from "../../PhoneFrame";
+import PhoneFrame from "./PhoneFrame/PhoneFrame";
 import FullScreenSlider from "../../Slider/FullScreenSlider/FullScreenSlider";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";

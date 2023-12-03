@@ -35,10 +35,10 @@ const AboutMeSect = () => {
         <Image
           src="/headColor.png"
           alt="Photo"
-          width={280}
-          height={280}
+          width={250}
+          height={250}
           loading="lazy"
-          className="object-center bg-opacity-0 grayscale max-lg:w-[240px] max-sm:w-[220px] h-auto z-30"
+          className="object-center bg-opacity-0 grayscale max-lg:w-[230px] max-sm:w-[210px] h-auto z-30"
         />
         <motion.div
           variants={staggerContainer(2, 0.5)}
