@@ -1,22 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 interface mobileRotate {
-  rotate: boolean;
-  isRotate: boolean;
+  rotateEnd: boolean;
+  rotateStart: boolean;
 }
 
 const initialState: mobileRotate = {
-  rotate: false,
-  isRotate: false,
+  rotateEnd: false,
+  rotateStart: false,
 };
 const rotateSlice = createSlice({
   name: "mobileRotate",
   initialState,
   reducers: {
     rotateChange: (state, action) => {
-      state.rotate = action.payload;
+      state.rotateEnd = action.payload;
     },
     setRotate: (state, action) => {
-      state.isRotate = action.payload;
+      state.rotateStart = action.payload;
     },
   },
 });
