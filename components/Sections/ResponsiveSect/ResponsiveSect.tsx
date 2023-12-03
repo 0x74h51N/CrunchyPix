@@ -7,34 +7,49 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 
 const ResponsiveSect = () => {
+  const rotateStart = useSelector(
+    (state: RootState) => state.rotateChange.rotateStart
+  );
+  const rotateEnd = useSelector(
+    (state: RootState) => state.rotateChange.rotateEnd
+  );
   const sampleSlides: slide[] = [
     {
-      imageUrl: "/mintingui.jpg",
-      title: "",
+      imageUrl: rotateEnd
+        ? "/PhoneSlides/landingH.jpg"
+        : "/PhoneSlides/landingV.jpg",
+      title: "Landing",
       description: "",
     },
     {
-      imageUrl: "/ccorder.jpg",
-      title: "",
+      imageUrl: rotateEnd
+        ? "/PhoneSlides/aboutMeH.jpg"
+        : "/PhoneSlides/aboutMeV.jpg",
+      title: "About Me",
       description: "",
     },
     {
-      imageUrl: "/crunchypix.jpg",
-      title: "",
+      imageUrl: rotateEnd
+        ? "/PhoneSlides/portfolioH.jpg"
+        : "/PhoneSlides/portfolioV.jpg",
+      title: "Portfolio",
+      description: "",
+    },
+    {
+      imageUrl: rotateEnd
+        ? "/PhoneSlides/mintingUiH.jpg"
+        : "/PhoneSlides/mintingUiV.jpg",
+      title: "Minting UI",
       description: "",
     },
   ];
-
-  const isRotate = useSelector(
-    (state: RootState) => state.rotateChange.isRotate
-  );
 
   return (
     <div className="flex flex-row items-center w-full h-full pl-20 gap-40">
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
         <div
           className={`flex flex-wrap items-center justify-center h-[600px] z-10 ${
-            isRotate ? "w-[600px]" : "w-[300px] "
+            rotateStart ? "w-[600px]" : "w-[300px] "
           } transition-all ease-in-out duration-500`}
         >
           <PhoneFrame>

@@ -21,7 +21,7 @@ const SlideCreator: React.FC<slide> = ({
           width={1250}
           height={1250}
           loading="lazy"
-          className=" object-cover"
+          className=" object-cover w-full h-full"
         />
       </div>
       {box && (
