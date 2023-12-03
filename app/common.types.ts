@@ -78,6 +78,7 @@ export type Icon = {
   link?: string;
   size?: number;
   color?: string;
+  alt?: string;
 };
 
 export type logoType = {

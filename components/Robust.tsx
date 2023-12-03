@@ -15,6 +15,7 @@ const RobustSection = ({
 }) => {
   const { t } = useTranslation(["translation"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   return (
     <div className="flex flex-wrap justify-center gap-10 w-auto">
       {robustSections.map((section, index) => (
@@ -27,7 +28,7 @@ const RobustSection = ({
           className="m-0"
         >
           <Tilt
-            tiltEnable={isMobile ? false : true}
+            tiltEnable={isMobile || isTablet ? false : true}
             tiltReverse
             gyroscope={true}
             glareEnable={isMobile ? false : true}
@@ -39,14 +40,14 @@ const RobustSection = ({
                 variants={staggerContainer(2, 0.2)}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: "all" }}
-                className="flex justify-evenly items-center w-[260px] h-[350px] flex-col bg-transparent p-4 relative overflow-hidden cursor-pointer"
+                viewport={{ once: true, amount: 0.9 }}
+                className="flex justify-evenly items-center w-[260px] h-[340px] flex-col bg-transparent p-4 relative overflow-hidden cursor-pointer"
               >
                 <motion.div
                   variants={fadeIn(
                     "down",
                     "spring",
-                    isMobile ? 0.6 : index * 0.6,
+                    isMobile ? 0.6 : index * 0.7 + 0.3,
                     0.6
                   )}
                   className="flex justify-center items-center"
@@ -58,7 +59,7 @@ const RobustSection = ({
                     variants={fadeIn(
                       "down",
                       "spring",
-                      isMobile ? 0.6 : index * 0.6,
+                      isMobile ? 0.6 : index * 0.7 + 0.3,
                       0.6
                     )}
                     className="overflow-hidden h-[auto] font-medium lg:text-[20px] sm:text-[18px] text-[16px]  mt-4 text-cool-gray-100 text-center"
@@ -69,7 +70,7 @@ const RobustSection = ({
                     variants={fadeIn(
                       "up",
                       "spring",
-                      isMobile ? 0.6 : index * 0.6,
+                      isMobile ? 0.6 : index * 0.7 + 0.3,
                       0.6
                     )}
                     className="overflow-hidden h-[130px] flex items-center text-center xs:text-[14px] text-[12px] mt-2 text-cool-gray-200 whitespace-normal"

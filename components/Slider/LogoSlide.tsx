@@ -65,7 +65,7 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
               className="h-auto w-full grayscale "
             />
             {hoveredIndex === index && (
-              <div className="absolute self-center -bottom-6  w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-80 transition-opacity duration-300 pointer-events-none">
+              <div className="absolute self-center -bottom-6 rounded-md border-spacing-1 border-cool-gray-700 border-2  w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-80 transition-opacity duration-300 pointer-events-none">
                 {item.text}
               </div>
             )}
