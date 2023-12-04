@@ -25,6 +25,7 @@ const SlideModal = () => {
   );
   const closeModal = () => {
     dispatch(clearSlide());
+    setImageLoading(false);
   };
   useEffect(() => {
     if (isScrolled) {
