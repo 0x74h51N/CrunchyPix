@@ -13,7 +13,7 @@ import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import { useEffect, useState } from "react";
-import IconButton from "../../IconButton";
+import IconButton from "@/components/Buttons/IconButton";
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
@@ -76,7 +76,7 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
         className="h-auto min-h-[500px]"
       >
         {slides.map((slide: slide, index: number) => (
-          <SwiperSlide key={index}>
+          <SwiperSlide key={index + 1}>
             <div
               className={`relative ${
                 isTablet && !isMobile ? "h-[340px]" : "h-[485px]"
@@ -94,9 +94,6 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
               />
               <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                 <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>
-                <p className="text-[12px] overflow-hidden overflow-ellipsis line-clamp-1">
-                  {t(`${slide.description}`)}
-                </p>
                 <div className="flex">
                   <div className="flex flex-wrap items-start mr-auto">
                     {slide.labels &&

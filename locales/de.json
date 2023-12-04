@@ -70,6 +70,11 @@
   ],
   "projectSlides": [
     {
+      "title": "Portfolio",
+      "title2": "Portfolio Seite",
+      "click": "Für weitere Details..."
+    },
+    {
       "title": "CrunchyPix",
       "description": "Initiiert für meine Website und um Front-End-Fähigkeiten zu präsentieren. Dynamische Komponenten und Stile entwickelt. Zu den Funktionen gehören internationale Sprachoptionen und sanfte Bildlaufübergänge. Besuchen Sie GitHub für Details."
     },
@@ -86,6 +91,17 @@
       "description": "Meine erste Website, entwickelt mit WordPress und begrenztem Code. Erstellt mit vielen individuellen Designelementen."
     }
   ],
+
+  "responsiveSect": {
+    "title": "Nahtloses digitales Erlebnis",
+    "title2": "Wo ästhetisches Design auf Funktionalität in jedem Pixel trifft",
+    "description": [
+      "In der sich schnell entwickelnden digitalen Welt von heute ist es für mich entscheidend, die Benutzererfahrung zu priorisieren, da ein erheblicher Teil des Webverkehrs über mobile Geräte erfolgt. Daher ist es nicht nur wichtig, dass das Design ästhetisch ist, sondern auch funktional, anpassungsfähig und benutzerfreundlich.",
+      "In meiner Designansatz konzentriere ich mich darauf, eine konsistente Leistung auf allen Geräten zu bieten, unabhängig von der Bildschirmgröße. Durch die Anwendung von responsiven und adaptiven Designprinzipien stelle ich sicher, dass meine Websites nahtlos an verschiedene Bildschirmabmessungen angepasst werden. Auf diese Weise können Benutzer unabhängig vom verwendeten Gerät ein makelloses Erlebnis haben. Ich glaube, dass jedes Pixel zur Geschichte des Benutzers beiträgt.",
+      "Meine Designphilosophie dreht sich nicht nur um Ästhetik, sondern auch um Funktionalität. Ich strebe danach, benutzerfreundliche und zugängliche Designs zu schaffen, die es jedem ermöglichen, in der digitalen Welt komfortabel zu navigieren. Ich gestalte meine Projekte akribisch und glaube an die Bedeutung jedes Details, um sicherzustellen, dass Benutzer eine reibungslose Reise in der digitalen Welt erleben. Mit meinem innovativen Designansatz ist es zu einer Leidenschaft geworden, sich an die sich ständig verändernde Technologielandschaft anzupassen und die neuesten Trends im Auge zu behalten."
+    ]
+  },
+
   "paths": [
     {
       "d": "M 23.713 62.557 A 7.238 7.238 0 0 0 26.8 63.204 A 10.913 10.913 0 0 0 31.5 62.191 A 11.754 11.754 0 0 0 35.15 59.454 A 40.224 40.224 0 0 0 37.031 57.253 A 46.012 46.012 0 0 0 41.3 50.804 A 0.564 0.564 0 0 0 41.373 50.71 Q 41.545 50.443 41.75 49.704 Q 41.926 49.071 41.978 48.636 A 2.813 2.813 0 0 0 42 48.304 Q 42 47.504 41.75 47.304 A 0.78 0.78 0 0 0 41.527 47.181 Q 41.414 47.141 41.275 47.121 A 1.995 1.995 0 0 0 41 47.104 A 0.993 0.993 0 0 0 40.548 47.226 Q 40.179 47.415 39.754 47.897 A 7.122 7.122 0 0 0 39.35 48.404 A 71.425 71.425 0 0 0 39.171 48.65 Q 38.635 49.39 38.257 49.955 A 20.822 20.822 0 0 0 37.9 50.504 Q 35.7 53.904 32.95 56.854 A 11.057 11.057 0 0 1 31.177 58.41 A 7.37 7.37 0 0 1 26.9 59.804 A 3.917 3.917 0 0 1 24.913 59.322 Q 22.7 58.049 22.7 53.404 A 18.533 18.533 0 0 1 22.744 52.137 Q 22.997 48.446 24.7 44.104 A 83.873 83.873 0 0 1 25.481 42.194 A 94.604 94.604 0 0 1 28.2 36.354 A 145.68 145.68 0 0 1 29.77 33.342 A 173.599 173.599 0 0 1 32.7 28.104 Q 32.8 27.904 32.85 27.704 Q 32.9 27.504 32.9 27.304 A 2.745 2.745 0 0 0 32.859 26.815 Q 32.683 25.839 31.739 25.589 A 2.897 2.897 0 0 0 31 25.504 A 0.274 0.274 0 0 0 30.91 25.525 Q 30.663 25.618 29.961 26.116 A 26.516 26.516 0 0 0 29.7 26.304 A 38.856 38.856 0 0 1 28.434 27.106 Q 25.628 28.807 23.405 29.436 A 8.889 8.889 0 0 1 21 29.804 Q 18.6 29.804 16.45 28.504 Q 14.3 27.204 13.9 25.104 Q 14.1 23.504 14.25 22.104 Q 14.335 21.316 14.371 20.623 A 19.207 19.207 0 0 0 14.4 19.604 A 16.431 16.431 0 0 0 14.361 18.432 Q 14.242 16.774 13.762 15.853 A 1.899 1.899 0 0 0 12 14.704 A 1.659 1.659 0 0 0 10.512 15.615 Q 10.025 16.437 9.871 18.001 A 16.477 16.477 0 0 0 9.8 19.604 Q 9.8 22.604 10.4 25.004 Q 9.5 29.404 7.75 34.104 A 126.965 126.965 0 0 1 7.309 35.271 A 114.997 114.997 0 0 1 4 43.054 A 98.208 98.208 0 0 1 3.937 43.187 Q 1.969 47.354 0 50.504 Q 0 52.004 1.5 52.004 A 1.235 1.235 0 0 0 1.646 51.994 Q 1.932 51.96 2.4 51.804 A 1.326 1.326 0 0 0 2.776 51.605 Q 2.97 51.46 3.138 51.235 A 2.851 2.851 0 0 0 3.4 50.804 A 74.18 74.18 0 0 0 3.854 49.997 Q 4.541 48.76 5.263 47.353 A 128.672 128.672 0 0 0 6.8 44.254 Q 8.6 40.504 10.15 36.554 A 54.463 54.463 0 0 0 10.346 36.047 Q 11.739 32.391 12.3 29.304 A 15.247 15.247 0 0 0 13.365 30.349 A 11.039 11.039 0 0 0 20.9 33.304 Q 22.325 33.304 23.962 32.916 A 20.631 20.631 0 0 0 26.3 32.204 A 103.212 103.212 0 0 0 25.022 34.637 Q 21.31 41.944 19.965 47.685 A 26.519 26.519 0 0 0 19.2 53.704 A 17.388 17.388 0 0 0 19.268 55.267 Q 19.397 56.694 19.772 57.876 A 7.944 7.944 0 0 0 21.35 60.754 A 7.137 7.137 0 0 0 23.713 62.557 Z"
@@ -112,5 +128,15 @@
     {
       "d": "M 249.945 62.767 A 11.042 11.042 0 0 0 252.3 63.004 Q 255.2 63.004 258.3 61.304 A 22.224 22.224 0 0 0 260.199 60.134 A 25.443 25.443 0 0 0 264.1 56.804 A 29.759 29.759 0 0 0 264.76 56.097 A 26.289 26.289 0 0 0 268.5 50.804 A 0.484 0.484 0 0 0 268.515 50.788 Q 268.707 50.578 268.9 49.904 Q 269.056 49.357 269.091 49.115 A 0.826 0.826 0 0 0 269.1 49.004 A 3.018 3.018 0 0 0 269.097 48.86 Q 269.052 47.924 268.41 47.685 A 1.459 1.459 0 0 0 267.9 47.604 A 1.569 1.569 0 0 0 266.993 47.88 A 2.015 2.015 0 0 0 266.55 48.304 Q 266 49.004 265.1 50.404 A 17.991 17.991 0 0 1 263.703 52.378 A 22.385 22.385 0 0 1 261.4 54.804 A 27.147 27.147 0 0 1 260.384 55.686 A 23.42 23.42 0 0 1 256.6 58.254 A 14.77 14.77 0 0 1 256.134 58.495 Q 253.894 59.604 251.9 59.604 A 5.897 5.897 0 0 1 251.236 59.568 Q 250.714 59.509 250.3 59.351 A 2.306 2.306 0 0 1 249.15 58.454 A 3.952 3.952 0 0 1 248.922 58.054 Q 248.4 57.005 248.4 55.504 Q 248.4 53.504 249.05 51.104 A 73.205 73.205 0 0 1 249.628 49.08 A 57.644 57.644 0 0 1 250.4 46.704 Q 254.5 35.004 254.5 31.104 A 14.18 14.18 0 0 0 254.122 27.672 Q 252.729 22.104 246.2 22.104 A 13.626 13.626 0 0 0 240.011 23.614 Q 235.56 25.852 231.5 31.404 A 43.171 43.171 0 0 0 231.899 29.545 Q 232.148 28.238 232.274 27.083 A 20.292 20.292 0 0 0 232.4 24.904 A 3.909 3.909 0 0 0 232.35 24.295 Q 232.286 23.891 232.142 23.44 A 8.799 8.799 0 0 0 231.8 22.554 A 4.014 4.014 0 0 0 231.599 22.158 Q 231.424 21.858 231.22 21.652 A 1.395 1.395 0 0 0 230.2 21.204 A 2.454 2.454 0 0 0 229.74 21.244 Q 228.5 21.481 228.5 23.104 Q 228.5 30.379 224.844 42.322 A 181.453 181.453 0 0 1 222 50.804 A 1179.557 1179.557 0 0 0 221.188 53.032 Q 218.971 59.134 218.653 60.264 A 1.261 1.261 0 0 0 218.6 60.504 A 1.315 1.315 0 0 0 218.672 60.923 Q 218.807 61.328 219.2 61.754 Q 219.417 61.988 219.647 62.138 A 1.537 1.537 0 0 0 220.5 62.404 A 1.088 1.088 0 0 0 221.198 62.151 Q 221.381 62.004 221.54 61.772 A 3.071 3.071 0 0 0 221.8 61.304 A 1178.219 1178.219 0 0 1 222.105 60.557 Q 222.554 59.456 222.959 58.472 A 666.219 666.219 0 0 1 223.75 56.554 Q 224.295 55.24 224.655 54.194 A 21.741 21.741 0 0 0 225 53.104 Q 229.4 41.604 232.6 36.204 Q 236.341 29.91 240.258 27.353 A 9.861 9.861 0 0 1 245.7 25.604 A 6.774 6.774 0 0 1 246.787 25.686 Q 250.5 26.29 250.5 31.304 A 13.732 13.732 0 0 1 250.486 31.918 A 16.544 16.544 0 0 1 250.4 33.004 Q 250.3 33.904 250.1 35.004 Q 249.949 35.757 249.486 37.364 A 112.335 112.335 0 0 1 249.15 38.504 Q 248.4 41.004 247 45.104 A 94.756 94.756 0 0 0 246.924 45.319 Q 246.361 46.928 245.91 48.402 A 58.46 58.46 0 0 0 245.1 51.304 A 42.982 42.982 0 0 0 244.81 52.538 Q 244.4 54.409 244.4 55.404 A 9.919 9.919 0 0 0 244.648 57.689 A 6.54 6.54 0 0 0 246.5 61.004 A 6.529 6.529 0 0 0 247.232 61.606 Q 248.395 62.429 249.945 62.767 Z"
     }
-  ]
+  ],
+  "codeSect": {
+    "title": "Dynamische und Modulare Code-Struktur",
+    "title2": "Jedes Detail in einem einzigen Code-Stück",
+    "description": [
+      "In der Welt der Softwareentwicklung ist ein grundlegendes Prinzip für Entwickler, sich darauf zu konzentrieren, sich wiederholende Codeblöcke zu minimieren und eine wiederverwendbare und skalierbare Struktur zu schaffen. Indem ich dieses Prinzip übernehme, gestalte ich unseren Ansatz zum Codieren.",
+      "Durch den Einsatz skalierbarer und wiederverwendbarer dynamischer Managementtechniken und flexibler Codestrukturen verwalte ich Inhalte intelligent. Ich kann CMS-kompatible modulare Strukturen erstellen und Ihre Projekte mit anpassbaren modularen Strukturen gestalten, die mehrfach auf Bedürfnisse reagieren können.",
+      "In entscheidenden Momenten der Fehlersuche konzentriere ich mich besonders auf den Problemlösungsprozess und manage akribisch die kritischen Schritte im Softwareentwicklungsprozess. Meine Fähigkeit, Probleme effektiv zu lösen, verbessert nicht nur die Qualität, sondern erleichtert auch die Zusammenarbeit.",
+      "Bei der Gestaltung von Projekten steht die Klarheit des Codes im Vordergrund. Ich sorge dafür, dem Prinzip der Nachhaltigkeit zu folgen, indem ich lange und komplexe Codes vermeide und so die Benutzerfreundlichkeit von Inhalten erhöhe. Darüber hinaus ist es für mich immer aufregend, auf dem neuesten Stand der Innovationen zu bleiben und die neuesten Technologien zu integrieren. Wir können zusammenarbeiten und Ihre Projekte gemeinsam gestalten."
+    ]
+  }
 }

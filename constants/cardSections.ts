@@ -1,6 +1,6 @@
-import { RobustSection } from "@/app/common.types";
+import { CardSections } from "@/app/common.types";
 
-export const robustSections: RobustSection[] = [
+export const cardSections: CardSections[] = [
   {
     title: "robust.0.title",
     description: "robust.0.description",

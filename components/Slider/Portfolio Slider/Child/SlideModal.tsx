@@ -1,16 +1,19 @@
 import { Icon, slide } from "@/app/common.types";
 import { RootState } from "@/store";
 import { clearSlide } from "@/store/redux/selectedSlide";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
-import IconButton from "../../../IconButton";
+import IconButton from "../../../Buttons/IconButton";
 import Label from "../../../Labels";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
+import Loading from "@/components/Loading";
+import Link from "next/link";
 
 const SlideModal = () => {
+  const [imageLoading, setImageLoading] = useState(true);
   const { t } = useTranslation(["translation"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const dispatch = useDispatch();
@@ -22,6 +25,9 @@ const SlideModal = () => {
   );
   const closeModal = () => {
     dispatch(clearSlide());
+    setTimeout(() => {
+      setImageLoading(true);
+    }, 500);
   };
   useEffect(() => {
     if (isScrolled) {
@@ -35,19 +41,19 @@ const SlideModal = () => {
 
   return (
     <AnimatePresence>
-      <ReactModal
-        style={{ overlay: { zIndex: 1000 }, content: { zIndex: 1001 } }}
-        isOpen={!!selectedSlide}
-        onRequestClose={closeModal}
-        contentLabel="Selected Slide Modal"
-        className={`absolute flex justify-center items-center top-1/2 left-1/2 ${
-          isMobile ? "w-[92svw] h-[70svh]" : "w-[63svw] h-[70svh]"
-        }  translate-x-[-50%] translate-y-[-50%] outline-none`}
-        overlayClassName="overlay"
-        ariaHideApp={false}
-        shouldCloseOnOverlayClick={true}
-      >
-        {selectedSlide && (
+      {selectedSlide && (
+        <ReactModal
+          style={{ overlay: { zIndex: 1000 }, content: { zIndex: 1001 } }}
+          isOpen={!!selectedSlide}
+          onRequestClose={closeModal}
+          contentLabel="Selected Slide Modal"
+          className={`absolute flex justify-center items-center top-1/2 left-1/2 ${
+            isMobile ? "w-[92svw] h-[70svh]" : "w-[63svw] h-[70svh]"
+          }  translate-x-[-50%] translate-y-[-50%] outline-none`}
+          overlayClassName="overlay"
+          ariaHideApp={false}
+          shouldCloseOnOverlayClick={true}
+        >
           <motion.div
             className="relative w-auto h-auto"
             initial="hidden"
@@ -57,49 +63,63 @@ const SlideModal = () => {
             onClick={closeModal}
           >
             <Image
-              loading="eager"
+              loading="lazy"
               src={selectedSlide.imageUrl || ""}
               alt={selectedSlide.title || ""}
               width={1150}
               height={850}
               style={{ objectFit: isMobile ? "cover" : "contain" }}
               quality={100}
-              priority={true}
               className="object-fill w-auto h-auto"
+              onLoad={() => {
+                setImageLoading(false);
+              }}
             />
-            <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
-              <h2 className="text-lg font-bold">
-                {t(`${selectedSlide.title}`)}
-              </h2>
-              <p
-                className={` font-extralight ${
-                  isMobile
-                    ? "overflow-hidden overflow-ellipsis line-clamp-3 text-[10px]"
-                    : "text-[13px]"
-                } `}
-              >
-                {t(`${selectedSlide.description}`)}
-              </p>
-              <div className="flex">
-                <div className="flex flex-wrap items-start mr-auto">
-                  {selectedSlide.labels &&
-                    selectedSlide.labels.map(
-                      (label: string, labelIndex: number) => (
-                        <Label key={labelIndex} text={label} />
-                      )
-                    )}
-                </div>
-                <div className="flex items-end gap-2">
-                  {selectedSlide.icons &&
-                    selectedSlide.icons.map((icon: Icon, iconIndex: number) => (
-                      <IconButton key={iconIndex} icon={icon} />
-                    ))}
+            {imageLoading ? (
+              <Loading />
+            ) : (
+              <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
+                <h2 className="text-lg font-bold">
+                  {t(`${selectedSlide.title}`)}
+                </h2>
+                <p
+                  className={`font-extralight overflow-hidden overflow-ellipsis line-clamp-2 ${
+                    isMobile ? "text-[10px]" : "text-[13px]"
+                  } `}
+                >
+                  {t(`${selectedSlide.description}`)}{" "}
+                  <Link
+                    href={"/portfolio"}
+                    key={"portfolio"}
+                    title={t("projectSlides.0.title2")}
+                    className="hover:text-log-col underline underline-offset-1"
+                  >
+                    {t("projectSlides.0.click")}
+                  </Link>
+                </p>
+                <div className="flex">
+                  <div className="flex flex-wrap items-start mr-auto">
+                    {selectedSlide.labels &&
+                      selectedSlide.labels.map(
+                        (label: string, labelIndex: number) => (
+                          <Label key={labelIndex} text={label} />
+                        )
+                      )}
+                  </div>
+                  <div className="flex items-end gap-2">
+                    {selectedSlide.icons &&
+                      selectedSlide.icons.map(
+                        (icon: Icon, iconIndex: number) => (
+                          <IconButton key={iconIndex} icon={icon} />
+                        )
+                      )}
+                  </div>
                 </div>
               </div>
-            </div>
+            )}
           </motion.div>
-        )}
-      </ReactModal>
+        </ReactModal>
+      )}
     </AnimatePresence>
   );
 };

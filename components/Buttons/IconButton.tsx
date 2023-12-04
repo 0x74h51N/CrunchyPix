@@ -61,9 +61,11 @@ const IconButton = ({ icon }: { icon: Icon }) => {
         className=""
       >
         <IconComponent size={icon.size} color={icon.color} />
-        <span className="absolute self-center left-10 top-10 rounded-md border-spacing-1 border-cool-gray-700 border-2  w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 duration-300 pointer-events-none">
-          {icon.alt}
-        </span>
+        {icon.alt && (
+          <span className="absolute self-center left-10 top-10 rounded-md border-spacing-1 border-cool-gray-700 border-2  w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 duration-300 pointer-events-none">
+            {icon.alt}
+          </span>
+        )}
       </a>
     </div>
   );
