@@ -73,7 +73,7 @@ const ResponsiveSect = () => {
     "responsiveSect.description.2",
   ];
   return (
-    <div className="flex xl:flex-row flex-col items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-32 gap-10">
+    <div className="flex xl:flex-row flex-col-reverse items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-32 gap-4">
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
         <div
           className={`flex flex-wrap items-center justify-center h-[600px] z-10 ${
@@ -93,7 +93,7 @@ const ResponsiveSect = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.5 }}
-        className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-16 md:p-12 xs:p-8 p-4 h-auto 2xl:min-h-[600px] bg-cool-gray-900 xl:rounded-l-3xl"
+        className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-16 md:p-12 xs:p-8 p-4 h-auto 2xl:min-h-[600px] bg-cool-gray-800 xl:rounded-l-3xl"
       >
         <motion.h2
           variants={polygonIn("up", "spring", 0.5, 1)}

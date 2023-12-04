@@ -45,7 +45,7 @@ const CodeSect = () => {
     "codeSect.description.3",
   ];
   return (
-    <div className="flex 2xl:flex-row flex-col items-center w-full h-full 2xl:pr-20 xl:pr-4 2xl:gap-28 xl:gap-14 gap-10">
+    <div className="flex 2xl:flex-row flex-col items-center w-full h-full 2xl:pr-20 xl:pr-4 2xl:gap-28 xl:gap-14 gap-6">
       <motion.div
         variants={staggerContainer(4, 0)}
         initial="hidden"
@@ -53,7 +53,7 @@ const CodeSect = () => {
         onViewportEnter={() => handleInViewChange(true)}
         onViewportLeave={() => handleInViewChange(false)}
         viewport={{ once: true, amount: 0.5 }}
-        className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-16 md:p-12 xs:p-8 p-4 h-auto 2xl:min-h-[600px] bg-cool-gray-800 xl:rounded-r-3xl"
+        className="flex flex-col w-full justify-center items-end py-8 2xl:px-20  lg:px-14 md:px-10 xs:p-6 p-4 h-auto 2xl:min-h-[600px] bg-cool-gray-800 xl:rounded-r-3xl"
       >
         <motion.h2
           variants={polygonIn("up", "spring", 0.5, 1)}
