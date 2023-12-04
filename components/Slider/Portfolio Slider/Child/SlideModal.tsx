@@ -25,7 +25,9 @@ const SlideModal = () => {
   );
   const closeModal = () => {
     dispatch(clearSlide());
-    setImageLoading(false);
+    setTimeout(() => {
+      setImageLoading(true);
+    }, 500);
   };
   useEffect(() => {
     if (isScrolled) {
@@ -71,7 +73,6 @@ const SlideModal = () => {
               className="object-fill w-auto h-auto"
               onLoad={() => {
                 setImageLoading(false);
-                console.log("its false");
               }}
             />
             {imageLoading ? (
