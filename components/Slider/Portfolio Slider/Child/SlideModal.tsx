@@ -27,7 +27,7 @@ const SlideModal = () => {
     dispatch(clearSlide());
     setTimeout(() => {
       setImageLoading(true);
-    }, 500);
+    }, 300);
   };
   useEffect(() => {
     if (isScrolled) {
@@ -47,15 +47,15 @@ const SlideModal = () => {
           isOpen={!!selectedSlide}
           onRequestClose={closeModal}
           contentLabel="Selected Slide Modal"
-          className={`absolute flex justify-center items-center top-1/2 left-1/2 ${
-            isMobile ? "w-[92svw] h-[70svh]" : "w-[63svw] h-[70svh]"
+          className={`absolute justify-center items-center top-1/2 left-1/2 ${
+            isMobile ? "w-[95svw] h-[65svh]" : "w-[63svw] h-[70svh]"
           }  translate-x-[-50%] translate-y-[-50%] outline-none`}
           overlayClassName="overlay"
           ariaHideApp={false}
           shouldCloseOnOverlayClick={true}
         >
           <motion.div
-            className="relative w-auto h-auto"
+            className="relative w-full h-full"
             initial="hidden"
             animate="visible"
             exit="hidden"
@@ -66,11 +66,11 @@ const SlideModal = () => {
               loading="lazy"
               src={selectedSlide.imageUrl || ""}
               alt={selectedSlide.title || ""}
-              width={1150}
-              height={850}
+              width={1000}
+              height={1000}
               style={{ objectFit: isMobile ? "cover" : "contain" }}
               quality={100}
-              className="object-fill w-auto h-auto"
+              className=" object-cover w-full h-full"
               onLoad={() => {
                 setImageLoading(false);
               }}
@@ -83,20 +83,23 @@ const SlideModal = () => {
                   {t(`${selectedSlide.title}`)}
                 </h2>
                 <p
-                  className={`font-extralight overflow-hidden overflow-ellipsis line-clamp-2 ${
+                  className={`font-extralight overflow-hidden overflow-ellipsis line-clamp-1 ${
                     isMobile ? "text-[10px]" : "text-[13px]"
                   } `}
                 >
-                  {t(`${selectedSlide.description}`)}{" "}
-                  <Link
-                    href={"/portfolio"}
-                    key={"portfolio"}
-                    title={t("projectSlides.0.title2")}
-                    className="hover:text-log-col underline underline-offset-1"
-                  >
-                    {t("projectSlides.0.click")}
-                  </Link>
+                  {t(`${selectedSlide.description}`)}
                 </p>
+                <Link
+                  href={"/portfolio"}
+                  key={"portfolio"}
+                  title={t("projectSlides.0.title2")}
+                  className={`font-extralight overflow-hidden overflow-ellipsis line-clamp-1 hover:text-log-col underline underline-offset-1 ${
+                    isMobile ? "text-[10px]" : "text-[13px]"
+                  } `}
+                >
+                  {t("projectSlides.0.click")}
+                </Link>
+
                 <div className="flex">
                   <div className="flex flex-wrap items-start mr-auto">
                     {selectedSlide.labels &&
