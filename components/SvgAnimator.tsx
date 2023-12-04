@@ -28,7 +28,7 @@ const SvgAnimator = ({ paths }: SvgAnimatorProps) => {
           transition={{
             duration: 0.7,
             ease: "easeInOut",
-            delay: path.delay ? path.delay : index * 0.5 + 0.8,
+            delay: path.delay ? path.delay : index * 0.35 + 1.7,
           }}
         />
       ))}

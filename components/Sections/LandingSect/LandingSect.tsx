@@ -1,5 +1,5 @@
 "use client";
-import ArrowButton from "../../ArrowButton";
+import ArrowButton from "../../Buttons/ArrowButton";
 import { slideIn, staggerContainer, polygonIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../../GenerateSpans";

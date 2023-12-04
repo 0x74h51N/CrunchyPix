@@ -15,9 +15,9 @@ const commonIcons: Record<string, Icon> = {
 
 export const projectSlides: slide[] = [
   {
-    title: "projectSlides.0.title",
+    title: "projectSlides.1.title",
     imageUrl: "/PortfolioSlides/crunchypix.jpg",
-    description: "projectSlides.0.description",
+    description: "projectSlides.1.description",
     labels: ["TypeScript", "Next.js", "Tailwind", "React", "Redux"],
     icons: [
       {
@@ -31,9 +31,9 @@ export const projectSlides: slide[] = [
     ],
   },
   {
-    title: "projectSlides.1.title",
+    title: "projectSlides.2.title",
     imageUrl: "/PortfolioSlides/ccorder.jpg",
-    description: "projectSlides.1.description",
+    description: "projectSlides.2.description",
     labels: ["TypeScript", "Next.js", "CSS", "Redux"],
     icons: [
       {
@@ -47,9 +47,9 @@ export const projectSlides: slide[] = [
     ],
   },
   {
-    title: "projectSlides.2.title",
+    title: "projectSlides.3.title",
     imageUrl: "/PortfolioSlides/mintingui.jpg",
-    description: "projectSlides.2.description",
+    description: "projectSlides.3.description",
     labels: ["TypeScript", "Next.js", "Tailwind", "Hardhat", "Wagmi"],
     icons: [
       {
@@ -63,9 +63,9 @@ export const projectSlides: slide[] = [
     ],
   },
   {
-    title: "projectSlides.3.title",
+    title: "projectSlides.4.title",
     imageUrl: "/PortfolioSlides/kykelectric.jpg",
-    description: "projectSlides.3.description",
+    description: "projectSlides.4.description",
     labels: ["HTML", "CSS", "WordPress"],
     icons: [
       {

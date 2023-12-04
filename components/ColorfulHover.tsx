@@ -2,7 +2,7 @@ import { ColorfulHoverType } from "@/app/common.types";
 import { getRandomColor } from "@/utils/getRandomColor";
 import { useAnimation, motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import IconButton from "./IconButton";
+import IconButton from "./Buttons/IconButton";
 
 export const ColorfulHover = ({
   char,

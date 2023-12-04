@@ -1,224 +1,74 @@
 export const codeString = `"use client";
-import { Links } from "@/constants";
-import Image from "next/image";
-import Link from "next/link";
-import React, { useEffect } from "react";
-import TypingText from "./typeText";
-import MobileMenu from "./MobileMenu";
-import LanguageMenu from "./LanguageMenu";
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { slideIn, staggerContainer, textVariant } from "@/utils/motion";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
-import { mobileChange } from "@/store/redux/isMobile";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { scrollChange } from "@/store/redux/isScrolled";
-import { tabletChange } from "@/store/redux/isTablet";
-import { setScreenHeight } from "@/store/redux/screenHeight";
-import { setScreenWidth } from "@/store/redux/screenWidth";
-import { navbarChange } from "@/store/redux/navbarChange";
+import { setIsTranslationsLoaded } from "@/store/redux/language";
+import Image from "next/image";
+import CardMaker from "../../CardMaker";
+import { cardSections } from "@/constants/cardSections";
 
-export const Navbar = () => {
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const isMenuOpen = useSelector(
-    (state: RootState) => state.isMobileMenu.mobileMenu
-  );
-  const specialPages = Links.filter((link) => link.href !== "/").map(
-    (link) => link.href
-  );
-  const selectedLink = useSelector(
-    (state: RootState) => state.page.currentPage
-  );
-  const smallNav = useSelector(
-    (state: RootState) => state.navbarChange.smallNav
-  );
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width
-  );
-  const screenHeight = useSelector(
-    (state: RootState) => state.screenHeight.height
+const AboutMeSect = () => {
+  const { t, i18n } = useTranslation(["translation"]);
+  const isTranslationsLoadedRedux = useSelector(
+    (state: RootState) => state.language.isTranslationsLoaded
   );
   const dispatch = useDispatch();
-  const { t } = useTranslation(["translation"]);
-
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleScroll = () => {
-        dispatch(scrollChange(true));
-        setTimeout(() => {
-          dispatch(scrollChange(false));
-        }, 500);
-        if (window.scrollY > 100) {
-          dispatch(navbarChange(true));
-        } else {
-          dispatch(navbarChange(false));
-        }
-      };
-
-      window.addEventListener("scroll", handleScroll);
-      handleScroll();
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
+    if (i18n.isInitialized) {
+      dispatch(setIsTranslationsLoaded(true));
+    } else {
+      i18n.on("initialized", () => {
+        dispatch(setIsTranslationsLoaded(true));
+      });
     }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window != "undefined") {
-      const handleResize = () => {
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
-
-        dispatch(setScreenHeight(screenHeight));
-        dispatch(setScreenWidth(screenWidth));
-
-        if (screenWidth <= 768) {
-          dispatch(mobileChange(true));
-          dispatch(tabletChange(false));
-        } else if (screenWidth <= 1030) {
-          dispatch(mobileChange(false));
-          dispatch(tabletChange(true));
-        } else {
-          dispatch(mobileChange(false));
-          dispatch(tabletChange(false));
-        }
-      };
-
-      window.addEventListener("resize", handleResize);
-      handleResize();
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, [dispatch, isTablet, isTablet, screenWidth, screenHeight]);
-
+  }, [i18n, dispatch]);
+  if (!isTranslationsLoadedRedux) {
+    return null;
+  }
   return (
-    <nav
-      className={"fixed w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out pointer-events-none "$"{
-        isMenuOpen
-          ? "navbar pointer-events-auto h-[360px] py-5 px-10 bg-opacity-0 "$"{
-              smallNav && "h-[320px] bg-opacity-100 py-2 px-10  "
-            }"
-          : smallNav || specialPages.includes(selectedLink)
-          ? "bg-opacity-100 py-2 px-10 h-[60px]"
-          : "py-5 px-10  bg-opacity-0 h-[150px] "
-      }"}
-    >
-      <div className="flex flex-row ">
-        <Link href="/">
-          <div className="flex flex-row items-center pointer-events-auto">
-            <div>
-              <Image
-                src={"/logo_leftw.svg"}
-                width={
-                  smallNav || specialPages.includes(selectedLink)
-                    ? 12.5
-                    : isMobile
-                    ? 18.5
-                    : isTablet
-                    ? 27.5
-                    : 32.5
-                }
-                height={100}
-                alt="Flexible"
-                loading="lazy"
-                className={""$"{
-                  smallNav || specialPages.includes(selectedLink)
-                    ? ""
-                    : "navImage"
-                } transition-all duration-1000 ease-in-out"}
-              />
+    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-[100svh] ">
+      <div className="flex flex-row gap-12 max-sm:flex-col max-lg:gap-6 max-lg:items-start max-sm:items-center items-end justify-center w-auto h-auto z-10">
+        <Image
+          src="/headColor.png"
+          alt="Photo"
+          width={250}
+          height={250}
+          loading="lazy"
+          className="object-center bg-opacity-0 grayscale max-lg:w-[230px] max-sm:w-[210px] h-auto z-30"
+        />
+        <motion.div
+          variants={staggerContainer(2, 0)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.5 }}
+          className="flex flex-col items-start h-full w-auto p-5 z-10"
+        >
+          <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
+            <div className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
+              {t("introduction.intro")}
             </div>
-
-            {smallNav || screenWidth <= 300 ? null : (
-              <>
-                <TypingText
-                  text="Crunchy"
-                  _code={false}
-                  textClass={"logo_text "$"{
-                    specialPages.includes(selectedLink) || isMobile
-                      ? "small"
-                      : isTablet
-                      ? "medium"
-                      : ""
-                  }"}
-                />
-                <TypingText
-                  text="Pix"
-                  _code={false}
-                  delay={500}
-                  textClass={"logo_text color "$"{
-                    specialPages.includes(selectedLink) || isMobile
-                      ? "small"
-                      : isTablet
-                      ? "medium"
-                      : ""
-                  }"}
-                />
-              </>
-            )}
-
-            <div>
-              <Image
-                src={"logo_right.svg"}
-                width={
-                  smallNav || specialPages.includes(selectedLink)
-                    ? 20
-                    : isMobile
-                    ? 28
-                    : isTablet
-                    ? 40
-                    : 50
-                }
-                height={100}
-                alt="Flexible"
-                loading="lazy"
-                className={""$"{
-                  smallNav ? "" : "navImage"
-                } transition-all duration-1000 ease-in-out"}
-              />
+            <div className="text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
+              {t("introduction.title")}
             </div>
-          </div>
-        </Link>
-        <div className="flex flex-center items-center ml-auto pointer-events-auto">
-          {isMobile || isTablet ? (
-            <MobileMenu />
-          ) : (
-            <div>
-              <ul
-                className={"flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all  duration-1000 ease-in-out "$"{
-                  smallNav || specialPages.includes(selectedLink)
-                    ? "text-md font-medium gap-8"
-                    : "text-lg font-semibold"
-                }  text-stone-200 antialiased gap-12 "}
-              >
-                {Links.map((link) => (
-                  <Link
-                    href={link.href}
-                    key={link.key}
-                    className={"hover:text-log-col hover:scale-110 "$"{
-                      selectedLink === link.href && link.href !== "/"
-                        ? "text-log-col"
-                        : ""
-                    } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap"}
-                  >
-                    {t(link.text)}
-                    <span
-                      className={"absolute -bottom-1 left-0 h-0.5 bg-log-col "$"{
-                        selectedLink === link.href && link.href !== "/"
-                          ? "w-full"
-                          : "w-0 transition-all group-hover:w-full"
-                      }"}
-                    ></span>
-                  </Link>
-                ))}
-                <LanguageMenu />
-              </ul>
-            </div>
-          )}
+          </motion.h1>
+          <motion.p
+            variants={textVariant(1)}
+            className="mt-4 text-cool-gray-50 lg:text-[17px] sm:text-[14px] text-[13px] max-w-3xl leading-[30px]"
+          >
+            {t("introduction.description")}
+          </motion.p>
+        </motion.div>
+      </div>
+      <div className="flex flex-wrap gap-10">
+        <div className=" flex flex-wrap justify-center gap-10 w-auto p-8 max-xs:px-2 max-2xl:max-w-[700px] z-0">
+          <CardMaker cardSections={cardSections} />
         </div>
       </div>
-    </nav>
+    </div>
   );
-};`;
+};
+
+export default AboutMeSect;`;

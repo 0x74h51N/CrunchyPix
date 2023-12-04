@@ -38,7 +38,7 @@ export type slide = {
   labels?: string[];
 };
 
-export type RobustSection = {
+export type CardSections = {
   title: string;
   description: string;
   icon?: Icon;

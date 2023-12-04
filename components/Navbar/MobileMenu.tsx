@@ -1,7 +1,7 @@
 import { Links } from "@/constants";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
-import BurgerButton from "./BurgerButton";
+import BurgerButton from "../Buttons/BurgerButton";
 import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
 import { RootState } from "@/store";
@@ -73,7 +73,7 @@ const MobileMenu = () => {
         {isMenuOpen && (
           <div>
             <ul className="ul">
-              <div className="flex justify-end mr-14 mb-3 z-50">
+              <div className="flex justify-end mr-10 mb-3 z-50">
                 <LanguageMenu />
               </div>
               {Links.map((link) => (
@@ -85,7 +85,7 @@ const MobileMenu = () => {
                       selectedLink === link.href && link.href !== "/"
                         ? "text-log-col"
                         : "text-neutral-200"
-                    } w-20 block relative group py-2 rtl text-lg font-semibold text-right mr-14  antialiased ml-auto transition duration-500 ease-in-out whitespace-nowrap`}
+                    } w-20 block relative group py-2 rtl text-lg font-semibold text-right mr-10  antialiased ml-auto transition duration-500 ease-in-out whitespace-nowrap`}
                   >
                     {t(link.text)}
                     <span

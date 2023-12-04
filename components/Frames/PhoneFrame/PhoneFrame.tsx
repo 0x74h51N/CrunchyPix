@@ -4,9 +4,7 @@ import { rotateChange, setRotate } from "@/store/redux/mobileRotate";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
 
 interface PhoneFrameProps {
   screenImage?: string;
@@ -114,35 +112,45 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
         onViewportEnter={() => handleInViewChange(true)}
         onViewportLeave={() => handleInViewChange(false)}
       >
-        {isInView && (
-          <button onClick={handleClick}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 28 23"
-              fill="none"
-              stroke="white"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className={`absolute -right-28 -top-14 w-[170px] h-[150px] rounded-xl -z-20 path-animation ${
-                rotateStart
-                  ? "transform scale-x-[-1] rotate-[130deg] -top-24 -right-[70px]"
-                  : "-rotate-[30deg]"
-              }   ${
-                isRotating
-                  ? "opacity-0 "
-                  : "opacity-100 transition-all duration-100 delay-1000"
-              }    z-20`}
-            >
-              <path d="M 0 0 C 7 0 14 4 14 12 L 16 9 L 14 12 L 12 10" />
-            </svg>
+        {isInView && !isMobile && (
+          <button onClick={handleClick} className="group">
+            {!rotateEnd && !rotateStart ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 28 23"
+                fill="none"
+                stroke="white"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`absolute -right-28 -top-14 w-[170px] h-[150px] rounded-xl -z-20 path-animation -rotate-[30deg] group-hover:stroke-log-col`}
+              >
+                <path d="M 0 0 C 7 0 14 4 14 12 L 16 9 L 14 12 L 12 10" />
+              </svg>
+            ) : (
+              !isRotating && (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className={`absolute w-[40px] h-[40px] rounded-xl -z-20 transform scale-x-[-1] rotate-[0deg] -top-10 right-6 opacity-90 hover:stroke-red-700`}
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              )
+            )}
             {!rotateStart && (
               <svg
                 width="210"
                 height="53"
                 viewBox="0 0 200 100"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute rotate-90 -right-[130px] top-[75px] overflow-visible"
+                className="absolute rotate-90 -right-[125px] top-[65px] overflow-visible "
               >
                 <g
                   id="svgGroup"
@@ -152,6 +160,7 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
                   stroke="#FFFFFF"
                   strokeWidth="1mm"
                   fill="none"
+                  className="group-hover:stroke-log-col"
                 >
                   <SvgAnimator paths={paths} />
                 </g>

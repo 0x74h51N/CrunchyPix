@@ -3,7 +3,7 @@ import { Links } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
-import TypingText from "./typeText";
+import TypingText from "../typeText";
 import MobileMenu from "./MobileMenu";
 import LanguageMenu from "./LanguageMenu";
 import { useTranslation } from "react-i18next";
@@ -15,6 +15,7 @@ import { tabletChange } from "@/store/redux/isTablet";
 import { setScreenHeight } from "@/store/redux/screenHeight";
 import { setScreenWidth } from "@/store/redux/screenWidth";
 import { navbarChange } from "@/store/redux/navbarChange";
+import { mobileMenuChange } from "@/store/redux/isMobileMenu";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
@@ -80,6 +81,9 @@ export const Navbar = () => {
         } else {
           dispatch(mobileChange(false));
           dispatch(tabletChange(false));
+          if (isMenuOpen) {
+            dispatch(mobileMenuChange(false));
+          }
         }
       };
 
@@ -94,14 +98,16 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out pointer-events-none ${
+      className={`fixed w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out pointer-events-none px-${
+        isMobile || isTablet ? 5 : 10
+      } ${
         isMenuOpen
-          ? `navbar pointer-events-auto h-[360px] py-5 px-10 bg-opacity-0 ${
-              smallNav && "h-[320px] bg-opacity-100 py-2 px-10  "
+          ? `navbar pointer-events-auto h-[360px] py-5 bg-opacity-0 ${
+              smallNav && "h-[320px] bg-opacity-100 py-2   "
             }`
           : smallNav || specialPages.includes(selectedLink)
-          ? "bg-opacity-100 py-2 px-10 h-[60px]"
-          : "py-5 px-10  bg-opacity-0 h-[150px] "
+          ? "bg-opacity-100 py-2 h-[60px]"
+          : "py-5 bg-opacity-0 h-[150px] "
       }`}
     >
       <div className="flex flex-row ">
@@ -146,7 +152,7 @@ export const Navbar = () => {
                 <TypingText
                   text="Pix"
                   _code={false}
-                  delay={500}
+                  delay={450}
                   textClass={`logo_text color ${
                     specialPages.includes(selectedLink) || isMobile
                       ? "small"
@@ -163,7 +169,7 @@ export const Navbar = () => {
                 src={"logo_right.svg"}
                 width={
                   smallNav || specialPages.includes(selectedLink)
-                    ? 20
+                    ? 19
                     : isMobile
                     ? 28
                     : isTablet

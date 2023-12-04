@@ -12,6 +12,8 @@ type TypingTextProps = {
   textClass?: string;
   delay?: number;
   generateSpan?: boolean;
+  fontSize?: string;
+  lineHeight?: string;
 };
 
 const TypingText = ({
@@ -24,6 +26,8 @@ const TypingText = ({
   colorType,
   randomCount,
   zeroColor,
+  fontSize,
+  lineHeight,
 }: TypingTextProps & generateSpanType) => {
   const [displayText, setDisplayText] = useState("");
   const [isDelayed, setIsDelayed] = useState(false);
@@ -68,6 +72,14 @@ const TypingText = ({
               backgroundColor: "transparent",
               opacity: "1",
               overflow: "hidden",
+              lineHeight: lineHeight,
+              fontSize: fontSize,
+            }}
+            codeTagProps={{
+              style: {
+                lineHeight: "inherit",
+                fontSize: "inherit",
+              },
             }}
           >
             {displayText}

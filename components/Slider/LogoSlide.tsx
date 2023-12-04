@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import SwiperCore from "swiper";
@@ -59,7 +60,10 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
           onMouseLeave={handleMouseLeave}
         >
           <div className="relative w-[84px] h-[84px] max-lg:w-[70px] max-lg:h-[70px] max-sm:w-[55px] max-sm:h-[55px] flex justify-center my-8">
-            <img
+            <Image
+              loading="lazy"
+              width={100}
+              height={100}
               src={item.icon}
               alt={item.text}
               className="h-auto w-full grayscale "

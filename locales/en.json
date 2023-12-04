@@ -71,6 +71,11 @@
 
   "projectSlides": [
     {
+      "title": "Portfolio",
+      "title2": "Portfolio Page",
+      "click": "For more details..."
+    },
+    {
       "title": "CrunchyPix",
       "description": "Initiated for my website and to showcase front-end skills. Developed dynamic components and styles. Features include international language options and smooth scroll transitions. Visit GitHub for details."
     },
@@ -87,6 +92,15 @@
       "description": "My first website developed using WordPress and limited code. Developed with many custom design elements."
     }
   ],
+  "responsiveSect": {
+    "title": "Seamless Digital Experience",
+    "title2": "Where Aesthetic Design Meets Functionality in Every Pixel",
+    "description": [
+      "In today's rapidly evolving digital world, prioritizing user experience is crucial for me, given that a significant portion of web traffic occurs through mobile devices. Therefore, it's essential for design not only to be aesthetic but also functional, adaptive, and user-friendly.",
+      "In my design approach, I focus on delivering consistent performance across all devices, irrespective of screen sizes. By embracing responsive and adaptive design principles, I ensure that my websites seamlessly adapt to various screen dimensions. This way, users can have a flawless experience regardless of the device they use. I believe that each pixel contributes to the user's story.",
+      "My design philosophy revolves around not just aesthetics but functionality as well. I aim to create user-friendly and accessible designs, enabling everyone to navigate the digital world comfortably. I meticulously design my projects, believing in the importance of every detail to ensure users experience a smooth journey in the digital realm. With my innovative design approach, adapting to the ever-changing technology landscape and staying abreast of the latest trends has become a passion."
+    ]
+  },
 
   "paths": [
     {
@@ -108,5 +122,15 @@
     {
       "d": "M 203.846 71.945 A 19.203 19.203 0 0 0 208.601 72.5 A 20.15 20.15 0 0 0 212.836 72.054 A 21.71 21.71 0 0 0 220.001 69.05 Q 225.401 65.6 228.801 59.8 Q 228.901 59.6 229.051 59.2 A 1.51 1.51 0 0 0 229.057 59.182 Q 229.155 58.911 229.186 58.508 A 5.312 5.312 0 0 0 229.201 58.1 Q 229.201 56.9 228.201 56.9 A 1.662 1.662 0 0 0 227.268 57.18 A 2.245 2.245 0 0 0 226.801 57.6 A 12.706 12.706 0 0 0 226.385 58.113 Q 226.167 58.397 225.927 58.734 A 30.844 30.844 0 0 0 225.401 59.5 A 26.948 26.948 0 0 1 222.998 62.738 A 18.434 18.434 0 0 1 208.501 69.4 A 15.204 15.204 0 0 1 205.685 69.152 A 10.041 10.041 0 0 1 199.501 65.55 A 13.588 13.588 0 0 1 196.855 59.941 A 19.631 19.631 0 0 1 196.401 55.6 Q 196.401 54.5 196.551 53.35 Q 196.701 52.2 196.901 51.1 Q 199.501 52.1 203.601 52.1 A 33.165 33.165 0 0 0 207.518 51.874 A 26.448 26.448 0 0 0 217.101 48.9 A 22.272 22.272 0 0 0 217.664 48.575 Q 219.525 47.462 220.831 46.169 A 9.647 9.647 0 0 0 223.901 39.1 A 9.869 9.869 0 0 0 223.791 37.602 A 6.667 6.667 0 0 0 221.351 33.25 Q 219.757 31.969 217.558 31.488 A 13.38 13.38 0 0 0 214.701 31.2 A 18.722 18.722 0 0 0 205.841 33.415 A 24.443 24.443 0 0 0 200.401 37.4 A 22.718 22.718 0 0 0 194.235 46.898 A 27.206 27.206 0 0 0 192.901 55.6 A 23.141 23.141 0 0 0 193.321 60.117 A 16.28 16.28 0 0 0 197.001 67.8 A 13.169 13.169 0 0 0 203.846 71.945 Z M 203.301 48.7 A 27.972 27.972 0 0 0 209.683 48 A 22.765 22.765 0 0 0 214.701 46.2 A 15.757 15.757 0 0 0 217.238 44.694 Q 218.538 43.73 219.32 42.615 A 6.329 6.329 0 0 0 220.501 38.9 A 4.22 4.22 0 0 0 220.018 36.821 Q 219.054 35.085 216.165 34.706 A 13.609 13.609 0 0 0 214.401 34.6 Q 208.901 34.6 204.201 38.7 A 22.783 22.783 0 0 0 198.157 46.952 A 26.85 26.85 0 0 0 197.801 47.8 Q 199.878 48.613 202.69 48.692 A 21.846 21.846 0 0 0 203.301 48.7 Z"
     }
-  ]
+  ],
+  "codeSect": {
+    "title": "Dynamic and Modular Code Structure",
+    "title2": "Every Detail in a Single Code Piece",
+    "description": [
+      "In the world of software development, a fundamental principle for a developer is to minimize repetitive code blocks, creating a reusable and scalable structure. Embracing this principle, I shape our approach to coding.",
+      "By employing scalable and reusable dynamic management techniques and flexible code structures, I intelligently manage content. I can create CMS-compatible modular structures and shape your projects with customizable modular structures that can respond to needs multiple times.",
+      "During debugging moments, I focus particularly on the problem-solving process, meticulously managing critical steps in the software development process. My ability to effectively resolve issues not only enhances quality but also facilitates collaboration.",
+      "When designing projects, the clarity of the code is paramount. I ensure adherence to the principle of sustainability by avoiding long and complex codes, thereby increasing the usability of content. Additionally, staying abreast of innovations and integrating the latest technologies is always an exciting pursuit for me. We can collaborate and shape your projects together."
+    ]
+  }
 }

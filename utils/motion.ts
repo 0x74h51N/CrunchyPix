@@ -111,29 +111,18 @@ export const polygonIn = (
 ) => {
   const clipPath0 =
     direction === "down"
-      ? "polygon(0 0, 100% 0, 100% 0, 0 0)"
+      ? "(0% 0%, 100% 0%, 100% 0%, 0% 0%)"
       : direction === "up"
-      ? "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)"
+      ? "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
       : direction === "left"
-      ? "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)"
+      ? "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)"
       : direction === "right"
-      ? "polygon(0 0, 0 0, 0 100%, 0 100%)"
+      ? "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)"
       : "";
-  const clipPath1 =
-    direction === "down"
-      ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-      : direction === "up"
-      ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-      : direction === "left"
-      ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-      : direction === "right"
-      ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-      : "";
-
   return {
     hidden: { clipPath: clipPath0 },
     show: {
-      clipPath: clipPath1,
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       transition: {
         type: type,
         delay: delay,
