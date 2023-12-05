@@ -23,7 +23,26 @@ const CodeSect = () => {
     (state: RootState) => state.language.isTranslationsLoaded
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const dispatch = useDispatch();
+  const [lineHeight, setLineHeight] = useState<string>("");
+  const [fontSize, setFontSize] = useState<string>("");
+  useEffect(() => {
+    if (screenWidth >= 1535) {
+      setLineHeight("1.35");
+      setFontSize("0.75em");
+    } else if (screenWidth >= 1280) {
+      setLineHeight("1.3");
+      setFontSize("0.7em");
+    } else if (screenWidth >= 1024) {
+      setLineHeight("1.25");
+      setFontSize("0.650em");
+    } else {
+      setLineHeight("1.25");
+      setFontSize("0.6em");
+    }
+  }, [screenWidth]);
+
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -40,16 +59,6 @@ const CodeSect = () => {
   const handleInViewChange = (inView: boolean) => {
     setIsInView(inView);
   };
-  const lineHeight =
-    screenWidth >= 1535 ? "1.4" : screenWidth >= 1280 ? "1.35" : "1.25";
-  const fontSize =
-    screenWidth >= 1535
-      ? "0.8em"
-      : screenWidth >= 1280
-      ? "0.75em"
-      : screenWidth >= 1024
-      ? "0.7em"
-      : "0.65em";
 
   const description = [
     "codeSect.description.0",
@@ -71,20 +80,24 @@ const CodeSect = () => {
           variants={polygonIn("up", "spring", 0.5, 1)}
           className="w-full font-medium lg:text-[22px] sm:text-[20px] text-[18px] lg:leading-[40px] text-cool-gray-400 text-left"
         >
-          {generateSpans({
-            text: t("codeSect.title2"),
-            colorType: "vibrantColors",
-            zeroColor: "#737373",
-          })}
+          {isMobile || isTablet
+            ? t("codeSect.title2")
+            : generateSpans({
+                text: t("codeSect.title2"),
+                colorType: "vibrantColors",
+                zeroColor: "#737373",
+              })}
         </motion.h2>
         <motion.h1
           variants={polygonIn("down", "spring", 0.5, 1)}
-          className="w-full font-black md:text-[50px] sm:text-[40px] xs:text-[35px] text-[25px] leading-relaxed text-left"
+          className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[35px] text-[25px] leading-relaxed text-left"
         >
-          {generateSpans({
-            text: t("codeSect.title"),
-            colorType: "vibrantColors",
-          })}
+          {isMobile || isTablet
+            ? t("codeSect.title")
+            : generateSpans({
+                text: t("codeSect.title"),
+                colorType: "vibrantColors",
+              })}
         </motion.h1>
         <motion.div
           variants={textVariant(0.5)}
@@ -101,11 +114,12 @@ const CodeSect = () => {
       </motion.div>
       <div>
         <MonitorFrame>
-          <div className="h-full w-full overflow-scroll overflow-x-scroll scrollbar-thin scrollbar-thumb scrollbar-track scrollb">
+          <div className="h-full w-full overflow-scroll overflow-x-scroll scrollbar-thin scrollbar-thumb scrollbar-track">
             {isMobile ? (
               <SyntaxHighlighter
                 language="typescript"
                 style={vscDarkPlus}
+                showLineNumbers
                 customStyle={{
                   backgroundColor: "transparent",
                   opacity: "1",
@@ -126,7 +140,7 @@ const CodeSect = () => {
               isInView && (
                 <TypingText
                   text={codeString}
-                  duration={10}
+                  typingSpeed={15}
                   lineHeight={lineHeight}
                   fontSize={fontSize}
                 />

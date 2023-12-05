@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { generateSpans } from "./GenerateSpans";
@@ -7,7 +7,7 @@ import { generateSpanType } from "@/app/common.types";
 
 type TypingTextProps = {
   text: string;
-  duration?: number;
+  typingSpeed?: number;
   _code?: boolean;
   textClass?: string;
   delay?: number;
@@ -18,7 +18,7 @@ type TypingTextProps = {
 
 const TypingText = ({
   text,
-  duration = 50,
+  typingSpeed = 50,
   _code = true,
   textClass,
   delay = 0,
@@ -44,12 +44,12 @@ const TypingText = ({
       } else {
         clearInterval(typingInterval);
       }
-    }, duration);
+    }, typingSpeed);
 
     return () => {
       clearInterval(typingInterval);
     };
-  }, [text, isDelayed]);
+  }, [text, isDelayed, typingSpeed]);
 
   useEffect(() => {
     const delayTimeout = setTimeout(() => {
@@ -61,13 +61,15 @@ const TypingText = ({
     };
   }, [delay]);
 
-  return (
-    <>
-      {_code ? (
+  const content = useMemo(() => {
+    if (_code) {
+      return (
         <div className={textClass}>
           <SyntaxHighlighter
             language="typescript"
             style={vscDarkPlus}
+            showLineNumbers
+            wrapLines
             customStyle={{
               backgroundColor: "transparent",
               opacity: "1",
@@ -85,7 +87,9 @@ const TypingText = ({
             {displayText}
           </SyntaxHighlighter>
         </div>
-      ) : generateSpan ? (
+      );
+    } else if (generateSpan) {
+      return (
         <div className={textClass}>
           {generateSpans({
             text: displayText,
@@ -94,11 +98,13 @@ const TypingText = ({
             zeroColor: zeroColor,
           })}
         </div>
-      ) : (
-        <div className={textClass}>{displayText}</div>
-      )}
-    </>
-  );
+      );
+    } else {
+      return <div className={textClass}>{displayText}</div>;
+    }
+  }, [displayText]);
+
+  return <>{content}</>;
 };
 
 export default TypingText;
