@@ -5,42 +5,14 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { paths } from "@/constants/svgPathIndexer";
 
 interface PhoneFrameProps {
   screenImage?: string;
   children?: React.ReactNode;
 }
-
-const paths = [
-  {
-    d: "paths.0.d",
-  },
-  {
-    d: "paths.1.d",
-  },
-  {
-    d: "paths.2.d",
-  },
-  { d: "paths.3.d" },
-
-  { d: "paths.4.d" },
-  {
-    d: "paths.5.d",
-  },
-  {
-    d: "paths.6.d",
-  },
-  {
-    d: "paths.7.d",
-  },
-];
-
 const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
   const dispatch = useDispatch();
-
-  const screenHeight = useSelector(
-    (state: RootState) => state.screenHeight.height
-  );
   const [isRotating, setIsRotating] = useState(false);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const rotateStart = useSelector(
@@ -49,13 +21,7 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
   const rotateEnd = useSelector(
     (state: RootState) => state.rotateChange.rotateEnd
   );
-
   const [isInView, setIsInView] = useState(false);
-
-  const handleInViewChange = (inView: boolean) => {
-    setIsInView(inView);
-  };
-
   const handleClick = () => {
     if (rotateStart) {
       dispatch(setRotate(false));
@@ -63,7 +29,15 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
       dispatch(setRotate(true));
     }
   };
-
+  const handleInViewChange = () => {
+    if (isInView === false) {
+      setTimeout(() => {
+        setIsInView(true);
+      }, 1200);
+    } else {
+      setIsInView(false);
+    }
+  };
   useEffect(() => {
     const rotationTimeout = setTimeout(() => {
       rotateStart
@@ -109,11 +83,11 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
       </div>
       <motion.div
         whileInView={{ opacity: 1 }}
-        onViewportEnter={() => handleInViewChange(true)}
-        onViewportLeave={() => handleInViewChange(false)}
+        onViewportEnter={() => handleInViewChange()}
+        onViewportLeave={() => handleInViewChange()}
       >
         {isInView && !isMobile && (
-          <button onClick={handleClick} className="group">
+          <button onClick={handleClick} className={`group`}>
             {!rotateEnd && !rotateStart ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"

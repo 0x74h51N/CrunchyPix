@@ -33,7 +33,7 @@ const Home = () => {
       name: "Code Sect",
       children: <CodeSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[98svh] bg-cool-gray-900 py-20",
+      className: "h-auto min-h-[100svh] bg-cool-gray-900 py-20",
     },
     {
       name: "Portfolio",
