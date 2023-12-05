@@ -4,7 +4,12 @@ import React, { useEffect, useState } from "react";
 import TypingText from "../../typeText";
 import MonitorFrame from "@/components/Frames/MonitorFrame/MonitorFrame";
 import { generateSpans } from "@/components/GenerateSpans";
-import { staggerContainer, polygonIn, textVariant } from "@/utils/motion";
+import {
+  staggerContainer,
+  polygonIn,
+  textVariant,
+  slideIn,
+} from "@/utils/motion";
 import { motion } from "framer-motion";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
@@ -66,14 +71,16 @@ const CodeSect = () => {
     "codeSect.description.2",
   ];
   return (
-    <div className="flex 2xl:flex-row flex-col items-center w-full h-full 2xl:pr-20 xl:pr-4 2xl:gap-20 xl:gap-14 gap-6">
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      onViewportEnter={() => handleInViewChange(true)}
+      onViewportLeave={() => handleInViewChange(false)}
+      viewport={{ once: true, amount: 0.38 }}
+      className="flex 2xl:flex-row flex-col items-center w-full h-full 2xl:pr-20 xl:pr-4 2xl:gap-20 xl:gap-14 gap-6"
+    >
       <motion.div
-        variants={staggerContainer(4, 0)}
-        initial="hidden"
-        whileInView="show"
-        onViewportEnter={() => handleInViewChange(true)}
-        onViewportLeave={() => handleInViewChange(false)}
-        viewport={{ once: true, amount: 0.38 }}
+        variants={slideIn("left", "spring", 0.5, 0.5)}
         className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-14 md:p-10 xs:p-6 p-4 h-auto 2xl:min-h-[600px] bg-cool-gray-800 xl:rounded-r-3xl"
       >
         <motion.h2
@@ -149,7 +156,7 @@ const CodeSect = () => {
           </div>
         </MonitorFrame>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
