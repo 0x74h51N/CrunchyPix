@@ -76,7 +76,7 @@ const LandingSect = () => {
             variants={slideIn("up", "spring", 2, 1.5)}
             className="font-black text-white md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px]"
           >
-            {!isMobile || !isTablet
+            {isMobile || isTablet
               ? t("landing.title")
               : generateSpans({
                   text: t("landing.title"),
