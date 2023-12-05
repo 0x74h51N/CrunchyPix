@@ -99,7 +99,16 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
                 strokeLinejoin="round"
                 className={`absolute -right-28 -top-14 w-[170px] h-[150px] rounded-xl -z-20 path-animation -rotate-[30deg] group-hover:stroke-log-col`}
               >
-                <path d="M 0 0 C 7 0 14 4 14 12 L 16 9 L 14 12 L 12 10" />
+                <SvgAnimator
+                  paths={[
+                    { d: "M 0 0 C 7 0 14 4 14 12 L 16 9 L 14 12 L 12 10" },
+                  ]}
+                  repeat
+                  direction="back"
+                  duration={1}
+                  pathDelay={0}
+                  delay={1}
+                />
               </svg>
             ) : (
               !isRotating && (
@@ -113,8 +122,11 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
                   strokeLinejoin="round"
                   className={`absolute w-[40px] h-[40px] rounded-xl -z-20 transform scale-x-[-1] rotate-[0deg] -top-10 right-6 opacity-90 hover:stroke-red-700`}
                 >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
+                  <SvgAnimator
+                    paths={[{ d: "M18 6L6 18" }, { d: "M6 6L18 18" }]}
+                    duration={0.5}
+                    direction="back"
+                  />
                 </svg>
               )
             )}
@@ -136,7 +148,12 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
                   fill="none"
                   className="group-hover:stroke-log-col"
                 >
-                  <SvgAnimator paths={paths} />
+                  <SvgAnimator
+                    paths={paths}
+                    duration={0.7}
+                    pathDelay={0.3}
+                    delay={1}
+                  />
                 </g>
               </svg>
             )}

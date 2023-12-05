@@ -38,7 +38,6 @@ const CardMaker = ({ cardSections }: { cardSections: CardSections[] }) => {
           >
             <ColorfulBorder>
               <motion.div
-                variants={staggerContainer(3, 3)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.9 }}

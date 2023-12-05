@@ -114,7 +114,7 @@ body {
   }
 }
 
-@keyframes my-bounce {
+@keyframes bounce {
   0%,
   20%,
   50%,
@@ -129,50 +129,8 @@ body {
     transform: translateY(-10px);
   }
 }
-
-@keyframes arrow-bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateX(0) rotate(0deg);
-  }
-
-  40% {
-    transform: translateX(10px) rotate(50deg);
-  }
-
-  60% {
-    transform: translateX(10px) rotate(40deg);
-  }
-}
-
-@keyframes draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.path-animation {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  animation: draw 2s infinite ease forwards;
-}
-
-.path-animation-text {
-  stroke-dasharray: 200;
-  stroke-dashoffset: 200;
-  fill-opacity: 0;
-  animation: draw 3s infinite ease forwards;
-  animation-delay: 4s;
-}
-
-.animate-arrow-bounce {
-  animation: arrow-bounce 2s infinite;
-}
-.animate-my-bounce-slow {
-  animation: my-bounce 2s infinite;
+.animate-bounce-slow {
+  animation: bounce 2s infinite;
 }
 .logo_text {
   font-family: "Britannic Bold";
@@ -206,10 +164,6 @@ body {
 .swiper-button-next:hover::after,
 .swiper-button-prev:hover::after {
   opacity: 1;
-}
-.arrowButton {
-  color: white;
-  @apply opacity-50 hover:opacity-100 transition-opacity animate-my-bounce-slow z-10;
 }
 
 .arrow {
@@ -293,12 +247,6 @@ body {
   filter: grayscale(0%);
 }
 
-/* @media (max-width: 1020px) {
-   .grayscale {
-     filter: grayscale(0%);
-   }
- } */
-
 .galata1 {
   -webkit-filter: drop-shadow(5px 5px 3px #141414);
   filter: drop-shadow(5px 5px 3px #141414);
@@ -325,15 +273,6 @@ body {
 
 ::-webkit-scrollbar-track {
   @apply bg-cool-gray-600;
-}
-
-@keyframes smoothScroll {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(100%);
-  }
 }
 
 .scroll-container {

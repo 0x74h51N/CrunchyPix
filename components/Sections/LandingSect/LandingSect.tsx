@@ -106,7 +106,7 @@ const LandingSect = () => {
             index={1}
             duration={1500}
             arrow={true}
-            className="opacity-50 hover:opacity-100 transition-opacity animate-my-bounce-slow z-10"
+            className="opacity-50 hover:opacity-100 transition-opacity animate-bounce-slow z-10"
           />
         </div>
       </motion.div>

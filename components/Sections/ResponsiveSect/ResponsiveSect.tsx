@@ -58,10 +58,9 @@ const ResponsiveSect = () => {
   ];
   return (
     <motion.div
-      variants={staggerContainer(6, 0)}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.38 }}
       className="flex xl:flex-row flex-col-reverse items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-[200px] xl:gap-24 gap-4"
     >
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
