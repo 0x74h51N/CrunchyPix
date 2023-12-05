@@ -73,7 +73,7 @@ const CodeSect = () => {
         whileInView="show"
         onViewportEnter={() => handleInViewChange(true)}
         onViewportLeave={() => handleInViewChange(false)}
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.38 }}
         className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-14 md:p-10 xs:p-6 p-4 h-auto 2xl:min-h-[600px] bg-cool-gray-800 xl:rounded-r-3xl"
       >
         <motion.h2

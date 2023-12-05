@@ -43,10 +43,9 @@ const AboutMeSect = () => {
           className="object-center bg-opacity-0 grayscale max-lg:w-[230px] max-sm:w-[210px] h-auto z-30"
         />
         <motion.div
-          variants={staggerContainer(2, 0)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.6 }}
           className="flex flex-col items-start h-full w-auto p-5 z-10"
         >
           <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
