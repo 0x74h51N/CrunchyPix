@@ -40,6 +40,16 @@ const CodeSect = () => {
   const handleInViewChange = (inView: boolean) => {
     setIsInView(inView);
   };
+  const lineHeight =
+    screenWidth >= 1535 ? "1.4" : screenWidth >= 1280 ? "1.35" : "1.25";
+  const fontSize =
+    screenWidth >= 1535
+      ? "0.8em"
+      : screenWidth >= 1280
+      ? "0.75em"
+      : screenWidth >= 1024
+      ? "0.7em"
+      : "0.65em";
 
   const description = [
     "codeSect.description.0",
@@ -100,22 +110,8 @@ const CodeSect = () => {
                   backgroundColor: "transparent",
                   opacity: "1",
                   overflow: "hidden",
-                  lineHeight:
-                    screenWidth >= 1535
-                      ? "1.5"
-                      : screenWidth >= 1280
-                      ? "1.35"
-                      : screenWidth >= 1024
-                      ? "1.2"
-                      : "1",
-                  fontSize:
-                    screenWidth >= 1535
-                      ? "0.75em"
-                      : screenWidth >= 1280
-                      ? "0.7em"
-                      : screenWidth >= 1024
-                      ? "0.65em"
-                      : "0.58em",
+                  lineHeight: lineHeight,
+                  fontSize: fontSize,
                 }}
                 codeTagProps={{
                   style: {
@@ -131,24 +127,8 @@ const CodeSect = () => {
                 <TypingText
                   text={codeString}
                   duration={10}
-                  fontSize={
-                    screenWidth >= 1535
-                      ? "0.75em"
-                      : screenWidth >= 1280
-                      ? "0.7em"
-                      : screenWidth >= 1024
-                      ? "0.65em"
-                      : "0.58em"
-                  }
-                  lineHeight={
-                    screenWidth >= 1535
-                      ? "1.5"
-                      : screenWidth >= 1280
-                      ? "1.35"
-                      : screenWidth >= 1024
-                      ? "1.2"
-                      : "1"
-                  }
+                  lineHeight={lineHeight}
+                  fontSize={fontSize}
                 />
               )
             )}
