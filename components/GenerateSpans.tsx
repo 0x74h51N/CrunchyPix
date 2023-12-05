@@ -9,10 +9,7 @@ export const generateSpans = ({
   _className,
 }: generateSpanType) => {
   const words = text.split(" ");
-
   const spans = words.map((word, index) => {
-    const isLastWord = index === words.length - 1;
-
     const characters = word.split("").map((char, charIndex) => (
       <span key={`char-${charIndex}`} className={`cursor-pointer`}>
         <ColorfulHover

@@ -54,7 +54,11 @@ const Footer = () => {
                 className="min-w-[180px] h-auto"
               />
               <div className="flex flex-row gap-8 items-center">
-                <SocialIcons iconPack={socialIcons} row={true} />
+                <SocialIcons
+                  colorful={true}
+                  iconPack={socialIcons}
+                  row={true}
+                />
               </div>
             </motion.div>
             <div className="flex flex-row max-lg:flex-col items-end justify-end max-lg:items-center max-lg:justify-center gap-4 w-auto h-full">
@@ -82,7 +86,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="text-neutral-200 flexBetween mt-10 footer_copyright">
+          <div className="text-neutral-200 flexBetween mt-10 footer_copyright p-4">
             <p>@ 2023 Tahsin O.. All right reserved</p>
           </div>
         </div>

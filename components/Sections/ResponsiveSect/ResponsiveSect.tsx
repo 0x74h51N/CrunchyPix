@@ -1,6 +1,6 @@
 "use client";
 import { slide } from "@/app/common.types";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import FullScreenSlider from "../../Slider/FullScreenSlider/FullScreenSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
@@ -15,6 +15,7 @@ import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { useTranslation } from "react-i18next";
 import { generateSpans } from "@/components/GenerateSpans";
 import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
+import { phoneSlides } from "@/constants/phoneSlides";
 
 const ResponsiveSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -22,43 +23,21 @@ const ResponsiveSect = () => {
     (state: RootState) => state.language.isTranslationsLoaded
   );
   const dispatch = useDispatch();
-
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const rotateStart = useSelector(
     (state: RootState) => state.rotateChange.rotateStart
   );
   const rotateEnd = useSelector(
     (state: RootState) => state.rotateChange.rotateEnd
   );
-  const sampleSlides: slide[] = [
-    {
-      imageUrl: rotateEnd
-        ? "/PhoneSlides/landingH.jpg"
-        : "/PhoneSlides/landingV.jpg",
-      title: "Landing",
-      description: "",
-    },
-    {
-      imageUrl: rotateEnd
-        ? "/PhoneSlides/aboutMeH.jpg"
-        : "/PhoneSlides/aboutMeV.jpg",
-      title: "About Me",
-      description: "",
-    },
-    {
-      imageUrl: rotateEnd
-        ? "/PhoneSlides/portfolioH.jpg"
-        : "/PhoneSlides/portfolioV.jpg",
-      title: "Portfolio",
-      description: "",
-    },
-    {
-      imageUrl: rotateEnd
-        ? "/PhoneSlides/mintingUiH.jpg"
-        : "/PhoneSlides/mintingUiV.jpg",
-      title: "Minting UI",
-      description: "",
-    },
-  ];
+  const slides = useMemo(() => {
+    return phoneSlides.map((slide: slide) => ({
+      imageUrl: rotateEnd ? slide.imageUrlH : slide.imageUrlV,
+      title: slide.title,
+      description: slide.description,
+    }));
+  }, [rotateEnd]);
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -94,7 +73,7 @@ const ResponsiveSect = () => {
           <motion.div variants={slideIn("left", "spring", 0.5, 0.5)}>
             <PhoneFrame>
               <FullScreenSlider
-                slides={sampleSlides}
+                slides={slides}
                 className="w-full h-full object-cover rounded-[42px]"
               />
             </PhoneFrame>
@@ -109,24 +88,28 @@ const ResponsiveSect = () => {
           variants={polygonIn("up", "spring", 1, 1)}
           className="w-full font-medium lg:text-[22px] sm:text-[20px] text-[18px] lg:leading-[40px] text-cool-gray-400 xl:text-right text-left"
         >
-          {generateSpans({
-            text: t("responsiveSect.title2"),
-            colorType: "vibrantColors",
-            zeroColor: "#737373",
-          })}
+          {isMobile || isTablet
+            ? t("responsiveSect.title2")
+            : generateSpans({
+                text: t("responsiveSect.title2"),
+                colorType: "vibrantColors",
+                zeroColor: "#737373",
+              })}
         </motion.h2>
         <motion.h1
           variants={polygonIn("down", "spring", 1, 1)}
-          className="w-full font-black md:text-[50px] sm:text-[40px] xs:text-[35px] text-[25px] leading-relaxed xl:text-right text-left"
+          className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[35px] text-[25px] leading-relaxed xl:text-right text-left"
         >
-          {generateSpans({
-            text: t("responsiveSect.title"),
-            colorType: "vibrantColors",
-          })}
+          {isMobile || isTablet
+            ? t("responsiveSect.title")
+            : generateSpans({
+                text: t("responsiveSect.title"),
+                colorType: "vibrantColors",
+              })}
         </motion.h1>
         <motion.div
           variants={textVariant(1)}
-          className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full ${
+          className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 xl:w-4/5 w-full ${
             rotateStart ? "2xl:ml-20 xl:ml-4" : " 2xl:ml-36 xl:ml-6"
           } xl:leading-[30px] xl:text-right text-left`}
         >

@@ -12,11 +12,10 @@ export const getRandomColor = ({
   randomCount = 6,
 }: getRandomColorType) => {
   const selectedColorPack = colorPacks[colorType] || [];
-
-  const colorArray =
-    colorType === "random"
-      ? Array.from({ length: randomCount }, () => randomColor(randomCount))
-      : selectedColorPack;
+  const cachedColors = Array.from({ length: randomCount }, () =>
+    randomColor(randomCount)
+  );
+  const colorArray = colorType === "random" ? cachedColors : selectedColorPack;
 
   if (colorArray.length === 0) {
     return "";

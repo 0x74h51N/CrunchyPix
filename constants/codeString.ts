@@ -29,7 +29,7 @@ const AboutMeSect = () => {
     return null;
   }
   return (
-    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto min-h-[100svh] ">
+    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto  p-10 xl:pt-2 pb-0 max-md:px-1 bg-cool-gray-800 rounded-3xl">
       <div className="flex flex-row gap-12 max-sm:flex-col max-lg:gap-6 max-lg:items-start max-sm:items-center items-end justify-center w-auto h-auto z-10">
         <Image
           src="/headColor.png"
@@ -62,13 +62,12 @@ const AboutMeSect = () => {
           </motion.p>
         </motion.div>
       </div>
-      <div className="flex flex-wrap gap-10">
-        <div className=" flex flex-wrap justify-center gap-10 w-auto p-8 max-xs:px-2 max-2xl:max-w-[700px] z-0">
-          <CardMaker cardSections={cardSections} />
-        </div>
+      <div className=" flex flex-wrap justify-center gap-10 w-auto p-8 max-xs:px-2 max-2xl:max-w-[700px] z-0">
+        <CardMaker cardSections={cardSections} />
       </div>
     </div>
   );
 };
 
-export default AboutMeSect;`;
+export default AboutMeSect;
+`;

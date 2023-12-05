@@ -21,6 +21,7 @@ const LandingSect = () => {
     (state: RootState) => state.screenHeight.height
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const dispatch = useDispatch();
   useEffect(() => {
     if (i18n.isInitialized) {
@@ -53,32 +54,34 @@ const LandingSect = () => {
             className={`font-medium lg:text-[40px] sm:text-[30px] text-[25px] text-white`}
           >
             <TypingText
-              generateSpan={true}
+              generateSpan={isMobile || isTablet ? false : true}
               _code={false}
               text={t("landing.intro")}
-              duration={50}
+              typingSpeed={50}
               colorType="vibrantColors"
             />
           </div>
           <div className=" lg:text-[19px] text-[18px] leading-[30px] max-lg:leading-[20px] whitespace-pre-wrap text-white">
             <TypingText
-              generateSpan={true}
+              generateSpan={isMobile || isTablet ? false : true}
               _code={false}
               text={t("landing.description")}
-              duration={50}
+              typingSpeed={50}
               colorType="vibrantColors"
-              delay={550}
+              delay={700}
             />
           </div>
 
           <motion.h1
             variants={slideIn("up", "spring", 2, 1.5)}
-            className="font-black md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px]"
+            className="font-black text-white md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px]"
           >
-            {generateSpans({
-              text: t("landing.title"),
-              colorType: "vibrantColors",
-            })}
+            {!isMobile || !isTablet
+              ? t("landing.title")
+              : generateSpans({
+                  text: t("landing.title"),
+                  colorType: "vibrantColors",
+                })}
           </motion.h1>
         </div>
 
@@ -86,13 +89,17 @@ const LandingSect = () => {
           variants={polygonIn("down", "spring", 2, 2.5)}
           className={`absolute h-full w-full pointer-events-none  ${
             isMobile || screenHeight <= 600
-              ? `flex flex-row gap-4 justify-center items-center pb-6 ${
+              ? `flex flex-row gap-4 justify-center items-center pb-10 ${
                   screenHeight <= 600 && "pt-[210px] pb-0 z-30"
                 }`
               : ""
           }`}
         >
-          <SocialIcons _colorType={"vibrantColors"} iconPack={socialIcons} />
+          <SocialIcons
+            colorful={true}
+            _colorType={"vibrantColors"}
+            iconPack={socialIcons}
+          />
         </motion.div>
         <div className="absolute bottom-0 w-full flex justify-center z-50">
           <ArrowButton

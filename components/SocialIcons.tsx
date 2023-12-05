@@ -2,10 +2,12 @@ import { ColorfulHover } from "./ColorfulHover";
 import { ColorfulHoverType, Icon } from "@/app/common.types";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
+import IconButton from "./Buttons/IconButton";
 
 type SocialIconProp = {
   iconPack: Icon[];
   row?: boolean;
+  colorful?: boolean;
 };
 
 export const SocialIcons = ({
@@ -13,6 +15,7 @@ export const SocialIcons = ({
   _colorType,
   randomCount = 6,
   row = false,
+  colorful = false,
 }: SocialIconProp & ColorfulHoverType) => {
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
@@ -48,7 +51,7 @@ export const SocialIcons = ({
 
         const iconStyle = { x, y, fontSize };
 
-        return (
+        return colorful ? (
           <ColorfulHover
             icon={icon}
             style={iconStyle}
@@ -58,6 +61,8 @@ export const SocialIcons = ({
             randomCount={randomCount}
             className="w-9 h-9"
           />
+        ) : (
+          <IconButton icon={icon} />
         );
       })}
     </>
