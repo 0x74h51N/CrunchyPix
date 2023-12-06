@@ -75,12 +75,10 @@ const IntroductionSect = () => {
           </motion.p>
         </motion.div>
       </div>
-      <div className=" flex flex-wrap justify-center gap-10 w-auto p-8 max-xs:px-2 max-2xl:max-w-[700px] z-0">
-        <div className="flex flex-wrap justify-center gap-10 w-auto">
-          {introductionCards.map((section, index) => (
-            <CardMaker key={index} cardSections={section} index={index} />
-          ))}
-        </div>
+      <div className="flex flex-wrap justify-center gap-10 w-auto p-8 max-xs:px-2 max-2xl:max-w-[700px] z-0">
+        {introductionCards.map((section, index) => (
+          <CardMaker key={index} cardSections={section} index={index} />
+        ))}
       </div>
     </div>
   );

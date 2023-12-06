@@ -47,13 +47,14 @@ const DesignSect = () => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-
+  const imageWidth = isMobile ? 110 : 148;
+  const imageHeight = isMobile ? 110 : 148;
   return (
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.38 }}
-      className="flex xl:flex-row flex-col-reverse items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-[180px] xl:gap-24 gap-4"
+      viewport={{ once: true, amount: 0.58 }}
+      className="flex xl:flex-row flex-col-reverse justify-center items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-[80px] xl:gap-24 gap-4"
     >
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
         <div
@@ -73,7 +74,7 @@ const DesignSect = () => {
       </div>
       <motion.div
         variants={slideIn("right", "spring", 0.5, 0.5)}
-        className="flex flex-col h-auto 2xl:min-h-[600px] justify-center items-end 2xl:p-20 lg:p-14 md:p-10 bg-cool-gray-800 xl:rounded-l-3xl"
+        className="flex flex-col h-auto 2xl:min-h-[700px] 2xl:justify-end justify-center items-center 2xl:p-20 lg:p-10 md:p-8 p-6 bg-cool-gray-800 xl:rounded-l-3xl"
       >
         <motion.h2
           variants={polygonIn("up", "spring", 1, 1)}
@@ -100,21 +101,21 @@ const DesignSect = () => {
         </motion.h1>
         <motion.div
           variants={textVariant(1)}
-          className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 xl:w-4/5 w-full ${
-            rotateStart ? "2xl:ml-20 xl:ml-4" : " 2xl:ml-36 xl:ml-6"
+          className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full ${
+            rotateStart ? "2xl:pl-20 xl:pl-4" : " 2xl:pl-32 xl:pl-6"
           } xl:leading-[30px] xl:text-right text-left`}
         >
           <motion.p>{t("designSect.description")}</motion.p>
         </motion.div>
-        <div className="flex flex-wrap justify-center items-center gap-2 2xl:max-w-[850px] w-full ">
+        <div className="flex flex-wrap justify-end max-xl:justify-center  w-full h-full z-0 pt-8">
           {designSectCards.map((section, index) => (
             <CardMaker
               key={index}
               cardSections={section}
               index={index}
-              cardWidth={"w-[200px]"}
-              imageWidth={170}
-              imageHeight={170}
+              imageWidth={imageWidth}
+              imageHeight={imageHeight}
+              cardWidth="max-w-[220px]"
             />
           ))}
         </div>
