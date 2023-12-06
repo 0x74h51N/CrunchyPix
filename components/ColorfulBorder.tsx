@@ -1,12 +1,23 @@
-import { useRef, useEffect, CSSProperties } from "react";
+import { CSSProperties, useEffect, useRef } from "react";
 
-export const ColorfulBorder: React.FC<{
+interface ColorfulBorderProps {
   children: React.ReactNode;
   className?: string;
-}> = ({ children, className }) => {
+  enabled?: boolean;
+}
+
+export const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
+  children,
+  className,
+  enabled = true,
+}) => {
   const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (enabled === false) {
+      return;
+    }
+
     const boxElement = boxRef.current;
 
     if (!boxElement) {
@@ -21,9 +32,9 @@ export const ColorfulBorder: React.FC<{
     };
 
     requestAnimationFrame(updateAnimation);
-  }, []);
+  }, [enabled]);
 
-  return (
+  return enabled ? (
     <div
       ref={boxRef}
       style={
@@ -37,5 +48,7 @@ export const ColorfulBorder: React.FC<{
     >
       {children}
     </div>
+  ) : (
+    <>{children}</>
   );
 };

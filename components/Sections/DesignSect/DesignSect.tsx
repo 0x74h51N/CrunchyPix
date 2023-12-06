@@ -5,19 +5,16 @@ import FullScreenSlider from "../../Slider/FullScreenSlider/FullScreenSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { motion } from "framer-motion";
-import {
-  polygonIn,
-  slideIn,
-  staggerContainer,
-  textVariant,
-} from "@/utils/motion";
+import { polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { useTranslation } from "react-i18next";
 import { generateSpans } from "@/components/GenerateSpans";
 import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
 import { phoneSlides } from "@/constants/phoneSlides";
+import CardMaker from "@/components/CardMaker";
+import { designSectCards } from "@/constants/designSectCards";
 
-const ResponsiveSect = () => {
+const DesignSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
@@ -51,22 +48,17 @@ const ResponsiveSect = () => {
     return null;
   }
 
-  const description = [
-    "responsiveSect.description.0",
-    "responsiveSect.description.1",
-    "responsiveSect.description.2",
-  ];
   return (
     <motion.div
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.38 }}
-      className="flex xl:flex-row flex-col-reverse items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-[200px] xl:gap-24 gap-4"
+      className="flex xl:flex-row flex-col-reverse items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-[180px] xl:gap-24 gap-4"
     >
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
         <div
           className={`flex flex-wrap items-center justify-center h-[600px] z-10 ${
-            rotateStart ? "w-[600px]" : "w-[300px] "
+            rotateStart ? "w-[800px]" : "w-[500px] "
           } transition-all ease-in-out duration-500`}
         >
           <motion.div variants={slideIn("left", "spring", 0.5, 0.5)}>
@@ -81,16 +73,16 @@ const ResponsiveSect = () => {
       </div>
       <motion.div
         variants={slideIn("right", "spring", 0.5, 0.5)}
-        className="flex flex-col h-auto 2xl:min-h-[600px] justify-center items-end 2xl:p-20 lg:p-16 md:p-12 xs:p-8 p-4 bg-cool-gray-800 xl:rounded-l-3xl"
+        className="flex flex-col h-auto 2xl:min-h-[600px] justify-center items-end 2xl:p-20 lg:p-14 md:p-10 bg-cool-gray-800 xl:rounded-l-3xl"
       >
         <motion.h2
           variants={polygonIn("up", "spring", 1, 1)}
           className="w-full font-medium lg:text-[22px] sm:text-[20px] text-[18px] lg:leading-[40px] text-cool-gray-400 xl:text-right text-left"
         >
           {isMobile || isTablet
-            ? t("responsiveSect.title2")
+            ? t("designSect.title2")
             : generateSpans({
-                text: t("responsiveSect.title2"),
+                text: t("designSect.title2"),
                 colorType: "vibrantColors",
                 zeroColor: "#737373",
               })}
@@ -100,9 +92,9 @@ const ResponsiveSect = () => {
           className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[35px] text-[25px] leading-relaxed xl:text-right text-left"
         >
           {isMobile || isTablet
-            ? t("responsiveSect.title")
+            ? t("designSect.title")
             : generateSpans({
-                text: t("responsiveSect.title"),
+                text: t("designSect.title"),
                 colorType: "vibrantColors",
               })}
         </motion.h1>
@@ -112,17 +104,23 @@ const ResponsiveSect = () => {
             rotateStart ? "2xl:ml-20 xl:ml-4" : " 2xl:ml-36 xl:ml-6"
           } xl:leading-[30px] xl:text-right text-left`}
         >
-          {description.map((paragraph, index) => (
-            <motion.p key={index}>
-              {t(paragraph)}
-              <br />
-              <br />
-            </motion.p>
-          ))}
+          <motion.p>{t("designSect.description")}</motion.p>
         </motion.div>
+        <div className="flex flex-wrap justify-center items-center gap-2 2xl:max-w-[850px] w-full ">
+          {designSectCards.map((section, index) => (
+            <CardMaker
+              key={index}
+              cardSections={section}
+              index={index}
+              cardWidth={"w-[200px]"}
+              imageWidth={170}
+              imageHeight={170}
+            />
+          ))}
+        </div>
       </motion.div>
     </motion.div>
   );
 };
 
-export default ResponsiveSect;
+export default DesignSect;

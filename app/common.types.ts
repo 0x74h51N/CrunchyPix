@@ -41,10 +41,14 @@ export type slide = {
 };
 
 export type CardSections = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   icon?: Icon;
+  icons?: Icon[];
   index?: number;
+  colorFulBorder?: boolean | true;
+  tilt?: boolean | true;
+  image?: string;
 };
 
 export type ColorPacks = {
@@ -81,6 +85,7 @@ export type Icon = {
   size?: number;
   color?: string;
   alt?: string;
+  substance?: string;
 };
 
 export type logoType = {
