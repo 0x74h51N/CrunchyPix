@@ -17,6 +17,8 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import CardMaker from "@/components/CardMaker";
+import { codeSectCards } from "@/constants/codeSectCards";
 
 const CodeSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -65,11 +67,6 @@ const CodeSect = () => {
     setIsInView(inView);
   };
 
-  const description = [
-    "codeSect.description.0",
-    "codeSect.description.1",
-    "codeSect.description.2",
-  ];
   return (
     <motion.div
       initial="hidden"
@@ -81,7 +78,7 @@ const CodeSect = () => {
     >
       <motion.div
         variants={slideIn("left", "spring", 0.5, 0.5)}
-        className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-14 md:p-10 xs:p-6 p-4 h-auto 2xl:min-h-[600px] bg-cool-gray-800 xl:rounded-r-3xl"
+        className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 h-auto 2xl:min-h-[600px] bg-cool-gray-800 xl:rounded-r-3xl"
       >
         <motion.h2
           variants={polygonIn("up", "spring", 0.5, 1)}
@@ -96,7 +93,7 @@ const CodeSect = () => {
               })}
         </motion.h2>
         <motion.h1
-          variants={polygonIn("down", "spring", 0.5, 1)}
+          variants={polygonIn("down", "spring", 1, 1)}
           className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[35px] text-[25px] leading-relaxed text-left"
         >
           {isMobile || isTablet
@@ -107,17 +104,16 @@ const CodeSect = () => {
               })}
         </motion.h1>
         <motion.div
-          variants={textVariant(0.5)}
+          variants={textVariant(1)}
           className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] xl:leading-[30px] text-left`}
         >
-          {description.map((paragraph, index) => (
-            <motion.p key={index}>
-              {t(paragraph)}
-              <br />
-              <br />
-            </motion.p>
-          ))}
+          <motion.p>{t("codeSect.description")}</motion.p>
         </motion.div>
+        <div className="flex flex-wrap justify-center gap-2 w-auto h-full z-0 pt-8">
+          {codeSectCards.map((section, index) => (
+            <CardMaker key={index} cardSections={section} index={index} />
+          ))}
+        </div>
       </motion.div>
       <div>
         <MonitorFrame>

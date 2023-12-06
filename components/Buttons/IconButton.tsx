@@ -19,7 +19,16 @@ import {
   FaBook,
   FaHeart,
   FaSearch,
+  FaPuzzlePiece,
+  FaLightbulb,
+  FaRocket,
+  FaBroom,
+  FaSync,
+  FaBolt,
+  FaFile,
 } from "react-icons/fa";
+import { MdAccessibility, MdTouchApp } from "react-icons/md";
+import { DiResponsive } from "react-icons/di";
 
 const iconComponents: { [key: string]: IconType } = {
   github: FaGithub,
@@ -40,6 +49,16 @@ const iconComponents: { [key: string]: IconType } = {
   code: FaCode,
   paintbrush: FaPaintBrush,
   search: FaSearch,
+  puzzle: FaPuzzlePiece,
+  light: FaLightbulb,
+  rocket: FaRocket,
+  broom: FaBroom,
+  sync: FaSync,
+  bold: FaBolt,
+  file: FaFile,
+  touch: MdTouchApp,
+  access: MdAccessibility,
+  responsive: DiResponsive,
 };
 
 const IconButton = ({ icon }: { icon: Icon }) => {

@@ -1,11 +1,11 @@
 import Section from "@/components/Section";
 import { SectionData } from "./common.types";
-import AboutMeSect from "@/components/Sections/AboutMeSect/AboutMeSect";
 import LandingSect from "@/components/Sections/LandingSect/LandingSect";
 import PortfolioSect from "@/components/Sections/PortfolioSect/PortfolioSect";
 import LogoSect from "@/components/Sections/LogoSection/LogoSect";
-import ResponsiveSect from "@/components/Sections/ResponsiveSect/ResponsiveSect";
+import ResponsiveSect from "@/components/Sections/DesignSect/DesignSect";
 import CodeSect from "@/components/Sections/CodeSect/CodeSect";
+import IntroductionSect from "@/components/Sections/IntroductionSect/IntroductionSect";
 
 const Home = () => {
   const sectionsData: SectionData[] = [
@@ -18,8 +18,8 @@ const Home = () => {
       className: "h-auto min-h-[100svh] w-[100svw]",
     },
     {
-      name: "About Me",
-      children: <AboutMeSect />,
+      name: "Introduction",
+      children: <IntroductionSect />,
       smoothScroll: true,
       className: "h-auto min-h-[95svh] bg-cool-gray-900 pt-14",
     },

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { paths } from "@/constants/svgPathIndexer";
+import { designSectPaths } from "@/constants/designSectPath";
 
 interface PhoneFrameProps {
   screenImage?: string;
@@ -149,7 +149,7 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
                   className="group-hover:stroke-log-col"
                 >
                   <SvgAnimator
-                    paths={paths}
+                    paths={designSectPaths}
                     duration={0.7}
                     pathDelay={0.3}
                     delay={1}

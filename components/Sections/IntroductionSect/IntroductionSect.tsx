@@ -1,17 +1,17 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { slideIn, staggerContainer, textVariant } from "@/utils/motion";
+import { slideIn, textVariant } from "@/utils/motion";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import Image from "next/image";
 import CardMaker from "../../CardMaker";
-import { cardSections } from "@/constants/cardSections";
 import { generateSpans } from "@/components/GenerateSpans";
+import { introductionCards } from "@/constants/introductionCards";
 
-const AboutMeSect = () => {
+const IntroductionSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
@@ -76,10 +76,14 @@ const AboutMeSect = () => {
         </motion.div>
       </div>
       <div className=" flex flex-wrap justify-center gap-10 w-auto p-8 max-xs:px-2 max-2xl:max-w-[700px] z-0">
-        <CardMaker cardSections={cardSections} />
+        <div className="flex flex-wrap justify-center gap-10 w-auto">
+          {introductionCards.map((section, index) => (
+            <CardMaker key={index} cardSections={section} index={index} />
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-export default AboutMeSect;
+export default IntroductionSect;
