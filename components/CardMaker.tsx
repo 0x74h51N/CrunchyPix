@@ -48,7 +48,7 @@ const CardMaker = ({
       )}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: "all" }}
+      viewport={{ once: true, amount: 0.85 }}
       className="m-0"
     >
       <Tilt
@@ -63,8 +63,8 @@ const CardMaker = ({
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0.7 }}
-            className={`flex justify-evenly items-center  ${cardHeight} ${cardWidth} flex-col bg-transparent p-4 relative overflow-hidden cursor-pointer`}
+            viewport={{ once: true, amount: 0.85 }}
+            className={`flex justify-evenly items-center ${cardHeight} ${cardWidth} flex-col bg-transparent p-4 relative overflow-hidden cursor-pointer`}
           >
             <>
               <motion.div
@@ -76,7 +76,7 @@ const CardMaker = ({
                     : index * textChildDelay + textDelay,
                   0.6
                 )}
-                className="flex justify-center items-center"
+                className="flex flex-col justify-center items-start"
               >
                 {cardSections.icon && <IconButton icon={cardSections.icon} />}
                 {cardSections.image && (
@@ -86,6 +86,7 @@ const CardMaker = ({
                     width={imageWidth}
                     height={imageHeight}
                     quality={100}
+                    loading="lazy"
                   />
                 )}
               </motion.div>
