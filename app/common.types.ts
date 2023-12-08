@@ -49,6 +49,7 @@ export type CardSections = {
   colorFulBorder?: boolean | true;
   tilt?: boolean | true;
   image?: string;
+  list?: string[];
 };
 
 export type ColorPacks = {

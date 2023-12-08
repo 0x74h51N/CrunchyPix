@@ -47,23 +47,57 @@
   "introduction": {
     "intro": "Giriş",
     "title": "Hakkımda",
-    "description": "TypeScript ve JavaScript üzerinde deneyimli bir Front-end developer'ım. Uzmanlık alanlarım arasında React, Node.js, Redux gibi popüler framework'ler ve Tailwind CSS ile stil oluşturma bulunuyor. Hızlı öğrenme becerilerim ve mükemmel iletişim yeteneğimle, müşterilerle yakın işbirliği yaparak gerçek dünya problemlerine çözüm üretebilen, verimli, ölçeklenebilir ve kullanıcı dostu çözümler geliştiriyorum. Fikirlerinizi gerçeğe dönüştürmek için birlikte çalışalım!",
+    "description": "TypeScript ve JavaScript üzerinde deneyimli bir Front-end developer'ım. Uzmanlık alanlarım arasında React, Node.js, Redux gibi popüler framework'ler ve Tailwind CSS ile stil oluşturma bulunuyor. Hızlı öğrenme becerilerim ve mükemmel iletişim yeteneğimle, müşterilerle yakın işbirliği yaparak gerçek dünya problemlerine çözüm üretebilen, verimli, ölçeklenebilir ve kullanıcı dostu çözümler geliştiriyorum. Fikirlerinizi gerçeğe dönüştürmek için birlikte çalışalım!"
+  },
+
+  "servicesSect": {
+    "intro": "Hizmetlerim",
+    "title": "Neler Yapıyorum?",
+    "description": "",
     "cards": [
       {
-        "title": "Esnek & Uyumlu",
-        "description": "Her cihazda sorunsuz deneyimler için özel olarak tasarlanmış, çeşitli ekran boyutlarına kolayca uyum sağlayarak erişilebilirlik ve görsel çekicilik sunar."
+        "title": "Development",
+        "list": [
+          "JavaScript/TypeScript",
+          "HTML/CSS Tasarımı",
+          "Next.js",
+          "React",
+          "Redux",
+          "Tailwind CSS/Bootstrap"
+        ]
       },
       {
-        "title": "Verimli & Temiz",
-        "description": "Temiz, verimli bir kod temeli üzerine inşa edilmiş olup, iyi organize edilmiş bir yapı, özel bileşenler ve yardımcı programlar içerir; projelerin kolay bakımını ve ölçeklenebilirliğini sağlar."
+        "title": "UI/UX Tasarım",
+        "list": [
+          "Ana Sayfa Tasarımı",
+          "Wireframing",
+          "Prototip Oluşturma",
+          "Figma",
+          "Duyarlı ve Uyumlu Tasarım",
+          "Kullanıcı Merkezli Tasarım"
+        ]
       },
       {
-        "title": "Kullanıcı Odaklı & Yaratıcı",
-        "description": "Estetiğin ötesinde, tasarımlarımız kullanıcı etkileşimini önceliklendirir ve kitleniz için keyifli bir dijital deneyim sağlar."
+        "title": "Tasarım",
+        "list": [
+          "Katalog",
+          "Broşür",
+          "E-posta Şablonları",
+          "İş Kartları",
+          "El İlanı",
+          "Logo ve Markalaşma"
+        ]
       },
       {
-        "title": "SEO Optimizasyonu",
-        "description": "SEO-optimizasyonu odaklı yaklaşımımızla online görünürlüğünüzü artırarak, web sitenizi organik bir izleyici kitlesi için arama motorlarında daha yüksek sıralara taşır."
+        "title": "Pazarlama",
+        "list": [
+          "SEO Optimizasyonu",
+          "Web Sayfası İçeriği",
+          "Hedef Kitle Belirleme",
+          "Segmentasyon",
+          "Analizler",
+          "A/B Testleri"
+        ]
       }
     ]
   },

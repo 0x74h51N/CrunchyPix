@@ -6,6 +6,7 @@ import LogoSect from "@/components/Sections/LogoSection/LogoSect";
 import ResponsiveSect from "@/components/Sections/DesignSect/DesignSect";
 import CodeSect from "@/components/Sections/CodeSect/CodeSect";
 import IntroductionSect from "@/components/Sections/IntroductionSect/IntroductionSect";
+import ServicesSect from "@/components/Sections/ServicesSect/ServicesSect";
 
 const Home = () => {
   const sectionsData: SectionData[] = [
@@ -21,7 +22,13 @@ const Home = () => {
       name: "Introduction",
       children: <IntroductionSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[95svh] bg-cool-gray-900 pt-14",
+      className: "h-auto min-h-[95svh] pt-14 bg-cool-gray-900",
+    },
+    {
+      name: "What I do?",
+      className: "bg-cool-gray-900 min-h-[100svh] w-full z-100",
+      smoothScroll: true,
+      children: <ServicesSect />,
     },
     {
       name: "Responsive Design",
