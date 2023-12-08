@@ -26,9 +26,11 @@ import {
   FaSync,
   FaBolt,
   FaFile,
+  FaChartBar,
 } from "react-icons/fa";
 import { MdAccessibility, MdTouchApp } from "react-icons/md";
 import { DiResponsive } from "react-icons/di";
+import { TfiLayoutAccordionList } from "react-icons/tfi";
 
 const iconComponents: { [key: string]: IconType } = {
   github: FaGithub,
@@ -47,7 +49,7 @@ const iconComponents: { [key: string]: IconType } = {
   desktop: FaDesktop,
   mobile: FaMobileAlt,
   code: FaCode,
-  paintbrush: FaPaintBrush,
+  brush: FaPaintBrush,
   search: FaSearch,
   puzzle: FaPuzzlePiece,
   light: FaLightbulb,
@@ -59,6 +61,8 @@ const iconComponents: { [key: string]: IconType } = {
   touch: MdTouchApp,
   access: MdAccessibility,
   responsive: DiResponsive,
+  layout: TfiLayoutAccordionList,
+  chart: FaChartBar,
 };
 
 const IconButton = ({ icon }: { icon: Icon }) => {

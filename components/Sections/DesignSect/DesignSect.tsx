@@ -53,7 +53,7 @@ const DesignSect = () => {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.58 }}
+      viewport={{ once: true, amount: "some" }}
       className="flex xl:flex-row flex-col-reverse justify-center items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-[80px] xl:gap-24 gap-4"
     >
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
@@ -74,7 +74,7 @@ const DesignSect = () => {
       </div>
       <motion.div
         variants={slideIn("right", "spring", 0.5, 0.5)}
-        className="flex flex-col h-auto 2xl:min-h-[700px] 2xl:justify-end justify-center items-center 2xl:p-20 lg:p-10 md:p-8 p-6 bg-cool-gray-800 xl:rounded-l-3xl"
+        className="flex flex-col h-auto 2xl:min-h-[700px]  justify-center items-center 2xl:p-20 lg:p-10 md:p-8 p-6 bg-cool-gray-800 xl:rounded-l-3xl"
       >
         <motion.h2
           variants={polygonIn("up", "spring", 1, 1)}
@@ -107,7 +107,7 @@ const DesignSect = () => {
         >
           <motion.p>{t("designSect.description")}</motion.p>
         </motion.div>
-        <div className="flex flex-wrap justify-end max-xl:justify-center  w-full h-full z-0 pt-8">
+        {/* <div className="flex flex-wrap justify-end max-xl:justify-center w-full h-full z-0 pt-8">
           {designSectCards.map((section, index) => (
             <CardMaker
               key={index}
@@ -118,7 +118,7 @@ const DesignSect = () => {
               cardWidth="max-w-[220px]"
             />
           ))}
-        </div>
+        </div> */}
       </motion.div>
     </motion.div>
   );

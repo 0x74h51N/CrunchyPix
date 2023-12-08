@@ -47,23 +47,56 @@
   "introduction": {
     "intro": "Introduction",
     "title": "About Me",
-    "description": "I'm an experienced front-end developer proficient in TypeScript and JavaScript. My expertise includes popular frameworks such as React, Node.js, Redux, and styling with Tailwind CSS. As a quick learner with excellent communication skills, I collaborate closely with clients to craft efficient, scalable, and user-friendly solutions that address real-world challenges. Let's collaborate to transform your ideas into reality!",
+    "description": "I'm an experienced front-end developer proficient in TypeScript and JavaScript. My expertise includes popular frameworks such as React, Node.js, Redux, and styling with Tailwind CSS. As a quick learner with excellent communication skills, I collaborate closely with clients to craft efficient, scalable, and user-friendly solutions that address real-world challenges. Let's collaborate to transform your ideas into reality!"
+  },
+  "servicesSect": {
+    "intro": "My Services",
+    "title": "What I Do?",
+    "description": "",
     "cards": [
       {
-        "title": "Responsive & Adaptive",
-        "description": "Tailored for seamless experiences on any device, effortlessly adapting to diverse screen sizes for accessibility and visual appeal."
+        "title": "Development",
+        "list": [
+          "JavaScript/TypeScript",
+          "HTML/CSS Styling",
+          "Next.js",
+          "React",
+          "Redux",
+          "Tailwind CSS/Bootstrap"
+        ]
       },
       {
-        "title": "Efficient & Clean",
-        "description": "Built on a foundation of clean, efficient code, featuring a well-organized structure, custom components, and utilities, facilitating easy maintenance and scalability for projects."
+        "title": "UI/UX Design",
+        "list": [
+          "Landing Page",
+          "Wireframing",
+          "Prototyping",
+          "Figma",
+          "Responsive & Adaptive",
+          "User-Centered"
+        ]
       },
       {
-        "title": "User-Centric & Creative",
-        "description": "Beyond aesthetics, our designs prioritize user engagement, fostering an enjoyable digital experience for your audience."
+        "title": "Design",
+        "list": [
+          "Catalog",
+          "Brochure",
+          "Email Templategn",
+          "Business Cardgn",
+          "Flyer",
+          "Logo & Branding"
+        ]
       },
       {
-        "title": "SEO Optimization",
-        "description": "Boost online visibility with our SEO-optimized approach, propelling your website to higher ranks on search engines for organic audience reach."
+        "title": "Marketing",
+        "list": [
+          "SEO Optimization",
+          "Web Page Content",
+          "Audience Targeting",
+          "Segmentation",
+          "Analytics",
+          "A/B Testing"
+        ]
       }
     ]
   },

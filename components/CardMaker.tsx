@@ -39,34 +39,23 @@ const CardMaker = ({
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
 
   return (
-    <motion.div
-      variants={slideIn(
-        "down",
-        "spring",
-        isMobile ? 0.5 : index * cardChildDelay + cardDelay,
-        0.6
-      )}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.85 }}
-      className="m-0"
+    <Tilt
+      tiltEnable={isMobile || isTablet ? false : cardSections.tilt ?? true}
+      tiltReverse
+      gyroscope={true}
+      glareEnable={isMobile || isTablet ? false : cardSections.tilt ?? true}
+      glarePosition={"all"}
+      glareMaxOpacity={0.5}
     >
-      <Tilt
-        tiltEnable={isMobile || isTablet ? false : cardSections.tilt ?? true}
-        tiltReverse
-        gyroscope={true}
-        glareEnable={isMobile || isTablet ? false : cardSections.tilt ?? true}
-        glarePosition={"all"}
-        glareMaxOpacity={0.5}
-      >
-        <ColorfulBorder enabled={cardSections.colorFulBorder ?? true}>
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.85 }}
-            className={`flex justify-evenly items-center ${cardHeight} ${cardWidth} flex-col bg-transparent p-4 relative overflow-hidden cursor-pointer`}
-          >
-            <>
+      <ColorfulBorder enabled={cardSections.colorFulBorder ?? true}>
+        <motion.div
+          initial="hidden"
+          animate="show"
+          viewport={{ once: true, amount: 0.5 }}
+          className={`flex justify-start gap-8 items-start ${cardHeight} ${cardWidth} flex-col bg-transparent p-12 relative overflow-hidden cursor-pointer`}
+        >
+          <>
+            {cardSections.image && (
               <motion.div
                 variants={polygonIn(
                   "down",
@@ -78,18 +67,18 @@ const CardMaker = ({
                 )}
                 className="flex flex-col justify-center items-start"
               >
-                {cardSections.icon && <IconButton icon={cardSections.icon} />}
-                {cardSections.image && (
-                  <Image
-                    src={cardSections.image}
-                    alt={cardSections.image}
-                    width={imageWidth}
-                    height={imageHeight}
-                    quality={100}
-                    loading="lazy"
-                  />
-                )}
+                <Image
+                  src={cardSections.image}
+                  alt={cardSections.image}
+                  width={imageWidth}
+                  height={imageHeight}
+                  quality={100}
+                  loading="lazy"
+                />
               </motion.div>
+            )}
+            <div className="flex flex-col w-full gap-12 justify-start items-start">
+              {cardSections.icon && <IconButton icon={cardSections.icon} />}
               {cardSections.title && (
                 <motion.h2
                   variants={fadeIn(
@@ -98,31 +87,38 @@ const CardMaker = ({
                     isMobile ? 1 : index * textChildDelay + textDelay,
                     0.6
                   )}
-                  className={`overflow-hidden h-[auto] font-medium lg:text-[20px] sm:text-[18px] text-[16px] ${
-                    cardSections.image ? "mt-0 " : "mt-4"
-                  } text-cool-gray-100 text-center`}
+                  className={`overflow-hidden h-[auto] font-medium lg:text-[22px] sm:text-[20px] text-[18px] text-cool-gray-50 text-center`}
                 >
                   {t(cardSections.title)}
                 </motion.h2>
               )}
-              {cardSections.description && (
-                <motion.p
-                  variants={fadeIn(
-                    "up",
-                    "spring",
-                    isMobile ? 1 : index * 0.5 + 0.7,
-                    0.6
-                  )}
-                  className="overflow-hidden h-[130px] flex items-center text-center xs:text-[14px] text-[12px] mt-2 text-cool-gray-200 whitespace-normal"
-                >
-                  {t(cardSections.description)}
-                </motion.p>
-              )}
-            </>
-          </motion.div>
-        </ColorfulBorder>
-      </Tilt>
-    </motion.div>
+            </div>
+            {cardSections.description && (
+              <motion.p
+                variants={fadeIn(
+                  "up",
+                  "spring",
+                  isMobile ? 1 : index * 0.5 + 0.7,
+                  0.6
+                )}
+                className="overflow-hidden h-[130px] flex items-center text-center xs:text-[14px] text-[12px] mt-2 text-cool-gray-200 whitespace-normal"
+              >
+                {t(cardSections.description)}
+              </motion.p>
+            )}
+            {cardSections.list && (
+              <ul className="list-disc pl-5">
+                {cardSections.list.map((item, index) => (
+                  <li className="text-cool-gray-200 mt-3" key={index}>
+                    {t(item)}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </>
+        </motion.div>
+      </ColorfulBorder>
+    </Tilt>
   );
 };
 

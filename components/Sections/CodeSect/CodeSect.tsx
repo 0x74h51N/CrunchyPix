@@ -73,7 +73,7 @@ const CodeSect = () => {
       whileInView="show"
       onViewportEnter={() => handleInViewChange(true)}
       onViewportLeave={() => handleInViewChange(false)}
-      viewport={{ once: true, amount: 0.38 }}
+      viewport={{ once: true, amount: "some" }}
       className="flex 2xl:flex-row flex-col items-center w-full h-full 2xl:pr-20 xl:pr-4 2xl:gap-20 xl:gap-14 gap-6"
     >
       <motion.div
@@ -109,11 +109,11 @@ const CodeSect = () => {
         >
           <motion.p>{t("codeSect.description")}</motion.p>
         </motion.div>
-        <div className="flex flex-wrap justify-center gap-2 w-auto h-full z-0 pt-8">
+        {/* <div className="flex flex-wrap justify-center gap-2 w-auto h-full z-0 pt-8">
           {codeSectCards.map((section, index) => (
             <CardMaker key={index} cardSections={section} index={index} />
           ))}
-        </div>
+        </div> */}
       </motion.div>
       <div>
         <MonitorFrame>

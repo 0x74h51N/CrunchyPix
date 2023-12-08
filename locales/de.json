@@ -47,23 +47,57 @@
   "introduction": {
     "intro": "Einleitung",
     "title": "Über mich",
-    "description": "Ich bin ein erfahrener Front-End-Entwickler, der sich gut mit TypeScript und JavaScript auskennt. Meine Expertise umfasst bekannte Frameworks wie React, Node.js, Redux und das Styling mit Tailwind CSS. Als schneller Lerner mit ausgezeichneten Kommunikationsfähigkeiten arbeite ich eng mit Kunden zusammen, um effiziente, skalierbare und benutzerfreundliche Lösungen zu entwickeln, die realen Herausforderungen begegnen. Lassen Sie uns zusammenarbeiten, um Ihre Ideen in die Realität umzusetzen!",
+    "description": "Ich bin ein erfahrener Front-End-Entwickler, der sich gut mit TypeScript und JavaScript auskennt. Meine Expertise umfasst bekannte Frameworks wie React, Node.js, Redux und das Styling mit Tailwind CSS. Als schneller Lerner mit ausgezeichneten Kommunikationsfähigkeiten arbeite ich eng mit Kunden zusammen, um effiziente, skalierbare und benutzerfreundliche Lösungen zu entwickeln, die realen Herausforderungen begegnen. Lassen Sie uns zusammenarbeiten, um Ihre Ideen in die Realität umzusetzen!"
+  },
+
+  "servicesSect": {
+    "intro": "Meine Dienstleistungen",
+    "title": "Was ich mache?",
+    "description": "",
     "cards": [
       {
-        "title": "Responsive Design",
-        "description": "Optimiert für nahtlose Erlebnisse auf verschiedenen Geräten, passt es sich leicht an verschiedene Bildschirmgrößen an."
+        "title": "Entwicklung",
+        "list": [
+          "JavaScript/TypeScript",
+          "HTML/CSS-Styling",
+          "Next.js",
+          "React",
+          "Redux",
+          "Tailwind CSS/Bootstrap"
+        ]
       },
       {
-        "title": "Effiziente Codebasis",
-        "description": "Aufgebaut auf sauberem, effizientem Code, mit einer gut organisierten Struktur und benutzerdefinierten Komponenten für einfache Wartung und Skalierbarkeit."
+        "title": "UI/UX Design",
+        "list": [
+          "Landing Page",
+          "Wireframing",
+          "Prototyping",
+          "Figma",
+          "Responsiv & Adaptiv",
+          "Benutzerzentriert"
+        ]
       },
       {
-        "title": "Benutzerfreundliches & Kreatives",
-        "description": "Jenseits der Ästhetik liegt der Fokus unserer Designs auf Benutzerbindung, um ein angenehmes digitales Erlebnis für Ihr Publikum zu schaffen."
+        "title": "Design",
+        "list": [
+          "Katalog",
+          "Broschüre",
+          "E-Mail-Vorlagen",
+          "Visitenkarte",
+          "Flyer",
+          "Logo & Branding"
+        ]
       },
       {
-        "title": "SEO-Optimierung",
-        "description": "Steigern Sie die Online-Sichtbarkeit mit unserem SEO-optimierten Ansatz für besseres Ranking in Suchmaschinen."
+        "title": "Marketing",
+        "list": [
+          "SEO-Optimierung",
+          "Webseiteninhalt",
+          "Zielgruppenansprache",
+          "Segmentierung",
+          "Analytics",
+          "A/B-Tests"
+        ]
       }
     ]
   },

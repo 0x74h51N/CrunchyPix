@@ -85,7 +85,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   minWidth: "350px",
                   pointerEvents: "none",
                   position: "absolute",
-                  top: 0,
+                  bottom: 0,
                   left: 0,
                   zIndex: 10,
                   overflow: "hidden",
