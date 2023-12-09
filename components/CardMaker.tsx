@@ -8,12 +8,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import Tilt from "react-parallax-tilt";
 import Image from "next/image";
-
+import { IoIosArrowDroprightCircle } from "react-icons/io";
 interface CardMakerProops {
   cardSections: CardSections;
-  index?: number;
-  cardChildDelay?: number;
-  cardDelay?: number;
+  cardIndex?: number;
   textChildDelay?: number;
   textDelay?: number;
   cardHeight?: string;
@@ -24,11 +22,9 @@ interface CardMakerProops {
 
 const CardMaker = ({
   cardSections,
-  index = 1,
-  cardChildDelay = 0.4,
-  cardDelay = 0.3,
-  textChildDelay = 0.5,
-  textDelay = 0.7,
+  cardIndex = 0,
+  textChildDelay = 0.25,
+  textDelay = 0,
   cardHeight = "h-[340px]",
   cardWidth = "w-[260px]",
   imageWidth = 100,
@@ -43,16 +39,18 @@ const CardMaker = ({
       tiltEnable={isMobile || isTablet ? false : cardSections.tilt ?? true}
       tiltReverse
       gyroscope={true}
-      glareEnable={isMobile || isTablet ? false : cardSections.tilt ?? true}
+      glareEnable={isMobile || isTablet ? false : cardSections.glare ?? true}
       glarePosition={"all"}
-      glareMaxOpacity={0.5}
+      glareMaxOpacity={0.2}
+      glareBorderRadius="10px"
+      className="bg-cool-gray-800 rounded-lg shadow-2xl"
     >
-      <ColorfulBorder enabled={cardSections.colorFulBorder ?? true}>
+      <ColorfulBorder enabled={cardSections.colorFulBorder ?? false}>
         <motion.div
           initial="hidden"
-          animate="show"
+          whileInView="show"
           viewport={{ once: true, amount: 0.5 }}
-          className={`flex justify-start gap-8 items-start ${cardHeight} ${cardWidth} flex-col bg-transparent p-12 relative overflow-hidden cursor-pointer`}
+          className={`flex dotted-background justify-start gap-8 items-start ${cardHeight} ${cardWidth} flex-col p-12 relative overflow-hidden cursor-pointer`}
         >
           <>
             {cardSections.image && (
@@ -61,8 +59,8 @@ const CardMaker = ({
                   "down",
                   "spring",
                   isMobile && cardSections.description
-                    ? 1
-                    : index * textChildDelay + textDelay,
+                    ? 0.5
+                    : cardIndex * textChildDelay + textDelay,
                   0.6
                 )}
                 className="flex flex-col justify-center items-start"
@@ -81,10 +79,10 @@ const CardMaker = ({
               {cardSections.icon && <IconButton icon={cardSections.icon} />}
               {cardSections.title && (
                 <motion.h2
-                  variants={fadeIn(
+                  variants={slideIn(
                     "down",
                     "spring",
-                    isMobile ? 1 : index * textChildDelay + textDelay,
+                    isMobile ? 0.4 : cardIndex * textChildDelay + textDelay,
                     0.6
                   )}
                   className={`overflow-hidden h-[auto] font-medium lg:text-[22px] sm:text-[20px] text-[18px] text-cool-gray-50 text-center`}
@@ -98,7 +96,7 @@ const CardMaker = ({
                 variants={fadeIn(
                   "up",
                   "spring",
-                  isMobile ? 1 : index * 0.5 + 0.7,
+                  isMobile ? 0.5 : cardIndex * 0.5 + 0.7,
                   0.6
                 )}
                 className="overflow-hidden h-[130px] flex items-center text-center xs:text-[14px] text-[12px] mt-2 text-cool-gray-200 whitespace-normal"
@@ -107,11 +105,21 @@ const CardMaker = ({
               </motion.p>
             )}
             {cardSections.list && (
-              <ul className="list-disc pl-5">
+              <ul className="flex flex-col items-start ">
                 {cardSections.list.map((item, index) => (
-                  <li className="text-cool-gray-200 mt-3" key={index}>
+                  <motion.li
+                    variants={polygonIn(
+                      "down",
+                      "spring",
+                      cardIndex * textChildDelay + textDelay + index / 2,
+                      1
+                    )}
+                    className="flex items-center text-cool-gray-200 mt-3"
+                    key={index}
+                  >
+                    <IoIosArrowDroprightCircle className="mr-2" />
                     {t(item)}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
             )}

@@ -11,8 +11,6 @@ import { useTranslation } from "react-i18next";
 import { generateSpans } from "@/components/GenerateSpans";
 import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
 import { phoneSlides } from "@/constants/phoneSlides";
-import CardMaker from "@/components/CardMaker";
-import { designSectCards } from "@/constants/designSectCards";
 
 const DesignSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -54,7 +52,7 @@ const DesignSect = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: "some" }}
-      className="flex xl:flex-row flex-col-reverse justify-center items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-[80px] xl:gap-24 gap-4"
+      className="flex xl:flex-row flex-col-reverse justify-center items-center w-full h-full 2xl:pl-20 xl:pl-4 2xl:gap-[100px] xl:gap-24 gap-4 "
     >
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
         <div
@@ -66,7 +64,9 @@ const DesignSect = () => {
             <PhoneFrame>
               <FullScreenSlider
                 slides={slides}
-                className="w-full h-full object-cover rounded-[42px]"
+                className={`w-full h-full object-cover ${
+                  isMobile ? "rounded-2xl" : "rounded-[42px]"
+                }`}
               />
             </PhoneFrame>
           </motion.div>
@@ -74,7 +74,7 @@ const DesignSect = () => {
       </div>
       <motion.div
         variants={slideIn("right", "spring", 0.5, 0.5)}
-        className="flex flex-col h-auto 2xl:min-h-[700px]  justify-center items-center 2xl:p-20 lg:p-10 md:p-8 p-6 bg-cool-gray-800 xl:rounded-l-3xl"
+        className="flex flex-col h-auto xl:min-h-[700px] xl:items-end justify-center items-center 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 bg-cool-gray-800 xl:rounded-l-3xl "
       >
         <motion.h2
           variants={polygonIn("up", "spring", 1, 1)}
@@ -101,24 +101,10 @@ const DesignSect = () => {
         </motion.h1>
         <motion.div
           variants={textVariant(1)}
-          className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full ${
-            rotateStart ? "2xl:pl-20 xl:pl-4" : " 2xl:pl-32 xl:pl-6"
-          } xl:leading-[30px] xl:text-right text-left`}
+          className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full 2xl:w-3/4 xl:pl-16 pl-0 xl:leading-[30px] xl:text-right text-left`}
         >
           <motion.p>{t("designSect.description")}</motion.p>
         </motion.div>
-        {/* <div className="flex flex-wrap justify-end max-xl:justify-center w-full h-full z-0 pt-8">
-          {designSectCards.map((section, index) => (
-            <CardMaker
-              key={index}
-              cardSections={section}
-              index={index}
-              imageWidth={imageWidth}
-              imageHeight={imageHeight}
-              cardWidth="max-w-[220px]"
-            />
-          ))}
-        </div> */}
       </motion.div>
     </motion.div>
   );

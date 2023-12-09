@@ -1,5 +1,5 @@
 "use client";
-import { codeString } from "@/constants/codeString";
+
 import React, { useEffect, useState } from "react";
 import TypingText from "../../typeText";
 import MonitorFrame from "@/components/Frames/MonitorFrame/MonitorFrame";
@@ -17,8 +17,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import CardMaker from "@/components/CardMaker";
-import { codeSectCards } from "@/constants/codeSectCards";
+import { codeString } from "@/constants/codeString";
 
 const CodeSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -44,9 +43,12 @@ const CodeSect = () => {
     } else if (screenWidth >= 1024) {
       setLineHeight("1.25");
       setFontSize("0.650em");
-    } else {
+    } else if (screenWidth >= 768) {
       setLineHeight("1.25");
       setFontSize("0.6em");
+    } else {
+      setLineHeight("1.1");
+      setFontSize("0.5em");
     }
   }, [screenWidth]);
 
@@ -74,11 +76,11 @@ const CodeSect = () => {
       onViewportEnter={() => handleInViewChange(true)}
       onViewportLeave={() => handleInViewChange(false)}
       viewport={{ once: true, amount: "some" }}
-      className="flex 2xl:flex-row flex-col items-center w-full h-full 2xl:pr-20 xl:pr-4 2xl:gap-20 xl:gap-14 gap-6"
+      className="flex 2xl:flex-row flex-col items-center justify-center w-full h-full 2xl:pr-20 xl:pr-4 2xl:gap-20 xl:gap-14 gap-6"
     >
       <motion.div
         variants={slideIn("left", "spring", 0.5, 0.5)}
-        className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 h-auto 2xl:min-h-[600px] bg-cool-gray-800 xl:rounded-r-3xl"
+        className="flex flex-col w-full justify-center items-end 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 h-auto 2xl:min-h-[700px] bg-cool-gray-800 xl:rounded-r-3xl"
       >
         <motion.h2
           variants={polygonIn("up", "spring", 0.5, 1)}
@@ -109,11 +111,6 @@ const CodeSect = () => {
         >
           <motion.p>{t("codeSect.description")}</motion.p>
         </motion.div>
-        {/* <div className="flex flex-wrap justify-center gap-2 w-auto h-full z-0 pt-8">
-          {codeSectCards.map((section, index) => (
-            <CardMaker key={index} cardSections={section} index={index} />
-          ))}
-        </div> */}
       </motion.div>
       <div>
         <MonitorFrame>

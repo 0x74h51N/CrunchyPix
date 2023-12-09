@@ -15,6 +15,7 @@ const createCardSection = (
   list: list,
   icon: createIcon(iconType),
   tilt: false,
+  glare: true,
   colorFulBorder: true,
 });
 
