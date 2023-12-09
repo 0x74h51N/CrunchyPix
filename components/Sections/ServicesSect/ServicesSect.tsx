@@ -1,21 +1,17 @@
 "use client";
 import CardMaker from "@/components/CardMaker";
-import { servicesSectCards } from "@/constants/servicesSectCards";
-import SwiperCore from "swiper";
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
 import { generateSpans } from "@/components/GenerateSpans";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { slideIn } from "@/utils/motion";
-import { useEffect, useState } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
-
-SwiperCore.use([Pagination]);
+import { servicesSectCards } from "@/constants/servicesSectCards";
 
 const ServicesSect = () => {
   const [_, setInit] = useState(false);
@@ -44,10 +40,6 @@ const ServicesSect = () => {
   const pagination = {
     el: ".custom-pagy",
     clickable: true,
-    bulletClass: `swiper-pagination-bullet`,
-    renderBullet: function (index: number, className: string) {
-      return '<span class="' + className + '">' + "</span>";
-    },
   };
 
   return (
@@ -79,14 +71,13 @@ const ServicesSect = () => {
         </motion.h1>
         <div className="flex flex-wrap justify-center gap-8 w-auto">
           <Swiper
-            effect="slide"
+            modules={[Pagination]}
             slidesPerView={isMobile ? 1 : isTablet ? 2.5 : 3}
             spaceBetween={30}
             grabCursor={true}
-            slidesPerGroup={1}
             centeredSlides
+            initialSlide={1}
             loop
-            modules={[Pagination, Navigation]}
             pagination={pagination}
             onInit={() => setInit(true)}
             className="2xl:w-[1030px] lg:w-[900px] md:w-[700px] w-[340px] h-auto"
@@ -96,7 +87,7 @@ const ServicesSect = () => {
                 <CardMaker
                   key={index}
                   cardSections={section}
-                  index={index}
+                  cardIndex={index}
                   cardWidth="w-[330px]"
                   cardHeight="h-[520px]"
                 />

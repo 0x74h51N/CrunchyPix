@@ -83,8 +83,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .dotted-background {
-  background-image: radial-gradient(circle, #8f8f8f 1px, transparent 1px);
-  background-size: 5px 5px;
+  position: relative;
+  background-color: transparent;
+  transition: all ease-in-out 1000ms;
+}
+.dotted-background::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 500px;
+  top: -50%;
+  left: 0%;
+  background-image: radial-gradient(
+      circle at center,
+      #8f8f8f 1px,
+      transparent 0
+    ),
+    radial-gradient(circle at center, #8f8f8f 1px, transparent 0);
+  background-size: 1.3rem 1.3rem;
+  background-position: 0 0, 0.65rem 0.65rem;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: all ease-in-out 1000ms;
+  filter: contrast(10);
+}
+
+.dotted-background:hover::before {
+  transform: translate(-50%, 0%); /* Aşağıya kaydırmak için */
+  opacity: 1;
 }
 
 @keyframes fall {
@@ -99,10 +125,16 @@ body {
 .box {
   z-index: "0";
 }
-.swiper-pagination-bullet {
-  width: 50px;
-  height: 50px;
-  line-height: 10px;
+
+/* Swiper Slide */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  opacity: 0.5;
+  color: white;
+}
+
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
   opacity: 1;
 }
 
@@ -110,6 +142,7 @@ body {
   background-color: #eeb30d;
   transform: scale(1.7);
 }
+
 @media (max-width: 600px) {
   .navbarHidden {
     display: none;
@@ -164,17 +197,6 @@ body {
   font-size: 30px;
   margin-top: 5px;
   @apply hover:text-4xl;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  opacity: 0.5;
-  color: white;
-}
-
-.swiper-button-next:hover::after,
-.swiper-button-prev:hover::after {
-  opacity: 1;
 }
 
 .arrow {

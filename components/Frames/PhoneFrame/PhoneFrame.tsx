@@ -60,7 +60,11 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
   return (
     <div
       className={`relative delay-500 ${
-        rotateStart ? ` w-[600px] h-[300px]` : `w-[300px] h-[600px]`
+        rotateStart
+          ? ` w-[600px] h-[300px]`
+          : isMobile
+          ? "w-[200px] h-[400px]"
+          : `w-[300px] h-[600px]`
       }
       ${!rotateStart && "transition-all ease-in"} `}
     >
