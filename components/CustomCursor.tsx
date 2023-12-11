@@ -35,7 +35,7 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   if (isTouchDevice) {
-    return null;
+    return children;
   }
   useEffect(() => {
     if (i18n.isInitialized) {
