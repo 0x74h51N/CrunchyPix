@@ -13,13 +13,12 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
-  const followerRefs = Array.from({ length: 20 }).map(() =>
+  const followerRefs = Array.from({ length: 10 }).map(() =>
     useRef<HTMLDivElement | null>(null)
   );
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
 
   useEffect(() => {
-    /**Error: Rendered more hooks than during the previous render. */
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
     } else {
@@ -90,10 +89,11 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
         className="flex items-center justify-center fixed z-50 rounded-full border-2 border-cool-gray-600 pointer-events-none cursor-none"
         style={{
           transition:
-            "width 300ms ease-in-out, height 300ms ease-in-out, left 50ms ease, top 50ms ease",
+            "width 300ms ease-in-out, height 300ms ease-in-out, left 75ms ease-out, top 75ms ease-out",
           width: isSlider ? "70px" : "50px",
           height: isSlider ? "70px" : "50px",
           margin: isSlider ? "-7px" : "-20px",
+          backdropFilter: "blur",
         }}
       >
         <div
@@ -101,9 +101,10 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
           className={`flex items-center justify-center fixed z-50 rounded-full -m-[2px] bg-white pointer-events-none cursor-none`}
           style={{
             transition:
-              "width 300ms ease-in-out, height 300ms ease-in-out, left 75ms ease, top 75ms ease",
+              "width 300ms ease-in-out, height 300ms ease-in-out, left 60ms ease-out, top 60ms ease-out",
             width: isSlider ? "60px" : "15px",
             height: isSlider ? "60px" : "15px",
+            backdropFilter: "blur",
           }}
         >
           <span className="transition-all duration-200 text-cool-gray-900 text-justify font-bold text-sm antialised">
@@ -111,20 +112,20 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
           </span>
         </div>
       </div>
-      {/* {followerRefs.map((followerRef, index) => (
+      {followerRefs.map((followerRef, index) => (
         <div
           key={index}
           ref={followerRef}
           className={`flex items-center justify-center fixed rounded-full cursor-none pointer-events-none`}
           style={{
             transition: `width 300ms ease-in-out, height 300ms ease-in-out, left ${
-              78 + index * 3
-            }ms ease, top ${78 + index * 3}ms ease`,
+              60 + index * 3
+            }ms ease-out, top ${60 + index * 3}ms ease-out`,
             width: isSlider ? "57px" : "13px",
             height: isSlider ? "57px" : "13px",
           }}
         ></div>
-      ))} */}
+      ))}
     </div>
   );
 };
