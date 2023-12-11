@@ -23,6 +23,7 @@ const ServicesSect = () => {
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -32,17 +33,22 @@ const ServicesSect = () => {
       });
     }
   }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+
+  useEffect(() => {
+    if (isTranslationsLoadedRedux) {
+      setInit(true);
+    }
+  }, [isTranslationsLoadedRedux]);
+
   const pagination = {
     el: ".custom-pagy",
     clickable: true,
   };
+
   const hoverHandler = () => {
-    if (isSlider == false) {
+    if (isSlider === false) {
       dispatch(sliderChange(true));
-    } else if (isSlider == true) {
+    } else if (isSlider === true) {
       dispatch(sliderChange(false));
     }
   };
@@ -80,29 +86,31 @@ const ServicesSect = () => {
           onHoverStart={hoverHandler}
           onHoverEnd={hoverHandler}
         >
-          <Swiper
-            modules={[Pagination]}
-            slidesPerView={isMobile ? 1 : isTablet ? 2.5 : 3}
-            spaceBetween={30}
-            centeredSlides
-            initialSlide={1}
-            loop
-            pagination={pagination}
-            onInit={() => setInit(true)}
-            className="2xl:w-[1030px] lg:w-[900px] md:w-[700px] w-[340px] h-auto cursor-none"
-          >
-            {servicesSectCards.map((section, index) => (
-              <SwiperSlide key={index} className="w-[330px] h-auto">
-                <CardMaker
-                  key={index}
-                  cardSections={section}
-                  cardWidth={330}
-                  cardHeight={520}
-                  className="cursor-none"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {isTranslationsLoadedRedux && (
+            <Swiper
+              modules={[Pagination]}
+              slidesPerView={isMobile ? 1 : isTablet ? 2.5 : 3}
+              spaceBetween={30}
+              centeredSlides
+              initialSlide={1}
+              loop
+              pagination={pagination}
+              onInit={() => setInit(true)}
+              className="2xl:w-[1030px] lg:w-[900px] md:w-[700px] w-[340px] h-auto cursor-none"
+            >
+              {servicesSectCards.map((section, index) => (
+                <SwiperSlide key={index} className="w-[330px] h-auto">
+                  <CardMaker
+                    key={index}
+                    cardSections={section}
+                    cardWidth={330}
+                    cardHeight={520}
+                    className="cursor-none"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </motion.div>
       </motion.div>
       <div className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4" />

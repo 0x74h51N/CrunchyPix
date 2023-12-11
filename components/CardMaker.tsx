@@ -8,6 +8,18 @@ import Tilt from "react-parallax-tilt";
 import Image from "next/image";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { memo } from "react";
+
+const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
+  return (
+    prevProps.cardSections === nextProps.cardSections &&
+    prevProps.cardHeight === nextProps.cardHeight &&
+    prevProps.cardWidth === nextProps.cardWidth &&
+    prevProps.imageWidth === nextProps.imageWidth &&
+    prevProps.imageHeight === nextProps.imageHeight &&
+    prevProps.className === nextProps.className
+  );
+};
+
 interface CardMakerProops {
   cardSections: CardSections;
   cardHeight?: number;
@@ -93,7 +105,8 @@ const CardMaker = memo(
         </ColorfulBorder>
       </Tilt>
     );
-  }
+  },
+  areEqual
 );
 
 export default CardMaker;
