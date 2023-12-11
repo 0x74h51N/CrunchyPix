@@ -8,6 +8,7 @@ import { AppReduxProvider } from "@/store/provider";
 import PageTracker from "@/components/PageTracker";
 import { Suspense } from "react";
 import LoadingComponent from "@/components/Loading";
+import CustomCursor from "@/components/CustomCursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,9 +29,12 @@ export default function RootLayout({
           <AppReduxProvider>
             <AppI18nProvider>
               <PageTracker />
-              <Navbar />
-              <main>{children}</main>
-              <Footer />
+
+              <CustomCursor>
+                <Navbar />
+                <main>{children}</main>
+                <Footer />
+              </CustomCursor>
             </AppI18nProvider>
           </AppReduxProvider>
         </Suspense>

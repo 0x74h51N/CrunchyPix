@@ -78,7 +78,7 @@ const Footer = () => {
                 <ColorfulBorder>
                   <a
                     href="/contact"
-                    className="w-full rounded-2xl bg-transparent p-4 text-cool-gray-100 hover:text-log-col text-center"
+                    className="w-full rounded-2xl bg-transparent p-4 text-cool-gray-100 hover:text-log-col text-center cursor-none"
                   >
                     Contact with me!
                   </a>

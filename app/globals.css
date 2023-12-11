@@ -25,6 +25,7 @@
 body {
   font-family: "Inter", sans-serif;
   @apply bg-cool-gray-800;
+  cursor: none;
 }
 
 .flexCenter {

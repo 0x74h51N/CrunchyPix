@@ -58,11 +58,11 @@
         "title": "Development",
         "list": [
           "JavaScript/TypeScript",
-          "HTML/CSS Styling",
+          "HTML/CSS",
           "Next.js",
           "React",
           "Redux",
-          "Tailwind CSS/Bootstrap"
+          "Tailwind/Bootstrap"
         ]
       },
       {
@@ -81,8 +81,8 @@
         "list": [
           "Catalog",
           "Brochure",
-          "Email Templategn",
-          "Business Cardgn",
+          "Email Template",
+          "Business Card",
           "Flyer",
           "Logo & Branding"
         ]
@@ -91,8 +91,8 @@
         "title": "Marketing",
         "list": [
           "SEO Optimization",
-          "Web Page Content",
-          "Audience Targeting",
+          "Content Creation",
+          "Customer Targeting",
           "Segmentation",
           "Analytics",
           "A/B Testing"
@@ -160,5 +160,6 @@
       { "title": "The Art of Clean & Understandable Code" },
       { "title": "Always Up-to-Date with Technology" }
     ]
-  }
+  },
+  "dragQuinn": { "drag": "Drag" }
 }

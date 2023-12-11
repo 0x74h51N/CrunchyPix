@@ -69,7 +69,7 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
       ${!rotateStart && "transition-all ease-in"} `}
     >
       <div
-        className={`absolute w-full h-full top-0 left-0 flex flex-1 items-center justify-center pointer-events-none `}
+        className={`absolute w-full h-full top-0 left-0 flex flex-1 items-center justify-center pointer-events-none cursor-none `}
       >
         <Image
           width={295}
@@ -89,9 +89,10 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
         whileInView={{ opacity: 1 }}
         onViewportEnter={() => handleInViewChange()}
         onViewportLeave={() => handleInViewChange()}
+        className="cursor-none"
       >
         {isInView && !isMobile && (
-          <button onClick={handleClick} className={`group`}>
+          <button onClick={handleClick} className={`group cursor-none`}>
             {!rotateEnd && !rotateStart ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +166,7 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
         )}
       </motion.div>
       <div
-        className={`absolute w-full h-full top-0 left-0 overflow-hidden transition-all duration-500 z-20  ${
+        className={`absolute w-full h-full top-0 left-0 overflow-hidden transition-all duration-500 z-20 cursor-none ${
           rotateEnd ? "px-0 py-2 " : "px-2 py-0"
         }`}
         style={{

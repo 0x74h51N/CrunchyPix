@@ -92,8 +92,8 @@
         "title": "Marketing",
         "list": [
           "SEO-Optimierung",
-          "Webseiteninhalt",
-          "Zielgruppenansprache",
+          "Content-Erstellung",
+          "Kundenansprache",
           "Segmentierung",
           "Analytics",
           "A/B-Tests"
@@ -168,5 +168,6 @@
       { "title": "Die Kunst von sauberem Code" },
       { "title": "Immer auf dem neuesten Stand" }
     ]
-  }
+  },
+  "dragQuinn": { "drag": "Zein" }
 }

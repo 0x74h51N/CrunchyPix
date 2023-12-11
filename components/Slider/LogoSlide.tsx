@@ -40,7 +40,6 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
   return (
     <Swiper
       centeredSlides
-      grabCursor
       loop
       autoplay={{
         delay: 300,
@@ -51,7 +50,7 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
       slidesPerView={4}
       spaceBetween={0}
       breakpoints={breaks}
-      className="w-full h-auto "
+      className="w-full h-auto cursor-none"
     >
       {logos.map((item, index) => (
         <SwiperSlide
@@ -69,7 +68,7 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
               className="h-auto w-full grayscale "
             />
             {hoveredIndex === index && (
-              <div className="absolute self-center -bottom-6 rounded-md border-spacing-1 border-cool-gray-700 border-2  w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-80 transition-opacity duration-300 pointer-events-none">
+              <div className="absolute self-center -bottom-6 rounded-md border-spacing-1 border-cool-gray-700 border-2  w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-80 transition-opacity duration-300 cursor-none pointer-events-none">
                 {item.text}
               </div>
             )}

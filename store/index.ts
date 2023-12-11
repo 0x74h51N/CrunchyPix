@@ -12,6 +12,7 @@ import isLanguageMenuReducer from "./redux/isLanguageMenu";
 import selectedSlideReducer from "./redux/selectedSlide";
 import navbarChangeReducer from "./redux/navbarChange";
 import mobileRotateReducer from "./redux/mobileRotate";
+import isSliderReducer from "./redux/isSlider";
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   selectedSlide: selectedSlideReducer,
   navbarChange: navbarChangeReducer,
   rotateChange: mobileRotateReducer,
+  isSlider: isSliderReducer,
 });
 
 const store = configureStore({

@@ -34,7 +34,7 @@ const BurgerButton = ({
   const wrapper: React.CSSProperties = {
     transform: `rotate(${rotate}deg)`,
     margin: "0",
-    cursor: "pointer",
+    cursor: "none",
     WebkitTapHighlightColor: "transparent",
     touchAction: "manipulation",
     userSelect: "none",
