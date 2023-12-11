@@ -22,7 +22,7 @@ const Home = () => {
       name: "Introduction",
       children: <IntroductionSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[95svh] pt-14 bg-cool-gray-900",
+      className: "h-auto min-h-[100svh] pt-14 bg-cool-gray-900",
     },
     {
       name: "What I do?",
@@ -34,7 +34,7 @@ const Home = () => {
       name: "Responsive Design",
       children: <ResponsiveSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[98svh] bg-cool-gray-900 py-20",
+      className: "h-auto min-h-[100svh] bg-cool-gray-900 py-20",
     },
     {
       name: "Code Sect",
@@ -46,7 +46,7 @@ const Home = () => {
       name: "Portfolio",
       children: <PortfolioSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[80svh] py-24 w-full",
+      className: "h-auto min-h-[100svh] py-24 w-full",
     },
     {
       name: "Logo",
