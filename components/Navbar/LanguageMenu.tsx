@@ -90,7 +90,7 @@ const LanguageMenu = () => {
     <div ref={langMenuRef} className="flex flex-center items-center">
       <button
         onClick={handleToggleDropdown}
-        className="flex flex-row gap-1 items-center bg-transparent"
+        className="flex flex-row gap-1 items-center bg-transparent  cursor-none"
       >
         <div className="w-6">
           {currentLanguage === "en" ? (
@@ -141,7 +141,7 @@ const LanguageMenu = () => {
         {isDropdownOpen && (
           <ul className="ul">
             <li
-              className="hover:text-log-col transition duration-1000 ease-in-out cursor-pointer"
+              className="hover:text-log-col transition duration-1000 ease-in-out cursor-none"
               onClick={() => handleChange("en")}
             >
               <div className="flex items-center gap-1">
@@ -151,7 +151,7 @@ const LanguageMenu = () => {
             </li>
 
             <li
-              className="hover:text-log-col transition duration-1000 ease-in-out cursor-pointer"
+              className="hover:text-log-col transition duration-1000 ease-in-out cursor-none"
               onClick={() => handleChange("de")}
             >
               <div className="flex items-center gap-1">
@@ -161,7 +161,7 @@ const LanguageMenu = () => {
             </li>
 
             <li
-              className="hover:text-log-col transition duration-1000 ease-in-out cursor-pointer"
+              className="hover:text-log-col transition duration-1000 ease-in-out cursor-none"
               onClick={() => handleChange("tr")}
             >
               <div className="flex items-center gap-1">

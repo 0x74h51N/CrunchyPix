@@ -76,16 +76,16 @@ const IconButton = ({ icon }: { icon: Icon }) => {
   }
 
   return (
-    <div className="relative group">
+    <div className="relative group cursor-none">
       <a
         href={icon.link && icon.link}
         target="_blank"
         rel="noopener noreferrer"
-        className=""
+        className="cursor-none"
       >
         <IconComponent size={icon.size} color={icon.color} />
         {icon.alt && (
-          <span className="absolute self-center left-10 top-10 rounded-md border-spacing-1 border-cool-gray-700 border-2  w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 duration-300 pointer-events-none">
+          <span className="absolute self-center left-10 top-10 rounded-md border-spacing-1 border-cool-gray-700 border-2  w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 duration-300 pointer-events-none cursor-none">
             {icon.alt}
           </span>
         )}

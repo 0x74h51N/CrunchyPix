@@ -43,7 +43,7 @@ const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
       onSlideChange={onSlideChange}
       centeredSlides={true}
       speed={700}
-      className={`w-full h-full flex flex-center justify-center  text-center bg-stone-900 ${className} cursor-pointer`}
+      className={`w-full h-full flex flex-center justify-center  text-center bg-stone-900 ${className} cursor-none`}
     >
       {slides.map((slide, index) => (
         <SwiperSlide key={index}>

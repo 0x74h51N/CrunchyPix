@@ -7,11 +7,12 @@ import "swiper/css";
 import { generateSpans } from "@/components/GenerateSpans";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import { slideIn } from "@/utils/motion";
-import { CSSProperties, useEffect, useState } from "react";
+import { polygonIn, slideIn } from "@/utils/motion";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { servicesSectCards } from "@/constants/servicesSectCards";
+import { sliderChange } from "@/store/redux/isSlider";
 
 const ServicesSect = () => {
   const [_, setInit] = useState(false);
@@ -21,9 +22,7 @@ const ServicesSect = () => {
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width
-  );
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const dispatch = useDispatch();
   useEffect(() => {
     if (i18n.isInitialized) {
@@ -40,6 +39,13 @@ const ServicesSect = () => {
   const pagination = {
     el: ".custom-pagy",
     clickable: true,
+  };
+  const hoverHandler = () => {
+    if (isSlider == false) {
+      dispatch(sliderChange(true));
+    } else if (isSlider == true) {
+      dispatch(sliderChange(false));
+    }
   };
 
   return (
@@ -69,34 +75,40 @@ const ServicesSect = () => {
                 })}
           </div>
         </motion.h1>
-        <div className="flex flex-wrap justify-center gap-8 w-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          variants={polygonIn("down", "spring", 1, 2)}
+          className="flex flex-wrap justify-center gap-8 w-auto"
+          onHoverStart={hoverHandler}
+          onHoverEnd={hoverHandler}
+        >
           <Swiper
             modules={[Pagination]}
             slidesPerView={isMobile ? 1 : isTablet ? 2.5 : 3}
             spaceBetween={30}
-            grabCursor={true}
             centeredSlides
             initialSlide={1}
             loop
             pagination={pagination}
             onInit={() => setInit(true)}
-            className="2xl:w-[1030px] lg:w-[900px] md:w-[700px] w-[340px] h-auto"
+            className="2xl:w-[1030px] lg:w-[900px] md:w-[700px] w-[340px] h-auto cursor-none"
           >
             {servicesSectCards.map((section, index) => (
               <SwiperSlide key={index} className="w-[330px] h-auto">
                 <CardMaker
                   key={index}
                   cardSections={section}
-                  cardIndex={index}
-                  cardWidth="w-[330px]"
-                  cardHeight="h-[520px]"
+                  cardWidth={330}
+                  cardHeight={520}
+                  className="cursor-none"
                 />
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </motion.div>
       </motion.div>
-      <div className="absolute left-0 bottom-0 custom-pagy z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4" />
+      <div className="absolute cursor-none left-0 bottom-0 custom-pagy z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4" />
     </div>
   );
 };

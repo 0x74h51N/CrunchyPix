@@ -112,7 +112,7 @@ export const Navbar = () => {
     >
       <div className="flex flex-row ">
         <Link href="/">
-          <div className="flex flex-row items-center pointer-events-auto">
+          <div className="flex flex-row items-center pointer-events-auto cursor-none">
             <div>
               <Image
                 src={"/logo_leftw.svg"}
@@ -141,7 +141,7 @@ export const Navbar = () => {
                 <TypingText
                   text="Crunchy"
                   _code={false}
-                  textClass={`logo_text ${
+                  textClass={`logo_text cursor-none ${
                     specialPages.includes(selectedLink) || isMobile
                       ? "small"
                       : isTablet
@@ -202,7 +202,7 @@ export const Navbar = () => {
                   <Link
                     href={link.href}
                     key={link.key}
-                    className={`hover:text-log-col hover:scale-110 ${
+                    className={`hover:text-log-col hover:scale-110 cursor-none ${
                       selectedLink === link.href && link.href !== "/"
                         ? "text-log-col"
                         : ""

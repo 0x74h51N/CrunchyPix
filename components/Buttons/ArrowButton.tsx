@@ -26,7 +26,7 @@ const ArrowButton = ({
   };
 
   return (
-    <button className={className} onClick={handleButtonClick}>
+    <button className={`${className} cursor-none`} onClick={handleButtonClick}>
       {text}
       {arrow && (
         <Image

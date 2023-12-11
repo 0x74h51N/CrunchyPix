@@ -14,6 +14,8 @@ import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import { useEffect, useState } from "react";
 import IconButton from "@/components/Buttons/IconButton";
+import { sliderChange } from "@/store/redux/isSlider";
+import { motion } from "framer-motion";
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
@@ -23,6 +25,7 @@ interface CarouselSliderProps {
 
 const CarouselSlider = ({ slides }: CarouselSliderProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const dispatch = useDispatch();
   const { t } = useTranslation(["translation"]);
   const isTranslationsLoadedRedux = useSelector(
@@ -49,12 +52,22 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
   };
+  const hoverHandler = () => {
+    if (isSlider == false) {
+      dispatch(sliderChange(true));
+    } else if (isSlider == true) {
+      dispatch(sliderChange(false));
+    }
+  };
 
   return (
-    <div className="h-auto">
+    <motion.div
+      onHoverStart={hoverHandler}
+      onHoverEnd={hoverHandler}
+      className="h-auto"
+    >
       <Swiper
         effect="coverflow"
-        grabCursor
         centeredSlides
         slidesPerView={isMobile ? 1.2 : isTablet ? 1.5 : 2}
         spaceBetween={0}
@@ -73,7 +86,7 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
           pauseOnMouseEnter: true,
         }}
         speed={1000}
-        className="h-auto min-h-[500px]"
+        className="h-auto min-h-[500px] cursor-none"
       >
         {slides.map((slide: slide, index: number) => (
           <SwiperSlide key={index + 1}>
@@ -119,7 +132,7 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </motion.div>
   );
 };
 

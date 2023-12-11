@@ -81,7 +81,7 @@ const MobileMenu = () => {
                   <Link
                     href={link.href}
                     key={link.key}
-                    className={`hover:text-log-col ${
+                    className={`hover:text-log-col cursor-none ${
                       selectedLink === link.href && link.href !== "/"
                         ? "text-log-col"
                         : "text-neutral-200"

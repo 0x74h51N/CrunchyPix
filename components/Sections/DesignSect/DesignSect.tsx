@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import { generateSpans } from "@/components/GenerateSpans";
 import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
 import { phoneSlides } from "@/constants/phoneSlides";
+import { sliderChange } from "@/store/redux/isSlider";
 
 const DesignSect = () => {
   const { t, i18n } = useTranslation(["translation"]);
@@ -20,6 +21,7 @@ const DesignSect = () => {
   const dispatch = useDispatch();
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const rotateStart = useSelector(
     (state: RootState) => state.rotateChange.rotateStart
   );
@@ -45,8 +47,13 @@ const DesignSect = () => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-  const imageWidth = isMobile ? 110 : 148;
-  const imageHeight = isMobile ? 110 : 148;
+  const hoverHandler = () => {
+    if (isSlider == false) {
+      dispatch(sliderChange(true));
+    } else if (isSlider == true) {
+      dispatch(sliderChange(false));
+    }
+  };
   return (
     <motion.div
       initial="hidden"
@@ -60,7 +67,11 @@ const DesignSect = () => {
             rotateStart ? "w-[800px]" : "w-[500px] "
           } transition-all ease-in-out duration-500`}
         >
-          <motion.div variants={slideIn("left", "spring", 0.5, 0.5)}>
+          <motion.div
+            onHoverStart={hoverHandler}
+            onHoverEnd={hoverHandler}
+            variants={slideIn("left", "spring", 0.5, 0.5)}
+          >
             <PhoneFrame>
               <FullScreenSlider
                 slides={slides}

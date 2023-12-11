@@ -38,7 +38,7 @@ export const ColorfulHover = ({
   if (span) {
     return (
       <motion.span
-        className={`cursor-pointer pointer-events-auto ${className}`}
+        className={`cursor-none pointer-events-auto ${className}`}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
         initial={initial}
@@ -50,7 +50,7 @@ export const ColorfulHover = ({
   } else {
     return (
       <motion.div
-        className={`cursor-pointer pointer-events-auto ${className}`}
+        className={`cursor-none pointer-events-auto ${className}`}
         onMouseEnter={handleHover}
         onMouseLeave={handleHover}
         animate={controls}
