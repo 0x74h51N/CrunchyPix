@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 const CustomCursor = () => {
+  const isBrowser = typeof window !== "undefined";
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const circleRef = useRef<HTMLDivElement | null>(null);
@@ -18,25 +19,25 @@ const CustomCursor = () => {
     useRef<HTMLDivElement | null>(null)
   );
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
+
   useEffect(() => {
-    const handleTouchStart = () => {
-      setIsTouchDevice(true);
-    };
+    if (isBrowser) {
+      const handleTouchStart = () => {
+        setIsTouchDevice(true);
+      };
 
-    if ("ontouchstart" in window) {
-      window.addEventListener("touchstart", handleTouchStart);
-    }
-
-    return () => {
       if ("ontouchstart" in window) {
-        window.removeEventListener("touchstart", handleTouchStart);
+        window.addEventListener("touchstart", handleTouchStart);
       }
-    };
-  }, []);
 
-  if (isTouchDevice) {
-    return null;
-  }
+      return () => {
+        if ("ontouchstart" in window) {
+          window.removeEventListener("touchstart", handleTouchStart);
+        }
+      };
+    }
+  }, [isBrowser]);
+
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -95,55 +96,58 @@ const CustomCursor = () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
   }, [isTranslationsLoadedRedux, dispatch, isSlider, t, followerRefs]);
-  if (!isTranslationsLoadedRedux) {
+
+  if (isTouchDevice || !isTranslationsLoadedRedux) {
     return null;
   }
 
   return (
-    <div className="relative">
-      <div
-        ref={circleRef}
-        className="flex items-center justify-center fixed z-50 rounded-full border-2 border-cool-gray-600 pointer-events-none cursor-none"
-        style={{
-          transition:
-            "width 300ms ease-in-out, height 300ms ease-in-out, left 75ms ease-out, top 75ms ease-out",
-          width: isSlider ? "70px" : "50px",
-          height: isSlider ? "70px" : "50px",
-          margin: isSlider ? "-7px" : "-20px",
-          backdropFilter: "blur",
-        }}
-      >
+    !isTouchDevice && (
+      <div className="relative">
         <div
-          ref={cursorRef}
-          className={`flex items-center justify-center fixed z-50 rounded-full -m-[2px] bg-white pointer-events-none cursor-none`}
+          ref={circleRef}
+          className="flex items-center justify-center fixed z-50 rounded-full border-2 border-cool-gray-600 pointer-events-none cursor-none"
           style={{
             transition:
-              "width 300ms ease-in-out, height 300ms ease-in-out, left 60ms ease-out, top 60ms ease-out",
-            width: isSlider ? "60px" : "15px",
-            height: isSlider ? "60px" : "15px",
+              "width 300ms ease-in-out, height 300ms ease-in-out, left 75ms ease-out, top 75ms ease-out",
+            width: isSlider ? "70px" : "50px",
+            height: isSlider ? "70px" : "50px",
+            margin: isSlider ? "-7px" : "-20px",
             backdropFilter: "blur",
           }}
         >
-          <span className="transition-all duration-200 text-cool-gray-900 text-justify font-bold text-sm antialised">
-            {isSlider && t("dragQuinn.drag")}
-          </span>
+          <div
+            ref={cursorRef}
+            className={`flex items-center justify-center fixed z-50 rounded-full -m-[2px] bg-white pointer-events-none cursor-none`}
+            style={{
+              transition:
+                "width 300ms ease-in-out, height 300ms ease-in-out, left 60ms ease-out, top 60ms ease-out",
+              width: isSlider ? "60px" : "15px",
+              height: isSlider ? "60px" : "15px",
+              backdropFilter: "blur",
+            }}
+          >
+            <span className="transition-all duration-200 text-cool-gray-900 text-justify font-bold text-sm antialised">
+              {isSlider && t("dragQuinn.drag")}
+            </span>
+          </div>
         </div>
+        {followerRefs.map((followerRef, index) => (
+          <div
+            key={index}
+            ref={followerRef}
+            className={`flex items-center justify-center fixed rounded-full cursor-none pointer-events-none`}
+            style={{
+              transition: `width 300ms ease-in-out, height 300ms ease-in-out, left ${
+                60 + index * 3
+              }ms ease-out, top ${60 + index * 3}ms ease-out`,
+              width: isSlider ? "57px" : "13px",
+              height: isSlider ? "57px" : "13px",
+            }}
+          ></div>
+        ))}
       </div>
-      {followerRefs.map((followerRef, index) => (
-        <div
-          key={index}
-          ref={followerRef}
-          className={`flex items-center justify-center fixed rounded-full cursor-none pointer-events-none`}
-          style={{
-            transition: `width 300ms ease-in-out, height 300ms ease-in-out, left ${
-              60 + index * 3
-            }ms ease-out, top ${60 + index * 3}ms ease-out`,
-            width: isSlider ? "57px" : "13px",
-            height: isSlider ? "57px" : "13px",
-          }}
-        ></div>
-      ))}
-    </div>
+    )
   );
 };
 
