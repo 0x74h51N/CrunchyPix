@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-const CustomCursor = ({ children }: { children: React.ReactNode }) => {
+const CustomCursor = () => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const circleRef = useRef<HTMLDivElement | null>(null);
@@ -35,7 +35,7 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   if (isTouchDevice) {
-    return children;
+    return null;
   }
   useEffect(() => {
     if (i18n.isInitialized) {
@@ -101,7 +101,6 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div className="relative">
-      {children}
       <div
         ref={circleRef}
         className="flex items-center justify-center fixed z-50 rounded-full border-2 border-cool-gray-600 pointer-events-none cursor-none"
