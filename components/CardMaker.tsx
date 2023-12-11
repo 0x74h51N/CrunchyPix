@@ -29,13 +29,14 @@ const CardMaker = memo(
     const { t } = useTranslation(["translation"]);
     const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
     const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-
+    const tiltEnabled = cardSections.tilt ?? true;
+    const glareEnabled = cardSections.glare ?? true;
     return (
       <Tilt
-        tiltEnable={isMobile || isTablet ? false : cardSections.tilt ?? true}
+        tiltEnable={!isMobile && !isTablet ? tiltEnabled : false}
         tiltReverse
         gyroscope={true}
-        glareEnable={isMobile || isTablet ? false : cardSections.glare ?? true}
+        glareEnable={!isMobile && !isTablet ? glareEnabled : false}
         glarePosition={"all"}
         glareMaxOpacity={0.2}
         glareBorderRadius="10px"

@@ -1,11 +1,12 @@
 "use client";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 const CustomCursor = ({ children }: { children: React.ReactNode }) => {
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const circleRef = useRef<HTMLDivElement | null>(null);
   const { t, i18n } = useTranslation(["translation"]);
@@ -17,7 +18,25 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
     useRef<HTMLDivElement | null>(null)
   );
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
+  useEffect(() => {
+    const handleTouchStart = () => {
+      setIsTouchDevice(true);
+    };
 
+    if ("ontouchstart" in window) {
+      window.addEventListener("touchstart", handleTouchStart);
+    }
+
+    return () => {
+      if ("ontouchstart" in window) {
+        window.removeEventListener("touchstart", handleTouchStart);
+      }
+    };
+  }, []);
+
+  if (isTouchDevice) {
+    return null;
+  }
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -58,13 +77,12 @@ const CustomCursor = ({ children }: { children: React.ReactNode }) => {
             scaleValue,
             0.1
           )})`;
-          const color = "#FFFFFF";
-          followerRef.current.style.backgroundColor = color;
+          followerRef.current.style.backgroundColor = "#FFFFFF";
           const opacity = 0.8;
           const reducedOpacity = opacity - 0.025 * index;
           followerRef.current.style.opacity = Math.max(
             reducedOpacity,
-            0.5
+            0.3
           ).toString();
         }
       });

@@ -3,7 +3,6 @@ import CardMaker from "@/components/CardMaker";
 import { Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
 import { generateSpans } from "@/components/GenerateSpans";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
@@ -76,8 +75,6 @@ const ServicesSect = () => {
           </div>
         </motion.h1>
         <motion.div
-          initial="hidden"
-          whileInView="show"
           variants={polygonIn("down", "spring", 1, 2)}
           className="flex flex-wrap justify-center gap-8 w-auto"
           onHoverStart={hoverHandler}
@@ -108,7 +105,7 @@ const ServicesSect = () => {
           </Swiper>
         </motion.div>
       </motion.div>
-      <div className="absolute cursor-none left-0 bottom-0 custom-pagy z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4" />
+      <div className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4" />
     </div>
   );
 };

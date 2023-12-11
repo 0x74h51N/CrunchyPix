@@ -139,11 +139,17 @@ body {
   opacity: 1;
 }
 
-.swiper-pagination-bullet-active {
-  background-color: #eeb30d;
-  transform: scale(1.7);
+.swiper-pagination-bullet {
+  background-color: #fff !important;
+  cursor: none !important;
+  pointer-events: all !important;
 }
-
+.swiper-pagination-bullet-active {
+  background-color: #eeb30d !important;
+  transform: scale(2) !important;
+  cursor: none !important;
+  pointer-events: all !important;
+}
 @media (max-width: 600px) {
   .navbarHidden {
     display: none;
