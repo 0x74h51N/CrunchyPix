@@ -29,12 +29,10 @@ export default function RootLayout({
           <AppReduxProvider>
             <AppI18nProvider>
               <PageTracker />
-
-              <CustomCursor>
-                <Navbar />
-                <main>{children}</main>
-                <Footer />
-              </CustomCursor>
+              <CustomCursor />
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
             </AppI18nProvider>
           </AppReduxProvider>
         </Suspense>
