@@ -84,7 +84,7 @@ const CodeSect = () => {
       >
         <motion.h2
           variants={polygonIn("up", "spring", 0.5, 1)}
-          className="w-full max-xs:w-2/3 max-xs:self-start font-medium lg:text-[22px] sm:text-[20px] text-[14px] lg:leading-[40px] text-cool-gray-300 xl:text-right text-left "
+          className="w-full max-xs:w-2/3 max-xs:self-start font-medium lg:text-[22px] sm:text-[20px] text-[14px] lg:leading-[40px] text-cool-gray-300 text-left "
         >
           {isMobile || isTablet
             ? t("codeSect.title2")
