@@ -27,7 +27,6 @@ const CarouselSlider = memo(({ slides }: CarouselSliderProps) => {
   const [activeIndex, setActiveIndex] = useState(() => {
     return 0;
   });
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const dispatch = useDispatch();
   const { t } = useTranslation(["translation"]);
   const isTranslationsLoadedRedux = useSelector(
@@ -54,18 +53,17 @@ const CarouselSlider = memo(({ slides }: CarouselSliderProps) => {
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
   };
-  const hoverHandler = () => {
-    if (isSlider == false) {
-      dispatch(sliderChange(true));
-    } else if (isSlider == true) {
-      dispatch(sliderChange(false));
-    }
+  const hoverStart = () => {
+    dispatch(sliderChange(true));
+  };
+  const hoverEnd = () => {
+    dispatch(sliderChange(false));
   };
 
   return (
     <motion.div
-      onHoverStart={hoverHandler}
-      onHoverEnd={hoverHandler}
+      onHoverStart={hoverStart}
+      onHoverEnd={hoverEnd}
       className="h-auto"
     >
       <Swiper

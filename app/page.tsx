@@ -34,13 +34,13 @@ const Home = () => {
       name: "Responsive Design",
       children: <ResponsiveSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[100svh] bg-cool-gray-900 py-20",
+      className: "h-auto min-h-[100svh] bg-cool-gray-900 lg:py-20 py-0",
     },
     {
       name: "Code Sect",
       children: <CodeSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[100svh] bg-cool-gray-900 py-20",
+      className: "h-auto min-h-[100svh] bg-cool-gray-900 lg:py-20 py-0",
     },
     {
       name: "Portfolio",
