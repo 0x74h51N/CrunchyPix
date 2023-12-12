@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import Loading from "@/components/Loading";
 import Link from "next/link";
+import CancelButton from "@/components/Buttons/CancelButton";
 
 const SlideModal = () => {
   const [imageLoading, setImageLoading] = useState(true);
@@ -62,6 +63,9 @@ const SlideModal = () => {
             variants={modalVariants}
             onClick={closeModal}
           >
+            <button onClick={closeModal} className="cursor-none">
+              <CancelButton />
+            </button>
             <Image
               loading="lazy"
               src={selectedSlide.imageUrl || ""}

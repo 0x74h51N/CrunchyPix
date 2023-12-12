@@ -21,7 +21,6 @@ const ServicesSect = () => {
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,12 +44,11 @@ const ServicesSect = () => {
     clickable: true,
   };
 
-  const hoverHandler = () => {
-    if (isSlider === false) {
-      dispatch(sliderChange(true));
-    } else if (isSlider === true) {
-      dispatch(sliderChange(false));
-    }
+  const hoverStart = () => {
+    dispatch(sliderChange(true));
+  };
+  const hoverEnd = () => {
+    dispatch(sliderChange(false));
   };
 
   return (
@@ -86,8 +84,8 @@ const ServicesSect = () => {
         <motion.div
           variants={polygonIn("down", "spring", 1, 2)}
           className="flex flex-wrap justify-center gap-8 w-auto"
-          onHoverStart={hoverHandler}
-          onHoverEnd={hoverHandler}
+          onHoverStart={hoverStart}
+          onHoverEnd={hoverEnd}
         >
           {isTranslationsLoadedRedux && (
             <Swiper
@@ -99,7 +97,7 @@ const ServicesSect = () => {
               loop
               pagination={pagination}
               onInit={() => setInit(true)}
-              className="2xl:w-[1030px] lg:w-[900px] md:w-[700px] w-[340px] h-auto cursor-none"
+              className="2xl:w-[1030px] lg:w-[900px] md:w-[750px] w-[340px] h-auto cursor-none"
             >
               {servicesSectCards.map((section, index) => (
                 <SwiperSlide key={index} className="w-[330px] h-auto">
