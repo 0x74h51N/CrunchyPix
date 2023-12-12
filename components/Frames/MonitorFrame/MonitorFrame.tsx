@@ -17,7 +17,7 @@ const MonitorFrame = ({ screenImage, children }: MonitorFrameProps) => {
         alt="Monitor Frame"
         className="object-fit absolute top-0 left-0 z-20 pointer-events-none"
       />
-      <div className="absolute left-0 2xl:w-[850px] 2xl:h-[435px] xl:w-[800px] xl:h-[400px] lg:w-[750px] lg:h-[380px] md:w-[560px] md:h-[290px] w-[360px] h-[180px] 2xl:pl-[122px] 2xl:pt-[40px] xl:pl-[112px] lg:pl-[102px] lg:pt-[35px] md:pl-[70px] md:pt-[25px] pl-[35px] pt-[15px] pr-5">
+      <div className="absolute left-0 2xl:w-[850px] 2xl:h-[435px] xl:w-[800px] xl:h-[400px] lg:w-[750px] lg:h-[380px] md:w-[560px] md:h-[290px] w-[360px] h-[180px] 2xl:pl-[122px] 2xl:pt-[40px] xl:pl-[112px] lg:pl-[102px] lg:pt-[35px] md:pl-[70px] md:pt-[25px] pl-[35px] pt-[15px] pr-5 cursor-none">
         {children}
       </div>
     </div>

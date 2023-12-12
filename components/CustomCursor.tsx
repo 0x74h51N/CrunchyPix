@@ -72,7 +72,7 @@ const CustomCursor = () => {
       followerRefs.forEach((followerRef, index) => {
         if (followerRef.current) {
           updateFollowerPosition(followerRef, e);
-          followerRef.current.style.zIndex = `${49 - index}`;
+          followerRef.current.style.zIndex = `${998 - index}`;
           const scaleValue = 1 - index * 0.05;
           followerRef.current.style.transform = `scale(${Math.max(
             scaleValue,
@@ -106,7 +106,7 @@ const CustomCursor = () => {
       <div className="relative">
         <div
           ref={circleRef}
-          className="flex items-center justify-center fixed z-50 rounded-full border-2 border-cool-gray-600 pointer-events-none cursor-none"
+          className="flex items-center justify-center fixed z-[1000] rounded-full border-2 border-cool-gray-600 pointer-events-none cursor-none"
           style={{
             transition:
               "width 300ms ease-in-out, height 300ms ease-in-out, left 75ms ease-out, top 75ms ease-out",
@@ -118,7 +118,7 @@ const CustomCursor = () => {
         >
           <div
             ref={cursorRef}
-            className={`flex items-center justify-center fixed z-50 rounded-full -m-[2px] bg-white pointer-events-none cursor-none`}
+            className={`flex items-center justify-center fixed z-[999] rounded-full -m-[2px] bg-white pointer-events-none cursor-none`}
             style={{
               transition:
                 "width 300ms ease-in-out, height 300ms ease-in-out, left 60ms ease-out, top 60ms ease-out",
@@ -127,7 +127,7 @@ const CustomCursor = () => {
               backdropFilter: "blur",
             }}
           >
-            <span className="transition-all duration-200 text-cool-gray-900 text-justify font-bold text-sm antialised">
+            <span className="transition-all duration-200 text-cool-gray-900 text-justify font-bold text-sm antialised z-[1000]">
               {isSlider && t("dragQuinn.drag")}
             </span>
           </div>

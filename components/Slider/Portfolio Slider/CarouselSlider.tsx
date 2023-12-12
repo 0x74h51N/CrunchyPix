@@ -12,7 +12,7 @@ import Image from "next/image";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import IconButton from "@/components/Buttons/IconButton";
 import { sliderChange } from "@/store/redux/isSlider";
 import { motion } from "framer-motion";
@@ -23,8 +23,10 @@ interface CarouselSliderProps {
   slides: slide[];
 }
 
-const CarouselSlider = ({ slides }: CarouselSliderProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const CarouselSlider = memo(({ slides }: CarouselSliderProps) => {
+  const [activeIndex, setActiveIndex] = useState(() => {
+    return 0;
+  });
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const dispatch = useDispatch();
   const { t } = useTranslation(["translation"]);
@@ -134,6 +136,6 @@ const CarouselSlider = ({ slides }: CarouselSliderProps) => {
       </Swiper>
     </motion.div>
   );
-};
+});
 
 export default CarouselSlider;

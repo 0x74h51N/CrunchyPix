@@ -114,38 +114,28 @@ const CodeSect = () => {
       </motion.div>
       <div>
         <MonitorFrame>
-          <div className="h-full w-full overflow-scroll overflow-x-scroll scrollbar-thin scrollbar-thumb scrollbar-track">
-            {isMobile ? (
-              <SyntaxHighlighter
-                language="typescript"
-                style={vscDarkPlus}
-                showLineNumbers
-                customStyle={{
-                  backgroundColor: "transparent",
-                  opacity: "1",
-                  overflow: "hidden",
-                  lineHeight: lineHeight,
-                  fontSize: fontSize,
-                }}
-                codeTagProps={{
-                  style: {
-                    lineHeight: "inherit",
-                    fontSize: "inherit",
-                  },
-                }}
-              >
-                {codeString}
-              </SyntaxHighlighter>
-            ) : (
-              isInView && (
-                <TypingText
-                  text={codeString}
-                  typingSpeed={15}
-                  lineHeight={lineHeight}
-                  fontSize={fontSize}
-                />
-              )
-            )}
+          <div className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track cursor-none">
+            <SyntaxHighlighter
+              language="typescript"
+              style={vscDarkPlus}
+              showLineNumbers
+              customStyle={{
+                backgroundColor: "transparent",
+                opacity: "1",
+                overflow: "hidden",
+                lineHeight: lineHeight,
+                fontSize: fontSize,
+                cursor: "none",
+              }}
+              codeTagProps={{
+                style: {
+                  lineHeight: "inherit",
+                  fontSize: "inherit",
+                },
+              }}
+            >
+              {codeString}
+            </SyntaxHighlighter>
           </div>
         </MonitorFrame>
       </div>

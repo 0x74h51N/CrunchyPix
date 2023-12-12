@@ -62,7 +62,10 @@ const ServicesSect = () => {
         className="flex flex-col items-start h-full w-auto p-16 z-10"
       >
         <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
-          <div className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
+          <div
+            className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] 
+          xs:text-[20px] text-[16px] lg:leading-[40px]"
+          >
             {isMobile || isTablet
               ? t("servicesSect.intro")
               : generateSpans({
@@ -113,7 +116,10 @@ const ServicesSect = () => {
           )}
         </motion.div>
       </motion.div>
-      <div className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4" />
+      <div
+        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
+      w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4"
+      />
     </div>
   );
 };
