@@ -25,7 +25,7 @@
 body {
   font-family: "Inter", sans-serif;
   @apply bg-cool-gray-800;
-  cursor: none;
+  cursor: none !important;
 }
 
 .flexCenter {
@@ -305,14 +305,17 @@ body {
   width: 6px;
   height: 6px;
   background: transparent;
+  cursor: none !important;
 }
 
 ::-webkit-scrollbar-thumb {
   @apply bg-cool-gray-900 rounded-lg;
+  cursor: none !important;
 }
 
 ::-webkit-scrollbar-track {
   @apply bg-cool-gray-600;
+  cursor: none !important;
 }
 
 .scroll-container {

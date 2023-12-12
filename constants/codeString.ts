@@ -1,21 +1,29 @@
 export const codeString = `"use client";
-import React, { useEffect, useState } from "react";
+import CardMaker from "@/components/CardMaker";
+import { Pagination } from "swiper/modules";
 import { motion } from "framer-motion";
-import { slideIn, staggerContainer, textVariant } from "@/utils/motion";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { generateSpans } from "@/components/GenerateSpans";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import Image from "next/image";
-import CardMaker from "../../CardMaker";
-import { cardSections } from "@/constants/cardSections";
+import { polygonIn, slideIn } from "@/utils/motion";
+import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from "react-redux";
+import { servicesSectCards } from "@/constants/servicesSectCards";
+import { sliderChange } from "@/store/redux/isSlider";
 
-const AboutMeSect = () => {
+const ServicesSect = () => {
+  const [_, setInit] = useState(false);
   const { t, i18n } = useTranslation(["translation"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (i18n.isInitialized) {
       dispatch(setIsTranslationsLoaded(true));
@@ -25,49 +33,100 @@ const AboutMeSect = () => {
       });
     }
   }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+
+  useEffect(() => {
+    if (isTranslationsLoadedRedux) {
+      setInit(true);
+    }
+  }, [isTranslationsLoadedRedux]);
+
+  const pagination = {
+    el: ".custom-pagy",
+    clickable: true,
+  };
+
+  const hoverHandler = () => {
+    if (isSlider === false) {
+      dispatch(sliderChange(true));
+    } else if (isSlider === true) {
+      dispatch(sliderChange(false));
+    }
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto  p-10 xl:pt-2 pb-0 max-md:px-1 bg-cool-gray-800 rounded-3xl">
-      <div className="flex flex-row gap-12 max-sm:flex-col max-lg:gap-6 max-lg:items-start max-sm:items-center items-end justify-center w-auto h-auto z-10">
-        <Image
-          src="/headColor.png"
-          alt="Photo"
-          width={250}
-          height={250}
-          loading="lazy"
-          className="object-center bg-opacity-0 grayscale max-lg:w-[230px] max-sm:w-[210px] h-auto z-30"
-        />
-        <motion.div
-          variants={staggerContainer(2, 0)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}
-          className="flex flex-col items-start h-full w-auto p-5 z-10"
-        >
-          <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
-            <div className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
-              {t("introduction.intro")}
-            </div>
-            <div className="text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
-              {t("introduction.title")}
-            </div>
-          </motion.h1>
-          <motion.p
-            variants={textVariant(1)}
-            className="mt-4 text-cool-gray-50 lg:text-[17px] sm:text-[14px] text-[13px] max-w-3xl leading-[30px]"
+    <div className="flex justify-center items-center w-full h-full">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.6 }}
+        className="flex flex-col items-start h-full w-auto p-16 z-10"
+      >
+        <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
+          <div
+            className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] 
+          xs:text-[20px] text-[16px] lg:leading-[40px]"
           >
-            {t("introduction.description")}
-          </motion.p>
+            {isMobile || isTablet
+              ? t("servicesSect.intro")
+              : generateSpans({
+                  text: t("servicesSect.intro"),
+                  colorType: "vibrantColors",
+                  zeroColor: "#737373",
+                })}
+          </div>
+          <div className="text-cool-gray-50 font-black md:text-[60px] 
+          sm:text-[50px] xs:text-[40px] text-[30px] mb-6">
+            {isMobile || isTablet
+              ? t("servicesSect.title")
+              : generateSpans({
+                  text: t("servicesSect.title"),
+                  colorType: "vibrantColors",
+                })}
+          </div>
+        </motion.h1>
+        <motion.div
+          variants={polygonIn("down", "spring", 1, 2)}
+          className="flex flex-wrap justify-center gap-8 w-auto"
+          onHoverStart={hoverHandler}
+          onHoverEnd={hoverHandler}
+        >
+          {isTranslationsLoadedRedux && (
+            <Swiper
+              modules={[Pagination]}
+              slidesPerView={isMobile ? 1 : isTablet ? 2.5 : 3}
+              spaceBetween={30}
+              centeredSlides
+              initialSlide={1}
+              loop
+              pagination={pagination}
+              onInit={() => setInit(true)}
+              className="2xl:w-[1030px] lg:w-[900px] 
+              md:w-[700px] w-[340px] h-auto cursor-none"
+            >
+              {servicesSectCards.map((section, index) => (
+                <SwiperSlide key={index} className="w-[330px] h-auto">
+                  <CardMaker
+                    key={index}
+                    cardSections={section}
+                    cardWidth={330}
+                    cardHeight={520}
+                    className="cursor-none"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </motion.div>
-      </div>
-      <div className=" flex flex-wrap justify-center gap-10 w-auto p-8 max-xs:px-2 max-2xl:max-w-[700px] z-0">
-        <CardMaker cardSections={cardSections} />
-      </div>
+      </motion.div>
+      <div
+        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col 
+        flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
+        w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4"
+      />
     </div>
   );
 };
 
-export default AboutMeSect;
+export default ServicesSect;
+
 `;

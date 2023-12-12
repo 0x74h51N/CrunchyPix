@@ -43,7 +43,7 @@ const SlideModal = () => {
     <AnimatePresence>
       {selectedSlide && (
         <ReactModal
-          style={{ overlay: { zIndex: 1000 }, content: { zIndex: 1001 } }}
+          style={{ overlay: { zIndex: 950 }, content: { zIndex: 951 } }}
           isOpen={!!selectedSlide}
           onRequestClose={closeModal}
           contentLabel="Selected Slide Modal"

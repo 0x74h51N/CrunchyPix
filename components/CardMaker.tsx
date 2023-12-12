@@ -56,7 +56,9 @@ const CardMaker = memo(
       >
         <ColorfulBorder enabled={cardSections.colorFulBorder ?? false}>
           <div
-            className={`${className} flex dotted-background justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}
+            className={`${className} flex ${
+              isMobile ? "" : "dotted-background"
+            } justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}
             style={{ width: cardWidth, height: cardHeight }}
           >
             <>
@@ -76,7 +78,7 @@ const CardMaker = memo(
                 {cardSections.icon && <IconButton icon={cardSections.icon} />}
                 {cardSections.title && (
                   <h2
-                    className={` overflow-hidden h-[auto] font-medium lg:text-[22px] sm:text-[20px] text-[18px] text-cool-gray-50 text-center`}
+                    className={`overflow-hidden h-[auto] font-medium lg:text-[22px] sm:text-[20px] text-[18px] text-cool-gray-50 text-center`}
                   >
                     {t(cardSections.title)}
                   </h2>
