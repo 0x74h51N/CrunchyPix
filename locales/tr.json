@@ -172,5 +172,42 @@
       { "title": "Her Zaman Güncel Teknoloji" }
     ]
   },
-  "dragQuinn": { "drag": "Kaydır" }
+  "dragQuinn": { "drag": "Kaydır" },
+
+  "cookiePolicy": [
+    {
+      "mainTitle": "Cookie Policy",
+      "description": "Bu sayfa, CrunchyPix tarafından işletilen CrunchyPix web sitesinin (buradan sonra 'biz', 'bizim' veya 'sitemiz' olarak anılacaktır) çerez kullanımı hakkında bilgi vermek amacıyla hazırlanmıştır."
+    },
+    {
+      "title": "Çerez Nedir?",
+      "description": "Çerezler, web tarayıcınıza depolanan küçük metin dosyalarıdır. Web siteleri, tarayıcınıza çerezler aracılığıyla bilgi gönderebilir veya bilgileri alabilir. Bu bilgiler, sizi kişisel olarak tanımlamaz, ancak genellikle kullanıcı deneyiminizi geliştirmek amacıyla kullanılır."
+    },
+    {
+      "title": "Hangi Çerezleri Kullanıyoruz?",
+      "description": "Sitemizde sadece iki tür çerez kullanılmaktadır: Vercel Speed Insights ve Vercel Web Analytics.",
+      "subTitles": [
+        {
+          "title": "Vercel Speed Insights Çerezi",
+          "description": "Bu çerez, sayfalarımızın performansını ölçmek ve kullanıcı deneyimini iyileştirmek için kullanılır. Bu çerezler, herhangi bir bireysel ziyaretçiyi veya IP adresini tanımlamaz. Toplanan bilgiler anonimdir ve sadece genel istatistikler için kullanılır."
+        },
+        {
+          "title": "Vercel Web Analytics Çerezi",
+          "description": "Bu çerez, web sitemizin trafiğini anlamak ve genel istatistikler elde etmek için kullanılır. Bu çerez de kişisel bilgileri toplamaz ve sizi tanımlayacak bilgiler içermez. Toplanan veriler, anonim ve toplu istatistikler içindir."
+        }
+      ]
+    },
+    {
+      "title": "Üçüncü Taraf Kaynakları",
+      "description": "Sitemizde Google Fonts gibi üçüncü taraf kaynaklar kullanılmaktadır. Bu kaynaklar, sitemizin görünümünü ve performansını iyileştirmek amacıyla kullanılır. Bu kaynakların kullanımı, ilgili üçüncü tarafın kendi gizlilik politikasına tabidir."
+    },
+    {
+      "title": "Çerezleri Kontrol Etme",
+      "description": "Tarayıcınızın ayarlarından çerezleri kontrol edebilir veya silebilirsiniz. Ancak, çerezleri devre dışı bırakmak, web sitelerinin belirli özelliklerinin düzgün çalışmasını engelleyebilir."
+    },
+    {
+      "title": "Daha Fazla Bilgi",
+      "description": "Çerez politikamız hakkında daha fazla bilgi almak için lütfen Vercel Speed Insights ve Vercel Web Analytics'in gizlilik bildirimlerine göz atın."
+    }
+  ]
 }

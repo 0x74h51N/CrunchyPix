@@ -6,6 +6,18 @@ export type Links = {
   text: string;
 };
 
+export type Policy = {
+  title?: string;
+  mainTitle?: string;
+  description: string;
+  subTitles?: SubTitles[];
+};
+
+export type SubTitles = {
+  title: string;
+  description: string;
+};
+
 export type SectionData = {
   name?: string;
   className?: string;

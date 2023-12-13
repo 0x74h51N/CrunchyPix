@@ -29,7 +29,7 @@ export const footerLinks = [
         text: "footerLinks.TermsOfPrivacy",
       },
       {
-        href: "/CookiePolicy",
+        href: "/cookie-policy",
         key: "CookiePolicy",
         text: "footerLinks.CookiePolicy",
       },

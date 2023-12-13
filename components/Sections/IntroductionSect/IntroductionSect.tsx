@@ -48,7 +48,7 @@ const IntroductionSect = () => {
         className="flex flex-col items-start h-full w-auto p-5 z-10"
       >
         <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
-          <div className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px]">
+          <div className="h2">
             {isMobile || isTablet
               ? t("introduction.intro")
               : generateSpans({
@@ -57,7 +57,7 @@ const IntroductionSect = () => {
                   zeroColor: "#737373",
                 })}
           </div>
-          <div className="text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
+          <div className="h1">
             {isMobile || isTablet
               ? t("introduction.title")
               : generateSpans({
@@ -66,10 +66,7 @@ const IntroductionSect = () => {
                 })}
           </div>
         </motion.h1>
-        <motion.p
-          variants={textVariant(1)}
-          className="mt-4 text-cool-gray-50 lg:text-[17px] sm:text-[14px] text-[13px] max-w-3xl leading-[30px]"
-        >
+        <motion.p variants={textVariant(1)} className="mt-4 p max-w-3xl ">
           {t("introduction.description")}
         </motion.p>
       </motion.div>

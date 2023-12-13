@@ -56,6 +56,19 @@ body {
   @apply w-full text-center my-10 px-2;
 }
 
+.h1 {
+  @apply text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] antialiased;
+}
+.h2 {
+  @apply text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] antialiased;
+}
+.h3 {
+  @apply text-cool-gray-200 font-medium lg:text-[23px] sm:text-[20px] xs:text-[17px] text-[15px] lg:leading-[40px] antialiased;
+}
+
+.p {
+  @apply text-cool-gray-100 lg:text-[17px] sm:text-[14px] text-[13px] md:leading-[30px] antialiased;
+}
 /* Footer */
 .footer {
   @apply flex-col w-full gap-5;

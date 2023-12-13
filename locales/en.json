@@ -173,5 +173,42 @@
       { "title": "Always Up-to-Date with Technology" }
     ]
   },
-  "dragQuinn": { "drag": "Drag" }
+  "dragQuinn": { "drag": "Drag" },
+
+  "cookiePolicy": [
+    {
+      "mainTitle": "Cookie Policy",
+      "description": "This page is prepared to provide information about the use of cookies by CrunchyPix, operated by CrunchyPix on the CrunchyPix website (hereinafter referred to as 'we', 'our', or 'our site')."
+    },
+    {
+      "title": "What is a Cookie?",
+      "description": "Cookies are small text files stored on your web browser. Websites can send or receive information via cookies on your browser. This information does not identify you personally but is often used to improve your user experience."
+    },
+    {
+      "title": "Which Cookies Do We Use?",
+      "description": "Our site uses only two types of cookies: Vercel Speed Insights and Vercel Web Analytics.",
+      "subTitles": [
+        {
+          "title": "Vercel Speed Insights Cookie",
+          "description": "This cookie is used to measure the performance of our pages and improve user experience. These cookies do not identify any individual visitor or IP address. The collected information is anonymous and is used only for general statistics."
+        },
+        {
+          "title": "Vercel Web Analytics Cookie",
+          "description": "This cookie is used to understand the traffic on our website and obtain general statistics. This cookie does not collect personal information and does not contain information that identifies you. The collected data is anonymous and for aggregated statistics."
+        }
+      ]
+    },
+    {
+      "title": "Third-Party Resources",
+      "description": "Our site uses third-party resources such as Google Fonts. These resources are used to improve the appearance and performance of our site. The use of these resources is subject to the privacy policy of the respective third party."
+    },
+    {
+      "title": "Controlling Cookies",
+      "description": "You can control or delete cookies from your browser settings. However, disabling cookies may prevent certain features of websites from working properly."
+    },
+    {
+      "title": "More Information",
+      "description": "For more information about our cookie policy, please refer to the privacy notices of Vercel Speed Insights and Vercel Web Analytics."
+    }
+  ]
 }
