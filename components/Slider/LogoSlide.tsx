@@ -42,9 +42,9 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
       centeredSlides
       loop
       autoplay={{
-        delay: 300,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
+        reverseDirection: true,
       }}
       speed={800}
       slidesPerView={4}

@@ -7,7 +7,7 @@ import { RootState } from "@/store";
 import Tilt from "react-parallax-tilt";
 import Image from "next/image";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import { memo } from "react";
+import { memo, useMemo } from "react";
 
 const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
   return (
@@ -41,13 +41,20 @@ const CardMaker = memo(
     const { t } = useTranslation(["translation"]);
     const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
     const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-    const tiltEnabled = cardSections.tilt ?? true;
-    const glareEnabled = cardSections.glare ?? true;
+    const tiltEnabled = useMemo(
+      () => cardSections.tilt ?? true,
+      [cardSections.tilt]
+    );
+    const glareEnabled = useMemo(
+      () => cardSections.glare ?? true,
+      [cardSections.glare]
+    );
+    console.log("cardCreated");
     return (
       <Tilt
         tiltEnable={!isMobile && !isTablet ? tiltEnabled : false}
         tiltReverse
-        gyroscope={true}
+        gyroscope={!isMobile && !isTablet ? tiltEnabled : false}
         glareEnable={!isMobile && !isTablet ? glareEnabled : false}
         glarePosition={"all"}
         glareMaxOpacity={0.2}
@@ -56,9 +63,7 @@ const CardMaker = memo(
       >
         <ColorfulBorder enabled={cardSections.colorFulBorder ?? false}>
           <div
-            className={`${className} flex ${
-              isMobile ? "" : "dotted-background"
-            } justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}
+            className={`${className} flex justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}
             style={{ width: cardWidth, height: cardHeight }}
           >
             <>

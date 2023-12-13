@@ -62,11 +62,11 @@ body {
 }
 
 .footer_copyright {
-  @apply max-sm:flex-col w-full text-sm font-normal;
+  @apply max-sm:flex-col-reverse w-full text-sm font-normal py-5 max-sm:gap-3;
 }
 
 .footer_column {
-  @apply flex-1 flex flex-col gap-3 text-sm min-w-max;
+  @apply flex-1 flex flex-col gap-3 text-sm md:min-w-max;
 }
 
 /* Navbar */

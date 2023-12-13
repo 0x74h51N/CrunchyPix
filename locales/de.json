@@ -6,6 +6,16 @@
     "About": "Über uns",
     "Contact": "Kontakt"
   },
+  "footerLinks": {
+    "Home": "Startseite",
+    "Services": "Dienstleistungen",
+    "Portfolio": "Portfolio",
+    "About": "Über uns",
+    "Contact": "Kontakt",
+    "TermsOfServices": "Nutzungsbedingungen",
+    "TermsOfPrivacy": "Datenschutzrichtlinie",
+    "CookiePolicy": "Cookie-Richtlinie"
+  },
   "home": {
     "title": "Startseite",
     "description": "Willkommen auf unserer Startseite, wo digitale Möglichkeiten zum Leben erwachen."

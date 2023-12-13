@@ -3,10 +3,12 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface SelectedSlideState {
   selectedSlide: slide | undefined;
+  slideSelected: boolean | undefined;
 }
 
 const initialState: SelectedSlideState = {
   selectedSlide: undefined,
+  slideSelected: undefined,
 };
 
 const selectedSlideSlice = createSlice({
@@ -15,9 +17,11 @@ const selectedSlideSlice = createSlice({
   reducers: {
     setSlide: (state, action: PayloadAction<slide>) => {
       state.selectedSlide = action.payload;
+      state.slideSelected = true;
     },
     clearSlide: (state) => {
       state.selectedSlide = undefined;
+      state.slideSelected = false;
     },
   },
 });
