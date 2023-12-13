@@ -126,8 +126,8 @@ export const Navbar = () => {
                     : 32.5
                 }
                 height={100}
-                alt="Flexible"
-                loading="lazy"
+                alt="Crunchypix"
+                loading="eager"
                 className={`${
                   smallNav || specialPages.includes(selectedLink)
                     ? ""
@@ -177,8 +177,8 @@ export const Navbar = () => {
                     : 50
                 }
                 height={100}
-                alt="Flexible"
-                loading="lazy"
+                alt="Crunchypix"
+                loading="eager"
                 className={`${
                   smallNav ? "" : "navImage"
                 } transition-all duration-1000 ease-in-out`}

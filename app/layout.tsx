@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar/Navbar";
@@ -30,6 +32,8 @@ export default function RootLayout({
             <AppI18nProvider>
               <PageTracker />
               <CustomCursor />
+              <SpeedInsights />
+              <Analytics />
               <Navbar />
               <main>{children}</main>
               <Footer />

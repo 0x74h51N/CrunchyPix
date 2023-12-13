@@ -1,8 +1,6 @@
-import { Icon, slide } from "@/app/common.types";
 import { RootState } from "@/store";
 import { clearSlide } from "@/store/redux/selectedSlide";
 import React, { useEffect, useState } from "react";
-import ReactModal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
 import IconButton from "../../../Buttons/IconButton";
 import Label from "../../../Labels";
@@ -73,9 +71,10 @@ const SlideModal = () => {
                   alt={selectedSlide.title || ""}
                   width={1400}
                   height={1400}
-                  style={{ objectFit: isMobile ? "cover" : "cover" }}
+                  style={{ objectFit: isMobile ? "cover" : "contain" }}
                   quality={100}
                   className="object-cover w-full h-full"
+                  placeholder="empty"
                   onLoad={() => {
                     setImageLoading(false);
                   }}
