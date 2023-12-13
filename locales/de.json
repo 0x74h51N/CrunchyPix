@@ -179,5 +179,41 @@
       { "title": "Immer auf dem neuesten Stand" }
     ]
   },
-  "dragQuinn": { "drag": "Zein" }
+  "dragQuinn": { "drag": "Zein" },
+  "cookiePolicy": [
+    {
+      "mainTitle": "Cookie-Richtlinie",
+      "description": "Diese Seite wurde erstellt, um Informationen über die Verwendung von Cookies durch CrunchyPix bereitzustellen, betrieben von CrunchyPix auf der CrunchyPix-Website (im Folgenden als 'wir', 'uns' oder 'unsere Website' bezeichnet)."
+    },
+    {
+      "title": "Was ist ein Cookie?",
+      "description": "Cookies sind kleine Textdateien, die in Ihrem Webbrowser gespeichert sind. Websites können über Cookies Informationen an Ihren Browser senden oder von dort empfangen. Diese Informationen identifizieren Sie nicht persönlich, werden jedoch häufig verwendet, um Ihre Benutzererfahrung zu verbessern."
+    },
+    {
+      "title": "Welche Cookies verwenden wir?",
+      "description": "Unsere Website verwendet nur zwei Arten von Cookies: Vercel Speed Insights und Vercel Web Analytics.",
+      "subTitles": [
+        {
+          "title": "Vercel Speed Insights Cookie",
+          "description": "Dieses Cookie wird verwendet, um die Leistung unserer Seiten zu messen und die Benutzererfahrung zu verbessern. Diese Cookies identifizieren keinen einzelnen Besucher oder IP-Adresse. Die gesammelten Informationen sind anonym und werden nur für allgemeine Statistiken verwendet."
+        },
+        {
+          "title": "Vercel Web Analytics Cookie",
+          "description": "Dieses Cookie wird verwendet, um den Verkehr auf unserer Website zu verstehen und allgemeine Statistiken zu erhalten. Dieses Cookie sammelt keine persönlichen Informationen und enthält keine Informationen, die Sie identifizieren. Die gesammelten Daten sind anonym und dienen aggregierten Statistiken."
+        }
+      ]
+    },
+    {
+      "title": "Ressourcen von Drittanbietern",
+      "description": "Unsere Website verwendet Ressourcen von Drittanbietern wie Google Fonts. Diese Ressourcen werden verwendet, um das Erscheinungsbild und die Leistung unserer Website zu verbessern. Die Verwendung dieser Ressourcen unterliegt der Datenschutzrichtlinie des jeweiligen Drittanbieters."
+    },
+    {
+      "title": "Cookies kontrollieren",
+      "description": "Sie können Cookies über Ihre Browsereinstellungen steuern oder löschen. Das Deaktivieren von Cookies kann jedoch dazu führen, dass bestimmte Funktionen von Websites nicht ordnungsgemäß funktionieren."
+    },
+    {
+      "title": "Weitere Informationen",
+      "description": "Für weitere Informationen zu unserer Cookie-Richtlinie lesen Sie bitte die Datenschutzhinweise von Vercel Speed Insights und Vercel Web Analytics."
+    }
+  ]
 }
