@@ -6,6 +6,18 @@
     "About": "About",
     "Contact": "Contact"
   },
+
+  "footerLinks": {
+    "Home": "Home",
+    "Services": "Services",
+    "Portfolio": "Portfolio",
+    "About": "About",
+    "Contact": "Contact",
+    "TermsOfServices": "Terms of Service",
+    "TermsOfPrivacy": "Privacy Policy",
+    "CookiePolicy": "Cookie Policy"
+  },
+
   "home": {
     "title": "Homepage",
     "description": "Welcome to our homepage, where digital possibilities come to life."

@@ -1,5 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
+export type Links = {
+  href: string;
+  key: string;
+  text: string;
+};
+
 export type SectionData = {
   name?: string;
   className?: string;

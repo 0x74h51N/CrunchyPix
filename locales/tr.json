@@ -6,6 +6,18 @@
     "About": "Hakkımızda",
     "Contact": "İletişim"
   },
+
+  "footerLinks": {
+    "Home": "Ana Sayfa",
+    "Services": "Hizmetler",
+    "Portfolio": "Portföy",
+    "About": "Hakkımda",
+    "Contact": "İletişim",
+    "TermsOfServices": "Hizmet Şartları",
+    "TermsOfPrivacy": "Gizlilik Politikası",
+    "CookiePolicy": "Çerez Politikası"
+  },
+
   "home": {
     "title": "Anasayfa",
     "description": "Hoş geldiniz! Dijital olanakların hayat bulduğu anasayfamıza hoş geldiniz."
