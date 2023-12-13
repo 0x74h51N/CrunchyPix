@@ -81,7 +81,7 @@ const CarouselSlider = memo(({ slides }: CarouselSliderProps) => {
         }}
         onSlideChange={onSlideChange}
         autoplay={{
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
