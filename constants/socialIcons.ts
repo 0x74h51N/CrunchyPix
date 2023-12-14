@@ -7,14 +7,29 @@ export const socialIcons: Icon[] = [
     alt: "Instagram",
   },
   {
-    link: "https://t.me/Ox74h51N",
-    type: "telegram",
-    alt: "Telegram",
+    link: "https://www.freelancer.com/u/TahsinDev?frm=TahsinDev&sb=t",
+    alt: "freelancer.com",
+    svg: true,
+    src: "/freelancer.svg",
+    size: 75,
   },
   {
-    link: "mailto:mr.tahsin@windowslive.com",
-    type: "mail",
-    alt: "E-Mail",
+    link: "https://github.com/0x74h51N",
+    type: "github",
+    alt: "Github",
+  },
+];
+export const footerIcons: Icon[] = [
+  {
+    link: "https://www.instagram.com/thetahsin_/",
+    type: "instagram",
+    alt: "Instagram",
+  },
+  {
+    link: "https://www.freelancer.com/u/TahsinDev?frm=TahsinDev&sb=t",
+    alt: "freelancer.com",
+    svg: true,
+    src: "/freelancer.svg",
   },
   {
     link: "https://github.com/0x74h51N",

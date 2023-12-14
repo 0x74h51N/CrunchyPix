@@ -3,6 +3,7 @@ import { ColorfulHoverType, Icon } from "@/app/common.types";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import IconButton from "./Buttons/IconButton";
+import { motion } from "framer-motion";
 
 type SocialIconProp = {
   iconPack: Icon[];
@@ -26,10 +27,10 @@ export const SocialIcons = ({
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
 
-  const iconRadius = isMobile ? 0 : Math.max(300, screenWidth / 7);
+  const iconRadius = isMobile ? 0 : Math.max(250, screenWidth / 6);
 
   const totalIcons = iconPack.length;
-  const angleIncrement = Math.PI / 2.2 / totalIcons;
+  const angleIncrement = Math.PI / 2 / totalIcons;
   const iconList =
     isMobile || screenHeight <= 600 || row ? [...iconPack].reverse() : iconPack;
 
@@ -48,8 +49,8 @@ export const SocialIcons = ({
             : -iconRadius * Math.sin(angle) + screenHeight / 2.2;
 
         const fontSize = isMobile || screenHeight <= 600 ? "35px" : "50px";
-
-        const iconStyle = { x, y, fontSize };
+        const color = "white";
+        const iconStyle = { x, y, fontSize, color };
 
         return colorful ? (
           <ColorfulHover
@@ -62,7 +63,13 @@ export const SocialIcons = ({
             className="w-9 h-9"
           />
         ) : (
-          <IconButton icon={icon} />
+          <motion.div
+            className={`w-12 h-12 cursor-none pointer-events-auto flex justify-center items-center`}
+            style={iconStyle}
+            key={index}
+          >
+            {icon && <IconButton icon={icon} key={index} />}
+          </motion.div>
         );
       })}
     </>

@@ -8,7 +8,7 @@ import { slideIn, staggerContainer } from "@/utils/motion";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import { socialIcons } from "@/constants/socialIcons";
+import { footerIcons } from "@/constants/socialIcons";
 import IconButton from "../Buttons/IconButton";
 import { Icon } from "@/app/common.types";
 import { footerLinks } from "@/constants";
@@ -84,7 +84,7 @@ const Footer = () => {
           <div className="text-neutral-200 flexBetween footer_copyright">
             <p>@ 2023 Tahsin All right reserved</p>
             <div className="flex flex-row gap-3 text-white items-center justify-center h-auto">
-              {socialIcons.map((icon: Icon, index: number) => (
+              {footerIcons.map((icon: Icon, index: number) => (
                 <span
                   key={index}
                   className="hover:text-log-col transition-all ease-in-out duration-300"
