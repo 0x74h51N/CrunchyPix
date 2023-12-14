@@ -100,12 +100,14 @@ export type ColorfulHoverType = {
 };
 
 export type Icon = {
-  type: string;
+  type?: string;
   link?: string;
   size?: number;
   color?: string;
   alt?: string;
   substance?: string;
+  svg?: boolean | false;
+  src?: string;
 };
 
 export type logoType = {

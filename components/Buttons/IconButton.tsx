@@ -66,32 +66,55 @@ const iconComponents: { [key: string]: IconType } = {
 };
 
 const IconButton = ({ icon, size }: { icon: Icon; size?: number }) => {
-  const iconType = icon.type.toLowerCase();
+  const iconType = icon.type && icon.type.toLowerCase();
 
-  const IconComponent = iconComponents[iconType];
+  const IconComponent = icon.type && iconType && iconComponents[iconType];
 
-  if (!IconComponent) {
-    console.error(`Invalid icon type: ${icon.type}`);
-    return null;
-  }
-
-  return (
-    <div className="relative group cursor-none">
-      <a
-        href={icon.link && icon.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="cursor-none"
-      >
-        <IconComponent size={icon.size ? icon.size : size} color={icon.color} />
+  if (!icon.type && icon.svg && icon.src) {
+    return (
+      <div className="relative group cursor-none">
+        <img
+          src={icon.src}
+          alt={icon.alt}
+          onClick={() => icon.link && window.open(icon.link, "_blank")}
+          className={`w-auto ${
+            icon.size ? `h-[${icon.size}px]` : "h-[25px]"
+          } object-fit`}
+        />
         {icon.alt && (
-          <span className="absolute self-center rounded-md border-spacing-1 border-cool-gray-700 border-2  w-auto p-[2px] text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 ease-in-out duration-300 pointer-events-none cursor-none">
+          <span className="absolute self-center rounded-md border-spacing-1 border-cool-gray-700 border-2 w-auto p-[2px] text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 ease-in-out duration-300 pointer-events-none cursor-none">
             {icon.alt}
           </span>
         )}
-      </a>
-    </div>
-  );
+      </div>
+    );
+  }
+
+  if (iconType && IconComponent) {
+    return (
+      <div className="relative group cursor-none">
+        <a
+          href={icon.link && icon.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cursor-none"
+        >
+          <IconComponent
+            size={icon.size ? icon.size : size}
+            color={icon.color}
+          />
+          {icon.alt && (
+            <span className="absolute self-center rounded-md border-spacing-1 border-cool-gray-700 border-2 w-auto p-[2px] text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 ease-in-out duration-300 pointer-events-none cursor-none">
+              {icon.alt}
+            </span>
+          )}
+        </a>
+      </div>
+    );
+  }
+
+  console.error(`Invalid icon type: ${icon.type}`);
+  return null;
 };
 
 export default IconButton;

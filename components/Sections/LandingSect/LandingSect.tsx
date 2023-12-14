@@ -96,7 +96,7 @@ const LandingSect = () => {
           }`}
         >
           <SocialIcons
-            colorful={true}
+            colorful={false}
             _colorType={"vibrantColors"}
             iconPack={socialIcons}
           />
