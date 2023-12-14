@@ -13,7 +13,7 @@ import CancelButton from "@/components/Buttons/CancelButton";
 
 const SlideModal = () => {
   const [imageLoading, setImageLoading] = useState(true);
-  const { t } = useTranslation(["translation"]);
+  const { t } = useTranslation(["home"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const dispatch = useDispatch();
   const selectedSlide = useSelector(

@@ -28,7 +28,7 @@ const CarouselSlider = memo(({ slides }: CarouselSliderProps) => {
     return 0;
   });
   const dispatch = useDispatch();
-  const { t } = useTranslation(["translation"]);
+  const { t } = useTranslation(["home"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
