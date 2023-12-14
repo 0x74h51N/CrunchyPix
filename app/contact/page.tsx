@@ -1,5 +1,4 @@
 "use client";
-import Contact from "@/components/Contact";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { slideIn, staggerContainer } from "@/utils/motion";
@@ -40,9 +39,7 @@ const page = () => {
         <motion.div
           variants={slideIn("right", "tween", 0.3, 1)}
           className="w-full"
-        >
-          <Contact />
-        </motion.div>
+        ></motion.div>
       </div>
     </motion.div>
   );
