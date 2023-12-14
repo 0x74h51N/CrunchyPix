@@ -1,0 +1,32 @@
+{
+  "links": {
+    "Home": "Home",
+    "Services": "Services",
+    "Portfolio": "Portfolio",
+    "About": "About",
+    "Contact": "Contact"
+  },
+  "footerLinks": {
+    "Home": "Home",
+    "Services": "Services",
+    "Portfolio": "Portfolio",
+    "About": "About",
+    "Contact": "Contact",
+    "TermsOfServices": "Terms of Service",
+    "TermsOfPrivacy": "Privacy Policy",
+    "CookiePolicy": "Cookie Policy",
+    "kvkk": "GDPR"
+  },
+  "contact": {
+    "title": "Contact With Me",
+    "description": "Get in touch with us. We're here to listen, collaborate, and turn your ideas into reality.",
+    "placeName": "Full Name",
+    "placeMessage": "Type your message...",
+    "button": "Submit"
+  },
+  "footer": {
+    "title": "Unleash the Power of Web Innovation",
+    "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
+  },
+  "dragQuinn": { "drag": "Drag" }
+}

@@ -12,7 +12,7 @@ import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
 
 const PortfolioSect = () => {
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["home"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

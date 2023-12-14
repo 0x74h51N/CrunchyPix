@@ -1,0 +1,32 @@
+{
+  "links": {
+    "Home": "Startseite",
+    "Services": "Dienstleistungen",
+    "Portfolio": "Portfolio",
+    "About": "Über uns",
+    "Contact": "Kontakt"
+  },
+  "footerLinks": {
+    "Home": "Startseite",
+    "Services": "Dienstleistungen",
+    "Portfolio": "Portfolio",
+    "About": "Über uns",
+    "Contact": "Kontakt",
+    "TermsOfServices": "Nutzungsbedingungen",
+    "TermsOfPrivacy": "Datenschutzrichtlinie",
+    "CookiePolicy": "Cookie-Richtlinie",
+    "kvkk": "DSGVO"
+  },
+  "contact": {
+    "title": "Kontakt mit mir aufnehmen",
+    "description": "Treten Sie mit uns in Kontakt. Wir sind hier, um zuzuhören, zusammenzuarbeiten und Ihre Ideen in die Realität umzusetzen.",
+    "placeName": "Vollständiger Name",
+    "placeMessage": "Geben Sie Ihre Nachricht ein...",
+    "button": "Senden"
+  },
+  "footer": {
+    "title": "Entfesseln Sie die Kraft der Web Innovation",
+    "description": "Wir sind Ihr vertrauenswürdiger Partner in der Webentwicklung. Unsere Mission ist es, Ihre digitalen Träume Wirklichkeit werden zu lassen. Lassen Sie uns gemeinsam etwas Erstaunliches erschaffen!"
+  },
+  "dragQuinn": { "drag": "Zein" }
+}

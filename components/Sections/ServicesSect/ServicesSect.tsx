@@ -15,7 +15,7 @@ import { sliderChange } from "@/store/redux/isSlider";
 
 const ServicesSect = () => {
   const [_, setInit] = useState(false);
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["home"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -107,6 +107,7 @@ const ServicesSect = () => {
                     cardWidth={330}
                     cardHeight={520}
                     className="cursor-none"
+                    translatePath="home"
                   />
                 </SwiperSlide>
               ))}

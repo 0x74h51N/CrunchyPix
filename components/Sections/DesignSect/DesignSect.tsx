@@ -13,7 +13,7 @@ import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
 import { phoneSlides } from "@/constants/phoneSlides";
 
 const DesignSect = () => {
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["home"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

@@ -20,7 +20,7 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { codeString } from "@/constants/codeString";
 
 const CodeSect = () => {
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["home"]);
   const [isInView, setIsInView] = useState(false);
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width

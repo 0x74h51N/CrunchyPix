@@ -8,13 +8,19 @@ const changeLanguage = (lng: string) => {
 i18n.use(initReactI18next).init({
   resources: {
     en: {
-      translation: require("@/locales/en.json"),
+      home: require("@/locales/en/home.json"),
+      index: require("@/locales/en/index.json"),
+      policies: require("@/locales/en/policies.json"),
     },
     tr: {
-      translation: require("@/locales/tr.json"),
+      home: require("@/locales/tr/home.json"),
+      index: require("@/locales/tr/index.json"),
+      policies: require("@/locales/tr/policies.json"),
     },
     de: {
-      translation: require("@/locales/de.json"),
+      home: require("@/locales/de/home.json"),
+      index: require("@/locales/de/index.json"),
+      policies: require("@/locales/de/policies.json"),
     },
   },
   lng: "en-US",

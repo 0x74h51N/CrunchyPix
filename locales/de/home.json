@@ -1,21 +1,4 @@
 {
-  "links": {
-    "Home": "Startseite",
-    "Services": "Dienstleistungen",
-    "Portfolio": "Portfolio",
-    "About": "Über uns",
-    "Contact": "Kontakt"
-  },
-  "footerLinks": {
-    "Home": "Startseite",
-    "Services": "Dienstleistungen",
-    "Portfolio": "Portfolio",
-    "About": "Über uns",
-    "Contact": "Kontakt",
-    "TermsOfServices": "Nutzungsbedingungen",
-    "TermsOfPrivacy": "Datenschutzrichtlinie",
-    "CookiePolicy": "Cookie-Richtlinie"
-  },
   "home": {
     "title": "Startseite",
     "description": "Willkommen auf unserer Startseite, wo digitale Möglichkeiten zum Leben erwachen."
@@ -34,19 +17,6 @@
       "description": "Lassen Sie uns in Verbindung treten und optimale Lösungen für Ihre Bedürfnisse finden. Ihr Erfolg hat für uns oberste Priorität."
     }
   ],
-
-  "contact": {
-    "title": "Kontakt mit mir aufnehmen",
-    "description": "Treten Sie mit uns in Kontakt. Wir sind hier, um zuzuhören, zusammenzuarbeiten und Ihre Ideen in die Realität umzusetzen.",
-    "placeName": "Vollständiger Name",
-    "placeMessage": "Geben Sie Ihre Nachricht ein...",
-    "button": "Senden"
-  },
-  "footer": {
-    "title": "Entfesseln Sie die Kraft der Web Innovation",
-    "description": "Wir sind Ihr vertrauenswürdiger Partner in der Webentwicklung. Unsere Mission ist es, Ihre digitalen Träume Wirklichkeit werden zu lassen. Lassen Sie uns gemeinsam etwas Erstaunliches erschaffen!"
-  },
-
   "landing": {
     "intro": "Hallo!",
     "title": "Ich bin Tahsin",
@@ -111,31 +81,6 @@
       }
     ]
   },
-
-  "projectSlides": [
-    {
-      "title": "Portfolio",
-      "title2": "Portfolio Seite",
-      "click": "Für weitere Details..."
-    },
-    {
-      "title": "CrunchyPix",
-      "description": "Initiiert für meine Website und um Front-End-Fähigkeiten zu präsentieren. Dynamische Komponenten und Stile entwickelt. Zu den Funktionen gehören internationale Sprachoptionen und sanfte Bildlaufübergänge. Besuchen Sie GitHub für Details."
-    },
-    {
-      "title": "CC Order Landing Page",
-      "description": "Erstellt für eine Landing Page für Kreditkartenaufträge. Entworfen in Figma, implementiert mit React-Table. Zugriff durch API-Schlüssel aus der Backoffice-Anwendung gesteuert. GitHub-Link vertraulich, aber entwickelte Komponenten und Seitencode auf Anfrage verfügbar."
-    },
-    {
-      "title": "Minting UI",
-      "description": "Entwickelt für eine Benutzeroberfläche unter Verwendung von Präge- und Brennfunktionen für NNN- und NVM-Token auf der Binance Smart Chain (BSC). Eth-2-Gerüst verwendet, Verträge von BSC bezogen, bereitgestellt und ABI erstellt. Integration mit BSC über Wagmi, ermöglicht Präge- und Brennfunktionen. Weitere Funktionen auf der Debugging-Seite verfügbar."
-    },
-    {
-      "title": "KYK Eletric GmbH",
-      "description": "Meine erste Website, entwickelt mit WordPress und begrenztem Code. Erstellt mit vielen individuellen Designelementen."
-    }
-  ],
-
   "designSect": {
     "title": "Elegante digitale Erfahrung",
     "title2": "Wo ästhetisches Design Funktionalität in jedem Pixel trifft",
@@ -179,41 +124,27 @@
       { "title": "Immer auf dem neuesten Stand" }
     ]
   },
-  "dragQuinn": { "drag": "Zein" },
-  "cookiePolicy": [
+  "projectSlides": [
     {
-      "mainTitle": "Cookie-Richtlinie",
-      "description": "Diese Seite wurde erstellt, um Informationen über die Verwendung von Cookies durch CrunchyPix bereitzustellen, betrieben von CrunchyPix auf der CrunchyPix-Website (im Folgenden als 'wir', 'uns' oder 'unsere Website' bezeichnet)."
+      "title": "Portfolio",
+      "title2": "Portfolio Seite",
+      "click": "Für weitere Details..."
     },
     {
-      "title": "Was ist ein Cookie?",
-      "description": "Cookies sind kleine Textdateien, die in Ihrem Webbrowser gespeichert sind. Websites können über Cookies Informationen an Ihren Browser senden oder von dort empfangen. Diese Informationen identifizieren Sie nicht persönlich, werden jedoch häufig verwendet, um Ihre Benutzererfahrung zu verbessern."
+      "title": "CrunchyPix",
+      "description": "Initiiert für meine Website und um Front-End-Fähigkeiten zu präsentieren. Dynamische Komponenten und Stile entwickelt. Zu den Funktionen gehören internationale Sprachoptionen und sanfte Bildlaufübergänge. Besuchen Sie GitHub für Details."
     },
     {
-      "title": "Welche Cookies verwenden wir?",
-      "description": "Unsere Website verwendet nur zwei Arten von Cookies: Vercel Speed Insights und Vercel Web Analytics.",
-      "subTitles": [
-        {
-          "title": "Vercel Speed Insights Cookie",
-          "description": "Dieses Cookie wird verwendet, um die Leistung unserer Seiten zu messen und die Benutzererfahrung zu verbessern. Diese Cookies identifizieren keinen einzelnen Besucher oder IP-Adresse. Die gesammelten Informationen sind anonym und werden nur für allgemeine Statistiken verwendet."
-        },
-        {
-          "title": "Vercel Web Analytics Cookie",
-          "description": "Dieses Cookie wird verwendet, um den Verkehr auf unserer Website zu verstehen und allgemeine Statistiken zu erhalten. Dieses Cookie sammelt keine persönlichen Informationen und enthält keine Informationen, die Sie identifizieren. Die gesammelten Daten sind anonym und dienen aggregierten Statistiken."
-        }
-      ]
+      "title": "CC Order Landing Page",
+      "description": "Erstellt für eine Landing Page für Kreditkartenaufträge. Entworfen in Figma, implementiert mit React-Table. Zugriff durch API-Schlüssel aus der Backoffice-Anwendung gesteuert. GitHub-Link vertraulich, aber entwickelte Komponenten und Seitencode auf Anfrage verfügbar."
     },
     {
-      "title": "Ressourcen von Drittanbietern",
-      "description": "Unsere Website verwendet Ressourcen von Drittanbietern wie Google Fonts. Diese Ressourcen werden verwendet, um das Erscheinungsbild und die Leistung unserer Website zu verbessern. Die Verwendung dieser Ressourcen unterliegt der Datenschutzrichtlinie des jeweiligen Drittanbieters."
+      "title": "Minting UI",
+      "description": "Entwickelt für eine Benutzeroberfläche unter Verwendung von Präge- und Brennfunktionen für NNN- und NVM-Token auf der Binance Smart Chain (BSC). Eth-2-Gerüst verwendet, Verträge von BSC bezogen, bereitgestellt und ABI erstellt. Integration mit BSC über Wagmi, ermöglicht Präge- und Brennfunktionen. Weitere Funktionen auf der Debugging-Seite verfügbar."
     },
     {
-      "title": "Cookies kontrollieren",
-      "description": "Sie können Cookies über Ihre Browsereinstellungen steuern oder löschen. Das Deaktivieren von Cookies kann jedoch dazu führen, dass bestimmte Funktionen von Websites nicht ordnungsgemäß funktionieren."
-    },
-    {
-      "title": "Weitere Informationen",
-      "description": "Für weitere Informationen zu unserer Cookie-Richtlinie lesen Sie bitte die Datenschutzhinweise von Vercel Speed Insights und Vercel Web Analytics."
+      "title": "KYK Eletric GmbH",
+      "description": "Meine erste Website, entwickelt mit WordPress und begrenztem Code. Erstellt mit vielen individuellen Designelementen."
     }
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "cookiePolicy": [
+    {
+      "mainTitle": "Cookie Policy",
+      "description": "This page is prepared by CrunchyPix, the operator of the CrunchyPix website (hereinafter referred to as 'we', 'us', or 'our site'), to provide information about the use of cookies."
+    },
+    {
+      "title": "What are Cookies?",
+      "description": "Cookies are small text files stored on your web browser. Websites can send or retrieve information from your browser through cookies. While these do not personally identify you, they are often used to enhance user experience."
+    },
+    {
+      "title": "Essential Cookies for Site Functionality",
+      "description": "These cookies are necessary to provide the basic functions of the website and ensure its secure operation. Cookies in this category perform essential functions such as storing user language preferences and improving site performance."
+    },
+    {
+      "title": "Development and Measurement Cookies",
+      "description": "Two cookies are used for statistical measurement for development purposes on our site: Vercel Speed Insights and Vercel Web Analytics.",
+      "subTitles": [
+        {
+          "title": "Vercel Speed Insights Cookie",
+          "description": "This cookie is used to measure the performance of our pages and enhance user experience. It does not identify any individual visitor or IP address. The collected information is anonymous and used only for general statistics."
+        },
+        {
+          "title": "Vercel Web Analytics Cookie",
+          "description": "This cookie is used to understand website traffic and obtain general statistics. It does not collect personal information or include any identifying details about you. The collected data is anonymous and used for aggregate statistics."
+        }
+      ]
+    },
+    {
+      "title": "Third-Party Resources",
+      "description": "Third-party resources such as Google Fonts are used on our site. These resources are used to enhance the appearance and performance of our site. The use of these resources is subject to the privacy policy of the respective third party."
+    },
+    {
+      "title": "Controlling Cookies",
+      "description": "You can control or delete cookies through your browser settings. However, disabling cookies may prevent certain features of websites from functioning properly."
+    },
+    {
+      "title": "More Information",
+      "description": "For more information about our cookie policy, please visit our [Privacy Policy](/privacy-policy) and [GDPR](/kvkk) pages. Additionally, refer to Vercel's privacy notices for [Vercel Speed Insights](https://vercel.com/docs/speed-insights) and [Vercel Web Analytics](https://vercel.com/docs/analytics)."
+    }
+  ]
+}

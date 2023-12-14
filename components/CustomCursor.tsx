@@ -10,7 +10,7 @@ const CustomCursor = () => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const circleRef = useRef<HTMLDivElement | null>(null);
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["index"]);
   const dispatch = useDispatch();
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
