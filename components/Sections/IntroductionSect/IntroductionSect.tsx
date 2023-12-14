@@ -7,12 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import Image from "next/image";
-import CardMaker from "../../CardMaker";
 import { generateSpans } from "@/components/GenerateSpans";
-import { introductionCards } from "@/constants/introductionCards";
 
 const IntroductionSect = () => {
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["home"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

@@ -13,7 +13,7 @@ import TypingText from "../../typeText";
 import { socialIcons } from "@/constants/socialIcons";
 
 const LandingSect = () => {
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["home"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

@@ -16,7 +16,8 @@ const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
     prevProps.cardWidth === nextProps.cardWidth &&
     prevProps.imageWidth === nextProps.imageWidth &&
     prevProps.imageHeight === nextProps.imageHeight &&
-    prevProps.className === nextProps.className
+    prevProps.className === nextProps.className &&
+    prevProps.translatePath === nextProps.translatePath
   );
 };
 
@@ -27,6 +28,7 @@ interface CardMakerProops {
   imageWidth?: number;
   imageHeight?: number;
   className?: string;
+  translatePath: string;
 }
 
 const CardMaker = memo(
@@ -37,8 +39,9 @@ const CardMaker = memo(
     imageWidth = 100,
     imageHeight = 100,
     className,
+    translatePath,
   }: CardMakerProops) => {
-    const { t } = useTranslation(["translation"]);
+    const { t } = useTranslation([translatePath]);
     const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
     const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
     const tiltEnabled = useMemo(

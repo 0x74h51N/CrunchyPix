@@ -12,20 +12,20 @@ export const cookiePolicyData: Policy[] = [
   {
     title: "cookiePolicy.2.title",
     description: "cookiePolicy.2.description",
-    subTitles: [
-      {
-        title: "cookiePolicy.2.subTitles.0.title",
-        description: "cookiePolicy.2.subTitles.0.description",
-      },
-      {
-        title: "cookiePolicy.2.subTitles.1.title",
-        description: "cookiePolicy.2.subTitles.1.description",
-      },
-    ],
   },
   {
     title: "cookiePolicy.3.title",
     description: "cookiePolicy.3.description",
+    subTitles: [
+      {
+        title: "cookiePolicy.3.subTitles.0.title",
+        description: "cookiePolicy.3.subTitles.0.description",
+      },
+      {
+        title: "cookiePolicy.3.subTitles.1.title",
+        description: "cookiePolicy.3.subTitles.1.description",
+      },
+    ],
   },
   {
     title: "cookiePolicy.4.title",
@@ -34,5 +34,9 @@ export const cookiePolicyData: Policy[] = [
   {
     title: "cookiePolicy.5.title",
     description: "cookiePolicy.5.description",
+  },
+  {
+    title: "cookiePolicy.6.title",
+    description: "cookiePolicy.6.description",
   },
 ];

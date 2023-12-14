@@ -1,23 +1,4 @@
 {
-  "links": {
-    "Home": "Home",
-    "Services": "Services",
-    "Portfolio": "Portfolio",
-    "About": "About",
-    "Contact": "Contact"
-  },
-
-  "footerLinks": {
-    "Home": "Home",
-    "Services": "Services",
-    "Portfolio": "Portfolio",
-    "About": "About",
-    "Contact": "Contact",
-    "TermsOfServices": "Terms of Service",
-    "TermsOfPrivacy": "Privacy Policy",
-    "CookiePolicy": "Cookie Policy"
-  },
-
   "home": {
     "title": "Homepage",
     "description": "Welcome to our homepage, where digital possibilities come to life."
@@ -36,19 +17,6 @@
       "description": "Let's connect and find optimum solutions for your needs. Your success is our priority."
     }
   ],
-
-  "contact": {
-    "title": "Contact With Me",
-    "description": "Get in touch with us. We're here to listen, collaborate, and turn your ideas into reality.",
-    "placeName": "Full Name",
-    "placeMessage": "Type your message...",
-    "button": "Submit"
-  },
-  "footer": {
-    "title": "Unleash the Power of Web Innovation",
-    "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
-  },
-
   "landing": {
     "intro": "Hey there!",
     "title": "I'm Tahsin",
@@ -112,30 +80,6 @@
       }
     ]
   },
-
-  "projectSlides": [
-    {
-      "title": "Portfolio",
-      "title2": "Portfolio Page",
-      "click": "For more details..."
-    },
-    {
-      "title": "CrunchyPix",
-      "description": "Initiated for my website and to showcase front-end skills. Developed dynamic components and styles. Features include international language options and smooth scroll transitions. Visit GitHub for details."
-    },
-    {
-      "title": "CC Order Landing Page",
-      "description": "Created for a credit card order landing page. Designed in Figma, implemented with React table. Access controlled by API key from the backoffice application. GitHub link confidential, but can share developed components and page code upon request."
-    },
-    {
-      "title": "Minting UI",
-      "description": "Developed for a UI using minting and burning functions for NNN and NVM tokens on Binance Smart Chain (BSC). Eth-2 scaffold used, contracts obtained from BSC, deployed, and ABI created. Integrated with BSC using Wagmi, enabling minting and burning functions. Other functions available on the debugging page."
-    },
-    {
-      "title": "KYK Eletric Inc.",
-      "description": "My first website developed using WordPress and limited code. Developed with many custom design elements."
-    }
-  ],
   "designSect": {
     "title": "Sleek Digital Experience",
     "title2": "Where Aesthetic Design Meets Functionality in Every Pixel",
@@ -173,42 +117,27 @@
       { "title": "Always Up-to-Date with Technology" }
     ]
   },
-  "dragQuinn": { "drag": "Drag" },
-
-  "cookiePolicy": [
+  "projectSlides": [
     {
-      "mainTitle": "Cookie Policy",
-      "description": "This page is prepared to provide information about the use of cookies by CrunchyPix, operated by CrunchyPix on the CrunchyPix website (hereinafter referred to as 'we', 'our', or 'our site')."
+      "title": "Portfolio",
+      "title2": "Portfolio Page",
+      "click": "For more details..."
     },
     {
-      "title": "What is a Cookie?",
-      "description": "Cookies are small text files stored on your web browser. Websites can send or receive information via cookies on your browser. This information does not identify you personally but is often used to improve your user experience."
+      "title": "CrunchyPix",
+      "description": "Initiated for my website and to showcase front-end skills. Developed dynamic components and styles. Features include international language options and smooth scroll transitions. Visit GitHub for details."
     },
     {
-      "title": "Which Cookies Do We Use?",
-      "description": "Our site uses only two types of cookies: Vercel Speed Insights and Vercel Web Analytics.",
-      "subTitles": [
-        {
-          "title": "Vercel Speed Insights Cookie",
-          "description": "This cookie is used to measure the performance of our pages and improve user experience. These cookies do not identify any individual visitor or IP address. The collected information is anonymous and is used only for general statistics."
-        },
-        {
-          "title": "Vercel Web Analytics Cookie",
-          "description": "This cookie is used to understand the traffic on our website and obtain general statistics. This cookie does not collect personal information and does not contain information that identifies you. The collected data is anonymous and for aggregated statistics."
-        }
-      ]
+      "title": "CC Order Landing Page",
+      "description": "Created for a credit card order landing page. Designed in Figma, implemented with React table. Access controlled by API key from the backoffice application. GitHub link confidential, but can share developed components and page code upon request."
     },
     {
-      "title": "Third-Party Resources",
-      "description": "Our site uses third-party resources such as Google Fonts. These resources are used to improve the appearance and performance of our site. The use of these resources is subject to the privacy policy of the respective third party."
+      "title": "Minting UI",
+      "description": "Developed for a UI using minting and burning functions for NNN and NVM tokens on Binance Smart Chain (BSC). Eth-2 scaffold used, contracts obtained from BSC, deployed, and ABI created. Integrated with BSC using Wagmi, enabling minting and burning functions. Other functions available on the debugging page."
     },
     {
-      "title": "Controlling Cookies",
-      "description": "You can control or delete cookies from your browser settings. However, disabling cookies may prevent certain features of websites from working properly."
-    },
-    {
-      "title": "More Information",
-      "description": "For more information about our cookie policy, please refer to the privacy notices of Vercel Speed Insights and Vercel Web Analytics."
+      "title": "KYK Eletric Inc.",
+      "description": "My first website developed using WordPress and limited code. Developed with many custom design elements."
     }
   ]
 }

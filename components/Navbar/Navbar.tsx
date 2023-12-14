@@ -1,5 +1,5 @@
 "use client";
-import { Links } from "@/constants";
+import { Links, pages } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
@@ -23,9 +23,9 @@ export const Navbar = () => {
   const isMenuOpen = useSelector(
     (state: RootState) => state.isMobileMenu.mobileMenu
   );
-  const specialPages = Links.filter((link) => link.href !== "/").map(
-    (link) => link.href
-  );
+  const specialPages = pages
+    .filter((page) => page.href !== "/")
+    .map((page) => page.href);
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
@@ -39,7 +39,7 @@ export const Navbar = () => {
     (state: RootState) => state.screenHeight.height
   );
   const dispatch = useDispatch();
-  const { t } = useTranslation(["translation"]);
+  const { t } = useTranslation(["index"]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {

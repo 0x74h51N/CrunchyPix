@@ -19,7 +19,7 @@ const Contact = () => {
   function onSubmit(data: FormData) {
     sendEmail(data);
   }
-  const { t } = useTranslation(["translation"]);
+  const { t } = useTranslation(["index"]);
 
   return (
     <>

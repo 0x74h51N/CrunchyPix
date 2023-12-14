@@ -1,23 +1,4 @@
 {
-  "links": {
-    "Home": "Anasayfa",
-    "Services": "Hizmetler",
-    "Portfolio": "Portföy",
-    "About": "Hakkımızda",
-    "Contact": "İletişim"
-  },
-
-  "footerLinks": {
-    "Home": "Ana Sayfa",
-    "Services": "Hizmetler",
-    "Portfolio": "Portföy",
-    "About": "Hakkımda",
-    "Contact": "İletişim",
-    "TermsOfServices": "Hizmet Şartları",
-    "TermsOfPrivacy": "Gizlilik Politikası",
-    "CookiePolicy": "Çerez Politikası"
-  },
-
   "home": {
     "title": "Anasayfa",
     "description": "Hoş geldiniz! Dijital olanakların hayat bulduğu anasayfamıza hoş geldiniz."
@@ -36,19 +17,6 @@
       "description": "Bağlantı kurup ihtiyaçlarınız için en iyi çözümleri bulalım. Başarınız bizim önceliğimizdir."
     }
   ],
-
-  "contact": {
-    "title": "Benimle İletişime Geç",
-    "description": "Bizimle iletişime geçin. Buradayız, dinlemeye, işbirliği yapmaya ve fikirlerinizi gerçeğe dönüştürmeye hazırız.",
-    "placeName": "Tam Adınız",
-    "placeMessage": "Mesajınızı yazın...",
-    "button": "Gönder"
-  },
-  "footer": {
-    "title": "Web İnovasyonun Gücünü Ortaya Çıkar!",
-    "description": "Web geliştirmede güvenilir ortağınız biziz. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika şeyler yaratalım!"
-  },
-
   "landing": {
     "intro": "Selam!",
     "title": "Ben Tahsin",
@@ -113,31 +81,6 @@
       }
     ]
   },
-
-  "projectSlides": [
-    {
-      "title": "Portföy",
-      "title2": "Portföy Sayfası",
-      "click": "Daha fazlası için..."
-    },
-    {
-      "title": "CrunchyPix",
-      "description": "Bu proje, kendi web sitesimi oluşturmak ve front-end geliştirme becerilerimi sergilemek amacıyla başladığım bir projedir. Dinamik olarak değişen ve farklı koşullarda kullanılabilen özel bileşenler ve stiller geliştirdim. Projede, uluslararası dil seçeneği, ana sayfadaki farklı ekran yüksekliklerine uyum sağlayabilen smooth scroll geçişi gibi özellikler bulunmaktadır. Daha fazlasını görmek için GitHub depomu ziyaret edebilirsiniz."
-    },
-    {
-      "title": "CC Order Landing Page",
-      "description": "Bu proje, kendi firmanın kredi kartı sipariş öncesi sayfasını oluşturmak amacıyla başlatılmıştır. Kendi yaptığım Figma tasarımından yola çıkarak, React table ile custom tableCreator componenti geliştirildi. Ayrıca, bu sayfaya erişim için müşteri kontrol panelinin bulunduğu backoffice uygulamasından gelen API key backend tarafında çözümlenerek sayfada kontrol edildi. Projenin gizliliği nedeniyle GitHub bağlantısını paylaşamıyorum, ancak isteğe bağlı olarak kendi geliştirdiğim bileşenleri ve sayfa kodlarını paylaşabilirim."
-    },
-    {
-      "title": "Minting UI",
-      "description": "Bu proje, Binance Smart Chain'e (BSC) dağıtılmış NNN ve NVM tokenları için minting ve burning fonksiyonlarını kullanan bir kullanıcı arayüzü oluşturmak amacıyla geliştirildi. Eth-2 scaffold'u kullanılarak oluşturulan bu uygulamada, NNN ve NVM tokenlarının sözleşmeleri doğrudan BSC üzerinden alındı ve deploy edilerek ABI oluşturuldu. Wagmi ile BSC entegrasyonu sağlandı ve minting ve burning fonksiyonları kullanılabilir hale getirildi. Ayrıca, hata ayıklama sayfasında diğer fonksiyonları kullanılabilir hale getirdim."
-    },
-    {
-      "title": "KYK Eletric A.Ş.",
-      "description": "Wordpress ve kısıtlı kod kullanarak geliştirdiğim ilk web site. Bir çok custom tasarım öğeleri kullanılarak geliştirildi."
-    }
-  ],
-
   "designSect": {
     "title": "Pürüzsüz Dijital Deneyim",
     "title2": "Estetik Tasarımın Fonksiyonalite ile Buluştuğu Her Pixel",
@@ -160,7 +103,6 @@
       }
     ]
   },
-
   "codeSect": {
     "title": "Projelerinizi Mükemmelleştirelim!",
     "title2": "Her Detay, Tek Bir Kod Parçasında",
@@ -172,42 +114,27 @@
       { "title": "Her Zaman Güncel Teknoloji" }
     ]
   },
-  "dragQuinn": { "drag": "Kaydır" },
-
-  "cookiePolicy": [
+  "projectSlides": [
     {
-      "mainTitle": "Cookie Policy",
-      "description": "Bu sayfa, CrunchyPix tarafından işletilen CrunchyPix web sitesinin (buradan sonra 'biz', 'bizim' veya 'sitemiz' olarak anılacaktır) çerez kullanımı hakkında bilgi vermek amacıyla hazırlanmıştır."
+      "title": "Portföy",
+      "title2": "Portföy Sayfası",
+      "click": "Daha fazlası için..."
     },
     {
-      "title": "Çerez Nedir?",
-      "description": "Çerezler, web tarayıcınıza depolanan küçük metin dosyalarıdır. Web siteleri, tarayıcınıza çerezler aracılığıyla bilgi gönderebilir veya bilgileri alabilir. Bu bilgiler, sizi kişisel olarak tanımlamaz, ancak genellikle kullanıcı deneyiminizi geliştirmek amacıyla kullanılır."
+      "title": "CrunchyPix",
+      "description": "Bu proje, kendi web sitesimi oluşturmak ve front-end geliştirme becerilerimi sergilemek amacıyla başladığım bir projedir. Dinamik olarak değişen ve farklı koşullarda kullanılabilen özel bileşenler ve stiller geliştirdim. Projede, uluslararası dil seçeneği, ana sayfadaki farklı ekran yüksekliklerine uyum sağlayabilen smooth scroll geçişi gibi özellikler bulunmaktadır. Daha fazlasını görmek için GitHub depomu ziyaret edebilirsiniz."
     },
     {
-      "title": "Hangi Çerezleri Kullanıyoruz?",
-      "description": "Sitemizde sadece iki tür çerez kullanılmaktadır: Vercel Speed Insights ve Vercel Web Analytics.",
-      "subTitles": [
-        {
-          "title": "Vercel Speed Insights Çerezi",
-          "description": "Bu çerez, sayfalarımızın performansını ölçmek ve kullanıcı deneyimini iyileştirmek için kullanılır. Bu çerezler, herhangi bir bireysel ziyaretçiyi veya IP adresini tanımlamaz. Toplanan bilgiler anonimdir ve sadece genel istatistikler için kullanılır."
-        },
-        {
-          "title": "Vercel Web Analytics Çerezi",
-          "description": "Bu çerez, web sitemizin trafiğini anlamak ve genel istatistikler elde etmek için kullanılır. Bu çerez de kişisel bilgileri toplamaz ve sizi tanımlayacak bilgiler içermez. Toplanan veriler, anonim ve toplu istatistikler içindir."
-        }
-      ]
+      "title": "CC Order Landing Page",
+      "description": "Bu proje, kendi firmanın kredi kartı sipariş öncesi sayfasını oluşturmak amacıyla başlatılmıştır. Kendi yaptığım Figma tasarımından yola çıkarak, React table ile custom tableCreator componenti geliştirildi. Ayrıca, bu sayfaya erişim için müşteri kontrol panelinin bulunduğu backoffice uygulamasından gelen API key backend tarafında çözümlenerek sayfada kontrol edildi. Projenin gizliliği nedeniyle GitHub bağlantısını paylaşamıyorum, ancak isteğe bağlı olarak kendi geliştirdiğim bileşenleri ve sayfa kodlarını paylaşabilirim."
     },
     {
-      "title": "Üçüncü Taraf Kaynakları",
-      "description": "Sitemizde Google Fonts gibi üçüncü taraf kaynaklar kullanılmaktadır. Bu kaynaklar, sitemizin görünümünü ve performansını iyileştirmek amacıyla kullanılır. Bu kaynakların kullanımı, ilgili üçüncü tarafın kendi gizlilik politikasına tabidir."
+      "title": "Minting UI",
+      "description": "Bu proje, Binance Smart Chain'e (BSC) dağıtılmış NNN ve NVM tokenları için minting ve burning fonksiyonlarını kullanan bir kullanıcı arayüzü oluşturmak amacıyla geliştirildi. Eth-2 scaffold'u kullanılarak oluşturulan bu uygulamada, NNN ve NVM tokenlarının sözleşmeleri doğrudan BSC üzerinden alındı ve deploy edilerek ABI oluşturuldu. Wagmi ile BSC entegrasyonu sağlandı ve minting ve burning fonksiyonları kullanılabilir hale getirildi. Ayrıca, hata ayıklama sayfasında diğer fonksiyonları kullanılabilir hale getirdim."
     },
     {
-      "title": "Çerezleri Kontrol Etme",
-      "description": "Tarayıcınızın ayarlarından çerezleri kontrol edebilir veya silebilirsiniz. Ancak, çerezleri devre dışı bırakmak, web sitelerinin belirli özelliklerinin düzgün çalışmasını engelleyebilir."
-    },
-    {
-      "title": "Daha Fazla Bilgi",
-      "description": "Çerez politikamız hakkında daha fazla bilgi almak için lütfen Vercel Speed Insights ve Vercel Web Analytics'in gizlilik bildirimlerine göz atın."
+      "title": "KYK Eletric A.Ş.",
+      "description": "Wordpress ve kısıtlı kod kullanarak geliştirdiğim ilk web site. Bir çok custom tasarım öğeleri kullanılarak geliştirildi."
     }
   ]
 }

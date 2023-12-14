@@ -7,7 +7,7 @@ const page = () => {
   return (
     <div className=" flex justify-center items-center w-full h-full min-h-[100svh] md:mt-[10rem] mt-32">
       <div className="relative bg-cool-gray-900  md:p-40 p-5 rounded-xl max-w-[1100px] z-0">
-        <Image
+        {/* <Image
           src={"/policy/cookie.png"}
           alt="cookiePolicy"
           width={300}
@@ -17,7 +17,7 @@ const page = () => {
         />
         <div className="z-50">
           <PolicyCreator data={cookiePolicyData} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

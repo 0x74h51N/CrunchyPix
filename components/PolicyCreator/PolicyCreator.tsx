@@ -4,9 +4,23 @@ import { setIsTranslationsLoaded } from "@/store/redux/language";
 import React, { memo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
+import ReactMarkdown from "react-markdown";
+
+const CustomLink = ({
+  children,
+  ...props
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+  <a
+    target="_blank"
+    className="text-log-col underline underline-offset-3 cursor-none"
+    {...props}
+  >
+    {children}
+  </a>
+);
 
 const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["policies"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -37,7 +51,11 @@ const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
           {item.title && (
             <>
               <h2 className="h2">{t(item.title)}</h2>
-              <p className="p mt-2">{t(item.description)}</p>
+              <p className="p mt-2 cursor-none">
+                <ReactMarkdown components={{ a: CustomLink }}>
+                  {t(item.description)}
+                </ReactMarkdown>
+              </p>
             </>
           )}
           {item.subTitles && (

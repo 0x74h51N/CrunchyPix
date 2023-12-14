@@ -1,4 +1,4 @@
-import { Links } from "@/constants";
+import { Links, pages } from "@/constants";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import BurgerButton from "../Buttons/BurgerButton";
@@ -22,16 +22,16 @@ const MobileMenu = () => {
   const toggleMenu = () => {
     dispatch(mobileMenuChange(!isMenuOpen));
   };
-  const specialPages = Links.filter((link) => link.href !== "/").map(
-    (link) => link.href
-  );
+  const specialPages = pages
+    .filter((page) => page.href !== "/")
+    .map((page) => page.href);
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
   const smallNav = useSelector(
     (state: RootState) => state.navbarChange.smallNav
   );
-  const { t } = useTranslation(["translation"]);
+  const { t } = useTranslation(["index"]);
   useEffect(() => {
     if (!isMobile || !isTablet) {
       dispatch(mobileMenuChange(false));
@@ -81,6 +81,7 @@ const MobileMenu = () => {
                   <Link
                     href={link.href}
                     key={link.key}
+                    onClick={toggleMenu}
                     className={`hover:text-log-col cursor-none ${
                       selectedLink === link.href && link.href !== "/"
                         ? "text-log-col"

@@ -10,13 +10,12 @@ import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { socialIcons } from "@/constants/socialIcons";
 import IconButton from "../Buttons/IconButton";
-import { Icon, Links } from "@/app/common.types";
-import Link from "next/link";
+import { Icon } from "@/app/common.types";
 import { footerLinks } from "@/constants";
 import FooterColumn from "./FooterColumn";
 
 const Footer = () => {
-  const { t, i18n } = useTranslation(["translation"]);
+  const { t, i18n } = useTranslation(["index"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
