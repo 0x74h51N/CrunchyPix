@@ -6,7 +6,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
-import { Links } from "@/constants";
+import { pages } from "@/constants";
 import { languageMenuChange } from "@/store/redux/isLanguageMenu";
 
 const LanguageMenu = () => {
@@ -17,9 +17,9 @@ const LanguageMenu = () => {
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
   const [currentLanguage, setCurrentLanguage] = useState("");
-  const specialPages = Links.filter((link) => link.href !== "/").map(
-    (link) => link.href
-  );
+  const specialPages = pages
+    .filter((link) => link.href !== "/")
+    .map((link) => link.href);
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );

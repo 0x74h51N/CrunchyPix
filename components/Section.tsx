@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { handleScroll } from "@/utils/handleScroll";
 import { ScrollProvider } from "@/context/ScrollContext";
 import Image from "next/image";
+import ArrowButton from "./Buttons/ArrowButton";
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const sectionRefs = sectionsData.map(() =>
@@ -50,7 +51,11 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             className={`
             ${section.className} 
             w-full min-w-[350px] flex items-center justify-center overflow-hidden bg-cool-gray-800 
-            ${section.parallax ? "sticky top-0 z-0 " : " relative"} 
+            ${
+              section.parallax && scrollY.get() < 1000
+                ? "sticky top-0 z-0 "
+                : " relative"
+            } 
           `}
           >
             {section.background && (
@@ -112,6 +117,11 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
           </motion.section>
         ))}
       </div>
+      {currentSectionIndex > 1 && (
+        <div className="sticky rotate-180 bottom-6 left-1/2 bg-cool-gray-900 w-[50px] h-[50px] pb-2 px-1 z-50 opacity-50 hover:opacity-100 transition-opacity duration-500 ease-in-out rounded-lg">
+          <ArrowButton index={0} duration={1500} arrow={true} />
+        </div>
+      )}
     </ScrollProvider>
   );
 };

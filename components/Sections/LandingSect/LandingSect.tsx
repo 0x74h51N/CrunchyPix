@@ -101,7 +101,7 @@ const LandingSect = () => {
             iconPack={socialIcons}
           />
         </motion.div>
-        <div className="absolute bottom-0 w-full flex justify-center z-50">
+        <div className="absolute bottom-0 left-1/2 w-auto flex justify-center z-50">
           <ArrowButton
             index={1}
             duration={1500}
