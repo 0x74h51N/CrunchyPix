@@ -36,7 +36,99 @@
     },
     {
       "title": "Daha Fazla Bilgi",
-      "description": "Çerez politikamız hakkında daha fazla bilgi almak için lütfen [Gizlilik Politikası](/privacy-policy) ve [KVKK](/kvkk) sayfalarını ziyaret ediniz. Ayrıca [Vercel Speed Insights](https://vercel.com/docs/speed-insights) ve [Vercel Web Analytics](https://vercel.com/docs/analytics) için Vercel gizlilik bildirimlerine göz atınız."
+      "description": "Çerez politikamız hakkında daha fazla bilgi almak için lütfen [Gizlilik Politikası](/terms-of-privacy) ve [KVKK](/kvkk) sayfalarını ziyaret ediniz. Ayrıca [Vercel Speed Insights](https://vercel.com/docs/speed-insights) ve [Vercel Web Analytics](https://vercel.com/docs/analytics) için Vercel gizlilik bildirimlerine göz atınız."
+    }
+  ],
+
+  "privacyPolicy": [
+    {
+      "mainTitle": "Gizlilik Politikası",
+      "description": "Bu sayfa, CrunchyPix tarafından işletilen CrunchyPix web sitesinin (buradan sonra 'biz', 'bizim' veya 'sitemiz' olarak anılacaktır) gizlilik politikasını açıklamaktadır."
+    },
+    {
+      "title": "Toplanan Bilgiler",
+      "description": "Sitemiz, kullanıcı deneyimini geliştirmek ve hizmet kalitesini artırmak amacıyla sınırlı sayıda bilgi toplamaktadır. Bu bilgiler arasında Vercel Analytics ve Vercel Speed Insights tarafından sağlanan anonim ve genel istatistikler bulunmaktadır. Ayrıca, dil tercihini saklamak için tarayıcı çerezleri kullanılmaktadır. İletişim formu aracılığıyla bize sağlanan bilgiler de bu kapsamda değerlendirilir."
+    },
+    {
+      "title": "Toplanan Bilgilerin Kapsamı",
+      "description": "Toplanan bilgiler, kullanıcıların web sitemizi ziyaret etme şekli, kullanılan tarayıcı türü, işletim sistemi, coğrafi konum (ülke), hangi site üzerinden ziyaret edildiği gibi bilgileri içerir. Bu bilgiler, kullanıcıların sitemizdeki etkileşimlerini anlamak ve sitemizi geliştirmek için kullanılır. IP adresi, reklam ve tanıtım tercihleri, arama geçmişi gibi özel bilgileri içermez, toplamaz, saklamaz."
+    },
+    {
+      "title": "Çerez Kullanımı",
+      "description": "Sitemiz, tarayıcınıza çerezler yerleştirerek bilgileri saklar. Bu çerezler, dil tercihleri gibi temel işlevleri yerine getirmek ve site performansını artırmak için kullanılır. Tarayıcı ayarlarınız aracılığıyla çerez kullanımını kontrol edebilir veya devre dışı bırakabilirsiniz. Ancak, çerezlerin devre dışı bırakılması, sitemizin bazı özelliklerinin düzgün çalışmasını engelleyebilir."
+    },
+    {
+      "title": "Üçüncü Taraf Hizmetleri",
+      "description": "Sitemizde Google Fonts gibi üçüncü taraf kaynaklar kullanılabilir. Bu kaynaklar, sitemizin görünümünü ve performansını iyileştirmek amacıyla entegre edilmiştir. Bu üçüncü taraf hizmetlerin gizlilik politikaları, ilgili üçüncü tarafın kendi web sitelerinde bulunabilir."
+    },
+    {
+      "title": "Kişisel Bilgilerin Paylaşımı",
+      "description": "İletişim formu aracılığıyla tarafımıza iletilen kişisel bilgiler, sadece iletişim amacıyla kullanılır ve hiçbir koşulda üçüncü taraflarla paylaşılmaz. Bu bilgiler, yasal gereklilikler ve gizlilik politikamız doğrultusunda güvenli bir şekilde saklanır. Sadece belirli bir süre boyunca muhafaza edilir ve daha sonra silinir."
+    },
+    {
+      "title": "İletişim Formları",
+      "description": "Sitemizde bulunan iletişim formu aracılığıyla bize sağlanan bilgiler, kullanıcıların sorularını yanıtlamak ve isteklerini karşılamak için kullanılır. Bu bilgiler, sadece belirli bir süre boyunca saklanır ve daha sonra silinir."
+    },
+    {
+      "title": "Gizlilik Politikası Değişiklikleri",
+      "description": "Bu gizlilik politikası, gerektiğinde güncellenebilir. Değişiklikler hakkında sizi bilgilendirmek için web sitemizde duyurular yapılacaktır. Bu sayfayı periyodik olarak kontrol etmek, güncel politikalarımızı takip etmek için önemlidir."
+    },
+    {
+      "title": "Daha Fazla Bilgi",
+      "description": "Gizlilik politikamız hakkında daha fazla bilgi almak için ya da sorularınız veya endişeleriniz varsa, lütfen bize [iletişim](/contact) sayfamız aracılığıyla ulaşınız."
+    }
+  ],
+  "termsOfServices": [
+    {
+      "mainTitle": "Hizmet Şartları"
+    },
+    {
+      "title": "1. Kabul Edilen Kullanım Koşulları",
+      "description": "Bu internet sitesini kullanarak, aşağıdaki hizmet şartlarını ve koşullarını kabul etmiş olursunuz. Bu koşullar, CrunchyPix tarafından sağlanan tüm hizmetleri ve içerikleri kapsar."
+    },
+    {
+      "title": "2. İletişim Bilgileri ve Freelancer Profili",
+
+      "description": "CrunchyPix internet sitesi, kullanıcıların Front-end development, tasarım ya da marketing hizmetleri almak için iletişim kurmalarını sağlar. CrunchyPix üzerinden sunulan hizmetlere başvuruda bulunan kullanıcılar, işbirliği ve iletişim amacıyla bu bilgileri kullanacaklarını kabul ederler."
+    },
+    {
+      "title": "3. Proje ve Çalışmaların Paylaşımı",
+      "description": "CrunchyPix, Front-end development hizmetleri kapsamında gerçekleştirilen projeleri ve çalışmaları paylaşabilir. Ancak, müşteri ile yapılan özel anlaşmalar doğrultusunda, projelerin ve çalışmaların paylaşımı sınırlanabilir."
+    },
+    {
+      "title": "4. İçerik ve Sorumluluk",
+      "description": "CrunchyPix, internet sitesinde paylaşılan içeriklerin doğruluğunu ve güncelliğini sağlamak için çaba gösterir. Ancak, CrunchyPix, doğru veya güncel olduğunu garanti etmez. Kullanıcılar, internet sitesini kullanırken kendi sorumluluklarını üstlenirler."
+    },
+    {
+      "title": "5. Sorumluluk Sınırlamaları",
+      "description": "CrunchyPix, müşteri ile önceden belirlenen bir hizmet sözleşmesi kapsamında üstlenilen görevler dışındaki ek işlerden veya değişikliklerden sorumlu değildir. Ek işlerin veya değişikliklerin yapılabilmesi için taraflar arasında ayrı bir yazılı anlaşma yapılması gerekmektedir."
+    },
+    {
+      "title": "6. Telif Hakkı ve Fikri Mülkiyet",
+      "description": "CrunchyPix, müşteriye sağlanan içeriklerin telif haklarına sahiptir ve bu haklar, müşteriye devredilemez. Ancak, müşterinin kullanımı için belirlenen izinler ve lisanslar işbu sözleşme kapsamında belirtilir. Ücret karşılığında sağlanan içeriklerin kullanımı sadece belirtilen proje veya amaçla sınırlıdır."
+    },
+    {
+      "title": "7. Değişiklikler ve Güncellemeler",
+      "description": "CrunchyPix, bu hizmet şartlarını herhangi bir zamanda güncelleme veya değiştirme hakkını saklı tutar. Güncel şartlara her zaman erişim sağlamak kullanıcının sorumluluğundadır."
+    },
+    {
+      "title": "8. Hizmet İptali ve Sonlandırma",
+      "description": "Müşteri, projenin başlamadan önce iptal edilmesi gerektiğini düşünüyorsa, bu talebini CrunchyPix'e yazılı olarak bildirmelidir. Proje başladıktan sonra müşteri tarafından yapılan iptallerde, CrunchyPix'e ödenmemiş olan toplam proje bedelinin yarısı ödenir. Projeye başlamadan önce iptal talepleri en az belirlenen süre öncesinden bildirilmelidir."
+    },
+    {
+      "title": "9. Ödeme Koşulları ve İptal Politikası",
+      "description": "CrunchyPix, müşterisiyle yapmış olduğu iş anlaşması gereği belirlenen ücreti, işin başlama tarihinden itibaren en geç belirlenen süre içinde talep eder. Müşteri, bu süre içinde ödemeyi gerçekleştirmezse CrunchyPix, projeyi durdurma veya iptal etme hakkını saklı tutar. Ödemenin gerçekleşmediği durumda CrunchyPix, müşteriye gerekli bildirimleri yapar ve ödemenin belirli bir süre içinde tamamlanmaması halinde yasal haklarını kullanabilir. Saatlik ücret anlaşmalarında, işin rapor edilen saatlerine dayalı olarak yapılan ödemeler, her belirlenen periyot sonunda tahsil edilir."
+    },
+    {
+      "title": "10. Gizlilik Politikası",
+      "description": "CrunchyPix, kullanıcıların gizliliğini önemser ve Gizlilik Politikası sayfasında bu konuda daha fazla bilgi sunar. Kullanıcılar, gizlilik politikası [sayfamızı](/terms-of-privacy) inceleyerek bilgi sahibi olabilirler."
+    },
+    {
+      "title": "11. İletişim",
+      "description": "Daha fazla bilgi veya sorularınız için lütfen iletişim [sayfamızı](/contact) ziyaret ediniz."
+    },
+    {
+      "description": "Bu hizmet şartlarına uygun olarak, CrunchyPix hizmetlerini kullanabilir ve paylaşılan içerikleri inceleyebilirsiniz. Herhangi bir sorunuz veya endişeniz varsa, lütfen bizimle iletişime geçmekten çekinmeyin."
     }
   ]
 }

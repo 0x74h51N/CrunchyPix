@@ -36,7 +36,97 @@
     },
     {
       "title": "More Information",
-      "description": "For more information about our cookie policy, please visit our [Privacy Policy](/privacy-policy) and [GDPR](/kvkk) pages. Additionally, refer to Vercel's privacy notices for [Vercel Speed Insights](https://vercel.com/docs/speed-insights) and [Vercel Web Analytics](https://vercel.com/docs/analytics)."
+      "description": "For more information about our cookie policy, please visit our [Privacy Policy](/terms-of-privacy) and [GDPR](/kvkk) pages. Additionally, refer to Vercel's privacy notices for [Vercel Speed Insights](https://vercel.com/docs/speed-insights) and [Vercel Web Analytics](https://vercel.com/docs/analytics)."
+    }
+  ],
+  "privacyPolicy": [
+    {
+      "mainTitle": "Privacy Policy",
+      "description": "This page outlines the privacy policy of the CrunchyPix website, operated by CrunchyPix (hereinafter referred to as 'we', 'us', or 'our site')."
+    },
+    {
+      "title": "Collected Information",
+      "description": "Our website collects a limited amount of information to improve user experience and enhance service quality. This includes anonymous and general statistics provided by Vercel Analytics and Vercel Speed Insights. Additionally, browser cookies are used to store language preferences. Information provided to us through the contact form is also evaluated within this scope."
+    },
+    {
+      "title": "Scope of Collected Information",
+      "description": "The collected information includes details about how users visit our website, the type of browser used, operating system, geographic location (country), and the referring site. This information is used to understand user interactions on our site and improve its performance. It does not include, collect, or store personal information such as IP addresses, advertising and promotion preferences, or search history."
+    },
+    {
+      "title": "Use of Cookies",
+      "description": "Our site stores information by placing cookies on your browser. These cookies are used to perform essential functions such as language preferences and to enhance site performance. You can control or disable cookie usage through your browser settings. However, disabling cookies may prevent certain features of the site from functioning properly."
+    },
+    {
+      "title": "Third-Party Services",
+      "description": "Third-party resources like Google Fonts may be used on our site. These resources are integrated to improve the appearance and performance of our site. Privacy policies of these third-party services can be found on their respective websites."
+    },
+    {
+      "title": "Sharing of Personal Information",
+      "description": "Personal information provided to us through the contact form is used solely for communication purposes and is never shared with third parties under any circumstances. This information is securely stored in accordance with legal requirements and our privacy policy. It is retained for a specific period and then deleted."
+    },
+    {
+      "title": "Contact Forms",
+      "description": "Information provided to us through the contact form on our site is used to respond to user inquiries and fulfill requests. This information is stored for a specific period and then deleted."
+    },
+    {
+      "title": "Privacy Policy Changes",
+      "description": "This privacy policy may be updated when necessary. Announcements will be made on our website to inform you of any changes. It is important to periodically check this page to stay informed about our current policies."
+    },
+    {
+      "title": "More Information",
+      "description": "For more information about our privacy policy, or if you have questions or concerns, please contact us through our [Contact](/contact) page."
+    }
+  ],
+  "termsOfServices": [
+    {
+      "mainTitle": "Terms of Services"
+    },
+    {
+      "title": "1. Accepted Terms of Use",
+      "description": "By using this website, you agree to the following terms and conditions. These conditions encompass all services and content provided by CrunchyPix."
+    },
+    {
+      "title": "2. Contact Information and Freelancer Profile",
+      "description": "CrunchyPix website enables users to communicate for Front-end development, design, or marketing services. Users applying for services through CrunchyPix acknowledge that they will use this information for collaboration and communication purposes."
+    },
+    {
+      "title": "3. Sharing of Projects and Works",
+      "description": "CrunchyPix may share projects and works undertaken within the scope of Front-end development services. However, the sharing of projects and works may be limited based on special agreements with the client."
+    },
+    {
+      "title": "4. Content and Responsibility",
+      "description": "CrunchyPix strives to ensure the accuracy and currency of content shared on the website. However, CrunchyPix does not guarantee its accuracy or currency. Users take responsibility for their use of the website."
+    },
+    {
+      "title": "5. Limitation of Responsibilities",
+      "description": "CrunchyPix is not responsible for additional tasks or changes beyond the tasks agreed upon in a pre-defined service contract with the client. Separate written agreements between the parties are required for additional tasks or changes."
+    },
+    {
+      "title": "6. Copyright and Intellectual Property",
+      "description": "CrunchyPix holds the copyright to the content provided to the client, and these rights are non-transferable. However, permissions and licenses for the client's usage are specified within this agreement. The use of content provided for a fee is limited to the specified project or purpose."
+    },
+    {
+      "title": "7. Changes and Updates",
+      "description": "CrunchyPix reserves the right to update or modify these terms of service at any time. It is the user's responsibility to always have access to the current terms."
+    },
+    {
+      "title": "8. Service Cancellation and Termination",
+      "description": "If a client believes that a project should be canceled before commencement, they must notify CrunchyPix in writing. In the case of cancellations made by the client after the project has started, half of the total project fee that remains unpaid will be charged. Cancellation requests before project initiation must be made at least the specified period in advance."
+    },
+    {
+      "title": "9. Payment Terms and Cancellation Policy",
+      "description": "CrunchyPix requests the fee agreed upon in the business agreement with the client within the specified period from the start date of the project. If the client does not make the payment within this period, CrunchyPix reserves the right to stop or cancel the project. In case of non-payment, CrunchyPix will provide the necessary notifications to the client and can exercise legal rights if the payment is not completed within a certain period. Payments for hourly rate agreements are collected at the end of each specified period based on reported hours."
+    },
+    {
+      "title": "10. Privacy Policy",
+      "description": "CrunchyPix values the privacy of users and provides more information on this matter in the Privacy Policy page. Users can become informed by reviewing our privacy policy [here](/terms-of-privacy)."
+    },
+    {
+      "title": "11. Contact",
+      "description": "For more information or questions, please visit our [contact page](/contact)."
+    },
+    {
+      "description": "In accordance with these terms of service, you can use CrunchyPix services and review shared content. If you have any questions or concerns, please feel free to contact us."
     }
   ]
 }

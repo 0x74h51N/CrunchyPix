@@ -141,7 +141,7 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
                     paths={designSectPaths}
                     duration={0.7}
                     pathDelay={0.3}
-                    delay={1}
+                    delay={0.8}
                   />
                 </g>
               </svg>

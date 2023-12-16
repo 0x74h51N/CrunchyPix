@@ -82,10 +82,7 @@ const CodeSect = () => {
         variants={slideIn("left", "spring", 0.5, 0.5)}
         className="flex flex-col w-full 2xl:max-w-[1000px] justify-center items-end 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 h-auto 2xl:min-h-[700px] bg-cool-gray-800 2xl:rounded-r-3xl"
       >
-        <motion.h2
-          variants={polygonIn("up", "spring", 0.5, 1)}
-          className="w-full max-xs:w-2/3 max-xs:self-start font-medium lg:text-[22px] sm:text-[20px] text-[14px] lg:leading-[40px] text-cool-gray-300 text-left "
-        >
+        <h2 className="w-full max-xs:w-2/3 max-xs:self-start font-medium lg:text-[22px] sm:text-[20px] text-[14px] lg:leading-[40px] text-cool-gray-300 text-left ">
           {isMobile || isTablet
             ? t("codeSect.title2")
             : generateSpans({
@@ -93,18 +90,15 @@ const CodeSect = () => {
                 colorType: "vibrantColors",
                 zeroColor: "#737373",
               })}
-        </motion.h2>
-        <motion.h1
-          variants={polygonIn("down", "spring", 1, 1)}
-          className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[35px] text-[22px] leading-relaxed text-left"
-        >
+        </h2>
+        <h1 className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[35px] text-[22px] leading-relaxed text-left">
           {isMobile || isTablet
             ? t("codeSect.title")
             : generateSpans({
                 text: t("codeSect.title"),
                 colorType: "vibrantColors",
               })}
-        </motion.h1>
+        </h1>
         <motion.div
           variants={textVariant(1)}
           className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] xl:w-4/5 self-start xl:leading-[30px] text-left`}

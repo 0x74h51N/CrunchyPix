@@ -50,6 +50,7 @@ const Home = () => {
     },
     {
       name: "Logo",
+      smoothScroll: true,
       children: <LogoSect />,
       className: "h-auto min-h-auto bg-cool-gray-900 py-5",
     },
