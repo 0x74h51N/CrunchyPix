@@ -2,12 +2,9 @@ import { CardSections } from "@/app/common.types";
 import { useTranslation } from "react-i18next";
 import { ColorfulBorder } from "./ColorfulBorder";
 import IconButton from "./Buttons/IconButton";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import Tilt from "react-parallax-tilt";
 import Image from "next/image";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
-import { memo, useMemo } from "react";
+import { memo } from "react";
 
 const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
   return (
@@ -42,28 +39,9 @@ const CardMaker = memo(
     translatePath,
   }: CardMakerProops) => {
     const { t } = useTranslation([translatePath]);
-    const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-    const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-    const tiltEnabled = useMemo(
-      () => cardSections.tilt ?? true,
-      [cardSections.tilt]
-    );
-    const glareEnabled = useMemo(
-      () => cardSections.glare ?? true,
-      [cardSections.glare]
-    );
     console.log("cardCreated");
     return (
-      <Tilt
-        tiltEnable={!isMobile && !isTablet ? tiltEnabled : false}
-        tiltReverse
-        gyroscope={!isMobile && !isTablet ? tiltEnabled : false}
-        glareEnable={!isMobile && !isTablet ? glareEnabled : false}
-        glarePosition={"all"}
-        glareMaxOpacity={0.2}
-        glareBorderRadius="10px"
-        className="bg-cool-gray-800 rounded-lg shadow-2xl cursor-none"
-      >
+      <div className="bg-cool-gray-800 rounded-lg shadow-2xl cursor-none">
         <ColorfulBorder enabled={cardSections.colorFulBorder ?? false}>
           <div
             className={`${className} flex justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}
@@ -113,7 +91,7 @@ const CardMaker = memo(
             </>
           </div>
         </ColorfulBorder>
-      </Tilt>
+      </div>
     );
   },
   areEqual
