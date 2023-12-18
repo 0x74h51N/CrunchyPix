@@ -13,6 +13,7 @@ import IconButton from "../Buttons/IconButton";
 import { Icon } from "@/app/common.types";
 import { footerLinks } from "@/constants";
 import FooterColumn from "./FooterColumn";
+import { clickableChange } from "@/store/redux/isClickable";
 
 const Footer = () => {
   const { t, i18n } = useTranslation(["index"]);
@@ -21,6 +22,9 @@ const Footer = () => {
   );
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
+  );
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
   );
   const dispatch = useDispatch();
   useEffect(() => {
@@ -35,7 +39,16 @@ const Footer = () => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-
+  const handleMouseEnter = () => {
+    if (isClickable == false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
+  };
   return (
     <div className="flex justify-center footer">
       <motion.div
@@ -87,6 +100,8 @@ const Footer = () => {
               {footerIcons.map((icon: Icon, index: number) => (
                 <span
                   key={index}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                   className="hover:text-log-col transition-all ease-in-out duration-300"
                 >
                   <IconButton key={index} icon={icon} size={25} />

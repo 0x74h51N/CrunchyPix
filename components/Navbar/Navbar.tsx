@@ -16,6 +16,7 @@ import { setScreenHeight } from "@/store/redux/screenHeight";
 import { setScreenWidth } from "@/store/redux/screenWidth";
 import { navbarChange } from "@/store/redux/navbarChange";
 import { mobileMenuChange } from "@/store/redux/isMobileMenu";
+import { clickableChange } from "@/store/redux/isClickable";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
@@ -37,6 +38,9 @@ export const Navbar = () => {
   );
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height
+  );
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
   );
   const dispatch = useDispatch();
   const { t } = useTranslation(["index"]);
@@ -95,7 +99,16 @@ export const Navbar = () => {
       };
     }
   }, [dispatch, isTablet, isTablet, screenWidth, screenHeight]);
-
+  const handleMouseEnter = () => {
+    if (isClickable == false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
+  };
   return (
     <nav
       className={`fixed w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out pointer-events-none px-${
@@ -110,7 +123,11 @@ export const Navbar = () => {
           : "py-5 bg-opacity-0 h-[150px] "
       }`}
     >
-      <div className="flex flex-row ">
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="flex flex-row "
+      >
         <Link href="/">
           <div className="flex flex-row items-center pointer-events-auto cursor-none">
             <div>
@@ -169,7 +186,7 @@ export const Navbar = () => {
                 src={"logo_right.svg"}
                 width={
                   smallNav || specialPages.includes(selectedLink)
-                    ? 19
+                    ? 19.3
                     : isMobile
                     ? 28
                     : isTablet
@@ -192,6 +209,8 @@ export const Navbar = () => {
           ) : (
             <div>
               <ul
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all  duration-1000 ease-in-out ${
                   smallNav || specialPages.includes(selectedLink)
                     ? "text-md font-medium gap-8"
@@ -202,7 +221,7 @@ export const Navbar = () => {
                   <Link
                     href={link.href}
                     key={link.key}
-                    className={`hover:text-log-col hover:scale-110 cursor-none ${
+                    className={`hover:text-log-col hover:scale-110 cursor-none  ${
                       selectedLink === link.href && link.href !== "/"
                         ? "text-log-col"
                         : ""
@@ -218,7 +237,13 @@ export const Navbar = () => {
                     ></span>
                   </Link>
                 ))}
-                <LanguageMenu />
+                <div
+                  className="h-auto w-auto flex justify-center"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <LanguageMenu />
+                </div>
               </ul>
             </div>
           )}

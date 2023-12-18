@@ -5,6 +5,7 @@ import { Links } from "@/app/common.types";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { useSelector, useDispatch } from "react-redux";
+import { clickableChange } from "@/store/redux/isClickable";
 
 interface FooterColumnProps {
   Links: Links[];
@@ -15,6 +16,9 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
   const { t, i18n } = useTranslation(["index"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
+  );
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
   );
   const dispatch = useDispatch();
   useEffect(() => {
@@ -29,10 +33,23 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-
+  const handleMouseEnter = () => {
+    if (isClickable == false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
+  };
   return (
     <div className="footer_column">
-      <ul className="flex flex-col gap-2 font-normal text-white">
+      <ul
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="flex flex-col gap-2 font-normal text-white"
+      >
         {Links.map((link) => (
           <Link
             href={link.href}

@@ -18,6 +18,9 @@ const CustomCursor = () => {
   const followerRefs = Array.from({ length: 10 }).map(() =>
     useRef<HTMLDivElement | null>(null)
   );
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
+  );
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const [isCursorVisible, setIsCursorVisible] = useState(false);
   const [isInitialMove, setIsInitialMove] = useState(true);
@@ -114,32 +117,34 @@ const CustomCursor = () => {
       <div className="relative">
         <div
           ref={circleRef}
-          className="flex items-center justify-center fixed z-[1000] rounded-full border-2 border-cool-gray-600 pointer-events-none cursor-none"
+          className={`flex items-center justify-center fixed z-[1000] rounded-full border-2 ${
+            isClickable ? "border-cool-gray-100" : "border-cool-gray-400"
+          } pointer-events-none cursor-none`}
           style={{
             transition:
-              "width 300ms ease-in-out, height 300ms ease-in-out, left 75ms ease-out, top 75ms ease-out",
-            width: isSlider ? "70px" : "50px",
-            height: isSlider ? "70px" : "50px",
+              "width 300ms ease-in-out, height 300ms ease-in-out, left 75ms ease-out, top 75ms ease-out, backgroundColor 300ms ease-in-out",
+            width: isSlider ? "70px" : isClickable ? "20px" : "50px",
+            height: isSlider ? "70px" : isClickable ? "20px" : "50px",
             margin: isSlider ? "-7px" : "-20px",
             visibility: isCursorVisible ? "visible" : "hidden",
           }}
+        />
+        <div
+          ref={cursorRef}
+          className={`flex items-center justify-center fixed z-[999] rounded-full -m-[2px] bg-white pointer-events-none cursor-none`}
+          style={{
+            transition:
+              "width 300ms ease-in-out, height 300ms ease-in-out, left 60ms ease-out, top 60ms ease-out",
+            width: isSlider ? "60px" : "15px",
+            height: isSlider ? "60px" : "15px",
+            visibility: isCursorVisible && !isClickable ? "visible" : "hidden",
+          }}
         >
-          <div
-            ref={cursorRef}
-            className={`flex items-center justify-center fixed z-[999] rounded-full -m-[2px] bg-white pointer-events-none cursor-none`}
-            style={{
-              transition:
-                "width 300ms ease-in-out, height 300ms ease-in-out, left 60ms ease-out, top 60ms ease-out",
-              width: isSlider ? "60px" : "15px",
-              height: isSlider ? "60px" : "15px",
-              visibility: isCursorVisible ? "visible" : "hidden",
-            }}
-          >
-            <span className="transition-all duration-200 text-cool-gray-900 text-justify font-bold text-sm antialised z-[1000]">
-              {isSlider && t("dragQuinn.drag")}
-            </span>
-          </div>
+          <span className="transition-all duration-200 text-cool-gray-900 text-justify font-bold text-sm antialised z-[1000]">
+            {isSlider && t("dragQuinn.drag")}
+          </span>
         </div>
+
         {followerRefs.map((followerRef, index) => (
           <div
             key={index}
@@ -151,7 +156,8 @@ const CustomCursor = () => {
               }ms ease-out, top ${60 + index * 3}ms ease-out`,
               width: isSlider ? "57px" : "13px",
               height: isSlider ? "57px" : "13px",
-              visibility: isCursorVisible ? "visible" : "hidden",
+              visibility:
+                isCursorVisible && !isClickable ? "visible" : "hidden",
             }}
           ></div>
         ))}

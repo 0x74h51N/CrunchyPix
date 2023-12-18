@@ -8,6 +8,7 @@ import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
 import { pages } from "@/constants";
 import { languageMenuChange } from "@/store/redux/isLanguageMenu";
+import { clickableChange } from "@/store/redux/isClickable";
 
 const LanguageMenu = () => {
   const isDropdownOpen = useSelector(
@@ -22,6 +23,9 @@ const LanguageMenu = () => {
     .map((link) => link.href);
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
+  );
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
@@ -86,13 +90,27 @@ const LanguageMenu = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [langMenuRef, isDropdownOpen]);
+  const handleMouseEnter = () => {
+    if (isClickable == false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
+  };
   return (
     <div ref={langMenuRef} className="flex flex-center items-center">
       <button
         onClick={handleToggleDropdown}
         className="flex flex-row gap-1 items-center bg-transparent  cursor-none"
       >
-        <div className="w-6">
+        <div
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="w-6"
+        >
           {currentLanguage === "en" ? (
             <span>
               <US title="United States" />
