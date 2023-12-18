@@ -13,6 +13,7 @@ import selectedSlideReducer from "./redux/selectedSlide";
 import navbarChangeReducer from "./redux/navbarChange";
 import mobileRotateReducer from "./redux/mobileRotate";
 import isSliderReducer from "./redux/isSlider";
+import clickableReducer from "./redux/isClickable";
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   navbarChange: navbarChangeReducer,
   rotateChange: mobileRotateReducer,
   isSlider: isSliderReducer,
+  isClickable: clickableReducer,
 });
 
 const store = configureStore({
