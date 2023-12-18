@@ -2,7 +2,7 @@
 import { Links, pages } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import TypingText from "../typeText";
 import MobileMenu from "./MobileMenu";
 import LanguageMenu from "./LanguageMenu";
@@ -23,9 +23,9 @@ export const Navbar = () => {
   const isMenuOpen = useSelector(
     (state: RootState) => state.isMobileMenu.mobileMenu
   );
-  const specialPages = pages
-    .filter((page) => page.href !== "/")
-    .map((page) => page.href);
+  const specialPages = useMemo(() => {
+    return pages.filter((page) => page.href !== "/").map((page) => page.href);
+  }, []);
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
