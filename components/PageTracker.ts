@@ -7,10 +7,13 @@ import { setCurrentPage } from "@/store/redux/pageReducer";
 const PageTracker = () => {
   const dispatch = useDispatch();
   const pathname = usePathname();
+
   useEffect(() => {
-    const url = `${pathname}`;
-    console.log(url);
-    dispatch(setCurrentPage(url));
+    const urlParts = pathname.split("/");
+    const topLevelPage = `/${urlParts[1]}`;
+
+    console.log(topLevelPage);
+    dispatch(setCurrentPage(topLevelPage));
   }, [pathname]);
 
   return null;

@@ -15,7 +15,7 @@ const CustomCursor = () => {
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
-  const followerRefs = Array.from({ length: 10 }).map(() =>
+  const followerRefs = Array.from({ length: 5 }).map(() =>
     useRef<HTMLDivElement | null>(null)
   );
   const isClickable = useSelector(
@@ -82,7 +82,6 @@ const CustomCursor = () => {
             scaleValue,
             0.1
           )})`;
-          followerRef.current.style.backgroundColor = "#FFFFFF";
           const opacity = 0.8;
           const reducedOpacity = opacity - 0.025 * index;
           followerRef.current.style.opacity = Math.max(
@@ -117,45 +116,43 @@ const CustomCursor = () => {
       <div className="relative">
         <div
           ref={circleRef}
-          className={`flex items-center justify-center fixed z-[1000] rounded-full border-2 ${
-            isClickable ? "border-cool-gray-100" : "border-cool-gray-400"
-          } pointer-events-none cursor-none`}
+          className={`flex items-center justify-center fixed z-[1000] rounded-full border-2
+            border-cool-gray-100 pointer-events-none cursor-none`}
           style={{
             transition:
-              "width 300ms ease-in-out, height 300ms ease-in-out, left 75ms ease-out, top 75ms ease-out, backgroundColor 300ms ease-in-out",
-            width: isSlider ? "70px" : isClickable ? "20px" : "50px",
-            height: isSlider ? "70px" : isClickable ? "20px" : "50px",
+              "width 300ms ease-in-out, height 300ms, left 74ms ease-out, top 74ms ease-out, backgroundColor 300ms ease-in-out",
+            width: isSlider ? "70px" : isClickable ? "20px" : "45px",
+            height: isSlider ? "70px" : isClickable ? "20px" : "45px",
             margin: isSlider ? "-7px" : "-20px",
             visibility: isCursorVisible ? "visible" : "hidden",
           }}
         />
         <div
           ref={cursorRef}
-          className={`flex items-center justify-center fixed z-[999] rounded-full -m-[2px] bg-white pointer-events-none cursor-none`}
+          className={`flex items-center justify-center fixed z-[999] rounded-full m-[1px] bg-log-col pointer-events-none cursor-none`}
           style={{
             transition:
               "width 300ms ease-in-out, height 300ms ease-in-out, left 60ms ease-out, top 60ms ease-out",
-            width: isSlider ? "60px" : "15px",
-            height: isSlider ? "60px" : "15px",
+            width: isSlider ? "55px" : "5px",
+            height: isSlider ? "55px" : "5px",
             visibility: isCursorVisible && !isClickable ? "visible" : "hidden",
           }}
         >
-          <span className="transition-all duration-200 text-cool-gray-900 text-justify font-bold text-sm antialised z-[1000]">
+          <span className="transition-all duration-200 text-cool-gray-50 text-justify font-bold text-sm antialised z-[1000]">
             {isSlider && t("dragQuinn.drag")}
           </span>
         </div>
-
         {followerRefs.map((followerRef, index) => (
           <div
             key={index}
             ref={followerRef}
-            className={`flex items-center justify-center fixed rounded-full cursor-none pointer-events-none`}
+            className={`flex items-center justify-center fixed rounded-full cursor-none pointer-events-none m-[1px] bg-log-col`}
             style={{
               transition: `width 300ms ease-in-out, height 300ms ease-in-out, left ${
                 60 + index * 3
               }ms ease-out, top ${60 + index * 3}ms ease-out`,
-              width: isSlider ? "57px" : "13px",
-              height: isSlider ? "57px" : "13px",
+              width: isSlider ? "55px" : "5px",
+              height: isSlider ? "55px" : "5px",
               visibility:
                 isCursorVisible && !isClickable ? "visible" : "hidden",
             }}
