@@ -58,11 +58,16 @@ const PortfolioItem = ({
     }
   };
   return (
-    <div className="relative flex flex-col items-center justify-between h-[600px]">
+    <div
+      className="relative flex flex-col items-center justify-between overflow-hidden"
+      style={{
+        height: isMobile ? 400 : 600,
+      }}
+    >
       <motion.div
         initial="hidden"
         whileHover="show"
-        className="group relative flex justify-center items-center w-[630px] h-[500px] rounded-lg bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10"
+        className="group relative flex justify-center items-center w-[630px] h-[500px] rounded-xl bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10"
         style={{
           width: isMobile ? mobileWidth : originalWidth,
           height: isMobile ? mobileHeight : originalHeight,
@@ -74,9 +79,9 @@ const PortfolioItem = ({
           width={isMobile ? 400 : 630}
           height={isMobile ? 300 : 500}
           objectPosition="center center"
-          className="object-cover object-center w-full h-full rounded-md"
+          className="object-cover object-center w-full h-full rounded-xl"
         ></Image>
-        <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-md " />
+        <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
         <motion.div
           variants={slideIn("up", "spring", 0.2, 0.75)}
           onMouseEnter={handleMouseEnter}
@@ -97,10 +102,14 @@ const PortfolioItem = ({
         <Link
           href={`/portfolio/${id}`}
           passHref
-          className="w-auto px-4 p-8 h-32 text-stone-200 cursor-none"
+          className="w-auto md:py-9 px-5 p-6 md:h-32 h-28 text-stone-200 cursor-none"
         >
-          <h2 className="text-lg text-log-col">{t(`${projectType}`)}</h2>
-          <h1 className="text-[35px] font-bold">{t(`${title}`)}</h1>
+          <h2 className="md:text-lg text-sm text-log-col">
+            {t(`${projectType}`)}
+          </h2>
+          <h1 className="md:text-[35px] text-[28px] font-bold">
+            {t(`${title}`)}
+          </h1>
         </Link>
       </div>
     </div>
