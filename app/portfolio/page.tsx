@@ -6,8 +6,8 @@ import { portfolioPageItems } from "@/constants/portfolioPageItems";
 const Portfolio = () => {
   return (
     <section>
-      <div className=" h-auto w-auto flex flex-col justify-center items-center min-w-screen py-[60px]">
-        <div className="flex flex-wrap justify-center items-center max-w-[1500px] gap-10">
+      <div className=" h-auto w-auto flex flex-col justify-center items-center min-w-screen">
+        <div className="flex flex-wrap justify-center items-center max-w-[1500px] gap-8">
           {portfolioPageItems.map((item: PortfolioItemProps, index: number) => (
             <PortfolioItem
               _id={item._id}

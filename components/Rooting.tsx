@@ -37,7 +37,6 @@ const Rooting = () => {
       i18n.off("initialized", handleInitialized);
     };
   }, [dispatch]);
-
   useEffect(() => {
     const updatePageInfo = () => {
       const urlParts = pathname.split("/");
@@ -61,6 +60,9 @@ const Rooting = () => {
       window.removeEventListener("popstate", handlePopState);
     };
   }, [pathname, setMainPage, setChildPage]);
+  if (!isTranslationsLoadedRedux) {
+    return null;
+  }
   const handleMouseEnter = () => {
     if (isClickable == false) {
       dispatch(clickableChange(true));
@@ -74,7 +76,7 @@ const Rooting = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center w-full h-[220px] p-10 bg-cool-gray-900 mb-20">
+      <div className="flex justify-center items-center w-full h-[200px] p-10 bg-cool-gray-900 mb-20">
         <span className="text-log-col text-[35px]">{"•"}</span>
         <Link
           onMouseEnter={handleMouseEnter}

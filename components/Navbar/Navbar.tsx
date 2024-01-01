@@ -119,7 +119,7 @@ export const Navbar = () => {
               smallNav && "h-[320px] bg-opacity-100 py-2   "
             }`
           : smallNav || specialPages.includes(selectedLink)
-          ? "bg-opacity-100 py-2 h-[60px]"
+          ? "bg-opacity-100 py-3 h-[75px]"
           : "py-5 bg-opacity-0 h-[150px] "
       }`}
     >

@@ -3,7 +3,7 @@ import { PortfolioItemProps } from "@/app/common.types";
 export const portfolioPageItems: PortfolioItemProps[] = [
   {
     _id: "crunchypix",
-    image: "/portfolioItems/crunchypixPortfolio.jpg",
+    image: "/portfolioItems/crunchypix.png",
     imageAlt: "CrunchyPix",
     title: "projectSlides.1.title",
     projectType: "Webpage Design",
@@ -17,14 +17,14 @@ export const portfolioPageItems: PortfolioItemProps[] = [
   },
   {
     _id: "CC_Order",
-    image: "/PortfolioSlides/ccorder.jpg",
+    image: "/portfolioItems/ccorder.png",
     imageAlt: "CrunchyPix",
     title: "projectSlides.2.title",
     projectType: "Landing Page",
   },
   {
     _id: "Minting_UI",
-    image: "/PortfolioSlides/mintingui.jpg",
+    image: "/portfolioItems/mintingui.png",
     imageAlt: "MintingUI",
     title: "projectSlides.3.title",
     projectType: "UI Design",

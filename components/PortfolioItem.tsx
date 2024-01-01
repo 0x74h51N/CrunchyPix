@@ -21,6 +21,11 @@ const PortfolioItem = ({
   projectType,
 }: PortfolioItemProps) => {
   const router = useRouter();
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const originalWidth = 630;
+  const originalHeight = 500;
+  const mobileWidth = 380;
+  const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
   const id = _id.toLowerCase().replace(/\s+/g, "");
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
@@ -53,18 +58,23 @@ const PortfolioItem = ({
     }
   };
   return (
-    <div className="flex flex-col items-center justify-between">
+    <div className="relative flex flex-col items-center justify-between h-[600px]">
       <motion.div
         initial="hidden"
         whileHover="show"
-        className="group relative flex justify-center items-center w-[630px] h-[500px] rounded-md bg-cool-gray-500"
+        className="group relative flex justify-center items-center w-[630px] h-[500px] rounded-lg bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10"
+        style={{
+          width: isMobile ? mobileWidth : originalWidth,
+          height: isMobile ? mobileHeight : originalHeight,
+        }}
       >
         <Image
           src={image}
           alt={imageAlt}
-          width={630}
-          height={500}
-          className="object-cover rounded-md"
+          width={isMobile ? 400 : 630}
+          height={isMobile ? 300 : 500}
+          objectPosition="center center"
+          className="object-cover object-center w-full h-full rounded-md"
         ></Image>
         <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-md " />
         <motion.div
@@ -77,16 +87,21 @@ const PortfolioItem = ({
             href={`/portfolio/${id}`}
             passHref
             className="cursor-none"
-            legacyBehavior
             onClick={() => router.push(id)}
           >
             <FaAnglesRight className="text-white text-2xl -rotate-45" />
           </Link>
         </motion.div>
       </motion.div>
-      <div className="w-full p-5 text-stone-200">
-        <h2 className="text-xl text-log-col">{t(`${projectType}`)}</h2>
-        <h1 className="text-[40px] font-bold">{t(`${title}`)}</h1>
+      <div className="absolute bottom-0 bg-cool-gray-600 rounded-b-lg z-0 w-full flex justify-start">
+        <Link
+          href={`/portfolio/${id}`}
+          passHref
+          className="w-auto px-4 p-8 h-32 text-stone-200 cursor-none"
+        >
+          <h2 className="text-lg text-log-col">{t(`${projectType}`)}</h2>
+          <h1 className="text-[35px] font-bold">{t(`${title}`)}</h1>
+        </Link>
       </div>
     </div>
   );

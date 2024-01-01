@@ -7,7 +7,7 @@ export default function PortfolioLayout({
 }) {
   return (
     <>
-      <nav className="mt-24">
+      <nav className="mt-8">
         <Rooting />
       </nav>
       <main>{children}</main>
