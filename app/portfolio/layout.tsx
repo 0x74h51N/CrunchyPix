@@ -1,4 +1,4 @@
-import Rooting from "@/components/rooting";
+import Rooting from "@/components/Rooting";
 
 export default function PortfolioLayout({
   children,
