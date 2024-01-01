@@ -1,10 +1,10 @@
 {
   "links": {
-    "Home": "Startseite",
-    "Services": "Dienstleistungen",
-    "Portfolio": "Portfolio",
-    "About": "Über uns",
-    "Contact": "Kontakt"
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "portfolio": "Portfolio",
+    "about": "Über uns",
+    "contact": "Kontakt"
   },
   "footerLinks": {
     "Home": "Startseite",

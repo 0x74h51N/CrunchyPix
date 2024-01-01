@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
-import PortfolioItem, { PortfolioItemProps } from "@/components/PortfolioItem";
+import PortfolioItem from "@/components/PortfolioItem";
+import { PortfolioItemProps } from "../common.types";
 import { portfolioPageItems } from "@/constants/portfolioPageItems";
 
 const Portfolio = () => {
@@ -10,6 +10,7 @@ const Portfolio = () => {
         <div className="flex flex-wrap justify-center items-center max-w-[1500px] gap-10">
           {portfolioPageItems.map((item: PortfolioItemProps, index: number) => (
             <PortfolioItem
+              _id={item._id}
               key={index}
               image={item.image}
               imageAlt={item.imageAlt}

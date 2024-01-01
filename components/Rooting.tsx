@@ -23,35 +23,44 @@ const Rooting = () => {
     (state: RootState) => state.language.isTranslationsLoaded
   );
   useEffect(() => {
-    if (i18n.isInitialized) {
+    const handleInitialized = () => {
       dispatch(setIsTranslationsLoaded(true));
+    };
+
+    if (i18n.isInitialized) {
+      handleInitialized();
     } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
+      i18n.on("initialized", handleInitialized);
     }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+
+    return () => {
+      i18n.off("initialized", handleInitialized);
+    };
+  }, [dispatch]);
+
   useEffect(() => {
     const updatePageInfo = () => {
       const urlParts = pathname.split("/");
       const currentPage = urlParts[1];
-      const currentChildPage = urlParts[2];
-
+      if (urlParts[2]) {
+        const currentChildPage = urlParts[2].replace("_", " ");
+        setChildPage(currentChildPage);
+      } else setChildPage("");
       setMainPage(currentPage);
-      setChildPage(currentChildPage);
     };
 
     updatePageInfo();
 
-    window.addEventListener("popstate", updatePageInfo);
+    const handlePopState = () => {
+      updatePageInfo();
+    };
+
+    window.addEventListener("popstate", handlePopState);
 
     return () => {
-      window.removeEventListener("popstate", updatePageInfo);
+      window.removeEventListener("popstate", handlePopState);
     };
-  }, [pathname]);
+  }, [pathname, setMainPage, setChildPage]);
   const handleMouseEnter = () => {
     if (isClickable == false) {
       dispatch(clickableChange(true));
@@ -60,20 +69,6 @@ const Rooting = () => {
   const handleMouseLeave = () => {
     if (isClickable == true) {
       dispatch(clickableChange(false));
-    }
-  };
-  const getPageTranslation = (mainPage: string) => {
-    switch (mainPage) {
-      case "portfolio":
-        return t("links.Portfolio");
-      case "about":
-        return t("links.About");
-      case "services":
-        return t("links.Services");
-      case "contact":
-        return t("links.Contact");
-      default:
-        return mainPage;
     }
   };
 
@@ -86,9 +81,8 @@ const Rooting = () => {
           onMouseLeave={handleMouseLeave}
           className="text-3xl text-cool-gray-50 font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
           href={`/${mainPage}`}
-          style={{ textTransform: "capitalize" }}
         >
-          {getPageTranslation(mainPage)}
+          {t(`links.${mainPage}`)}
         </Link>
         {childPage && (
           <>
@@ -97,7 +91,7 @@ const Rooting = () => {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               className="text-3xl text-cool-gray-50 font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
-              href={`/${childPage}`}
+              href={`/${mainPage}/${childPage}`}
               style={{ textTransform: "capitalize" }}
             >
               {childPage}

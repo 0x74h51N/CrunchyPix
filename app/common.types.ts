@@ -112,3 +112,17 @@ export type logoType = {
   text: string;
   icon: string;
 };
+
+export type PortfolioItemProps = {
+  _id: string;
+  image: string;
+  imageAlt: string;
+  title: string;
+  projectType: string;
+  description?: string;
+  description2?: string;
+  description3?: string;
+  githubLink?: string;
+  icons?: Icon[];
+  labels?: string[];
+};

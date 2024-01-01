@@ -10,21 +10,18 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAnglesRight } from "react-icons/fa6";
 import { clickableChange } from "@/store/redux/isClickable";
-
-export interface PortfolioItemProps {
-  image: string;
-  imageAlt: string;
-  title: string;
-  projectType: string;
-}
+import { useRouter } from "next/navigation";
+import { PortfolioItemProps } from "@/app/common.types";
 
 const PortfolioItem = ({
+  _id,
   image,
   imageAlt,
   title,
   projectType,
 }: PortfolioItemProps) => {
-  const slug = imageAlt.toLowerCase().replace(/\s+/g, "");
+  const router = useRouter();
+  const id = _id.toLowerCase().replace(/\s+/g, "");
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
@@ -76,7 +73,13 @@ const PortfolioItem = ({
           onMouseLeave={handleMouseLeave}
           className="absolute flex justify-center items-center rounded-full bg-log-col opacity-0 group-hover:opacity-70 w-[70px] h-[70px]"
         >
-          <Link href={`/portfolio/${slug}`} passHref className="cursor-none">
+          <Link
+            href={`/portfolio/${id}`}
+            passHref
+            className="cursor-none"
+            legacyBehavior
+            onClick={() => router.push(id)}
+          >
             <FaAnglesRight className="text-white text-2xl -rotate-45" />
           </Link>
         </motion.div>

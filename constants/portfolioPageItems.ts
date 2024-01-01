@@ -1,28 +1,32 @@
-import { PortfolioItemProps } from "@/components/PortfolioItem";
+import { PortfolioItemProps } from "@/app/common.types";
 
 export const portfolioPageItems: PortfolioItemProps[] = [
   {
+    _id: "crunchypix",
     image: "/portfolioItems/crunchypixPortfolio.jpg",
     imageAlt: "CrunchyPix",
     title: "projectSlides.1.title",
     projectType: "Webpage Design",
   },
   {
-    image: "/PortfolioSlides/crunchypix.jpg",
+    _id: "KYK_Electric",
+    image: "/PortfolioSlides/kykelectric.jpg",
     imageAlt: "CrunchyPix",
-    title: "projectSlides.1.title",
+    title: "projectSlides.4.title",
     projectType: "Webpage Design",
   },
   {
-    image: "/PortfolioSlides/crunchypix.jpg",
+    _id: "CC_Order",
+    image: "/PortfolioSlides/ccorder.jpg",
     imageAlt: "CrunchyPix",
-    title: "projectSlides.1.title",
-    projectType: "Webpage Design",
+    title: "projectSlides.2.title",
+    projectType: "Landing Page",
   },
   {
-    image: "/PortfolioSlides/crunchypix.jpg",
-    imageAlt: "CrunchyPix",
-    title: "projectSlides.1.title",
-    projectType: "Webpage Design",
+    _id: "Minting_UI",
+    image: "/PortfolioSlides/mintingui.jpg",
+    imageAlt: "MintingUI",
+    title: "projectSlides.3.title",
+    projectType: "UI Design",
   },
 ];
