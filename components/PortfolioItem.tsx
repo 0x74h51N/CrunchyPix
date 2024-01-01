@@ -92,7 +92,7 @@ const PortfolioItem = ({
             href={`/portfolio/${id}`}
             passHref
             className="cursor-none"
-            onClick={() => router.push(id)}
+            onClick={() => router.push(`/portfolio/${id}`)}
           >
             <FaAnglesRight className="text-white text-2xl -rotate-45" />
           </Link>
@@ -103,6 +103,7 @@ const PortfolioItem = ({
           href={`/portfolio/${id}`}
           passHref
           className="w-auto md:py-9 px-5 p-6 md:h-32 h-28 text-stone-200 cursor-none"
+          onClick={() => router.push(`/portfolio/${id}`)}
         >
           <h2 className="md:text-lg text-sm text-log-col">
             {t(`${projectType}`)}

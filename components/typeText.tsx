@@ -49,7 +49,7 @@ const TypingText = ({
     return () => {
       clearInterval(typingInterval);
     };
-  }, [text, isDelayed, typingSpeed]);
+  }, [text, isDelayed, typingSpeed, ""]);
 
   useEffect(() => {
     const delayTimeout = setTimeout(() => {
@@ -100,7 +100,7 @@ const TypingText = ({
         </div>
       );
     } else {
-      return <div className={textClass}>{displayText}</div>;
+      return <span className={textClass}>{displayText}</span>;
     }
   }, [displayText]);
 

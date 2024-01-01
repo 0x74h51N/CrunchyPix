@@ -199,25 +199,9 @@ body {
 }
 .logo_text {
   font-family: "Britannic Bold";
-  font-size: 55px;
-  margin-top: 7px;
-  @apply max-lg:text-3xl text-neutral-200 hover:text-[60px];
-  transition: font-size 0.5s ease-in-out;
 }
 .logo_text.color {
   color: #eeb30d;
-}
-
-.logo_text.medium {
-  font-size: 40px;
-  margin-top: 6px;
-  @apply hover:text-[45px];
-}
-
-.logo_text.small {
-  font-size: 30px;
-  margin-top: 5px;
-  @apply hover:text-4xl;
 }
 
 .arrow {

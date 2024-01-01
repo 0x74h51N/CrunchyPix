@@ -3,14 +3,11 @@ import { portfolioPageItems } from "@/constants/portfolioPageItems";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-const PortfolioPage = () => {
-  const pathname = usePathname();
-  const [id, setId] = useState("");
+const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["home"]);
   const isTranslationsLoadedRedux = useSelector(
@@ -32,31 +29,11 @@ const PortfolioPage = () => {
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    const updatePageInfo = () => {
-      const urlParts = pathname.split("/");
-      const _id = urlParts[2];
-
-      setId(_id);
-    };
-
-    updatePageInfo();
-
-    const handlePopState = () => {
-      updatePageInfo();
-    };
-
-    window.addEventListener("popstate", handlePopState);
-
-    return () => {
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, [pathname, setId]);
   if (!isTranslationsLoadedRedux) {
     return null;
   }
   const selectedItem = portfolioPageItems.find(
-    (item) => item._id.toLowerCase() === id
+    (item) => item._id.toLowerCase().replace(/\s+/g, "") == params.id
   );
 
   if (!selectedItem) {
@@ -64,7 +41,7 @@ const PortfolioPage = () => {
   }
 
   return (
-    <div>
+    <div className="h-auto w-auto min-h-[100svh]">
       <h1>{t(selectedItem.title)}</h1>
     </div>
   );

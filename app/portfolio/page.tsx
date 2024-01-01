@@ -1,7 +1,7 @@
 "use client";
-import PortfolioItem from "@/components/PortfolioItem";
 import { PortfolioItemProps } from "../common.types";
 import { portfolioPageItems } from "@/constants/portfolioPageItems";
+import PortfolioItem from "../../components/PortfolioItem";
 
 const Portfolio = () => {
   return (

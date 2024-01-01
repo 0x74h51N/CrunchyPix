@@ -1,4 +1,5 @@
 import Rooting from "@/components/Rooting";
+import { portfolioPageItems } from "@/constants/portfolioPageItems";
 
 export default function PortfolioLayout({
   children,
@@ -7,10 +8,18 @@ export default function PortfolioLayout({
 }) {
   return (
     <>
-      <nav className="mt-8">
+      <div className="mt-8">
         <Rooting />
-      </nav>
+      </div>
       <main>{children}</main>
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const paths = portfolioPageItems.map((item) => ({
+    params: { id: item._id.toLowerCase().replace(/\s+/g, "") },
+  }));
+
+  return paths;
 }
