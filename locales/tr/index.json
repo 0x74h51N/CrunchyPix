@@ -1,10 +1,10 @@
 {
   "links": {
-    "Home": "Anasayfa",
-    "Services": "Hizmetler",
-    "Portfolio": "Portföy",
-    "About": "Hakkımızda",
-    "Contact": "İletişim"
+    "home": "Anasayfa",
+    "services": "Hizmetler",
+    "portfolio": "Portföy",
+    "about": "Hakkımızda",
+    "contact": "İletişim"
   },
 
   "footerLinks": {

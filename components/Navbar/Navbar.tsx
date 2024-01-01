@@ -119,66 +119,59 @@ export const Navbar = () => {
               smallNav && "h-[320px] bg-opacity-100 py-2   "
             }`
           : smallNav || specialPages.includes(selectedLink)
-          ? "bg-opacity-100 py-2 h-[60px]"
+          ? "bg-opacity-100 py-3 h-[80px]"
           : "py-5 bg-opacity-0 h-[150px] "
       }`}
     >
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="flex flex-row "
+        className="flex flex-row h-auto"
       >
         <Link href="/">
-          <div className="flex flex-row items-center pointer-events-auto cursor-none">
-            <div>
-              <Image
-                src={"/logo_leftw.svg"}
-                width={
-                  smallNav || specialPages.includes(selectedLink)
-                    ? 12.5
-                    : isMobile
-                    ? 18.5
-                    : isTablet
-                    ? 27.5
-                    : 32.5
-                }
-                height={100}
-                alt="Crunchypix"
-                loading="eager"
-                className={`${
-                  smallNav || specialPages.includes(selectedLink)
-                    ? ""
-                    : "navImage"
-                } transition-all duration-1000 ease-in-out`}
-              />
-            </div>
+          <div className="flex flex-row items-center justify-center pointer-events-auto cursor-none">
+            <Image
+              src={"/logo_leftw.svg"}
+              width={
+                smallNav || specialPages.includes(selectedLink)
+                  ? 12.5
+                  : isMobile
+                  ? 18.5
+                  : isTablet
+                  ? 27.5
+                  : 32.5
+              }
+              height={100}
+              alt="Crunchypix"
+              loading="lazy"
+              className={`${
+                smallNav || specialPages.includes(selectedLink)
+                  ? ""
+                  : "navImage"
+              } transition-all duration-1000 ease-in-out h-full pb-3`}
+            />
 
             {smallNav || screenWidth <= 300 ? null : (
-              <>
-                <TypingText
-                  text="Crunchy"
-                  _code={false}
-                  textClass={`logo_text cursor-none ${
-                    specialPages.includes(selectedLink) || isMobile
-                      ? "small"
-                      : isTablet
-                      ? "medium"
-                      : ""
-                  }`}
-                />
+              <div
+                className={`logo_text ${
+                  smallNav || specialPages.includes(selectedLink)
+                    ? "text-[25px]"
+                    : isMobile
+                    ? "text-[30px]"
+                    : isTablet
+                    ? "text-[45px]"
+                    : "text-[60px]"
+                } text-stone-50 transition-all duration-1000 ease-in-out`}
+              >
+                <TypingText text="Crunchy " _code={false} textClass={``} />
+
                 <TypingText
                   text="Pix"
                   _code={false}
-                  delay={450}
-                  textClass={`logo_text color ${
-                    specialPages.includes(selectedLink) || isMobile
-                      ? "small"
-                      : isTablet
-                      ? "medium"
-                      : ""
-                  }`}
+                  delay={460}
+                  textClass={`text-log-col`}
                 />
-              </>
+              </div>
             )}
 
             <div>
@@ -195,7 +188,7 @@ export const Navbar = () => {
                 }
                 height={100}
                 alt="Crunchypix"
-                loading="eager"
+                loading="lazy"
                 className={`${
                   smallNav ? "" : "navImage"
                 } transition-all duration-1000 ease-in-out`}

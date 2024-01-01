@@ -74,7 +74,7 @@ const LandingSect = () => {
 
           <motion.h1
             variants={slideIn("up", "spring", 2, 1.5)}
-            className="font-black text-white md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px]"
+            className="font-black text-white md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px] mt-2"
           >
             {isMobile || isTablet
               ? t("landing.title")
@@ -101,7 +101,7 @@ const LandingSect = () => {
             iconPack={socialIcons}
           />
         </motion.div>
-        <div className="absolute bottom-0 left-1/2 w-auto flex justify-center z-50">
+        <div className="absolute bottom-0 w-auto flex justify-center z-50">
           <ArrowButton
             index={1}
             duration={1500}

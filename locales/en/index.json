@@ -1,10 +1,10 @@
 {
   "links": {
-    "Home": "Home",
-    "Services": "Services",
-    "Portfolio": "Portfolio",
-    "About": "About",
-    "Contact": "Contact"
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "contact": "Contact"
   },
   "footerLinks": {
     "Home": "Home",

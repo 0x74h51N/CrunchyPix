@@ -1,9 +1,9 @@
 export const Links = [
-  { href: "/", key: "Home", text: "links.Home" },
-  { href: "/portfolio", key: "Portfolio", text: "links.Portfolio" },
-  { href: "/services", key: "Services", text: "links.Services" },
-  { href: "/about", key: "About", text: "links.About" },
-  { href: "/contact", key: "Contact", text: "links.Contact" },
+  { href: "/", key: "Home", text: "links.home" },
+  { href: "/portfolio", key: "Portfolio", text: "links.portfolio" },
+  { href: "/services", key: "Services", text: "links.services" },
+  { href: "/about", key: "About", text: "links.about" },
+  { href: "/contact", key: "Contact", text: "links.contact" },
 ];
 
 export const footerLinks = [

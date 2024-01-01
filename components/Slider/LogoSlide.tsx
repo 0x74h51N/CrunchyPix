@@ -28,14 +28,14 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
       slidesPerView: 12,
     },
   };
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(-1);
 
-  const handleMouseEnter = (index: any) => {
+  const handleMouseEnter = (index: number) => {
     setHoveredIndex(index);
   };
 
   const handleMouseLeave = () => {
-    setHoveredIndex(null);
+    setHoveredIndex(-1);
   };
   return (
     <Swiper

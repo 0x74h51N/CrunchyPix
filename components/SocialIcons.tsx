@@ -27,7 +27,7 @@ export const SocialIcons = ({
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
 
-  const iconRadius = isMobile ? 0 : Math.max(250, screenWidth / 6);
+  const iconRadius = isMobile ? 0 : Math.max(300, screenWidth / 8);
 
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
@@ -42,7 +42,7 @@ export const SocialIcons = ({
           isMobile || screenHeight <= 600 || row
             ? 0
             : iconRadius * Math.cos(angle) +
-              (isTablet ? screenWidth / 2.5 : screenWidth / 2.25);
+              (isTablet ? screenWidth / 2.5 : screenWidth / 2.2);
         const y =
           isMobile || screenHeight <= 600 || row
             ? 0

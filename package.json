@@ -22,6 +22,7 @@
     "i18next-browser-languagedetector": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "next": "14.0.1",
+    "next-navigation": "^1.0.6",
     "postcss-nesting": "^12.0.1",
     "react": "^18",
     "react-dom": "^18",
@@ -42,8 +43,9 @@
   },
   "devDependencies": {
     "@grafbase/sdk": "^0.7.2",
+    "@types/next": "^9.0.0",
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "^18.2.46",
     "@types/react-dom": "^18",
     "@types/react-modal": "^3.16.3",
     "@types/react-syntax-highlighter": "^15.5.9",
