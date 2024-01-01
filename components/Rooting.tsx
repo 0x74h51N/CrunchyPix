@@ -13,6 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 const Rooting = () => {
   const [mainPage, setMainPage] = useState("");
   const [childPage, setChildPage] = useState("");
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const pathname = usePathname();
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
@@ -75,32 +76,33 @@ const Rooting = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-center items-center w-full h-[200px] p-10 bg-cool-gray-900 mb-20">
-        <span className="text-log-col text-[35px]">{"•"}</span>
+    <div className="flex flex-col md:flex-row justify-center items-center w-full h-[200px] md:p-10 p-2 bg-cool-gray-900 mb-20">
+      <div className="flex flex-row items-center">
+        <span className="text-log-col md:text-[35px] text-md">{"•"}</span>
         <Link
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="text-3xl text-cool-gray-50 font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+          className="md:text-3xl text-lg text-cool-gray-50 font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
           href={`/${mainPage}`}
         >
           {t(`links.${mainPage}`)}
         </Link>
-        {childPage && (
-          <>
-            <span className="text-log-col text-[35px] ml-5">{"•"}</span>
-            <Link
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className="text-3xl text-cool-gray-50 font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
-              href={`/${mainPage}/${childPage}`}
-              style={{ textTransform: "capitalize" }}
-            >
-              {childPage}
-            </Link>
-          </>
-        )}
       </div>
+      {childPage && (
+        <div className="flex flex-row items-center">
+          <span className="text-log-col md:text-[35px] text-md md:ml-5 ml-0">
+            {"•"}
+          </span>
+          <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="md:text-3xl text-lg text-cool-gray-50 font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+            style={{ textTransform: "capitalize" }}
+          >
+            {childPage}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

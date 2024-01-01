@@ -24,7 +24,7 @@ const PortfolioItem = ({
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const originalWidth = 630;
   const originalHeight = 500;
-  const mobileWidth = 380;
+  const mobileWidth = 300;
   const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
   const id = _id.toLowerCase().replace(/\s+/g, "");
   const isClickable = useSelector(
@@ -61,7 +61,7 @@ const PortfolioItem = ({
     <div
       className="relative flex flex-col items-center justify-between overflow-hidden"
       style={{
-        height: isMobile ? 400 : 600,
+        height: isMobile ? 320 : 600,
       }}
     >
       <motion.div
@@ -102,13 +102,13 @@ const PortfolioItem = ({
         <Link
           href={`/portfolio/${id}`}
           passHref
-          className="w-auto md:py-9 px-5 p-6 md:h-32 h-28 text-stone-200 cursor-none"
+          className="w-auto md:py-9 px-5 p-6 md:h-32 h-24 text-stone-200 cursor-none"
           onClick={() => router.push(`/portfolio/${id}`)}
         >
           <h2 className="md:text-lg text-sm text-log-col">
             {t(`${projectType}`)}
           </h2>
-          <h1 className="md:text-[35px] text-[28px] font-bold">
+          <h1 className="md:text-[35px] text-[22px] font-bold">
             {t(`${title}`)}
           </h1>
         </Link>
