@@ -13,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 const Rooting = () => {
   const [mainPage, setMainPage] = useState("");
   const [childPage, setChildPage] = useState("");
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const [pageName, setPageName] = useState("");
   const pathname = usePathname();
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
@@ -47,6 +47,9 @@ const Rooting = () => {
         setChildPage(currentChildPage);
       } else setChildPage("");
       setMainPage(currentPage);
+      if (urlParts[1] == "portfolio" && urlParts[2]) {
+        setPageName("Project Details");
+      }
     };
 
     updatePageInfo();
@@ -76,33 +79,54 @@ const Rooting = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center w-full h-[200px] md:p-10 p-2 bg-cool-gray-900 mb-20">
-      <div className="flex flex-row items-center">
-        <span className="text-log-col md:text-[35px] text-md">{"•"}</span>
-        <Link
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="md:text-3xl text-lg text-cool-gray-50 font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
-          href={`/${mainPage}`}
-        >
-          {t(`links.${mainPage}`)}
-        </Link>
+    <div className="flex flex-col justify-center items-center w-full h-[300px] md:p-10 p-2 mt-32">
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+        style={{ textTransform: "capitalize" }}
+      >
+        {childPage ? childPage : mainPage}
       </div>
-      {childPage && (
+      <div className="flex flex-col md:flex-row justify-center items-center ">
         <div className="flex flex-row items-center">
-          <span className="text-log-col md:text-[35px] text-md md:ml-5 ml-0">
-            {"•"}
-          </span>
-          <div
+          <Link
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="md:text-3xl text-lg text-cool-gray-50 font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
-            style={{ textTransform: "capitalize" }}
+            className="md:text-2xl text-lg text-cool-gray-50 font-bold hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+            href={`/`}
           >
-            {childPage}
-          </div>
+            <span>Crunchy</span>
+            <span className="text-log-col md:mr-5 mr-0">Pix</span>
+          </Link>
+          <span className="text-log-col md:text-[20px] text-md">{"•"}</span>
+          <Link
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className={`md:text-2xl text-lg ${
+              childPage ? "text-cool-gray-50" : "text-log-col"
+            } font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none`}
+            href={`/${mainPage}`}
+          >
+            {t(`links.${mainPage}`)}
+          </Link>
         </div>
-      )}
+        {childPage && (
+          <div className="flex flex-row items-center">
+            <span className="text-log-col md:text-[20px] text-md md:ml-5 ml-0">
+              {"•"}
+            </span>
+            <div
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="md:text-2xl text-lg text-log-col font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+              style={{ textTransform: "capitalize" }}
+            >
+              {pageName}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { slideIn, staggerContainer } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAnglesRight } from "react-icons/fa6";
@@ -98,7 +98,7 @@ const PortfolioItem = ({
           </Link>
         </motion.div>
       </motion.div>
-      <div className="absolute bottom-0 bg-cool-gray-600 rounded-b-lg z-0 w-full flex justify-start">
+      <div className="absolute bottom-0  rounded-b-lg z-0 w-full flex justify-start">
         <Link
           href={`/portfolio/${id}`}
           passHref

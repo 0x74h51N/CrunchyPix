@@ -8,9 +8,7 @@ export default function PortfolioLayout({
 }) {
   return (
     <>
-      <div className="mt-8">
-        <Rooting />
-      </div>
+      <Rooting />
       <main>{children}</main>
     </>
   );

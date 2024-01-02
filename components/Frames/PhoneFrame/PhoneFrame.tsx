@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { designSectPaths } from "@/constants/designSectPath";
 import CancelButton from "@/components/Buttons/CancelButton";
+import { clickableChange } from "@/store/redux/isClickable";
 
 interface PhoneFrameProps {
   screenImage?: string;
@@ -14,6 +15,9 @@ interface PhoneFrameProps {
 }
 const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
   const dispatch = useDispatch();
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
+  );
   const [isRotating, setIsRotating] = useState(false);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const rotateStart = useSelector(
@@ -57,7 +61,16 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
 
     return () => clearTimeout(rotationTimeout);
   }, [rotateStart]);
-
+  const handleMouseEnter = () => {
+    if (isClickable == false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
+  };
   return (
     <div
       className={`relative delay-500 ${
@@ -93,7 +106,12 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
         className="cursor-none"
       >
         {isInView && !isMobile && (
-          <button onClick={handleClick} className={`group cursor-none`}>
+          <button
+            onClick={handleClick}
+            className={`group cursor-none`}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             {!rotateEnd && !rotateStart ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
