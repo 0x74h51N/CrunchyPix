@@ -31,6 +31,9 @@ import {
 import { MdAccessibility, MdTouchApp } from "react-icons/md";
 import { DiResponsive } from "react-icons/di";
 import { TfiLayoutAccordionList } from "react-icons/tfi";
+import isClickable, { clickableChange } from "@/store/redux/isClickable";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 const iconComponents: { [key: string]: IconType } = {
   github: FaGithub,
@@ -66,13 +69,29 @@ const iconComponents: { [key: string]: IconType } = {
 };
 
 const IconButton = ({ icon, size }: { icon: Icon; size?: number }) => {
+  const dispatch = useDispatch();
   const iconType = icon.type && icon.type.toLowerCase();
-
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
+  );
   const IconComponent = icon.type && iconType && iconComponents[iconType];
-
+  const handleMouseEnter = () => {
+    if (isClickable == false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
+  };
   if (!icon.type && icon.svg && icon.src) {
     return (
-      <div className="relative group cursor-none">
+      <div
+        className="relative group cursor-none"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <img
           src={icon.src}
           alt={icon.alt}
@@ -92,7 +111,11 @@ const IconButton = ({ icon, size }: { icon: Icon; size?: number }) => {
 
   if (iconType && IconComponent) {
     return (
-      <div className="relative group cursor-none">
+      <div
+        className="relative group cursor-none"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <a
           href={icon.link && icon.link}
           target="_blank"

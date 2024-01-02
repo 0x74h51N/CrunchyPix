@@ -37,7 +37,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
   );
 
   if (!selectedItem) {
-    return <p>Portföy öğesi bulunamadı.</p>;
+    return <p>Couldn't find a portfolio item.</p>;
   }
 
   return (

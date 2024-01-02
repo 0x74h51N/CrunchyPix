@@ -2,6 +2,9 @@ import React from "react";
 import Image from "next/image";
 import { scrollToSection } from "@/utils/scrollToSection";
 import { useScrollContext } from "@/context/ScrollContext";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store";
+import { clickableChange } from "@/store/redux/isClickable";
 
 interface ArrowButtonProps {
   index?: number;
@@ -18,15 +21,33 @@ const ArrowButton = ({
   arrow,
   duration = 0,
 }: ArrowButtonProps) => {
+  const dispatch = useDispatch();
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
+  );
   const { sectionRefs, setCurrentSectionIndex } = useScrollContext();
   const handleButtonClick = () => {
     if (index !== undefined) {
       scrollToSection(index, duration, sectionRefs, setCurrentSectionIndex);
     }
   };
-
+  const handleMouseEnter = () => {
+    if (isClickable == false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
+  };
   return (
-    <button className={`${className} cursor-none`} onClick={handleButtonClick}>
+    <button
+      className={`${className} cursor-none`}
+      onClick={handleButtonClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {text}
       {arrow && (
         <Image
