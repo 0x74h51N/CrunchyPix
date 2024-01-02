@@ -34,7 +34,9 @@ export default function RootLayout({
               <CustomCursor />
               <SpeedInsights />
               <Analytics />
-              <Navbar />
+              <div className="flex justify-center min-w-[100svw]">
+                <Navbar />
+              </div>
               <main>{children}</main>
               <Footer />
             </AppI18nProvider>
