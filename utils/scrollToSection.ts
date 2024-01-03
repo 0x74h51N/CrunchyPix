@@ -1,8 +1,10 @@
+import { Dispatch } from "react";
+
 export const scrollToSection = (
   index: number,
   duration: number = 0,
   sectionRefs: React.RefObject<HTMLDivElement>[],
-  setCurrentSectionIndex: React.Dispatch<React.SetStateAction<number>>
+  dispatchSetIndex: Dispatch<number>
 ) => {
   const ref = sectionRefs[index];
   if (duration === 0 || !duration) {
@@ -12,7 +14,7 @@ export const scrollToSection = (
         top,
         behavior: "smooth",
       });
-      setCurrentSectionIndex(index);
+      dispatchSetIndex(index);
     }
   } else {
     if (ref.current) {
@@ -39,7 +41,7 @@ export const scrollToSection = (
         if (timeElapsed < duration) {
           requestAnimationFrame(scroll);
         } else {
-          setCurrentSectionIndex(index);
+          dispatchSetIndex(index);
         }
       };
 
@@ -47,6 +49,35 @@ export const scrollToSection = (
     }
   }
 };
+
+export const scrollToTop = (duration: number = 0) => {
+  if (duration === 0 || !duration) {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  } else {
+    const start = window.scrollY;
+    const startTime =
+      "now" in window.performance ? performance.now() : new Date().getTime();
+
+    const scroll = () => {
+      const currentTime =
+        "now" in window.performance ? performance.now() : new Date().getTime();
+      const timeElapsed = currentTime - startTime;
+      const scrollY = easeInOutCubic(timeElapsed, start, -start, duration);
+
+      window.scrollTo(0, scrollY);
+
+      if (timeElapsed < duration) {
+        requestAnimationFrame(scroll);
+      }
+    };
+
+    scroll();
+  }
+};
+
 const easeInOutCubic = (t: number, b: number, c: number, d: number) => {
   t /= d / 2;
   if (t < 1) return (c / 2) * t * t * t + b;
