@@ -72,7 +72,7 @@ const ServicesSect = () => {
                   zeroColor: "#737373",
                 })}
           </div>
-          <div className="text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] mb-6">
+          <div className="text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] mb-2">
             {isMobile || isTablet
               ? t("servicesSect.title")
               : generateSpans({
@@ -83,7 +83,7 @@ const ServicesSect = () => {
         </motion.h1>
         <motion.div
           variants={polygonIn("down", "spring", 1, 2)}
-          className="flex flex-wrap justify-center gap-8 w-auto"
+          className="flex flex-wrap justify-center gap-8 w-auto bg-cool-gray-800 p-16 rounded-xl"
           onHoverStart={hoverStart}
           onHoverEnd={hoverEnd}
         >
@@ -100,7 +100,7 @@ const ServicesSect = () => {
               className="2xl:w-[1030px] lg:w-[900px] md:w-[750px] w-[340px] h-auto cursor-none"
             >
               {servicesSectCards.map((section, index) => (
-                <SwiperSlide key={index} className="w-[330px] h-auto">
+                <SwiperSlide key={index} className="w-[330px] h-auto ">
                   <CardMaker
                     key={index}
                     cardSections={section}

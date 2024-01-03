@@ -41,7 +41,7 @@ export const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
         {
           "--angle": "0deg",
           "--border-color": "linear-gradient(var(--angle), #111111, #ffffff)",
-          "--bg-color": "radial-gradient(#151515, #151515)",
+          "--bg-color": "radial-gradient(#181818, #181818)",
         } as CSSProperties
       }
       className={`${className} flex h-auto w-auto items-center justify-center rounded-lg border-[1px] border-transparent [background:padding-box_var(--bg-color),border-box_var(--border-color)]`}

@@ -6,7 +6,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, US } from "country-flag-icons/react/3x2";
 import Image from "next/image";
-import { pages } from "@/constants";
 import { languageMenuChange } from "@/store/redux/isLanguageMenu";
 import { clickableChange } from "@/store/redux/isClickable";
 
@@ -18,12 +17,6 @@ const LanguageMenu = () => {
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
   const [currentLanguage, setCurrentLanguage] = useState("");
-  const specialPages = pages
-    .filter((link) => link.href !== "/")
-    .map((link) => link.href);
-  const selectedLink = useSelector(
-    (state: RootState) => state.page.currentPage
-  );
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
@@ -148,7 +141,7 @@ const LanguageMenu = () => {
             ? "open2 border-2 border-nav-col border-opacity-40"
             : "close"
         } ${
-          smallNav || specialPages.includes(selectedLink)
+          smallNav
             ? `mt-12 flex justify-center ${isMobile && "mt-8"}`
             : isMobile || isTablet
             ? "mt-8 mr-2 flex justify-center"

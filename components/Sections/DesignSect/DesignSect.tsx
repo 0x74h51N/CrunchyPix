@@ -50,7 +50,7 @@ const DesignSect = () => {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: "some" }}
+      viewport={{ once: true, amount: 0.75 }}
       className="flex 2xl:flex-row flex-col-reverse xl:justify-between justify-center items-center w-full h-full 2xl:pl-20 pl-0 2xl:gap-[100px] xl:gap-24 gap-4 "
     >
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
@@ -92,14 +92,15 @@ const DesignSect = () => {
                 colorType: "vibrantColors",
               })}
         </h1>
-        <motion.div
-          variants={textVariant(1)}
+        <div
           className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full ${
             rotateStart ? "w-full" : "xl:w-4/5"
           } transition-all ease-in-out duration-500 xl:leading-[30px] xl:text-right text-left`}
         >
-          <motion.p>{t("designSect.description")}</motion.p>
-        </motion.div>
+          <motion.p variants={textVariant(1)}>
+            {t("designSect.description")}
+          </motion.p>
+        </div>
       </motion.div>
     </motion.div>
   );
