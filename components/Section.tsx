@@ -50,7 +50,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             ref={sectionRefs[index]}
             className={`
             ${section.className} 
-            w-full min-w-[350px] flex items-center justify-center overflow-hidden bg-cool-gray-800 
+            w-full min-w-[350px] flex items-center justify-center overflow-hidden repatingLines 
             ${
               section.parallax && scrollY.get() < 1000
                 ? "sticky top-0 z-0 "

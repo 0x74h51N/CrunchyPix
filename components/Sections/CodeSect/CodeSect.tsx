@@ -99,12 +99,13 @@ const CodeSect = () => {
                 colorType: "vibrantColors",
               })}
         </h1>
-        <motion.div
-          variants={textVariant(1)}
+        <div
           className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] xl:w-4/5 self-start xl:leading-[30px] text-left`}
         >
-          <motion.p>{t("codeSect.description")}</motion.p>
-        </motion.div>
+          <motion.p variants={textVariant(1)}>
+            {t("codeSect.description")}
+          </motion.p>
+        </div>
       </motion.div>
       <div>
         <MonitorFrame>

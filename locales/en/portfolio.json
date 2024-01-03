@@ -1,0 +1,25 @@
+{
+  "page": { "title": "Portfolio", "details": "Project Details" },
+  "items": [
+    {
+      "title": "CrunchyPix",
+      "projectType": "Webpage Desing",
+      "description": "Initiated for my website and to showcase front-end skills. Developed dynamic components and styles. Features include international language options and smooth scroll transitions. Visit GitHub for details."
+    },
+    {
+      "title": "CC Order",
+      "projectType": "Landing Page",
+      "description": "Created for a credit card order landing page. Designed in Figma, implemented with React table. Access controlled by API key from the backoffice application. GitHub link confidential, but can share developed components and page code upon request."
+    },
+    {
+      "title": "Minting UI",
+      "projectType": "UI/UX",
+      "description": "Developed for a UI using minting and burning functions for NNN and NVM tokens on Binance Smart Chain (BSC). Eth-2 scaffold used, contracts obtained from BSC, deployed, and ABI created. Integrated with BSC using Wagmi, enabling minting and burning functions. Other functions available on the debugging page."
+    },
+    {
+      "title": "KYK Eletric Inc.",
+      "projectType": "Webpage Desing",
+      "description": "My first website developed using WordPress and limited code. Developed with many custom design elements."
+    }
+  ]
+}

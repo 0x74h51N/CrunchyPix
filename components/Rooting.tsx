@@ -19,7 +19,7 @@ const Rooting = () => {
     (state: RootState) => state.isClickable.clickable
   );
   const dispatch = useDispatch();
-  const { t } = useTranslation(["index"]);
+  const { t } = useTranslation(["index", "portfolio"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -48,7 +48,7 @@ const Rooting = () => {
       } else setChildPage("");
       setMainPage(currentPage);
       if (urlParts[1] == "portfolio" && urlParts[2]) {
-        setPageName("Project Details");
+        setPageName(t("portfolio:page.details"));
       }
     };
 
@@ -79,14 +79,28 @@ const Rooting = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-[300px] md:p-10 p-2 mt-32">
+    <div className="flex flex-col justify-center items-center w-full lg:h-[200px] md:h-[200px] h-[100px] md:p-10 p-2 md:mt-40 mt-36">
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
         style={{ textTransform: "capitalize" }}
       >
-        {childPage ? childPage : mainPage}
+        {childPage ? (
+          childPage === "crunchypix" ? (
+            <span>
+              {childPage.slice(0, -3)}
+              <span className="text-log-col">
+                {childPage.charAt(childPage.length - 3).toUpperCase()}
+                {childPage.slice(-2)}
+              </span>
+            </span>
+          ) : (
+            childPage
+          )
+        ) : (
+          t(`index:links.${mainPage}`)
+        )}
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center ">
         <div className="flex flex-row items-center">
@@ -108,7 +122,7 @@ const Rooting = () => {
             } font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none`}
             href={`/${mainPage}`}
           >
-            {t(`links.${mainPage}`)}
+            {t(`index:links.${mainPage}`)}
           </Link>
         </div>
         {childPage && (

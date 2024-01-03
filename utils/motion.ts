@@ -118,6 +118,8 @@ export const polygonIn = (
       ? "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)"
       : direction === "right"
       ? "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)"
+      : direction === "screen"
+      ? "polygon(50% 0%, 50% 0%, 50% 100%, 50% 100%)"
       : "";
   return {
     hidden: { clipPath: clipPath0 },

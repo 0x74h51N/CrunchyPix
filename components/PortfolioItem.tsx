@@ -24,14 +24,14 @@ const PortfolioItem = ({
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const originalWidth = 630;
   const originalHeight = 500;
-  const mobileWidth = 300;
+  const mobileWidth = 320;
   const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
   const id = _id.toLowerCase().replace(/\s+/g, "");
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
   const dispatch = useDispatch();
-  const { t } = useTranslation(["home"]);
+  const { t } = useTranslation(["portfolio"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -102,7 +102,7 @@ const PortfolioItem = ({
         <Link
           href={`/portfolio/${id}`}
           passHref
-          className="w-auto md:py-9 px-5 p-6 md:h-32 h-24 text-stone-200 cursor-none"
+          className="w-auto md:py-9 px-5 p-6 md:h-32 h-20 text-stone-200 cursor-none"
           onClick={() => router.push(`/portfolio/${id}`)}
         >
           <h2 className="md:text-lg text-sm text-log-col">

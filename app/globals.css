@@ -24,14 +24,38 @@
 
 body {
   font-family: "Inter", sans-serif;
-  @apply bg-cool-gray-800;
+  @apply repatingLines;
   cursor: none !important;
+}
+:root {
+  --line-height: 100px;
+}
+
+.repatingLines {
+  background-image: repeating-linear-gradient(
+    to right,
+    #292929,
+    #292929 1px,
+    #1b1b1b 1px,
+    #1b1b1b var(--line-height)
+  );
+}
+
+@media screen and (max-width: 650px) {
+  :root {
+    --line-height: 80px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  :root {
+    --line-height: 60px;
+  }
 }
 
 .flexCenter {
   @apply flex justify-center items-center;
 }
-
 .flexBetween {
   @apply flex justify-between items-center;
 }

@@ -107,7 +107,7 @@ export const Navbar = () => {
   };
   return (
     <nav
-      className={`fixed flex flex-row w-auto xl:min-w-[85svw] md:min-w-[90svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl px-${
+      className={`fixed flex flex-row w-auto xl:min-w-[80svw] md:min-w-[90svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl  px-${
         isMobile || isTablet ? 5 : 10
       } ${
         isMenuOpen
@@ -115,7 +115,7 @@ export const Navbar = () => {
               smallNav && "h-[320px] bg-opacity-100 py-2   "
             }`
           : smallNav
-          ? "bg-opacity-100 py-3 h-[80px]"
+          ? "bg-opacity-100 py-3 h-[80px] shadow-md shadow-black"
           : "py-5 bg-opacity-0 h-[150px] "
       }`}
     >

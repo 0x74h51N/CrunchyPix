@@ -64,7 +64,7 @@ const CarouselSlider = memo(({ slides }: CarouselSliderProps) => {
     <motion.div
       onHoverStart={hoverStart}
       onHoverEnd={hoverEnd}
-      className="h-auto"
+      className="h-auto overflow-visible z-50"
     >
       <Swiper
         effect="coverflow"
@@ -86,12 +86,12 @@ const CarouselSlider = memo(({ slides }: CarouselSliderProps) => {
           pauseOnMouseEnter: true,
         }}
         speed={1000}
-        className="h-auto min-h-[500px] cursor-none"
+        className="h-auto min-h-[500px] cursor-none overflow-visible"
       >
         {slides.map((slide: slide, index: number) => (
           <SwiperSlide key={index + 1}>
             <div
-              className={`relative ${
+              className={`relative overflow-visible ${
                 isTablet && !isMobile ? "h-[340px]" : "h-[485px]"
               } w-auto shadow-2xl shadow-black`}
               onClick={() => index === activeIndex && _selectedSlide(slide)}

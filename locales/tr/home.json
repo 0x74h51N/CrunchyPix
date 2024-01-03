@@ -125,7 +125,7 @@
       "description": "Bu proje, kendi web sitesimi oluşturmak ve front-end geliştirme becerilerimi sergilemek amacıyla başladığım bir projedir. Dinamik olarak değişen ve farklı koşullarda kullanılabilen özel bileşenler ve stiller geliştirdim. Projede, uluslararası dil seçeneği, ana sayfadaki farklı ekran yüksekliklerine uyum sağlayabilen smooth scroll geçişi gibi özellikler bulunmaktadır. Daha fazlasını görmek için GitHub depomu ziyaret edebilirsiniz."
     },
     {
-      "title": "CC Order Landing Page",
+      "title": "CC Order Karşılama Sayfası",
       "description": "Bu proje, kendi firmanın kredi kartı sipariş öncesi sayfasını oluşturmak amacıyla başlatılmıştır. Kendi yaptığım Figma tasarımından yola çıkarak, React table ile custom tableCreator componenti geliştirildi. Ayrıca, bu sayfaya erişim için müşteri kontrol panelinin bulunduğu backoffice uygulamasından gelen API key backend tarafında çözümlenerek sayfada kontrol edildi. Projenin gizliliği nedeniyle GitHub bağlantısını paylaşamıyorum, ancak isteğe bağlı olarak kendi geliştirdiğim bileşenleri ve sayfa kodlarını paylaşabilirim."
     },
     {
