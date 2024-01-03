@@ -11,6 +11,7 @@ import PageTracker from "@/components/PageTracker";
 import { Suspense } from "react";
 import LoadingComponent from "@/components/Loading";
 import CustomCursor from "@/components/CustomCursor";
+import { ArrowToTop } from "@/components/Buttons/ArrowButton";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,11 +35,10 @@ export default function RootLayout({
               <CustomCursor />
               <SpeedInsights />
               <Analytics />
-              <div className="flex justify-center min-w-[100svw]">
-                <Navbar />
-              </div>
+              <Navbar />
               <main>{children}</main>
               <Footer />
+              <ArrowToTop />
             </AppI18nProvider>
           </AppReduxProvider>
         </Suspense>

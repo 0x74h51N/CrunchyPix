@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch } from "react";
 
 export type Links = {
   href: string;
@@ -37,10 +37,10 @@ export type HandleScroll = {
   currentSectionIndex: number;
   sectionsData: SectionData[];
   sectionRefs: React.RefObject<HTMLDivElement>[];
-  setCurrentSectionIndex: Dispatch<SetStateAction<number>>;
   smoothScroll?: boolean;
   scrollY?: number;
   duration?: number;
+  dispatchSetIndex: Dispatch<number>;
 };
 
 export type slide = {

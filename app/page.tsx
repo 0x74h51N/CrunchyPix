@@ -26,7 +26,7 @@ const Home = () => {
     },
     {
       name: "What I do?",
-      className: " min-h-[100svh] w-full z-100",
+      className: "h-auto min-h-[100svh] w-full z-100",
       smoothScroll: true,
       children: <ServicesSect />,
     },

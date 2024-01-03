@@ -109,7 +109,7 @@ const CodeSect = () => {
       </motion.div>
       <div>
         <MonitorFrame>
-          <div className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track cursor-none">
+          <div className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track cursor-none bg-cool-gray-800">
             <SyntaxHighlighter
               language="typescript"
               style={vscDarkPlus}

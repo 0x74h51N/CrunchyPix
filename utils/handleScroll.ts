@@ -6,9 +6,9 @@ export const handleScroll = ({
   currentSectionIndex,
   sectionsData,
   sectionRefs,
-  setCurrentSectionIndex,
   smoothScroll = true,
   duration = 0,
+  dispatchSetIndex,
 }: HandleScroll) => {
   if (!event) {
     return;
@@ -38,10 +38,10 @@ export const handleScroll = ({
           currentSectionIndex + 1,
           duration,
           sectionRefs,
-          setCurrentSectionIndex
+          dispatchSetIndex
         );
       } else {
-        setCurrentSectionIndex(currentSectionIndex + 1);
+        dispatchSetIndex(currentSectionIndex + 1);
       }
     }
   }
@@ -63,10 +63,10 @@ export const handleScroll = ({
           currentSectionIndex - 1,
           duration,
           sectionRefs,
-          setCurrentSectionIndex
+          dispatchSetIndex
         );
       } else {
-        setCurrentSectionIndex(currentSectionIndex - 1);
+        dispatchSetIndex(currentSectionIndex - 1);
       }
     }
   }

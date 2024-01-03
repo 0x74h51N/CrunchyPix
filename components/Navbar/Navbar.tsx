@@ -106,67 +106,71 @@ export const Navbar = () => {
     }
   };
   return (
-    <nav
-      className={`fixed flex flex-row w-auto xl:min-w-[80svw] md:min-w-[90svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl  px-${
-        isMobile || isTablet ? 5 : 10
-      } ${
-        isMenuOpen
-          ? `navbar pointer-events-auto h-[360px] py-5 bg-opacity-0 ${
-              smallNav && "h-[320px] bg-opacity-100 py-2   "
-            }`
-          : smallNav
-          ? "bg-opacity-100 py-3 h-[80px] shadow-md shadow-black"
-          : "py-5 bg-opacity-0 h-[150px] "
-      }`}
-    >
-      <CrunchyLogo />
-      <div
-        className={`flex flex-center items-start ml-auto pointer-events-auto transition-all duration-1000 ease-in-out ${
-          smallNav ? "mt-3" : "mt-8"
+    <div className="flex justify-center min-w-[100svw]">
+      <nav
+        className={`fixed flex flex-row w-auto xl:min-w-[80svw] md:min-w-[90svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl  px-${
+          isMobile || isTablet ? 5 : 10
+        } ${
+          isMenuOpen
+            ? `navbar pointer-events-auto h-[360px] py-5 bg-opacity-0 ${
+                smallNav && "h-[320px] bg-opacity-100 py-2   "
+              }`
+            : smallNav
+            ? "bg-opacity-100 py-3 h-[80px] shadow-md shadow-black"
+            : "py-5 bg-opacity-0 h-[150px] "
         }`}
       >
-        {isMobile || isTablet ? (
-          <MobileMenu />
-        ) : (
-          <div>
-            <ul
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all  duration-1000 ease-in-out ${
-                smallNav ? "text-md font-medium gap-8" : "text-lg font-semibold"
-              }  text-stone-200 antialiased gap-12 `}
-            >
-              {Links.map((link) => (
-                <Link
-                  href={link.href}
-                  key={link.key}
-                  className={`hover:text-log-col hover:scale-110 cursor-none  ${
-                    selectedLink === link.href && link.href !== "/"
-                      ? "text-log-col"
-                      : ""
-                  } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap`}
-                >
-                  {t(link.text)}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
-                      selectedLink === link.href && link.href !== "/"
-                        ? "w-full"
-                        : "w-0 transition-all group-hover:w-full"
-                    }`}
-                  ></span>
-                </Link>
-              ))}
-              <div
-                className="h-auto w-auto flex justify-center"
+        <CrunchyLogo />
+        <div
+          className={`flex flex-center items-start ml-auto pointer-events-auto transition-all duration-1000 ease-in-out ${
+            smallNav ? "mt-3" : "mt-8"
+          }`}
+        >
+          {isMobile || isTablet ? (
+            <MobileMenu />
+          ) : (
+            <div>
+              <ul
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
+                className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all  duration-1000 ease-in-out ${
+                  smallNav
+                    ? "text-md font-medium gap-8"
+                    : "text-lg font-semibold"
+                }  text-stone-200 antialiased gap-12 `}
               >
-                <LanguageMenu />
-              </div>
-            </ul>
-          </div>
-        )}
-      </div>
-    </nav>
+                {Links.map((link) => (
+                  <Link
+                    href={link.href}
+                    key={link.key}
+                    className={`hover:text-log-col hover:scale-110 cursor-none  ${
+                      selectedLink === link.href && link.href !== "/"
+                        ? "text-log-col"
+                        : ""
+                    } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap`}
+                  >
+                    {t(link.text)}
+                    <span
+                      className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
+                        selectedLink === link.href && link.href !== "/"
+                          ? "w-full"
+                          : "w-0 transition-all group-hover:w-full"
+                      }`}
+                    ></span>
+                  </Link>
+                ))}
+                <div
+                  className="h-auto w-auto flex justify-center"
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <LanguageMenu />
+                </div>
+              </ul>
+            </div>
+          )}
+        </div>
+      </nav>
+    </div>
   );
 };

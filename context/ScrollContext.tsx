@@ -3,7 +3,6 @@ import { createContext, useContext, ReactNode } from "react";
 
 interface ScrollContextProps {
   sectionRefs: React.RefObject<HTMLDivElement>[];
-  setCurrentSectionIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const ScrollContext = createContext<ScrollContextProps | undefined>(undefined);
