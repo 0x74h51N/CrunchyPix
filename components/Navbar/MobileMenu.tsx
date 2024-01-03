@@ -22,9 +22,6 @@ const MobileMenu = () => {
   const toggleMenu = () => {
     dispatch(mobileMenuChange(!isMenuOpen));
   };
-  const specialPages = pages
-    .filter((page) => page.href !== "/")
-    .map((page) => page.href);
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage
   );
@@ -67,7 +64,7 @@ const MobileMenu = () => {
       />
       <div
         className={`mobile-menu w-full backdrop-blur ${
-          smallNav || specialPages.includes(selectedLink) ? "mt-20 " : "mt-24 "
+          smallNav ? "mt-20 " : "mt-24 "
         }`}
       >
         {isMenuOpen && (

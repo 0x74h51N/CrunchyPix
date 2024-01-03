@@ -120,7 +120,11 @@ export const Navbar = () => {
       }`}
     >
       <CrunchyLogo />
-      <div className="flex flex-center items-center ml-auto pointer-events-auto">
+      <div
+        className={`flex flex-center items-start ml-auto pointer-events-auto transition-all duration-1000 ease-in-out ${
+          smallNav ? "mt-3" : "mt-8"
+        }`}
+      >
         {isMobile || isTablet ? (
           <MobileMenu />
         ) : (
