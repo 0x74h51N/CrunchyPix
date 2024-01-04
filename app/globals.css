@@ -34,10 +34,10 @@ body {
 .repatingLines {
   background-image: repeating-linear-gradient(
     to right,
-    #292929,
-    #292929 1px,
-    #1b1b1b 1px,
-    #1b1b1b var(--line-height)
+    #262626,
+    #262626 1px,
+    #1c1c1c 1px,
+    #1c1c1c var(--line-height)
   );
 }
 

@@ -5,7 +5,6 @@ import { staggerContainer } from "@/utils/motion";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollProvider } from "@/context/ScrollContext";
 import Image from "next/image";
-import { ArrowToTop } from "./Buttons/ArrowButton";
 import { handleScroll } from "@/utils/handleScroll";
 import { useDispatch, useSelector } from "react-redux";
 import { setIndex } from "@/store/redux/currentSectionIndex";
