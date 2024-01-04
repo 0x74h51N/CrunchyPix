@@ -34,10 +34,10 @@ body {
 .repatingLines {
   background-image: repeating-linear-gradient(
     to right,
-    #292929,
-    #292929 1px,
-    #1b1b1b 1px,
-    #1b1b1b var(--line-height)
+    #262626,
+    #262626 1px,
+    #1c1c1c 1px,
+    #1c1c1c var(--line-height)
   );
 }
 
@@ -100,7 +100,7 @@ body {
 }
 
 .footer_copyright {
-  @apply max-sm:flex-col-reverse w-full text-sm font-normal py-5 max-sm:gap-3;
+  @apply max-sm:flex-col-reverse w-full text-sm font-normal py-3 max-sm:gap-3;
 }
 
 .footer_column {
@@ -297,7 +297,7 @@ body {
 }
 
 .contactBox {
-  @apply w-full rounded-md border border-transparent bg-nav-col py-3 px-6 text-base font-medium text-gray-100 outline-none;
+  @apply w-full cursor-none rounded-md border border-transparent bg-nav-col py-3 px-6 text-base font-medium text-cool-gray-50 outline-none;
 }
 
 .grayscale {

@@ -14,7 +14,6 @@ import navbarChangeReducer from "./redux/navbarChange";
 import mobileRotateReducer from "./redux/mobileRotate";
 import isSliderReducer from "./redux/isSlider";
 import clickableReducer from "./redux/isClickable";
-import upArrowReducer from "./redux/upArrowVisible";
 import sectionIndexReducer from "./redux/currentSectionIndex";
 
 const rootReducer = combineReducers({
@@ -32,7 +31,6 @@ const rootReducer = combineReducers({
   rotateChange: mobileRotateReducer,
   isSlider: isSliderReducer,
   isClickable: clickableReducer,
-  isArrowVisible: upArrowReducer,
   sectionIndex: sectionIndexReducer,
 });
 

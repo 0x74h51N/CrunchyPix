@@ -11,7 +11,7 @@ import PageTracker from "@/components/PageTracker";
 import { Suspense } from "react";
 import LoadingComponent from "@/components/Loading";
 import CustomCursor from "@/components/CustomCursor";
-import { ArrowToTop } from "@/components/Buttons/ArrowButton";
+import { ArrowToTop } from "@/components/Buttons/ArrowToTop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <body>
+      <body className="lg:overflow-x-hidden">
         <Suspense fallback={<LoadingComponent />}>
           <AppReduxProvider>
             <AppI18nProvider>
