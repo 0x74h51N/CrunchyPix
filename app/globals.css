@@ -100,7 +100,7 @@ body {
 }
 
 .footer_copyright {
-  @apply max-sm:flex-col-reverse w-full text-sm font-normal py-5 max-sm:gap-3;
+  @apply max-sm:flex-col-reverse w-full text-sm font-normal py-3 max-sm:gap-3;
 }
 
 .footer_column {
@@ -297,7 +297,7 @@ body {
 }
 
 .contactBox {
-  @apply w-full rounded-md border border-transparent bg-nav-col py-3 px-6 text-base font-medium text-gray-100 outline-none;
+  @apply w-full cursor-none rounded-md border border-transparent bg-nav-col py-3 px-6 text-base font-medium text-cool-gray-50 outline-none;
 }
 
 .grayscale {

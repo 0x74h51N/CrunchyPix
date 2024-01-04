@@ -23,15 +23,15 @@ const Contact = () => {
 
   return (
     <>
-      <h1 className="text-start text-stone-200 text-2xl font-medium mb-3">
+      <h1 className="text-start text-stone-300 text-2xl font-medium mb-2">
         {t("contact.title")}
       </h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-3">
+      <form onSubmit={handleSubmit(onSubmit)} className="w-full">
+        <div className="mb-1">
           <input
             type="text"
             placeholder={t("contact.placeName")}
-            className={`contactBox ${
+            className={`contactBox max-h-10 ${
               errors.name
                 ? "focus:border-red-700"
                 : "focus:border-log-col focus:shadow-inner"
@@ -39,11 +39,11 @@ const Contact = () => {
             {...register("name", { required: true })}
           />
         </div>
-        <div className="mb-3">
+        <div className="mb-1">
           <input
             type="email"
             placeholder="example@domain.com"
-            className={`contactBox ${
+            className={`contactBox max-h-10 ${
               errors.name
                 ? "focus:border-red-700"
                 : "focus:border-log-col focus:shadow-inner"
@@ -51,20 +51,19 @@ const Contact = () => {
             {...register("email", { required: true })}
           />{" "}
         </div>
-        <div className="mb-3">
+        <div className="mb-1 flex flex-row gap-1">
           <textarea
             rows={4}
             placeholder={t("contact.placeMessage")}
-            className={`contactBox ${
+            className={`contactBox h-20 max-h-40 ${
               errors.name ? "focus:border-red-700" : "focus:border-log-col"
             } focus:shadow-md`}
             {...register("message", { required: true })}
           ></textarea>
+          <button className="hover:shadow-form rounded-md bg-neutral-500 bg-opacity-70 py-2 px-4 text-base font-semibold text-white outline-none hover:bg-opacity-100 active:bg-log-col cursor-none">
+            {t("contact.button")}
+          </button>
         </div>
-
-        <button className="hover:shadow-form rounded-md bg-neutral-500 bg-opacity-70 py-3 px-8 text-base font-semibold text-white outline-none hover:bg-opacity-100 active:bg-log-col">
-          {t("contact.button")}
-        </button>
       </form>
     </>
   );
