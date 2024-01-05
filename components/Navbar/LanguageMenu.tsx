@@ -30,6 +30,8 @@ const LanguageMenu = () => {
     setIsRotated(!isRotated);
     dispatch(languageMenuChange(!isDropdownOpen));
   };
+  const handleToggleDropdownOpen = () => {};
+  const handleToggleDropdownClose = () => {};
 
   const handleChange = (selectedLanguage: string) => {
     dispatch(langChange(selectedLanguage));
@@ -84,26 +86,31 @@ const LanguageMenu = () => {
     };
   }, [langMenuRef, isDropdownOpen]);
   const handleMouseEnter = () => {
+    setIsRotated(true);
+    dispatch(languageMenuChange(true));
     if (isClickable == false) {
       dispatch(clickableChange(true));
     }
   };
   const handleMouseLeave = () => {
+    setIsRotated(false);
+    dispatch(languageMenuChange(false));
     if (isClickable == true) {
       dispatch(clickableChange(false));
     }
   };
   return (
-    <div ref={langMenuRef} className="flex flex-center items-center">
+    <div
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      ref={langMenuRef}
+      className="flex flex-center items-center"
+    >
       <button
         onClick={handleToggleDropdown}
-        className="flex flex-row gap-1 items-center bg-transparent  cursor-none"
+        className="flex flex-row gap-1 items-center bg-transparent cursor-none"
       >
-        <div
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="w-6"
-        >
+        <div className="w-6">
           {currentLanguage === "en" ? (
             <span>
               <GB title="United Kingdom" />
@@ -136,16 +143,16 @@ const LanguageMenu = () => {
         </div>
       </button>
       <div
-        className={`relative mobile-menu text-neutral-200 w-20 right-10 bg-nav-col  ${
+        className={`relative mobile-menu text-neutral-200 w-20 right-6 bg-cool-gray-800 rounded-lg shadow-sm shadow-black  ${
           isDropdownOpen
-            ? "open2 border-2 border-nav-col border-opacity-40"
+            ? "open2 border-2 border-cool-gray-700 border-opacity-40"
             : "close"
         } ${
           smallNav
-            ? `mt-12 flex justify-center ${isMobile && "mt-8"}`
+            ? `mt-12 flex justify-center ${isMobile && "mt-6"}`
             : isMobile || isTablet
             ? "mt-8 mr-2 flex justify-center"
-            : "mt-24"
+            : "mt-20"
         } 
         `}
       >
