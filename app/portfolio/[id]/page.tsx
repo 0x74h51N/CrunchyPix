@@ -8,10 +8,11 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+import ProjectInfo from "./components/ProjectInfo";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const dispatch = useDispatch();
-  const { t } = useTranslation(["home"]);
+  const { t } = useTranslation(["portfolio"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -48,9 +49,15 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
       whileInView="show"
       viewport={{ once: true, amount: "some" }}
       variants={polygonIn("screen", "easeInOut", 0.5, 1)}
-      className="flex flex-col items-center h-auto w-auto min-h-[100svh] p-10 bg-cool-gray-900 lg:mx-28 md:mx-12 mx-0 rounded-xl"
+      className="flex flex-col items-center h-auto w-auto min-h-[100svh] p-20  lg:mx-28 md:mx-12 mx-0 rounded-xl"
     >
       <h1>{t(selectedItem.title)}</h1>
+      <div className="flex flex-row w-full h-auto items-center justify-between">
+        <div className="w-2/3"></div>
+        {selectedItem.ProjectInfo && (
+          <ProjectInfo ProjectInfo={selectedItem.ProjectInfo} />
+        )}
+      </div>
     </motion.div>
   );
 };

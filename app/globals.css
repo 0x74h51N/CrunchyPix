@@ -28,16 +28,16 @@ body {
   cursor: none !important;
 }
 :root {
-  --line-height: 100px;
+  --line-height: 130px;
 }
 
 .repatingLines {
   background-image: repeating-linear-gradient(
     to right,
     #262626,
-    #262626 1px,
-    #1c1c1c 1px,
-    #1c1c1c var(--line-height)
+    #262626 1.5px,
+    #131313 1.5px,
+    #131313 var(--line-height)
   );
 }
 
@@ -83,15 +83,28 @@ body {
 .h1 {
   @apply text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] antialiased;
 }
+
+.h1.cool {
+  @apply text-cool-gray-700;
+}
 .h2 {
   @apply text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] antialiased;
+}
+.h2.cool {
+  @apply text-cool-gray-800;
 }
 .h3 {
   @apply text-cool-gray-200 font-medium lg:text-[23px] sm:text-[20px] xs:text-[17px] text-[15px] lg:leading-[40px] antialiased;
 }
+.h3.cool {
+  @apply text-cool-gray-700;
+}
 
 .p {
   @apply text-cool-gray-100 lg:text-[17px] sm:text-[14px] text-[13px] md:leading-[30px] antialiased;
+}
+.p.cool {
+  @apply text-cool-gray-600;
 }
 
 /* Footer */
