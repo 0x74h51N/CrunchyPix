@@ -57,7 +57,7 @@ const ServicesSect = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.6 }}
-        className="flex flex-col items-start h-full w-auto p-16 z-10 mt-6"
+        className="flex flex-col items-start h-full w-auto md:p-16 xs:p-6 p-2 z-10 mt-14"
       >
         <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
           <div
@@ -83,28 +83,28 @@ const ServicesSect = () => {
         </motion.h1>
         <motion.div
           variants={polygonIn("down", "spring", 1, 2)}
-          className="flex flex-wrap justify-center gap-8 w-auto bg-cool-gray-800 p-16 rounded-xl"
+          className="flex flex-wrap justify-center gap-8 w-auto bg-cool-gray-800 lg:p-16 md:p-10 xs:p-6 px-2 py-6 rounded-xl"
           onHoverStart={hoverStart}
           onHoverEnd={hoverEnd}
         >
           {isTranslationsLoadedRedux && (
             <Swiper
               modules={[Pagination]}
-              slidesPerView={isMobile ? 1 : isTablet ? 2.5 : 3}
+              slidesPerView={isMobile ? 1.2 : isTablet ? 2.0 : 3}
               spaceBetween={30}
               centeredSlides
               initialSlide={1}
               loop
               pagination={pagination}
               onInit={() => setInit(true)}
-              className="2xl:w-[1030px] lg:w-[900px] md:w-[750px] w-[340px] h-auto cursor-none"
+              className="2xl:w-[1030px] lg:w-[900px] md:w-[680px] w-[340px] h-auto cursor-none"
             >
               {servicesSectCards.map((section, index) => (
-                <SwiperSlide key={index} className="w-[330px] h-auto ">
+                <SwiperSlide key={index} className="w-[300px] h-auto ">
                   <CardMaker
                     key={index}
                     cardSections={section}
-                    cardWidth={330}
+                    cardWidth={320}
                     cardHeight={520}
                     className="cursor-none"
                     translatePath="home"
@@ -116,7 +116,7 @@ const ServicesSect = () => {
         </motion.div>
       </motion.div>
       <div
-        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-full 2xl:min-h-[100svh] 
+        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
       w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4"
       />
     </div>

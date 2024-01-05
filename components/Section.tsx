@@ -61,11 +61,9 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
               <Image
                 src={section.background}
                 alt={section.background}
-                width={2000}
-                height={2000}
                 quality={100}
-                loading="eager"
-                priority={true}
+                fill
+                priority
                 style={{
                   objectFit: "cover",
                   objectPosition: "center",
@@ -100,15 +98,15 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                 <Image
                   src={section.topImage}
                   alt={section.topImage}
-                  width={2000}
-                  height={2000}
+                  quality={100}
+                  fill
+                  priority
                   style={{
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
                     objectPosition: "center",
                   }}
-                  priority={true}
                   className="galata1 absolute bottom-0 pointer-events-none"
                 />
               </motion.div>

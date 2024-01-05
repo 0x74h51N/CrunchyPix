@@ -128,5 +128,54 @@
     {
       "description": "Gemäß diesen Nutzungsbedingungen können Sie die Dienste von CrunchyPix nutzen und gemeinsam genutzte Inhalte überprüfen. Bei Fragen oder Bedenken können Sie sich gerne mit uns in Verbindung setzen."
     }
+  ],
+  "kvkk": [
+    {
+      "mainTitle": "<span style='font-size: 0.5em;'>Datenschutz-Grundverordnung</span>\nHinweistext"
+    },
+    {
+      "title": "Sehr geehrter Besucher,",
+      "description": "Durch die Nutzung dieser Website werden Sie über die Sammlung, Nutzung und Speicherung personenbezogener Daten informiert, wie unten beschrieben. Bitte lesen Sie diesen Hinweistext sorgfältig durch."
+    },
+    {
+      "title": "1. Datenverantwortlicher",
+      "description": "CrunchyPix [Tahsin Ö.]\nTürkei / Istanbul\ninfo@crunchypix.com\n+905346676794"
+    },
+    {
+      "title": "2. Welche personenbezogenen Daten erfassen wir?",
+      "description": "Wenn Sie unsere Website besuchen, erfassen wir nur personenbezogene Daten über das Kontaktformular, darunter:",
+      "subTitles": [
+        {
+          "description": "Vor- und Nachname"
+        },
+        {
+          "description": "E-Mail-Adresse"
+        }
+      ]
+    },
+    {
+      "title": "3. Zu welchem Zweck werden personenbezogene Daten verwendet?",
+      "description": "Die erfassten personenbezogenen Daten werden nur dazu verwendet, Ihnen Dienstleistungen anzubieten und mit Ihnen zu kommunizieren. Diese Informationen werden verwendet, um auf Sie zu antworten, Informationen bereitzustellen oder Ihre Anfragen zu bearbeiten."
+    },
+    {
+      "title": "4. Speicherung und Vernichtung von personenbezogenen Daten",
+      "description": "Die erfassten personenbezogenen Daten werden innerhalb der von rechtlichen Bestimmungen festgelegten Fristen gespeichert und am Ende dieses Zeitraums vernichtet. Wir ergreifen die notwendigen technischen und organisatorischen Maßnahmen, um Ihre personenbezogenen Daten sicher aufzubewahren."
+    },
+    {
+      "title": "5. Weitergabe an Dritte",
+      "description": "Ihre personenbezogenen Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. Die Informationen, die Sie uns über das Kontaktformular senden, können jedoch an Drittanbieter-Dienstleister zur sicheren Aufbewahrung weitergeleitet worden sein."
+    },
+    {
+      "title": "6. Rechte der betroffenen Personen",
+      "description": "Unter der Datenschutz-Grundverordnung haben betroffene Personen bestimmte Rechte. Dazu gehören der Zugang zu Ihren personenbezogenen Daten, die Berichtigung, Löschung und der Widerspruch gegen die Verarbeitung. Sie können uns kontaktieren, um diese Rechte [hier](/contact) auszuüben."
+    },
+    {
+      "title": "7. Cookies",
+      "description": "Wir können Cookies auf unserer Website verwenden. Cookies sind kleine Textdateien, die in Ihrem Webbrowser gespeichert werden. Sie können Ihre Einstellungen für die Annahme oder Ablehnung von Cookies über Ihre Browsereinstellungen verwalten. Weitere Informationen finden Sie auf unserer [Cookie-Richtlinie](/cookie-policy) Seite."
+    },
+    {
+      "title": "8. Änderungen und Aktualisierungen",
+      "description": "Dieser Hinweistext kann von Zeit zu Zeit aktualisiert werden. Überprüfen Sie bitte regelmäßig unsere Website, um die aktualisierte Version einzusehen.\n&nbsp;\nDieser Hinweistext wurde zuletzt am 5. Januar 2024 aktualisiert.\n&nbsp;\nMit freundlichen Grüßen,\nCrunchyPix"
+    }
   ]
 }

@@ -130,5 +130,54 @@
     {
       "description": "Bu hizmet şartlarına uygun olarak, CrunchyPix hizmetlerini kullanabilir ve paylaşılan içerikleri inceleyebilirsiniz. Herhangi bir sorunuz veya endişeniz varsa, lütfen bizimle iletişime geçmekten çekinmeyin."
     }
+  ],
+  "kvkk": [
+    {
+      "mainTitle": "<span style='font-size: 0.5em;'>Kişisel Verilerin Korunması Kanunu</span>\nAydınlatma Metni"
+    },
+    {
+      "title": "Sayın Ziyaretçimiz,",
+      "description": "Bu web sitesini kullanarak, aşağıda belirtilen kişisel verilerin toplanması, kullanılması ve saklanması konularında bilgi sahibi olacaksınız. Lütfen bu aydınlatma metnini dikkatlice okuyunuz."
+    },
+    {
+      "title": "1. Veri Sorumlusu",
+      "description": "CrunchyPix [Tahsin Ö.]\nTurkiye / İstanbul\ninfo@crunchypix.com\n+905346676794"
+    },
+    {
+      "title": "2. Hangi Kişisel Verileri Topluyoruz?",
+      "description": "Sitemizi ziyaret ettiğinizde, sadece iletişim formu aracılığıyla topladığımız kişisel veriler şunlardır:",
+      "subTitles": [
+        {
+          "description": "İsim Soyisim"
+        },
+        {
+          "description": " E-posta Adresi"
+        }
+      ]
+    },
+    {
+      "title": "3. Kişisel Verilerin Hangi Amaçla Kullanılacak?",
+      "description": "Topladığımız kişisel veriler, sadece size hizmet sunmak ve sizinle iletişim kurmak amacıyla kullanılacaktır. Bu bilgiler, size cevap vermek, bilgi sağlamak veya taleplerinizi işlemek için kullanılacaktır."
+    },
+    {
+      "title": "4. Kişisel Verilerin Saklanması ve İmha Edilmesi",
+      "description": "Toplanan kişisel veriler, yasal düzenlemelerle belirlenen süreler dahilinde saklanacak ve bu sürenin sonunda imha edilecektir. Kişisel verilerinizi güvende tutmak için gerekli teknik ve organizasyonel önlemleri alıyoruz."
+    },
+    {
+      "title": "5. Üçüncü Taraflarla Paylaşma",
+      "description": "Kişisel verileriniz, kesinlikle izniniz olmadan üçüncü taraflarla paylaşılmayacaktır. Ancak, iletişim formu aracılığıyla bize gönderdiğiniz bilgiler, güvenli bir şekilde saklanmak üzere üçüncü taraf hizmet sağlayıcılara iletilmiş olabilir."
+    },
+    {
+      "title": "6. Kişisel Veri Sahiplerinin Hakları",
+      "description": "KVKK kapsamında, kişisel veri sahiplerine belirli haklar tanınmaktadır. Bu haklar arasında kişisel verilerinize erişim, düzeltme, silme ve işleme itiraz etme hakları bulunmaktadır. Bu haklarınızı kullanmak için bizimle [iletişime](/contact) geçebilirsiniz."
+    },
+    {
+      "title": "7. Çerezler (Cookies)",
+      "description": "Web sitemizde çerezleri kullanabiliriz. Çerezler, web tarayıcınızda depolanan küçük metin dosyalarıdır. Çerezleri kabul etmek veya reddetmek konusundaki tercihinizi tarayıcınızın ayarlarından yönetebilirsiniz. Daha fazla bilgi almak için [Çerez Politikası](/cookie-policy) sayfamızı ziyaret edebilirsiniz."
+    },
+    {
+      "title": "8. Değişiklikler ve Güncellemeler",
+      "description": "Bu aydınlatma metni zaman zaman güncellenebilir. Güncellenmiş bir versiyonu incelemek için lütfen web sitemizi düzenli olarak kontrol ediniz.\n&nbsp;\nBu aydınlatma metni, 05.01.2024 tarihinde güncellenmiştir.\n&nbsp;\nSaygılarımla,\nCrunchyPix"
+    }
   ]
 }

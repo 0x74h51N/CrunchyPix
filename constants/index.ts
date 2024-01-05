@@ -34,8 +34,8 @@ export const footerLinks = [
         text: "footerLinks.CookiePolicy",
       },
       {
-        href: "/kvkk",
-        key: "KVKK",
+        href: "/gdpr",
+        key: "GDPR",
         text: "footerLinks.kvkk",
       },
     ],
@@ -64,8 +64,8 @@ export const pages = [
     text: "footerLinks.CookiePolicy",
   },
   {
-    href: "/kvkk",
-    key: "KVKK",
+    href: "/gdpr",
+    key: "GDPR",
     text: "footerLinks.kvkk",
   },
 ];

@@ -132,3 +132,52 @@ export const servicePolicyData: Policy[] = [
     description: "termsOfServices.12.description",
   },
 ];
+export const gdpr: Policy[] = [
+  {
+    mainTitle: "kvkk.0.mainTitle",
+  },
+  {
+    title: "kvkk.1.title",
+    description: "kvkk.1.description",
+  },
+  {
+    title: "kvkk.2.title",
+    description: "kvkk.2.description",
+  },
+  {
+    title: "kvkk.3.title",
+    description: "kvkk.3.description",
+    subTitles: [
+      {
+        description: "kvkk.3.subTitles.0.description",
+      },
+      {
+        description: "kvkk.3.subTitles.1.description",
+      },
+    ],
+  },
+  {
+    title: "kvkk.4.title",
+    description: "kvkk.4.description",
+  },
+  {
+    title: "kvkk.5.title",
+    description: "kvkk.5.description",
+  },
+  {
+    title: "kvkk.6.title",
+    description: "kvkk.6.description",
+  },
+  {
+    title: "kvkk.7.title",
+    description: "kvkk.7.description",
+  },
+  {
+    title: "kvkk.8.title",
+    description: "kvkk.8.description",
+  },
+  {
+    title: "kvkk.9.title",
+    description: "kvkk.9.description",
+  },
+];
