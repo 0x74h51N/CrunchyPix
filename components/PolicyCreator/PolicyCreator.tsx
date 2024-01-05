@@ -5,6 +5,8 @@ import React, { memo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import ReactMarkdown from "react-markdown";
+import breaks from "remark-breaks";
+import rehypeRaw from "rehype-raw";
 
 const CustomLink = ({
   children,
@@ -44,16 +46,31 @@ const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
         <div key={index}>
           {item.mainTitle && (
             <>
-              <h1 className="h1 text-center">{t(item.mainTitle)}</h1>
-              <p className="p mt-2">{t(item.description)}</p>
+              <h1 className="h1 text-center">
+                {" "}
+                <ReactMarkdown
+                  components={{ a: CustomLink }}
+                  remarkPlugins={[breaks]}
+                  rehypePlugins={[rehypeRaw]}
+                >
+                  {t(item.mainTitle)}
+                </ReactMarkdown>
+              </h1>
+              {item.description && (
+                <p className="p mt-2">{t(item.description)}</p>
+              )}
             </>
           )}
           {item.title && (
             <>
               <h2 className="h2">{t(item.title)}</h2>
               <p className="p mt-2 cursor-none">
-                <ReactMarkdown components={{ a: CustomLink }}>
-                  {t(item.description)}
+                <ReactMarkdown
+                  components={{ a: CustomLink }}
+                  remarkPlugins={[breaks]}
+                  rehypePlugins={[rehypeRaw]}
+                >
+                  {item.description && t(item.description)}
                 </ReactMarkdown>
               </p>
             </>
@@ -63,9 +80,11 @@ const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
               {item.subTitles.map((subItem, subIndex) => (
                 <li className="ml-6 mt-3 list-disc text-white" key={subIndex}>
                   <h3 className="h3 underline underline-offset-2">
-                    {t(subItem.title)}
+                    {subItem.title && t(subItem.title)}
                   </h3>
-                  <p className="p ml-2">{t(subItem.description)}</p>
+                  {subItem.description && (
+                    <p className="p ml-2">{t(subItem.description)}</p>
+                  )}
                 </li>
               ))}
             </ul>

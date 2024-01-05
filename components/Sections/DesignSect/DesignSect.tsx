@@ -84,7 +84,7 @@ const DesignSect = () => {
                 zeroColor: "#737373",
               })}
         </h2>
-        <h1 className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[35px] text-[22px] leading-relaxed xl:text-right text-left">
+        <h1 className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[30px] text-[22px] leading-relaxed xl:text-right text-left">
           {isMobile || isTablet
             ? t("designSect.title")
             : generateSpans({

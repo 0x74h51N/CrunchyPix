@@ -128,5 +128,54 @@
     {
       "description": "In accordance with these terms of service, you can use CrunchyPix services and review shared content. If you have any questions or concerns, please feel free to contact us."
     }
+  ],
+  "kvkk": [
+    {
+      "mainTitle": "<span style='font-size: 0.5em;'>General Data Protection Regulation</span>\nDisclosure Text"
+    },
+    {
+      "title": "Dear Visitor,",
+      "description": "By using this website, you will become informed about the collection, use, and storage of personal data as outlined below. Please read this disclosure text carefully."
+    },
+    {
+      "title": "1. Data Controller",
+      "description": "CrunchyPix [Tahsin Ö.]\nTurkey / Istanbul\ninfo@crunchypix.com\n+905346676794"
+    },
+    {
+      "title": "2. What Personal Data Do We Collect?",
+      "description": "When you visit our website, the only personal data we collect is through the contact form and includes:",
+      "subTitles": [
+        {
+          "description": "Full Name"
+        },
+        {
+          "description": "Email Address"
+        }
+      ]
+    },
+    {
+      "title": "3. For What Purpose Will Personal Data Be Used?",
+      "description": "The collected personal data will only be used to provide you with services and to communicate with you. This information will be used to respond to you, provide information, or process your requests."
+    },
+    {
+      "title": "4. Storage and Destruction of Personal Data",
+      "description": "The collected personal data will be stored within the time frames specified by legal regulations and will be destroyed at the end of this period. We take necessary technical and organizational measures to keep your personal data safe."
+    },
+    {
+      "title": "5. Sharing with Third Parties",
+      "description": "Your personal data will not be shared with third parties without your explicit consent. However, the information you send us through the contact form may have been transmitted to third-party service providers for secure storage."
+    },
+    {
+      "title": "6. Rights of Data Subjects",
+      "description": "Under the General Data Protection Regulation, data subjects are granted certain rights. These rights include access to your personal data, correction, deletion, and objection to processing. You can contact us to exercise these rights [here](/contact)."
+    },
+    {
+      "title": "7. Cookies",
+      "description": "We may use cookies on our website. Cookies are small text files stored in your web browser. You can manage your preferences for accepting or rejecting cookies through your browser settings. For more information, you can visit our [Cookie Policy](/cookie-policy) page."
+    },
+    {
+      "title": "8. Changes and Updates",
+      "description": "This disclosure text may be updated from time to time. Please regularly check our website to review the updated version.\n&nbsp;\nThis disclosure text was last updated on January 5, 2024.\n&nbsp;\nBest regards,\nCrunchyPix"
+    }
   ]
 }

@@ -4,7 +4,7 @@ import { langChange, setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { DE, TR, US } from "country-flag-icons/react/3x2";
+import { DE, TR, GB } from "country-flag-icons/react/3x2";
 import Image from "next/image";
 import { languageMenuChange } from "@/store/redux/isLanguageMenu";
 import { clickableChange } from "@/store/redux/isClickable";
@@ -106,7 +106,7 @@ const LanguageMenu = () => {
         >
           {currentLanguage === "en" ? (
             <span>
-              <US title="United States" />
+              <GB title="United Kingdom" />
             </span>
           ) : currentLanguage === "de" ? (
             <span>
@@ -118,7 +118,7 @@ const LanguageMenu = () => {
             </span>
           ) : (
             <span>
-              <US title="United States" />
+              <GB title="United Kingdom" />
             </span>
           )}
         </div>
@@ -156,7 +156,7 @@ const LanguageMenu = () => {
               onClick={() => handleChange("en")}
             >
               <div className="flex items-center gap-1">
-                <US title="United States" />
+                <GB title="United Kingdom" />
                 <span>EN</span>
               </div>
             </li>

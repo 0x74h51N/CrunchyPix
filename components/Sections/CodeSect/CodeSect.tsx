@@ -107,7 +107,7 @@ const CodeSect = () => {
           </motion.p>
         </div>
       </motion.div>
-      <div>
+      <motion.div variants={slideIn("right", "spring", 0.5, 0.5)}>
         <MonitorFrame>
           <div className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track cursor-none bg-cool-gray-800">
             <SyntaxHighlighter
@@ -133,7 +133,7 @@ const CodeSect = () => {
             </SyntaxHighlighter>
           </div>
         </MonitorFrame>
-      </div>
+      </motion.div>
     </motion.div>
   );
 };

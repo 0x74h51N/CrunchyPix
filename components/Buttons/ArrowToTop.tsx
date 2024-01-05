@@ -62,21 +62,18 @@ export const ArrowToTop = () => {
         initial={"hidden"}
         animate={"show"}
         variants={slideIn("right", "spring", 0.5, 0.8)}
-        className="fixed bottom-5 right-3 bg-cool-gray-900 w-[50px] h-[50px] pt-2 px-1 z-50 opacity-50 hover:opacity-100 transition-opacity duration-500 ease-in-out rounded-lg"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="fixed flexCenter bottom-5 right-3 bg-cool-gray-900 w-[40px] h-[40px] pt-1 px-1 z-50 opacity-50 hover:opacity-100 transition-opacity duration-500 ease-in-out rounded-lg"
       >
-        <button
-          className={`cursor-none`}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          onClick={handleButtonClick}
-        >
+        <button className={`cursor-none `} onClick={handleButtonClick}>
           <Image
             src="/arrow.svg"
             alt="Arrow"
-            width={50}
-            height={50}
+            width={40}
+            height={40}
             loading="lazy"
-            className="rotate-180"
+            className="rotate-180 opacity-50 hover:opacity-100 "
           />
         </button>
       </motion.div>

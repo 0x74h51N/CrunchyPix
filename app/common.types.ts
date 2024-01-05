@@ -9,13 +9,13 @@ export type Links = {
 export type Policy = {
   title?: string;
   mainTitle?: string;
-  description: string;
+  description?: string;
   subTitles?: SubTitles[];
 };
 
 export type SubTitles = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 };
 
 export type SectionData = {
