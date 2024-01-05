@@ -61,23 +61,23 @@ const CountdownTimer = () => {
             <br />
             Countdown Timer
           </h2>
-          <div className="flex flex-row gap-6 h3 justify-center items-center">
-            <div className="flex flex-col justify-center items-center p-4 bg-cool-gray-600 rounded-lg w-[120px]">
+          <div className="flex flex-row md:gap-6 gap-1 h3 justify-center items-center">
+            <div className="flex flex-col justify-center items-center p-4 bg-cool-gray-600 rounded-lg lg:w-[120px] w-[80px]">
               <span className="time">{days}</span>
               <span className="label">Days</span>
             </div>
             <span className="divider">:</span>
-            <div className="flex flex-col justify-center items-center p-4 bg-cool-gray-600 rounded-lg w-[120px]">
+            <div className="flex flex-col justify-center items-center p-4 bg-cool-gray-600 rounded-lg lg:w-[120px] w-[80px]">
               <span className="time">{hours}</span>
               <span className="label">Hours</span>
             </div>
             <span className="divider">:</span>
-            <div className="flex flex-col justify-center items-center p-4 bg-cool-gray-600 rounded-lg w-[120px]">
+            <div className="flex flex-col justify-center items-center p-4 bg-cool-gray-600 rounded-lg lg:w-[120px] w-[80px]">
               <span className="time">{minutes}</span>
               <span className="label">Minutes</span>
             </div>
             <span className="divider">:</span>
-            <div className="flex flex-col justify-center items-center p-4 bg-cool-gray-600 rounded-lg w-[120px]">
+            <div className="flex flex-col justify-center items-center p-4 bg-cool-gray-600 rounded-lg lg:w-[120px] w-[80px]">
               <span className="time">{seconds}</span>
               <span className="label">Seconds</span>
             </div>
