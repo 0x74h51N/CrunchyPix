@@ -44,10 +44,6 @@ export type HandleScroll = {
 };
 
 export type slide = {
-  id: any;
-  slideImage?: string;
-  slideDescription?: string;
-  imageAlt?: string;
   imageUrl?: string;
   imageUrlV?: string;
   imageUrlH?: string;
@@ -60,7 +56,6 @@ export type slide = {
   githubLink?: string;
   icons?: Icon[];
   labels?: string[];
-  projectInfo?: ProjectInfo;
 };
 
 export type CardSections = {

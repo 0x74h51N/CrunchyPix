@@ -1,15 +1,9 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import TypingText from "../../typeText";
 import MonitorFrame from "@/components/Frames/MonitorFrame/MonitorFrame";
 import { generateSpans } from "@/components/GenerateSpans";
-import {
-  staggerContainer,
-  polygonIn,
-  textVariant,
-  slideIn,
-} from "@/utils/motion";
+import { textVariant, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
