@@ -5,7 +5,7 @@ import FullScreenSlider from "../../Slider/FullScreenSlider/FullScreenSlider";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { motion } from "framer-motion";
-import { polygonIn, slideIn, textVariant } from "@/utils/motion";
+import { slideIn, textVariant } from "@/utils/motion";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { useTranslation } from "react-i18next";
 import { generateSpans } from "@/components/GenerateSpans";

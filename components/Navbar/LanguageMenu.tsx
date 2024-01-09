@@ -30,8 +30,6 @@ const LanguageMenu = () => {
     setIsRotated(!isRotated);
     dispatch(languageMenuChange(!isDropdownOpen));
   };
-  const handleToggleDropdownOpen = () => {};
-  const handleToggleDropdownClose = () => {};
 
   const handleChange = (selectedLanguage: string) => {
     dispatch(langChange(selectedLanguage));
@@ -149,9 +147,9 @@ const LanguageMenu = () => {
             : "close"
         } ${
           smallNav
-            ? `mt-12 flex justify-center ${isMobile && "mt-6"}`
+            ? `${isMobile || isTablet ? "mt-6" : "mt-14"} flex justify-center`
             : isMobile || isTablet
-            ? "mt-8 mr-2 flex justify-center"
+            ? `mt-6 flex justify-center`
             : "mt-20"
         } 
         `}
@@ -159,7 +157,7 @@ const LanguageMenu = () => {
         {isDropdownOpen && (
           <ul className="ul">
             <li
-              className="hover:text-log-col transition duration-1000 ease-in-out cursor-none"
+              className="hover:text-log-col transition duration-300 ease-in-out cursor-none"
               onClick={() => handleChange("en")}
             >
               <div className="flex items-center gap-1">
@@ -169,7 +167,7 @@ const LanguageMenu = () => {
             </li>
 
             <li
-              className="hover:text-log-col transition duration-1000 ease-in-out cursor-none"
+              className="hover:text-log-col transition duration-300 ease-in-out cursor-none"
               onClick={() => handleChange("de")}
             >
               <div className="flex items-center gap-1">
@@ -179,7 +177,7 @@ const LanguageMenu = () => {
             </li>
 
             <li
-              className="hover:text-log-col transition duration-1000 ease-in-out cursor-none"
+              className="hover:text-log-col transition duration-300 ease-in-out cursor-none"
               onClick={() => handleChange("tr")}
             >
               <div className="flex items-center gap-1">

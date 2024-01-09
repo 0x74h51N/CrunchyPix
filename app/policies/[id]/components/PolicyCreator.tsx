@@ -47,7 +47,6 @@ const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
           {item.mainTitle && (
             <>
               <h1 className="h1 text-center">
-                {" "}
                 <ReactMarkdown
                   components={{ a: CustomLink }}
                   remarkPlugins={[breaks]}
@@ -64,7 +63,7 @@ const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
           {item.title && (
             <>
               <h2 className="h2">{t(item.title)}</h2>
-              <p className="p mt-2 cursor-none">
+              <div className="p mt-2 cursor-none">
                 <ReactMarkdown
                   components={{ a: CustomLink }}
                   remarkPlugins={[breaks]}
@@ -72,7 +71,7 @@ const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
                 >
                   {item.description && t(item.description)}
                 </ReactMarkdown>
-              </p>
+              </div>
             </>
           )}
           {item.subTitles && (

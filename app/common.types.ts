@@ -115,10 +115,12 @@ export type logoType = {
 
 export type PortfolioItemProps = {
   _id: string;
+  slideImage: string;
   image: string;
   imageAlt: string;
   title: string;
   projectType: string;
+  slideDescription: string;
   description?: string;
   description2?: string;
   description3?: string;

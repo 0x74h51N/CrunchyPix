@@ -27,8 +27,8 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <Suspense fallback={<LoadingComponent />}>
-        <body className="lg:overflow-x-hidden">
+      <body className="lg:overflow-x-hidden">
+        <Suspense fallback={<LoadingComponent />}>
           <AppReduxProvider>
             <AppI18nProvider>
               <PageTracker />
@@ -41,8 +41,8 @@ export default function RootLayout({
               <ArrowToTop />
             </AppI18nProvider>
           </AppReduxProvider>
-        </body>
-      </Suspense>
+        </Suspense>
+      </body>
     </html>
   );
 }

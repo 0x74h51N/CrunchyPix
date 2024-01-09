@@ -1,21 +1,19 @@
-import Rooting from "@/components/Rooting";
-import { portfolioPageItems } from "@/constants/portfolioItems";
+import { policiesPages } from "@/constants/policyDatas";
 
-export default function PortfolioLayout({
+export default function PoliciesLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <>
-      <Rooting />
       <main>{children}</main>
     </>
   );
 }
 
 export async function generateStaticParams() {
-  const paths = portfolioPageItems.map((item) => ({
+  const paths = policiesPages.map((item) => ({
     params: { id: item._id.toLowerCase().replace(/\s+/g, "") },
   }));
 
