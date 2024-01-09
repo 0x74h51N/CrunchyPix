@@ -8,4 +8,13 @@ module.exports = {
     defaultLocale: "en",
     localeDetection: false,
   },
+  async redirects() {
+    return [
+      {
+        source: "/policies",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
 };

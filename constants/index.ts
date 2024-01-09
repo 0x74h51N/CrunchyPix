@@ -19,22 +19,22 @@ export const footerLinks = [
   {
     links: [
       {
-        href: "/terms-of-services",
+        href: "/policies/terms-of-services",
         key: "TermsOfServices",
         text: "footerLinks.TermsOfServices",
       },
       {
-        href: "/terms-of-privacy",
+        href: "/policies/terms-of-privacy",
         key: "TermsOfPrivacy",
         text: "footerLinks.TermsOfPrivacy",
       },
       {
-        href: "/cookie-policy",
+        href: "/policies/cookie-policy",
         key: "CookiePolicy",
         text: "footerLinks.CookiePolicy",
       },
       {
-        href: "/gdpr",
+        href: "/policies/gdpr",
         key: "GDPR",
         text: "footerLinks.kvkk",
       },
@@ -49,22 +49,22 @@ export const pages = [
   { href: "/about", key: "About", text: "links.About" },
   { href: "/contact", key: "Contact", text: "links.Contact" },
   {
-    href: "/terms-of-services",
+    href: "/policies/terms-of-services",
     key: "TermsOfServices",
     text: "footerLinks.TermsOfServices",
   },
   {
-    href: "/terms-of-privacy",
+    href: "/policies/terms-of-privacy",
     key: "TermsOfPrivacy",
     text: "footerLinks.TermsOfPrivacy",
   },
   {
-    href: "/cookie-policy",
+    href: "/policies/cookie-policy",
     key: "CookiePolicy",
     text: "footerLinks.CookiePolicy",
   },
   {
-    href: "/gdpr",
+    href: "/policies/gdpr",
     key: "GDPR",
     text: "footerLinks.kvkk",
   },
