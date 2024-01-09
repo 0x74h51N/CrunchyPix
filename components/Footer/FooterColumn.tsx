@@ -59,6 +59,11 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
                 ? "text-log-col"
                 : ""
             } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap`}
+            onClick={() => {
+              if (isClickable == true) {
+                dispatch(clickableChange(false));
+              }
+            }}
           >
             {t(link.text)}
             <span
