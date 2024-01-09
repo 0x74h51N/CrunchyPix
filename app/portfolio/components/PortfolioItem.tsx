@@ -10,7 +10,6 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAnglesRight } from "react-icons/fa6";
 import { clickableChange } from "@/store/redux/isClickable";
-import { useRouter } from "next/navigation";
 import { PortfolioItemProps } from "@/app/common.types";
 
 const PortfolioItem = ({
@@ -20,7 +19,6 @@ const PortfolioItem = ({
   title,
   projectType,
 }: PortfolioItemProps) => {
-  const router = useRouter();
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const originalWidth = 630;
   const originalHeight = 500;
@@ -58,7 +56,6 @@ const PortfolioItem = ({
     }
   };
   const onClickHandler = () => {
-    () => router.push(`/portfolio/${id}`);
     if (isClickable == true) {
       dispatch(clickableChange(false));
     }

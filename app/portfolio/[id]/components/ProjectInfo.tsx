@@ -66,8 +66,11 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
             <h3 className="p cool">{t("portfolioItemComp.tech")}</h3>
             <div className="absolute left-0 bottom-12 flex flex-row justify-between p-2 px-16 bg-slate-300 bg-opacity-50 w-full ">
               {ProjectInfo.tech.map((tech: string, index: number) => (
-                <div className="relative w-[37px] h-[35px] grayscale">
-                  <LogoImage key={index} logoKey={tech} index={index} />
+                <div
+                  key={index}
+                  className="relative w-[37px] h-[35px] grayscale"
+                >
+                  <LogoImage logoKey={tech} index={index} />
                 </div>
               ))}
             </div>

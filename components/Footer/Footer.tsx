@@ -21,9 +21,6 @@ const Footer = () => {
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
-  const selectedLink = useSelector(
-    (state: RootState) => state.page.currentPage
-  );
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
