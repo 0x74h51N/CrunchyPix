@@ -20,6 +20,7 @@ const PortfolioItem = ({
   projectType,
 }: PortfolioItemProps) => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const originalWidth = 630;
   const originalHeight = 500;
   const mobileWidth = 320;
@@ -60,6 +61,7 @@ const PortfolioItem = ({
       dispatch(clickableChange(false));
     }
   };
+
   return (
     <div
       className="relative flex flex-col items-center justify-between overflow-hidden md:mt-12"
@@ -70,6 +72,7 @@ const PortfolioItem = ({
       <motion.div
         initial="hidden"
         whileHover="show"
+        whileTap={"show"}
         className="group relative flex justify-center items-center w-[630px] h-[500px] rounded-xl bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10"
         style={{
           width: isMobile ? mobileWidth : originalWidth,
@@ -83,24 +86,35 @@ const PortfolioItem = ({
           width={isMobile ? 1000 : 1500}
           height={isMobile ? 800 : 1500}
           objectPosition="center center"
-          className=" object-cover w-full h-full rounded-xl"
+          className="object-cover w-full h-full rounded-xl"
         />
+
         <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
-        <motion.div
-          variants={slideIn("up", "spring", 0.2, 0.75)}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          className="absolute flex justify-center items-center rounded-full bg-log-col opacity-0 group-hover:opacity-70 w-[70px] h-[70px]"
-        >
+        {isMobile || isTablet ? (
           <Link
             href={`/portfolio/${id}`}
             passHref
-            className="cursor-none"
-            onClick={onClickHandler}
-          >
-            <FaAnglesRight className="text-white text-2xl -rotate-45" />
-          </Link>
-        </motion.div>
+            className="absolute cursor-none w-full h-full"
+          />
+        ) : (
+          <>
+            <motion.div
+              variants={slideIn("up", "spring", 0.2, 0.75)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="absolute flex justify-center items-center rounded-full bg-log-col opacity-0 group-hover:opacity-70 w-[70px] h-[70px]"
+            >
+              <Link
+                href={`/portfolio/${id}`}
+                passHref
+                className="cursor-none"
+                onClick={onClickHandler}
+              >
+                <FaAnglesRight className="text-white text-2xl -rotate-45" />
+              </Link>
+            </motion.div>
+          </>
+        )}
       </motion.div>
       <div className="absolute bottom-0  rounded-b-lg z-0 w-full flex justify-start">
         <Link
