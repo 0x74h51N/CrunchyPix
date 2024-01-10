@@ -12,6 +12,13 @@ import { FaAnglesRight } from "react-icons/fa6";
 import { clickableChange } from "@/store/redux/isClickable";
 import { PortfolioItemProps } from "@/app/common.types";
 
+function isTouchScreen() {
+  if (typeof window !== "undefined") {
+    return "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  }
+  return false;
+}
+
 const PortfolioItem = ({
   _id,
   image,
@@ -20,7 +27,7 @@ const PortfolioItem = ({
   projectType,
 }: PortfolioItemProps) => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isTouch = isTouchScreen();
   const originalWidth = 630;
   const originalHeight = 500;
   const mobileWidth = 320;
@@ -90,7 +97,7 @@ const PortfolioItem = ({
         />
 
         <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
-        {isMobile || isTablet ? (
+        {isTouch ? (
           <Link
             href={`/portfolio/${id}`}
             passHref
