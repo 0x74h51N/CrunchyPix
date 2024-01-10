@@ -35,27 +35,27 @@ const Ticks = ({ ticks }: { ticks: string[] }) => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-  const TickIcon = <LuCheckCircle size={20} className="text-log-col mr-2" />;
+  const TickIcon = <LuCheckCircle className="text-log-col text-lg" />;
   return (
-    <div className="flex">
-      <div className="w-1/2">
+    <div className="flex xs:flex-row flex-col xs:justify-between w-full">
+      <div className="xs:w-1/2 w-full">
         <ul>
           {firstColumn.map((tick, index) => (
             <li
               key={index}
-              className="flex items-center text-cool-gray-200 mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
+              className="flex flex-row gap-3 justify-start items-start p mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
             >
               {TickIcon} {t(tick)}
             </li>
           ))}
         </ul>
       </div>
-      <div className="w-1/2">
+      <div className="xs:w-1/2 w-full">
         <ul>
           {secondColumn.map((tick, index) => (
             <li
               key={index}
-              className="flex items-center text-cool-gray-200 mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
+              className="flex flex-row gap-3 justify-start items-start p mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
             >
               {TickIcon} {t(tick)}
             </li>

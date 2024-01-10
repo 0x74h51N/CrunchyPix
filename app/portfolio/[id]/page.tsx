@@ -73,12 +73,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
             />
           </div>
         )}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: "all" }}
-          className="flex md:flex-row flex-col w-full h-auto md:items-start md:justify-between justify-center items-center md:mt-16 mt-4 max-md:gap-12"
-        >
+        <div className="flex md:flex-row flex-col w-full h-auto md:items-start md:justify-between justify-center items-center md:mt-16 mt-4 max-md:gap-12">
           <div className="md:w-2/3 w-full lg:pr-16 ">
             {selectedItem.title2 && (
               <h2 className="h1 half mb-10">
@@ -114,7 +109,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
             )}
             {selectedItem.ticks && (
               <motion.div
-                variants={polygonIn("down", "spring", 2, 2)}
+                variants={polygonIn("down", "spring", 2, 1)}
                 className="mt-6"
               >
                 <Ticks ticks={selectedItem.ticks} />
@@ -127,7 +122,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
               key={selectedItem._id}
             />
           )}
-        </motion.div>
+        </div>
         <motion.div className="flex md:flex-row flex-col items-center justify-between w-full h-auto my-32 gap-6">
           {selectedItem.imageBoxes &&
             selectedItem.imageBoxes.map((image: string, index: number) => (

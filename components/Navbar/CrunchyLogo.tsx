@@ -42,6 +42,7 @@ const CrunchyLogo = () => {
             height={100}
             alt="Crunchypix"
             loading="eager"
+            priority
             className={`${
               smallNav ? "" : "navImage"
             } transition-all duration-1000 ease-in-out h-full pb-3`}
@@ -74,6 +75,7 @@ const CrunchyLogo = () => {
               height={100}
               alt="Crunchypix"
               loading="eager"
+              priority
               className={`${
                 smallNav ? "" : "navImage"
               } transition-all duration-1000 ease-in-out`}
