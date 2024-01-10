@@ -16,7 +16,22 @@
     {
       "title": "CrunchyPix",
       "projectType": "Webpage Desing",
-      "slideDescription": "Initiated for my website and to showcase front-end skills. Developed dynamic components and styles. Features include international language options and smooth scroll transitions. Visit GitHub for details.",
+      "slideDescription": "Initiated for my website and to showcase front-end skills. Developed dynamic components and pages. Features include international language options and animation transitions. Visit GitHub for code details.",
+      "title2": "Creation of This Web Page",
+      "description": "CrunchyPix is not just a personal website;\nit's a testament to the power of minimal and impactful design.",
+      "description2": "It demonstrates how a website can be both long-lasting and easily adaptable with modular, dynamic, and custom components. Leveraging the capabilities of Next.js and its compatible libraries, I showcased how to find the most up-to-date and effective solutions tailored to specific needs. The site's responsive and adaptive design ensures seamless user experiences across various devices, including mobile and tablet screens, maximizing user satisfaction with optimal solutions and bringing unique designs together.",
+      "ticks": [
+        "Branding & Design",
+        "Web Development",
+        "Responsive & Adaptive",
+        "Modular Components",
+        "CMS Ready",
+        "SEO Optimization",
+        "UX/UI Design & Optimization",
+        "Pixel Perfect",
+        "Performance Optimization",
+        "Cross-Browser Compatibility"
+      ],
       "client": "Tahsin Ö.",
       "location": "Istanbul / TURKEY"
     },

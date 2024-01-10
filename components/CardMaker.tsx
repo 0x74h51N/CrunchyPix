@@ -41,7 +41,7 @@ const CardMaker = memo(
     const { t } = useTranslation([translatePath]);
     console.log("cardCreated");
     return (
-      <div className="bg-cool-gray-800 rounded-lg shadow-2xl cursor-none">
+      <div className="rounded-lg shadow-2xl cursor-none">
         <ColorfulBorder enabled={cardSections.colorFulBorder ?? false}>
           <div
             className={`${className} flex justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}

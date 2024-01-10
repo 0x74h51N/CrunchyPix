@@ -53,7 +53,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             ref={sectionRefs[index]}
             className={`
             ${section.className} 
-            w-full min-w-[350px] flex items-center justify-center overflow-hidden repatingLines 
+            w-full min-w-[350px] flex items-center justify-center overflow-hidden 
             ${section.parallax ? "sticky top-0 z-0 " : " relative"} 
           `}
           >

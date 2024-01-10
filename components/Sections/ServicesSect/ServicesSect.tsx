@@ -52,27 +52,24 @@ const ServicesSect = () => {
   };
 
   return (
-    <div className="flex justify-center items-center w-full h-full">
+    <div className="flex justify-center items-center w-full h-full min-h-[100svh]">
       <motion.div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.6 }}
-        className="flex flex-col items-start h-full w-auto md:p-16 xs:p-6 p-2 z-10 mt-14"
+        className="flex flex-col items-start h-full w-auto md:p-16 xs:p-6 p-2 z-10 mt-14 rounded-lg 2xl:ml-36 bg-neutral-950 shadow-lg shadow-black"
       >
         <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
-          <div
-            className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] 
-          xs:text-[20px] text-[16px] lg:leading-[40px]"
-          >
+          <div className="h2">
             {isMobile || isTablet
               ? t("servicesSect.intro")
               : generateSpans({
                   text: t("servicesSect.intro"),
                   colorType: "vibrantColors",
-                  zeroColor: "#737373",
+                  zeroColor: "#909090",
                 })}
           </div>
-          <div className="text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] mb-2">
+          <div className="h1 mb-2">
             {isMobile || isTablet
               ? t("servicesSect.title")
               : generateSpans({
@@ -83,7 +80,7 @@ const ServicesSect = () => {
         </motion.h1>
         <motion.div
           variants={polygonIn("down", "spring", 1, 2)}
-          className="flex flex-wrap justify-center gap-8 w-auto bg-cool-gray-800 lg:p-16 md:p-10 xs:p-6 px-2 py-6 rounded-xl"
+          className="flex flex-wrap justify-center gap-8 w-auto "
           onHoverStart={hoverStart}
           onHoverEnd={hoverEnd}
         >
@@ -116,8 +113,8 @@ const ServicesSect = () => {
         </motion.div>
       </motion.div>
       <div
-        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
-      w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4"
+        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] shadow-xl shadow-black
+        w-full 2xl:max-w-[180px] 2xl:bg-neutral-950 2xl:p-40 p-10 2xl:gap-8 gap-4"
       />
     </div>
   );

@@ -30,7 +30,7 @@ const IntroductionSect = () => {
     return null;
   }
   return (
-    <div className="flex flex-row items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto  p-16 max-md:px-1 bg-cool-gray-800 rounded-3xl gap-12 max-sm:flex-col max-lg:gap-6 max-lg:items-start max-sm:items-center">
+    <div className="flex flex-row items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto p-24 max-md:px-1 bg-cool-gray-800 md:rounded-3xl gap-12 max-sm:flex-col max-lg:gap-6 max-lg:items-start max-sm:items-center">
       <Image
         src="/headColor.png"
         alt="Photo"

@@ -8,10 +8,8 @@ export const socialIcons: Icon[] = [
   },
   {
     link: "https://www.freelancer.com/u/TahsinDev?frm=TahsinDev&sb=t",
+    type: "freelancer",
     alt: "freelancer.com",
-    svg: true,
-    src: "/freelancer.svg",
-    size: 75,
   },
   {
     link: "https://github.com/0x74h51N",
@@ -27,9 +25,8 @@ export const footerIcons: Icon[] = [
   },
   {
     link: "https://www.freelancer.com/u/TahsinDev?frm=TahsinDev&sb=t",
+    type: "freelancer",
     alt: "freelancer.com",
-    svg: true,
-    src: "/freelancer.svg",
   },
   {
     link: "https://github.com/0x74h51N",

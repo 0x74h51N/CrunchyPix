@@ -35,7 +35,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
   }
   if (ProjectInfo)
     return (
-      <div className="relative flex h-[580px] w-[400px] rounded-3xl bg-log-col">
+      <div className="relative flex lg:h-[600px] lg:w-[420px] md:w-[350px] md:h-[580px] sm:h-[510px] h-[480px] w-[300px] rounded-3xl bg-log-col">
         <Image
           src="/projectInfo.png"
           alt="project info background"
@@ -45,26 +45,26 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
           loading="lazy"
           className="z-0 h-full object-cover rounded-3xl"
         />
-        <div className="absolute flex flex-col gap-6 w-full h-full justify-center p-16 pb-24">
+        <div className="absolute flex flex-col gap-6 w-full h-full justify-center lg:p-16 p-10 pb-24">
           <div>
-            <h3 className="p cool">{t("portfolioItemComp.category")}</h3>
-            <h4 className="h3 cool">{t(ProjectInfo.category)}</h4>
+            <h4 className="h4 cool">{t("portfolioItemComp.category")}</h4>
+            <h3 className="h3 cool">{t(ProjectInfo.category)}</h3>
           </div>
           <div>
-            <h3 className="p cool">{t("portfolioItemComp.client")}</h3>
-            <h4 className="h3 cool">{t(ProjectInfo.client)}</h4>
+            <h4 className="h4 cool">{t("portfolioItemComp.client")}</h4>
+            <h3 className="h3 cool">{t(ProjectInfo.client)}</h3>
           </div>
           <div>
-            <h3 className="p cool">{t("portfolioItemComp.location")}</h3>
-            <h4 className="h3 cool">{t(ProjectInfo.location)}</h4>
+            <h4 className="h4 cool">{t("portfolioItemComp.location")}</h4>
+            <h3 className="h3 cool">{t(ProjectInfo.location)}</h3>
           </div>
           <div>
-            <h3 className="p cool">{t("portfolioItemComp.date")}</h3>
-            <h4 className="h3 cool">{t(ProjectInfo.date)}</h4>
+            <h4 className="h4 cool">{t("portfolioItemComp.date")}</h4>
+            <h3 className="h3 cool">{t(ProjectInfo.date)}</h3>
           </div>
           <div>
             <h3 className="p cool">{t("portfolioItemComp.tech")}</h3>
-            <div className="absolute left-0 bottom-12 flex flex-row justify-between p-2 px-16 bg-slate-300 bg-opacity-50 w-full ">
+            <div className="absolute left-0 bottom-14 flex flex-row justify-between p-2 lg:px-16 px-10 bg-slate-300 bg-opacity-50 w-full ">
               {ProjectInfo.tech.map((tech: string, index: number) => (
                 <div
                   key={index}

@@ -28,7 +28,7 @@ body {
   cursor: none !important;
 }
 :root {
-  --line-height: 250px;
+  --line-height: 280px;
 }
 
 .repatingLines {
@@ -36,7 +36,7 @@ body {
     to right,
     #262626,
     #262626 0px,
-    #131313 1px,
+    #131313 1.5px,
     #131313 var(--line-height)
   );
 }
@@ -49,7 +49,7 @@ body {
 
 @media screen and (max-width: 450px) {
   :root {
-    --line-height: 100px;
+    --line-height: 110px;
   }
 }
 
@@ -87,17 +87,32 @@ body {
 .h1.cool {
   @apply text-cool-gray-700;
 }
+.h1.half {
+  @apply text-cool-gray-50 font-black md:text-[45px] sm:text-[40px] xs:text-[36px] text-[32px] antialiased;
+}
 .h2 {
-  @apply text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px] lg:leading-[40px] antialiased;
+  @apply text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[18px] lg:leading-[40px] antialiased;
 }
 .h2.cool {
   @apply text-cool-gray-800;
 }
+
+.h2.bold {
+  @apply font-bold;
+}
 .h3 {
-  @apply text-cool-gray-200 font-medium lg:text-[23px] sm:text-[20px] xs:text-[17px] text-[15px] lg:leading-[40px] antialiased;
+  @apply text-cool-gray-200 font-medium lg:text-[24px] sm:text-[22px] text-[18px] lg:leading-[40px] antialiased;
 }
 .h3.cool {
   @apply text-cool-gray-700;
+}
+
+.h4 {
+  @apply text-cool-gray-100 lg:text-[19px] text-[16px]  md:leading-[30px] antialiased;
+}
+
+.h4.cool {
+  @apply text-cool-gray-600;
 }
 
 .p {
@@ -113,7 +128,7 @@ body {
 }
 
 .footer_copyright {
-  @apply max-sm:flex-col-reverse w-full text-sm font-normal py-3 max-sm:gap-3;
+  @apply max-sm:flex-col-reverse text-sm font-normal py-8 max-sm:gap-3 antialiased;
 }
 
 .footer_column {
