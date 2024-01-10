@@ -62,7 +62,7 @@ const PortfolioItem = ({
   };
   return (
     <div
-      className="relative flex flex-col items-center justify-between overflow-hidden"
+      className="relative flex flex-col items-center justify-between overflow-hidden md:mt-12"
       style={{
         height: isMobile ? 320 : 600,
       }}
@@ -79,8 +79,9 @@ const PortfolioItem = ({
         <Image
           src={image}
           alt={imageAlt}
-          width={isMobile ? 400 : 600}
-          height={isMobile ? 300 : 500}
+          quality={100}
+          width={isMobile ? 1000 : 1500}
+          height={isMobile ? 800 : 1500}
           objectPosition="center center"
           className=" object-cover w-full h-full rounded-xl"
         />

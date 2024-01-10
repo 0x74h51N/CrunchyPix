@@ -73,7 +73,7 @@ const DesignSect = () => {
       </div>
       <motion.div
         variants={slideIn("right", "spring", 0.5, 0.5)}
-        className="flex flex-col h-auto xl:min-h-[700px] 2xl:max-w-[1000px] xl:items-end justify-center items-center 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 bg-cool-gray-800 2xl:rounded-l-3xl"
+        className="flex flex-col h-auto xl:min-h-[700px] 2xl:max-w-[1000px] xl:items-end justify-center items-center 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 bg-cool-gray-800 shadow-lg shadow-black 2xl:rounded-l-3xl"
       >
         <h2 className="w-full max-xs:w-2/3 max-xs:self-start font-medium lg:text-[22px] sm:text-[20px] text-[14px] lg:leading-[40px] text-cool-gray-300 xl:text-right text-left ">
           {isMobile || isTablet

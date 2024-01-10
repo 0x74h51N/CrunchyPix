@@ -86,12 +86,12 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
           pauseOnMouseEnter: true,
         }}
         speed={1000}
-        className="h-auto min-h-[500px] cursor-none overflow-visible"
+        className="h-auto min-h-[560px] cursor-none "
       >
         {slides.map((slide: PortfolioItemProps, index: number) => (
           <SwiperSlide key={index + 1}>
             <div
-              className={`relative overflow-visible ${
+              className={`relative  ${
                 isTablet && !isMobile ? "h-[340px]" : "h-[485px]"
               } w-auto shadow-2xl shadow-black`}
               onClick={() => index === activeIndex && _selectedSlide(slide)}

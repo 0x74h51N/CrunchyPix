@@ -79,7 +79,7 @@ const Rooting = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center w-full lg:h-[200px] md:h-[200px] h-[100px] md:p-10 p-2 md:mt-40 mt-36">
+    <div className="flex flex-col justify-center items-center w-full lg:h-[200px] md:h-[200px] h-[100px] md:p-10 p-2 md:mt-[220px] mt-36">
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}

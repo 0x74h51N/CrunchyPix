@@ -48,20 +48,20 @@ const Footer = () => {
     }
   };
   return (
-    <div className="flex justify-center footer">
+    <div className="relative flex justify-center footer py-24 bg-neutral-50 shadow-inner shadow-black">
       <motion.div
         variants={staggerContainer(2, 2)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="relative overflow-hidden"
+        className="overflow-hidden"
       >
-        <div className="xl:px-16 lg:px-10 pt-12 pe-6 px-5">
-          <div className="flex md:flexBetween  flex-col w-full h-auto z-10">
+        <div className="flex flexCenter xl:px-40 lg:px-32 py-24 pb-26 pe-6 px-8 bg-neutral-950">
+          <div className="flex md:flexBetween flex-col w-full h-auto z-10 max-w-[1300px]">
             <div className="flex flex-col md:flex-row md:justify-between justify-center md:items-end items-center md:gap-4 gap-8 w-full">
               <motion.div
                 variants={slideIn("left", "tween", 0.3, 1)}
-                className="flex flex-col justify-between md:items-start items-center z-10 md:w-2/5 w-full md:px-0 xs:px-8 px-2"
+                className="flex flex-col justify-between md:items-start items-center z-10 md:w-1/4 w-full md:px-0 xs:px-8 px-2"
               >
                 <Image
                   src="/LogoL.svg"
@@ -71,7 +71,7 @@ const Footer = () => {
                   alt="Flexibble"
                   className="w-full max-w-[180px] h-auto md:pb-6 pb-0"
                 />
-                <div className="flex flex-col lg:w-3/5 w-full md:pr-4 md:px-0 xs:px-6 px-0 mt-5 gap-3">
+                <div className="flex flex-col w-full md:px-0 xs:px-6 px-0 mt-5 gap-3">
                   <p className="text-stone-200 text-l w-auto font-medium whitespace-normal max-md:text-center text-start">
                     {t("footer.title")}
                   </p>
@@ -96,9 +96,11 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="text-neutral-200 flexBetween footer_copyright">
+        </div>
+        <div className="absolute bottom-0 left-0 flex justify-center xl:px-40 lg:px-32 px-8 w-full">
+          <div className="text-neutral-900 flex flex-row justify-between items-center footer_copyright w-full max-w-[1300px]">
             <p>@ 2023 Tahsin All right reserved</p>
-            <div className="flex flex-row gap-3 text-white items-center justify-center h-auto">
+            <div className="flex flex-row gap-3 text-neutral-900 items-center justify-center h-auto">
               {footerIcons.map((icon: Icon, index: number) => (
                 <span
                   key={index}

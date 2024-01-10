@@ -34,6 +34,7 @@ import { TfiLayoutAccordionList } from "react-icons/tfi";
 import { clickableChange } from "@/store/redux/isClickable";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
+import { SiFreelancer } from "react-icons/si";
 
 const iconComponents: { [key: string]: IconType } = {
   github: FaGithub,
@@ -66,6 +67,7 @@ const iconComponents: { [key: string]: IconType } = {
   responsive: DiResponsive,
   layout: TfiLayoutAccordionList,
   chart: FaChartBar,
+  freelancer: SiFreelancer,
 };
 
 const IconButton = ({ icon, size }: { icon: Icon; size?: number }) => {
@@ -85,29 +87,6 @@ const IconButton = ({ icon, size }: { icon: Icon; size?: number }) => {
       dispatch(clickableChange(false));
     }
   };
-  if (!icon.type && icon.svg && icon.src) {
-    return (
-      <div
-        className="relative group cursor-none"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <img
-          src={icon.src}
-          alt={icon.alt}
-          onClick={() => icon.link && window.open(icon.link, "_blank")}
-          className={`w-auto ${
-            icon.size ? `h-[${icon.size}px]` : "h-[25px]"
-          } object-fit`}
-        />
-        {icon.alt && (
-          <span className="absolute self-center rounded-md border-spacing-1 border-cool-gray-700 border-2 w-auto p-[2px] text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 ease-in-out duration-300 pointer-events-none cursor-none">
-            {icon.alt}
-          </span>
-        )}
-      </div>
-    );
-  }
 
   if (iconType && IconComponent) {
     return (

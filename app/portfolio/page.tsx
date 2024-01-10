@@ -13,9 +13,9 @@ const Portfolio = () => {
         whileInView="show"
         viewport={{ once: true, amount: "some" }}
         variants={polygonIn("screen", "easeInOut", 0.5, 1.5)}
-        className=" h-auto w-auto flex flex-col justify-center items-center min-w-screen my-6"
+        className=" h-auto w-auto flex flex-col justify-center items-center min-w-screen mt-8 mb-40"
       >
-        <div className="flex flex-wrap justify-center items-center max-w-[1500px] md:gap-12 gap-6">
+        <div className="flex flex-wrap justify-center items-center max-w-[1500px] md:gap-12 gap-6 py-10">
           {portfolioPageItems.map((item: PortfolioItemProps, index: number) => (
             <PortfolioItem
               _id={item._id}

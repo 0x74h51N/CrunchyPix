@@ -104,8 +104,6 @@ export type Icon = {
   color?: string;
   alt?: string;
   substance?: string;
-  svg?: boolean | false;
-  src?: string;
 };
 
 export type logoType = {
@@ -118,11 +116,15 @@ export type PortfolioItemProps = {
   slideImage: string;
   image: string;
   imageAlt: string;
+  imageTop?: string;
+  imageBoxes?: string[];
   title: string;
+  title2?: string;
   projectType: string;
   slideDescription: string;
   description?: string;
   description2?: string;
+  ticks?: string[];
   description3?: string;
   githubLink?: string;
   icons?: Icon[];

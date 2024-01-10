@@ -22,11 +22,11 @@ const Home = () => {
       name: "Introduction",
       children: <IntroductionSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[100svh] pt-14 ",
+      className: "h-auto min-h-[100svh] pt-14  repatingLines",
     },
     {
       name: "What I do?",
-      className: "h-auto min-h-[100svh] w-full z-100",
+      className: "h-auto min-h-[100svh] w-full z-100  repatingLines",
       smoothScroll: true,
       children: <ServicesSect />,
     },
@@ -34,25 +34,25 @@ const Home = () => {
       name: "Responsive Design",
       children: <ResponsiveSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[100svh]  lg:py-20 py-0",
+      className: "h-auto min-h-[100svh]  lg:py-20 py-0  repatingLines",
     },
     {
       name: "Code Sect",
       children: <CodeSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[100svh]  lg:py-20 py-0",
+      className: "h-auto min-h-[100svh]  lg:py-20 py-0  repatingLines",
     },
     {
       name: "Portfolio",
       children: <PortfolioSect />,
       smoothScroll: true,
-      className: "h-auto min-h-[100svh] py-24 w-full",
+      className: "h-auto min-h-[100svh] py-24 w-full repatingLines",
     },
     {
       name: "Logo",
       smoothScroll: true,
       children: <LogoSect />,
-      className: "h-auto min-h-auto  py-5",
+      className: "h-auto min-h-auto",
     },
   ];
 
