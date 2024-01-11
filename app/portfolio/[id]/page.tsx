@@ -3,7 +3,7 @@ import { portfolioPageItems } from "@/constants/portfolioItems";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import { fadeIn, polygonIn, textVariant } from "@/utils/motion";
+import { fadeIn, polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -94,7 +94,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: "some" }}
+          viewport={{ once: true, amount: 0.8 }}
           className="lg:relative flex flex-wrap w-full h-auto md:items-start md:justify-between justify-start items-center "
         >
           <div className="lg:w-2/3 w-full lg:pr-[120px] ">
@@ -133,17 +133,26 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
                 <Ticks ticks={selectedItem.ticks} />
               </motion.div>
             )}
-            <div className="lg:absolute right-0 lg:top-1 top-8">
+            <motion.div
+              variants={slideIn("right", "spring", 1, 1.5)}
+              className="lg:absolute right-0 lg:top-1 top-8"
+            >
               {selectedItem.ProjectInfo && (
                 <ProjectInfo
                   ProjectInfo={selectedItem.ProjectInfo}
                   key={selectedItem._id}
                 />
               )}
-            </div>
+            </motion.div>
           </div>
         </motion.div>
-        <motion.div className="flex md:flex-row flex-col items-center justify-between w-full h-auto my-40 max-md:mt-20 pt-10 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: "some" }}
+          variants={polygonIn("screen", "easeInOut", 1, 1)}
+          className="flex md:flex-row flex-col items-center justify-between w-full h-auto my-40 max-md:mt-20 pt-10 gap-6"
+        >
           {selectedItem.imageBoxes &&
             selectedItem.imageBoxes.map((image: string, index: number) => (
               <Image
@@ -152,7 +161,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
                 src={image}
                 alt={selectedItem.imageAlt}
                 key={index}
-                className="flex max-w-[400px] w-full h-auto max-md:min-h-[400px] object-contain bg-gradient-to-br to-neutral-900 from-log-col"
+                className="flex max-w-[400px] w-full h-auto max-md:min-h-[400px] object-contain bg-gradient-to-br from-slate-900 to-slate-800"
               />
             ))}
         </motion.div>

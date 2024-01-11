@@ -49,7 +49,7 @@ const CardMaker = memo(
           >
             <>
               {cardSections.image && (
-                <div className="flex flex-col justify-center items-start">
+                <div className="flex flex-col justify-center items-start ">
                   <Image
                     src={cardSections.image}
                     alt={cardSections.image}
@@ -82,7 +82,7 @@ const CardMaker = memo(
                       className="flex items-center text-cool-gray-200 mt-3"
                       key={index}
                     >
-                      <IoIosArrowDroprightCircle className="mr-2" />
+                      <IoIosArrowDroprightCircle className="mr-2 text-log-col" />
                       {t(item)}
                     </li>
                   ))}
