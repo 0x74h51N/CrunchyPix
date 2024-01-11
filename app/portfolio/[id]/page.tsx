@@ -3,7 +3,7 @@ import { portfolioPageItems } from "@/constants/portfolioItems";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import { polygonIn, textVariant } from "@/utils/motion";
+import { fadeIn, polygonIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -57,7 +57,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: "some" }}
-        variants={polygonIn("screen", "easeInOut", 0.5, 1)}
+        variants={polygonIn("screen", "easeInOut", 1, 0.8)}
         className=" flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-10 pb-40 px-10"
       >
         {selectedItem.imageTop && (
@@ -73,7 +73,13 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
             />
           </div>
         )}
-        <div className="flex self-start md:mt-16 mt-4">
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: "all" }}
+          variants={fadeIn("down", "spring", 0.7, 1)}
+          className="flex self-start md:mt-16 mt-4"
+        >
           {selectedItem.title2 && (
             <h2 className="h1 half mb-6">
               {isMobile || isTablet
@@ -84,12 +90,17 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
                   })}
             </h2>
           )}
-        </div>
-        <div className="lg:relative flex flex-wrap w-full h-auto md:items-start md:justify-between justify-start items-center ">
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: "some" }}
+          className="lg:relative flex flex-wrap w-full h-auto md:items-start md:justify-between justify-start items-center "
+        >
           <div className="lg:w-2/3 w-full lg:pr-[120px] ">
             {selectedItem.description && (
               <motion.div
-                variants={textVariant(1)}
+                variants={fadeIn("down", "spring", 1, 1)}
                 className="relative flex flex-row "
               >
                 <span className="absolute h2 bold cool top-0 left-0 bg-log-col -rotate-6 hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-3 py-1">
@@ -105,7 +116,10 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
               </motion.div>
             )}
             {selectedItem.description2 && (
-              <motion.p variants={textVariant(1.5)} className="p mt-4">
+              <motion.p
+                variants={fadeIn("down", "spring", 1.5, 1)}
+                className="p mt-4"
+              >
                 {t(selectedItem.description2)}
               </motion.p>
             )}
@@ -113,7 +127,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
           <div className="flex sm:flex-row flex-col max-sm:items-center max-sm:gap-8 w-full mt-6">
             {selectedItem.ticks && (
               <motion.div
-                variants={polygonIn("down", "spring", 2, 1)}
+                variants={polygonIn("down", "spring", 2, 1.5)}
                 className=" lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 flex max-sm:mb-6"
               >
                 <Ticks ticks={selectedItem.ticks} />
@@ -128,8 +142,8 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
               )}
             </div>
           </div>
-        </div>
-        <motion.div className="flex md:flex-row flex-col items-center justify-between w-full h-auto my-36 max-md:mt-20 gap-6">
+        </motion.div>
+        <motion.div className="flex md:flex-row flex-col items-center justify-between w-full h-auto my-40 max-md:mt-20 pt-10 gap-6">
           {selectedItem.imageBoxes &&
             selectedItem.imageBoxes.map((image: string, index: number) => (
               <Image
