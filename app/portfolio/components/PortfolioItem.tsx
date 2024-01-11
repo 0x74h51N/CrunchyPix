@@ -90,7 +90,7 @@ const PortfolioItem = ({
         />
 
         <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
-        {isTouch /**eğer dokunmatik ekran varsa sadece Link öğesi oluşsun. Eğer dokunmatik değilse, motion.div ve Link öğesi oluşsun istiyorum. */ ? (
+        {isTouch ? (
           <Link
             href={`/portfolio/${id}`}
             passHref
