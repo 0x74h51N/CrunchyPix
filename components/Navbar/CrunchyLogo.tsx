@@ -49,14 +49,14 @@ const CrunchyLogo = () => {
           />
           {smallNav || screenWidth <= 300 ? null : (
             <div
-              className={`flex items-center logo_text lg:mt-0 -mt-1 ${
+              className={`flex items-center logo_text lg:mt-0 -mt-1 lg:-ml-2 -ml-1 ${
                 smallNav
                   ? "text-[25px]"
                   : isMobile
                   ? "text-[30px]"
                   : isTablet
                   ? "text-[45px]"
-                  : "text-[60px]"
+                  : "text-[55px]"
               } text-stone-50 hover:scale-105 transition-all duration-1000 ease-in-out`}
             >
               <TypingText text="Crunchy" _code={false} textClass={``} />
@@ -81,7 +81,7 @@ const CrunchyLogo = () => {
               className={`hover:scale-105 transition-all duration-1000 ease-in-out ${
                 smallNav
                   ? "mt-3"
-                  : "navImage delay-200 lg:translate-y-6 translate-y-5 -translate-x-2 transition-all duration-1000 ease-in-out"
+                  : "navImage delay-200 lg:translate-y-6 translate-y-[22px] -translate-x-2 transition-all duration-1000 ease-in-out"
               }`}
             />
           </div>
