@@ -59,32 +59,31 @@ const CrunchyLogo = () => {
                   : "text-[55px]"
               } text-stone-50 hover:scale-105 transition-all duration-1000 ease-in-out`}
             >
-              <TypingText text="Crunchy" _code={false} textClass={``} />
+              <TypingText text="Crunchy" typingSpeed={70} _code={false} />
               <span className="mt-12 -ml-1">
                 <TypingText
                   text="Pix"
                   _code={false}
-                  delay={440}
+                  typingSpeed={75}
+                  delay={550}
                   textClass={`text-log-col`}
                 />
               </span>
             </div>
           )}
-          <div>
-            <Image
-              src={"logo_right.svg"}
-              width={smallNav ? 19.3 : isMobile ? 28 : isTablet ? 40 : 50}
-              height={100}
-              alt="Crunchypix"
-              loading="eager"
-              priority
-              className={`hover:scale-105 transition-all duration-1000 ease-in-out ${
-                smallNav
-                  ? "mt-3"
-                  : "navImage delay-200 lg:translate-y-6 translate-y-[22px] -translate-x-2 transition-all duration-1000 ease-in-out"
-              }`}
-            />
-          </div>
+          <Image
+            src={"logo_right.svg"}
+            width={smallNav ? 19.3 : isMobile ? 28 : isTablet ? 40 : 50}
+            height={100}
+            alt="Crunchypix"
+            loading="eager"
+            priority
+            className={`hover:scale-105 transition-all duration-1000 ease-in-out ${
+              smallNav
+                ? "mt-2"
+                : "navImage delay-200 lg:translate-y-6 translate-y-[22px] -translate-x-2 transition-all duration-1000 ease-in-out"
+            }`}
+          />
         </div>
       </Link>
     </div>

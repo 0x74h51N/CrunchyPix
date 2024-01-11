@@ -71,7 +71,7 @@ const Footer = () => {
                   alt="Flexibble"
                   className="w-full max-w-[180px] h-auto lg:pb-6 pb-0"
                 />
-                <div className="flex flex-col lg:items-start items-center w-full mt-5 gap-3">
+                <div className="flex flex-col lg:items-start items-center w-full gap-5">
                   <p className="text-stone-200 text-l w-auto font-medium whitespace-normal max-lg:text-center text-start">
                     {t("footer.title")}
                   </p>

@@ -35,17 +35,17 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
   }
   if (ProjectInfo)
     return (
-      <div className="relative flex lg:h-[620px] md:w-[420px] sm:w-[350px] md:h-[550px] sm:h-[450px] h-[440px] w-[300px] rounded-3xl bg-log-col md:ml-6 ml-0">
+      <div className="relative flex lg:h-[600px] md:w-[420px] sm:w-[330px] md:h-[550px] sm:h-[450px] h-[440px] w-[300px] rounded-3xl bg-log-col md:ml-6 ml-0">
         <Image
           src="/projectInfo.png"
           alt="project info background"
-          width={800}
-          height={800}
+          width={1200}
+          height={1200}
           quality={100}
           loading="lazy"
           className="z-0 h-full object-cover rounded-3xl"
         />
-        <div className="absolute flex flex-col gap-6 w-full h-full justify-center lg:p-16 p-10 pb-24">
+        <div className="absolute flex flex-col gap-6 w-full h-full justify-start lg:p-[4.2rem] md:p-12 p-10">
           <div>
             <h4 className="h4 cool">{t("portfolioItemComp.category")}</h4>
             <h3 className="h3 cool">{t(ProjectInfo.category)}</h3>
@@ -64,11 +64,11 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
           </div>
           <div>
             <h3 className="p cool">{t("portfolioItemComp.tech")}</h3>
-            <div className="absolute left-0 md:bottom-14 bottom-8 flex flex-row justify-between p-2 lg:px-16 px-10 bg-slate-300 bg-opacity-50 w-full ">
+            <div className="absolute left-0 md:bottom-16 sm:bottom-6 bottom-8 flex flex-row justify-between p-2 lg:px-[4.2rem] md:px-12 px-10 bg-slate-300 bg-opacity-50 w-full ">
               {ProjectInfo.tech.map((tech: string, index: number) => (
                 <div
                   key={index}
-                  className="relative w-[37px] h-[35px] grayscale"
+                  className="relative md:w-10 md:h-10 w-7 h-7 grayscale"
                 >
                   <LogoImage logoKey={tech} index={index} />
                 </div>
