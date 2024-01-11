@@ -3,7 +3,7 @@ import { CardSections, Icon } from "@/app/common.types";
 const createIcon = (type: string): Icon => ({
   type,
   size: 60,
-  color: "#dfdfdf",
+  color: "#eeb30d",
 });
 
 const createCardSection = (
