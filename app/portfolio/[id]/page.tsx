@@ -89,7 +89,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
           <div className="lg:w-2/3 w-full lg:pr-[120px] ">
             {selectedItem.description && (
               <motion.div
-                variants={textVariant(1)}
+                variants={textVariant(1)} //fix the animation times
                 className="relative flex flex-row "
               >
                 <span className="absolute h2 bold cool top-0 left-0 bg-log-col -rotate-6 hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-3 py-1">
@@ -113,7 +113,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
           <div className="flex sm:flex-row flex-col max-sm:items-center max-sm:gap-8 w-full mt-6">
             {selectedItem.ticks && (
               <motion.div
-                variants={polygonIn("down", "spring", 2, 1)}
+                variants={polygonIn("down", "spring", 2, 1)} //fix the animation times
                 className=" lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 flex max-sm:mb-6"
               >
                 <Ticks ticks={selectedItem.ticks} />

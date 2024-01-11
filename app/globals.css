@@ -1,19 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
 
-@font-face {
-  font-family: "Britannic-Bold";
-  src: local("Brittanic-Bold")
-      url("/assets/fonts/Britannic-Bold/Britannic-Bold.eot")
-      url("/assets/fonts/Britannic-Bold/Britannic-Bold.eot?#iefix")
-      format("embedded-opentype"),
-    url("/assets/fonts/Britannic-Bold/Britannic-Bold.woff2") format("woff2"),
-    url("/assets/fonts/Britannic-Bold/Britannic-Bold.woff") format("woff"),
-    url("/assets/fonts/Britannic-Bold/Britannic-Bold.ttf") format("truetype"),
-    url("/assets/fonts/Britannic-Bold/Britannic-Bold.svg#Britannic-Bold")
-      format("svg");
-}
 @tailwind base;
 @tailwind components;
+
+@font-face {
+  font-family: "Britannic Bold";
+  src: url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.eot");
+  src: url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.svg#Britannic Bold")
+      format("svg");
+}
 @tailwind utilities;
 
 * {

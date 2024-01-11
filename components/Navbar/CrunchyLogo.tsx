@@ -45,11 +45,11 @@ const CrunchyLogo = () => {
             priority
             className={`${
               smallNav ? "" : "navImage"
-            } transition-all duration-1000 ease-in-out h-full pb-3`}
+            } transition-all hover:scale-105 duration-1000 ease-in-out h-full pb-3`}
           />
           {smallNav || screenWidth <= 300 ? null : (
             <div
-              className={`logo_text ${
+              className={`flex items-center logo_text lg:mt-0 -mt-1 ${
                 smallNav
                   ? "text-[25px]"
                   : isMobile
@@ -57,15 +57,17 @@ const CrunchyLogo = () => {
                   : isTablet
                   ? "text-[45px]"
                   : "text-[60px]"
-              } text-stone-50 transition-all duration-1000 ease-in-out`}
+              } text-stone-50 hover:scale-105 transition-all duration-1000 ease-in-out`}
             >
               <TypingText text="Crunchy" _code={false} textClass={``} />
-              <TypingText
-                text="Pix"
-                _code={false}
-                delay={460}
-                textClass={`text-log-col`}
-              />
+              <span className="mt-12 -ml-1">
+                <TypingText
+                  text="Pix"
+                  _code={false}
+                  delay={440}
+                  textClass={`text-log-col`}
+                />
+              </span>
             </div>
           )}
           <div>
@@ -76,9 +78,11 @@ const CrunchyLogo = () => {
               alt="Crunchypix"
               loading="eager"
               priority
-              className={`${
-                smallNav ? "" : "navImage"
-              } transition-all duration-1000 ease-in-out`}
+              className={`hover:scale-105 transition-all duration-1000 ease-in-out ${
+                smallNav
+                  ? "mt-3"
+                  : "navImage delay-200 lg:translate-y-6 translate-y-5 -translate-x-2 transition-all duration-1000 ease-in-out"
+              }`}
             />
           </div>
         </div>
