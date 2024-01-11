@@ -35,7 +35,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
   }
   if (ProjectInfo)
     return (
-      <div className="relative flex lg:h-[600px] lg:w-[420px] md:w-[350px] md:h-[580px] sm:h-[510px] h-[480px] w-[300px] rounded-3xl bg-log-col md:ml-6 ml-0">
+      <div className="relative flex lg:h-[620px] md:w-[420px] sm:w-[350px] md:h-[550px] sm:h-[450px] h-[440px] w-[300px] rounded-3xl bg-log-col md:ml-6 ml-0">
         <Image
           src="/projectInfo.png"
           alt="project info background"
@@ -64,7 +64,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
           </div>
           <div>
             <h3 className="p cool">{t("portfolioItemComp.tech")}</h3>
-            <div className="absolute left-0 bottom-14 flex flex-row justify-between p-2 lg:px-16 px-10 bg-slate-300 bg-opacity-50 w-full ">
+            <div className="absolute left-0 md:bottom-14 bottom-8 flex flex-row justify-between p-2 lg:px-16 px-10 bg-slate-300 bg-opacity-50 w-full ">
               {ProjectInfo.tech.map((tech: string, index: number) => (
                 <div
                   key={index}

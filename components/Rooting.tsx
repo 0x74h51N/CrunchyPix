@@ -111,7 +111,7 @@ const Rooting = () => {
             href={`/`}
           >
             <span>Crunchy</span>
-            <span className="text-log-col md:mr-5 mr-0">Pix</span>
+            <span className="text-log-col mr-5">Pix</span>
           </Link>
           <span className="text-log-col md:text-[20px] text-md">{"•"}</span>
           <Link

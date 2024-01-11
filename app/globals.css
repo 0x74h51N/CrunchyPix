@@ -43,13 +43,13 @@ body {
 
 @media screen and (max-width: 650px) {
   :root {
-    --line-height: 180px;
+    --line-height: 140px;
   }
 }
 
 @media screen and (max-width: 450px) {
   :root {
-    --line-height: 110px;
+    --line-height: 80px;
   }
 }
 
