@@ -15,6 +15,7 @@ import mobileRotateReducer from "./redux/mobileRotate";
 import isSliderReducer from "./redux/isSlider";
 import clickableReducer from "./redux/isClickable";
 import sectionIndexReducer from "./redux/currentSectionIndex";
+import touchReducer from "./redux/isTouch";
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   isSlider: isSliderReducer,
   isClickable: clickableReducer,
   sectionIndex: sectionIndexReducer,
+  isTouch: touchReducer,
 });
 
 const store = configureStore({

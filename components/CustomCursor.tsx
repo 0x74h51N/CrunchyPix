@@ -1,5 +1,6 @@
 "use client";
 import { RootState } from "@/store";
+import { setTouch } from "@/store/redux/isTouch";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -7,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const CustomCursor = () => {
   const isBrowser = typeof window !== "undefined";
-  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const circleRef = useRef<HTMLDivElement | null>(null);
   const { t, i18n } = useTranslation(["index"]);
@@ -21,13 +22,14 @@ const CustomCursor = () => {
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const [isCursorVisible, setIsCursorVisible] = useState(false);
   const [isInitialMove, setIsInitialMove] = useState(true);
   useEffect(() => {
     if (isBrowser) {
       const handleTouchStart = () => {
-        setIsTouchDevice(true);
+        dispatch(setTouch(true));
       };
 
       if ("ontouchstart" in window) {

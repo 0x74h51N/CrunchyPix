@@ -12,13 +12,6 @@ import { FaAnglesRight } from "react-icons/fa6";
 import { clickableChange } from "@/store/redux/isClickable";
 import { PortfolioItemProps } from "@/app/common.types";
 
-function isTouchScreen() {
-  if (typeof window !== "undefined") {
-    return "ontouchstart" in window || navigator.maxTouchPoints > 0;
-  }
-  return false;
-}
-
 const PortfolioItem = ({
   _id,
   image,
@@ -27,7 +20,7 @@ const PortfolioItem = ({
   projectType,
 }: PortfolioItemProps) => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTouch = isTouchScreen();
+  const isTouch = useSelector((state: RootState) => state.isTouch.touch);
   const originalWidth = 630;
   const originalHeight = 500;
   const mobileWidth = 320;
