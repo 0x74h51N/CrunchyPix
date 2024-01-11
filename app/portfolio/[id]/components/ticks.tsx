@@ -37,25 +37,25 @@ const Ticks = ({ ticks }: { ticks: string[] }) => {
   }
   const TickIcon = <LuCheckCircle className="text-log-col text-lg" />;
   return (
-    <div className="flex xs:flex-row flex-col xs:justify-between w-full">
-      <div className="xs:w-1/2 w-full">
+    <div className="flex sm:flex-row flex-col w-full">
+      <div className="sm:w-1/2 w-full">
         <ul>
           {firstColumn.map((tick, index) => (
             <li
               key={index}
-              className="flex flex-row gap-3 justify-start items-start p mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
+              className="flex flex-row sm:items-center gap-3 p mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
             >
               {TickIcon} {t(tick)}
             </li>
           ))}
         </ul>
       </div>
-      <div className="xs:w-1/2 w-full">
+      <div className="sm:w-1/2 w-full">
         <ul>
           {secondColumn.map((tick, index) => (
             <li
               key={index}
-              className="flex flex-row gap-3 justify-start items-start p mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
+              className="flex flex-row sm:items-center gap-3 p mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
             >
               {TickIcon} {t(tick)}
             </li>

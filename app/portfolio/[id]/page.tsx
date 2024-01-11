@@ -58,7 +58,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         whileInView="show"
         viewport={{ once: true, amount: "some" }}
         variants={polygonIn("screen", "easeInOut", 0.5, 1)}
-        className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-10 pb-40 px-4"
+        className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-10 pb-40 px-10"
       >
         {selectedItem.imageTop && (
           <div className="w-full h-[650px]">
