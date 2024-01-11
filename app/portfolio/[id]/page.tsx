@@ -58,7 +58,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         whileInView="show"
         viewport={{ once: true, amount: "some" }}
         variants={polygonIn("screen", "easeInOut", 0.5, 1)}
-        className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-10 pb-40 px-4"
+        className=" flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-10 pb-40 px-10"
       >
         {selectedItem.imageTop && (
           <div className="w-full h-[650px]">
@@ -73,18 +73,20 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
             />
           </div>
         )}
-        <div className="flex md:flex-row flex-col w-full h-auto md:items-start md:justify-between justify-center items-center md:mt-16 mt-4 max-md:gap-12">
-          <div className="md:w-2/3 w-full lg:pr-16 ">
-            {selectedItem.title2 && (
-              <h2 className="h1 half mb-10">
-                {isMobile || isTablet
-                  ? t(selectedItem.title2)
-                  : generateSpans({
-                      text: t(selectedItem.title2),
-                      colorType: "vibrantColors",
-                    })}
-              </h2>
-            )}
+        <div className="flex self-start md:mt-16 mt-4">
+          {selectedItem.title2 && (
+            <h2 className="h1 half mb-6">
+              {isMobile || isTablet
+                ? t(selectedItem.title2)
+                : generateSpans({
+                    text: t(selectedItem.title2),
+                    colorType: "vibrantColors",
+                  })}
+            </h2>
+          )}
+        </div>
+        <div className="lg:relative flex flex-wrap w-full h-auto md:items-start md:justify-between justify-start items-center ">
+          <div className="lg:w-2/3 w-full lg:pr-[120px] ">
             {selectedItem.description && (
               <motion.div
                 variants={textVariant(1)}
@@ -107,23 +109,27 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
                 {t(selectedItem.description2)}
               </motion.p>
             )}
+          </div>
+          <div className="flex sm:flex-row flex-col max-sm:items-center max-sm:gap-8 w-full mt-6">
             {selectedItem.ticks && (
               <motion.div
                 variants={polygonIn("down", "spring", 2, 1)}
-                className="mt-6"
+                className=" lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 flex max-sm:mb-6"
               >
                 <Ticks ticks={selectedItem.ticks} />
               </motion.div>
             )}
+            <div className="lg:absolute right-0 lg:top-1 top-8">
+              {selectedItem.ProjectInfo && (
+                <ProjectInfo
+                  ProjectInfo={selectedItem.ProjectInfo}
+                  key={selectedItem._id}
+                />
+              )}
+            </div>
           </div>
-          {selectedItem.ProjectInfo && (
-            <ProjectInfo
-              ProjectInfo={selectedItem.ProjectInfo}
-              key={selectedItem._id}
-            />
-          )}
         </div>
-        <motion.div className="flex md:flex-row flex-col items-center justify-between w-full h-auto my-32 gap-6">
+        <motion.div className="flex md:flex-row flex-col items-center justify-between w-full h-auto my-36 max-md:mt-20 gap-6">
           {selectedItem.imageBoxes &&
             selectedItem.imageBoxes.map((image: string, index: number) => (
               <Image
