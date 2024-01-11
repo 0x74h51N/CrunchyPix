@@ -35,7 +35,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
   }
   if (ProjectInfo)
     return (
-      <div className="relative flex lg:h-[600px] md:w-[420px] sm:w-[330px] md:h-[550px] sm:h-[450px] h-[440px] w-[300px] rounded-3xl bg-log-col md:ml-6 ml-0">
+      <div className="relative flex lg:h-[600px] md:w-[420px] sm:w-[330px] md:h-[550px] sm:h-[450px] h-[440px] w-[300px] rounded bg-log-col md:ml-6 ml-0">
         <Image
           src="/projectInfo.png"
           alt="project info background"
@@ -43,7 +43,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
           height={1200}
           quality={100}
           loading="lazy"
-          className="z-0 h-full object-cover rounded-3xl"
+          className="z-0 h-full object-cover rounded"
         />
         <div className="absolute flex flex-col gap-6 w-full h-full justify-start lg:p-[4.2rem] md:p-12 p-10">
           <div>

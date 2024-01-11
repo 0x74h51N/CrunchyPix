@@ -76,8 +76,11 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: "all" }}
-          variants={fadeIn("down", "spring", 0.7, 1)}
+          viewport={{
+            once: true,
+            amount: "all",
+          }}
+          variants={fadeIn("down", "spring", 1, 1)}
           className="flex self-start md:mt-16 mt-4"
         >
           {selectedItem.title2 && (
@@ -94,7 +97,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: true, amount: isMobile || isTablet ? 0.28 : 0.8 }}
           className="lg:relative flex flex-wrap w-full h-auto md:items-start md:justify-between justify-start items-center "
         >
           <div className="lg:w-2/3 w-full lg:pr-[120px] ">
