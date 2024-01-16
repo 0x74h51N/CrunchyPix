@@ -58,10 +58,10 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         whileInView="show"
         viewport={{ once: true, amount: "some" }}
         variants={polygonIn("screen", "easeInOut", 1, 0.8)}
-        className=" flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-10 pb-40 px-10"
+        className=" flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-12 pb-40 px-14 max-sm:px-8 max-xs:px-5"
       >
         {selectedItem.imageTop && (
-          <div className="w-full h-[650px]">
+          <div className="w-full md:h-auto md:min-h-[650px] h-[350px]">
             <Image
               width={1850}
               height={1850}
@@ -69,42 +69,32 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
               loading="lazy"
               src={selectedItem.imageTop}
               alt={selectedItem.imageAlt}
-              className="w-full h-full object-center object-cover bg-gradient-to-br from-neutral-900 to-slate-700"
+              className="w-full h-full object-center md:object-contain object-cover bg-gradient-to-br from-neutral-900 to-slate-700"
             />
           </div>
         )}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{
-            once: true,
-            amount: "all",
-          }}
-          variants={fadeIn("down", "spring", 1, 1)}
-          className="flex self-start md:mt-16 mt-4"
-        >
-          {selectedItem.title2 && (
-            <h2 className="h1 half mb-6">
-              {isMobile || isTablet
-                ? t(selectedItem.title2)
-                : generateSpans({
-                    text: t(selectedItem.title2),
-                    colorType: "vibrantColors",
-                  })}
-            </h2>
-          )}
-        </motion.div>
+
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: isMobile || isTablet ? 0.28 : 0.8 }}
-          className="lg:relative flex flex-wrap w-full h-auto md:items-start md:justify-between justify-start items-center "
+          className="lg:relative flex flex-wrap w-full h-auto md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
         >
-          <div className="lg:w-2/3 w-full lg:pr-[120px] ">
+          <div className="lg:w-2/3 w-full lg:pr-[120px]">
+            {selectedItem.title2 && (
+              <motion.h2 variants={textVariant(1)} className="h1 half mb-4">
+                {isMobile || isTablet
+                  ? t(selectedItem.title2)
+                  : generateSpans({
+                      text: t(selectedItem.title2),
+                      colorType: "vibrantColors",
+                    })}
+              </motion.h2>
+            )}
             {selectedItem.description && (
               <motion.div
-                variants={fadeIn("down", "spring", 1, 1)}
-                className="relative flex flex-row "
+                variants={textVariant(1.3)}
+                className="relative flex flex-row"
               >
                 <span className="absolute h2 bold cool top-0 left-0 bg-log-col -rotate-6 hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-3 py-1">
                   {t(selectedItem.description).charAt(0)}
@@ -119,10 +109,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
               </motion.div>
             )}
             {selectedItem.description2 && (
-              <motion.p
-                variants={fadeIn("down", "spring", 1.5, 1)}
-                className="p mt-4"
-              >
+              <motion.p variants={textVariant(1.5)} className="p mt-4">
                 {t(selectedItem.description2)}
               </motion.p>
             )}
@@ -130,15 +117,15 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
           <div className="flex sm:flex-row flex-col max-sm:items-center max-sm:gap-8 w-full mt-6">
             {selectedItem.ticks && (
               <motion.div
-                variants={polygonIn("down", "spring", 2, 1.5)}
-                className=" lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 flex max-sm:mb-6"
+                variants={polygonIn("down", "spring", 2, 1.7)}
+                className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
               >
                 <Ticks ticks={selectedItem.ticks} />
               </motion.div>
             )}
             <motion.div
               variants={slideIn("right", "spring", 1, 1.5)}
-              className="lg:absolute right-0 lg:top-1 top-8"
+              className="lg:absolute right-0 lg:top-0"
             >
               {selectedItem.ProjectInfo && (
                 <ProjectInfo
@@ -148,26 +135,39 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
               )}
             </motion.div>
           </div>
+          <motion.div
+            variants={polygonIn("screen", "easeInOut", 1, 1)}
+            className="flex md:flex-row flex-col items-center justify-between w-full h-auto mt-24 mb-8 gap-6"
+          >
+            {selectedItem.imageBoxes &&
+              selectedItem.imageBoxes.map((image: string, index: number) => (
+                <Image
+                  width={1000}
+                  height={1000}
+                  src={image}
+                  alt={selectedItem.imageAlt}
+                  key={index}
+                  className="flex max-w-[400px] w-full h-auto  object-contain bg-gradient-to-br from-slate-900 to-slate-800"
+                />
+              ))}
+          </motion.div>
         </motion.div>
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: "some" }}
-          variants={polygonIn("screen", "easeInOut", 1, 1)}
-          className="flex md:flex-row flex-col items-center justify-between w-full h-auto my-40 max-md:mt-20 pt-10 gap-6"
-        >
-          {selectedItem.imageBoxes &&
-            selectedItem.imageBoxes.map((image: string, index: number) => (
-              <Image
-                width={1000}
-                height={1000}
-                src={image}
-                alt={selectedItem.imageAlt}
-                key={index}
-                className="flex max-w-[400px] w-full h-auto max-md:min-h-[400px] object-contain bg-gradient-to-br from-slate-900 to-slate-800"
-              />
-            ))}
-        </motion.div>
+        {selectedItem.techTitle && selectedItem.techDescription && (
+          <>
+            <motion.h3
+              variants={textVariant(1)}
+              className="h3 self-start underline-offset-3 underline"
+            >
+              {t(selectedItem.techTitle)}
+            </motion.h3>
+
+            <motion.p variants={textVariant(1.5)} className="p mt-4 w-full ">
+              <Markdown remarkPlugins={[breaks]} rehypePlugins={[rehypeRaw]}>
+                {t(selectedItem.techDescription)}
+              </Markdown>
+            </motion.p>
+          </>
+        )}
       </motion.div>
     </div>
   );

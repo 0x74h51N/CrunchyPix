@@ -29,6 +29,8 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
     title: "items.0.title",
     title2: "items.0.title2",
+    techTitle: "items.0.techTitle",
+    techDescription: "items.0.techDescription",
     description: "items.0.description",
     description2: "items.0.description2",
     ticks: [
