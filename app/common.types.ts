@@ -120,10 +120,12 @@ export type PortfolioItemProps = {
   imageBoxes?: string[];
   title: string;
   title2?: string;
+  techTitle?: string;
   projectType: string;
   slideDescription: string;
   description?: string;
   description2?: string;
+  techDescription?: string;
   ticks?: string[];
   description3?: string;
   githubLink?: string;

@@ -1,60 +1,62 @@
 {
-  "page": { "title": "Portfolio", "details": "Project Details" },
+  "page": { "title": "Portfolio", "details": "Projektdetails" },
   "portfolioItemComp": {
-    "category": "Category",
-    "client": "Client",
-    "location": "Location",
-    "date": "Publish Date",
-    "tech": "Tech"
+    "category": "Kategorie",
+    "client": "Kunde",
+    "location": "Standort",
+    "date": "Veröffentlichungsdatum",
+    "tech": "Technik"
   },
   "projectSlides": {
     "title": "Portfolio",
-    "title2": "Portfolio Page",
-    "click": "For more details..."
+    "title2": "Portfoliosseite",
+    "click": "Für weitere Details..."
   },
   "items": [
     {
       "title": "CrunchyPix",
-      "projectType": "Webpage Desing",
-      "slideDescription": "Initiated for my website and to showcase front-end skills. Developed dynamic components and pages. Features include international language options and animation transitions. Visit GitHub for code details.",
-      "title2": "Creation of This Web Page",
-      "description": "CrunchyPix is not just a personal website;\nit's a testament to the power of minimal and impactful design.",
-      "description2": "It demonstrates how a website can be both long-lasting and easily adaptable with modular, dynamic, and custom components. Leveraging the capabilities of Next.js and its compatible libraries, I showcased how to find the most up-to-date and effective solutions tailored to specific needs. The site's responsive and adaptive design ensures seamless user experiences across various devices, including mobile and tablet screens, maximizing user satisfaction with optimal solutions and bringing unique designs together.",
+      "projectType": "Webseitendesign",
+      "slideDescription": "Initiiert für meine Website und zur Präsentation von Front-End-Fähigkeiten. Entwicklung von dynamischen Komponenten und Seiten. Funktionen umfassen internationale Sprachoptionen und Animationsübergänge. Besuchen Sie GitHub für Code-Details.",
+      "title2": "Erstellung dieser Webseite",
+      "techTitle": "Technik Zusammenfassung",
+      "techDescription": "Bei der Gestaltung von CrunchyPix haben wir modernste Technologien genutzt, um eine dynamische und visuell ansprechende Website zu gestalten. Auf einer Reise in die moderne Webentwicklung haben wir die Leistung von Next.js (Version 14) und TypeScript genutzt. React, als unsere Grundbibliothek, bot die Flexibilität und Robustheit, um unsere gemeinsame Vision zum Leben zu erwecken. Um eine nahtlose Benutzererfahrung weltweit zu gewährleisten, integrierten wir i18n. Mit der Entwicklung von benutzerdefinierten Funktionen und Komponenten für präzise Sprachübersetzungen haben wir uns mit dem State Management beschäftigt, wobei Redux eine Schlüsselrolle spielte. Es erfasste und orchestrierte komplexe Details wie Spracheinstellungen, benutzerdefinierte Cursor-Interaktionen und die Reaktionsfähigkeit von Geräten.\n\nDie bezaubernden Animationsübergänge, die in CrunchyPix eingewoben sind, wurden geschaffen, indem die Fähigkeiten von motion.div genutzt und sorgfältig entwickelte benutzerdefinierte Varianten erstellt wurden. Jede Seite, ob sie nun Produkte oder Richtlinien präsentiert, wurde dynamisch generiert und bietet eine dynamische und reaktionsfreudige Umgebung. Unser Engagement endet hier nicht. Wir sind gemeinsam hinter die Kamera gegangen, um die Essenz von CrunchyPix einzufangen, indem wir persönlich die Bilder auf der Homepage fotografiert haben. Gleichzeitig wurden andere visuelle Elemente mit den vielseitigen Werkzeugen von Photoshop sorgfältig kuratiert, um unserem gemeinsamen Projekt eine harmonische Mischung aus Kreativität zu verleihen.",
+      "description": "CrunchyPix ist nicht nur eine persönliche Website;\nes ist ein Zeugnis für die Kraft von minimalistischem und wirkungsvollem Design.",
+      "description2": "Es zeigt, wie eine Website sowohl langlebig als auch leicht anpassbar sein kann, mit modularen, dynamischen und benutzerdefinierten Komponenten. Durch die Nutzung der Möglichkeiten von Next.js und seiner kompatiblen Bibliotheken zeigten wir, wie man die aktuellsten und effektivsten Lösungen findet, die auf spezifische Bedürfnisse zugeschnitten sind. Das responsive und adaptive Design der Website gewährleistet nahtlose Benutzererlebnisse auf verschiedenen Geräten, einschließlich Mobil- und Tablet-Bildschirmen, und maximiert die Benutzerzufriedenheit durch optimale Lösungen und die Vereinigung einzigartiger Designs.",
       "ticks": [
         "Branding & Design",
-        "Web Development",
-        "Responsive & Adaptive",
-        "Modular Components",
-        "Dynamic Rooting",
-        "Pixel Perfect",
-        "SEO Optimization",
-        "UX/UI Design & Optimization",
-        "Performance Optimization",
-        "Cross-Browser Compatibility"
+        "Webentwicklung",
+        "Responsiv & Adaptiv",
+        "Modulare Komponenten",
+        "Dynamisches Routing",
+        "Pixelgenau",
+        "SEO-Optimierung",
+        "UX/UI-Design & Optimierung",
+        "Leistungsoptimierung",
+        "Browserübergreifende Kompatibilität"
       ],
       "client": "Tahsin Ö.",
-      "location": "Istanbul / TURKEY"
+      "location": "Istanbul / TÜRKEI"
     },
     {
       "title": "CC Order",
       "projectType": "Landing Page",
-      "slideDescription": "Created for a credit card order landing page. Designed in Figma, implemented with React table. Access controlled by API key from the backoffice application. GitHub link confidential, but can share developed components and page code upon request.",
+      "slideDescription": "Erstellt für eine Landingpage zur Kreditkartenbestellung. Gestaltet in Figma, implementiert mit React Table. Der Zugriff wird über den API-Schlüssel aus der Backoffice-Anwendung gesteuert. Der GitHub-Link ist vertraulich, aber auf Anfrage können entwickelte Komponenten und Seitencode geteilt werden.",
       "client": "Novem Gold",
-      "location": "Linz / AUSTRIA"
+      "location": "Linz / ÖSTERREICH"
     },
     {
       "title": "Minting UI",
       "projectType": "UI/UX",
-      "slideDescription": "Developed for a UI using minting and burning functions for NNN and NVM tokens on Binance Smart Chain (BSC). Eth-2 scaffold used, contracts obtained from BSC, deployed, and ABI created. Integrated with BSC using Wagmi, enabling minting and burning functions. Other functions available on the debugging page.",
+      "slideDescription": "Entwickelt für eine Benutzeroberfläche mit Minting- und Burning-Funktionen für NNN- und NVM-Token auf der Binance Smart Chain (BSC). Das Eth-2-Scaffold wurde verwendet, Verträge von BSC bezogen, bereitgestellt und ABI erstellt. Integration mit BSC über Wagmi, was Minting- und Burning-Funktionen ermöglicht. Weitere Funktionen sind auf der Debugging-Seite verfügbar.",
       "client": "CypherX",
-      "location": "Munich / GERMANY"
+      "location": "München / DEUTSCHLAND"
     },
     {
       "title": "KYK Eletric Inc.",
-      "projectType": "Webpage Desing",
-      "slideDescription": "My first website developed using WordPress and limited code. Developed with many custom design elements.",
+      "projectType": "Webseitendesign",
+      "slideDescription": "Meine erste Website, entwickelt mit WordPress und begrenztem Code. Entwickelt mit vielen individuellen Designelementen.",
       "client": "KYK Electric Inc.",
-      "location": "Istanbul / TURKEY"
+      "location": "Istanbul / TÜRKEI"
     }
   ]
 }

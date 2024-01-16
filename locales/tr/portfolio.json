@@ -1,60 +1,62 @@
 {
-  "page": { "title": "Portfolio", "details": "Project Details" },
+  "page": { "title": "Portföy", "details": "Proje Detayları" },
   "portfolioItemComp": {
-    "category": "Category",
-    "client": "Client",
-    "location": "Location",
-    "date": "Publish Date",
-    "tech": "Tech"
+    "category": "Kategori",
+    "client": "Müşteri",
+    "location": "Konum",
+    "date": "Yayın Tarihi",
+    "tech": "Teknoloji"
   },
   "projectSlides": {
-    "title": "Portfolio",
-    "title2": "Portfolio Page",
-    "click": "For more details..."
+    "title": "Portföy",
+    "title2": "Portföy Sayfası",
+    "click": "Daha fazla detay için..."
   },
   "items": [
     {
       "title": "CrunchyPix",
-      "projectType": "Webpage Desing",
-      "slideDescription": "Initiated for my website and to showcase front-end skills. Developed dynamic components and pages. Features include international language options and animation transitions. Visit GitHub for code details.",
-      "title2": "Creation of This Web Page",
-      "description": "CrunchyPix is not just a personal website;\nit's a testament to the power of minimal and impactful design.",
-      "description2": "It demonstrates how a website can be both long-lasting and easily adaptable with modular, dynamic, and custom components. Leveraging the capabilities of Next.js and its compatible libraries, I showcased how to find the most up-to-date and effective solutions tailored to specific needs. The site's responsive and adaptive design ensures seamless user experiences across various devices, including mobile and tablet screens, maximizing user satisfaction with optimal solutions and bringing unique designs together.",
+      "projectType": "Web Sayfası Tasarımı",
+      "slideDescription": "Websitesi ve ön yüz becerilerimi sergilemek amacıyla başlatıldı. Dinamik bileşenler ve sayfalar geliştirildi. Özellikler arasında uluslararası dil seçenekleri ve animasyon geçişleri bulunmaktadır. Kod detayları için GitHub'u ziyaret edebilirsiniz.",
+      "title2": "Bu Web Sayfasının Oluşturulması",
+      "techTitle": "Teknik Özet",
+      "techDescription": "CrunchyPix'in şekillendirilmesinde, cutting-edge teknolojileri kullanarak, temel araçlar olarak Next.js (14) ve TypeScript'i benimsedik. React, temel kütüphane olarak, kolektif vizyonumuzu hayata geçirmek için gereken esnekliği ve gücü sağladı. Dünya çapında sorunsuz bir kullanıcı deneyimi sağlamak için i18n entegrasyonu ve özel dil tercüme bileşenleri kullanıldı. Redux ile state yönetimine derinlemesine inildi ve dil tercihleri, özel imleç etkileşimleri ve cihaz duyarlılığı gibi karmaşık detaylar bu araç ile yönetildi. motion.div'in yeteneklerinden faydalanarak tasarlanan büyüleyici animasyon geçişleri, CrunchyPix'e hayat kattı. Ürün veya politikaları sergileyen her sayfa dinamik olarak oluşturuldu ve duyarlı bir ortam sunuyor. Taahhüdümüz, GitHub gibi versiyon kontrolü ve işbirliği araçlarına kadar uzanıyor. Dependabot, CodeQL ve Vercel gibi araçlar, geliştirme iş akışımızı güçlendiren ek araçlardır.",
+      "description": "CrunchyPix sadece kişisel bir websitesi değil; \nminimal ve etkili tasarımın gücünün bir kanıtıdır.",
+      "description2": "Bir websitesinin modüler, dinamik ve özel bileşenlerle uzun ömürlü ve kolay adapte edilebilir olabileceğini gösterir. Next.js ve uyumlu kütüphanelerinin yeteneklerini kullanarak, özel ihtiyaçlara uygun en güncel ve etkili çözümleri bulmayı sergiledim. Site, mobil ve tablet ekranları dahil olmak üzere çeşitli cihazlarda sorunsuz kullanıcı deneyimleri sunar, optimal çözümlerle kullanıcı memnuniyetini maksimize eder ve benzersiz tasarımları bir araya getirir.",
       "ticks": [
-        "Branding & Design",
-        "Web Development",
-        "Responsive & Adaptive",
-        "Modular Components",
-        "Dynamic Rooting",
-        "SEO Optimization",
-        "UX/UI Design & Optimization",
-        "Pixel Perfect",
-        "Performance Optimization",
-        "Cross-Browser Compatibility"
+        "Markalaşma & Tasarım",
+        "Web Geliştirme",
+        "Duyarlı & Adaptif",
+        "Modüler Bileşenler",
+        "Dinamik Yönlendirme",
+        "Piksel Mükemmel",
+        "SEO Optimizasyonu",
+        "UX/UI Tasarımı & Optimizasyon",
+        "Performans Optimizasyonu",
+        "Çok Tarayıcı Uyumluluğu"
       ],
       "client": "Tahsin Ö.",
-      "location": "Istanbul / TURKEY"
+      "location": "İstanbul / TÜRKİYE"
     },
     {
       "title": "CC Order",
-      "projectType": "Landing Page",
-      "slideDescription": "Created for a credit card order landing page. Designed in Figma, implemented with React table. Access controlled by API key from the backoffice application. GitHub link confidential, but can share developed components and page code upon request.",
+      "projectType": "Landing Sayfası",
+      "slideDescription": "Kredi kartı siparişi için oluşturuldu. Figma'da tasarlandı, React tablosu ile uygulandı. Erişim, backoffice uygulamasından API anahtarı ile kontrol ediliyor. GitHub bağlantısı gizli, ancak talep üzerine geliştirilen bileşenler ve sayfa kodunu paylaşabilirim.",
       "client": "Novem Gold",
-      "location": "Linz / AUSTRIA"
+      "location": "Linz / AVUSTURYA"
     },
     {
       "title": "Minting UI",
       "projectType": "UI/UX",
-      "slideDescription": "Developed for a UI using minting and burning functions for NNN and NVM tokens on Binance Smart Chain (BSC). Eth-2 scaffold used, contracts obtained from BSC, deployed, and ABI created. Integrated with BSC using Wagmi, enabling minting and burning functions. Other functions available on the debugging page.",
+      "slideDescription": "Binance Smart Chain (BSC) üzerinde NNN ve NVM tokenları için madencilik ve yakma işlevlerini içeren bir UI için geliştirildi. Eth-2 iskeleti kullanıldı, sözleşmeler BSC'den alındı, dağıtıldı ve ABI oluşturuldu. Wagmi kullanılarak BSC ile entegre edildi, madencilik ve yakma işlevlerini etkinleştirildi. Diğer işlevler hata ayıklama sayfasında mevcuttur.",
       "client": "CypherX",
-      "location": "Munich / GERMANY"
+      "location": "Münih / ALMANYA"
     },
     {
       "title": "KYK Eletric Inc.",
-      "projectType": "Webpage Desing",
-      "slideDescription": "My first website developed using WordPress and limited code. Developed with many custom design elements.",
+      "projectType": "Web Sayfası Tasarımı",
+      "slideDescription": "WordPress ve sınırlı kod kullanılarak geliştirdiğim ilk websitesi. Birçok özel tasarım elemanı içeriyor.",
       "client": "KYK Electric Inc.",
-      "location": "Istanbul / TURKEY"
+      "location": "İstanbul / TÜRKİYE"
     }
   ]
 }
