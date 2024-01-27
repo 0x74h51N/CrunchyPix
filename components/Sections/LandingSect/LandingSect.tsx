@@ -90,7 +90,7 @@ const LandingSect = () => {
           className={`absolute h-full w-full pointer-events-none  ${
             isMobile || screenHeight <= 600
               ? `flex flex-row gap-4 justify-center items-center pb-10 ${
-                  screenHeight <= 600 && "pt-[210px] pb-0 z-30"
+                  screenHeight <= 600 && "pt-[240px] pb-0 z-30"
                 }`
               : ""
           }`}

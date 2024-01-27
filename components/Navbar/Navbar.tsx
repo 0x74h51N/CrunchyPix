@@ -108,22 +108,22 @@ export const Navbar = () => {
   return (
     <div className="flex justify-center min-w-[100svw]">
       <nav
-        className={`fixed flex flex-row w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] md:min-w-[80svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl  px-${
+        className={`fixed flex flex-row w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] md:min-w-[80svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl px-${
           isMobile || isTablet ? 5 : 10
         } ${
           isMenuOpen
             ? `navbar pointer-events-auto h-[360px] py-5 bg-opacity-0 ${
-                smallNav && "h-[320px] bg-opacity-100 py-2   "
+                smallNav && "h-[320px] bg-opacity-100 py-2"
               }`
             : smallNav
-            ? "bg-opacity-100 py-3 h-[80px] shadow-md shadow-black"
+            ? "bg-opacity-100 h-[60px] py-1 shadow-md shadow-black"
             : "py-5 bg-opacity-0 h-[150px] "
         }`}
       >
         <CrunchyLogo />
         <div
           className={`flex flex-center items-start ml-auto pointer-events-auto transition-all duration-1000 ease-in-out ${
-            smallNav ? "mt-4" : "mt-8"
+            smallNav ? "mt-2" : "mt-8"
           }`}
         >
           {isMobile || isTablet ? (

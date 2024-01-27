@@ -64,8 +64,8 @@ const CrunchyLogo = () => {
                 <TypingText
                   text="Pix"
                   _code={false}
-                  typingSpeed={75}
-                  delay={550}
+                  typingSpeed={95}
+                  delay={700}
                   textClass={`text-log-col`}
                 />
               </span>
