@@ -6,8 +6,8 @@ export const phoneSlides = [
     description: "",
   },
   {
-    imageUrlH: "/PhoneSlides/aboutMeH.jpg",
-    imageUrlV: "/PhoneSlides/aboutMeV.jpg",
+    imageUrlH: "/PhoneSlides/aboutMeH.png",
+    imageUrlV: "/PhoneSlides/aboutMeV.png",
     title: "About Me",
     description: "",
   },
@@ -18,8 +18,8 @@ export const phoneSlides = [
     description: "",
   },
   {
-    imageUrlH: "/PhoneSlides/mintingUiH.jpg",
-    imageUrlV: "/PhoneSlides/mintingUiV.jpg",
+    imageUrlH: "/PhoneSlides/mintingUiH.png",
+    imageUrlV: "/PhoneSlides/mintingUiV.png",
     title: "Minting UI",
     description: "",
   },

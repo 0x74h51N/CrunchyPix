@@ -147,10 +147,10 @@ const LanguageMenu = () => {
             : "close"
         } ${
           smallNav
-            ? `${isMobile || isTablet ? "mt-6" : "mt-14"} flex justify-center`
+            ? `${isMobile || isTablet ? "mt-6" : "mt-12"} flex justify-center`
             : isMobile || isTablet
             ? `mt-6 flex justify-center`
-            : "mt-20"
+            : "mt-[108px]"
         } 
         `}
       >

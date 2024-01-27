@@ -62,7 +62,6 @@ export type CardSections = {
   title?: string;
   description?: string;
   icon?: Icon;
-  icons?: Icon[];
   index?: number;
   colorFulBorder?: boolean;
   image?: string;

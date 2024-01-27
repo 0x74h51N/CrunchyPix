@@ -21,6 +21,7 @@ import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
 import { generateSpans } from "@/components/GenerateSpans";
 import Ticks from "./components/ticks";
+import IconButton from "@/components/Buttons/IconButton";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const dispatch = useDispatch();
@@ -67,17 +68,28 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         className=" flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-12 pb-40 px-14 max-sm:px-8 max-xs:px-5"
       >
         {selectedItem.imageTop && (
-          <div className="w-full md:h-auto md:min-h-[650px] h-[350px]">
-            <Image
-              width={1850}
-              height={1850}
-              quality={100}
-              loading="lazy"
-              src={selectedItem.imageTop}
-              alt={selectedItem.imageAlt}
-              className="w-full h-full object-center md:object-contain object-cover bg-gradient-to-br from-neutral-900 to-slate-700"
-            />
-          </div>
+          <>
+            <div className="relative w-full md:h-auto md:min-h-[650px] h-[350px]">
+              <Image
+                width={1850}
+                height={1850}
+                quality={100}
+                loading="lazy"
+                src={selectedItem.imageTop}
+                alt={selectedItem.imageAlt}
+                className="w-full h-full object-center md:object-contain object-cover bg-gradient-to-br from-neutral-900  to-slate-700"
+              />
+
+              <div className="absolute flex flex-row gap-3 bottom-4 right-4 ">
+                {selectedItem.icons &&
+                  selectedItem.icons.map((icon, iconIndex) => (
+                    <span className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-4xl text-2xl">
+                      <IconButton key={iconIndex} icon={icon} />
+                    </span>
+                  ))}
+              </div>
+            </div>
+          </>
         )}
 
         <motion.div
@@ -87,7 +99,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
             once: true,
             amount: "some",
           }}
-          className="lg:relative flex flex-wrap w-full h-auto md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
+          className="lg:relative flex flex-wrap w-full h-auto lg:min-h-[590px] md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
         >
           <div className="lg:w-2/3 w-full lg:pr-[120px]">
             {selectedItem.title2 && (
@@ -113,12 +125,12 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
                   rehypePlugins={[rehypeRaw]}
                   className="h4 lg:ml-14 xs:ml-12 ml-10"
                 >
-                  {t(selectedItem.description).slice(2)}
+                  {t(selectedItem.description).slice(1)}
                 </Markdown>
               </motion.div>
             )}
             {selectedItem.description2 && (
-              <motion.p variants={textVariant(2.2)} className="p mt-4">
+              <motion.p variants={textVariant(2.2)} className="p lg:mt-8 mt-4">
                 {t(selectedItem.description2)}
               </motion.p>
             )}
@@ -144,6 +156,12 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
               )}
             </motion.div>
           </div>
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: "some" }}
+        >
           <motion.div
             variants={polygonIn("screen", "easeInOut", 1, 1)}
             className="flex md:flex-row flex-col items-center justify-between w-full h-auto mt-24 mb-8 gap-6"
@@ -156,31 +174,29 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
                   src={image}
                   alt={selectedItem.imageAlt}
                   key={index}
-                  className="flex max-w-[400px] w-full h-auto  object-contain bg-gradient-to-br from-slate-900 to-slate-800"
+                  className="flex max-w-[400px] w-full h-auto  object-contain bg-gradient-to-br from-neutral-900  to-slate-800 to-90%"
                 />
               ))}
           </motion.div>
+          {selectedItem.techTitle && selectedItem.techDescription && (
+            <>
+              <motion.h3
+                variants={textVariant(1)}
+                className="h3 self-start underline-offset-3 underline"
+              >
+                {t(selectedItem.techTitle)}
+              </motion.h3>
+              <motion.div
+                variants={textVariant(1.5)}
+                className="p mt-4 w-full "
+              >
+                <Markdown remarkPlugins={[breaks]} rehypePlugins={[rehypeRaw]}>
+                  {t(selectedItem.techDescription)}
+                </Markdown>
+              </motion.div>
+            </>
+          )}
         </motion.div>
-        {selectedItem.techTitle && selectedItem.techDescription && (
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: "some" }}
-          >
-            <motion.h3
-              variants={textVariant(1)}
-              className="h3 self-start underline-offset-3 underline"
-            >
-              {t(selectedItem.techTitle)}
-            </motion.h3>
-
-            <motion.div variants={textVariant(1.5)} className="p mt-4 w-full ">
-              <Markdown remarkPlugins={[breaks]} rehypePlugins={[rehypeRaw]}>
-                {t(selectedItem.techDescription)}
-              </Markdown>
-            </motion.div>
-          </motion.div>
-        )}
       </motion.div>
     </div>
   );

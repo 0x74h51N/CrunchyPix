@@ -30,14 +30,14 @@ const IntroductionSect = () => {
     return null;
   }
   return (
-    <div className="flex flex-row items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto p-24 max-md:px-1 bg-cool-gray-800 md:rounded-3xl gap-12 max-sm:flex-col max-lg:gap-6 max-lg:items-start max-sm:items-center">
+    <div className="flex flex-row items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto p-24 max-md:px-1 bg-cool-gray-800 md:rounded-3xl gap-12 max-sm:flex-col max-lg:gap-6">
       <Image
         src="/headColor.png"
         alt="Photo"
         width={250}
         height={250}
         loading="lazy"
-        className="object-center bg-opacity-0 grayscale max-lg:w-[230px] max-sm:w-[210px] h-auto z-30"
+        className="object-center bg-opacity-0 grayscale max-lg:w-[230px] max-md:w-[200px] h-auto z-30"
       />
       <motion.div
         initial="hidden"

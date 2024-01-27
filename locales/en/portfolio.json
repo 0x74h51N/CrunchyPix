@@ -40,7 +40,22 @@
     {
       "title": "CC Order",
       "projectType": "Landing Page",
-      "slideDescription": "Created for a credit card order landing page. Designed in Figma, implemented with React table. Access controlled by API key from the backoffice application. GitHub link confidential, but can share developed components and page code upon request.",
+      "slideDescription": "Created for credit card orders. Designed in Figma and implemented with React components. Access is controlled via API key from the backoffice application.",
+      "title2": "CC Order Landing Page",
+      "techTitle": "Tech Summary",
+      "techDescription": "This landing page is built using Next.js, TypeScript, and CSS styles. Additionally, a custom table creator component is developed using the React Table library. It includes special i18n language files for language options and an API integration for communication with the backend. The accuracy of the JSON token is verified for page display; access to the page is granted with a special token for registered customers. Backend and verification features are removed in the sample page, and the CC Order process is disabled.  GitHub link is private, but I can share developed components and page code upon request.",
+      "description": "Simple and Effective Landing Page",
+      "description2": "This landing page, with a responsive, adaptive, and visually appealing design, is designed for providing fee information before credit card orders for registered customers of Novem Gold. Additionally, the credit card image used is specially designed for Novem Gold and showcased with a flip feature.",
+      "ticks": [
+        "Welcome Page",
+        "Web Development",
+        "Responsive & Adaptive",
+        "Modular Component",
+        "API Integration",
+        "UX/UI Design & Optimization",
+        "Performance Optimization",
+        "Cross-Browser Compatibility"
+      ],
       "client": "Novem Gold",
       "location": "Linz / AUSTRIA"
     },
@@ -48,6 +63,23 @@
       "title": "Minting UI",
       "projectType": "UI/UX",
       "slideDescription": "Developed for a UI using minting and burning functions for NNN and NVM tokens on Binance Smart Chain (BSC). Eth-2 scaffold used, contracts obtained from BSC, deployed, and ABI created. Integrated with BSC using Wagmi, enabling minting and burning functions. Other functions available on the debugging page.",
+      "title2": "Minting and Burning UI",
+      "techTitle": "Tech Summary",
+      "techDescription": "In creating the Minting UI, we employed a variety of cutting-edge technologies, with TypeScript and Next.js forming the foundation of the project. The UI is designed with a focus on user experience and functionality, utilizing Tailwind CSS for styling. Hardhat was used for the Ethereum 2.0 scaffold, and contracts were obtained from the Binance Smart Chain (BSC) for deployment. ABI (Application Binary Interface) was created for seamless interaction with the deployed contracts. The UI is fully integrated with BSC through Wagmi, facilitating minting and burning functions for NNN and NVM tokens. Wallet connectivity is established using RainbowKit, allowing users with permission to connect their wallets and utilize various functions, including minting, burning, and other features available on the debugging page for comprehensive testing and analysis.",
+      "description": "User Interface for Minting and Burning",
+      "description2": "The Minting UI project is a user-friendly interface designed to execute minting and burning functions for NNN and NVM tokens on the Binance Smart Chain. Leveraging TypeScript and Next.js, the UI ensures a smooth and efficient user experience. The project also includes dark and light theme options for user preference. This UI allows users with authorized wallets to connect and perform minting, burning, or other functions in the debugging section.",
+      "ticks": [
+        "UI/UX Design",
+        "Token Minting & Burning",
+        "Binance Smart Chain Integration",
+        "Responsive & Adaptive",
+        "Hardhat Development",
+        "React Components",
+        "Wagmi Integration",
+        "Debugging & Testing",
+        "Performance Optimization",
+        "Cross-Browser Compatibility"
+      ],
       "client": "CypherX",
       "location": "Munich / GERMANY"
     },

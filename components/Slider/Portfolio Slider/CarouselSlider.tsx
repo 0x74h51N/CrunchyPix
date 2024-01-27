@@ -34,6 +34,9 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const screenHeight = useSelector(
+    (state: RootState) => state.screenHeight.height
+  );
   const _selectedSlide = (_slide: PortfolioItemProps) => {
     dispatch(setSlide(_slide));
   };
@@ -69,7 +72,9 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
       <Swiper
         effect="coverflow"
         centeredSlides
-        slidesPerView={isMobile ? 1.2 : isTablet ? 1.5 : 2}
+        slidesPerView={
+          isMobile ? (screenHeight < 500 ? 1.7 : 1.2) : isTablet ? 1.5 : 2
+        }
         spaceBetween={0}
         loop
         coverflowEffect={{
@@ -86,14 +91,18 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
           pauseOnMouseEnter: true,
         }}
         speed={1000}
-        className="h-auto min-h-[560px] cursor-none "
+        className="h-auto cursor-none "
       >
         {slides.map((slide: PortfolioItemProps, index: number) => (
           <SwiperSlide key={index + 1}>
             <div
               className={`relative  ${
-                isTablet && !isMobile ? "h-[340px]" : "h-[485px]"
-              } w-auto shadow-2xl shadow-black`}
+                isTablet && !isMobile
+                  ? "h-[340px]"
+                  : screenHeight < 500
+                  ? "h-[300px]"
+                  : "h-[485px]"
+              } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
               onClick={() => index === activeIndex && _selectedSlide(slide)}
             >
               <Image
@@ -102,7 +111,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                 alt={slide.imageAlt || ""}
                 width="1000"
                 height="1000"
-                className="object-cover w-full h-full my-5"
+                className="object-cover w-full h-full"
                 quality={100}
               />
               <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
@@ -120,10 +129,12 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                   <div className="flex items-end gap-2">
                     {slide.icons &&
                       slide.icons.map((icon, iconIndex) => (
-                        <IconButton
-                          key={`icon-${index}-${iconIndex}`}
-                          icon={icon}
-                        />
+                        <span className="lg:text-2xl text-xl">
+                          <IconButton
+                            key={`icon-${index}-${iconIndex}`}
+                            icon={icon}
+                          />
+                        </span>
                       ))}
                   </div>
                 </div>

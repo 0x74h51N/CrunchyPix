@@ -87,7 +87,7 @@ const SlideModal = () => {
                     {t(`${selectedSlide.title}`)}
                   </h2>
                   <p
-                    className={`font-extralight overflow-hidden overflow-ellipsis line-clamp-1 ${
+                    className={`font-extralight overflow-hidden ${
                       isMobile ? "text-[10px]" : "text-[13px]"
                     }`}
                   >
@@ -113,7 +113,9 @@ const SlideModal = () => {
                     <div className="flex items-end gap-2">
                       {selectedSlide.icons &&
                         selectedSlide.icons.map((icon, iconIndex) => (
-                          <IconButton key={iconIndex} icon={icon} />
+                          <span className="lg:text-2xl text-xl">
+                            <IconButton key={iconIndex} icon={icon} />
+                          </span>
                         ))}
                     </div>
                   </div>
