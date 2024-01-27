@@ -41,8 +41,8 @@ const CodeSect = () => {
       setLineHeight("1.25");
       setFontSize("0.6em");
     } else {
-      setLineHeight("1.1");
-      setFontSize("0.5em");
+      setLineHeight("1.25");
+      setFontSize("0.4em");
     }
   }, [screenWidth]);
 

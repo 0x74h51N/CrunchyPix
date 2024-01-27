@@ -1,132 +1,207 @@
 export const codeString = `"use client";
-import CardMaker from "@/components/CardMaker";
-import { Pagination } from "swiper/modules";
-import { motion } from "framer-motion";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { generateSpans } from "@/components/GenerateSpans";
+import { portfolioPageItems } from "@/constants/portfolioItems";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import { polygonIn, slideIn } from "@/utils/motion";
-import { useEffect, useState } from "react";
+import i18n from "@/utils/i18n";
+import { polygonIn, slideIn, textVariant } from "@/utils/motion";
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector, useDispatch } from "react-redux";
-import { servicesSectCards } from "@/constants/servicesSectCards";
-import { sliderChange } from "@/store/redux/isSlider";
+import { useDispatch, useSelector } from "react-redux";
+import ProjectInfo from "./components/ProjectInfo";
+import Image from "next/image";
+import Markdown from "react-markdown";
+import breaks from "remark-breaks";
+import rehypeRaw from "rehype-raw";
+import { generateSpans } from "@/components/GenerateSpans";
+import Ticks from "./components/ticks";
+import IconButton from "@/components/Buttons/IconButton";
 
-const ServicesSect = () => {
-  const [_, setInit] = useState(false);
-  const { t, i18n } = useTranslation(["translation"]);
+const PortfolioPage = ({ params }: { params: { id: string } }) => {
+  const dispatch = useDispatch();
+  const { t } = useTranslation(["portfolio"]);
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
-  const dispatch = useDispatch();
-
   useEffect(() => {
-    if (i18n.isInitialized) {
+    const handleInitialized = () => {
       dispatch(setIsTranslationsLoaded(true));
+    };
+
+    if (i18n.isInitialized) {
+      handleInitialized();
     } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
+      i18n.on("initialized", handleInitialized);
     }
-  }, [i18n, dispatch]);
 
-  useEffect(() => {
-    if (isTranslationsLoadedRedux) {
-      setInit(true);
-    }
-  }, [isTranslationsLoadedRedux]);
+    return () => {
+      i18n.off("initialized", handleInitialized);
+    };
+  }, [dispatch]);
 
-  const pagination = {
-    el: ".custom-pagy",
-    clickable: true,
-  };
+  if (!isTranslationsLoadedRedux) {
+    return null;
+  }
+  const selectedItem = portfolioPageItems.find(
+    (item) => item._id.toLowerCase().replace(/\s+/g, "") == params.id
+  );
 
-  const hoverHandler = () => {
-    if (isSlider === false) {
-      dispatch(sliderChange(true));
-    } else if (isSlider === true) {
-      dispatch(sliderChange(false));
-    }
-  };
+  if (!selectedItem) {
+    return <p>Couldn't find a portfolio item.</p>;
+  }
 
   return (
-    <div className="flex justify-center items-center w-full h-full">
+    <div className="flexCenter min-w-[100svw] min-h-[100svh]">
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.6 }}
-        className="flex flex-col items-start h-full w-auto p-16 z-10"
+        viewport={{ once: true, amount: "some" }}
+        variants={polygonIn("screen", "easeInOut", 0.7, 0.8)}
+        className=" flex flex-col items-center h-full w-full 
+        max-w-[1300px] min-h-[100svh] p-12 pb-40 px-14 max-sm:px-8 max-xs:px-5"
       >
-        <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
-          <div
-            className="text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] 
-          xs:text-[20px] text-[16px] lg:leading-[40px]"
-          >
-            {isMobile || isTablet
-              ? t("servicesSect.intro")
-              : generateSpans({
-                  text: t("servicesSect.intro"),
-                  colorType: "vibrantColors",
-                  zeroColor: "#737373",
-                })}
-          </div>
-          <div className="text-cool-gray-50 font-black md:text-[60px] 
-          sm:text-[50px] xs:text-[40px] text-[30px] mb-6">
-            {isMobile || isTablet
-              ? t("servicesSect.title")
-              : generateSpans({
-                  text: t("servicesSect.title"),
-                  colorType: "vibrantColors",
-                })}
-          </div>
-        </motion.h1>
+        {selectedItem.imageTop && (
+          <>
+            <div className="relative w-full md:h-auto md:min-h-[650px] h-[350px]">
+              <Image
+                width={1850}
+                height={1850}
+                quality={100}
+                loading="lazy"
+                src={selectedItem.imageTop}
+                alt={selectedItem.imageAlt}
+                className="w-full h-full object-center md:object-contain 
+                object-cover bg-gradient-to-br from-neutral-900  to-slate-700"
+              />
+
+              <div className="absolute flex flex-row gap-3 bottom-4 right-4 ">
+                {selectedItem.icons &&
+                  selectedItem.icons.map((icon, iconIndex) => (
+                    <span className="hover:text-log-col transition-all ease-in-out 
+                    duration-300 text-cool-gray-50 lg:text-4xl text-2xl">
+                      <IconButton key={iconIndex} icon={icon} />
+                    </span>
+                  ))}
+              </div>
+            </div>
+          </>
+        )}
+
         <motion.div
-          variants={polygonIn("down", "spring", 1, 2)}
-          className="flex flex-wrap justify-center gap-8 w-auto"
-          onHoverStart={hoverHandler}
-          onHoverEnd={hoverHandler}
+          initial="hidden"
+          whileInView="show"
+          viewport={{
+            once: true,
+            amount: "some",
+          }}
+          className="lg:relative flex flex-wrap w-full h-auto lg:min-h-[590px] 
+          md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
         >
-          {isTranslationsLoadedRedux && (
-            <Swiper
-              modules={[Pagination]}
-              slidesPerView={isMobile ? 1 : isTablet ? 2.5 : 3}
-              spaceBetween={30}
-              centeredSlides
-              initialSlide={1}
-              loop
-              pagination={pagination}
-              onInit={() => setInit(true)}
-              className="2xl:w-[1030px] lg:w-[900px] 
-              md:w-[700px] w-[340px] h-auto cursor-none"
+          <div className="lg:w-2/3 w-full lg:pr-[120px]">
+            {selectedItem.title2 && (
+              <motion.h2 variants={textVariant(1)} className="h1 half mb-4">
+                {isMobile || isTablet
+                  ? t(selectedItem.title2)
+                  : generateSpans({
+                      text: t(selectedItem.title2),
+                      colorType: "vibrantColors",
+                    })}
+              </motion.h2>
+            )}
+            {selectedItem.description && (
+              <motion.div
+                variants={textVariant(1.5)}
+                className="relative flex flex-row"
+              >
+                <span className="absolute h2 bold cool top-0 left-0 bg-log-col 
+                -rotate-6 hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-3 py-1">
+                  {t(selectedItem.description).charAt(0)}
+                </span>
+                <Markdown
+                  remarkPlugins={[breaks]}
+                  rehypePlugins={[rehypeRaw]}
+                  className="h4 lg:ml-14 xs:ml-12 ml-10"
+                >
+                  {t(selectedItem.description).slice(1)}
+                </Markdown>
+              </motion.div>
+            )}
+            {selectedItem.description2 && (
+              <motion.p variants={textVariant(2.2)} className="p lg:mt-8 mt-4">
+                {t(selectedItem.description2)}
+              </motion.p>
+            )}
+          </div>
+          <div className="flex sm:flex-row flex-col max-sm:items-center max-sm:gap-8 w-full mt-6">
+            {selectedItem.ticks && (
+              <motion.div
+                variants={polygonIn("down", "spring", 2.5, 1.7)}
+                className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
+              >
+                <Ticks ticks={selectedItem.ticks} />
+              </motion.div>
+            )}
+            <motion.div
+              variants={slideIn("right", "spring", 1.5, 1.5)}
+              className="lg:absolute right-0 lg:top-0"
             >
-              {servicesSectCards.map((section, index) => (
-                <SwiperSlide key={index} className="w-[330px] h-auto">
-                  <CardMaker
-                    key={index}
-                    cardSections={section}
-                    cardWidth={330}
-                    cardHeight={520}
-                    className="cursor-none"
-                  />
-                </SwiperSlide>
+              {selectedItem.ProjectInfo && (
+                <ProjectInfo
+                  ProjectInfo={selectedItem.ProjectInfo}
+                  key={selectedItem._id}
+                />
+              )}
+            </motion.div>
+          </div>
+        </motion.div>
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: "some" }}
+        >
+          <motion.div
+            variants={polygonIn("screen", "easeInOut", 1, 1)}
+            className="flex md:flex-row flex-col items-center 
+            justify-between w-full h-auto mt-24 mb-8 gap-6"
+          >
+            {selectedItem.imageBoxes &&
+              selectedItem.imageBoxes.map((image: string, index: number) => (
+                <Image
+                  width={1000}
+                  height={1000}
+                  src={image}
+                  alt={selectedItem.imageAlt}
+                  key={index}
+                  className="flex max-w-[400px] w-full h-auto 
+                  object-contain bg-gradient-to-br from-neutral-900  to-slate-800 to-90%"
+                />
               ))}
-            </Swiper>
+          </motion.div>
+          {selectedItem.techTitle && selectedItem.techDescription && (
+            <>
+              <motion.h3
+                variants={textVariant(1)}
+                className="h3 self-start underline-offset-3 underline"
+              >
+                {t(selectedItem.techTitle)}
+              </motion.h3>
+              <motion.div
+                variants={textVariant(1.5)}
+                className="p mt-4 w-full "
+              >
+                <Markdown remarkPlugins={[breaks]} rehypePlugins={[rehypeRaw]}>
+                  {t(selectedItem.techDescription)}
+                </Markdown>
+              </motion.div>
+            </>
           )}
         </motion.div>
       </motion.div>
-      <div
-        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col 
-        flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
-        w-full 2xl:max-w-[180px] 2xl:bg-cool-gray-800 2xl:p-40 p-10 2xl:gap-8 gap-4"
-      />
     </div>
   );
 };
 
-export default ServicesSect;
-
+export default PortfolioPage;
 `;

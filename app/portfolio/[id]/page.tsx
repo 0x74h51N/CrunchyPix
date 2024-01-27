@@ -3,13 +3,7 @@ import { portfolioPageItems } from "@/constants/portfolioItems";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import {
-  fadeIn,
-  polygonIn,
-  slideIn,
-  staggerContainer,
-  textVariant,
-} from "@/utils/motion";
+import { polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
