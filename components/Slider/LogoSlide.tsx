@@ -3,8 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import SwiperCore from "swiper";
 import "swiper/css";
-import { useState } from "react";
-import { logoType } from "@/app/common.types";
 import LogoImage from "../LogoImage";
 
 interface logoSlideProops {
