@@ -1,5 +1,9 @@
 {
-  "page": { "title": "Portföy", "details": "Proje Detayları" },
+  "page": {
+    "title": "Portföy",
+    "details": "Proje Detayları",
+    "otherProjects": "Diğer Projeler"
+  },
   "portfolioItemComp": {
     "category": "Kategori",
     "client": "Müşteri",

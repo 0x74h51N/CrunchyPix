@@ -19,10 +19,6 @@ import { motion } from "framer-motion";
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
-interface CarouselSliderProps {
-  slides: PortfolioItemProps[];
-}
-
 const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   const [activeIndex, setActiveIndex] = useState(() => {
     return 0;

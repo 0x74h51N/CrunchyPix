@@ -1,13 +1,15 @@
 import { PortfolioItemProps } from "@/app/common.types";
 
-import { Icon, slide } from "@/app/common.types";
+import { Icon } from "@/app/common.types";
 
 const commonIcons: Record<string, Icon> = {
   github: {
     type: "github",
+    alt: "Github",
   },
   web: {
     type: "web",
+    alt: "Webpage",
   },
 };
 

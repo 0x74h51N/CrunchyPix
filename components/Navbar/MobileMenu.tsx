@@ -54,7 +54,7 @@ const MobileMenu = () => {
   }, [menuRef, isDropdownOpen]);
 
   return (
-    <div ref={menuRef} className="flex flex-col">
+    <div ref={menuRef} className="flex flex-col mt-2">
       <BurgerButton
         color={"#FFFFFF"}
         width={40}

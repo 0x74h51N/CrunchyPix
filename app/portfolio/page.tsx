@@ -26,6 +26,9 @@ const Portfolio = () => {
               projectType={item.projectType}
               slideImage={""}
               slideDescription={""}
+              width={630}
+              height={500}
+              isSlide={false}
             />
           ))}
         </div>
