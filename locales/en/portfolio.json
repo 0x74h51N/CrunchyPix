@@ -1,5 +1,9 @@
 {
-  "page": { "title": "Portfolio", "details": "Project Details" },
+  "page": {
+    "title": "Portfolio",
+    "details": "Project Details",
+    "otherProjects": "Other Projects"
+  },
   "portfolioItemComp": {
     "category": "Category",
     "client": "Client",

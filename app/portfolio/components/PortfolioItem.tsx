@@ -11,6 +11,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaAnglesRight } from "react-icons/fa6";
 import { clickableChange } from "@/store/redux/isClickable";
 import { PortfolioItemProps } from "@/app/common.types";
+import { Interface } from "readline";
+
+interface PortfolioItemInterface extends PortfolioItemProps {
+  width: number;
+  height: number;
+  isSlide: boolean;
+}
 
 const PortfolioItem = ({
   _id,
@@ -18,12 +25,15 @@ const PortfolioItem = ({
   imageAlt,
   title,
   projectType,
-}: PortfolioItemProps) => {
+  width,
+  height,
+  isSlide,
+}: PortfolioItemInterface) => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
-  const originalWidth = 630;
-  const originalHeight = 500;
-  const mobileWidth = 320;
+  const originalWidth = width;
+  const originalHeight = height;
+  const mobileWidth = 300;
   const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
   const id = _id.toLowerCase().replace(/\s+/g, "");
   const isClickable = useSelector(
@@ -64,16 +74,18 @@ const PortfolioItem = ({
 
   return (
     <div
-      className="relative flex flex-col items-center justify-between overflow-hidden md:mt-12"
+      className="relative flex flex-col items-center justify-between overflow-hidden"
       style={{
-        height: isMobile ? 320 : 600,
+        height: isSlide ? "auto" : isMobile ? 320 : 600,
+        width: isMobile ? mobileWidth : originalWidth,
+        marginTop: isSlide ? 0 : 25,
       }}
     >
       <motion.div
         initial="hidden"
         whileHover="show"
         whileTap={"show"}
-        className="group relative flex justify-center items-center w-[630px] h-[500px] rounded-xl bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10"
+        className="group relative flex justify-center items-center rounded-xl bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10"
         style={{
           width: isMobile ? mobileWidth : originalWidth,
           height: isMobile ? mobileHeight : originalHeight,
@@ -90,7 +102,7 @@ const PortfolioItem = ({
         />
 
         <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
-        {isTouch ? (
+        {isTouch || isSlide ? (
           <Link
             href={`/portfolio/${id}`}
             passHref
@@ -116,21 +128,25 @@ const PortfolioItem = ({
           </>
         )}
       </motion.div>
-      <div className="absolute bottom-0  rounded-b-lg z-0 w-full flex justify-start">
+      <div
+        className={`absolute bottom-0 rounded-b-xl z-10 w-full flex justify-start ${
+          isSlide
+            ? "left-0 bg-black bg-opacity-50  h-auto"
+            : "-bottom-3 md:h-32 h-20"
+        }`}
+      >
         <Link
           href={`/portfolio/${id}`}
           passHref
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="w-auto md:py-9 px-5 p-6 md:h-32 h-20 text-stone-200 cursor-none"
+          className="flex flex-col justify-center w-auto md:p-4 p-2 text-stone-200 cursor-none"
           onClick={onClickHandler}
         >
-          <h2 className="md:text-lg text-sm text-log-col">
+          <h2 className="md:text-md text-sm text-log-col">
             {t(`${projectType}`)}
           </h2>
-          <h1 className="md:text-[35px] text-[22px] font-bold">
-            {t(`${title}`)}
-          </h1>
+          <h1 className="h2 bold">{t(`${title}`)}</h1>
         </Link>
       </div>
     </div>

@@ -1,5 +1,9 @@
 {
-  "page": { "title": "Portfolio", "details": "Projektdetails" },
+  "page": {
+    "title": "Portfolio",
+    "details": "Projektdetails",
+    "otherProjects": "Andere Projekte"
+  },
   "portfolioItemComp": {
     "category": "Kategorie",
     "client": "Kunde",
