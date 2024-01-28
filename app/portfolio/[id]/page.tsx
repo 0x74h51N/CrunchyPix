@@ -212,10 +212,10 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
             whileInView="show"
             viewport={{ once: true, amount: "some" }}
           >
-            <motion.h3 variants={textVariant(0.8)} className="h3 self-start">
+            <motion.h3 variants={textVariant(1)} className="h3 self-start">
               {t(selectedItem.techTitle)}
             </motion.h3>
-            <motion.div variants={textVariant(1.1)} className="p mt-4 w-full ">
+            <motion.div variants={textVariant(1.3)} className="p mt-4 w-full ">
               <Markdown remarkPlugins={[breaks]} rehypePlugins={[rehypeRaw]}>
                 {t(selectedItem.techDescription)}
               </Markdown>
