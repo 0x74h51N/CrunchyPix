@@ -1,13 +1,11 @@
 "use client";
 import { portfolioPageItems } from "@/constants/portfolioItems";
 import { RootState } from "@/store";
-import { slide } from "@/app/common.types";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import { polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import ProjectInfo from "./components/ProjectInfo";
@@ -17,31 +15,18 @@ import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
 import { generateSpans } from "@/components/GenerateSpans";
 import Ticks from "./components/ticks";
-import IconButton from "@/components/Buttons/IconButton";
 import { sliderChange } from "@/store/redux/isSlider";
-import { Autoplay, Pagination } from "swiper/modules";
-import PortfolioItem from "../components/PortfolioItem";
+import ProjectSlide from "./components/ProjectSlide";
+import TopImage from "./components/TopImage";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width
-  );
-  const [_, setInit] = useState(false);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
-  const slides = useMemo(() => {
-    return portfolioPageItems.map((slide: slide) => ({
-      imageUrl: slide.image,
-      title: slide.title,
-      description: slide.description,
-    }));
-  }, []);
-
   useEffect(() => {
     const handleInitialized = () => {
       dispatch(setIsTranslationsLoaded(true));
@@ -57,13 +42,6 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
       i18n.off("initialized", handleInitialized);
     };
   }, [dispatch]);
-
-  useEffect(() => {
-    if (isTranslationsLoadedRedux) {
-      setInit(true);
-    }
-  }, [isTranslationsLoadedRedux]);
-
   if (!isTranslationsLoadedRedux) {
     return null;
   }
@@ -90,35 +68,12 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
         variants={polygonIn("screen", "easeInOut", 0.7, 0.8)}
         className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-10 px-14 max-sm:px-8 max-xs:px-5"
       >
-        {selectedItem.imageTop && (
-          <>
-            <div className="relative w-full md:h-auto md:min-h-[650px] h-[350px]">
-              <Image
-                width={1850}
-                height={1850}
-                quality={100}
-                loading="lazy"
-                src={selectedItem.imageTop}
-                alt={selectedItem.imageAlt}
-                className="w-full h-full object-center md:object-contain object-cover bg-gradient-to-br from-neutral-900  to-slate-700"
-              />
-
-              <motion.div
-                variants={slideIn("right", "spring", 2.5, 1)}
-                className="absolute flex flex-row gap-4 bottom-5 py-3 right-0 pr-6 pl-4 bg-black bg-opacity-50 rounded-l-lg"
-              >
-                {selectedItem.icons &&
-                  selectedItem.icons.map((icon, iconIndex) => (
-                    <span
-                      key={iconIndex}
-                      className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-4xl text-2xl"
-                    >
-                      <IconButton key={iconIndex} icon={icon} />
-                    </span>
-                  ))}
-              </motion.div>
-            </div>
-          </>
+        {selectedItem.imageTop && selectedItem.icons && (
+          <TopImage
+            imageTop={selectedItem.imageTop}
+            imageAlt={selectedItem.imageAlt}
+            icons={selectedItem.icons}
+          />
         )}
 
         <motion.div
@@ -191,7 +146,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: "some" }}
-          variants={polygonIn("screen", "spring", 2, 1)}
+          variants={polygonIn("screen", "spring", 1, 1)}
           className="flex md:flex-row flex-col items-center justify-between w-full h-auto mt-24 mb-8 gap-6"
         >
           {selectedItem.imageBoxes &&
@@ -206,14 +161,14 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
               />
             ))}
         </motion.div>
-        {selectedItem.techTitle && selectedItem.techDescription && (
+        {selectedItem.techDescription && (
           <motion.div
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: "some" }}
           >
             <motion.h3 variants={textVariant(1)} className="h3 self-start">
-              {t(selectedItem.techTitle)}
+              {t("page.techTitle")}
             </motion.h3>
             <motion.div variants={textVariant(1.3)} className="p mt-4 w-full ">
               <Markdown remarkPlugins={[breaks]} rehypePlugins={[rehypeRaw]}>
@@ -231,61 +186,11 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
           onHoverStart={hoverStart}
           onHoverEnd={hoverEnd}
         >
-          <motion.div variants={slideIn("up", "easeInOut", 1, 1)}>
+          <motion.div variants={slideIn("up", "easeInOut", 1.5, 1)}>
             <h2 className="h1 half w-full mb-2">{t("page.otherProjects")}</h2>
           </motion.div>
           {isTranslationsLoadedRedux && (
-            <>
-              <Swiper
-                modules={[Pagination, Autoplay]}
-                centeredSlides={true}
-                pagination={{
-                  dynamicBullets: true,
-                  clickable: true,
-                }}
-                slidesPerView={
-                  screenWidth <= 450
-                    ? 1
-                    : screenWidth <= 610
-                    ? 1.3
-                    : screenWidth <= 769
-                    ? 1.8
-                    : isTablet
-                    ? 2.2
-                    : screenWidth <= 1250
-                    ? 2.5
-                    : 3
-                }
-                initialSlide={1}
-                autoplay={{
-                  delay: 5000,
-                  disableOnInteraction: false,
-                  pauseOnMouseEnter: true,
-                }}
-                speed={1000}
-                loop
-                onInit={() => setInit(true)}
-                className="w-full h-full cursor-none"
-              >
-                {portfolioPageItems.map((item, index) => (
-                  <SwiperSlide key={index}>
-                    <PortfolioItem
-                      _id={item._id}
-                      key={index}
-                      image={item.image}
-                      imageAlt={item.imageAlt}
-                      title={item.title}
-                      projectType={item.projectType}
-                      slideImage={""}
-                      slideDescription={""}
-                      width={isMobile || isTablet ? 300 : 370}
-                      height={isMobile || isTablet ? 250 : 290}
-                      isSlide={true}
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </>
+            <ProjectSlide Items={portfolioPageItems} />
           )}
         </motion.div>
       </motion.div>
