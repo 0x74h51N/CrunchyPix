@@ -2,7 +2,8 @@
   "page": {
     "title": "Portföy",
     "details": "Proje Detayları",
-    "otherProjects": "Diğer Projeler"
+    "otherProjects": "Diğer Projeler",
+    "techTitle": "Teknik Özet"
   },
   "portfolioItemComp": {
     "category": "Kategori",
@@ -22,7 +23,6 @@
       "projectType": "Web Sayfası Tasarımı",
       "slideDescription": "Websitesi ve ön yüz becerilerimi sergilemek amacıyla başlatıldı. Dinamik bileşenler ve sayfalar geliştirildi. Özellikler arasında uluslararası dil seçenekleri ve animasyon geçişleri bulunmaktadır. Kod detayları için GitHub'u ziyaret edebilirsiniz.",
       "title2": "Bu Sitenin Yaratılışı",
-      "techTitle": "Teknik Özet",
       "techDescription": "CrunchyPix'in şekillendirilmesinde, cutting-edge teknolojileri kullanarak, temel araçlar olarak Next.js (14) ve TypeScript'i benimsedik. React, temel kütüphane olarak, kolektif vizyonumuzu hayata geçirmek için gereken esnekliği ve gücü sağladı. Dünya çapında sorunsuz bir kullanıcı deneyimi sağlamak için i18n entegrasyonu ve özel dil tercüme bileşenleri kullanıldı. Redux ile state yönetimine derinlemesine inildi ve dil tercihleri, özel imleç etkileşimleri ve cihaz duyarlılığı gibi karmaşık detaylar bu araç ile yönetildi. motion.div'in yeteneklerinden faydalanarak tasarlanan büyüleyici animasyon geçişleri, CrunchyPix'e hayat kattı. Ürün veya politikaları sergileyen her sayfa dinamik olarak oluşturuldu ve duyarlı bir ortam sunuyor. Taahhüdümüz, GitHub gibi versiyon kontrolü ve işbirliği araçlarına kadar uzanıyor. Dependabot, CodeQL ve Vercel gibi araçlar, geliştirme iş akışımızı güçlendiren ek araçlardır.",
       "description": "CrunchyPix sadece kişisel bir websitesi değil; \nminimal ve etkili tasarımın gücünün bir kanıtıdır.",
       "description2": "Bir websitesinin oluşturulmasındaki yaklaşımımız; modüler, dinamik ve özel bileşenlerle uzun ömürlü ve kolay adapte edilebilir olabileceğini göstermeyi amaçlar. Burada da Next.js ve uyumlu kütüphanelerinin yeteneklerini kullanarak, özel ihtiyaçlara uygun en güncel ve etkili çözümleri bulduk, gerektiği yerlerde ise özel componentler ve yapılar geliştirdik. Site, mobil ve tablet ekranları dahil olmak üzere çeşitli cihazlarda sorunsuz kullanıcı deneyimleri sunar, optimal çözümlerle kullanıcı memnuniyetini maksimize eder ve benzersiz tasarımları bir araya getirir.",
@@ -46,7 +46,6 @@
       "projectType": "Landing Sayfası",
       "slideDescription": "Kredi kartı siparişi için oluşturuldu. Figma'da tasarlandı, React tablosu ile uygulandı. Erişim, backoffice uygulamasından API anahtarı ile kontrol ediliyor.",
       "title2": "Müşterilere Özel Karşılama",
-      "techTitle": "Teknoloji Özeti",
       "techDescription": "Bu landing page, Next.js, TypeScript ve CSS stilleri kullanılarak oluşturulmuştur. Ayrıca, React Table kütüphanesinden faydalanılarak özel tablo oluşturucu komponent geliştirilmiştir. Dil seçenekleri için özel i18n dil dosyaları ve backend ile iletişim kuracak bir API entegrasyonu bulunmaktadır. Sayfanın görüntülenmesi için JSON token'ın doğruluğu kontrol edilir; kayıtlı müşterilere özel bir token ile sayfaya erişim sağlanır. Örnek sayfada backend ve doğrulama özellikleri kaldırılmış, CC Order süreci devre dışı bırakılmıştır. GitHub bağlantısı gizli, ancak talep üzerine geliştirilen bileşenler ve sayfa kodunu paylaşabilirim.",
       "description": "Basit ve Etkili Bir Landing Page",
       "description2": "Responsive, adaptive ve görsel olarak etkileyici bir tasarıma sahip bu landing page, Novem Gold'un kayıtlı müşterilerine kredi kartı siparişi öncesi ücret bilgilendirmesi yapılması amacıyla tasarlanmıştır. Ayrıca, kullanılan kredi kartı görseli Novem Gold için özel olarak tasarlanmıştır ve flip özelliği ile sergilenmektedir.",
@@ -68,7 +67,6 @@
       "projectType": "UI/UX",
       "slideDescription": "NNN ve NVM tokenları için Binance Smart Chain (BSC) üzerinde minting ve burning işlevlerini kullanarak bir UI için geliştirildi. Eth-2 iskeleti kullanıldı, kontratlar BSC'den alındı, dağıtıldı ve ABI oluşturuldu. Wagmi kullanılarak BSC ile entegre edildi, minting ve burning işlevlerini etkinleştirdi. Diğer işlevler hata ayıklama sayfasında mevcuttur.",
       "title2": "Minting ve Burning UI",
-      "techTitle": "Teknoloji Özeti",
       "techDescription": "Minting UI oluşturulurken, TypeScript ve Next.js gibi çeşitli son teknoloji teknolojiler kullanıldı. UI, kullanıcı deneyimi ve işlevselliğe odaklanarak tasarlandı ve stil için Tailwind CSS kullanıldı. Ethereum 2.0 iskeleti için Hardhat kullanıldı ve kontratlar Binance Smart Chain (BSC) üzerinden alındı. Dağıtım için oluşturulan ABI (Uygulama İkili Arabirim) dağıtılan kontratlarla sorunsuz etkileşim için oluşturuldu. UI, Wagmi aracılığıyla BSC ile tamamen entegre edildi, NNN ve NVM tokenları için minting ve burning işlevlerini kolaylaştırdı. Cüzdan bağlantısı, RainbowKit kullanılarak sağlandı; bu da yetkilendirilmiş cüzdanlara bağlanma ve hata ayıklama sayfasında minting, burning ve diğer işlevleri gerçekleştirme izni tanır.",
       "description": "Minting ve Burning için Kullanıcı Arayüzü",
       "description2": "Minting UI projesi, NNN ve NVM tokenları için Binance Smart Chain üzerinde minting ve burning işlemlerini gerçekleştirmek üzere tasarlanmış kullanıcı dostu bir arayüzdür. TypeScript ve Next.js'in avantajlarından yararlanarak, UI sorunsuz ve verimli bir kullanıcı deneyimi sağlar. Proje, kullanıcı tercihine göre koyu ve açık tema seçeneklerini içerir. Bu UI, yetkili cüzdanlara sahip kullanıcıların bağlanmasına ve minting, burning veya diğer işlevleri hata ayıklama bölümünde gerçekleştirmelerine olanak tanır.",
