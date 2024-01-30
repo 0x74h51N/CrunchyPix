@@ -132,7 +132,6 @@ export type PortfolioItemProps = {
   icons?: Icon[];
   labels?: string[];
   ProjectInfo?: ProjectInfo;
-  WebProject: boolean;
   catalogue?: { folderPath: string; pageNumber: number };
 };
 

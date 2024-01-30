@@ -81,7 +81,7 @@ const Rooting = () => {
 
   return (
     <div
-      className="flex flex-col justify-center items-center w-full lg:h-[500px] md:h-[400px] h-[300px] md:p-10 p-2 overflow-hidden relative"
+      className="flex flex-col justify-center items-center w-full lg:h-[410px] md:h-[360px] h-[290px] md:p-10 p-2 overflow-hidden relative"
       style={{
         background: "radial-gradient(circle, rgba(0,0,0,0.7), rgba(0,0,0,1))",
         boxShadow: "inset 0 0 10px 5px rgba(0, 0, 0, 0.8)",
@@ -91,13 +91,15 @@ const Rooting = () => {
         src={`/${mainPage}.jpg`}
         alt={mainPage}
         fill
+        priority={true}
+        sizes="100svw"
         quality={100}
-        className="object-cover -z-10 h-[750px]"
+        className="object-cover -z-10 h-[700px]"
       />
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none  md:mt-[220px] mt-36"
+        className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none  md:mt-[180px] mt-36"
         style={{ textTransform: "capitalize" }}
       >
         {childPage ? (

@@ -5,7 +5,7 @@ import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
 import { fadeIn, polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
@@ -14,14 +14,16 @@ import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
 import { generateSpans } from "@/components/GenerateSpans";
 import { sliderChange } from "@/store/redux/isSlider";
-
 import { PortfolioItemProps } from "@/app/common.types";
 import ProjectSlide from "./ProjectSlide";
 import TopImage from "./TopImage";
 import Ticks from "./ticks";
 import ProjectInfo from "./ProjectInfo";
+import { disableCursor } from "@/store/redux/cursorDisabled";
+import CatalogueViewer from "./CatalogueViewer";
+import { clickableChange } from "@/store/redux/isClickable";
 
-const WebProject = ({ Item }: { Item: PortfolioItemProps }) => {
+const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
@@ -29,9 +31,23 @@ const WebProject = ({ Item }: { Item: PortfolioItemProps }) => {
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
+  const cursorDisabled = useSelector(
+    (state: RootState) => state.cursorDisabled.disabled
+  );
+  const handleMouseEnter = () => {
+    if (cursorDisabled === false) {
+      dispatch(disableCursor(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (cursorDisabled === true) {
+      dispatch(disableCursor(false));
+    }
+  };
   useEffect(() => {
     const handleInitialized = () => {
       dispatch(setIsTranslationsLoaded(true));
@@ -51,7 +67,9 @@ const WebProject = ({ Item }: { Item: PortfolioItemProps }) => {
     return null;
   }
   const hoverStart = () => {
-    dispatch(sliderChange(true));
+    if (isSlider === false) {
+      dispatch(sliderChange(true));
+    }
   };
   const hoverEnd = () => {
     dispatch(sliderChange(false));
@@ -66,11 +84,11 @@ const WebProject = ({ Item }: { Item: PortfolioItemProps }) => {
         variants={polygonIn("screen", "easeInOut", 0.7, 0.8)}
         className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] py-20 px-8"
       >
-        {Item.imageTop && Item.icons && (
+        {Item.imageTop && (
           <TopImage
             imageTop={Item.imageTop}
             imageAlt={Item.imageAlt}
-            icons={Item.icons}
+            icons={Item.icons && Item.icons}
           />
         )}
 
@@ -169,6 +187,19 @@ const WebProject = ({ Item }: { Item: PortfolioItemProps }) => {
             ))}
           </div>
         )}
+        {Item.catalogue && (
+          <motion.div
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: "some" }}
+            variants={slideIn("down", "spring", 1.5, 1.5)}
+            className="w-full my-14 cursor-pointer"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <CatalogueViewer Item={Item.catalogue} />
+          </motion.div>
+        )}
         {Item.techDescription && (
           <motion.div
             initial="hidden"
@@ -198,12 +229,18 @@ const WebProject = ({ Item }: { Item: PortfolioItemProps }) => {
             <h2 className="h1 half w-full mb-2">{t("page.otherProjects")}</h2>
           </motion.div>
           {isTranslationsLoadedRedux && (
-            <ProjectSlide Items={portfolioPageItems} />
+            <div
+              onMouseEnter={hoverStart}
+              onMouseLeave={hoverEnd}
+              onClick={hoverEnd}
+            >
+              <ProjectSlide Items={portfolioPageItems} />
+            </div>
           )}
         </motion.div>
       </motion.div>
     </div>
   );
-};
+});
 
 export default WebProject;
