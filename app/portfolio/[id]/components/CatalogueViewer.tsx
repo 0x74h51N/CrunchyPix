@@ -2,15 +2,20 @@
 import { useMemo } from "react";
 import HTMLFlipBook from "react-pageflip";
 import Image from "next/image";
+import { RootState } from "@/store";
+import { useSelector } from "react-redux";
 
 const CatalogueViewer = ({
   Item,
 }: {
   Item: { folderPath: string; pageNumber: number };
 }) => {
+  const _width = 600;
+  const _height = 600;
   const imagePaths = useMemo(() => {
     const folderPath = Item.folderPath;
     const pageNumber = Item.pageNumber;
+
     const paths: string[] = [];
     for (let count = 1; count <= pageNumber; count++) {
       const imagePath = `${folderPath}/page${count}.jpg`;
@@ -26,8 +31,8 @@ const CatalogueViewer = ({
       style={{}}
       // children={{}}
       startPage={0}
-      width={600}
-      height={600}
+      width={_width}
+      height={_height}
       drawShadow={true}
       flippingTime={12}
       usePortrait={false}
@@ -39,9 +44,9 @@ const CatalogueViewer = ({
       showPageCorners={true}
       disableFlipByClick={false}
       size="stretch"
-      minWidth={600}
+      minWidth={140}
       maxWidth={1300}
-      minHeight={600}
+      minHeight={140}
       maxHeight={1300}
       maxShadowOpacity={0.5}
       showCover={true}

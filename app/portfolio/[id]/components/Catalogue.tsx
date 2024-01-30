@@ -26,9 +26,7 @@ const Catalogue = ({ Item }: { Item: PortfolioItemProps }) => {
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width
-  );
+
   const cursorDisabled = useSelector(
     (state: RootState) => state.cursorDisabled.disabled
   );
