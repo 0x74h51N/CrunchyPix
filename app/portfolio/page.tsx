@@ -28,7 +28,6 @@ const Portfolio = () => {
             width={630}
             height={500}
             isSlide={false}
-            WebProject={false}
           />
         ))}
       </div>
