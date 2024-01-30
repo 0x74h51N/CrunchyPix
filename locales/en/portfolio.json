@@ -3,7 +3,8 @@
     "title": "Portfolio",
     "details": "Project Details",
     "otherProjects": "Other Projects",
-    "techTitle": "Tech Summary"
+    "techTitle": "Tech Summary",
+    "designTitle": "Design Summary"
   },
   "portfolioItemComp": {
     "category": "Category",
@@ -84,11 +85,30 @@
       "location": "Munich / GERMANY"
     },
     {
-      "title": "KYK Eletric Inc.",
+      "title": "KYK Electric Inc.",
       "projectType": "Webpage Desing",
       "slideDescription": "My first website developed using WordPress and limited code. Developed with many custom design elements.",
       "client": "KYK Electric Inc.",
       "location": "Istanbul / TURKEY"
+    },
+    {
+      "title": "KYK Electric Catalog",
+      "projectType": "Catalog Design",
+      "slideDescription": "",
+      "title2": "KYK Electric Catalog Design",
+      "client": "KYK Electric Inc.",
+      "location": "Istanbul / TURKEY",
+      "techDescription": "Developed entirely in the InDesign environment to be custom and in line with the company's logo, this catalog design is showcased digitally with a Flip effect, as seen above. The cover is printed on 400g embossed glossy coated paper, while the inner pages are printed on 170g matte coated paper. The photographs and vector elements used in the design are created/edited using Photoshop and Illustrator. Additionally, the nature photograph on the first page and many completed solar power plant photos used in the content were taken by me.",
+      "description": "The most effective way to introduce services and portfolio",
+      "description2": "This catalog, created to showcase the services, work principles, and completed projects of KYK Electric, is used both digitally and in print. The design and printing of the catalog for advertising and promotional purposes were undertaken and fulfilled by us. Together with the website design, comprehensive promotion of the company has been accomplished.",
+      "ticks": [
+        "Catalog Design",
+        "Branding and Advertising",
+        "Custom Design",
+        "Photography Sessions",
+        "Physical and Digital Publications",
+        "Content Creation"
+      ]
     }
   ]
 }

@@ -64,16 +64,18 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
           </div>
           <div>
             <h3 className="p cool">{t("portfolioItemComp.tech")}</h3>
-            <div className="absolute left-0 lg:bottom-12 md:bottom-8 sm:bottom-12 bottom-8 flex flex-row justify-between p-2 lg:px-[4.2rem] md:px-12 px-10 bg-slate-300 bg-opacity-50 w-full ">
-              {ProjectInfo.tech.map((tech: string, index: number) => (
-                <div
-                  key={index}
-                  className="relative md:w-10 md:h-10 w-7 h-7 grayscale"
-                >
-                  <LogoImage logoKey={tech} index={index} />
-                </div>
-              ))}
-            </div>
+            {ProjectInfo.tech && (
+              <div className="absolute left-0 lg:bottom-12 md:bottom-8 sm:bottom-12 bottom-8 flex flex-row justify-between p-2 lg:px-[4.2rem] md:px-12 px-10 bg-slate-300 bg-opacity-50 w-full ">
+                {ProjectInfo.tech.map((tech: string, index: number) => (
+                  <div
+                    key={index}
+                    className="relative md:w-10 md:h-10 w-7 h-7 grayscale"
+                  >
+                    <LogoImage logoKey={tech} index={index} />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

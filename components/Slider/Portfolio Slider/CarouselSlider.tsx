@@ -89,56 +89,63 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
         speed={1000}
         className="h-auto cursor-none "
       >
-        {slides.map((slide: PortfolioItemProps, index: number) => (
-          <SwiperSlide key={index + 1}>
-            <div
-              key={index}
-              className={`relative  ${
-                isTablet && !isMobile
-                  ? "h-[340px]"
-                  : screenHeight < 500
-                  ? "h-[300px]"
-                  : "h-[485px]"
-              } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
-              onClick={() => index === activeIndex && _selectedSlide(slide)}
-            >
-              <Image
-                loading="lazy"
-                src={slide.slideImage || ""}
-                alt={slide.imageAlt || ""}
-                width="1000"
-                height="1000"
-                className="object-cover w-full h-full"
-                quality={100}
-              />
-              <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
-                <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>
-                <div className="flex">
-                  <div className="flex flex-wrap items-start mr-auto">
-                    {slide.ProjectInfo &&
-                      slide.ProjectInfo.tech.map((label, labelIndex) => (
-                        <Label
-                          key={`label-${index}-${labelIndex}`}
-                          text={label}
-                        />
-                      ))}
-                  </div>
-                  <div className="flex items-end gap-2">
-                    {slide.icons &&
-                      slide.icons.map((icon, iconIndex) => (
-                        <span key={iconIndex} className="lg:text-2xl text-xl">
-                          <IconButton
-                            key={`icon-${index}-${iconIndex}`}
-                            icon={icon}
-                          />
-                        </span>
-                      ))}
+        {slides.map(
+          (slide: PortfolioItemProps, index: number) =>
+            slide.slideImage && (
+              <SwiperSlide key={index + 1}>
+                <div
+                  key={index}
+                  className={`relative  ${
+                    isTablet && !isMobile
+                      ? "h-[340px]"
+                      : screenHeight < 500
+                      ? "h-[300px]"
+                      : "h-[485px]"
+                  } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
+                  onClick={() => index === activeIndex && _selectedSlide(slide)}
+                >
+                  <Image
+                    loading="lazy"
+                    src={slide.slideImage || ""}
+                    alt={slide.imageAlt || ""}
+                    width="1000"
+                    height="1000"
+                    className="object-cover w-full h-full"
+                    quality={100}
+                  />
+                  <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
+                    <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>
+                    <div className="flex">
+                      <div className="flex flex-wrap items-start mr-auto">
+                        {slide.ProjectInfo &&
+                          slide.ProjectInfo.tech &&
+                          slide.ProjectInfo.tech.map((label, labelIndex) => (
+                            <Label
+                              key={`label-${index}-${labelIndex}`}
+                              text={label}
+                            />
+                          ))}
+                      </div>
+                      <div className="flex items-end gap-2">
+                        {slide.icons &&
+                          slide.icons.map((icon, iconIndex) => (
+                            <span
+                              key={iconIndex}
+                              className="lg:text-2xl text-xl"
+                            >
+                              <IconButton
+                                key={`icon-${index}-${iconIndex}`}
+                                icon={icon}
+                              />
+                            </span>
+                          ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
+              </SwiperSlide>
+            )
+        )}
       </Swiper>
     </motion.div>
   );

@@ -3,7 +3,8 @@
     "title": "Portfolio",
     "details": "Projektdetails",
     "otherProjects": "Andere Projekte",
-    "techTitle": "Technik Zusammenfassung"
+    "techTitle": "Technik Zusammenfassung",
+    "designTitle": "Design Zusammenfassung"
   },
   "portfolioItemComp": {
     "category": "Kategorie",
@@ -89,6 +90,25 @@
       "slideDescription": "Meine erste Website, entwickelt mit WordPress und begrenztem Code. Entwickelt mit vielen individuellen Designelementen.",
       "client": "KYK Electric Inc.",
       "location": "Istanbul / TÜRKEI"
+    },
+    {
+      "title": "KYK Eletric Katalog",
+      "projectType": "Katalogdesign",
+      "slideDescription": "",
+      "title2": "KYK Eletric Katalogdesign",
+      "client": "KYK Elektro AG",
+      "location": "Istanbul / TÜRKEI",
+      "techDescription": "Vollständig in der InDesign-Umgebung entwickelt, um individuell und im Einklang mit dem Firmenlogo zu sein, wird dieses Katalogdesign digital mit einem Flip-Effekt präsentiert, wie oben zu sehen ist. Der Umschlag ist auf 400g geprägtem glänzendem Bilderdruckpapier gedruckt, während die Innenseiten auf 170g mattem Bilderdruckpapier gedruckt sind. Die für das Design verwendeten Fotos und Vektor-Elemente werden mit Photoshop und Illustrator erstellt/bearbeitet. Zusätzlich wurde das Naturfoto auf der ersten Seite und viele Fotos von abgeschlossenen Solaranlagenprojekten im Inhalt von mir aufgenommen.",
+      "description": "Der effektivste Weg, Dienstleistungen und Portfolio vorzustellen",
+      "description2": "Dieser Katalog, der erstellt wurde, um die Dienstleistungen, Arbeitsprinzipien und abgeschlossenen Projekte von KYK Elektro zu präsentieren, wird sowohl digital als auch gedruckt verwendet. Das Design und der Druck des Katalogs für Werbe- und Marketingzwecke wurden von uns übernommen und umgesetzt. Zusammen mit dem Webdesign wurde eine umfassende Unternehmenspromotion durchgeführt.",
+      "ticks": [
+        "Katalogdesign",
+        "Markenbildung und Werbung",
+        "Individuelles Design",
+        "Fotoshootings",
+        "Physische und digitale Veröffentlichungen",
+        "Inhalte erstellen"
+      ]
     }
   ]
 }

@@ -15,6 +15,7 @@ const commonIcons: Record<string, Icon> = {
 
 export const portfolioPageItems: PortfolioItemProps[] = [
   {
+    WebProject: true,
     _id: "crunchypix",
     slideImage: "/PortfolioSlides/crunchypix.jpg",
     image: "/portfolioItems/crunchypix.png",
@@ -61,6 +62,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
+    WebProject: true,
     _id: "KYK_Electric",
     slideImage: "/PortfolioSlides/kykelectric.jpg",
     image: "/PortfolioSlides/kykelectric.jpg",
@@ -68,6 +70,11 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     imageTop: "/PortfolioSlides/kykelectric.jpg",
     title: "items.3.title",
     slideDescription: "items.3.slideDescription",
+    imageBoxes: [
+      "/portfolioItems/kykRespo0.png",
+      "/portfolioItems/kykRespo1.png",
+      "/portfolioItems/kykRespo2.png",
+    ],
     projectType: "items.3.projectType",
     ProjectInfo: {
       category: "items.3.projectType",
@@ -88,6 +95,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
+    WebProject: true,
     _id: "CC_Order",
     slideImage: "/PortfolioSlides/ccorder.jpg",
     image: "/portfolioItems/ccorder.png",
@@ -134,6 +142,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
+    WebProject: true,
     _id: "Minting_UI",
     slideImage: "/PortfolioSlides/mintingui.jpg",
     image: "/portfolioItems/mintingui.png",
@@ -180,5 +189,35 @@ export const portfolioPageItems: PortfolioItemProps[] = [
         link: "https://minting-ui.vercel.app/",
       },
     ],
+  },
+  {
+    WebProject: false,
+    _id: "KYK_Catalogue",
+    image: "/portfolioItems/kyk_catalog.png",
+    imageAlt: "Kyk Electric Catalogue",
+    imageTop: "/portfolioItems/kyk_catalog.png",
+    title: "items.4.title",
+    title2: "items.4.title2",
+    techDescription: "items.4.techDescription",
+    description: "items.4.description",
+    description2: "items.4.description2",
+    slideDescription: "items.4.slideDescription",
+    projectType: "items.4.projectType",
+    ProjectInfo: {
+      category: "items.4.projectType",
+      client: "items.4.client",
+      location: "items.4.location",
+      date: "October 5,2019",
+      tech: ["InDesign", "illustrator", "Photoshop"],
+    },
+    ticks: [
+      "items.2.ticks.0",
+      "items.2.ticks.1",
+      "items.2.ticks.2",
+      "items.2.ticks.3",
+      "items.2.ticks.4",
+      "items.2.ticks.5",
+    ],
+    catalogue: { folderPath: "/portfolioItems/kyk_catalogue", pageNumber: 32 },
   },
 ];
