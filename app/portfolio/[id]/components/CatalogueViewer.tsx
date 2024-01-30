@@ -63,8 +63,9 @@ const CatalogueViewer = ({
           alt={imagePath}
           fill
           loading={"lazy"}
+          placeholder="empty"
           quality={100}
-          className="object-cover"
+          className="object-cover bg-white"
         />
       ))}
     </HTMLFlipBook>
