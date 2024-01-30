@@ -3,7 +3,8 @@
     "title": "Portföy",
     "details": "Proje Detayları",
     "otherProjects": "Diğer Projeler",
-    "techTitle": "Teknik Özet"
+    "techTitle": "Teknik Özet",
+    "designTitle": "Dizayn Özeti"
   },
   "portfolioItemComp": {
     "category": "Kategori",
@@ -84,11 +85,30 @@
       "location": "Münih / ALMANYA"
     },
     {
-      "title": "KYK Eletric Inc.",
+      "title": "KYK Elektrik A.Ş.",
       "projectType": "Web Sayfası Tasarımı",
       "slideDescription": "WordPress ve sınırlı kod kullanılarak geliştirdiğim ilk websitesi. Birçok özel tasarım elemanı içeriyor.",
-      "client": "KYK Electric Inc.",
+      "client": "KYK Elektrik A.Ş.",
       "location": "İstanbul / TÜRKİYE"
+    },
+    {
+      "title": "KYK Elektrik Katalog",
+      "projectType": "Katalog Tasarımı",
+      "slideDescription": "",
+      "title2": "KYK Elektrik Katalog Tasarımı",
+      "client": "KYK Elektrik A.Ş.",
+      "location": "İstanbul / TÜRKİYE",
+      "techDescription": "Tamamen özel ve firmanın logosuna uygun olarak InDesign ortamında geliştirilen bu katalog tasarımını yukarıda da görüldüğü gibi Flip effekt ile dijital ortamda sergilendiği kadar, kapağı için 400gr kabartmalı parlak kuşe, iç sayfalar için ise 170gr mat kuşe kağıt kullanılarak basılmıştır. Ayrıca içeriğinde kullanılan; ilk sayfadaki doğa fotoğrafı ve tamamlanan güneş enerjisi santrali fotoğrafları, benim tarafımdan çekilmiştir.",
+      "description": "Hizmet ve portfolio tanıtımın en etkili yolu",
+      "description2": "KYK Elektrik firmasının verdiği hizmetler, çalışma prensipleri ve bitirdikleri projeleri sergilemek için yapılan bu katalog, hem dijital hem de basılı şekilde kullanılmıştır. Reklam ve tanıtım amacıyla kataloğun dizayn ve baskı işleri tarafımızca üstlenilmiş ve yerine getirilmiştir. Web site tasarımı ile birlikte firmanın tanıtımı tam yönlü olarak yapılmıştır.",
+      "ticks": [
+        "Katalog Tasarımı",
+        "Markalaşma ve Reklam",
+        "Özel Tasarım",
+        "Fotoğraf Çekimleri",
+        "Fiziksel ve Dijital Yayın",
+        "İçerik Üretimi"
+      ]
     }
   ]
 }

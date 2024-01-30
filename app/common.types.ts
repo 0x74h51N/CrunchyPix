@@ -113,7 +113,7 @@ export type logoType = {
 
 export type PortfolioItemProps = {
   _id: string;
-  slideImage: string;
+  slideImage?: string;
   image: string;
   imageAlt: string;
   imageTop?: string;
@@ -132,6 +132,8 @@ export type PortfolioItemProps = {
   icons?: Icon[];
   labels?: string[];
   ProjectInfo?: ProjectInfo;
+  WebProject: boolean;
+  catalogue?: { folderPath: string; pageNumber: number };
 };
 
 export type ProjectInfo = {
@@ -139,5 +141,5 @@ export type ProjectInfo = {
   client: string;
   location: string;
   date: string;
-  tech: string[];
+  tech?: string[];
 };

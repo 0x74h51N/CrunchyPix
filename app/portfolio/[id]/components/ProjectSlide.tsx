@@ -62,6 +62,7 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
             width={screenWidth <= 1030 ? 300 : 380}
             height={screenWidth <= 1030 ? 250 : 310}
             isSlide={true}
+            WebProject={false}
           />
         </SwiperSlide>
       ))}
