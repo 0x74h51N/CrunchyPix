@@ -3,7 +3,7 @@ import { portfolioPageItems } from "@/constants/portfolioItems";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import { polygonIn, slideIn, textVariant } from "@/utils/motion";
+import { fadeIn, polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -24,6 +24,9 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width
+  );
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -141,26 +144,33 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
             </motion.div>
           </div>
         </motion.div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: "some" }}
-          variants={polygonIn("screen", "spring", 1, 1)}
-          className="flex md:flex-row flex-col items-center justify-between w-full h-auto mt-24 mb-8 gap-6"
-        >
-          {selectedItem.imageBoxes &&
-            selectedItem.imageBoxes.map((image: string, index: number) => (
-              <Image
-                width={1000}
-                height={1000}
-                src={image}
-                alt={selectedItem.imageAlt}
+        {selectedItem.imageBoxes && (
+          <div className="flex md:flex-row flex-col items-center justify-between w-full h-auto mt-24 mb-8 gap-6">
+            {selectedItem.imageBoxes.map((image: string, index: number) => (
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: "some" }}
+                variants={fadeIn(
+                  "down",
+                  "spring",
+                  screenWidth >= 768 ? 1 * index + 0.5 : 1,
+                  1
+                )}
                 key={index}
-                className="flex max-w-[400px] w-full h-auto  object-contain bg-gradient-to-br from-neutral-900  to-slate-800 to-90%"
-              />
+              >
+                <Image
+                  width={1000}
+                  height={1000}
+                  src={image}
+                  alt={selectedItem.imageAlt}
+                  key={index}
+                  className="flex max-w-[400px] w-full h-auto  object-contain bg-gradient-to-br from-neutral-900  to-slate-800 to-90%"
+                />{" "}
+              </motion.div>
             ))}
-        </motion.div>
+          </div>
+        )}
         {selectedItem.techDescription && (
           <motion.div
             initial="hidden"

@@ -113,7 +113,10 @@ const SlideModal = () => {
                     <div className="flex items-end gap-2">
                       {selectedSlide.icons &&
                         selectedSlide.icons.map((icon, iconIndex) => (
-                          <span className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-2xl text-xl">
+                          <span
+                            key={iconIndex}
+                            className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-2xl text-xl"
+                          >
                             <IconButton key={iconIndex} icon={icon} />
                           </span>
                         ))}
