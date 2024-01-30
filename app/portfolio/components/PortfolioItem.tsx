@@ -146,7 +146,9 @@ const PortfolioItem = ({
           <h2 className="md:text-md text-sm text-log-col">
             {t(`${projectType}`)}
           </h2>
-          <h1 className="h2 bold">{t(`${title}`)}</h1>
+          <h1 className="h2 bold hover:text-log-col transition-all duration-300 ease-in-out">
+            {t(`${title}`)}
+          </h1>
         </Link>
       </div>
     </div>

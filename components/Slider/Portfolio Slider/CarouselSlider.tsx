@@ -92,6 +92,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
         {slides.map((slide: PortfolioItemProps, index: number) => (
           <SwiperSlide key={index + 1}>
             <div
+              key={index}
               className={`relative  ${
                 isTablet && !isMobile
                   ? "h-[340px]"
@@ -125,7 +126,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                   <div className="flex items-end gap-2">
                     {slide.icons &&
                       slide.icons.map((icon, iconIndex) => (
-                        <span className="lg:text-2xl text-xl">
+                        <span key={iconIndex} className="lg:text-2xl text-xl">
                           <IconButton
                             key={`icon-${index}-${iconIndex}`}
                             icon={icon}

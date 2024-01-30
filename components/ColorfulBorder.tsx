@@ -26,7 +26,7 @@ export const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
 
     const updateAnimation = () => {
       const angle =
-        (parseFloat(boxElement.style.getPropertyValue("--angle")) + 0.8) % 360;
+        (parseFloat(boxElement.style.getPropertyValue("--angle")) + 0.7) % 360;
       boxElement.style.setProperty("--angle", `${angle}deg`);
       requestAnimationFrame(updateAnimation);
     };
@@ -40,8 +40,9 @@ export const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
       style={
         {
           "--angle": "0deg",
-          "--border-color": "linear-gradient(var(--angle), #111111, #ffffff)",
-          "--bg-color": "radial-gradient(#181818, #181818)",
+          "--border-color":
+            "linear-gradient(var(--angle), #131313 55%, #ffffff)",
+          "--bg-color": "radial-gradient(#131313, #131313)",
         } as CSSProperties
       }
       className={`${className} flex h-auto w-auto items-center justify-center rounded-lg border-[1px] border-transparent [background:padding-box_var(--bg-color),border-box_var(--border-color)]`}

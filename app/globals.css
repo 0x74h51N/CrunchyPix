@@ -34,25 +34,38 @@ body {
   --line-height: 280px;
 }
 
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 80px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
 .repatingLines {
   background-image: repeating-linear-gradient(
     to right,
     #262626,
     #262626 0px,
-    #131313 1.5px,
+    #131313 1.2px,
     #131313 var(--line-height)
   );
+  animation: moveBackground 30s ease-in-out infinite;
 }
 
 @media screen and (max-width: 650px) {
   :root {
-    --line-height: 140px;
+    --line-height: 180px;
   }
 }
 
 @media screen and (max-width: 450px) {
   :root {
-    --line-height: 80px;
+    --line-height: 130px;
   }
 }
 
@@ -197,15 +210,27 @@ body {
 }
 
 /* Swiper Slide */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  opacity: 0.5;
+.swiper-button-next,
+.swiper-button-prev {
+  cursor: none !important;
+}
+.swiper-button-next::after {
+  opacity: 0.5 !important;
   color: white;
+  cursor: none !important;
+}
+
+.swiper-button-prev::after {
+  opacity: 0.5 !important;
+  color: white;
+  cursor: none !important;
 }
 
 .swiper-button-next:hover::after,
 .swiper-button-prev:hover::after {
-  opacity: 1;
+  opacity: 1 !important;
+  color: #eeb30d !important;
+  cursor: none !important;
 }
 
 .swiper-pagination-bullet {
