@@ -15,7 +15,6 @@ const commonIcons: Record<string, Icon> = {
 
 export const portfolioPageItems: PortfolioItemProps[] = [
   {
-    WebProject: true,
     _id: "crunchypix",
     slideImage: "/PortfolioSlides/crunchypix.jpg",
     image: "/portfolioItems/crunchypix.png",
@@ -62,7 +61,6 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
-    WebProject: true,
     _id: "KYK_Electric",
     slideImage: "/PortfolioSlides/kykelectric.jpg",
     image: "/PortfolioSlides/kykelectric.jpg",
@@ -95,7 +93,6 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
-    WebProject: true,
     _id: "CC_Order",
     slideImage: "/PortfolioSlides/ccorder.jpg",
     image: "/portfolioItems/ccorder.png",
@@ -142,7 +139,6 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
-    WebProject: true,
     _id: "Minting_UI",
     slideImage: "/PortfolioSlides/mintingui.jpg",
     image: "/portfolioItems/mintingui.png",
@@ -191,7 +187,6 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
-    WebProject: false,
     _id: "KYK_Catalogue",
     image: "/portfolioItems/kyk_catalog.png",
     imageAlt: "Kyk Electric Catalogue",
