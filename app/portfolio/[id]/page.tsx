@@ -1,7 +1,6 @@
 "use client";
 import { portfolioPageItems } from "@/constants/portfolioItems";
 import WebProject from "./components/WebProject";
-import Catalogue from "./components/Catalogue";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const selectedItem = portfolioPageItems.find(
@@ -12,11 +11,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
     return <p>Couldn't find a portfolio item.</p>;
   }
 
-  if (selectedItem.WebProject === true) {
-    return <WebProject Item={selectedItem} />;
-  } else {
-    return <Catalogue Item={selectedItem} />;
-  }
+  return <WebProject Item={selectedItem} />;
 };
 
 export default PortfolioPage;

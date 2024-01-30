@@ -1,21 +1,16 @@
 "use client";
-import { useMemo } from "react";
+import { memo, useMemo } from "react";
 import HTMLFlipBook from "react-pageflip";
 import Image from "next/image";
-import { RootState } from "@/store";
-import { useSelector } from "react-redux";
 
 const CatalogueViewer = ({
   Item,
 }: {
   Item: { folderPath: string; pageNumber: number };
 }) => {
-  const _width = 600;
-  const _height = 600;
   const imagePaths = useMemo(() => {
     const folderPath = Item.folderPath;
     const pageNumber = Item.pageNumber;
-
     const paths: string[] = [];
     for (let count = 1; count <= pageNumber; count++) {
       const imagePath = `${folderPath}/page${count}.jpg`;
@@ -26,13 +21,13 @@ const CatalogueViewer = ({
 
     return paths;
   }, [Item.folderPath, Item.pageNumber]);
+
   return (
     <HTMLFlipBook
       style={{}}
-      // children={{}}
       startPage={0}
-      width={_width}
-      height={_height}
+      width={600}
+      height={600}
       drawShadow={true}
       flippingTime={12}
       usePortrait={false}
@@ -60,16 +55,20 @@ const CatalogueViewer = ({
         <Image
           key={index}
           src={imagePath}
-          alt={imagePath}
-          fill
-          loading={"lazy"}
-          placeholder="empty"
+          alt={""}
           quality={100}
-          className="object-cover bg-white"
+          fill
+          sizes="(max-width: 600px) 100vw, 600px"
+          style={{
+            objectFit: "cover",
+          }}
+          loading="lazy"
+          placeholder="empty"
+          className="w-full h-full bg-white"
         />
       ))}
     </HTMLFlipBook>
   );
 };
 
-export default CatalogueViewer;
+export default memo(CatalogueViewer);

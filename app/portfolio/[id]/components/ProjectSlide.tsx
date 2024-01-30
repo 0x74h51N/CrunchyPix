@@ -12,8 +12,6 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );
-  const [spaceBetween, setSpaceBetween] = useState(0);
-
   return (
     <Swiper
       centeredSlides={true}
@@ -62,7 +60,6 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
             width={screenWidth <= 1030 ? 300 : 380}
             height={screenWidth <= 1030 ? 250 : 310}
             isSlide={true}
-            WebProject={false}
           />
         </SwiperSlide>
       ))}

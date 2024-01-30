@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FaAnglesRight } from "react-icons/fa6";
 import { clickableChange } from "@/store/redux/isClickable";
 import { PortfolioItemProps } from "@/app/common.types";
+import { sliderChange } from "@/store/redux/isSlider";
 
 const areEqual = (
   prevProps: PortfolioItemInterface,
@@ -55,6 +56,7 @@ const PortfolioItem = memo(
     const isClickable = useSelector(
       (state: RootState) => state.isClickable.clickable
     );
+    const isSlider = useSelector((state: RootState) => state.isSlider.slider);
     const dispatch = useDispatch();
     const { t } = useTranslation(["portfolio"]);
     const isTranslationsLoadedRedux = useSelector(
@@ -85,6 +87,8 @@ const PortfolioItem = memo(
     const onClickHandler = () => {
       if (isClickable == true) {
         dispatch(clickableChange(false));
+      } else if (isSlider === true) {
+        dispatch(sliderChange(false));
       }
     };
 
@@ -113,8 +117,7 @@ const PortfolioItem = memo(
             quality={100}
             width={isMobile ? 1000 : 1500}
             height={isMobile ? 800 : 1500}
-            objectPosition="center center"
-            className="object-cover w-full h-full rounded-xl"
+            className="object-cover object-center w-full h-full rounded-xl"
           />
 
           <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
@@ -123,6 +126,7 @@ const PortfolioItem = memo(
               href={`/portfolio/${id}`}
               passHref
               className="absolute cursor-none w-full h-full"
+              onClick={onClickHandler}
             />
           ) : (
             <>

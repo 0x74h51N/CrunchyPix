@@ -14,22 +14,27 @@ const TopImage = ({
   icons?: Icon[];
 }) => {
   return (
-    <div className="relative w-full md:h-auto md:min-h-[650px] min-h-[350px]">
+    <div
+      className={`relative w-full md:h-auto  ${
+        imageTop.includes("catalog")
+          ? "lg:min-h-[870px] md:min-h-[700px]"
+          : "md:min-h-[700px]"
+      } min-h-[450px]`}
+    >
       <Image
-        width={1850}
-        height={1850}
+        fill
+        sizes="100vw"
+        priority
         quality={100}
-        loading="lazy"
         src={imageTop}
         alt={imageAlt}
-        className="w-full h-full object-center md:object-contain object-cover bg-gradient-to-br from-neutral-900  to-slate-700"
+        className="w-full h-full object-cover"
         style={{
           backgroundImage: imageTop.includes("kyk")
             ? "linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)"
             : "linear-gradient(to bottom right,  #171717, #334155)",
         }}
       />
-
       {icons && (
         <motion.div
           variants={slideIn("right", "spring", 2, 1)}
