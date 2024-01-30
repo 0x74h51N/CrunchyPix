@@ -63,13 +63,13 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
   };
 
   return (
-    <div className="flexCenter min-w-[100svw] min-h-[100svh]">
+    <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden">
       <motion.div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: "some" }}
         variants={polygonIn("screen", "easeInOut", 0.7, 0.8)}
-        className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] p-10 px-14 max-sm:px-8 max-xs:px-5"
+        className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] py-20 px-8"
       >
         {selectedItem.imageTop && selectedItem.icons && (
           <TopImage
@@ -88,9 +88,10 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
           }}
           className="lg:relative flex flex-wrap w-full h-auto lg:min-h-[590px] md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
         >
-          <div className="lg:w-2/3 w-full lg:pr-[120px]">
+          <div className="lg:w-2/3 w-full lg:pr-[120px] ">
             {selectedItem.title2 && (
               <motion.h2 variants={textVariant(1)} className="h1 half mb-4">
+                max-l
                 {isMobile || isTablet
                   ? t(selectedItem.title2)
                   : generateSpans({

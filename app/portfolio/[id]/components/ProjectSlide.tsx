@@ -1,5 +1,6 @@
-import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import SwiperCore from "swiper";
 import PortfolioItem from "../../components/PortfolioItem";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
@@ -7,53 +8,48 @@ import { useEffect, useState } from "react";
 import { PortfolioItemProps } from "@/app/common.types";
 
 const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
+  SwiperCore.use([Autoplay, Pagination]);
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );
-  const [_, setInit] = useState(false);
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
-  useEffect(() => {
-    if (isTranslationsLoadedRedux) {
-      setInit(true);
-    }
-  }, [isTranslationsLoadedRedux]);
+  const [spaceBetween, setSpaceBetween] = useState(0);
 
   return (
     <Swiper
-      modules={[Pagination, Autoplay]}
       centeredSlides={true}
+      modules={[Pagination, Autoplay]}
       pagination={{
         dynamicBullets: true,
         clickable: true,
       }}
+      spaceBetween={35}
+      loop
       slidesPerView={
         screenWidth <= 450
           ? 1
           : screenWidth <= 610
-          ? 1.3
+          ? 1.5
           : screenWidth <= 769
-          ? 1.8
+          ? 2
           : screenWidth <= 1030
           ? 2.2
           : screenWidth <= 1250
           ? 2.5
           : 3
       }
-      initialSlide={1}
       autoplay={{
         delay: 5000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       }}
       speed={1000}
-      loop
-      onInit={() => setInit(true)}
-      className="w-full h-full cursor-none"
+      className="w-full cursor-none flex items-center justify-center"
     >
       {Items.map((item, index) => (
-        <SwiperSlide key={index}>
+        <SwiperSlide
+          className="w-auto md:max-w-[400px] max-w-[300px]"
+          key={index}
+        >
           <PortfolioItem
             _id={item._id}
             key={index}
@@ -63,8 +59,8 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
             projectType={item.projectType}
             slideImage={""}
             slideDescription={""}
-            width={screenWidth <= 1030 ? 300 : 370}
-            height={screenWidth <= 1030 ? 250 : 290}
+            width={screenWidth <= 1030 ? 300 : 380}
+            height={screenWidth <= 1030 ? 250 : 310}
             isSlide={true}
           />
         </SwiperSlide>
