@@ -15,7 +15,7 @@ const TopImage = ({
 }) => {
   return (
     <div
-      className={`relative w-full md:h-auto  ${
+      className={`relative w-full h-auto  ${
         imageTop.includes("catalog")
           ? "lg:min-h-[870px] md:min-h-[700px]"
           : "md:min-h-[700px]"

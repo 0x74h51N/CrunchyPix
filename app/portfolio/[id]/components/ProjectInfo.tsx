@@ -35,7 +35,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
   }
   if (ProjectInfo)
     return (
-      <div className="relative flex lg:h-[570px] md:w-[400px] sm:w-[330px] md:h-[510px] sm:h-[450px] h-[440px] w-[300px] rounded-xl bg-log-col md:ml-6 ml-0">
+      <div className="relative flex lg:h-[570px] md:w-[360px] sm:w-[330px] md:h-[480px] sm:h-[450px] h-[440px] w-[300px] rounded-xl bg-log-col md:ml-6 ml-0">
         <Image
           src="/projectInfo.png"
           alt="project info background"
@@ -45,7 +45,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
           loading="lazy"
           className="z-0 h-full object-cover rounded-xl"
         />
-        <div className="absolute flex flex-col md:gap-6 sm:gap-4 gap-6 w-full h-full justify-start lg:p-[3.9rem] md:p-12 p-10">
+        <div className="absolute flex flex-col lg:gap-6 md:gap-4 sm:gap-4 gap-6 w-full h-full justify-start lg:p-[3.9rem] md:p-11 p-10">
           <div>
             <h4 className="h4 cool">{t("portfolioItemComp.category")}</h4>
             <h3 className="h3 cool">{t(ProjectInfo.category)}</h3>

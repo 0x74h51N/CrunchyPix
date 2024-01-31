@@ -20,32 +20,32 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
         dynamicBullets: true,
         clickable: true,
       }}
-      spaceBetween={35}
-      loop
-      slidesPerView={
+      spaceBetween={
         screenWidth <= 450
-          ? 1
+          ? 10
           : screenWidth <= 610
-          ? 1.5
+          ? 15
           : screenWidth <= 769
-          ? 2
+          ? 15
           : screenWidth <= 1030
-          ? 2.2
+          ? 20
           : screenWidth <= 1250
-          ? 2.5
-          : 3
+          ? 25
+          : 32
       }
+      loop
+      slidesPerView={"auto"}
       autoplay={{
         delay: 5000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       }}
-      speed={1000}
-      className="w-full cursor-none flex items-center justify-center"
+      speed={1200}
+      className="w-full cursor-none"
     >
       {Items.map((item, index) => (
         <SwiperSlide
-          className="w-auto md:max-w-[400px] max-w-[300px]"
+          className="w-auto lg:max-w-[380px] max-w-[300px] h-auto "
           key={index}
         >
           <PortfolioItem
