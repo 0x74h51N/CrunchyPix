@@ -1,16 +1,18 @@
 "use client";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import Image from "next/image";
 import ArrowSVG from "@/components/Buttons/ArrowSVG";
 import { RootState } from "@/store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clickableChange } from "@/store/redux/isClickable";
 
 const CatalogueViewer = ({
   Item,
 }: {
   Item: { folderPath: string; pageNumber: number };
 }) => {
+  const dispatch = useDispatch();
   const flipBookRef = useRef<any>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [mouseEvent, setMouseEvent] = useState(false);
@@ -35,6 +37,19 @@ const CatalogueViewer = ({
       : screenWidth >= 400
       ? 350
       : 300;
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
+  );
+  const handleMouseEnter = () => {
+    if (isClickable === false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable === true) {
+      dispatch(clickableChange(false));
+    }
+  };
   const imagePaths = useMemo(() => {
     const folderPath = Item.folderPath;
     const pageNumber = Item.pageNumber;
@@ -121,25 +136,25 @@ const CatalogueViewer = ({
 
       {!isTouch && (
         <>
-          <div className="absolute bottom-1/2 right-0  animate-bounceX">
-            <div className="hover:stroke-log-col stroke-neutral-900 transition-all ease-in-out duration-500">
-              <ArrowSVG
-                width={40}
-                height={40}
-                strokeWidth={2}
-                onClick={handleNextPage}
-              />
+          <div
+            onClick={handleNextPage}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className="absolute bottom-1/2 right-0 animate-bounceX p-2"
+          >
+            <div className="hover:stroke-log-col stroke-neutral-900 opacity-50 hover:opacity-90 transition-all ease-in-out duration-500">
+              <ArrowSVG width={50} height={50} strokeWidth={2.5} />
             </div>
           </div>
           {currentPage == 0 ? null : (
-            <div className="absolute bottom-1/2 left-0  animate-bounceX">
-              <div className="rotate-180 hover:stroke-log-col stroke-neutral-900 transition-all ease-in-out duration-500">
-                <ArrowSVG
-                  width={40}
-                  height={40}
-                  strokeWidth={2}
-                  onClick={handlePrevPage}
-                />
+            <div
+              onClick={handlePrevPage}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="absolute bottom-1/2 left-0 animate-bounceX p-2"
+            >
+              <div className="rotate-180 hover:stroke-log-col stroke-neutral-900 opacity-50 hover:opacity-90 transition-all ease-in-out duration-500">
+                <ArrowSVG width={50} height={50} strokeWidth={2.5} />
               </div>
             </div>
           )}
