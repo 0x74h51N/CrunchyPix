@@ -36,7 +36,7 @@
     },
     {
       "title": "Daha Fazla Bilgi",
-      "description": "Çerez politikamız hakkında daha fazla bilgi almak için lütfen [Gizlilik Politikası](/terms-of-privacy) ve [KVKK](/gdpr) sayfalarını ziyaret ediniz. Ayrıca [Vercel Speed Insights](https://vercel.com/docs/speed-insights) ve [Vercel Web Analytics](https://vercel.com/docs/analytics) için Vercel gizlilik bildirimlerine göz atınız."
+      "description": "Çerez politikamız hakkında daha fazla bilgi almak için lütfen [Gizlilik Politikası](/policies/terms-of-privacy) ve [KVKK](/policies/gdpr) sayfalarını ziyaret ediniz. Ayrıca [Vercel Speed Insights](https://vercel.com/docs/speed-insights) ve [Vercel Web Analytics](https://vercel.com/docs/analytics) için Vercel gizlilik bildirimlerine göz atınız."
     }
   ],
 
@@ -121,7 +121,7 @@
     },
     {
       "title": "10. Gizlilik Politikası",
-      "description": "CrunchyPix, kullanıcıların gizliliğini önemser ve Gizlilik Politikası sayfasında bu konuda daha fazla bilgi sunar. Kullanıcılar, gizlilik politikası [sayfamızı](/terms-of-privacy) inceleyerek bilgi sahibi olabilirler."
+      "description": "CrunchyPix, kullanıcıların gizliliğini önemser ve Gizlilik Politikası sayfasında bu konuda daha fazla bilgi sunar. Kullanıcılar, gizlilik politikası [sayfamızı](/policies/terms-of-privacy) inceleyerek bilgi sahibi olabilirler."
     },
     {
       "title": "11. İletişim",
@@ -173,7 +173,7 @@
     },
     {
       "title": "7. Çerezler (Cookies)",
-      "description": "Web sitemizde çerezleri kullanabiliriz. Çerezler, web tarayıcınızda depolanan küçük metin dosyalarıdır. Çerezleri kabul etmek veya reddetmek konusundaki tercihinizi tarayıcınızın ayarlarından yönetebilirsiniz. Daha fazla bilgi almak için [Çerez Politikası](/cookie-policy) sayfamızı ziyaret edebilirsiniz."
+      "description": "Web sitemizde çerezleri kullanabiliriz. Çerezler, web tarayıcınızda depolanan küçük metin dosyalarıdır. Çerezleri kabul etmek veya reddetmek konusundaki tercihinizi tarayıcınızın ayarlarından yönetebilirsiniz. Daha fazla bilgi almak için [Çerez Politikası](/policies/cookie-policy) sayfamızı ziyaret edebilirsiniz."
     },
     {
       "title": "8. Değişiklikler ve Güncellemeler",

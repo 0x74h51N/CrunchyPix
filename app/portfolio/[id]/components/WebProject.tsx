@@ -20,12 +20,14 @@ import TopImage from "./TopImage";
 import Ticks from "./ticks";
 import ProjectInfo from "./ProjectInfo";
 import CatalogueViewer from "./CatalogueViewer";
+import CustomLink from "@/components/CustomLink";
 
 const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );
@@ -117,7 +119,13 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
             )}
             {Item.description2 && (
               <motion.p variants={textVariant(2.2)} className="p lg:mt-8 mt-4">
-                {t(Item.description2)}
+                <Markdown
+                  remarkPlugins={[breaks]}
+                  rehypePlugins={[rehypeRaw]}
+                  components={{ a: CustomLink }}
+                >
+                  {t(Item.description2)}
+                </Markdown>
               </motion.p>
             )}
           </div>

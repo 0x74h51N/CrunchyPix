@@ -89,7 +89,19 @@
       "projectType": "Web Sayfası Tasarımı",
       "slideDescription": "WordPress ve sınırlı kod kullanılarak geliştirdiğim ilk websitesi. Birçok özel tasarım elemanı içeriyor.",
       "client": "KYK Elektrik A.Ş.",
-      "location": "İstanbul / TÜRKİYE"
+      "location": "İstanbul / TÜRKİYE",
+      "title2": "KYK Elektrik Web Sayfası Tasarımı",
+      "techDescription": "Bu web sitesi, WordPress üzerine inşa edilmiş ve headless CMS kullanılarak yönetilmiştir. Özel eklentiler ve araçlar kullanılarak, HTML ve CSS kodları ile ihtiyaca göre entegre edilmiş, çeşitli dönüşüm araçları ile JavaScript kullanılarak basit fonksiyonlar geliştirilmiştir. Tasarımda, minimalist ve işlevsel bir yaklaşım benimsenerek, içeriğin odak noktasına yerleştirilmiştir. _Alan adının kullanımı sonlandırıldığı için bu web sayfasına erişim mümkün değildir, en kısa sürede heroku üzerinden web sayfası deploy edilerek test sürümü kullanıma açılacaktır..._",
+      "description": "Minimum kod ile maksimum içerik üretimi",
+      "description2": "KYK Elektrik A.Ş. için özel olarak tasarlanan web sitesi, WordPress ve sınırlı kod kullanılarak oluşturuldu. Bu İstanbul merkezli proje, markanın dijital varlığını güçlendirmeyi amaçlamaktadır, ziyaretçilere etkileyici bir çevrimiçi deneyim sunmak için minimal kod kullanımına odaklanmaktadır. Web sitesi, özenle seçilmiş içerik ve görsellerle markanın kimliğini vurgular, dijital [katalog](/portfolio/kyk_catalogue) sunumu ve markalaşma stratejilerini destekler. KYK Elektrik A.Ş. web sitesi, markanın dijital dönüşüm sürecine önemli bir katkıda bulunur ve kullanıcı dostu arayüzüyle müşteri etkileşimini artırır.",
+      "ticks": [
+        "WordPress",
+        "Headless CMS",
+        "İçerik Üretimi",
+        "Responsive & Adaptive",
+        "Dijital Katalog",
+        "Katalog Tasarımı"
+      ]
     },
     {
       "title": "KYK Elektrik Katalog",

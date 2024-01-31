@@ -86,10 +86,22 @@
     },
     {
       "title": "KYK Electric Inc.",
-      "projectType": "Webpage Desing",
-      "slideDescription": "My first website developed using WordPress and limited code. Developed with many custom design elements.",
+      "projectType": "Web Page Design",
+      "slideDescription": "My first website developed using WordPress and limited code. It includes various custom design elements.",
       "client": "KYK Electric Inc.",
-      "location": "Istanbul / TURKEY"
+      "location": "Istanbul / TURKEY",
+      "title2": "KYK Electric Web Page Design",
+      "techDescription": "This website is built on WordPress and managed using a headless CMS. Integrated as needed with HTML and CSS codes using custom plugins and tools, simple functions are developed using various conversion tools and JavaScript. In the design, a minimalist and functional approach is adopted, placing the focus on content. _Due to the discontinuation of the domain, access to this webpage is not possible; a test version will be deployed on Heroku as soon as possible..._",
+      "description": "Maximum content production with minimum code",
+      "description2": "The website specially designed for KYK Electric Inc. was created using WordPress and limited code. This Istanbul-based project aims to strengthen the brand's digital presence, focusing on minimal code usage to provide visitors with an impressive online experience. The website emphasizes the brand's identity with carefully selected content and visuals, supporting digital [catalogue](/portfolio/kyk_catalogue) presentation and branding strategies. KYK Electric Inc. website contributes significantly to the brand's digital transformation process and enhances customer interaction with its user-friendly interface.",
+      "ticks": [
+        "WordPress",
+        "Headless CMS",
+        "Content Production",
+        "Responsive & Adaptive",
+        "Digital Catalog",
+        "Catalog Design"
+      ]
     },
     {
       "title": "KYK Electric Catalog",

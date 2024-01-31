@@ -36,7 +36,7 @@
     },
     {
       "title": "Weitere Informationen",
-      "description": "Für weitere Informationen zu unserer Cookie-Richtlinie besuchen Sie bitte unsere [Datenschutzrichtlinie](/terms-of-privacy) und [DSGVO](/gdpr) Seiten. Beachten Sie auch die Datenschutzhinweise von Vercel für [Vercel Speed Insights](https://vercel.com/docs/speed-insights) und [Vercel Web Analytics](https://vercel.com/docs/analytics)."
+      "description": "Für weitere Informationen zu unserer Cookie-Richtlinie besuchen Sie bitte unsere [Datenschutzrichtlinie](/policies/terms-of-privacy) und [DSGVO](/policies/gdpr) Seiten. Beachten Sie auch die Datenschutzhinweise von Vercel für [Vercel Speed Insights](https://vercel.com/docs/speed-insights) und [Vercel Web Analytics](https://vercel.com/docs/analytics)."
     }
   ],
   "privacyPolicy": [
@@ -119,7 +119,7 @@
     },
     {
       "title": "10. Datenschutzrichtlinie",
-      "description": "CrunchyPix legt Wert auf die Privatsphäre der Benutzer und bietet weitere Informationen dazu auf der Seite Datenschutzrichtlinie. Benutzer können sich informieren, indem sie unsere Datenschutzrichtlinie [hier](/terms-of-privacy) überprüfen."
+      "description": "CrunchyPix legt Wert auf die Privatsphäre der Benutzer und bietet weitere Informationen dazu auf der Seite Datenschutzrichtlinie. Benutzer können sich informieren, indem sie unsere Datenschutzrichtlinie [hier](/policies/terms-of-privacy) überprüfen."
     },
     {
       "title": "11. Kontakt",
@@ -171,7 +171,7 @@
     },
     {
       "title": "7. Cookies",
-      "description": "Wir können Cookies auf unserer Website verwenden. Cookies sind kleine Textdateien, die in Ihrem Webbrowser gespeichert werden. Sie können Ihre Einstellungen für die Annahme oder Ablehnung von Cookies über Ihre Browsereinstellungen verwalten. Weitere Informationen finden Sie auf unserer [Cookie-Richtlinie](/cookie-policy) Seite."
+      "description": "Wir können Cookies auf unserer Website verwenden. Cookies sind kleine Textdateien, die in Ihrem Webbrowser gespeichert werden. Sie können Ihre Einstellungen für die Annahme oder Ablehnung von Cookies über Ihre Browsereinstellungen verwalten. Weitere Informationen finden Sie auf unserer [Cookie-Richtlinie](/policies/cookie-policy) Seite."
     },
     {
       "title": "8. Änderungen und Aktualisierungen",

@@ -7,19 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
-
-const CustomLink = ({
-  children,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-  <a
-    target="_blank"
-    className="text-log-col underline underline-offset-3 cursor-none"
-    {...props}
-  >
-    {children}
-  </a>
-);
+import CustomLink from "@/components/CustomLink";
 
 const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
   const { t, i18n } = useTranslation(["policies"]);
