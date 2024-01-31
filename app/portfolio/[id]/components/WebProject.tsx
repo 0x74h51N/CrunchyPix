@@ -19,9 +19,7 @@ import ProjectSlide from "./ProjectSlide";
 import TopImage from "./TopImage";
 import Ticks from "./ticks";
 import ProjectInfo from "./ProjectInfo";
-import { disableCursor } from "@/store/redux/cursorDisabled";
 import CatalogueViewer from "./CatalogueViewer";
-import { clickableChange } from "@/store/redux/isClickable";
 
 const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const dispatch = useDispatch();
@@ -35,19 +33,7 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
-  const cursorDisabled = useSelector(
-    (state: RootState) => state.cursorDisabled.disabled
-  );
-  const handleMouseEnter = () => {
-    if (cursorDisabled === false) {
-      dispatch(disableCursor(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (cursorDisabled === true) {
-      dispatch(disableCursor(false));
-    }
-  };
+
   useEffect(() => {
     const handleInitialized = () => {
       dispatch(setIsTranslationsLoaded(true));
@@ -135,7 +121,7 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
               </motion.p>
             )}
           </div>
-          <div className="flex sm:flex-row flex-col max-sm:items-center max-sm:gap-8 w-full mt-6">
+          <div className="flex sm:flex-row flex-col max-sm:items-center max-sm:gap-8 w-full mt-5">
             {Item.ticks && (
               <motion.div
                 variants={polygonIn("down", "spring", 2.5, 1.7)}
@@ -193,9 +179,7 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
             whileInView="show"
             viewport={{ once: true, amount: "some" }}
             variants={slideIn("down", "spring", 1.5, 1.5)}
-            className="w-full my-14 cursor-pointer"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            className="w-full my-14 cursor-none"
           >
             <CatalogueViewer Item={Item.catalogue} />
           </motion.div>

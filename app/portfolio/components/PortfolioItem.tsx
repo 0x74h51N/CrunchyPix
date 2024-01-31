@@ -1,7 +1,7 @@
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
-import { slideIn, staggerContainer } from "@/utils/motion";
+import { slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -152,7 +152,7 @@ const PortfolioItem = memo(
           className={`absolute bottom-0 rounded-b-xl z-10 w-full flex justify-start ${
             isSlide
               ? "left-0 bg-black bg-opacity-50  h-auto"
-              : "-bottom-3 md:h-32 h-20"
+              : "md:-bottom-5 bottom-0 md:h-32 h-20"
           }`}
         >
           <Link
@@ -166,7 +166,11 @@ const PortfolioItem = memo(
             <h2 className="md:text-md text-sm text-log-col">
               {t(`${projectType}`)}
             </h2>
-            <h1 className="h2 bold hover:text-log-col transition-all duration-300 ease-in-out">
+            <h1
+              className={`${
+                isMobile || isSlide ? "h2" : "h1 half"
+              } hover:text-log-col transition-all duration-300 ease-in-out`}
+            >
               {t(`${title}`)}
             </h1>
           </Link>

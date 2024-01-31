@@ -1,4 +1,3 @@
-"use client";
 import { portfolioPageItems } from "@/constants/portfolioItems";
 import WebProject from "./components/WebProject";
 
