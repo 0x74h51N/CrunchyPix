@@ -36,7 +36,7 @@
     },
     {
       "title": "More Information",
-      "description": "For more information about our cookie policy, please visit our [Privacy Policy](/terms-of-privacy) and [GDPR](/gdpr) pages. Additionally, refer to Vercel's privacy notices for [Vercel Speed Insights](https://vercel.com/docs/speed-insights) and [Vercel Web Analytics](https://vercel.com/docs/analytics)."
+      "description": "For more information about our cookie policy, please visit our [Privacy Policy](/policies/terms-of-privacy) and [GDPR](/policies/gdpr) pages. Additionally, refer to Vercel's privacy notices for [Vercel Speed Insights](https://vercel.com/docs/speed-insights) and [Vercel Web Analytics](https://vercel.com/docs/analytics)."
     }
   ],
   "privacyPolicy": [
@@ -119,7 +119,7 @@
     },
     {
       "title": "10. Privacy Policy",
-      "description": "CrunchyPix values the privacy of users and provides more information on this matter in the Privacy Policy page. Users can become informed by reviewing our privacy policy [here](/terms-of-privacy)."
+      "description": "CrunchyPix values the privacy of users and provides more information on this matter in the Privacy Policy page. Users can become informed by reviewing our privacy policy [here](/policies/terms-of-privacy)."
     },
     {
       "title": "11. Contact",
@@ -171,7 +171,7 @@
     },
     {
       "title": "7. Cookies",
-      "description": "We may use cookies on our website. Cookies are small text files stored in your web browser. You can manage your preferences for accepting or rejecting cookies through your browser settings. For more information, you can visit our [Cookie Policy](/cookie-policy) page."
+      "description": "We may use cookies on our website. Cookies are small text files stored in your web browser. You can manage your preferences for accepting or rejecting cookies through your browser settings. For more information, you can visit our [Cookie Policy](/policies/cookie-policy) page."
     },
     {
       "title": "8. Changes and Updates",

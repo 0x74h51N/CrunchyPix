@@ -85,11 +85,23 @@
       "location": "München / DEUTSCHLAND"
     },
     {
-      "title": "KYK Eletric Inc.",
+      "title": "KYK Electric Inc.",
       "projectType": "Webseitendesign",
-      "slideDescription": "Meine erste Website, entwickelt mit WordPress und begrenztem Code. Entwickelt mit vielen individuellen Designelementen.",
+      "slideDescription": "Meine erste Website, entwickelt mit WordPress und begrenztem Code. Sie enthält verschiedene individuelle Designelemente.",
       "client": "KYK Electric Inc.",
-      "location": "Istanbul / TÜRKEI"
+      "location": "Istanbul / TÜRKEI",
+      "title2": "KYK Electric Webseitendesign",
+      "techDescription": "Diese Website ist auf WordPress aufgebaut und wird mit einem Headless CMS verwaltet. Integration nach Bedarf mit HTML- und CSS-Codes unter Verwendung von benutzerdefinierten Plugins und Tools; einfache Funktionen werden mithilfe verschiedener Konvertierungswerkzeuge und JavaScript entwickelt. Im Design wird ein minimalistischer und funktionaler Ansatz verfolgt, der den Fokus auf den Inhalt legt. _Aufgrund der Einstellung der Domain ist der Zugriff auf diese Webseite nicht möglich; so bald wie möglich wird eine Testversion auf Heroku bereitgestellt..._",
+      "description": "Maximale Inhaltsproduktion mit minimalem Code",
+      "description2": "Die speziell für KYK Electric Inc. entworfene Website wurde mit WordPress und begrenztem Code erstellt. Dieses in Istanbul ansässige Projekt zielt darauf ab, die digitale Präsenz der Marke zu stärken und sich auf minimale Codeverwendung zu konzentrieren, um Besuchern ein beeindruckendes Online-Erlebnis zu bieten. Die Website betont die Identität der Marke mit sorgfältig ausgewählten Inhalten und Visuals, unterstützt die Präsentation von digitalen [Katalogen](/portfolio/kyk_catalogue) und Markenstrategien. Die Website von KYK Electric Inc. trägt erheblich zum digitalen Transformationsprozess der Marke bei und verbessert die Interaktion mit den Kunden durch ihre benutzerfreundliche Oberfläche.",
+      "ticks": [
+        "WordPress",
+        "Headless CMS",
+        "Inhaltsproduktion",
+        "Responsive & Adaptive",
+        "Digitaler Katalog",
+        "Katalogdesign"
+      ]
     },
     {
       "title": "KYK Eletric Katalog",
