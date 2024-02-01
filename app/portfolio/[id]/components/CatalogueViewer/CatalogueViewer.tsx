@@ -2,10 +2,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import Image from "next/image";
-import ArrowSVG from "@/app/portfolio/[id]/components/CatalogueViewer/ArrowSVG";
 import { RootState } from "@/store";
-import { useDispatch, useSelector } from "react-redux";
-import { clickableChange } from "@/store/redux/isClickable";
+import { useSelector } from "react-redux";
 import FlipButton from "./FlipButton";
 
 const CatalogueViewer = ({
@@ -68,12 +66,13 @@ const CatalogueViewer = ({
   useEffect(() => {
     if (isTouch === true) {
       setMouseEvent(true);
+      console.log("isTouch True");
     } else if (isTouch === false) {
       setMouseEvent(false);
     }
   }, [isTouch]);
   return (
-    <div className="w-full h-auto">
+    <div className="w-full h-auto relative">
       <HTMLFlipBook
         ref={flipBookRef}
         style={{}}
@@ -120,8 +119,7 @@ const CatalogueViewer = ({
             />
           ))}
       </HTMLFlipBook>
-
-      {!isTouch && (
+      {!isTouch && imagePaths.length > 0 && (
         <>
           {currentPage === Math.floor(imagePaths.length / 2) ? null : (
             <FlipButton onClick={handleNextPage} currentPage={currentPage} />

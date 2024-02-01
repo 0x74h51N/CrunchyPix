@@ -1,5 +1,3 @@
-// ArrowButton.jsx
-
 import React from "react";
 import ArrowSVG from "./ArrowSVG";
 import { RootState } from "@/store";
