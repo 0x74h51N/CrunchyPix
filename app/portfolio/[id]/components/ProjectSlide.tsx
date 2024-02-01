@@ -4,7 +4,6 @@ import SwiperCore from "swiper";
 import PortfolioItem from "../../components/PortfolioItem";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { useEffect, useState } from "react";
 import { PortfolioItemProps } from "@/app/common.types";
 
 const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {

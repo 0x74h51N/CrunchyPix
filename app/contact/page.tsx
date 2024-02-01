@@ -1,4 +1,5 @@
 "use client";
+import Construction from "@/components/Construction";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { slideIn, staggerContainer } from "@/utils/motion";
@@ -26,23 +27,7 @@ const page = () => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-  return (
-    <motion.div
-      variants={staggerContainer(2, 2)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      className="w-full flex flex-row  overflow-hidden min-h-[100svh]"
-    >
-      <div className="w-4/6"></div>
-      <div className="flex flex-col p-8 justify-end items-center gap-7 z-10 w-2/6 max-xs:px-8">
-        <motion.div
-          variants={slideIn("right", "tween", 0.3, 1)}
-          className="w-full"
-        ></motion.div>
-      </div>
-    </motion.div>
-  );
+  return <Construction />;
 };
 
 export default page;

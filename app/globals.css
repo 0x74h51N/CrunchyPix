@@ -100,6 +100,10 @@ body {
   @apply text-cool-gray-50 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] antialiased;
 }
 
+.h1.log {
+  @apply text-log-col;
+}
+
 .h1.cool {
   @apply text-cool-gray-700;
 }
