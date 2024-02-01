@@ -7,7 +7,6 @@ export default function ServicesLayout({
 }) {
   return (
     <>
-      <Rooting />
       <main>{children}</main>
     </>
   );

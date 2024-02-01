@@ -8,7 +8,6 @@ export default function PortfolioLayout({
 }) {
   return (
     <>
-      <Rooting />
       <main>{children}</main>
     </>
   );

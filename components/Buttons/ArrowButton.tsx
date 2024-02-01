@@ -9,7 +9,6 @@ import { scrollToSection, scrollToTop } from "@/utils/scrollToSection";
 
 interface ArrowButtonProps {
   index?: number;
-  text?: string;
   className?: string;
   arrow?: boolean;
   duration?: number;
@@ -17,7 +16,6 @@ interface ArrowButtonProps {
 
 export const ArrowButton = ({
   index,
-  text,
   className,
   arrow,
   duration = 0,
@@ -51,7 +49,6 @@ export const ArrowButton = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {text}
       {arrow && (
         <Image
           src="/arrow.svg"

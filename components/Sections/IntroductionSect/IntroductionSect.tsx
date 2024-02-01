@@ -34,10 +34,11 @@ const IntroductionSect = () => {
       <Image
         src="/headColor.png"
         alt="Photo"
+        quality={100}
         width={250}
         height={250}
         loading="lazy"
-        className="object-center bg-opacity-0 grayscale max-lg:w-[230px] max-md:w-[200px] h-auto z-30"
+        className="object-center bg-opacity-0 grayscale w-auto max-lg:w-[230px] max-md:w-[200px] h-auto z-30"
       />
       <motion.div
         initial="hidden"

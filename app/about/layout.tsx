@@ -7,7 +7,6 @@ export default function AboutLayout({
 }) {
   return (
     <>
-      <Rooting />
       <main>{children}</main>
     </>
   );

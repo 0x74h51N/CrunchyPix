@@ -7,7 +7,6 @@ export default function ContactLayout({
 }) {
   return (
     <>
-      <Rooting />
       <main>{children}</main>
     </>
   );

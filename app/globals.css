@@ -292,6 +292,9 @@ body {
 :hover.animate-bounceX {
   animation: bounceX 2s infinite;
 }
+.animate-bounceX-slow {
+  animation: bounceX 2s infinite;
+}
 .animate-bounce-slow {
   animation: bounce 2s infinite;
 }

@@ -79,86 +79,90 @@ const Rooting = () => {
     }
   };
 
-  return (
-    <div
-      className="flex flex-col justify-center items-center w-full lg:h-[410px] md:h-[360px] h-[290px] md:p-10 p-2 overflow-hidden relative"
-      style={{
-        background: "radial-gradient(circle, rgba(0,0,0,0.7), rgba(0,0,0,1))",
-        boxShadow: "inset 0 0 10px 5px rgba(0, 0, 0, 0.8)",
-      }}
-    >
-      <Image
-        src={`/${mainPage}.jpg`}
-        alt={mainPage}
-        fill
-        priority={true}
-        sizes="100svw"
-        quality={100}
-        className="object-cover -z-10 h-[700px]"
-      />
+  if (pathname === "" || pathname === "home" || pathname === "/") {
+    return null;
+  } else {
+    return (
       <div
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none  md:mt-[180px] mt-36"
-        style={{ textTransform: "capitalize" }}
+        className="flex flex-col justify-center items-center w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative"
+        style={{
+          background: "radial-gradient(circle, rgba(0,0,0,0.7), rgba(0,0,0,1))",
+          boxShadow: "inset 0 0 10px 5px rgba(0, 0, 0, 0.8)",
+        }}
       >
-        {childPage ? (
-          childPage === "crunchypix" ? (
-            <span>
-              {childPage.slice(0, -3)}
-              <span className="text-log-col">
-                {childPage.charAt(childPage.length - 3).toUpperCase()}
-                {childPage.slice(-2)}
+        <Image
+          src={`/${mainPage}.jpg`}
+          alt={mainPage}
+          fill
+          priority={true}
+          sizes="100svw"
+          quality={100}
+          className="object-cover -z-10 h-[700px]"
+        />
+        <div
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none lg:mt-[175px] md:mt-[140px] mt-[120px]"
+          style={{ textTransform: "capitalize" }}
+        >
+          {childPage ? (
+            childPage === "crunchypix" ? (
+              <span>
+                {childPage.slice(0, -3)}
+                <span className="text-log-col">
+                  {childPage.charAt(childPage.length - 3).toUpperCase()}
+                  {childPage.slice(-2)}
+                </span>
               </span>
-            </span>
+            ) : (
+              childPage
+            )
           ) : (
-            childPage
-          )
-        ) : (
-          t(`index:links.${mainPage}`)
-        )}
-      </div>
-      <div className="flex flex-col md:flex-row justify-center items-center ">
-        <div className="flex flex-row items-center">
-          <Link
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="md:text-2xl text-lg text-cool-gray-50 font-bold hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
-            href={`/`}
-          >
-            <span>Crunchy</span>
-            <span className="text-log-col mr-5">Pix</span>
-          </Link>
-          <span className="text-log-col md:text-[20px] text-md">{"•"}</span>
-          <Link
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={`md:text-2xl text-lg ${
-              childPage ? "text-cool-gray-50" : "text-log-col"
-            } font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none`}
-            href={`/${mainPage}`}
-          >
-            {t(`index:links.${mainPage}`)}
-          </Link>
+            t(`index:links.${mainPage}`)
+          )}
         </div>
-        {childPage && (
+        <div className="flex flex-col md:flex-row justify-center items-center ">
           <div className="flex flex-row items-center">
-            <span className="text-log-col md:text-[20px] text-md md:ml-5 ml-0">
-              {"•"}
-            </span>
-            <div
+            <Link
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="md:text-2xl text-lg text-log-col font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
-              style={{ textTransform: "capitalize" }}
+              className="md:text-2xl text-lg text-cool-gray-50 font-bold hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+              href={`/`}
             >
-              {pageName}
-            </div>
+              <span>Crunchy</span>
+              <span className="text-log-col mr-5">Pix</span>
+            </Link>
+            <span className="text-log-col md:text-[20px] text-md">{"•"}</span>
+            <Link
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className={`md:text-2xl text-lg ${
+                childPage ? "text-cool-gray-50" : "text-log-col"
+              } font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none`}
+              href={`/${mainPage}`}
+            >
+              {t(`index:links.${mainPage}`)}
+            </Link>
           </div>
-        )}
+          {childPage && (
+            <div className="flex flex-row items-center">
+              <span className="text-log-col md:text-[20px] text-md md:ml-5 ml-0">
+                {"•"}
+              </span>
+              <div
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="md:text-2xl text-lg text-log-col font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+                style={{ textTransform: "capitalize" }}
+              >
+                {pageName}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 export default Rooting;

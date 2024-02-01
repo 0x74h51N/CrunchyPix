@@ -2,17 +2,17 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import Image from "next/image";
-import ArrowSVG from "@/components/Buttons/ArrowSVG";
+import ArrowSVG from "@/app/portfolio/[id]/components/CatalogueViewer/ArrowSVG";
 import { RootState } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
 import { clickableChange } from "@/store/redux/isClickable";
+import FlipButton from "./FlipButton";
 
 const CatalogueViewer = ({
   Item,
 }: {
   Item: { folderPath: string; pageNumber: number };
 }) => {
-  const dispatch = useDispatch();
   const flipBookRef = useRef<any>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [mouseEvent, setMouseEvent] = useState(false);
@@ -37,19 +37,7 @@ const CatalogueViewer = ({
       : screenWidth >= 400
       ? 350
       : 300;
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
-  const handleMouseEnter = () => {
-    if (isClickable === false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable === true) {
-      dispatch(clickableChange(false));
-    }
-  };
+
   const imagePaths = useMemo(() => {
     const folderPath = Item.folderPath;
     const pageNumber = Item.pageNumber;
@@ -127,7 +115,6 @@ const CatalogueViewer = ({
               style={{
                 objectFit: "cover",
               }}
-              loading="lazy"
               placeholder="empty"
               className="w-full h-full bg-white"
             />
@@ -136,27 +123,15 @@ const CatalogueViewer = ({
 
       {!isTouch && (
         <>
-          <div
-            onClick={handleNextPage}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="absolute bottom-1/2 right-0 animate-bounceX p-2"
-          >
-            <div className="hover:stroke-log-col stroke-neutral-900 opacity-50 hover:opacity-90 transition-all ease-in-out duration-500">
-              <ArrowSVG width={50} height={50} strokeWidth={2.5} />
-            </div>
-          </div>
+          {currentPage === Math.floor(imagePaths.length / 2) ? null : (
+            <FlipButton onClick={handleNextPage} currentPage={currentPage} />
+          )}
           {currentPage == 0 ? null : (
-            <div
+            <FlipButton
+              directionLeft
               onClick={handlePrevPage}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className="absolute bottom-1/2 left-0 animate-bounceX p-2"
-            >
-              <div className="rotate-180 hover:stroke-log-col stroke-neutral-900 opacity-50 hover:opacity-90 transition-all ease-in-out duration-500">
-                <ArrowSVG width={50} height={50} strokeWidth={2.5} />
-              </div>
-            </div>
+              currentPage={currentPage}
+            />
           )}
         </>
       )}

@@ -12,6 +12,7 @@ import { Suspense } from "react";
 import LoadingComponent from "@/components/Loading";
 import CustomCursor from "@/components/CustomCursor";
 import { ArrowToTop } from "@/components/Buttons/ArrowToTop";
+import Rooting from "@/components/Rooting";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -36,6 +37,7 @@ export default function RootLayout({
               <SpeedInsights />
               <Analytics />
               <Navbar />
+              <Rooting />
               <main>{children}</main>
               <Footer />
               <ArrowToTop />
