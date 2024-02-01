@@ -36,7 +36,6 @@ const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
             <>
               <h1 className="h1 text-center">
                 <ReactMarkdown
-                  components={{ a: CustomLink }}
                   remarkPlugins={[breaks]}
                   rehypePlugins={[rehypeRaw]}
                 >

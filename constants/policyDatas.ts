@@ -12,7 +12,6 @@ export const policiesPages: PolicyPagesProps[] = [
     image: "/policy/cookie.png",
     policyData: [
       {
-        mainTitle: "cookiePolicy.0.mainTitle",
         description: "cookiePolicy.0.description",
       },
       {
@@ -55,7 +54,6 @@ export const policiesPages: PolicyPagesProps[] = [
     _id: "Terms-Of-Privacy",
     policyData: [
       {
-        mainTitle: "privacyPolicy.0.mainTitle",
         description: "privacyPolicy.0.description",
       },
       {
@@ -96,7 +94,6 @@ export const policiesPages: PolicyPagesProps[] = [
     _id: "Terms-Of-Services",
     policyData: [
       {
-        mainTitle: "termsOfServices.0.mainTitle",
         description: "",
       },
       {

@@ -1,7 +1,7 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { clickableChange } from "@/store/redux/isClickable";
+import Link from "next/link";
 
 const CustomLink = ({
   children,
@@ -22,15 +22,14 @@ const CustomLink = ({
     }
   };
   return (
-    <a
-      target="_blank"
+    <Link
+      href={props.href as string}
       className="text-log-col underline underline-offset-3 cursor-none"
-      {...props}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 

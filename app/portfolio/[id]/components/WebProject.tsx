@@ -19,7 +19,7 @@ import ProjectSlide from "./ProjectSlide";
 import TopImage from "./TopImage";
 import Ticks from "./ticks";
 import ProjectInfo from "./ProjectInfo";
-import CatalogueViewer from "./CatalogueViewer";
+import CatalogueViewer from "./CatalogueViewer/CatalogueViewer";
 import CustomLink from "@/components/CustomLink";
 
 const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
@@ -118,7 +118,10 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
               </motion.div>
             )}
             {Item.description2 && (
-              <motion.p variants={textVariant(2.2)} className="p lg:mt-8 mt-4">
+              <motion.div
+                variants={textVariant(2.2)}
+                className="p lg:mt-8 mt-4"
+              >
                 <Markdown
                   remarkPlugins={[breaks]}
                   rehypePlugins={[rehypeRaw]}
@@ -126,7 +129,7 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
                 >
                   {t(Item.description2)}
                 </Markdown>
-              </motion.p>
+              </motion.div>
             )}
           </div>
           <div className="flex sm:flex-row flex-col max-sm:items-center max-sm:gap-8 w-full mt-5">
@@ -186,7 +189,7 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: "some" }}
-            variants={slideIn("down", "spring", 1.5, 1.5)}
+            variants={fadeIn("up", "spring", 2.5, 2)}
             className="w-full my-14 cursor-none"
           >
             <CatalogueViewer Item={Item.catalogue} />
@@ -198,10 +201,10 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
             whileInView="show"
             viewport={{ once: true, amount: "some" }}
           >
-            <motion.h3 variants={textVariant(1)} className="h3 self-start">
+            <motion.h3 variants={textVariant(1.5)} className="h3 self-start">
               {t("page.techTitle")}
             </motion.h3>
-            <motion.div variants={textVariant(1.3)} className="p mt-4 w-full ">
+            <motion.div variants={textVariant(1.8)} className="p mt-4 w-full ">
               <Markdown remarkPlugins={[breaks]} rehypePlugins={[rehypeRaw]}>
                 {t(Item.techDescription)}
               </Markdown>
@@ -212,12 +215,12 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: "some" }}
-          variants={polygonIn("screen", "spring", 1, 1.5)}
+          variants={polygonIn("screen", "spring", 1.7, 1.8)}
           className="flex flex-col items-center w-full max-w-[1300px] h-auto max-h-[400px] my-24"
           onHoverStart={hoverStart}
           onHoverEnd={hoverEnd}
         >
-          <motion.div variants={slideIn("up", "easeInOut", 1.5, 1)}>
+          <motion.div variants={slideIn("up", "easeInOut", 2.2, 1)}>
             <h2 className="h1 half w-full mb-2">{t("page.otherProjects")}</h2>
           </motion.div>
           {isTranslationsLoadedRedux && (

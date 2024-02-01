@@ -1,4 +1,3 @@
-import Rooting from "@/components/Rooting";
 import { portfolioPageItems } from "@/constants/portfolioItems";
 
 export default function PortfolioLayout({
@@ -8,7 +7,6 @@ export default function PortfolioLayout({
 }) {
   return (
     <>
-      <Rooting />
       <main>{children}</main>
     </>
   );

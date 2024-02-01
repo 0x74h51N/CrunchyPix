@@ -4,7 +4,12 @@
     "services": "Services",
     "portfolio": "Portfolio",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "policies": "Policies",
+    "termsofservices": "Terms of Service",
+    "termsofprivacy": "Privacy Policy",
+    "cookiepolicy": "Cookie Policy",
+    "gdpr": "GDPR"
   },
   "footerLinks": {
     "Home": "Home",
@@ -12,6 +17,7 @@
     "Portfolio": "Portfolio",
     "About": "About",
     "Contact": "Contact",
+    "policies": "policies",
     "TermsOfServices": "Terms of Service",
     "TermsOfPrivacy": "Privacy Policy",
     "CookiePolicy": "Cookie Policy",
