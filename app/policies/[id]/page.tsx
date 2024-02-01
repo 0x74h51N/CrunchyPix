@@ -12,8 +12,8 @@ const PolicyPage = ({ params }: { params: { id: string } }) => {
     return <p>Couldn't find a policyPage item.</p>;
   }
   return (
-    <div className=" flex justify-center items-center w-full h-full min-h-[100svh] md:mt-[14rem] mt-28">
-      <div className="relative bg-cool-gray-900  md:p-32 p-5 rounded-xl max-w-[1100px] z-0">
+    <div className=" flex justify-center items-center w-full h-full min-h-[100svh] md:pb-20 pb-5">
+      <div className="relative bg-cool-gray-900  md:px-28 md:py-12  p-5 rounded-xl max-w-[1100px] z-0">
         {selectedItem.image && (
           <Image
             src={"/policy/cookie.png"}

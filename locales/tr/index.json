@@ -4,7 +4,12 @@
     "services": "Hizmetler",
     "portfolio": "Portföy",
     "about": "Hakkımızda",
-    "contact": "İletişim"
+    "contact": "İletişim",
+    "policies": "Politikalar",
+    "termsofservices": "Hizmet Şartları",
+    "termsofprivacy": "Gizlilik Politikası",
+    "cookiepolicy": "Çerez Politikası",
+    "gdpr": "KVKK"
   },
 
   "footerLinks": {

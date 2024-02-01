@@ -10,11 +10,13 @@ import i18n from "@/utils/i18n";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
+import { checkFileExistence } from "@/utils/checkFileExistence";
 
 const Rooting = () => {
   const [mainPage, setMainPage] = useState("");
   const [childPage, setChildPage] = useState("");
   const [pageName, setPageName] = useState("");
+  const [isFileExist, setIsFileExist] = useState(false);
   const pathname = usePathname();
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
@@ -24,6 +26,14 @@ const Rooting = () => {
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
+  useEffect(() => {
+    const fetchData = async () => {
+      const fileExists = await checkFileExistence(`${mainPage}.jpg`);
+      setIsFileExist(fileExists);
+    };
+
+    fetchData();
+  }, [mainPage]);
   useEffect(() => {
     const handleInitialized = () => {
       dispatch(setIsTranslationsLoaded(true));
@@ -44,7 +54,9 @@ const Rooting = () => {
       const urlParts = pathname.split("/");
       const currentPage = urlParts[1];
       if (urlParts[2]) {
-        const currentChildPage = urlParts[2].replace("_", " ");
+        const currentChildPage = urlParts[2]
+          .replace("_", " ")
+          .replaceAll("-", "");
         setChildPage(currentChildPage);
       } else setChildPage("");
       setMainPage(currentPage);
@@ -86,19 +98,23 @@ const Rooting = () => {
       <div
         className="flex flex-col justify-center items-center w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative"
         style={{
-          background: "radial-gradient(circle, rgba(0,0,0,0.7), rgba(0,0,0,1))",
-          boxShadow: "inset 0 0 10px 5px rgba(0, 0, 0, 0.8)",
+          background: isFileExist
+            ? "radial-gradient(circle, rgba(0,0,0,0.7), rgba(0,0,0,1))"
+            : "",
+          boxShadow: isFileExist ? "inset 0 0 10px 5px rgba(0, 0, 0, 0.8)" : "",
         }}
       >
-        <Image
-          src={`/${mainPage}.jpg`}
-          alt={mainPage}
-          fill
-          priority={true}
-          sizes="100svw"
-          quality={100}
-          className="object-cover -z-10 h-[700px]"
-        />
+        {isFileExist && (
+          <Image
+            src={`/${mainPage}.jpg`}
+            alt={mainPage}
+            fill
+            priority={true}
+            sizes="100svw"
+            quality={100}
+            className="object-cover -z-10 h-[700px]"
+          />
+        )}
         <div
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
@@ -114,6 +130,8 @@ const Rooting = () => {
                   {childPage.slice(-2)}
                 </span>
               </span>
+            ) : mainPage === "policies" ? (
+              t(`index:links.${childPage.toLowerCase()}`)
             ) : (
               childPage
             )
@@ -144,7 +162,7 @@ const Rooting = () => {
               {t(`index:links.${mainPage}`)}
             </Link>
           </div>
-          {childPage && (
+          {childPage && mainPage !== "policies" && (
             <div className="flex flex-row items-center">
               <span className="text-log-col md:text-[20px] text-md md:ml-5 ml-0">
                 {"•"}

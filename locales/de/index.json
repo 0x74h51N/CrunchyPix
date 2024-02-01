@@ -4,7 +4,12 @@
     "services": "Dienstleistungen",
     "portfolio": "Portfolio",
     "about": "Über uns",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "policies": "Politiken",
+    "termsofservices": "Nutzungsbedingungen",
+    "termsofprivacy": "Datenschutzrichtlinie",
+    "cookiepolicy": "Cookie-Richtlinie",
+    "gdpr": "DSGVO"
   },
   "footerLinks": {
     "Home": "Startseite",
