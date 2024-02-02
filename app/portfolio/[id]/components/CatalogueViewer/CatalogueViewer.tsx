@@ -94,7 +94,7 @@ const CatalogueViewer = ({
         maxWidth={1300}
         minHeight={140}
         maxHeight={1300}
-        maxShadowOpacity={0.5}
+        maxShadowOpacity={0.8}
         showCover={true}
         mobileScrollSupport={true}
         onFlip={() => {}}
@@ -115,7 +115,7 @@ const CatalogueViewer = ({
                 objectFit: "cover",
               }}
               placeholder="empty"
-              className="w-full h-full bg-white"
+              className="w-full h-full bg-white "
             />
           ))}
       </HTMLFlipBook>

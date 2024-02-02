@@ -30,16 +30,22 @@ const FlipButton = ({ onClick, currentPage, directionLeft }: FlipButton) => {
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`absolute bottom-1/2  p-2 ${
+      className={`absolute group hover:bg-opacity-20 bg-stone-50 bg-opacity-0 bottom-0 h-full  ${
         directionLeft ? "left-0" : "right-0"
-      } ${currentPage === 0 ? "animate-bounceX-slow" : "animate-bounceX"}`}
+      } `}
     >
       <div
-        className={`hover:stroke-log-col opacity-50 hover:opacity-90 transition-all ease-in-out duration-500 ${
-          directionLeft ? "rotate-180" : ""
-        } ${currentPage === 0 ? "stroke-log-col" : "stroke-neutral-900"}`}
+        className={`h-full flex items-center ${
+          currentPage === 0 ? "animate-bounceX-slow" : "animate-bounceX"
+        }`}
       >
-        <ArrowSVG width={50} height={50} strokeWidth={2.5} />
+        <div
+          className={`group-hover:stroke-log-col opacity-50 hover:opacity-90 transition-all ease-in-out duration-500 ${
+            directionLeft ? "rotate-180" : ""
+          } ${currentPage === 0 ? "stroke-log-col" : "stroke-neutral-900"}`}
+        >
+          <ArrowSVG width={50} height={50} strokeWidth={2.5} />
+        </div>
       </div>
     </div>
   );

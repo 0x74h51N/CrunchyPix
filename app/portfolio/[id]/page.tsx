@@ -1,5 +1,5 @@
 import { portfolioPageItems } from "@/constants/portfolioItems";
-import WebProject from "./components/WebProject";
+import Project from "./components/WebProject";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const selectedItem = portfolioPageItems.find(
@@ -10,7 +10,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
     return <p>Couldn't find a portfolio item.</p>;
   }
 
-  return <WebProject Item={selectedItem} />;
+  return <Project Item={selectedItem} />;
 };
 
 export default PortfolioPage;
