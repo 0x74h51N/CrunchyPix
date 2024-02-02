@@ -31,12 +31,13 @@ const ImageBoxes = ({
         >
           <div className="overflow-hidden flexCenter">
             <Image
-              width={1000}
-              height={1000}
+              width={1200}
+              height={1200}
               src={image}
               alt={_id}
+              quality={100}
               key={index}
-              className="flex max-w-[400px] w-full h-auto object-contain hover:scale-125 transition-all duration-[4500ms] out-expo"
+              className="flex max-w-[400px] w-full h-auto object-contain hover:scale-[1.4] transition-all duration-[5000ms] out-expo"
               style={{
                 backgroundImage:
                   _id == "KYK_Electric"
