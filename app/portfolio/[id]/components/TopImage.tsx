@@ -15,11 +15,16 @@ const TopImage = ({
 }) => {
   return (
     <div
-      className={`relative w-full h-auto  ${
+      className={`relative w-full h-auto overflow-hidden ${
         imageTop.includes("catalog")
           ? "lg:min-h-[870px] md:min-h-[700px]"
           : "md:min-h-[700px]"
       } min-h-[450px]`}
+      style={{
+        backgroundImage: imageTop.includes("kyk")
+          ? "linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)"
+          : "linear-gradient(to bottom right,  #171717, #334155)",
+      }}
     >
       <Image
         fill
@@ -29,11 +34,6 @@ const TopImage = ({
         src={imageTop}
         alt={imageAlt}
         className="w-full h-full object-cover"
-        style={{
-          backgroundImage: imageTop.includes("kyk")
-            ? "linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)"
-            : "linear-gradient(to bottom right,  #171717, #334155)",
-        }}
       />
       {icons && (
         <motion.div

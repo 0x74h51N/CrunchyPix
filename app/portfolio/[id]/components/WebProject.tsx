@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { memo, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import Image from "next/image";
 import Markdown from "react-markdown";
 import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
@@ -21,16 +20,13 @@ import Ticks from "./ticks";
 import ProjectInfo from "./ProjectInfo";
 import CatalogueViewer from "./CatalogueViewer/CatalogueViewer";
 import CustomLink from "@/components/CustomLink";
+import ImageBoxes from "./ImageBoxes";
 
-const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
+const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width
-  );
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
@@ -152,37 +148,7 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
           </div>
         </motion.div>
         {Item.imageBoxes && (
-          <div className="flex md:flex-row flex-col items-center justify-between w-full h-auto mt-24 mb-8 gap-6">
-            {Item.imageBoxes.map((image: string, index: number) => (
-              <motion.div
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: "some" }}
-                variants={fadeIn(
-                  "down",
-                  "spring",
-                  screenWidth >= 768 ? 1 * index + 0.5 : 1,
-                  1
-                )}
-                key={index}
-              >
-                <Image
-                  width={1000}
-                  height={1000}
-                  src={image}
-                  alt={Item.imageAlt}
-                  key={index}
-                  className="flex max-w-[400px] w-full h-auto object-contain"
-                  style={{
-                    backgroundImage:
-                      Item._id == "KYK_Electric"
-                        ? "linear-gradient(to bottom right,  #e2e8f0, #d6d3d1 90%)"
-                        : "linear-gradient(to bottom right,  #171717, #1e293b 90%)",
-                  }}
-                />{" "}
-              </motion.div>
-            ))}
-          </div>
+          <ImageBoxes imageBoxes={Item.imageBoxes} _id={Item._id} />
         )}
         {Item.catalogue && (
           <motion.div
@@ -238,4 +204,4 @@ const WebProject = memo(({ Item }: { Item: PortfolioItemProps }) => {
   );
 });
 
-export default WebProject;
+export default Project;

@@ -1,0 +1,54 @@
+import { RootState } from "@/store";
+import { fadeIn } from "@/utils/motion";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useSelector } from "react-redux";
+
+const ImageBoxes = ({
+  imageBoxes,
+  _id,
+}: {
+  imageBoxes: string[];
+  _id: string;
+}) => {
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width
+  );
+  return (
+    <div className="flex md:flex-row flex-col items-center justify-between w-full h-auto mt-24 mb-8 gap-6">
+      {imageBoxes.map((image: string, index: number) => (
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: "some" }}
+          variants={fadeIn(
+            "down",
+            "spring",
+            screenWidth >= 768 ? index + 0.3 : 1,
+            1
+          )}
+          key={index}
+        >
+          <div className="overflow-hidden flexCenter">
+            <Image
+              width={1000}
+              height={1000}
+              src={image}
+              alt={_id}
+              key={index}
+              className="flex max-w-[400px] w-full h-auto object-contain hover:scale-125 transition-all duration-[4500ms] out-expo"
+              style={{
+                backgroundImage:
+                  _id == "KYK_Electric"
+                    ? "linear-gradient(to bottom right,  #e2e8f0, #d6d3d1 90%)"
+                    : "linear-gradient(to bottom right,  #171717, #1e293b 90%)",
+              }}
+            />
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+export default ImageBoxes;

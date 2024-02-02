@@ -21,9 +21,9 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     imageAlt: "CrunchyPix",
     imageTop: "/portfolioItems/crunchypixTop.png",
     imageBoxes: [
-      "/portfolioItems/crunchypixTop.png",
+      "/portfolioItems/crunchyRespo0.png",
       "/portfolioItems/crunchypixRespo.png",
-      "/portfolioItems/crunchypixTop.png",
+      "/portfolioItems/crunchyRespo2.png",
     ],
     title: "items.0.title",
     title2: "items.0.title2",
