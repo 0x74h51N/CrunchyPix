@@ -25,6 +25,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   });
   const dispatch = useDispatch();
   const { t } = useTranslation(["portfolio"]);
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -35,6 +36,9 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   );
   const _selectedSlide = (_slide: PortfolioItemProps) => {
     dispatch(setSlide(_slide));
+    if (isSlider === true) {
+      dispatch(sliderChange(false));
+    }
   };
   useEffect(() => {
     if (i18n.isInitialized) {

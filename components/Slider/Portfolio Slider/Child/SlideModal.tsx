@@ -10,13 +10,14 @@ import Image from "next/image";
 import Loading from "@/components/Loading";
 import Link from "next/link";
 import CancelButton from "@/components/Buttons/CancelButton";
+import { sliderChange } from "@/store/redux/isSlider";
 
 const SlideModal = () => {
   const [imageLoading, setImageLoading] = useState(true);
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-
   const dispatch = useDispatch();
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const selectedSlide = useSelector(
     (state: RootState) => state.selectedSlide.selectedSlide
   );
@@ -40,7 +41,11 @@ const SlideModal = () => {
     hidden: { opacity: 0, scale: 0.5 },
     visible: { opacity: 1, scale: 1 },
   };
-
+  const onClickHandler = () => {
+    if (isSlider === true) {
+      dispatch(sliderChange(false));
+    }
+  };
   return (
     <AnimatePresence>
       {selectedSlide && (
@@ -100,6 +105,7 @@ const SlideModal = () => {
                     className={`font-extralight hover:text-log-col underline underline-offset-2 cursor-none ${
                       isMobile ? "text-[10px]" : "text-[13px]"
                     } `}
+                    onClick={onClickHandler}
                   >
                     {t("projectSlides.click")}
                   </Link>
