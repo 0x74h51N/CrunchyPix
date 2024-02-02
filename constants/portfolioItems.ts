@@ -111,9 +111,9 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     imageAlt: "CC Order",
     imageTop: "/portfolioItems/ccorderTop.png",
     imageBoxes: [
-      "/portfolioItems/ccorderTop.png",
+      "/portfolioItems/ccorderRespo0.png",
       "/portfolioItems/ccorderRespo.png",
-      "/portfolioItems/ccorderTop.png",
+      "/portfolioItems/ccorderRespo2.png",
     ],
     title: "items.1.title",
     title2: "items.1.title2",
@@ -157,9 +157,9 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     imageAlt: "MintingUI",
     imageTop: "/portfolioItems/mintingUiTop.png",
     imageBoxes: [
-      "/portfolioItems/mintingUiTop.png",
+      "/portfolioItems/mintingRespo0.png",
       "/portfolioItems/mintingUiRespo.png",
-      "/portfolioItems/mintingUiTop.png",
+      "/portfolioItems/mintingRespo2.png",
     ],
     title: "items.2.title",
     title2: "items.2.title2",
