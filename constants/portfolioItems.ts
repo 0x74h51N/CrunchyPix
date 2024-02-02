@@ -111,9 +111,9 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     imageAlt: "CC Order",
     imageTop: "/portfolioItems/ccorderTop.png",
     imageBoxes: [
-      "/portfolioItems/ccorderRespo0.png",
-      "/portfolioItems/ccorderRespo.png",
-      "/portfolioItems/ccorderRespo2.png",
+      "/portfolioItems/ccOrderRespo0.png",
+      "/portfolioItems/ccOrderRespo.png",
+      "/portfolioItems/ccOrderRespo2.png",
     ],
     title: "items.1.title",
     title2: "items.1.title2",
