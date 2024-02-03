@@ -146,7 +146,7 @@ const ServicesSect = () => {
         </div>
       </motion.div>
       <div
-        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] shadow-xl 2xl:shadow-black
+        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 2xl:shadow-xl 2xl:shadow-black
         w-full 2xl:max-w-[180px] 2xl:bg-neutral-900 2xl:p-40 p-10 2xl:gap-8 gap-4"
       />
     </div>
