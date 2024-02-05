@@ -18,7 +18,8 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
   );
 
   if (!selectedItem) {
-    return <p>Couldn't find a portfolio item.</p>;
+    console.log("Couldn't find a portfolio item.");
+    return null;
   }
 
   useEffect(() => {

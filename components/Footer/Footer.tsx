@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -13,16 +12,12 @@ import IconButton from "../Buttons/IconButton";
 import { Icon } from "@/app/common.types";
 import { footerLinks } from "@/constants";
 import FooterColumn from "./FooterColumn";
-import { clickableChange } from "@/store/redux/isClickable";
 import Contact from "../Contact";
 
 const Footer = () => {
   const { t, i18n } = useTranslation(["index"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
-  );
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
   );
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,16 +32,6 @@ const Footer = () => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-  const handleMouseEnter = () => {
-    if (isClickable == false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
-  };
   return (
     <div className="relative flex justify-center footer py-24 bg-neutral-50 shadow-inner shadow-black">
       <motion.div
@@ -104,9 +89,7 @@ const Footer = () => {
               {footerIcons.map((icon: Icon, index: number) => (
                 <span
                   key={index}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                  className="hover:text-log-col transition-all ease-in-out duration-300"
+                  className="hover:text-log-col hover:-translate-y-2 transition-all ease-in-out duration-300 py-2"
                 >
                   <IconButton key={index} icon={icon} size={25} />
                 </span>

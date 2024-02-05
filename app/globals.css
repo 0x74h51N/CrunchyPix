@@ -148,7 +148,7 @@ body {
 }
 
 .footer_copyright {
-  @apply max-sm:flex-col-reverse text-sm font-normal py-8 max-sm:gap-3 antialiased;
+  @apply max-sm:flex-col-reverse text-sm font-normal py-7 max-sm:gap-3 antialiased;
 }
 
 .footer_column {
