@@ -20,6 +20,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     image: "/portfolioItems/crunchypix.png",
     imageAlt: "CrunchyPix",
     imageTop: "/portfolioItems/crunchypixTop.png",
+    imageTopMobile: "/portfolioItems/crunchyImageTopMobile.png",
     imageBoxes: [
       "/portfolioItems/crunchyRespo0.png",
       "/portfolioItems/crunchypixRespo.png",

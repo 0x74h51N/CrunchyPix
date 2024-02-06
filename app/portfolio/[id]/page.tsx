@@ -1,6 +1,6 @@
 "use client";
 import { portfolioPageItems } from "@/constants/portfolioItems";
-import Project from "./components/WebProject";
+import Project from "./components/Project";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";

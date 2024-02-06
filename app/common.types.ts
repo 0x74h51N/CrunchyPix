@@ -117,6 +117,7 @@ export type PortfolioItemProps = {
   image: string;
   imageAlt: string;
   imageTop?: string;
+  imageTopMobile?: string;
   imageBoxes?: string[];
   title: string;
   title2?: string;
