@@ -1,25 +1,32 @@
 import { Icon } from "@/app/common.types";
 import IconButton from "@/components/Buttons/IconButton";
+import { RootState } from "@/store";
 import { slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 
 const TopImage = ({
   imageTop,
+  imageTopMobile,
   imageAlt,
   icons,
 }: {
   imageTop: string;
+  imageTopMobile?: string;
   imageAlt: string;
   icons?: Icon[];
 }) => {
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width
+  );
   return (
     <div
       className={`relative w-full h-auto overflow-hidden ${
         imageTop.includes("catalog")
           ? "lg:min-h-[870px] md:min-h-[700px]"
           : "md:min-h-[700px]"
-      } min-h-[450px]`}
+      } min-h-[600px]`}
       style={{
         backgroundImage: imageTop.includes("kyk")
           ? "linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)"
@@ -31,7 +38,7 @@ const TopImage = ({
         sizes="100vw"
         priority
         quality={100}
-        src={imageTop}
+        src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
         alt={imageAlt}
         className="w-full h-full object-cover"
       />

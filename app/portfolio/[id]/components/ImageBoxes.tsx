@@ -15,16 +15,16 @@ const ImageBoxes = ({
     (state: RootState) => state.screenWidth.width
   );
   return (
-    <div className="flex md:flex-row flex-col items-center justify-between w-full h-auto mt-24 mb-8 gap-6">
+    <div className="flex md:flex-row flex-col items-center justify-between w-full h-auto md:mt-24 mt-10 mb-8 gap-6">
       {imageBoxes.map((image: string, index: number) => (
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: "some" }}
+          viewport={{ once: true, amount: 0.5 }}
           variants={fadeIn(
             "down",
             "spring",
-            screenWidth >= 768 ? index + 0.3 : 1,
+            screenWidth >= 768 ? index + 0.5 : 0.6,
             1
           )}
           key={index}

@@ -43,7 +43,7 @@ const Ticks = ({ ticks }: { ticks: string[] }) => {
           {firstColumn.map((tick, index) => (
             <li
               key={index}
-              className="flex flex-row justi items-center gap-3 p mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
+              className="flex flex-row items-center gap-3 p mt-3 hover:scale-105 hover:pl-3 transition-all duration-500 ease-in-out"
             >
               {TickIcon} {t(tick)}
             </li>

@@ -1,6 +1,6 @@
 "use client";
 import { portfolioPageItems } from "@/constants/portfolioItems";
-import Project from "./components/WebProject";
+import Project from "./components/Project";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
@@ -18,7 +18,8 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
   );
 
   if (!selectedItem) {
-    return <p>Couldn't find a portfolio item.</p>;
+    console.log("Couldn't find a portfolio item.");
+    return null;
   }
 
   useEffect(() => {
