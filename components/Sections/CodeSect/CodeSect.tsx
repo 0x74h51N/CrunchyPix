@@ -10,12 +10,15 @@ import { RootState } from "@/store";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import {
+  vsDark,
+  vscDarkPlus,
+} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { codeString } from "@/constants/codeString";
+import { scrollState } from "@/store/redux/isScrollEnabled";
 
 const CodeSect = () => {
   const { t, i18n } = useTranslation(["home"]);
-  const [isInView, setIsInView] = useState(false);
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );
@@ -24,9 +27,16 @@ const CodeSect = () => {
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isScrollEnabled = useSelector(
+    (state: RootState) => state.isScrollEnabled.enabled
+  );
   const dispatch = useDispatch();
-  const [lineHeight, setLineHeight] = useState<string>("");
-  const [fontSize, setFontSize] = useState<string>("");
+  const [lineHeight, setLineHeight] = useState<string>(() => {
+    return "";
+  });
+  const [fontSize, setFontSize] = useState<string>(() => {
+    return "";
+  });
   useEffect(() => {
     if (screenWidth >= 1535) {
       setLineHeight("1.35");
@@ -58,17 +68,21 @@ const CodeSect = () => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-
-  const handleInViewChange = (inView: boolean) => {
-    setIsInView(inView);
+  const scrollHandlerEnter = () => {
+    if (isScrollEnabled) {
+      dispatch(scrollState(false));
+    }
+  };
+  const scrollHandlerLeave = () => {
+    if (!isScrollEnabled) {
+      dispatch(scrollState(true));
+    }
   };
 
   return (
     <motion.div
       initial="hidden"
       whileInView="show"
-      onViewportEnter={() => handleInViewChange(true)}
-      onViewportLeave={() => handleInViewChange(false)}
       viewport={{ once: true, amount: "some" }}
       className="flex 2xl:flex-row flex-col items-center 2xl:justify-between justify-center w-full h-full 2xl:pr-20 pr-0 2xl:gap-20 xl:gap-14 gap-6"
     >
@@ -103,18 +117,23 @@ const CodeSect = () => {
       </motion.div>
       <motion.div variants={slideIn("right", "spring", 0.5, 0.5)}>
         <MonitorFrame>
-          <div className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track cursor-none bg-cool-gray-800">
+          <div
+            onMouseEnter={scrollHandlerEnter}
+            onMouseLeave={scrollHandlerLeave}
+            className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track cursor-none bg-cool-gray-800"
+          >
             <SyntaxHighlighter
               language="typescript"
-              style={vscDarkPlus}
               showLineNumbers
+              useInlineStyles={true}
+              style={vscDarkPlus}
               customStyle={{
                 backgroundColor: "transparent",
                 opacity: "1",
-                overflow: "hidden",
+                overflow: "scroll",
+                cursor: "none",
                 lineHeight: lineHeight,
                 fontSize: fontSize,
-                cursor: "none",
               }}
               codeTagProps={{
                 style: {

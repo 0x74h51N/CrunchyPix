@@ -2,17 +2,18 @@
 import { RootState } from "@/store";
 import { setTouch } from "@/store/redux/isTouch";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
 const CustomCursor = () => {
   const isBrowser = typeof window !== "undefined";
-
   const cursorRef = useRef<HTMLDivElement | null>(null);
   const circleRef = useRef<HTMLDivElement | null>(null);
-  const { t, i18n } = useTranslation(["index"]);
-  const dispatch = useDispatch();
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
+  const [isCursorVisible, setIsCursorVisible] = useState(false);
+  const [isInitialMove, setIsInitialMove] = useState(true);
   const cursorDisabled = useSelector(
     (state: RootState) => state.cursorDisabled.disabled
   );
@@ -25,10 +26,9 @@ const CustomCursor = () => {
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
-  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
-  const [isCursorVisible, setIsCursorVisible] = useState(false);
-  const [isInitialMove, setIsInitialMove] = useState(true);
+  const { t, i18n } = useTranslation(["index"]);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (isBrowser) {
       const handleTouchStart = () => {
@@ -88,7 +88,7 @@ const CustomCursor = () => {
             0.1
           )})`;
           const opacity = 0.8;
-          const reducedOpacity = opacity - 0.025 * index;
+          const reducedOpacity = opacity - 0.04 * index;
           followerRef.current.style.opacity = Math.max(
             reducedOpacity,
             0.3

@@ -18,21 +18,26 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
     (state: RootState) => state.sectionIndex.index
   );
   const { scrollY } = useScroll();
+  const isScrollEnabled = useSelector(
+    (state: RootState) => state.isScrollEnabled.enabled
+  );
   const dispatch = useDispatch();
   const y = useTransform(scrollY, [0, 2000], [0, -900]);
   useEffect(() => {
     const handleScrollEvent = (event: WheelEvent) => {
-      const currentSection = sectionsData[currentSectionIndex];
-      handleScroll({
-        event,
-        currentSectionIndex,
-        sectionsData,
-        sectionRefs,
-        smoothScroll: currentSection.smoothScroll ?? false,
-        dispatchSetIndex: (index: number) => {
-          dispatch(setIndex(index));
-        },
-      });
+      if (isScrollEnabled) {
+        const currentSection = sectionsData[currentSectionIndex];
+        handleScroll({
+          event,
+          currentSectionIndex,
+          sectionsData,
+          sectionRefs,
+          smoothScroll: currentSection.smoothScroll ?? false,
+          dispatchSetIndex: (index: number) => {
+            dispatch(setIndex(index));
+          },
+        });
+      }
     };
 
     window.addEventListener("wheel", handleScrollEvent);
