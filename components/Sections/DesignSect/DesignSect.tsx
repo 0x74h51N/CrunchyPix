@@ -45,7 +45,6 @@ const DesignSect = () => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-
   return (
     <motion.div
       initial="hidden"

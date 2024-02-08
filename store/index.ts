@@ -17,6 +17,7 @@ import clickableReducer from "./redux/isClickable";
 import sectionIndexReducer from "./redux/currentSectionIndex";
 import touchReducer from "./redux/isTouch";
 import cursorDisabledReducer from "./redux/cursorDisabled";
+import isScrollEnabled from "./redux/isScrollEnabled";
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -36,6 +37,7 @@ const rootReducer = combineReducers({
   sectionIndex: sectionIndexReducer,
   isTouch: touchReducer,
   cursorDisabled: cursorDisabledReducer,
+  isScrollEnabled: isScrollEnabled,
 });
 
 const store = configureStore({

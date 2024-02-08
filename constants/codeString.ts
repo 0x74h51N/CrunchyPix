@@ -84,12 +84,12 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
         whileInView="show"
         viewport={{ once: true, amount: "some" }}
         variants={polygonIn("screen", "easeInOut", 0.7, 0.8)}
-        className="flex flex-col items-center h-full w-full 
-        max-w-[1300px] min-h-[100svh] py-20 px-8"
+        className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] md:py-20 py-14 px-8"
       >
         {Item.imageTop && (
           <TopImage
             imageTop={Item.imageTop}
+            imageTopMobile={Item.imageTopMobile && Item.imageTopMobile}
             imageAlt={Item.imageAlt}
             icons={Item.icons && Item.icons}
           />
@@ -102,9 +102,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
             once: true,
             amount: "some",
           }}
-          className="lg:relative flex flex-wrap w-full h-auto 
-          lg:min-h-[590px] md:items-start md:justify-between 
-          justify-start items-center lg:mt-14 sm:mt-6 mt-4"
+          className="lg:relative flex flex-wrap w-full h-auto lg:min-h-[590px] md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
         >
           <div className="lg:w-2/3 w-full lg:pr-[120px] ">
             {Item.title2 && (
@@ -122,8 +120,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
                 variants={textVariant(1.5)}
                 className="relative flex flex-row"
               >
-                <span className="absolute h2 bold cool top-0 left-0 bg-log-col -rotate-6 
-                hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-3 py-1">
+                <span className="absolute h2 bold cool top-0 left-0 bg-log-col -rotate-6 hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-3 py-1">
                   {t(Item.description).charAt(0)}
                 </span>
                 <Markdown
@@ -150,24 +147,29 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
               </motion.div>
             )}
           </div>
-          <div className="flex sm:flex-row flex-col 
-          max-sm:items-center max-sm:gap-8 w-full mt-5">
+          <div className="flex sm:flex-row flex-col max-sm:gap-8 w-full mt-5">
             {Item.ticks && (
               <motion.div
-                variants={polygonIn("down", "spring", 2.5, 1.7)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.45 }}
+                variants={polygonIn("down", "spring", 1.2, 2.2)}
                 className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
               >
                 <Ticks ticks={Item.ticks} />
               </motion.div>
             )}
-            <motion.div
-              variants={slideIn("right", "spring", 1.5, 1.5)}
-              className="lg:absolute right-0 lg:top-0"
-            >
-              {Item.ProjectInfo && (
+            {Item.ProjectInfo && (
+              <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: "some" }}
+                variants={slideIn("right", "spring", 1.5, 1.5)}
+                className="lg:absolute right-0 lg:top-0"
+              >
                 <ProjectInfo ProjectInfo={Item.ProjectInfo} key={Item._id} />
-              )}
-            </motion.div>
+              </motion.div>
+            )}
           </div>
         </motion.div>
         {Item.imageBoxes && (
@@ -193,7 +195,10 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
             <motion.h3 variants={textVariant(1.5)} className="h3 self-start">
               {t("page.techTitle")}
             </motion.h3>
-            <motion.div variants={textVariant(1.8)} className="p mt-4 w-full ">
+            <motion.div
+              variants={polygonIn("down", "spring", 1.8, 2.2)}
+              className="p mt-4 w-full "
+            >
               <Markdown remarkPlugins={[breaks]} rehypePlugins={[rehypeRaw]}>
                 {t(Item.techDescription)}
               </Markdown>
@@ -205,8 +210,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
           whileInView="show"
           viewport={{ once: true, amount: "some" }}
           variants={polygonIn("screen", "spring", 1.7, 1.8)}
-          className="flex flex-col items-center w-full max-w-[1300px] 
-          h-auto max-h-[400px] my-24"
+          className="flex flex-col items-center w-full max-w-[1300px] h-auto max-h-[400px] my-24"
           onHoverStart={hoverStart}
           onHoverEnd={hoverEnd}
         >
@@ -228,5 +232,4 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
   );
 });
 
-export default Project;
-`;
+export default memo(Project);`;
