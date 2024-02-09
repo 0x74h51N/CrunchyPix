@@ -35,7 +35,7 @@ const CookieConsent = () => {
     setCookie("cookiesConsent", "true", {
       path: "/",
       expires: new Date(Date.now() + oneYearInSeconds * 1000),
-      sameSite: "strict",
+      sameSite: "lax",
       secure: true,
     });
     dispatch(setCookieConsent(true));

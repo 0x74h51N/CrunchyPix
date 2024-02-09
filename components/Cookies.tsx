@@ -2,7 +2,7 @@
 import { RootState } from "@/store";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { getCookie, hasCookie, setCookie } from "cookies-next";
+import { getCookie, hasCookie } from "cookies-next";
 import React, { useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 
@@ -29,7 +29,7 @@ const Cookies = () => {
 
   return (
     <>
-      <Analytics beforeSend={beforeSendHandler} />
+      <Analytics mode="auto" beforeSend={beforeSendHandler} />
       <SpeedInsights beforeSend={beforeSendHandler} />
     </>
   );
