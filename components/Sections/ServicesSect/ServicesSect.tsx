@@ -148,7 +148,7 @@ const ServicesSect = () => {
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: "some" }}
+        viewport={{ once: true, amount: 0.5 }}
         variants={polygonIn("down", "spring", 1.2, 2.2)}
         className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
         w-full 2xl:max-w-[180px] 2xl:bg-neutral-900 2xl:p-40 p-10 2xl:gap-8 gap-4"

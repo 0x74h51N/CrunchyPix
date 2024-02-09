@@ -8,6 +8,7 @@ import { DE, TR, GB } from "country-flag-icons/react/3x2";
 import Image from "next/image";
 import { languageMenuChange } from "@/store/redux/isLanguageMenu";
 import { clickableChange } from "@/store/redux/isClickable";
+import { getCookie, setCookie } from "cookies-next";
 
 const LanguageMenu = () => {
   const isDropdownOpen = useSelector(
@@ -25,7 +26,7 @@ const LanguageMenu = () => {
   const smallNav = useSelector(
     (state: RootState) => state.navbarChange.smallNav
   );
-
+  const isTouch = useSelector((state: RootState) => state.isTouch.touch);
   const handleToggleDropdown = () => {
     setIsRotated(!isRotated);
     dispatch(languageMenuChange(!isDropdownOpen));
@@ -35,19 +36,19 @@ const LanguageMenu = () => {
     dispatch(langChange(selectedLanguage));
     i18n.changeLanguage(selectedLanguage);
     setCurrentLanguage(selectedLanguage);
-    localStorage.setItem("selectedLanguage", selectedLanguage);
+    if (getCookie("cookiesConsent") === "true") {
+      setCookie("selectedLanguage", selectedLanguage, {});
+    }
     setIsRotated(!isRotated);
     dispatch(languageMenuChange(!isDropdownOpen));
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
   };
 
   useEffect(() => {
-    const storedLanguage = localStorage.getItem("selectedLanguage");
-    if (
-      storedLanguage &&
-      (storedLanguage === "en" ||
-        storedLanguage === "de" ||
-        storedLanguage === "tr")
-    ) {
+    const storedLanguage = getCookie("selectedLanguage");
+    if (storedLanguage) {
       dispatch(langChange(storedLanguage));
       i18n.changeLanguage(storedLanguage).then(() => {
         setCurrentLanguage(storedLanguage);
@@ -84,15 +85,19 @@ const LanguageMenu = () => {
     };
   }, [langMenuRef, isDropdownOpen]);
   const handleMouseEnter = () => {
-    setIsRotated(true);
-    dispatch(languageMenuChange(true));
+    if (!isTouch) {
+      setIsRotated(true);
+      dispatch(languageMenuChange(true));
+    }
     if (isClickable == false) {
       dispatch(clickableChange(true));
     }
   };
   const handleMouseLeave = () => {
-    setIsRotated(false);
-    dispatch(languageMenuChange(false));
+    if (!isTouch) {
+      setIsRotated(false);
+      dispatch(languageMenuChange(false));
+    }
     if (isClickable == true) {
       dispatch(clickableChange(false));
     }
@@ -150,7 +155,7 @@ const LanguageMenu = () => {
             ? `${isMobile || isTablet ? "mt-6" : "mt-12"} flex justify-center`
             : isMobile || isTablet
             ? `mt-6 flex justify-center`
-            : "mt-[108px]"
+            : "mt-[98px]"
         } 
         `}
       >

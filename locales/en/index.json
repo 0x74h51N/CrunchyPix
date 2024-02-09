@@ -34,5 +34,10 @@
     "title": "Unleash the Power of Web Innovation",
     "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
   },
-  "dragQuinn": { "drag": "Drag" }
+  "dragQuinn": { "drag": "Drag" },
+  "cookies": {
+    "description": "Do you accept cookies?\nYou can review our [Cookie Policy](/policies/cookie-policy) and [Privacy Policy](/policies/terms-of-privacy) for more information.",
+    "accept": "Accept",
+    "decline": "Decline"
+  }
 }

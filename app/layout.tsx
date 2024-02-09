@@ -13,6 +13,8 @@ import LoadingComponent from "@/components/Loading";
 import CustomCursor from "@/components/CustomCursor";
 import { ArrowToTop } from "@/components/Buttons/ArrowToTop";
 import Rooting from "@/components/Rooting";
+import CookieConsent from "@/components/CookiesConsent";
+import { getCookie } from "cookies-next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,10 +36,15 @@ export default function RootLayout({
             <AppI18nProvider>
               <PageTracker />
               <CustomCursor />
-              <SpeedInsights />
-              <Analytics />
+              <CookieConsent />
               <Navbar />
               <Rooting />
+              {getCookie("cookiesConsent") == "true" && (
+                <>
+                  <Analytics />
+                  <SpeedInsights />
+                </>
+              )}
               <main>{children}</main>
               <Footer />
               <ArrowToTop />

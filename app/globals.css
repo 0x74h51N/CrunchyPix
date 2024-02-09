@@ -136,10 +136,20 @@ body {
 }
 
 .p {
-  @apply text-cool-gray-100 lg:text-[17px] sm:text-[14px] text-[13px] md:leading-[30px] antialiased;
+  @apply text-cool-gray-100 lg:text-[17px] sm:text-sm  text-[13px] md:leading-[30px] antialiased;
+}
+
+.p.half {
+  @apply lg:text-[15px] md:text-[13px] text-[12px];
 }
 .p.cool {
   @apply text-cool-gray-600;
+}
+.p.dark {
+  @apply text-cool-gray-900;
+}
+.p.bold {
+  @apply font-bold;
 }
 
 /* Footer */
