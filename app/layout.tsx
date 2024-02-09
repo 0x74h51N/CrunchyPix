@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar/Navbar";
@@ -14,7 +12,7 @@ import CustomCursor from "@/components/CustomCursor";
 import { ArrowToTop } from "@/components/Buttons/ArrowToTop";
 import Rooting from "@/components/Rooting";
 import CookieConsent from "@/components/CookiesConsent";
-import { getCookie } from "cookies-next";
+import Cookies from "@/components/Cookies";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,12 +37,7 @@ export default function RootLayout({
               <CookieConsent />
               <Navbar />
               <Rooting />
-              {getCookie("cookiesConsent") == "true" && (
-                <>
-                  <Analytics />
-                  <SpeedInsights />
-                </>
-              )}
+              <Cookies />
               <main>{children}</main>
               <Footer />
               <ArrowToTop />

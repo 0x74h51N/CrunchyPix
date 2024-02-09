@@ -11,6 +11,7 @@ import { fadeIn } from "@/utils/motion";
 import { RootState } from "@/store";
 import { clickableChange } from "@/store/redux/isClickable";
 import { useSelector, useDispatch } from "react-redux";
+import { setCookieConsent } from "@/store/redux/cookieConsent";
 
 const CookieConsent = () => {
   const { t } = useTranslation(["index"]);
@@ -31,11 +32,18 @@ const CookieConsent = () => {
   };
   const handleAccept = () => {
     setCookie("cookiesConsent", "true", { path: "/" });
+    dispatch(setCookieConsent(true));
     setShowConsent(true);
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
   };
 
   const handleReject = () => {
     setShowConsent(true);
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
   };
 
   useEffect(() => {
