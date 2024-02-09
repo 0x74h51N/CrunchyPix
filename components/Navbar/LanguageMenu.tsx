@@ -14,6 +14,7 @@ const LanguageMenu = () => {
   const isDropdownOpen = useSelector(
     (state: RootState) => state.isLanguageMenu.languageMenu
   );
+  const oneYearInSeconds = 365 * 24 * 60 * 60;
   const [isRotated, setIsRotated] = useState(false);
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
@@ -37,7 +38,12 @@ const LanguageMenu = () => {
     i18n.changeLanguage(selectedLanguage);
     setCurrentLanguage(selectedLanguage);
     if (getCookie("cookiesConsent") === "true") {
-      setCookie("selectedLanguage", selectedLanguage, {});
+      setCookie("selectedLanguage", selectedLanguage, {
+        path: "/",
+        expires: new Date(Date.now() + oneYearInSeconds * 1000),
+        sameSite: "strict",
+        secure: true,
+      });
     }
     setIsRotated(!isRotated);
     dispatch(languageMenuChange(!isDropdownOpen));
