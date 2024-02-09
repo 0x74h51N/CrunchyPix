@@ -49,7 +49,7 @@ const CookieConsent = () => {
             </div>
             <div className="flex max-md:flex-col w-auto gap-3">
               <button
-                className=" bg-neutral-600 hover:bg-green-800 hover:bg-opacity-30 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 cursor-none pointer-events-auto w-full h-auto"
+                className=" bg-neutral-600 hover:bg-green-800 hover:bg-opacity-30 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 cursor-none pointer-events-auto w-full h-auto whitespace-nowrap"
                 onClick={handleAccept}
               >
                 {t("cookies.accept")}
