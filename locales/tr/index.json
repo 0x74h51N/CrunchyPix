@@ -34,5 +34,10 @@
     "title": "Web İnovasyonun Gücünü Ortaya Çıkar!",
     "description": "Web geliştirmede güvenilir ortağınız biziz. Misyonumuz, dijital hayallerinizi hayata geçirmektir. Birlikte harika şeyler yaratalım!"
   },
-  "dragQuinn": { "drag": "Kaydır" }
+  "dragQuinn": { "drag": "Kaydır" },
+  "cookies": {
+    "description": "Çerezleri kabul ediyor musunuz?\nDaha fazla bilgi için [Çerez Politikası](/policies/cookie-policy) ve [Gizlilik Politikası](/policies/terms-of-privacy)'nı inceleyebilirsiniz.",
+    "accept": "Kabul Et",
+    "decline": "Reddet"
+  }
 }

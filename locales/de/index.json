@@ -33,5 +33,10 @@
     "title": "Entfesseln Sie die Kraft der Web Innovation",
     "description": "Wir sind Ihr vertrauenswürdiger Partner in der Webentwicklung. Unsere Mission ist es, Ihre digitalen Träume Wirklichkeit werden zu lassen. Lassen Sie uns gemeinsam etwas Erstaunliches erschaffen!"
   },
-  "dragQuinn": { "drag": "Zein" }
+  "dragQuinn": { "drag": "Zein" },
+  "cookies": {
+    "description": "Akzeptieren Sie Cookies?\nSie können unsere [Cookie-Richtlinie](/policies/cookie-policy) und [Datenschutzrichtlinie](/policies/terms-of-privacy) für weitere Informationen einsehen.",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
+  }
 }
