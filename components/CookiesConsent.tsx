@@ -15,6 +15,7 @@ import { setCookieConsent } from "@/store/redux/cookieConsent";
 
 const CookieConsent = () => {
   const { t } = useTranslation(["index"]);
+  const oneYearInSeconds = 365 * 24 * 60 * 60;
   const [showConsent, setShowConsent] = useState(true);
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
@@ -31,7 +32,12 @@ const CookieConsent = () => {
     }
   };
   const handleAccept = () => {
-    setCookie("cookiesConsent", "true", { path: "/" });
+    setCookie("cookiesConsent", "true", {
+      path: "/",
+      expires: new Date(Date.now() + oneYearInSeconds * 1000),
+      sameSite: "strict",
+      secure: true,
+    });
     dispatch(setCookieConsent(true));
     setShowConsent(true);
     if (isClickable == true) {
