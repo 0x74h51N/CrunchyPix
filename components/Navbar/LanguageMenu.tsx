@@ -155,7 +155,7 @@ const LanguageMenu = () => {
             ? `${isMobile || isTablet ? "mt-6" : "mt-12"} flex justify-center`
             : isMobile || isTablet
             ? `mt-6 flex justify-center`
-            : "mt-[108px]"
+            : "mt-[98px]"
         } 
         `}
       >
