@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import CustomLink from "./CustomLink";
 import { motion } from "framer-motion";
-import { fadeIn, slideIn } from "@/utils/motion";
+import { fadeIn } from "@/utils/motion";
 
 const CookieConsent = () => {
   const { t } = useTranslation(["index"]);
