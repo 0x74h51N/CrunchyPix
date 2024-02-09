@@ -39,12 +39,8 @@ export default function RootLayout({
               <CookieConsent />
               <Navbar />
               <Rooting />
-              {getCookie("cookiesConsent") == "true" && (
-                <>
-                  <Analytics />
-                  <SpeedInsights />
-                </>
-              )}
+              <Analytics />
+              <SpeedInsights />
               <main>{children}</main>
               <Footer />
               <ArrowToTop />
