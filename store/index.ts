@@ -18,6 +18,7 @@ import sectionIndexReducer from "./redux/currentSectionIndex";
 import touchReducer from "./redux/isTouch";
 import cursorDisabledReducer from "./redux/cursorDisabled";
 import isScrollEnabled from "./redux/isScrollEnabled";
+import cookieConsent from "./redux/cookieConsent";
 
 const rootReducer = combineReducers({
   language: languageReducer,
@@ -38,6 +39,7 @@ const rootReducer = combineReducers({
   isTouch: touchReducer,
   cursorDisabled: cursorDisabledReducer,
   isScrollEnabled: isScrollEnabled,
+  cookieConsent: cookieConsent,
 });
 
 const store = configureStore({

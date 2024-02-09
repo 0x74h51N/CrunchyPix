@@ -39,7 +39,6 @@ const CardMaker = memo(
     translatePath,
   }: CardMakerProops) => {
     const { t } = useTranslation([translatePath]);
-    console.log("cardCreated");
     return (
       <div className="rounded-lg shadow-2xl cursor-none">
         <ColorfulBorder enabled={cardSections.colorFulBorder ?? false}>
