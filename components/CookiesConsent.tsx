@@ -8,11 +8,27 @@ import rehypeRaw from "rehype-raw";
 import CustomLink from "./CustomLink";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/motion";
+import { RootState } from "@/store";
+import { clickableChange } from "@/store/redux/isClickable";
+import { useSelector, useDispatch } from "react-redux";
 
 const CookieConsent = () => {
   const { t } = useTranslation(["index"]);
   const [showConsent, setShowConsent] = useState(true);
-
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
+  );
+  const dispatch = useDispatch();
+  const handleMouseEnter = () => {
+    if (isClickable == false) {
+      dispatch(clickableChange(true));
+    }
+  };
+  const handleMouseLeave = () => {
+    if (isClickable == true) {
+      dispatch(clickableChange(false));
+    }
+  };
   const handleAccept = () => {
     setCookie("cookiesConsent", "true", { path: "/" });
     setShowConsent(true);
@@ -38,7 +54,7 @@ const CookieConsent = () => {
           className="bg-neutral-950 bg-opacity-60 navbar sm:rounded-lg overflow-visible shadow-xl transform transition-all sm:max-w-5xl w-full z-50 "
         >
           <div className="p-2 flex justify-evenly items-center z-50">
-            <div className="p half max-w-[70%]">
+            <div className="p half max-w-[70%] pointer-events-auto">
               <ReactMarkdown
                 components={{ a: CustomLink }}
                 remarkPlugins={[breaks]}
@@ -47,15 +63,19 @@ const CookieConsent = () => {
                 {t("cookies.description")}
               </ReactMarkdown>
             </div>
-            <div className="flex max-md:flex-col w-auto gap-3">
+            <div
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="flex max-md:flex-col w-auto gap-3"
+            >
               <button
-                className=" bg-neutral-600 hover:bg-green-800 hover:bg-opacity-30 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 cursor-none pointer-events-auto w-full h-auto whitespace-nowrap"
+                className=" bg-neutral-600 hover:bg-green-700 hover:bg-opacity-40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 cursor-none pointer-events-auto w-full h-auto whitespace-nowrap"
                 onClick={handleAccept}
               >
                 {t("cookies.accept")}
               </button>
               <button
-                className="bg-neutral-400 hover:bg-red-800 hover:bg-opacity-40 text-gray-700 font-bold sm:text-sm text-[12px] py-2 px-4 rounded  active:bg-red-800 z-50 cursor-none pointer-events-auto w-full h-auto"
+                className="bg-neutral-400 hover:bg-red-800 hover:bg-opacity-40 text-gray-700 font-bold sm:text-sm text-[12px] py-2 px-4 rounded  active:bg-red-800 hover:text-white z-50 cursor-none pointer-events-auto w-full h-auto"
                 onClick={handleReject}
               >
                 {t("cookies.decline")}
