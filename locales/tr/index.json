@@ -36,7 +36,8 @@
   },
   "dragQuinn": { "drag": "Kaydır" },
   "cookies": {
-    "description": "Çerezleri kabul ediyor musunuz?\nDaha fazla bilgi için [Çerez Politikası](/policies/cookie-policy) ve [Gizlilik Politikası](/policies/terms-of-privacy)'nı inceleyebilirsiniz.",
+    "title": "Daha iyi bir deneyim için izninizi istiyoruz",
+    "description": "İnternet sitemizi geliştirmek amacıyla çerezler kullanılmakta olup, izin vermeniz halinde performans amacıyla toplanan veriler, Vercel Analytics ve Vercel SpeedInsight tarafından işlenecek ve kişisel dil tercihi gibi çerezler tarayıcınıza depolanacaktır. Vercel tarafından işlenecek verilerin arasında erişim yaptığınız ülke bilgisi ve hangi browser'ı kullandığınız bulunmakta ve özel IP adres bilginiz toplanmayacaktır. Reddet seçeneğine tıklamanız halinde, tüm çerezler devre dışı bırakılacak ve sitemizi geliştirmek ya da kullanıcı deneyiminizi iyileştirecek çerezler toplanmayacaktır.\n&nbsp;\nDaha fazla bilgi için [Çerez Politikası](/policies/cookie-policy) ve [Gizlilik Politikası](/policies/terms-of-privacy)'nı inceleyebilirsiniz.",
     "accept": "Kabul Et",
     "decline": "Reddet"
   }

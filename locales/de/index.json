@@ -35,7 +35,8 @@
   },
   "dragQuinn": { "drag": "Zein" },
   "cookies": {
-    "description": "Akzeptieren Sie Cookies?\nSie können unsere [Cookie-Richtlinie](/policies/cookie-policy) und [Datenschutzrichtlinie](/policies/terms-of-privacy) für weitere Informationen einsehen.",
+    "title": "Wir bitten um Ihre Erlaubnis für eine bessere Erfahrung",
+    "description": "Cookies werden verwendet, um unsere Website zu verbessern. Wenn Sie die Erlaubnis erteilen, werden für Leistungszwecke gesammelte Daten von Vercel Analytics und Vercel SpeedInsight verarbeitet, und Cookies wie die Sprachpräferenz werden in Ihrem Browser gespeichert. Die von Vercel verarbeiteten Daten enthalten Informationen zum Land, aus dem Sie zugreifen, und zum verwendeten Browser, während Ihre private IP-Adresse nicht erfasst wird. Wenn Sie auf die Ablehnen-Option klicken, werden alle Cookies deaktiviert, und es werden keine Cookies gesammelt, um unsere Website zu verbessern oder Ihre Benutzererfahrung zu optimieren.\n&nbsp;\nFür weitere Informationen können Sie unsere [Cookie-Richtlinie](/policies/cookie-policy) und [Datenschutzrichtlinie](/policies/terms-of-privacy) überprüfen.",
     "accept": "Akzeptieren",
     "decline": "Ablehnen"
   }
