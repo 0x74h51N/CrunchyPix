@@ -8,10 +8,10 @@ import { AppReduxProvider } from "@/store/provider";
 import PageTracker from "@/components/PageTracker";
 import { Suspense } from "react";
 import LoadingComponent from "@/components/Loading";
-import CustomCursor from "@/components/CustomCursor";
+import CustomCursor from "@/components/Cookies/CustomCursor";
 import { ArrowToTop } from "@/components/Buttons/ArrowToTop";
 import Rooting from "@/components/Rooting";
-import CookieConsent from "@/components/CookiesConsent";
+import CookieConsent from "@/components/Cookies/CookiesConsent";
 import Cookies from "@/components/Cookies";
 
 const inter = Inter({ subsets: ["latin"] });

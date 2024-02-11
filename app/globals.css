@@ -140,7 +140,7 @@ body {
 }
 
 .p.half {
-  @apply lg:text-[15px] md:text-[13px] text-[12px];
+  @apply lg:text-[13px] md:text-[11px] text-[10px] leading-[15px] font-extralight antialiased;
 }
 .p.cool {
   @apply text-cool-gray-600;
