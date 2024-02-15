@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import SwiperCore from "swiper";
-import PortfolioItem from "../../components/PortfolioItem";
+import PortfolioItem from "./PortfolioItem";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { PortfolioItemProps } from "@/app/common.types";

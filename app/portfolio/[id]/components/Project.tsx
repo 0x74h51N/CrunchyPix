@@ -12,9 +12,9 @@ import Markdown from "react-markdown";
 import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
 import { generateSpans } from "@/components/GenerateSpans";
-import { sliderChange } from "@/store/redux/isSlider";
+
 import { PortfolioItemProps } from "@/app/common.types";
-import ProjectSlide from "./ProjectSlide";
+
 import TopImage from "./TopImage";
 import Ticks from "./ticks";
 import ProjectInfo from "./ProjectInfo";
@@ -27,7 +27,6 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -50,14 +49,6 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
-  const hoverStart = () => {
-    if (isSlider === false) {
-      dispatch(sliderChange(true));
-    }
-  };
-  const hoverEnd = () => {
-    dispatch(sliderChange(false));
-  };
 
   return (
     <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden">
@@ -115,10 +106,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
               </motion.div>
             )}
             {Item.description2 && (
-              <motion.div
-                variants={textVariant(2.2)}
-                className="p lg:mt-8 mt-4"
-              >
+              <motion.div variants={textVariant(2)} className="p lg:mt-8 mt-4">
                 <Markdown
                   remarkPlugins={[breaks]}
                   rehypePlugins={[rehypeRaw]}
@@ -135,7 +123,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.45 }}
-                variants={polygonIn("down", "spring", 1.2, 2.2)}
+                variants={polygonIn("down", "spring", 2, 2.2)}
                 className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
               >
                 <Ticks ticks={Item.ticks} />
@@ -187,28 +175,6 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
             </motion.div>
           </motion.div>
         )}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: "some" }}
-          variants={polygonIn("screen", "spring", 1.7, 1.8)}
-          className="flex flex-col items-center w-full max-w-[1300px] h-auto max-h-[400px] my-24"
-          onHoverStart={hoverStart}
-          onHoverEnd={hoverEnd}
-        >
-          <motion.div variants={slideIn("up", "easeInOut", 2.2, 1)}>
-            <h2 className="h1 half w-full mb-2">{t("page.otherProjects")}</h2>
-          </motion.div>
-          {isTranslationsLoadedRedux && (
-            <div
-              onMouseEnter={hoverStart}
-              onMouseLeave={hoverEnd}
-              onClick={hoverEnd}
-            >
-              <ProjectSlide Items={portfolioPageItems} />
-            </div>
-          )}
-        </motion.div>
       </motion.div>
     </div>
   );
