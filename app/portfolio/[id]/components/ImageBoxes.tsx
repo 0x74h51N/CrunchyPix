@@ -20,7 +20,7 @@ const ImageBoxes = ({
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.6 }}
           variants={fadeIn(
             "down",
             "spring",

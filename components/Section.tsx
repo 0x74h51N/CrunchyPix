@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { SectionData } from "@/app/common.types";
-import { staggerContainer } from "@/utils/motion";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollProvider } from "@/context/ScrollContext";
 import Image from "next/image";
@@ -51,9 +50,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
     <ScrollProvider sectionRefs={sectionRefs}>
       <div>
         {sectionsData.map((section, index) => (
-          <motion.section
-            variants={staggerContainer(0.2, 0.2)}
-            viewport={{ once: true, amount: 0.25 }}
+          <section
             key={index}
             ref={sectionRefs[index]}
             className={`
@@ -116,7 +113,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                 />
               </motion.div>
             )}
-          </motion.section>
+          </section>
         ))}
       </div>
     </ScrollProvider>
