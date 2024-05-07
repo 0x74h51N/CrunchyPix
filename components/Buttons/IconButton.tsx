@@ -27,6 +27,8 @@ import {
   FaBolt,
   FaFile,
   FaChartBar,
+  FaCodepen,
+  FaFreeCodeCamp  
 } from "react-icons/fa";
 import { MdAccessibility, MdTouchApp } from "react-icons/md";
 import { DiResponsive } from "react-icons/di";
@@ -68,6 +70,8 @@ const iconComponents: { [key: string]: IconType } = {
   layout: TfiLayoutAccordionList,
   chart: FaChartBar,
   freelancer: SiFreelancer,
+  codepen: FaCodepen,
+  freecodecamp: FaFreeCodeCamp 
 };
 
 const IconButton = ({ icon, size }: { icon: Icon; size?: number }) => {
