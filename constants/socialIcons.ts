@@ -7,11 +7,6 @@ export const socialIcons: Icon[] = [
     alt: "E-Mail",
   },
   {
-    link: "https://t.me/Ox74h51N",
-    type: "telegram",
-    alt: "Telegram",
-  },
-  {
     link: "https://codepen.io/0x74h51N",
     type: "codepen",
     alt: "Codepen.io",
