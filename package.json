@@ -17,7 +17,7 @@
     "cloudinary": "^1.41.0",
     "cookies-next": "^4.1.1",
     "country-flag-icons": "^1.5.9",
-    "framer-motion": "^11.0.3",
+    "framer-motion": "^11.1.9",
     "graphql-request": "^6.1.0",
     "i18next": "^23.10.0",
     "i18next-browser-languagedetector": "^7.1.0",
