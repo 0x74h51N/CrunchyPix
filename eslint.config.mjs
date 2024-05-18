@@ -5,6 +5,7 @@ import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import importPlugin from "eslint-plugin-import";
 import unusedImports from "eslint-plugin-unused-imports";
+import typescriptParser from "@typescript-eslint/parser";
 
 const { configs: tsConfigs } = eslintPluginTypescript;
 
@@ -12,7 +13,7 @@ export default [
   { 
     languageOptions: { 
       globals: globals.browser,
-      parser: "@typescript-eslint/parser",
+      parser: typescriptParser,
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: "module",
