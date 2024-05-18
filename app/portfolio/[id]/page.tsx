@@ -33,8 +33,12 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
   if (!selectedItem) {
     return null;
   }
-  return (<><Project Item={selectedItem} />
-  <OtherProjects /></>);
+  return (
+  <>
+    <Project Item={selectedItem} />
+    <OtherProjects />
+  </>
+  );
 };
 
 export default PortfolioPage;

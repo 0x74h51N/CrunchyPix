@@ -5,14 +5,22 @@ import PortfolioItem from "./PortfolioItem";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { PortfolioItemProps } from "@/app/common.types";
+import { useRef, useEffect } from "react";
+
+SwiperCore.use([Autoplay, Pagination]);
 
 const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
-  SwiperCore.use([Autoplay, Pagination]);
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width
-  );
+  const screenWidth = useSelector((state: RootState) => state.screenWidth.width);
+  const swiperRef = useRef<SwiperCore | null>(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.update();
+    }
+  }, []);
   return (
     <Swiper
+      onInit={(swiper) => (swiperRef.current = swiper)}
       centeredSlides={true}
       modules={[Pagination, Autoplay]}
       pagination={{
@@ -42,14 +50,13 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
       speed={1200}
       className="w-full cursor-none"
     >
-      {Items.map((item, index) => (
+      {Items.map((item) => (
         <SwiperSlide
-          className="w-auto lg:max-w-[380px] max-w-[300px] h-auto "
-          key={`${index}-slide`}
+          className="w-auto lg:max-w-[380px] max-w-[300px] h-auto"
+          key={`${item._id}-slide`}
         >
           <PortfolioItem
             _id={item._id}
-            key={index}
             image={item.image}
             imageAlt={item.imageAlt}
             title={item.title}
