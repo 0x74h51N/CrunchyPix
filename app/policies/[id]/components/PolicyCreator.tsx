@@ -80,5 +80,5 @@ const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
     </div>
   );
 });
-
+PolicyCreator.displayName = "PolicyCreator";
 export default PolicyCreator;

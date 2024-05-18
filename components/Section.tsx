@@ -8,11 +8,10 @@ import { handleScroll } from "@/utils/handleScroll";
 import { useDispatch, useSelector } from "react-redux";
 import { setIndex } from "@/store/redux/currentSectionIndex";
 import { RootState } from "@/store";
+import React from "react";
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
-  const sectionRefs = sectionsData.map(() =>
-    useRef<any | HTMLDivElement>(null)
-  );
+  const sectionRefs = useRef(sectionsData.map(() => React.createRef<HTMLDivElement>()));
   const currentSectionIndex = useSelector(
     (state: RootState) => state.sectionIndex.index
   );
@@ -30,7 +29,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
           event,
           currentSectionIndex,
           sectionsData,
-          sectionRefs,
+          sectionRefs: sectionRefs.current,
           smoothScroll: currentSection.smoothScroll ?? false,
           dispatchSetIndex: (index: number) => {
             dispatch(setIndex(index));
@@ -47,12 +46,12 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   }, [currentSectionIndex, sectionRefs, sectionsData]);
 
   return (
-    <ScrollProvider sectionRefs={sectionRefs}>
+    <ScrollProvider sectionRefs={sectionRefs.current}>
       <div>
         {sectionsData.map((section, index) => (
           <section
             key={index}
-            ref={sectionRefs[index]}
+            ref={sectionRefs.current[index]}
             className={`
             ${section.className} 
             w-full min-w-[350px] flex items-center justify-center overflow-hidden 

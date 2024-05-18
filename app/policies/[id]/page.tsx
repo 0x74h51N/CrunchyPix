@@ -9,7 +9,8 @@ const PolicyPage = ({ params }: { params: { id: string } }) => {
   );
 
   if (!selectedItem) {
-    return <p>Couldn't find a policyPage item.</p>;
+    console.log("Couldn't find a policyPage item.")
+    return null;
   }
   return (
     <div className=" flex justify-center items-center w-full h-full min-h-[100svh] md:pb-20 pb-5">

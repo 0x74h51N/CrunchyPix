@@ -1,8 +1,8 @@
 import Construction from "@/components/Construction";
 import React from "react";
 
-const page = () => {
+const Page = () => {
   return <Construction />;
 };
 
-export default page;
+export default Page;

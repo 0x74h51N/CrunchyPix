@@ -70,7 +70,7 @@ const PortfolioItem = memo(
           dispatch(setIsTranslationsLoaded(true));
         });
       }
-    }, [i18n, dispatch]);
+    }, [i18n]);
     if (!isTranslationsLoadedRedux) {
       return null;
     }
@@ -180,5 +180,5 @@ const PortfolioItem = memo(
   },
   areEqual
 );
-
+PortfolioItem.displayName = "PortfolioItem";
 export default PortfolioItem;

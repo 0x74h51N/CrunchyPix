@@ -1,4 +1,4 @@
-import { ProjectInfo } from "@/app/common.types";
+import { ProjectInfoType } from "@/app/common.types";
 import LogoImage from "@/components/LogoImage";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
+const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfoType }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["portfolio"]);
   const isTranslationsLoadedRedux = useSelector(
@@ -35,7 +35,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
   }
   if (ProjectInfo)
     return (
-      <div className="relative flex lg:h-[570px] md:w-[360px] sm:w-[330px] md:h-[480px] sm:h-[450px] h-[440px] w-[300px] rounded-xl bg-log-col md:ml-6 ml-0">
+      <div className="relative flex lg:h-[570px] md:w-[380px] sm:w-[330px] md:h-[480px] sm:h-[450px] h-[440px] w-[300px] rounded-xl bg-log-col md:ml-6 ml-0">
         <Image
           src="/projectInfo.png"
           alt="project info background"

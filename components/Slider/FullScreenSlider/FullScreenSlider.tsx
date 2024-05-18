@@ -67,8 +67,8 @@ const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
               imageUrl={slide.imageUrl && slide.imageUrl}
               active={activeIndex === index}
               left={slide.left}
-              children={slide.children}
-            />
+            >{slide.children}
+            </SlideCreator>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { sliderChange } from "@/store/redux/isSlider";
 import { clickableChange } from "@/store/redux/isClickable";
+import OtherProjects from "../components/OtherProjects";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const dispatch = useDispatch();
@@ -16,19 +17,24 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const selectedItem = portfolioPageItems.find(
     (item) => item._id.toLowerCase().replace(/\s+/g, "") == params.id
   );
-
-  if (!selectedItem) {
-    console.log("Couldn't find a portfolio item.");
-    return null;
-  }
-
   useEffect(() => {
-    if (isSlider === true) {
+    if (!selectedItem) {
+      console.log("Couldn't find a portfolio item.");
+      return;
+    }
+
+    if (isSlider) {
       dispatch(sliderChange(false));
-    } else if (isClickable === true) dispatch(clickableChange(false));
+    } else if (isClickable) {
+      dispatch(clickableChange(false));
+    }
   }, []);
 
-  return <Project Item={selectedItem} />;
+  if (!selectedItem) {
+    return null;
+  }
+  return (<><Project Item={selectedItem} />
+  <OtherProjects /></>);
 };
 
 export default PortfolioPage;

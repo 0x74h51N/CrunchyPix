@@ -8,7 +8,6 @@ import { scrollToTop } from "@/utils/scrollToSection";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Image from "next/image";
 import ArrowSVG from "../ArrowSVG";
 
 export const ArrowToTop = () => {
@@ -56,7 +55,7 @@ export const ArrowToTop = () => {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [handleScroll]);
+  }, [handleScroll, isArrowVisible]);
   if (isArrowVisible) {
     return (
       <motion.div
