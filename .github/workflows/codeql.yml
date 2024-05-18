@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "CodeQL and ESLint Analysis"
 
 on:
   push:
@@ -40,3 +40,11 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install dependencies
+      run: npm install
+    - name: Run ESLint
+      run: npx eslint '**/*.{js,ts,tsx}' --max-warnings=0
