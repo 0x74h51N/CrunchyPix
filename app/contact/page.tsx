@@ -2,15 +2,12 @@
 import Construction from "@/components/Construction";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import { slideIn, staggerContainer } from "@/utils/motion";
-import { motion } from "framer-motion";
-import Image from "next/image";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 
-const page = () => {
-  const { t, i18n } = useTranslation(["translation"]);
+const Page = () => {
+  const { i18n } = useTranslation(["translation"]);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
@@ -30,4 +27,4 @@ const page = () => {
   return <Construction />;
 };
 
-export default page;
+export default Page;

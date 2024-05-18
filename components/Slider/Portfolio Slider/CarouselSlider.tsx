@@ -154,5 +154,5 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
     </motion.div>
   );
 });
-
+CarouselSlider.displayName = "CarouselSlider";
 export default CarouselSlider;

@@ -179,5 +179,5 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
     </div>
   );
 });
-
+Project.displayName = "Project";
 export default memo(Project);

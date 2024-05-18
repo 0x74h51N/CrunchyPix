@@ -95,5 +95,5 @@ const CardMaker = memo(
   },
   areEqual
 );
-
+CardMaker.displayName = "CardMaker";
 export default CardMaker;

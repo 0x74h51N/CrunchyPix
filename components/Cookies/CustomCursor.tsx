@@ -20,9 +20,6 @@ const CustomCursor = () => {
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );
-  const followerRefs = Array.from({ length: 5 }).map(() =>
-    useRef<HTMLDivElement | null>(null)
-  );
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
@@ -45,7 +42,7 @@ const CustomCursor = () => {
         }
       };
     }
-  }, [isBrowser]);
+  }, [isBrowser, dispatch]);
 
   useEffect(() => {
     if (i18n.isInitialized) {
@@ -55,16 +52,6 @@ const CustomCursor = () => {
         dispatch(setIsTranslationsLoaded(true));
       });
     }
-    const updateFollowerPosition = (
-      followerRef: React.RefObject<HTMLDivElement>,
-      e: { clientX: number; clientY: number }
-    ) => {
-      if (followerRef.current) {
-        const { clientX, clientY } = e;
-        followerRef.current.style.left = `${clientX}px`;
-        followerRef.current.style.top = `${clientY}px`;
-      }
-    };
 
     const updateMousePosition = (e: { clientX: number; clientY: number }) => {
       if (cursorRef.current) {
@@ -77,24 +64,6 @@ const CustomCursor = () => {
         circleRef.current.style.left = `${clientX}px`;
         circleRef.current.style.top = `${clientY}px`;
       }
-
-      followerRefs.forEach((followerRef, index) => {
-        if (followerRef.current) {
-          updateFollowerPosition(followerRef, e);
-          followerRef.current.style.zIndex = `${998 - index}`;
-          const scaleValue = 1 - index * 0.05;
-          followerRef.current.style.transform = `scale(${Math.max(
-            scaleValue,
-            0.1
-          )})`;
-          const opacity = 0.8;
-          const reducedOpacity = opacity - 0.04 * index;
-          followerRef.current.style.opacity = Math.max(
-            reducedOpacity,
-            0.3
-          ).toString();
-        }
-      });
     };
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -110,14 +79,14 @@ const CustomCursor = () => {
     return () => {
       document.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [isTranslationsLoadedRedux, dispatch, isSlider, t, followerRefs]);
+  }, [i18n, dispatch, isInitialMove, t, isSlider, isClickable]);
 
   if (isTouchDevice || !isTranslationsLoadedRedux) {
     return null;
   }
   if (cursorDisabled === true) {
     return null;
-  } else
+  } else {
     return (
       !isTouchDevice && (
         <div className="relative">
@@ -150,25 +119,10 @@ const CustomCursor = () => {
               {isSlider && t("dragQuinn.drag")}
             </span>
           </div>
-          {followerRefs.map((followerRef, index) => (
-            <div
-              key={index}
-              ref={followerRef}
-              className={`flex items-center justify-center fixed rounded-full cursor-none pointer-events-none m-[1px] bg-log-col`}
-              style={{
-                transition: `width 300ms ease-in-out, height 300ms ease-in-out, left ${
-                  60 + index * 3
-                }ms ease-out, top ${60 + index * 3}ms ease-out`,
-                width: isSlider ? "55px" : "5px",
-                height: isSlider ? "55px" : "5px",
-                visibility:
-                  isCursorVisible && !isClickable ? "visible" : "hidden",
-              }}
-            ></div>
-          ))}
         </div>
       )
     );
+  }
 };
 
 export default CustomCursor;
