@@ -45,7 +45,7 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
       {Items.map((item, index) => (
         <SwiperSlide
           className="w-auto lg:max-w-[380px] max-w-[300px] h-auto "
-          key={index}
+          key={`${index}-slide`}
         >
           <PortfolioItem
             _id={item._id}

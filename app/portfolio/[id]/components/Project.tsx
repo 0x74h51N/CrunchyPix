@@ -122,8 +122,8 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
               <motion.div
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.45 }}
-                variants={polygonIn("down", "spring", 2, 2.2)}
+                viewport={{ once: true}}
+                variants={polygonIn("down", "spring", 0.3, 2)}
                 className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
               >
                 <Ticks ticks={Item.ticks} />

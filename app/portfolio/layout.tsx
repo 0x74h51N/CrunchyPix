@@ -1,5 +1,5 @@
 import { portfolioPageItems } from "@/constants/portfolioItems";
-import OtherProjects from "./components/OtherProjects";
+
 
 export default function PortfolioLayout({
   children,
@@ -9,7 +9,6 @@ export default function PortfolioLayout({
   return (
     <>
       <main>{children}</main>
-      <OtherProjects />
     </>
   );
 }

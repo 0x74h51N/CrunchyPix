@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { sliderChange } from "@/store/redux/isSlider";
 import { clickableChange } from "@/store/redux/isClickable";
+import OtherProjects from "../components/OtherProjects";
 
 const PortfolioPage = ({ params }: { params: { id: string } }) => {
   const dispatch = useDispatch();
@@ -28,7 +29,8 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
     } else if (isClickable === true) dispatch(clickableChange(false));
   }, []);
 
-  return <Project Item={selectedItem} />;
+  return (<><Project Item={selectedItem} />
+  <OtherProjects /></>);
 };
 
 export default PortfolioPage;

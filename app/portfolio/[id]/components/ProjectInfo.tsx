@@ -35,7 +35,7 @@ const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfoType }) => {
   }
   if (ProjectInfo)
     return (
-      <div className="relative flex lg:h-[570px] md:w-[360px] sm:w-[330px] md:h-[480px] sm:h-[450px] h-[440px] w-[300px] rounded-xl bg-log-col md:ml-6 ml-0">
+      <div className="relative flex lg:h-[570px] md:w-[380px] sm:w-[330px] md:h-[480px] sm:h-[450px] h-[440px] w-[300px] rounded-xl bg-log-col md:ml-6 ml-0">
         <Image
           src="/projectInfo.png"
           alt="project info background"
