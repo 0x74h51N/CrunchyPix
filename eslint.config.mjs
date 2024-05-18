@@ -1,9 +1,13 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
-import { configs as tsConfigs } from "@typescript-eslint/eslint-plugin";
+import eslintPluginTypescript from "@typescript-eslint/eslint-plugin";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import importPlugin from "eslint-plugin-import";
+import unusedImports from "eslint-plugin-unused-imports";
+import performance from "eslint-plugin-performance";
+
+const { configs: tsConfigs } = eslintPluginTypescript;
 
 export default [
   { 
@@ -30,11 +34,11 @@ export default [
     plugins: {
       react: "eslint-plugin-react",
       "react-hooks": "eslint-plugin-react-hooks",
-      "@typescript-eslint": "eslint-plugin-typescript",
+      "@typescript-eslint": eslintPluginTypescript,
       "jsx-a11y": "eslint-plugin-jsx-a11y",
       "import": "eslint-plugin-import",
-      "unused-imports": "eslint-plugin-unused-imports",
-      "performance": "eslint-plugin-performance",
+      "unused-imports": unusedImports,
+      "performance": performance,
     },
     rules: {
       'react/prop-types': 'off',
