@@ -5,7 +5,6 @@ import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import importPlugin from "eslint-plugin-import";
 import unusedImports from "eslint-plugin-unused-imports";
-import performance from "eslint-plugin-performance";
 
 const { configs: tsConfigs } = eslintPluginTypescript;
 
@@ -38,7 +37,6 @@ export default [
       "jsx-a11y": "eslint-plugin-jsx-a11y",
       "import": "eslint-plugin-import",
       "unused-imports": unusedImports,
-      "performance": performance,
     },
     rules: {
       'react/prop-types': 'off',
@@ -52,8 +50,6 @@ export default [
       ],
       'react/jsx-no-useless-fragment': 'warn',
       'react/jsx-no-bind': 'warn',
-      'performance/no-try-catch': 'warn',
-      'performance/no-complex-iterable': 'warn',
       'jsx-a11y/anchor-is-valid': 'warn',
     },
     settings: {
