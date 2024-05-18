@@ -4,8 +4,6 @@ import { configs as tsConfigs } from "@typescript-eslint/eslint-plugin";
 import pluginReactConfig from "eslint-plugin-react/configs/recommended.js";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import importPlugin from "eslint-plugin-import";
-import unusedImports from "eslint-plugin-unused-imports";
-import performance from "eslint-plugin-performance";
 
 export default [
   { 
