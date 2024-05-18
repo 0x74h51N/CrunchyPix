@@ -43,7 +43,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
     slideDescription: "items.0.slideDescription",
     projectType: "items.0.projectType",
-    ProjectInfo: {
+    ProjectInfoType: {
       category: "items.0.projectType",
       client: "items.0.client",
       location: "items.0.location",
@@ -87,7 +87,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
       "/portfolioItems/kykRespo2.png",
     ],
     projectType: "items.3.projectType",
-    ProjectInfo: {
+    ProjectInfoType: {
       category: "items.3.projectType",
       client: "items.3.client",
       location: "items.3.location",
@@ -133,7 +133,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
     slideDescription: "items.1.slideDescription",
     projectType: "items.1.projectType",
-    ProjectInfo: {
+    ProjectInfoType: {
       category: "items.1.projectType",
       client: "items.1.client",
       location: "items.1.location",
@@ -181,7 +181,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
     slideDescription: "items.2.slideDescription",
     projectType: "items.2.projectType",
-    ProjectInfo: {
+    ProjectInfoType: {
       category: "items.2.projectType",
       client: "items.2.client",
       location: "items.2.location",
@@ -211,7 +211,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     description2: "items.4.description2",
     slideDescription: "items.4.slideDescription",
     projectType: "items.4.projectType",
-    ProjectInfo: {
+    ProjectInfoType: {
       category: "items.4.projectType",
       client: "items.4.client",
       location: "items.4.location",

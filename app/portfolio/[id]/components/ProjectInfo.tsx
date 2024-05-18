@@ -1,4 +1,4 @@
-import { ProjectInfo } from "@/app/common.types";
+import { ProjectInfoType } from "@/app/common.types";
 import LogoImage from "@/components/LogoImage";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfo }) => {
+const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfoType }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation(["portfolio"]);
   const isTranslationsLoadedRedux = useSelector(

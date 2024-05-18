@@ -132,11 +132,11 @@ export type PortfolioItemProps = {
   githubLink?: string;
   icons?: Icon[];
   labels?: string[];
-  ProjectInfo?: ProjectInfo;
+  ProjectInfoType?: ProjectInfoType;
   catalogue?: { folderPath: string; pageNumber: number };
 };
 
-export type ProjectInfo = {
+export type ProjectInfoType = {
   category: string;
   client: string;
   location: string;
