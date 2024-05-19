@@ -27,8 +27,9 @@
   "introduction": {
     "intro": "Introduction",
     "title": "About Me",
-    "description": "I'm an experienced front-end developer proficient in TypeScript and JavaScript. My expertise includes popular frameworks such as Next.js. Also I experienced with Node.js, Redux, and styling with Tailwind CSS. As a quick learner with excellent communication skills, I collaborate closely with clients to craft efficient, scalable, and user-friendly solutions that address real-world challenges. Let's collaborate to transform your ideas into reality!"
+    "description": "I am an experienced Front-end Developer with expertise in TypeScript and React. I have experience with the Next.js framework and am proficient in using tools like Redux, Tailwind, and Git. With my quick learning abilities and excellent communication skills, I collaborate closely with clients to develop efficient, scalable, and user-friendly solutions that solve real-world problems. Let's work together to bring your ideas to life!"
   },
+  
   "servicesSect": {
     "intro": "My Services",
     "title": "What I Do?",
