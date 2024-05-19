@@ -27,7 +27,7 @@ const OtherProjects = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: "some" }}
-          variants={polygonIn("screen", "spring", 1.5, 1.8)}
+          variants={polygonIn("screen", "spring", 2, 1.8)}
           className="w-full max-w-[1300px] h-auto mb-24 px-8 "
           onHoverStart={hoverStart}
           onHoverEnd={hoverEnd}

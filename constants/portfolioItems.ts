@@ -53,7 +53,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     icons: [
       {
         ...commonIcons.github,
-        link: "https://github.com/0x74h51N/My-Webpage",
+        link: "https://github.com/0x74h51N/CrunchyPix/",
       },
       {
         ...commonIcons.web,

@@ -1,5 +1,4 @@
 "use client";
-import { portfolioPageItems } from "@/constants/portfolioItems";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import i18n from "@/utils/i18n";
@@ -73,7 +72,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
           whileInView="show"
           viewport={{
             once: true,
-            amount: "some",
+            amount: isTablet|| isMobile ? 'some' : 0.65,
           }}
           className="lg:relative flex flex-wrap w-full h-auto lg:min-h-[590px] md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
         >
@@ -122,8 +121,8 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
               <motion.div
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true}}
-                variants={polygonIn("down", "spring", 0.3, 2)}
+                viewport={{ once: true, amount:'some'}}
+                variants={polygonIn("down", "spring", isMobile? 0.85 : 1.8, 2)}
                 className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
               >
                 <Ticks ticks={Item.ticks} />
@@ -133,7 +132,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
               <motion.div
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: "some" }}
+                viewport={{ once: true, amount: 'some'}}
                 variants={slideIn("right", "spring", 1.5, 1.5)}
                 className="lg:absolute right-0 lg:top-0"
               >
@@ -160,7 +159,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
           <motion.div
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: "some" }}
+            viewport={{ once: true}}
           >
             <motion.h3 variants={textVariant(1.5)} className="h3 self-start">
               {t("page.techTitle")}

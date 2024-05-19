@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { PortfolioItemProps } from "@/app/common.types";
 import { useRef, useEffect } from "react";
+import "swiper/css";
 
 SwiperCore.use([Autoplay, Pagination]);
 
