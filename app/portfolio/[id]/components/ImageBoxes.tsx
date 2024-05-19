@@ -20,11 +20,11 @@ const ImageBoxes = ({
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.6 }}
+          viewport={{ once: true, amount: screenWidth >= 768? 'all' : 0.5 }}
           variants={fadeIn(
             "down",
             "spring",
-            screenWidth >= 768 ? index : 0.6,
+            screenWidth >= 768 ? index : 0.5,
             1
           )}
           key={index}
