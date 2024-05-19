@@ -64,7 +64,7 @@ export const ArrowToTop = () => {
         variants={slideIn("right", "spring", 0.5, 0.8)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        className="fixed flexCenter bottom-5 right-3 bg-cool-gray-900 w-[40px] h-[40px]  z-50 bg-opacity-50 hover:bg-opacity-100 transition-opacity duration-500 ease-in-out rounded-lg"
+        className="fixed flexCenter bottom-5 right-3 bg-cool-gray-900 w-[40px] h-[40px] z-50 bg-opacity-50 hover:bg-opacity-100 transition-opacity duration-500 ease-in-out rounded-lg"
       >
         <button
           className={`cursor-none stroke-white hover:stroke-log-col -rotate-90 -mb-2`}

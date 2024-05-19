@@ -24,7 +24,7 @@ const ImageBoxes = ({
           variants={fadeIn(
             "down",
             "spring",
-            screenWidth >= 768 ? index + 0.5 : 0.6,
+            screenWidth >= 768 ? index : 0.6,
             1
           )}
           key={index}
