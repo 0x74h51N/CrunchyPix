@@ -10,17 +10,14 @@ async function initI18next(lang: Locales, namespace: string) {
     .use(initReactI18next)
     .use(
       resourcesToBackend(
-        // Get the JSON file that matches the locale and namespace
         (lang: string, ns: string) => import(`./locales/${lang}/${ns}.json`),
       ),
     )
-    // Initialize i18next with the options we created earlier
     .init(getOptions(lang, namespace));
 
   return i18nInstance;
 }
 
-// This function will be used in our server components for the translation
 export async function createTranslation(ns: string) {
   const lang = getLocale();
   const i18nextInstance = await initI18next(lang, ns);
@@ -30,7 +27,6 @@ export async function createTranslation(ns: string) {
   };
 }
 
-// Utility function to get the locale from server components
 export function getLocale() {
   return (cookies().get(NEXT_LOCALE)?.value ?? FALLBACK_LOCALE) as Locales;
 }

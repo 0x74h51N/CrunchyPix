@@ -6,10 +6,11 @@ import resourcesToBackend from 'i18next-resources-to-backend';
 import { FALLBACK_LOCALE, Locales, NEXT_LOCALE, getOptions, supportedLocales } from './settings';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { getCookie } from 'cookies-next'; 
+import { getCookie } from 'cookies-next';
 
 const runsOnServerSide = typeof window === 'undefined';
 
+const lng = getCookie(NEXT_LOCALE) as Locales || FALLBACK_LOCALE;
 i18next
   .use(initReactI18next)
   .use(
@@ -18,8 +19,8 @@ i18next
     )
   )
   .init({
-    ...getOptions(),
-    lng: undefined,
+    ...getOptions(lng),
+    lng,
     detection: {
       order: ['cookie'],
       lookupCookie: NEXT_LOCALE,
@@ -30,18 +31,6 @@ i18next
 
 export default i18next;
 
-export function useTranslation(ns: string) {
-  const lng = useSelector((state: RootState) => state.language.language) as Locales;
-  const translator = useTransAlias(ns);
-  const { i18n } = translator;
-  if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
-    i18n.changeLanguage(lng);
-  } else {
-    useCustomTranslationImplem(i18n, lng); 
-  }
-  return translator;
-}
-
 function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
   useEffect(() => {
     if (!lng || i18n.resolvedLanguage === lng) return;
@@ -49,7 +38,15 @@ function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
   }, [lng, i18n]);
 }
 
+export function useTranslation(ns: string) {
+  const lng = useSelector((state: RootState) => state.language.language) as Locales;
+  const translator = useTransAlias(ns);
+  const { i18n } = translator;
+  useCustomTranslationImplem(i18n, lng);
+  return translator;
+}
+
 export function getLocale(): Locales {
-    const storedLanguage = getCookie(NEXT_LOCALE) as string;
-    return (storedLanguage as Locales) || FALLBACK_LOCALE;
-  }
+  const storedLanguage = getCookie(NEXT_LOCALE) as string;
+  return (storedLanguage as Locales) || FALLBACK_LOCALE;
+}
