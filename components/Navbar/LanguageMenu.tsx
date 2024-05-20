@@ -1,20 +1,20 @@
 "use client";
 import { RootState } from "@/store";
 import { langChange, setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n from "@/utils/i18n";
+import i18n from "@/i18n/client";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, GB } from "country-flag-icons/react/3x2";
 import Image from "next/image";
 import { languageMenuChange } from "@/store/redux/isLanguageMenu";
 import { clickableChange } from "@/store/redux/isClickable";
-import { getCookie, setCookie } from "cookies-next";
+import { switchLocaleAction } from "@/i18n/actions/switch-locale";
+import { getLocale } from "@/i18n/client";
 
 const LanguageMenu = () => {
   const isDropdownOpen = useSelector(
     (state: RootState) => state.isLanguageMenu.languageMenu
   );
-  const oneYearInSeconds = 365 * 24 * 60 * 60;
   const [isRotated, setIsRotated] = useState(false);
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
@@ -33,36 +33,30 @@ const LanguageMenu = () => {
     dispatch(languageMenuChange(!isDropdownOpen));
   };
 
-  const handleChange = (selectedLanguage: string) => {
+  const handleChange = async (selectedLanguage: string) => {
     dispatch(langChange(selectedLanguage));
-    i18n.changeLanguage(selectedLanguage);
-    setCurrentLanguage(selectedLanguage);
-    if (getCookie("cookiesConsent") === "true") {
-      setCookie("selectedLanguage", selectedLanguage, {
-        path: "/",
-        expires: new Date(Date.now() + oneYearInSeconds * 1000),
-        sameSite: "strict",
-        secure: true,
-      });
-    }
-    setIsRotated(!isRotated);
-    dispatch(languageMenuChange(!isDropdownOpen));
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
+    const result = await switchLocaleAction(selectedLanguage);
+    if (result.status === 'success') {
+      i18n.changeLanguage(selectedLanguage);
+      setCurrentLanguage(selectedLanguage);
     }
   };
-
+  
   useEffect(() => {
-    const storedLanguage = getCookie("selectedLanguage");
-    if (storedLanguage) {
-      dispatch(langChange(storedLanguage));
-      i18n.changeLanguage(storedLanguage).then(() => {
-        setCurrentLanguage(storedLanguage);
-        setIsTranslationsLoaded(true);
-      });
-    } else {
-      setIsTranslationsLoaded(true);
-    }
+    const checkLocale = async () => {
+      const storedLanguage = await getLocale(); 
+      if (storedLanguage) {
+        dispatch(langChange(storedLanguage));
+        i18n.changeLanguage(storedLanguage).then(() => {
+          setCurrentLanguage(storedLanguage);
+          dispatch(setIsTranslationsLoaded(true));
+        });
+      } else {
+        dispatch(setIsTranslationsLoaded(true));
+      }
+    };
+  
+    checkLocale();
   }, []);
 
   useEffect(() => {

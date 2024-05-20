@@ -2,7 +2,7 @@ import { Policy } from "@/app/common.types";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import React, { memo, useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "@/i18n/client";
 import { useSelector, useDispatch } from "react-redux";
 import ReactMarkdown from "react-markdown";
 import breaks from "remark-breaks";
@@ -10,7 +10,7 @@ import rehypeRaw from "rehype-raw";
 import CustomLink from "@/components/CustomLink";
 
 const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
-  const { t, i18n } = useTranslation(["policies"]);
+  const { t, i18n } = useTranslation("policies");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

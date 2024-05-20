@@ -1,12 +1,11 @@
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n from "@/utils/i18n";
+import i18n, { useTranslation } from "@/i18n/client";
 import { slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { memo, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { FaAnglesRight } from "react-icons/fa6";
 import { clickableChange } from "@/store/redux/isClickable";
@@ -58,7 +57,7 @@ const PortfolioItem = memo(
     );
     const isSlider = useSelector((state: RootState) => state.isSlider.slider);
     const dispatch = useDispatch();
-    const { t } = useTranslation(["portfolio"]);
+    const { t } = useTranslation("portfolio");
     const isTranslationsLoadedRedux = useSelector(
       (state: RootState) => state.language.isTranslationsLoaded
     );

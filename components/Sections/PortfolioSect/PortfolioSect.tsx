@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 import { generateSpans } from "../../GenerateSpans";
 import { slideIn } from "@/utils/motion";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "@/i18n/client";;
 import { useDispatch, useSelector } from "react-redux";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
 import { portfolioPageItems } from "@/constants/portfolioItems";
 
 const PortfolioSect = () => {
-  const { t, i18n } = useTranslation(["portfolio"]);
+  const { t, i18n } = useTranslation("portfolio");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

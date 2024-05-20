@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { SectionData } from "@/app/common.types";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ScrollProvider } from "@/context/ScrollContext";

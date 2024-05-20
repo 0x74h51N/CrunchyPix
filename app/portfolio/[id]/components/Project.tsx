@@ -1,17 +1,15 @@
 "use client";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n from "@/utils/i18n";
+import i18n, { useTranslation } from "@/i18n/client";
 import { fadeIn, polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { memo, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import Markdown from "react-markdown";
 import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
 import { generateSpans } from "@/components/GenerateSpans";
-
 import { PortfolioItemProps } from "@/app/common.types";
 
 import TopImage from "./TopImage";
@@ -23,7 +21,7 @@ import ImageBoxes from "./ImageBoxes";
 
 const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const dispatch = useDispatch();
-  const { t } = useTranslation(["portfolio"]);
+  const { t } = useTranslation("portfolio");
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const isTranslationsLoadedRedux = useSelector(

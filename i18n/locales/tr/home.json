@@ -113,5 +113,10 @@
       { "title": "Temiz ve Anlaşılır Kod Sanatı" },
       { "title": "Her Zaman Güncel Teknoloji" }
     ]
-  }
+  },
+    "meta": {
+      "title": "CrunchyPix",
+      "description": "Modern web teknolojileri ve yaratıcı çözümler konusunda uzmanlaşmış tutkulu bir Front End developer Tahsin'in portföyü CrunchyPix'i keşfedin. TypeScript, JavaScript, Next.js ve React konusundaki uzmanlığı sergileyen projelere göz atın.",
+      "keywords": "HTML, CSS, JavaScript, TypeScript, React, Web Geliştirme, Ön Uç, Front End Mühendisliği, Portföy"
+    }
 }
