@@ -11,16 +11,28 @@ import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
 import { generateSpans } from "@/components/GenerateSpans";
 import { PortfolioItemProps } from "@/app/common.types";
-
 import TopImage from "./TopImage";
 import Ticks from "./ticks";
 import ProjectInfo from "./ProjectInfo";
 import CatalogueViewer from "./CatalogueViewer/CatalogueViewer";
 import CustomLink from "@/components/CustomLink";
 import ImageBoxes from "./ImageBoxes";
+import { sliderChange } from "@/store/redux/isSlider";
+import { clickableChange } from "@/store/redux/isClickable";
 
 const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const dispatch = useDispatch();
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
+  const isClickable = useSelector(
+    (state: RootState) => state.isClickable.clickable
+  );
+  useEffect(() => {
+    if (isSlider) {
+      dispatch(sliderChange(false));
+    } else if (isClickable) {
+      dispatch(clickableChange(false));
+    }
+  }, []);
   const { t } = useTranslation("portfolio");
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);

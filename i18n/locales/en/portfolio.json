@@ -1,4 +1,9 @@
 {
+  "meta": {
+  "title": "Portfolio",
+  "description": "Explore the portfolio of Tahsin Önemli, a passionate Front-End Developer specializing in modern web technologies and creative solutions. Discover projects showcasing expertise in TypeScript, JavaScript, Next.js, and React.",
+  "keywords": "portfolio, front-end development, TypeScript, JavaScript, Next.js, React, web development"
+},
   "page": {
     "title": "Portfolio",
     "details": "Project Details",
@@ -62,7 +67,7 @@
       "location": "Linz / AUSTRIA"
     },
     {
-      "title": "Minting UI",
+      "title": "BSC Tokens Minting UI",
       "projectType": "UI/UX",
       "slideDescription": "Developed for a UI using minting and burning functions for NNN and NVM tokens on Binance Smart Chain (BSC). Eth-2 scaffold used, contracts obtained from BSC, deployed, and ABI created. Integrated with BSC using Wagmi, enabling minting and burning functions. Other functions available on the debugging page.",
       "title2": "Minting and Burning UI",

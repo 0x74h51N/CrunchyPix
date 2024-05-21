@@ -1,4 +1,9 @@
 {
+  "meta": {
+    "title": "Portföy",
+    "description": "Modern web teknolojileri ve yaratıcı çözümler konusunda uzmanlaşmış tutkulu bir Ön Uç Geliştirici olan Tahsin Önemli'nin portföyünü keşfedin. TypeScript, JavaScript, Next.js ve React konularındaki projeleri inceleyin.",
+    "keywords": "portföy, ön uç geliştirme, TypeScript, JavaScript, Next.js, React, web geliştirme, Front-end, Portföy, Web Developer"
+  },
   "page": {
     "title": "Portföy",
     "details": "Proje Detayları",
@@ -41,7 +46,7 @@
       "location": "İstanbul / TÜRKİYE"
     },
     {
-      "title": "CC Order",
+      "title": "Kredi Kartı Sipariş",
       "projectType": "Landing Sayfası",
       "slideDescription": "Kredi kartı siparişi için oluşturuldu. Figma'da tasarlandı, React tablosu ile uygulandı. Erişim, backoffice uygulamasından API anahtarı ile kontrol ediliyor.",
       "title2": "Müşterilere Özel Karşılama",
@@ -62,7 +67,7 @@
       "location": "Linz / AVUSTURYA"
     },
     {
-      "title": "Minting UI",
+      "title": "BSC Tokens Minting UI",
       "projectType": "UI/UX",
       "slideDescription": "NNN ve NVM tokenları için Binance Smart Chain (BSC) üzerinde minting ve burning işlevlerini kullanarak bir UI için geliştirildi. Eth-2 iskeleti kullanıldı, kontratlar BSC'den alındı, dağıtıldı ve ABI oluşturuldu. Wagmi kullanılarak BSC ile entegre edildi, minting ve burning işlevlerini etkinleştirdi. Diğer işlevler hata ayıklama sayfasında mevcuttur.",
       "title2": "Minting ve Burning UI",
