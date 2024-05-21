@@ -12,7 +12,7 @@ export async function generateSubPageMetadata({ params, page }: { params: { id: 
       description: 'This project does not exist in the portfolio.',
     };
   }
-  const ticksTranslate = selectedItem.ticks.map((item)=>t(item));
+  const ticksTranslate = selectedItem.ticks ? selectedItem.ticks.map((item)=>t(item)) : [];
   return {
     title: `${t('meta.title')} | ${t(selectedItem.title)}`,
     description:selectedItem.description && t(selectedItem.description),

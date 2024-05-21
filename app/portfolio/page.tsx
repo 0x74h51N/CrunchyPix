@@ -27,7 +27,7 @@ const Portfolio = () => {
             slideDescription={""}
             width={630}
             height={500}
-            isSlide={false} ticks={[]} />
+            isSlide={false}/>
         ))}
       </div>
     </motion.div>

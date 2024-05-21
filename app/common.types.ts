@@ -127,7 +127,7 @@ export type PortfolioItemProps = {
   description?: string;
   description2?: string;
   techDescription?: string;
-  ticks: string[];
+  ticks?: string[];
   description3?: string;
   githubLink?: string;
   icons?: Icon[];
