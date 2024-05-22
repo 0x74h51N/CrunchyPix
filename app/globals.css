@@ -1,22 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-@font-face {
-  font-family: "Britannic Bold";
-  src: url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.eot");
-  src: url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.eot?#iefix")
-      format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.woff2")
-      format("woff2"),
-    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.woff")
-      format("woff"),
-    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.ttf")
-      format("truetype"),
-    url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.svg#Britannic Bold")
-      format("svg");
-      font-display: swap;
-}
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@font-face {
+  font-family: "Britannic Bold";
+  src: url("/fonts/britannic-bold.eot");
+  src: url("/fonts/britannic-bold.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/britannic-bold.woff2") format("woff2"),
+       url("/fonts/britannic-bold.woff") format("woff"),
+       url("/fonts/britannic-bold.ttf") format("truetype"),
+       url("/fonts/britannic-bold.svg#Britannic Bold") format("svg");
+  font-display: swap;
+}
 
 * {
   margin: 0;
