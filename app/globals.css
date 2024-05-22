@@ -4,12 +4,12 @@
 @tailwind utilities;
 @font-face {
   font-family: "Britannic Bold";
-  src: url("/fonts/britannic-bold.eot");
-  src: url("/fonts/britannic-bold.eot?#iefix") format("embedded-opentype"),
-       url("/fonts/britannic-bold.woff2") format("woff2"),
-       url("/fonts/britannic-bold.woff") format("woff"),
-       url("/fonts/britannic-bold.ttf") format("truetype"),
-       url("/fonts/britannic-bold.svg#Britannic Bold") format("svg");
+  src: url("/fonts/britannic-bold/britannic-bold.eot");
+  src: url("/fonts/britannic-bold/britannic-bold.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/britannic-bold/britannic-bold.woff2") format("woff2"),
+       url("/fonts/britannic-bold/britannic-bold.woff") format("woff"),
+       url("/fonts/britannic-bold/britannic-bold.ttf") format("truetype"),
+       url("/fonts/britannic-bold/britannic-bold.svg#Britannic Bold") format("svg");
   font-display: swap;
 }
 

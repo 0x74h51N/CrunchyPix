@@ -31,8 +31,9 @@ export default function RootLayout({
     <html lang={getLocale()}>
       <body className="lg:overflow-x-hidden">
         <Suspense fallback={<LoadingComponent />}>
+        <AppI18nProvider>
           <AppReduxProvider>
-            <AppI18nProvider>
+            
               <PageTracker />
               <CustomCursor />
               <CookieConsent />
@@ -42,8 +43,8 @@ export default function RootLayout({
               <main>{children}</main>
               <Footer />
               <ArrowToTop />
+              </AppReduxProvider>
             </AppI18nProvider>
-          </AppReduxProvider>
         </Suspense>
       </body>
     </html>
