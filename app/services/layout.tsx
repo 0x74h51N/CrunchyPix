@@ -1,4 +1,10 @@
 import Rooting from "@/components/Rooting";
+import { generatePageMetadata } from "@/lib/metadata";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generatePageMetadata('services');
+}
 
 export default function ServicesLayout({
   children,

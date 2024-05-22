@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Policies",
+    "description": "Review all policies and rules applicable to the projects of CrunchyPix. Learn about privacy, terms of use, and other important information."
+  },
   "cookiePolicy": [
     {
       "mainTitle": "Cookie Policy",

@@ -1,5 +1,5 @@
 import { portfolioPageItems } from "@/constants/portfolioItems";
-import { generatePageMetadata } from "../lib/metadata";
+import { generatePageMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {

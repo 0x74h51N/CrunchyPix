@@ -1,4 +1,11 @@
 import Rooting from "@/components/Rooting";
+import { generatePageMetadata } from "@/lib/metadata";
+import { Metadata } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generatePageMetadata('contact');
+}
+
 
 export default function ContactLayout({
   children,

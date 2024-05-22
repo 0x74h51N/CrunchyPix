@@ -1,7 +1,7 @@
 import { portfolioPageItems } from "@/constants/portfolioItems";
 import Project from "./components/Project";
 import OtherProjects from "../components/OtherProjects";
-import { generateSubPageMetadata} from '../../lib/metadataSub';
+import { generateSubPageMetadata} from '@/lib/metadataSub';
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   return await generateSubPageMetadata({ params, page: 'portfolio' });

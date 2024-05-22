@@ -1,4 +1,8 @@
 {
+  "meta": {
+  "title": "Politikalar",
+  "description": "CrunchyPix projelerine uygulanabilir tüm politika ve kuralları inceleyin. Gizlilik, kullanım koşulları ve diğer önemli bilgiler hakkında bilgi edinin."
+},
   "cookiePolicy": [
     {
       "mainTitle": "Çerez Politikası",

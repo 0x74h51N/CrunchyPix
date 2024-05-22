@@ -14,7 +14,7 @@ import CookieConsent from "@/components/Cookies/CookiesConsent";
 import Cookies from "@/components/Cookies";
 import PageTracker from "@/components/PageTracker";
 import { getLocale } from "@/i18n/server";
-import { generatePageMetadata } from "./lib/metadata";
+import { generatePageMetadata } from "../lib/metadata";
 
 
 const inter = Inter({ subsets: ["latin"] });
