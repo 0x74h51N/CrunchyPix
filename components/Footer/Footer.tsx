@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from '../../i18n/client';
 import { motion } from "framer-motion";
 import { slideIn, staggerContainer } from "@/utils/motion";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +15,7 @@ import FooterColumn from "./FooterColumn";
 import Contact from "../Contact";
 
 const Footer = () => {
-  const { t, i18n } = useTranslation(["index"]);
+  const { t, i18n } = useTranslation("index");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

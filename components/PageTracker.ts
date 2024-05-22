@@ -10,9 +10,8 @@ const PageTracker = () => {
 
   useEffect(() => {
     const urlParts = pathname.split("/");
-    const topLevelPage = `/${urlParts[1]}`;
+    const topLevelPage = `/${urlParts[2]}`;
 
-    console.log(topLevelPage);
     dispatch(setCurrentPage(topLevelPage));
   }, [pathname]);
 

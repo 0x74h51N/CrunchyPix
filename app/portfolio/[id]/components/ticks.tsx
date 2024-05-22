@@ -1,8 +1,7 @@
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n from "@/utils/i18n";
+import i18n, { useTranslation } from "@/i18n/client";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { LuCheckCircle } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -12,7 +11,7 @@ const Ticks = ({ ticks }: { ticks: string[] }) => {
   const firstColumn = ticks.slice(0, half);
   const secondColumn = ticks.slice(half);
   const dispatch = useDispatch();
-  const { t } = useTranslation(["portfolio"]);
+  const { t } = useTranslation("portfolio");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

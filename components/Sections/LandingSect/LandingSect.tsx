@@ -4,7 +4,7 @@ import { slideIn, staggerContainer, polygonIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../../GenerateSpans";
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "@/i18n/client";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
@@ -13,7 +13,7 @@ import TypingText from "../../typeText";
 import { socialIcons } from "@/constants/socialIcons";
 
 const LandingSect = () => {
-  const { t, i18n } = useTranslation(["home"]);
+  const { t, i18n } = useTranslation("home");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

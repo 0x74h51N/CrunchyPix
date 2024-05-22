@@ -117,5 +117,10 @@
       { "title": "The Art of Clean & Understandable Code" },
       { "title": "Always Up-to-Date with Technology" }
     ]
+  },
+  "meta":{
+    "title": "CrunchyPix",
+    "description": "Discover CrunchyPix, the portfolio of a passionate Front-End Developer Tahsin specializing in modern web technologies and creative solutions. Explore projects showcasing expertise in TypeScript, JavaScript, Next.js and React.",
+    "keywords": "HTML, CSS, JavaScript, TypeScript, React, Web Development, Front-End Engineering, Portfolio, Tahsin, 0x74h51N"
   }
 }

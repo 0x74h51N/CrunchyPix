@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { slideIn, textVariant } from "@/utils/motion";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "@/i18n/client";;
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
@@ -10,7 +10,7 @@ import Image from "next/image";
 import { generateSpans } from "@/components/GenerateSpans";
 
 const IntroductionSect = () => {
-  const { t, i18n } = useTranslation(["home"]);
+  const { t, i18n } = useTranslation("home");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

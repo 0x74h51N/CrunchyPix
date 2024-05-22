@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowSVG from "../../../../../components/ArrowSVG";
+import ArrowSVG from "@/components/ArrowSVG";
 import { RootState } from "@/store";
 import { clickableChange } from "@/store/redux/isClickable";
 import { useDispatch, useSelector } from "react-redux";

@@ -59,7 +59,7 @@ const CookieConsent = () => {
     return null;
   } else {
     return (
-      <div className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-50 cursor-none pointer-events-none">
+      <div id="cookie-banner" className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-50 cursor-none pointer-events-none">
         <motion.div
           initial="hidden"
           whileInView="show"

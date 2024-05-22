@@ -6,12 +6,12 @@ import ProjectSlide from "./ProjectSlide";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { sliderChange } from "@/store/redux/isSlider";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from '@/i18n/client';
 
 const OtherProjects = () => {
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const dispatch = useDispatch();
-  const { t } = useTranslation(["portfolio"]);
+  const { t } = useTranslation("portfolio");
 
   const hoverStart = () => {
     if (isSlider === false) {

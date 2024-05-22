@@ -8,7 +8,7 @@ import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { polygonIn, slideIn } from "@/utils/motion";
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "@/i18n/client";;
 import { useSelector, useDispatch } from "react-redux";
 import { servicesSectCards } from "@/constants/servicesSectCards";
 import { sliderChange } from "@/store/redux/isSlider";
@@ -16,7 +16,7 @@ import { clickableChange } from "@/store/redux/isClickable";
 
 const ServicesSect = () => {
   const [_, setInit] = useState(false);
-  const { t, i18n } = useTranslation(["home"]);
+  const { t, i18n } = useTranslation("home");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

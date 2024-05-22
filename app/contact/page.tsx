@@ -3,11 +3,11 @@ import Construction from "@/components/Construction";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import React, { useEffect } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "@/i18n/client";
 import { useSelector, useDispatch } from "react-redux";
 
 const Page = () => {
-  const { i18n } = useTranslation(["translation"]);
+  const { i18n } = useTranslation("translation");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

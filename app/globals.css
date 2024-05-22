@@ -1,8 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
-
-@tailwind base;
-@tailwind components;
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @font-face {
   font-family: "Britannic Bold";
   src: url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.eot");
@@ -16,7 +12,10 @@
       format("truetype"),
     url("https://db.onlinewebfonts.com/t/8be4a2f403c2dc27187d892cca388e24.svg#Britannic Bold")
       format("svg");
+      font-display: swap;
 }
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 
 * {

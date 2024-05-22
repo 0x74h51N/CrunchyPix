@@ -7,7 +7,7 @@ import { textVariant, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from  '@/i18n/client';
 import { useSelector, useDispatch } from "react-redux";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
@@ -18,7 +18,7 @@ import { codeString } from "@/constants/codeString";
 import { scrollState } from "@/store/redux/isScrollEnabled";
 
 const CodeSect = () => {
-  const { t, i18n } = useTranslation(["home"]);
+  const { t, i18n } = useTranslation("home");
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );

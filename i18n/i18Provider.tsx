@@ -1,5 +1,5 @@
 "use client";
-import i18n from "@/utils/i18n";
+import i18n from "./client";
 import { I18nextProvider } from "react-i18next";
 
 type Props = {

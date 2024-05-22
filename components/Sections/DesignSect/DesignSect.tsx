@@ -7,13 +7,13 @@ import { RootState } from "@/store";
 import { motion } from "framer-motion";
 import { slideIn, textVariant } from "@/utils/motion";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "@/i18n/client";
 import { generateSpans } from "@/components/GenerateSpans";
 import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
 import { phoneSlides } from "@/constants/phoneSlides";
 
 const DesignSect = () => {
-  const { t, i18n } = useTranslation(["home"]);
+  const { t, i18n } = useTranslation("home");
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded
   );

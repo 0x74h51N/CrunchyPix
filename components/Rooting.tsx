@@ -6,7 +6,7 @@ import Link from "next/link";
 import { RootState } from "@/store";
 import { clickableChange } from "@/store/redux/isClickable";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n from "@/utils/i18n";
+import i18n from "@/i18n/client";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";

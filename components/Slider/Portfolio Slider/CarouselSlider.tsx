@@ -7,11 +7,10 @@ import Label from "../../Labels";
 import { PortfolioItemProps } from "@/app/common.types";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlide } from "@/store/redux/selectedSlide";
-import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import { RootState } from "@/store";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n from "@/utils/i18n";
+import i18n, { useTranslation }  from "@/i18n/client";
 import { memo, useEffect, useState } from "react";
 import IconButton from "@/components/Buttons/IconButton";
 import { sliderChange } from "@/store/redux/isSlider";
@@ -24,7 +23,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
     return 0;
   });
   const dispatch = useDispatch();
-  const { t } = useTranslation(["portfolio"]);
+  const { t } = useTranslation("portfolio");
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const isTranslationsLoadedRedux = useSelector(
     (state: RootState) => state.language.isTranslationsLoaded

@@ -2,7 +2,7 @@ import { Links, pages } from "@/constants";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import BurgerButton from "../Buttons/BurgerButton";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from  '../../i18n/client';
 import LanguageMenu from "./LanguageMenu";
 import { RootState } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +28,7 @@ const MobileMenu = () => {
   const smallNav = useSelector(
     (state: RootState) => state.navbarChange.smallNav
   );
-  const { t } = useTranslation(["index"]);
+  const { t } = useTranslation("index");
   useEffect(() => {
     if (!isMobile || !isTablet) {
       dispatch(mobileMenuChange(false));
