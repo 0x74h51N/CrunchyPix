@@ -1,5 +1,5 @@
 "use client";
-import { Links } from "@/constants";
+import { Links } from "@/constants/index";
 import Link from "next/link";
 import React, { useEffect } from "react";
 import MobileMenu from "./MobileMenu";
