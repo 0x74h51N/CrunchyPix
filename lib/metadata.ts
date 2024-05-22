@@ -17,7 +17,7 @@ export async function generatePageMetadata(page: string): Promise<Metadata> {
       url: pageUrl,
       images: [
         {
-          url: `/api/og?title=${encodeURIComponent(t('meta.title').toLowerCase().replace(/\s+/g, ""))}&url=${encodeURIComponent(pageUrl)}`,
+          url: '@/public/portfolioSlides/crunchypix.jpg',
           width: 1200,
           height: 630,
           alt: t('meta.title'),
