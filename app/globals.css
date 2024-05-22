@@ -307,7 +307,7 @@ body {
   animation: bounce 2s infinite;
 }
 .logo_text {
-  font-family: "Britannic Bold";
+  @apply font-britannic;
 }
 .logo_text.color {
   color: #eeb30d;

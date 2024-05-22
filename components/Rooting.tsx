@@ -88,7 +88,7 @@ const Rooting = () => {
   } else {
     return (
       <div
-        className="flex flex-col justify-center items-center w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative"
+        className="flex flex-col  justify-center items-center w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative"
         style={{background: mainPage!=='policies'
           ? "radial-gradient(circle, rgba(0,0,0,0.7), rgba(0,0,0,1))"
           : "transparent",

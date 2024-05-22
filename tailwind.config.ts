@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+    fontFamily: {
+      'britannic': ['"Britannic Bold"', 'sans-serif'],
+    },
       colors: {
         "cool-gray": {
           50: "#F7F7F7",
