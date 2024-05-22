@@ -63,8 +63,8 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                 src={section.background}
                 alt={section.background}
                 quality={100}
-                fill
-                priority
+                width={2000}
+                height={2000}
                 style={{
                   objectFit: "cover",
                   objectPosition: "center",
@@ -100,8 +100,8 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   src={section.topImage}
                   alt={section.topImage}
                   quality={100}
-                  fill
-                  priority
+                  width={2000}
+                height={2000}
                   style={{
                     width: "100%",
                     height: "100%",
