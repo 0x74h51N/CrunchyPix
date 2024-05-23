@@ -41,11 +41,7 @@ export function useTranslation(ns: string) {
   const lng = useSelector((state: RootState) => state.language.language) as Locales;
   const translator = useTransAlias(ns);
   const { i18n } = translator;
-  if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
-    i18n.changeLanguage(lng);
-  } else {
-    useCustomTranslationImplem(i18n, lng);
-  }
+  useCustomTranslationImplem(i18n, lng);
   return translator;
 }
 
