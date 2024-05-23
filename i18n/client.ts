@@ -10,7 +10,6 @@ import { getCookie } from 'cookies-next';
 
 const runsOnServerSide = typeof window === 'undefined';
 
-const lng = getCookie(NEXT_LOCALE) as Locales || FALLBACK_LOCALE;
 i18next
   .use(initReactI18next)
   .use(
@@ -19,8 +18,8 @@ i18next
     )
   )
   .init({
-    ...getOptions(lng),
-    lng,
+    ...getOptions(),
+    lng: undefined,
     detection: {
       order: ['cookie'],
       lookupCookie: NEXT_LOCALE,

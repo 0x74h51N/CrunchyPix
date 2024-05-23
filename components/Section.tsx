@@ -65,6 +65,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                 quality={100}
                 width={2000}
                 height={2000}
+                priority
                 style={{
                   objectFit: "cover",
                   objectPosition: "center",
@@ -101,7 +102,8 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                   alt={section.topImage}
                   quality={100}
                   width={2000}
-                height={2000}
+                  height={2000}
+                  priority
                   style={{
                     width: "100%",
                     height: "100%",
