@@ -33,7 +33,6 @@ export default function RootLayout({
         <Suspense fallback={<LoadingComponent />}>
         <AppI18nProvider>
           <AppReduxProvider>
-            
               <PageTracker />
               <CustomCursor />
               <CookieConsent />
