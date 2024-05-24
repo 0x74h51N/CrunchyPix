@@ -39,18 +39,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
       dispatch(sliderChange(false));
     }
   };
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+  
   const [blurDataURLs, setBlurDataURLs] = useState<{ [key: string]: string }>({});
 
   useEffect(() => {
@@ -71,6 +60,20 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
 
     fetchBlurDataURLs();
   }, [slides]);
+  
+  useEffect(() => {
+    if (i18n.isInitialized) {
+      dispatch(setIsTranslationsLoaded(true));
+    } else {
+      i18n.on("initialized", () => {
+        dispatch(setIsTranslationsLoaded(true));
+      });
+    }
+  }, [i18n, dispatch]);
+
+  if (!isTranslationsLoadedRedux) {
+    return null;
+  }
 
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
