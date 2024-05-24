@@ -101,7 +101,8 @@ const SlideModal = () => {
                 <img
                   src={blurDataURL}
                   alt="Blur placeholder"
-                  className="absolute top-0 left-0 w-full h-full object-cover"
+                  style={{ objectFit: isMobile ? "cover" : "contain"}}
+                  className="absolute top-0 left-0 w-full h-full"
                 />
               )}
               {imageLoading ? (

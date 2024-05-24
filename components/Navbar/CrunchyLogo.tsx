@@ -41,7 +41,6 @@ const CrunchyLogo = () => {
         height={100}
         alt="Crunchypix"
         priority
-        loading="eager"
         className={`${
           smallNav ? "" : "navImage"
         } transition-all hover:scale-105 duration-1000 ease-in-out h-full pb-3`}
@@ -76,7 +75,6 @@ const CrunchyLogo = () => {
         height={100}
         alt="Crunchypix"
         priority
-        loading="eager"
         className={`${
           smallNav
             ? "mt-2"
