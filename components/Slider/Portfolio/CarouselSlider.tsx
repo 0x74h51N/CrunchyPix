@@ -51,6 +51,26 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   if (!isTranslationsLoadedRedux) {
     return null;
   }
+  const [blurDataURLs, setBlurDataURLs] = useState<{ [key: string]: string }>({});
+
+  useEffect(() => {
+    async function fetchBlurDataURLs() {
+      const blurDataURLPromises = slides.map(async (slide) => {
+        if (slide.slideImage) {
+          const response = await fetch(`/api/blur-placeholder?image=${encodeURIComponent(slide.slideImage)}`);
+          const data = await response.json();
+          return { [slide.slideImage]: data.blurDataURL };
+        }
+        return {};
+      });
+
+      const blurDataURLResults = await Promise.all(blurDataURLPromises);
+      const blurDataURLMap = blurDataURLResults.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+      setBlurDataURLs(blurDataURLMap);
+    }
+
+    fetchBlurDataURLs();
+  }, [slides]);
 
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
@@ -107,7 +127,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                   } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
                   onClick={() => index === activeIndex && _selectedSlide(slide)}
                 >
-                  <Image
+                  {blurDataURLs[slide.slideImage] &&<Image
                     loading="lazy"
                     src={slide.slideImage || ""}
                     alt={slide.imageAlt || ""}
@@ -115,7 +135,9 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                     height="1000"
                     className="object-cover w-full h-full"
                     quality={100}
-                  />
+                    placeholder="blur"
+                    blurDataURL={blurDataURLs[slide.slideImage] || ""}
+                  />}
                   <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                     <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>
                     <div className="flex">
