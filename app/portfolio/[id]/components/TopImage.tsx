@@ -4,6 +4,7 @@ import { RootState } from "@/store";
 import { slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const TopImage = ({
@@ -20,6 +21,18 @@ const TopImage = ({
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );
+  const [blurDataURL, setBlurDataURL] = useState<string>("");
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    async function fetchBlurDataURL() {
+        const response = await fetch(`/api/blur-placeholder?image=${encodeURIComponent(screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop)}`);
+        const data = await response.json();
+        setBlurDataURL(data.blurDataURL);
+    }
+    fetchBlurDataURL();
+  }, [imageTop, imageTopMobile, screenWidth]);
+
   return (
     <div
       className={`relative w-full h-auto overflow-hidden ${
@@ -33,15 +46,26 @@ const TopImage = ({
           : "linear-gradient(to bottom right,  #171717, #334155)",
       }}
     >
-      <Image
-        fill
-        sizes="100vw"
-        priority
-        quality={100}
-        src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
-        alt={imageAlt}
-        className="w-full h-full object-cover"
-      />
+      {blurDataURL && (
+        <Image
+          fill
+          sizes="auto"
+          quality={100}
+          src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
+          alt={imageAlt}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          placeholder="blur"
+          blurDataURL={blurDataURL}
+          onLoad={() => setIsLoaded(true)}
+        />
+      )}
+      {!isLoaded && blurDataURL && (
+        <img
+          src={blurDataURL}
+          alt="Blur placeholder"
+          className="absolute top-0 left-0 w-full h-full object-cover"
+        />
+      )}
       {icons && (
         <motion.div
           variants={slideIn("right", "spring", 2, 1)}

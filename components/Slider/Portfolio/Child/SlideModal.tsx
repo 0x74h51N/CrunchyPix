@@ -24,6 +24,18 @@ const SlideModal = () => {
   const isScrolled = useSelector(
     (state: RootState) => state.isScrolled.scrolled
   );
+  const [blurDataURL, setBlurDataURL] = useState<string>("");
+
+  useEffect(() => {
+    async function fetchBlurDataURL() {
+      if (selectedSlide && selectedSlide.slideImage) {
+        const response = await fetch(`/api/blur-placeholder?image=${encodeURIComponent(selectedSlide.slideImage)}`);
+        const data = await response.json();
+        setBlurDataURL(data.blurDataURL);
+      }
+    }
+    fetchBlurDataURL();
+  }, [selectedSlide]);
   const closeModal = () => {
     dispatch(clearSlide());
     setTimeout(() => {
@@ -70,22 +82,31 @@ const SlideModal = () => {
               >
                 <CancelButton />
               </button>
-              <Image
+              {blurDataURL && <Image
                 loading="lazy"
                 src={selectedSlide.slideImage || ""}
                 alt={selectedSlide.title || ""}
                 width={1800}
                 height={1800}
-                style={{ objectFit: isMobile ? "cover" : "contain" }}
+                style={{ objectFit: isMobile ? "cover" : "contain", opacity: imageLoading ? 0:100}}
                 quality={100}
                 className="w-full h-full"
-                placeholder="empty"
+                placeholder="blur"
+                blurDataURL={blurDataURL}
                 onLoad={() => {
                   setImageLoading(false);
                 }}
-              />
+              />}
+              {imageLoading && blurDataURL && (
+                <img
+                  src={blurDataURL}
+                  alt={`${selectedSlide.title}-blur`}
+                  style={{ objectFit: isMobile ? "cover" : "contain"}}
+                  className="absolute w-full h-full"
+                />
+              )}
               {imageLoading ? (
-                <Loading />
+                <div className="z-40"><Loading /></div>
               ) : (
                 <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                   <h2 className="text-lg font-bold">

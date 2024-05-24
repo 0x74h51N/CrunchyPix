@@ -1,8 +1,6 @@
 "use client";
-import CarouselSlider from "../../Slider/Portfolio Slider/CarouselSlider";
-import SlideModal from "../../Slider/Portfolio Slider/Child/SlideModal";
 import { motion } from "framer-motion";
-import { generateSpans } from "../../GenerateSpans";
+import { generateSpans } from "@/components/GenerateSpans";
 import { slideIn } from "@/utils/motion";
 import { useEffect } from "react";
 import { useTranslation } from "@/i18n/client";;
@@ -10,6 +8,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
 import { portfolioPageItems } from "@/constants/portfolioItems";
+import dynamic from "next/dynamic";
+import CarouselSlider from "@/components/Slider/Portfolio/CarouselSlider";
+import LoadingComponent from "@/components/Loading";
+
+const SlideModal = dynamic(() => import("@/components/Slider/Portfolio/Child/SlideModal"), {
+  ssr: false,
+  loading: () => <LoadingComponent/>,
+});
 
 const PortfolioSect = () => {
   const { t, i18n } = useTranslation("portfolio");
