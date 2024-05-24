@@ -88,7 +88,7 @@ const SlideModal = () => {
                 alt={selectedSlide.title || ""}
                 width={1800}
                 height={1800}
-                style={{ objectFit: isMobile ? "cover" : "contain" }}
+                style={{ objectFit: isMobile ? "cover" : "contain", opacity: imageLoading?0:100}}
                 quality={100}
                 className="w-full h-full"
                 placeholder="blur"
@@ -97,6 +97,13 @@ const SlideModal = () => {
                   setImageLoading(false);
                 }}
               />}
+              {imageLoading && blurDataURL && (
+                <img
+                  src={blurDataURL}
+                  alt="Blur placeholder"
+                  className="absolute top-0 left-0 w-full h-full object-cover"
+                />
+              )}
               {imageLoading ? (
                 <Loading />
               ) : (
