@@ -1,34 +1,17 @@
 "use client";
-import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { slideIn, textVariant } from "@/utils/motion";
 import { useTranslation } from "@/i18n/client";;
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import Image from "next/image";
 import { generateSpans } from "@/components/GenerateSpans";
 
 const IntroductionSect = () => {
-  const { t, i18n } = useTranslation("home");
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
+  const { t } = useTranslation("home");
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+ 
   return (
     <div className="flex flex-row items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto p-24 max-md:px-1 max-md:py-18 bg-cool-gray-800 md:rounded-3xl gap-12 max-sm:flex-col max-lg:gap-6">
       <Image

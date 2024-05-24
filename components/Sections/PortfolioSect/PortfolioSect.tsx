@@ -2,11 +2,7 @@
 import { motion } from "framer-motion";
 import { generateSpans } from "@/components/GenerateSpans";
 import { slideIn } from "@/utils/motion";
-import { useEffect } from "react";
 import { useTranslation } from "@/i18n/client";;
-import { useDispatch, useSelector } from "react-redux";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
-import { RootState } from "@/store";
 import { portfolioPageItems } from "@/constants/portfolioItems";
 import dynamic from "next/dynamic";
 import CarouselSlider from "@/components/Slider/Portfolio/CarouselSlider";
@@ -18,23 +14,8 @@ const SlideModal = dynamic(() => import("@/components/Slider/Portfolio/Child/Sli
 });
 
 const PortfolioSect = () => {
-  const { t, i18n } = useTranslation("portfolio");
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+  const { t } = useTranslation("portfolio");;
+  
   return (
     <div className="h-auto flex flex-col items-center justify-center w-full">
       <div className="flex flex-col text-center">

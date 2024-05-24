@@ -7,7 +7,7 @@ import { AppI18nProvider } from "@/i18n/i18Provider";
 import { AppReduxProvider } from "@/store/provider";
 import { Suspense } from "react";
 import LoadingComponent from "@/components/Loading";
-import CustomCursor from "@/components/Cookies/CustomCursor";
+import CustomCursor from "@/components/CustomCursor";
 import { ArrowToTop } from "@/components/Buttons/ArrowToTop";
 import Rooting from "@/components/Rooting";
 import CookieConsent from "@/components/Cookies/CookiesConsent";

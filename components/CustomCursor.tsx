@@ -1,7 +1,6 @@
 "use client";
 import { RootState } from "@/store";
 import { setTouch } from "@/store/redux/isTouch";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,9 +15,6 @@ const CustomCursor = () => {
   const [isInitialMove, setIsInitialMove] = useState(true);
   const cursorDisabled = useSelector(
     (state: RootState) => state.cursorDisabled.disabled
-  );
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
   );
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
@@ -45,15 +41,7 @@ const CustomCursor = () => {
   }, [isBrowser, dispatch]);
 
   useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-
-    const updateMousePosition = (e: { clientX: number; clientY: number }) => {
+       const updateMousePosition = (e: { clientX: number; clientY: number }) => {
       if (cursorRef.current) {
         const { clientX, clientY } = e;
         cursorRef.current.style.left = `${clientX}px`;
@@ -81,7 +69,7 @@ const CustomCursor = () => {
     };
   }, [i18n, dispatch, isInitialMove, t, isSlider, isClickable]);
 
-  if (isTouchDevice || !isTranslationsLoadedRedux) {
+  if (isTouchDevice) {
     return null;
   }
   if (cursorDisabled === true) {

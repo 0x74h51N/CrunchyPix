@@ -1,19 +1,14 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import MonitorFrame from "@/components/Frames/MonitorFrame/MonitorFrame";
 import { generateSpans } from "@/components/GenerateSpans";
 import { textVariant, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
 import { useTranslation } from  '@/i18n/client';
 import { useSelector, useDispatch } from "react-redux";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import {
-  vsDark,
-  vscDarkPlus,
-} from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { codeString } from "@/constants/codeString";
 import { scrollState } from "@/store/redux/isScrollEnabled";
 
@@ -21,9 +16,6 @@ const CodeSect = () => {
   const { t, i18n } = useTranslation("home");
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
-  );
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
@@ -56,18 +48,6 @@ const CodeSect = () => {
     }
   }, [screenWidth]);
 
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
   const scrollHandlerEnter = () => {
     if (isScrollEnabled) {
       dispatch(scrollState(false));
