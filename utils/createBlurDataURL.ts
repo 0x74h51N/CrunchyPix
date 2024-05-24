@@ -5,8 +5,8 @@ export async function createBlurDataURL(imagePath: string): Promise<string> {
   try {
     const imageBuffer = await fs.readFile(imagePath); 
     const resizedImageBuffer = await sharp(imageBuffer)
-      .resize(20, 50)
-      .blur()
+      .resize(100)
+      .blur(2)
       .toBuffer();
 
     const base64Image = resizedImageBuffer.toString('base64'); 

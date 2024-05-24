@@ -49,14 +49,14 @@ const TopImage = ({
       {blurDataURL && (
         <Image
           fill
-          sizes="100vw"
+          sizes="auto"
           quality={100}
           src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
           alt={imageAlt}
           className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           placeholder="blur"
           blurDataURL={blurDataURL}
-          onLoadingComplete={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
         />
       )}
       {!isLoaded && blurDataURL && (

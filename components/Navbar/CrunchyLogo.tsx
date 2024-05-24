@@ -43,7 +43,7 @@ const CrunchyLogo = () => {
         priority
         className={`${
           smallNav ? "" : "navImage"
-        } transition-all hover:scale-105 duration-1000 ease-in-out h-full pb-3`}
+        } transition-all hover:scale-105 duration-1000 ease-in-out pb-3`}
       />
       {smallNav || screenWidth <= 300 ? null : (
         <div

@@ -83,7 +83,7 @@ const Rooting = () => {
       dispatch(clickableChange(false));
     }
   };
-  if (pathname === "" || pathname === "home" || pathname === "/") {
+  if (pathname === "" || pathname === "home" || pathname === "/" || mainPage==="") {
     return null;
   } else {
     return (
