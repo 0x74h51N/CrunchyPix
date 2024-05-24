@@ -4,6 +4,7 @@ import { RootState } from "@/store";
 import { slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const TopImage = ({
@@ -20,6 +21,16 @@ const TopImage = ({
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );
+  const [blurDataURL, setBlurDataURL] = useState<string>("");
+
+  useEffect(() => {
+    async function fetchBlurDataURL() {
+        const response = await fetch(`/api/blur-placeholder?image=${encodeURIComponent(screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop)}`);
+        const data = await response.json();
+        setBlurDataURL(data.blurDataURL);
+    }
+    fetchBlurDataURL();
+  }, [imageTop, imageTopMobile]);
   return (
     <div
       className={`relative w-full h-auto overflow-hidden ${
@@ -33,7 +44,7 @@ const TopImage = ({
           : "linear-gradient(to bottom right,  #171717, #334155)",
       }}
     >
-      <Image
+    {blurDataURL && <Image
         fill
         sizes="100vw"
         priority
@@ -41,7 +52,9 @@ const TopImage = ({
         src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
         alt={imageAlt}
         className="w-full h-full object-cover"
-      />
+        placeholder="blur"
+        blurDataURL={blurDataURL}
+      />}
       {icons && (
         <motion.div
           variants={slideIn("right", "spring", 2, 1)}
