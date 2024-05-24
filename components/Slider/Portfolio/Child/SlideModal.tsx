@@ -105,7 +105,7 @@ const SlideModal = () => {
                 />
               )}
               {imageLoading ? (
-                <Loading />
+                <div className="z-40"><Loading /></div>
               ) : (
                 <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                   <h2 className="text-lg font-bold">

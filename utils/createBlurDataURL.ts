@@ -5,7 +5,7 @@ export async function createBlurDataURL(imagePath: string): Promise<string> {
   try {
     const imageBuffer = await fs.readFile(imagePath); 
     const resizedImageBuffer = await sharp(imageBuffer)
-      .resize(10, 10)
+      .resize(20, 50)
       .blur()
       .toBuffer();
 
