@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import languageReducer from "./redux/language";
 import isMobileReducer from "./redux/isMobile";
 import isScrolledReducer from "./redux/isScrolled";
 import pageReducer from "./redux/pageReducer";
@@ -21,7 +20,6 @@ import isScrollEnabled from "./redux/isScrollEnabled";
 import cookieConsent from "./redux/cookieConsent";
 
 const rootReducer = combineReducers({
-  language: languageReducer,
   isTablet: isTabletReducer,
   isMobile: isMobileReducer,
   isMobileMenu: isMobileMenuReducer,

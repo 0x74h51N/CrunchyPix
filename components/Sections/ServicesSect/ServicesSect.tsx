@@ -5,9 +5,7 @@ import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { generateSpans } from "@/components/GenerateSpans";
 import { RootState } from "@/store";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { polygonIn, slideIn } from "@/utils/motion";
-import { useEffect, useState } from "react";
 import { useTranslation } from "@/i18n/client";;
 import { useSelector, useDispatch } from "react-redux";
 import { servicesSectCards } from "@/constants/servicesSectCards";
@@ -15,33 +13,13 @@ import { sliderChange } from "@/store/redux/isSlider";
 import { clickableChange } from "@/store/redux/isClickable";
 
 const ServicesSect = () => {
-  const [_, setInit] = useState(false);
-  const { t, i18n } = useTranslation("home");
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
+  const { t } = useTranslation("home");
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const dispatch = useDispatch();
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
-
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-
-  useEffect(() => {
-    if (isTranslationsLoadedRedux) {
-      setInit(true);
-    }
-  }, [isTranslationsLoadedRedux]);
 
   const pagination = {
     el: ".custom-pagy",
@@ -105,7 +83,6 @@ const ServicesSect = () => {
           onHoverStart={hoverStart}
           onHoverEnd={hoverEnd}
         >
-          {isTranslationsLoadedRedux && (
             <Swiper
               modules={[Pagination, Navigation]}
               slidesPerView={isMobile ? 1.2 : isTablet ? 1.8 : 3}
@@ -115,7 +92,6 @@ const ServicesSect = () => {
               loop
               pagination={pagination}
               navigation={navigation}
-              onInit={() => setInit(true)}
               className="2xl:w-[1030px] lg:w-[900px] md:w-[680px] w-[340px] h-auto cursor-none"
             >
               {servicesSectCards.map((section, index) => (
@@ -131,7 +107,6 @@ const ServicesSect = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-          )}
         </motion.div>
         <div className="absolute swiper-button-next-cus top-10 right-1 h-full w-[50px] bg- z-50 ">
           <div

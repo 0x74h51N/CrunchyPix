@@ -1,23 +1,18 @@
 "use client";
 import { slide } from "@/app/common.types";
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import FullScreenSlider from "../../Slider/FullScreenSlider/FullScreenSlider";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { motion } from "framer-motion";
 import { slideIn, textVariant } from "@/utils/motion";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { useTranslation } from "@/i18n/client";
 import { generateSpans } from "@/components/GenerateSpans";
 import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
 import { phoneSlides } from "@/constants/phoneSlides";
 
 const DesignSect = () => {
-  const { t, i18n } = useTranslation("home");
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
-  const dispatch = useDispatch();
+  const { t } = useTranslation("home");
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const rotateStart = useSelector(
@@ -33,18 +28,7 @@ const DesignSect = () => {
       description: slide.description,
     }));
   }, [rotateEnd]);
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+  
   return (
     <motion.div
       initial="hidden"

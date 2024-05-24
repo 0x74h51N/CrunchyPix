@@ -1,7 +1,6 @@
 "use client";
 import { RootState } from "@/store";
-import { langChange, setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n from "@/i18n/client";
+import i18n, { getLocale } from "@/i18n/client";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, GB } from "country-flag-icons/react/3x2";
@@ -9,7 +8,7 @@ import Image from "next/image";
 import { languageMenuChange } from "@/store/redux/isLanguageMenu";
 import { clickableChange } from "@/store/redux/isClickable";
 import { switchLocaleAction } from "@/i18n/actions/switch-locale";
-import { getLocale } from "@/i18n/client";
+
 
 const LanguageMenu = () => {
   const isDropdownOpen = useSelector(
@@ -18,7 +17,7 @@ const LanguageMenu = () => {
   const [isRotated, setIsRotated] = useState(false);
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
-  const [currentLanguage, setCurrentLanguage] = useState("");
+  const [currentLanguage, setCurrentLanguage] = useState("")
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
@@ -34,31 +33,13 @@ const LanguageMenu = () => {
   };
 
   const handleChange = async (selectedLanguage: string) => {
-    dispatch(langChange(selectedLanguage));
+    setCurrentLanguage(selectedLanguage);
     const result = await switchLocaleAction(selectedLanguage);
     if (result.status === 'success') {
       i18n.changeLanguage(selectedLanguage);
-      setCurrentLanguage(selectedLanguage);
     }
   };
   
-  useEffect(() => {
-    const checkLocale = async () => {
-      const storedLanguage = await getLocale(); 
-      if (storedLanguage) {
-        dispatch(langChange(storedLanguage));
-        i18n.changeLanguage(storedLanguage).then(() => {
-          setCurrentLanguage(storedLanguage);
-          dispatch(setIsTranslationsLoaded(true));
-        });
-      } else {
-        dispatch(setIsTranslationsLoaded(true));
-      }
-    };
-  
-    checkLocale();
-  }, []);
-
   useEffect(() => {
     if ((isMobile || isTablet) && isDropdownOpen) {
       dispatch(languageMenuChange(false));
@@ -84,6 +65,7 @@ const LanguageMenu = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, [langMenuRef, isDropdownOpen]);
+
   const handleMouseEnter = () => {
     if (!isTouch) {
       setIsRotated(true);
@@ -102,6 +84,19 @@ const LanguageMenu = () => {
       dispatch(clickableChange(false));
     }
   };
+
+  const getFlagComponent = (language: string) => {
+    switch (language) {
+      case "en":
+        return <GB title="United Kingdom" />;
+      case "de":
+        return <DE title="Germany" />;
+      case "tr":
+        return <TR title="Turkey" />;
+      default:
+        return <GB title="United Kingdom" />;
+    }
+  };
   return (
     <div
       onMouseEnter={handleMouseEnter}
@@ -114,23 +109,7 @@ const LanguageMenu = () => {
         className="flex flex-row gap-1 items-center bg-transparent cursor-none"
       >
         <div className="w-6">
-          {currentLanguage === "en" ? (
-            <span>
-              <GB title="United Kingdom" />
-            </span>
-          ) : currentLanguage === "de" ? (
-            <span>
-              <DE title="Germany" />
-            </span>
-          ) : currentLanguage === "tr" ? (
-            <span>
-              <TR title="Turkey" />
-            </span>
-          ) : (
-            <span>
-              <GB title="United Kingdom" />
-            </span>
-          )}
+        {getFlagComponent(i18n.language)}
         </div>
         <div>
           <Image

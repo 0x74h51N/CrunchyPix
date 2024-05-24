@@ -1,9 +1,7 @@
-import { RootState } from "@/store";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+
 
 type Path = {
   d: string;
@@ -26,23 +24,8 @@ const SvgAnimator = ({
   pathDelay = 0,
   delay = 0,
 }: SvgAnimatorProps) => {
-  const { t, i18n } = useTranslation(["home"]);
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+  const { t } = useTranslation(["home"]);
+ 
   const initialAnimation = {
     pathLength: 0,
     pathOffset: direction === "back" ? 0 : 1,

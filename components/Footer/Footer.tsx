@@ -1,12 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useEffect } from "react";
 import { useTranslation } from '../../i18n/client';
 import { motion } from "framer-motion";
 import { slideIn, staggerContainer } from "@/utils/motion";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { footerIcons } from "@/constants/socialIcons";
 import IconButton from "../Buttons/IconButton";
 import { Icon } from "@/app/common.types";
@@ -15,23 +11,8 @@ import FooterColumn from "./FooterColumn";
 import Contact from "../Contact";
 
 const Footer = () => {
-  const { t, i18n } = useTranslation("index");
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+  const { t } = useTranslation("index");
+  
   return (
     <div className="relative flex justify-center footer py-24 bg-neutral-50 shadow-inner shadow-black">
       <motion.div

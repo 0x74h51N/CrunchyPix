@@ -4,8 +4,6 @@ import i18next, { i18n } from 'i18next';
 import { initReactI18next, useTranslation as useTransAlias } from 'react-i18next';
 import resourcesToBackend from 'i18next-resources-to-backend';
 import { FALLBACK_LOCALE, Locales, NEXT_LOCALE, getOptions, supportedLocales } from './settings';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
 import { getCookie } from 'cookies-next';
 
 const runsOnServerSide = typeof window === 'undefined';
@@ -38,7 +36,7 @@ function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
 }
 
 export function useTranslation(ns: string) {
-  const lng = useSelector((state: RootState) => state.language.language) as Locales;
+  const lng = getLocale();
   const translator = useTransAlias(ns);
   const { i18n } = translator;
   useCustomTranslationImplem(i18n, lng);

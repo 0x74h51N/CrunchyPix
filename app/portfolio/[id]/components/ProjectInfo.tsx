@@ -1,37 +1,12 @@
 import { ProjectInfoType } from "@/app/common.types";
 import LogoImage from "@/components/LogoImage";
-import { RootState } from "@/store";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n, { useTranslation } from "@/i18n/client";
+import  { useTranslation } from "@/i18n/client";
 import Image from "next/image";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfoType }) => {
-  const dispatch = useDispatch();
+
   const { t } = useTranslation("portfolio");
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
-  useEffect(() => {
-    const handleInitialized = () => {
-      dispatch(setIsTranslationsLoaded(true));
-    };
-
-    if (i18n.isInitialized) {
-      handleInitialized();
-    } else {
-      i18n.on("initialized", handleInitialized);
-    }
-
-    return () => {
-      i18n.off("initialized", handleInitialized);
-    };
-  }, [dispatch]);
-
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+ 
   if (ProjectInfo)
     return (
       <div className="relative flex lg:h-[570px] md:w-[380px] sm:w-[330px] md:h-[480px] sm:h-[450px] h-[440px] w-[300px] rounded-xl bg-log-col md:ml-6 ml-0">

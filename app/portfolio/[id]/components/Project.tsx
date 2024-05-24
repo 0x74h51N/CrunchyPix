@@ -1,7 +1,6 @@
 "use client";
 import { RootState } from "@/store";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n, { useTranslation } from "@/i18n/client";
+import { useTranslation } from "@/i18n/client";
 import { fadeIn, polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { memo, useEffect } from "react";
@@ -36,28 +35,7 @@ const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
   const { t } = useTranslation("portfolio");
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
 
-  useEffect(() => {
-    const handleInitialized = () => {
-      dispatch(setIsTranslationsLoaded(true));
-    };
-
-    if (i18n.isInitialized) {
-      handleInitialized();
-    } else {
-      i18n.on("initialized", handleInitialized);
-    }
-
-    return () => {
-      i18n.off("initialized", handleInitialized);
-    };
-  }, [dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
 
   return (
     <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden">

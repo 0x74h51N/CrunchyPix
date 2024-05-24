@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Links } from "@/app/common.types";
 import { RootState } from "@/store";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { useSelector, useDispatch } from "react-redux";
 import { clickableChange } from "@/store/redux/isClickable";
 
@@ -13,26 +11,12 @@ interface FooterColumnProps {
 }
 
 const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
-  const { t, i18n } = useTranslation(["index"]);
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
+  const { t } = useTranslation(["index"]);
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+  
   const handleMouseEnter = () => {
     if (isClickable == false) {
       dispatch(clickableChange(true));

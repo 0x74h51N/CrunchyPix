@@ -9,8 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSlide } from "@/store/redux/selectedSlide";
 import Image from "next/image";
 import { RootState } from "@/store";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n, { useTranslation }  from "@/i18n/client";
+import { useTranslation }  from "@/i18n/client";
 import { memo, useEffect, useState } from "react";
 import IconButton from "@/components/Buttons/IconButton";
 import { sliderChange } from "@/store/redux/isSlider";
@@ -25,9 +24,6 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   const dispatch = useDispatch();
   const { t } = useTranslation("portfolio");
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const screenHeight = useSelector(
@@ -60,20 +56,6 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
 
     fetchBlurDataURLs();
   }, [slides]);
-  
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
 
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);

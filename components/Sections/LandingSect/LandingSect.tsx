@@ -3,39 +3,21 @@ import { ArrowButton } from "../../Buttons/ArrowButton";
 import { slideIn, staggerContainer, polygonIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../../GenerateSpans";
-import { useEffect } from "react";
 import { useTranslation } from "@/i18n/client";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
 import { RootState } from "@/store";
 import { SocialIcons } from "../../SocialIcons";
 import TypingText from "../../typeText";
 import { socialIcons } from "@/constants/socialIcons";
 
 const LandingSect = () => {
-  const { t, i18n } = useTranslation("home");
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
+  const { t } = useTranslation("home");
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (i18n.isInitialized) {
-      dispatch(setIsTranslationsLoaded(true));
-    } else {
-      i18n.on("initialized", () => {
-        dispatch(setIsTranslationsLoaded(true));
-      });
-    }
-  }, [i18n, dispatch]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
-
+ 
   return (
     <>
       <motion.div

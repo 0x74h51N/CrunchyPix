@@ -1,12 +1,9 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { RootState } from "@/store";
 import { clickableChange } from "@/store/redux/isClickable";
-import { setIsTranslationsLoaded } from "@/store/redux/language";
-import i18n from "@/i18n/client";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from "react-redux";
 import Image from "next/image";
@@ -23,25 +20,7 @@ const Rooting = () => {
   );
   const dispatch = useDispatch();
   const { t } = useTranslation(["index", "portfolio"]);
-  const isTranslationsLoadedRedux = useSelector(
-    (state: RootState) => state.language.isTranslationsLoaded
-  );
 
-  useEffect(() => {
-    const handleInitialized = () => {
-      dispatch(setIsTranslationsLoaded(true));
-    };
-
-    if (i18n.isInitialized) {
-      handleInitialized();
-    } else {
-      i18n.on("initialized", handleInitialized);
-    }
-
-    return () => {
-      i18n.off("initialized", handleInitialized);
-    };
-  }, [dispatch]);
   useEffect(() => {
     const updatePageInfo = () => {
       const urlParts = pathname.split("/");
@@ -59,7 +38,7 @@ const Rooting = () => {
     };
 
     updatePageInfo();
-
+    
     const handlePopState = () => {
       updatePageInfo();
     };
@@ -70,9 +49,7 @@ const Rooting = () => {
       window.removeEventListener("popstate", handlePopState);
     };
   }, [pathname, setMainPage, setChildPage]);
-  if (!isTranslationsLoadedRedux) {
-    return null;
-  }
+
   const handleMouseEnter = () => {
     if (isClickable == false) {
       dispatch(clickableChange(true));
