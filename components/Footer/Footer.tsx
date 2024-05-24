@@ -84,7 +84,7 @@ const Footer = () => {
         </div>
         <div className="absolute bottom-0 left-0 flex justify-center sm:px-16 px-2 w-full">
           <div className="text-neutral-900 flex flex-row justify-between items-center footer_copyright w-full max-w-[1300px]">
-            <p>@ 2023 Tahsin All right reserved</p>
+            <p>@ 2023 Tahsin Ö. aka 0x74h51N</p>
             <div className="flex flex-row gap-3 text-neutral-900 items-center justify-center h-auto">
               {footerIcons.map((icon: Icon, index: number) => (
                 <span

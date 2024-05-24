@@ -24,6 +24,18 @@ const SlideModal = () => {
   const isScrolled = useSelector(
     (state: RootState) => state.isScrolled.scrolled
   );
+  const [blurDataURL, setBlurDataURL] = useState<string>("");
+
+  useEffect(() => {
+    async function fetchBlurDataURL() {
+      if (selectedSlide && selectedSlide.slideImage) {
+        const response = await fetch(`/api/blur-placeholder?image=${encodeURIComponent(selectedSlide.slideImage)}`);
+        const data = await response.json();
+        setBlurDataURL(data.blurDataURL);
+      }
+    }
+    fetchBlurDataURL();
+  }, [selectedSlide]);
   const closeModal = () => {
     dispatch(clearSlide());
     setTimeout(() => {
@@ -70,7 +82,7 @@ const SlideModal = () => {
               >
                 <CancelButton />
               </button>
-              <Image
+              {blurDataURL && <Image
                 loading="lazy"
                 src={selectedSlide.slideImage || ""}
                 alt={selectedSlide.title || ""}
@@ -79,11 +91,12 @@ const SlideModal = () => {
                 style={{ objectFit: isMobile ? "cover" : "contain" }}
                 quality={100}
                 className="w-full h-full"
-                placeholder="empty"
+                placeholder="blur"
+                blurDataURL={blurDataURL}
                 onLoad={() => {
                   setImageLoading(false);
                 }}
-              />
+              />}
               {imageLoading ? (
                 <Loading />
               ) : (
