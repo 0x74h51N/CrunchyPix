@@ -1,14 +1,13 @@
 "use client";
 import { RootState } from "@/store";
-import { setIndex } from "@/store/redux/currentSectionIndex";
 import { clickableChange } from "@/store/redux/isClickable";
-import { handleScroll } from "@/utils/handleScroll";
 import { slideIn } from "@/utils/motion";
 import { scrollToTop } from "@/utils/scrollToSection";
 import { motion } from "framer-motion";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ArrowSVG from "../ArrowSVG";
+import ArrowSVG from "./ArrowSVG";
+import { setScrollPosition } from "@/store/redux/scrollSlice";
 
 export const ArrowToTop = () => {
   const dispatch = useDispatch();
@@ -30,7 +29,6 @@ export const ArrowToTop = () => {
   };
 
   const handleButtonClick = () => {
-    dispatch(setIndex(0));
     if (isClickable) {
       dispatch(clickableChange(false));
     }
@@ -40,31 +38,24 @@ export const ArrowToTop = () => {
     }, 950);
   };
 
-  const throttleTimeout = useRef<NodeJS.Timeout | null>(null);
-
-  const handleScroll = useCallback(() => {
-    if (!throttleTimeout.current) {
+  const handleScroll = () => {
       const scrollPosition = window.scrollY;
+      dispatch(setScrollPosition(window.scrollY));
       const isScrolledDown = scrollPosition > 800;
       if (isScrolledDown && !isArrowVisible) {
         setArrowVisible(true);
       } else if (scrollPosition < 800) {
         setArrowVisible(false);
       }
+  };
 
-      throttleTimeout.current = setTimeout(() => {
-        throttleTimeout.current = null;
-      }, 300);
-    }
-  }, [isArrowVisible]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+      window.removeEventListener('scroll', handleScroll);
+      };
+  }, [dispatch]);
 
   return (
     <motion.div

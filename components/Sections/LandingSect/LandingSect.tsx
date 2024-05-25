@@ -1,10 +1,9 @@
 "use client";
-import { ArrowButton } from "../../Buttons/ArrowButton";
 import { slideIn, staggerContainer, polygonIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../../GenerateSpans";
 import { useTranslation } from "@/i18n/client";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { SocialIcons } from "../../SocialIcons";
 import TypingText from "../../typeText";
@@ -83,14 +82,6 @@ const LandingSect = () => {
             iconPack={socialIcons}
           />
         </motion.div>
-        <div className="absolute bottom-0 w-auto flex justify-center z-50">
-          <ArrowButton
-            index={1}
-            duration={1500}
-            arrow={true}
-            className="opacity-50 hover:opacity-100 transition-opacity animate-bounce-slow z-10"
-          />
-        </div>
       </motion.div>
     </>
   );

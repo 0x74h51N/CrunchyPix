@@ -1,27 +1,27 @@
 import { HandleScroll } from "@/app/common.types";
 import { scrollToSection } from "./scrollToSection";
+import { disableScroll, enableScroll } from "./scrollEventControl";
 
 export const handleScroll = ({
   event,
-  currentSectionIndex,
+  currentIndex,
   sectionsData,
   sectionRefs,
-  smoothScroll = true,
-  duration = 0,
-  dispatchSetIndex,
+  duration = 1000,
+  setScrollState
 }: HandleScroll) => {
+
   if (!event) {
     return;
   }
-
   const scrollDirection = event.deltaY > 0 ? "down" : "up";
 
   if (
     scrollDirection === "down" &&
-    currentSectionIndex < sectionsData.length - 1
+    currentIndex < sectionsData.length - 1
   ) {
-    const currentSectionRef = sectionRefs[currentSectionIndex].current;
-    const nextSectionRef = sectionRefs[currentSectionIndex + 1].current;
+    const currentSectionRef = sectionRefs[currentIndex].current;
+    const nextSectionRef = sectionRefs[currentIndex + 1].current;
 
     const currentSectionBottom =
       currentSectionRef &&
@@ -31,43 +31,42 @@ export const handleScroll = ({
       nextSectionRef &&
       window.scrollY + window.innerHeight >= nextSectionRef.offsetTop;
 
-    if (!currentSectionBottom && !nextSectionTop) {
-    } else {
-      if (smoothScroll) {
+    if (currentSectionBottom && nextSectionTop)  {
+      disableScroll();
+      setScrollState(false)
         scrollToSection(
-          currentSectionIndex + 1,
+          currentIndex + 1,
           duration,
           sectionRefs,
-          dispatchSetIndex
-        );
-      } else {
-        dispatchSetIndex(currentSectionIndex + 1);
-      }
+        ); 
+        setTimeout(() => {
+      setScrollState(true) 
+          enableScroll();
+        }, 1100);
     }
   }
 
-  if (scrollDirection === "up" && currentSectionIndex > 0) {
-    const currentSectionRef = sectionRefs[currentSectionIndex].current;
-    const prevSectionRef = sectionRefs[currentSectionIndex - 1].current;
+  if (scrollDirection === "up" && currentIndex > 0) {
+    const currentSectionRef = sectionRefs[currentIndex].current;
+    const prevSectionRef = sectionRefs[currentIndex - 1].current;
 
     const currentSectionTop =
       currentSectionRef && window.scrollY <= currentSectionRef.offsetTop;
     const prevSectionBottom =
       prevSectionRef &&
       window.scrollY <= prevSectionRef.offsetTop + prevSectionRef.clientHeight;
-
-    if (!currentSectionTop && !prevSectionBottom) {
-    } else {
-      if (smoothScroll) {
+    if (currentSectionTop && prevSectionBottom)  {
+      disableScroll();
+      setScrollState(false)
         scrollToSection(
-          currentSectionIndex - 1,
+          currentIndex - 1,
           duration,
           sectionRefs,
-          dispatchSetIndex
         );
-      } else {
-        dispatchSetIndex(currentSectionIndex - 1);
+        setTimeout(() => {
+      setScrollState(true) 
+          enableScroll();
+        }, 1000);
       }
-    }
   }
 };

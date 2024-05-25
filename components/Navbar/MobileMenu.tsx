@@ -1,4 +1,4 @@
-import { Links, pages } from "@/constants";
+import { Links } from "@/constants";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import BurgerButton from "../Buttons/BurgerButton";

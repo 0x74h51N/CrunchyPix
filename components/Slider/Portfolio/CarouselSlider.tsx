@@ -14,6 +14,7 @@ import { memo, useEffect, useState } from "react";
 import IconButton from "@/components/Buttons/IconButton";
 import { sliderChange } from "@/store/redux/isSlider";
 import { motion } from "framer-motion";
+import { disableScroll } from "@/utils/scrollEventControl";
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
@@ -67,6 +68,14 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
     dispatch(sliderChange(false));
   };
 
+  const clickHandler = (index: number, slide: PortfolioItemProps) => {
+    console.log("Click detected, disabling scroll");
+    disableScroll();
+    if (index === activeIndex) {
+      _selectedSlide(slide);
+    }
+  };  
+
   return (
     <motion.div
       onHoverStart={hoverStart}
@@ -110,7 +119,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                       ? "h-[300px]"
                       : "h-[485px]"
                   } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
-                  onClick={() => index === activeIndex && _selectedSlide(slide)}
+                  onClick={()=>clickHandler(index, slide)}
                 >
                   {blurDataURLs[slide.slideImage] &&<Image
                     loading="lazy"
