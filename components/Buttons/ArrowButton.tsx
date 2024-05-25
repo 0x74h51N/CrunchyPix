@@ -11,7 +11,6 @@ interface ArrowButtonProps {
   arrow?: boolean;
   duration?: number;
   sectionRefs: React.RefObject<HTMLDivElement>[];
-  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const ArrowButton = ({
@@ -20,7 +19,6 @@ export const ArrowButton = ({
   arrow,
   duration = 0,
   sectionRefs,
-  setCurrentIndex  
 }: ArrowButtonProps) => {
   const dispatch = useDispatch();
   const isClickable = useSelector(
@@ -38,7 +36,7 @@ export const ArrowButton = ({
   };
   const handleButtonClick = () => {
     if (index !== undefined) {
-      scrollToSection(index, duration, sectionRefs, setCurrentIndex);
+      scrollToSection(index, duration, sectionRefs);
     }
   };
 

@@ -130,7 +130,6 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                 arrow={true}
                 className="opacity-50 hover:opacity-100 transition-opacity animate-bounce-slow z-10"
                 sectionRefs={sectionRefs.current}
-                setCurrentIndex={setCurrentIndex}
               />
             )}
           </div>
