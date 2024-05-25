@@ -66,7 +66,7 @@ const SlideModal = () => {
             className={`absolute flex justify-center items-center top-1/2 left-1/2  md:w-[70svw] md:h-[63svh] w-[95svw] h-[65svh] translate-x-[-50%] translate-y-[-50%] outline-none`}
           >
             <motion.div
-              className="relative flex justify-center md:h-auto h-full"
+              className="relative flex justify-center md:h-auto h-full w-full max-w-[1900px]"
               initial="hidden"
               animate="visible"
               exit="hidden"

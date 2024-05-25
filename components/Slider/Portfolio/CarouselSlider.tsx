@@ -69,7 +69,6 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   };
 
   const clickHandler = (index: number, slide: PortfolioItemProps) => {
-    console.log("Click detected, disabling scroll");
     disableScroll();
     if (index === activeIndex) {
       _selectedSlide(slide);

@@ -7,7 +7,7 @@ export const handleScroll = ({
   currentIndex,
   sectionsData,
   sectionRefs,
-  duration = 1000,
+  duration = 500,
   setScrollState
 }: HandleScroll) => {
 

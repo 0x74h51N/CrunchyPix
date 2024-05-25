@@ -29,7 +29,6 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         setCurrentIndex(index);
       }
     });
-    console.log(currentIndex)
   }, [scrollPosition]);
 
   useEffect(() => {
