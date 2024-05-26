@@ -1,3 +1,31 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["compat"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:compat/recommended",
+    "next/core-web-vitals"
+  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "settings": {
+    "polyfills": [
+      "fetch",
+      "promises"
+    ]
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "compat/compat": "error"
+  }
 }
