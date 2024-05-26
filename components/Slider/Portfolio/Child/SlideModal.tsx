@@ -75,9 +75,9 @@ const SlideModal = () => {
                 alt={selectedSlide.title || ""}
                 width={1800}
                 height={1800}
-                style={{ objectFit: isMobile ? "cover" : "contain"}}
+                style={{ objectFit: isMobile ? "cover" : "contain", opacity: imageLoading? 0 : 100}}
                 quality={100}
-                className="w-full h-full z-10"
+                className="w-full h-full"
                 onLoad={() => {
                   setImageLoading(false);
                 }}
