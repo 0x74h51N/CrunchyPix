@@ -82,7 +82,7 @@ const SlideModal = () => {
                 <CancelButton />
               </button>
               {blurDataURL && <Image
-                loading="lazy"
+                loading="eager"
                 src={selectedSlide.slideImage || ""}
                 alt={selectedSlide.title || ""}
                 width={1800}
@@ -96,14 +96,6 @@ const SlideModal = () => {
                   setImageLoading(false);
                 }}
               />}
-              {imageLoading && blurDataURL && (
-                <img
-                  src={blurDataURL}
-                  alt={`${selectedSlide.title}-blur`}
-                  style={{ objectFit: isMobile ? "cover" : "contain"}}
-                  className="absolute w-full h-full"
-                />
-              )}
               {imageLoading ? (
                 <div className="z-40"><Loading /></div>
               ) : (
