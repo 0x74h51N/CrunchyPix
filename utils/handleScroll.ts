@@ -17,21 +17,12 @@ export const handleScroll = ({
   const scrollDirection = event.deltaY > 0 ? "down" : "up";
 
   if (
-    scrollDirection === "down" &&
-    currentIndex < sectionsData.length - 1
-  ) {
+    scrollDirection === "down" && currentIndex < sectionsData.length - 1) 
+    {
     const currentSectionRef = sectionRefs[currentIndex].current;
-    const nextSectionRef = sectionRefs[currentIndex + 1].current;
 
-    const currentSectionBottom =
-      currentSectionRef &&
-      window.scrollY + window.innerHeight >=
-        currentSectionRef.offsetTop + currentSectionRef.clientHeight;
-    const nextSectionTop =
-      nextSectionRef &&
-      window.scrollY + window.innerHeight >= nextSectionRef.offsetTop;
-
-    if (currentSectionBottom && nextSectionTop)  {
+    const currentSectionBottom = currentSectionRef && window.scrollY + window.innerHeight >= currentSectionRef.offsetTop + currentSectionRef.clientHeight;
+    if (currentSectionBottom)  {
       disableScroll();
       setScrollState(false)
         scrollToSection(
@@ -42,20 +33,14 @@ export const handleScroll = ({
         setTimeout(() => {
       setScrollState(true) 
           enableScroll();
-        }, 1100);
+        }, duration+100);
     }
   }
 
   if (scrollDirection === "up" && currentIndex > 0) {
     const currentSectionRef = sectionRefs[currentIndex].current;
-    const prevSectionRef = sectionRefs[currentIndex - 1].current;
-
-    const currentSectionTop =
-      currentSectionRef && window.scrollY <= currentSectionRef.offsetTop;
-    const prevSectionBottom =
-      prevSectionRef &&
-      window.scrollY <= prevSectionRef.offsetTop + prevSectionRef.clientHeight;
-    if (currentSectionTop && prevSectionBottom)  {
+    const currentSectionTop = currentSectionRef && window.scrollY <= currentSectionRef.offsetTop;
+    if (currentSectionTop)  {
       disableScroll();
       setScrollState(false)
         scrollToSection(
@@ -66,7 +51,7 @@ export const handleScroll = ({
         setTimeout(() => {
       setScrollState(true) 
           enableScroll();
-        }, 1000);
+        }, duration+100);
       }
   }
 };
