@@ -22,18 +22,7 @@ const SlideModal = () => {
     (state: RootState) => state.selectedSlide.selectedSlide
   );
   const id =selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, "");
-  const [blurDataURL, setBlurDataURL] = useState<string>("");
   const scrollPosition = useSelector((state: RootState) => state.scrollSlice.scrollPosition);
-  useEffect(() => {
-    async function fetchBlurDataURL() {
-      if (selectedSlide && selectedSlide.slideImage) {
-        const response = await fetch(`/api/blur-placeholder?image=${encodeURIComponent(selectedSlide.slideImage)}`);
-        const data = await response.json();
-        setBlurDataURL(data.blurDataURL);
-      }
-    }
-    fetchBlurDataURL();
-  }, [selectedSlide]);
 
   useEffect(()=>{
     closeModal();
@@ -41,7 +30,6 @@ const SlideModal = () => {
 
   const closeModal = () => {
     dispatch(clearSlide());
-    setBlurDataURL("");
     setTimeout(() => {
       setImageLoading(true);
     }, 300);
@@ -81,32 +69,19 @@ const SlideModal = () => {
               >
                 <CancelButton />
               </button>
-              {blurDataURL && 
               <Image
-                loading="lazy"
+                priority
                 src={selectedSlide.slideImage || ""}
                 alt={selectedSlide.title || ""}
                 width={1800}
                 height={1800}
-                style={{ objectFit: isMobile ? "cover" : "contain", opacity: imageLoading ? 0:100}}
+                style={{ objectFit: isMobile ? "cover" : "contain"}}
                 quality={100}
-                className="w-full h-full"
-                placeholder="blur"
-                blurDataURL={blurDataURL}
+                className="w-full h-full z-10"
                 onLoad={() => {
                   setImageLoading(false);
                 }}
-              />}
-              {imageLoading && blurDataURL && (
-                <Image
-                  src={blurDataURL}
-                  width={1800}
-                  height={1800}
-                  alt={`${selectedSlide.title}-blur`}
-                  style={{ objectFit: isMobile ? "cover" : "contain"}}
-                  className="absolute w-full h-full"
-                />
-              )}
+              />
               {imageLoading ? (
                 <div className="z-40"><Loading /></div>
               ) : (
