@@ -2,9 +2,9 @@
 import { useEffect } from 'react';
 import i18next, { i18n } from 'i18next';
 import { initReactI18next, useTranslation as useTransAlias } from 'react-i18next';
-import resourcesToBackend from 'i18next-resources-to-backend';
 import { FALLBACK_LOCALE, Locales, NEXT_LOCALE, getOptions, supportedLocales } from './settings';
 import { getCookie } from 'cookies-next';
+import resourcesToBackend from './resourcesToBackend';
 
 const runsOnServerSide = typeof window === 'undefined';
 
