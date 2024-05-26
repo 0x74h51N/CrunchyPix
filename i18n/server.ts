@@ -1,7 +1,7 @@
 import { createInstance } from 'i18next';
-import resourcesToBackend from 'i18next-resources-to-backend';
+import resourcesToBackend from './resourcesToBackend';
 import { initReactI18next } from 'react-i18next/initReactI18next';
-import { FALLBACK_LOCALE,getOptions,Locales,NEXT_LOCALE} from './settings';
+import { FALLBACK_LOCALE, getOptions, Locales, NEXT_LOCALE} from './settings';
 import { cookies } from 'next/headers';
 
 async function initI18next(lang: Locales, namespace: string) {
@@ -23,7 +23,7 @@ export async function createTranslation(ns: string) {
   const i18nextInstance = await initI18next(lang, ns);
 
   return {
-    t: i18nextInstance.getFixedT(lang, Array.isArray(ns) ? ns[0] : ns),
+    t: i18nextInstance.getFixedT(lang, ns),
   };
 }
 

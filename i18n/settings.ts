@@ -1,3 +1,12 @@
+/** 
+ * This i18n structure is implemented based on the article:
+ * https://carlogino.com/blog/nextjs-app-dir-i18n-cookie
+ * 
+ * Many thanks to the author for the detailed explanation.
+ * After implementing the i18n setups and server translation utility,
+ * it helped to multi-language metadata w/o sub-language prefixes or different domains.
+ */
+
 import type { InitOptions } from 'i18next';
 
 export const FALLBACK_LOCALE = 'en';
