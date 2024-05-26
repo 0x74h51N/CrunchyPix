@@ -11,7 +11,6 @@ import Loading from "@/components/Loading";
 import Link from "next/link";
 import CancelButton from "@/components/Buttons/CancelButton";
 import { sliderChange } from "@/store/redux/isSlider";
-import { enableScroll } from "@/utils/scrollEventControl";
 
 const SlideModal = () => {
   const dispatch = useDispatch();
@@ -24,7 +23,7 @@ const SlideModal = () => {
   );
   const id =selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, "");
   const [blurDataURL, setBlurDataURL] = useState<string>("");
-
+  const scrollPosition = useSelector((state: RootState) => state.scrollSlice.scrollPosition);
   useEffect(() => {
     async function fetchBlurDataURL() {
       if (selectedSlide && selectedSlide.slideImage) {
@@ -36,8 +35,11 @@ const SlideModal = () => {
     fetchBlurDataURL();
   }, [selectedSlide]);
 
+  useEffect(()=>{
+    closeModal();
+  }, [scrollPosition])
+
   const closeModal = () => {
-    enableScroll();
     dispatch(clearSlide());
     setBlurDataURL("");
     setTimeout(() => {
