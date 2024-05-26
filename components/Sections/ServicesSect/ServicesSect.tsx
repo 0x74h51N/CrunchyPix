@@ -51,15 +51,14 @@ const ServicesSect = () => {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: "some" }}
-      variants={slideIn("left", "spring", 0.2, 0.5)}
+      viewport={{ once: true, amount: 0.2 }}      
       className="flex justify-center items-center w-full h-full min-h-[100svh]"
     >
       <motion.div
-        variants={polygonIn("screen", "spring", 1.5, 2.2)}
+        variants={polygonIn("screen", "spring", 0.7, 2.2)}
         className="flex flex-col items-start h-full w-auto md:p-16 xs:p-6 p-4 z-10 mt-14 rounded-lg 2xl:ml-36 bg-neutral-900 shadow-lg relative"
       >
-        <motion.h1 variants={slideIn("left", "spring", 2, 1)}>
+        <motion.h1 variants={slideIn("left", "spring", 1.3, 1)}>
           <div className="h2 max-sm:ml-4">
             {isMobile || isTablet
               ? t("servicesSect.intro")
@@ -124,7 +123,7 @@ const ServicesSect = () => {
         </div>
       </motion.div>
       <motion.div
-        variants={polygonIn("down", "spring", 1.5, 2.2)}
+        variants={polygonIn("down", "spring", 0.7, 2.2)}
         className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
         w-full 2xl:max-w-[180px] 2xl:bg-neutral-900 2xl:p-40 p-10 2xl:gap-8 gap-4"
       />

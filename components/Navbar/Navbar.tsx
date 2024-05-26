@@ -8,7 +8,6 @@ import { useTranslation } from  '@/i18n/client';
 import { useSelector, useDispatch } from "react-redux";
 import { mobileChange } from "@/store/redux/isMobile";
 import { RootState } from "@/store";
-import { scrollChange } from "@/store/redux/isScrolled";
 import { tabletChange } from "@/store/redux/isTablet";
 import { setScreenHeight } from "@/store/redux/screenHeight";
 import { setScreenWidth } from "@/store/redux/screenWidth";
@@ -38,30 +37,18 @@ export const Navbar = () => {
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
+  const scrollPosition = useSelector((state: RootState) => state.scrollSlice.scrollPosition);
   const dispatch = useDispatch();
   const { t } = useTranslation("index");
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleScroll = () => {
-        dispatch(scrollChange(true));
-        setTimeout(() => {
-          dispatch(scrollChange(false));
-        }, 500);
-        if (window.scrollY > 100) {
+        if (scrollPosition > 100) {
           dispatch(navbarChange(true));
         } else {
           dispatch(navbarChange(false));
         }
-      };
-      window.addEventListener("scroll", handleScroll);
-      handleScroll();
 
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, []);
+  }, [scrollPosition]);
 
   useEffect(() => {
     if (typeof window != "undefined") {

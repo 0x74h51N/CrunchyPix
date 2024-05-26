@@ -1,10 +1,7 @@
-import { Dispatch } from "react";
-
 export const scrollToSection = (
   index: number,
   duration: number = 0,
   sectionRefs: React.RefObject<HTMLDivElement>[],
-  dispatchSetIndex: Dispatch<number>
 ) => {
   const ref = sectionRefs[index];
   if (duration === 0 || !duration) {
@@ -14,7 +11,6 @@ export const scrollToSection = (
         top,
         behavior: "smooth",
       });
-      dispatchSetIndex(index);
     }
   } else {
     if (ref.current) {
@@ -40,8 +36,6 @@ export const scrollToSection = (
 
         if (timeElapsed < duration) {
           requestAnimationFrame(scroll);
-        } else {
-          dispatchSetIndex(index);
         }
       };
 

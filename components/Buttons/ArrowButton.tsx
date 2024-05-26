@@ -1,17 +1,16 @@
 "use client";
 import Image from "next/image";
-import { useScrollContext } from "@/context/ScrollContext";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { clickableChange } from "@/store/redux/isClickable";
-import { setIndex } from "@/store/redux/currentSectionIndex";
-import { scrollToSection, scrollToTop } from "@/utils/scrollToSection";
+import { scrollToSection } from "@/utils/scrollToSection";
 
 interface ArrowButtonProps {
   index?: number;
   className?: string;
   arrow?: boolean;
   duration?: number;
+  sectionRefs: React.RefObject<HTMLDivElement>[];
 }
 
 export const ArrowButton = ({
@@ -19,8 +18,8 @@ export const ArrowButton = ({
   className,
   arrow,
   duration = 0,
+  sectionRefs,
 }: ArrowButtonProps) => {
-  const { sectionRefs } = useScrollContext();
   const dispatch = useDispatch();
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
@@ -37,8 +36,7 @@ export const ArrowButton = ({
   };
   const handleButtonClick = () => {
     if (index !== undefined) {
-      const dispatchSetIndex = (index: number) => dispatch(setIndex(index));
-      scrollToSection(index, duration, sectionRefs, dispatchSetIndex);
+      scrollToSection(index, duration, sectionRefs);
     }
   };
 

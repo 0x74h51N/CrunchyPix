@@ -2,8 +2,8 @@ import { RootState } from "@/store";
 import { clearSlide } from "@/store/redux/selectedSlide";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import IconButton from "../../../Buttons/IconButton";
-import Label from "../../../Labels";
+import IconButton from "@/components/Buttons/IconButton";
+import Label from "@/components/Labels";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
@@ -13,19 +13,17 @@ import CancelButton from "@/components/Buttons/CancelButton";
 import { sliderChange } from "@/store/redux/isSlider";
 
 const SlideModal = () => {
+  const dispatch = useDispatch();
   const [imageLoading, setImageLoading] = useState(true);
   const { t } = useTranslation(["portfolio"]);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const dispatch = useDispatch();
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const selectedSlide = useSelector(
     (state: RootState) => state.selectedSlide.selectedSlide
   );
-  const isScrolled = useSelector(
-    (state: RootState) => state.isScrolled.scrolled
-  );
+  const id =selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, "");
   const [blurDataURL, setBlurDataURL] = useState<string>("");
-
+  const scrollPosition = useSelector((state: RootState) => state.scrollSlice.scrollPosition);
   useEffect(() => {
     async function fetchBlurDataURL() {
       if (selectedSlide && selectedSlide.slideImage) {
@@ -36,23 +34,24 @@ const SlideModal = () => {
     }
     fetchBlurDataURL();
   }, [selectedSlide]);
+
+  useEffect(()=>{
+    closeModal();
+  }, [scrollPosition])
+
   const closeModal = () => {
     dispatch(clearSlide());
+    setBlurDataURL("");
     setTimeout(() => {
       setImageLoading(true);
     }, 300);
   };
-  const id =
-    selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, "");
-  useEffect(() => {
-    if (isScrolled) {
-      closeModal();
-    }
-  }, [isScrolled]);
+ 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.5 },
     visible: { opacity: 1, scale: 1 },
   };
+  
   const onClickHandler = () => {
     if (isSlider === true) {
       dispatch(sliderChange(false));
@@ -69,7 +68,7 @@ const SlideModal = () => {
             className={`absolute flex justify-center items-center top-1/2 left-1/2  md:w-[70svw] md:h-[63svh] w-[95svw] h-[65svh] translate-x-[-50%] translate-y-[-50%] outline-none`}
           >
             <motion.div
-              className="relative flex justify-center md:h-auto h-full"
+              className="relative flex justify-center md:h-auto h-full w-full max-w-[1900px]"
               initial="hidden"
               animate="visible"
               exit="hidden"

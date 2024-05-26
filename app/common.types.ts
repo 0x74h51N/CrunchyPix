@@ -1,4 +1,4 @@
-import { Dispatch } from "react";
+import { Dispatch, SetStateAction } from 'react';
 
 export type Links = {
   href: string;
@@ -29,18 +29,16 @@ export type SectionData = {
   parallaxImageAlt?: string;
   background?: string;
   topImage?: string;
-  smoothScroll?: boolean | false;
 };
 
 export type HandleScroll = {
   event: WheelEvent;
-  currentSectionIndex: number;
+  currentIndex: number;
   sectionsData: SectionData[];
   sectionRefs: React.RefObject<HTMLDivElement>[];
-  smoothScroll?: boolean;
   scrollY?: number;
   duration?: number;
-  dispatchSetIndex: Dispatch<number>;
+  setScrollState: Dispatch<SetStateAction<boolean>>;
 };
 
 export type slide = {
