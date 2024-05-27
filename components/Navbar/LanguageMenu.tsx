@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/store";
-import i18n, { getLocale } from "@/i18n/client";
+import i18n from "@/i18n/client";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, GB } from "country-flag-icons/react/3x2";
@@ -17,7 +17,6 @@ const LanguageMenu = () => {
   const [isRotated, setIsRotated] = useState(false);
   const dispatch = useDispatch();
   const langMenuRef = useRef<HTMLDivElement | null>(null);
-  const [currentLanguage, setCurrentLanguage] = useState("")
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable
   );
@@ -33,7 +32,6 @@ const LanguageMenu = () => {
   };
 
   const handleChange = async (selectedLanguage: string) => {
-    setCurrentLanguage(selectedLanguage);
     const result = await switchLocaleAction(selectedLanguage);
     if (result.status === 'success') {
       i18n.changeLanguage(selectedLanguage);

@@ -41,7 +41,8 @@
     "rehype-raw": "^7.0.0",
     "remark-breaks": "^4.0.0",
     "sharp": "^0.33.4",
-    "swiper": "^11.0.5"
+    "swiper": "^11.0.5",
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/cookie": "^0.6.0",
