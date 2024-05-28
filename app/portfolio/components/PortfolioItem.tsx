@@ -4,12 +4,12 @@ import { slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { FaAnglesRight } from "react-icons/fa6";
-import { clickableChange } from "@/store/redux/isClickable";
 import { PortfolioItemProps } from "@/app/common.types";
-import { sliderChange } from "@/store/redux/isSlider";
 import { CldImage } from "next-cloudinary";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
+import useDragHandler from "@/hooks/useDragHandler";
 
 const areEqual = (
   prevProps: PortfolioItemInterface,
@@ -51,29 +51,12 @@ const PortfolioItem = memo(
     const mobileWidth = 300;
     const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
     const id = _id.toLowerCase().replace(/\s+/g, "");
-    const isClickable = useSelector(
-      (state: RootState) => state.isClickable.clickable
-    );
-    const isSlider = useSelector((state: RootState) => state.isSlider.slider);
-    const dispatch = useDispatch();
     const { t } = useTranslation("portfolio");
-    
-    const handleMouseEnter = () => {
-      if (isClickable == false) {
-        dispatch(clickableChange(true));
-      }
-    };
-    const handleMouseLeave = () => {
-      if (isClickable == true) {
-        dispatch(clickableChange(false));
-      }
-    };
+    const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+    const { hoverEnd } = useDragHandler();
     const onClickHandler = () => {
-      if (isClickable == true) {
-        dispatch(clickableChange(false));
-      } else if (isSlider === true) {
-        dispatch(sliderChange(false));
-      }
+      handleMouseLeave();
+      hoverEnd();
     };
 
     return (

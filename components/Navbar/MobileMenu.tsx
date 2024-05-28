@@ -7,6 +7,7 @@ import { RootState } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileMenuChange } from "@/store/redux/isMobileMenu";
 import { useTranslation } from "@/hooks/useTranslation";
+import { languageMenuChange } from "@/store/redux/isLanguageMenu";
 
 const MobileMenu = () => {
   const dispatch = useDispatch();
@@ -39,10 +40,10 @@ const MobileMenu = () => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (
         menuRef.current &&
-        !menuRef.current.contains(event.target as Node) &&
-        isDropdownOpen == false
+        !menuRef.current.contains(event.target as Node)
       ) {
-        dispatch(mobileMenuChange(false));
+        dispatch(languageMenuChange(false));
+        dispatch(mobileMenuChange(false)); 
       }
     };
 

@@ -12,9 +12,9 @@ import { setScreenHeight } from "@/store/redux/screenHeight";
 import { setScreenWidth } from "@/store/redux/screenWidth";
 import { navbarChange } from "@/store/redux/navbarChange";
 import { mobileMenuChange } from "@/store/redux/isMobileMenu";
-import { clickableChange } from "@/store/redux/isClickable";
 import CrunchyLogo from "./CrunchyLogo";
 import { useTranslation } from "@/hooks/useTranslation";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
@@ -34,9 +34,7 @@ export const Navbar = () => {
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height
   );
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
+
   const scrollPosition = useSelector((state: RootState) => state.scrollSlice.scrollPosition);
   const dispatch = useDispatch();
   const { t } = useTranslation("index");
@@ -82,16 +80,8 @@ export const Navbar = () => {
       };
     }
   }, [dispatch, isTablet, isTablet, screenWidth, screenHeight]);
-  const handleMouseEnter = () => {
-    if (isClickable == false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
-  };
+  
+  const {handleMouseEnter, handleMouseLeave} = useClickableHandlers();
   return (
     <div className="flex justify-center min-w-[100svw]">
       <nav

@@ -13,7 +13,7 @@ import { scrollState } from "@/store/redux/isScrollEnabled";
 import { useTranslation } from "react-i18next";
 
 const CodeSect = () => {
-  const { t, i18n } = useTranslation("home");
+  const { t } = useTranslation("home");
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width
   );

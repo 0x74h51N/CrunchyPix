@@ -11,9 +11,9 @@ import { RootState } from "@/store";
 import { useTranslation } from "react-i18next";
 import { memo, useState } from "react";
 import IconButton from "@/components/Buttons/IconButton";
-import { sliderChange } from "@/store/redux/isSlider";
 import { motion } from "framer-motion";
 import { CldImage } from "next-cloudinary";
+import useDragHandler from "@/hooks/useDragHandler";
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
@@ -23,27 +23,19 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   });
   const dispatch = useDispatch();
   const { t } = useTranslation("portfolio");
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height
   );
+ const {hoverStart, hoverEnd } = useDragHandler();
   const _selectedSlide = (_slide: PortfolioItemProps) => {
     dispatch(setSlide(_slide));
-    if (isSlider === true) {
-      dispatch(sliderChange(false));
-    }
+    hoverEnd();
   };
   
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
-  };
-  const hoverStart = () => {
-    dispatch(sliderChange(true));
-  };
-  const hoverEnd = () => {
-    dispatch(sliderChange(false));
   };
 
   const clickHandler = (index: number, slide: PortfolioItemProps) => {

@@ -89,7 +89,6 @@ const PhoneFrame = ({ screenImage, children }: PhoneFrameProps) => {
           width={295}
           height={600}
           quality={100}
-          loading="lazy"
           src="/phone.svg"
           alt="Phone Frame"
           style={{

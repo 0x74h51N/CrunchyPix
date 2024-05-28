@@ -7,30 +7,18 @@ import rehypeRaw from "rehype-raw";
 import CustomLink from "../CustomLink";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/utils/motion";
-import { RootState } from "@/store";
-import { clickableChange } from "@/store/redux/isClickable";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { setCookieConsent } from "@/store/redux/cookieConsent";
 import { useTranslation } from "@/hooks/useTranslation";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
 
 const CookieConsent = () => {
   const { t } = useTranslation("index");
   const oneYearInSeconds = 365 * 24 * 60 * 60;
   const [showConsent, setShowConsent] = useState(true);
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
+
   const dispatch = useDispatch();
-  const handleMouseEnter = () => {
-    if (isClickable == false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
-  };
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const handleAccept = () => {
     setCookie("cookiesConsent", "true", {
       path: "/",
@@ -40,16 +28,12 @@ const CookieConsent = () => {
     });
     dispatch(setCookieConsent(true));
     setShowConsent(true);
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
+    handleMouseLeave();
   };
 
   const handleReject = () => {
     setShowConsent(true);
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
+    handleMouseLeave();
   };
 
   useEffect(() => {

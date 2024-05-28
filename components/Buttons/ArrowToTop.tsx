@@ -1,37 +1,20 @@
 "use client";
-import { RootState } from "@/store";
-import { clickableChange } from "@/store/redux/isClickable";
 import { slideIn } from "@/utils/motion";
 import { scrollToTop } from "@/utils/scrollToSection";
 import { motion } from "framer-motion";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ArrowSVG from "./ArrowSVG";
 import { setScrollPosition } from "@/store/redux/scrollSlice";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
 
 export const ArrowToTop = () => {
   const dispatch = useDispatch();
   const [isArrowVisible, setArrowVisible] = useState(false);
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
-
-  const handleMouseEnter = () => {
-    if (!isClickable) {
-      dispatch(clickableChange(true));
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (isClickable) {
-      dispatch(clickableChange(false));
-    }
-  };
+  const { handleMouseEnter, handleMouseLeave }=useClickableHandlers();
 
   const handleButtonClick = () => {
-    if (isClickable) {
-      dispatch(clickableChange(false));
-    }
+    handleMouseLeave();
     scrollToTop(1500);
     setTimeout(() => {
       setArrowVisible(false);
