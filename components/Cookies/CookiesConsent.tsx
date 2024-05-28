@@ -14,7 +14,7 @@ import { setCookieConsent } from "@/store/redux/cookieConsent";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const CookieConsent = () => {
-  const { t } = useTranslation(["index"]);
+  const { t } = useTranslation("index");
   const oneYearInSeconds = 365 * 24 * 60 * 60;
   const [showConsent, setShowConsent] = useState(true);
   const isClickable = useSelector(
