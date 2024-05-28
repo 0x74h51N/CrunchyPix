@@ -40,7 +40,6 @@
     "redux": "^4.2.1",
     "rehype-raw": "^7.0.0",
     "remark-breaks": "^4.0.0",
-    "sharp": "^0.33.4",
     "swiper": "^11.0.5"
   },
   "devDependencies": {

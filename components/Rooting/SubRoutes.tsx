@@ -1,6 +1,6 @@
 import useClickableHandlers from "@/hooks/useClickableHandlers";
-import { useTranslation } from "@/hooks/useTranslation";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const SubRoutes = ({childPage, mainPage }:{childPage:string, mainPage:string}) => {
     const { t } = useTranslation(["index","portfolio"]);
