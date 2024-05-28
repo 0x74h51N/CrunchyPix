@@ -2,11 +2,11 @@ import { Links } from "@/constants";
 import Link from "next/link";
 import React, { useEffect, useRef } from "react";
 import BurgerButton from "../Buttons/BurgerButton";
-import { useTranslation } from  '../../i18n/client';
 import LanguageMenu from "./LanguageMenu";
 import { RootState } from "@/store";
 import { useDispatch, useSelector } from "react-redux";
 import { mobileMenuChange } from "@/store/redux/isMobileMenu";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const MobileMenu = () => {
   const dispatch = useDispatch();

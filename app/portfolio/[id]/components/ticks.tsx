@@ -1,4 +1,4 @@
-import  { useTranslation } from "@/i18n/client";
+import { useTranslation } from "react-i18next";
 import { LuCheckCircle } from "react-icons/lu";
 
 const Ticks = ({ ticks }: { ticks: string[] }) => {

@@ -2,7 +2,7 @@
 import { slideIn, staggerContainer, polygonIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { generateSpans } from "../../GenerateSpans";
-import { useTranslation } from "@/i18n/client";
+import { useTranslation } from "@/hooks/useTranslation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { SocialIcons } from "../../SocialIcons";

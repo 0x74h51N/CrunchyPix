@@ -6,12 +6,6 @@ export const phoneSlides = [
     description: "",
   },
   {
-    imageUrlH: "/PhoneSlides/aboutMeH.png",
-    imageUrlV: "/PhoneSlides/aboutMeV.png",
-    title: "About Me",
-    description: "",
-  },
-  {
     imageUrlH: "/PhoneSlides/portfolioH.jpg",
     imageUrlV: "/PhoneSlides/portfolioV.jpg",
     title: "Portfolio",

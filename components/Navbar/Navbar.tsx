@@ -4,7 +4,6 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import MobileMenu from "./MobileMenu";
 import LanguageMenu from "./LanguageMenu";
-import { useTranslation } from  '@/i18n/client';
 import { useSelector, useDispatch } from "react-redux";
 import { mobileChange } from "@/store/redux/isMobile";
 import { RootState } from "@/store";
@@ -15,6 +14,7 @@ import { navbarChange } from "@/store/redux/navbarChange";
 import { mobileMenuChange } from "@/store/redux/isMobileMenu";
 import { clickableChange } from "@/store/redux/isClickable";
 import CrunchyLogo from "./CrunchyLogo";
+import { useTranslation } from "@/hooks/useTranslation";
 
 export const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);

@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/store";
-import { useTranslation } from "@/i18n/client";
+import { useTranslation } from "react-i18next";
 import { fadeIn, polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { memo, useEffect } from "react";

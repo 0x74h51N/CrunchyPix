@@ -1,8 +1,7 @@
 import { RootState } from "@/store";
-import  { useTranslation } from "@/i18n/client";
+import { useTranslation } from "react-i18next";
 import { slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +9,7 @@ import { FaAnglesRight } from "react-icons/fa6";
 import { clickableChange } from "@/store/redux/isClickable";
 import { PortfolioItemProps } from "@/app/common.types";
 import { sliderChange } from "@/store/redux/isSlider";
+import { CldImage } from "next-cloudinary";
 
 const areEqual = (
   prevProps: PortfolioItemInterface,
@@ -95,12 +95,13 @@ const PortfolioItem = memo(
             height: isMobile ? mobileHeight : originalHeight,
           }}
         >
-          <Image
+          <CldImage
             src={image}
             alt={imageAlt}
-            quality={100}
-            width={isMobile ? 1000 : 1500}
-            height={isMobile ? 800 : 1500}
+            quality="auto"
+            fetchPriority="high"
+            width={isMobile ? 500 : 900}
+            height={isMobile ? 500 : 900}
             className="object-cover object-center w-full h-full rounded-xl"
           />
 

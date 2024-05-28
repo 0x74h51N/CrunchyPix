@@ -1,10 +1,10 @@
 import { Policy } from "@/app/common.types";
 import React, { memo } from "react";
-import { useTranslation } from "@/i18n/client";
 import ReactMarkdown from "react-markdown";
 import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
 import CustomLink from "@/components/CustomLink";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const PolicyCreator = memo(({ data }: { data: Policy[] }) => {
   const { t } = useTranslation("policies");

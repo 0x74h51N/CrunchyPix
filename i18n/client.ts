@@ -28,20 +28,13 @@ i18next
 
 export default i18next;
 
-function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
+export function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
   useEffect(() => {
     if (!lng || i18n.resolvedLanguage === lng) return;
     i18n.changeLanguage(lng);
   }, [lng, i18n]);
 }
 
-export function useTranslation(ns: string) {
-  const lng = getLocale();
-  const translator = useTransAlias(ns);
-  const { i18n } = translator;
-  useCustomTranslationImplem(i18n, lng);
-  return translator;
-}
 
 export function getLocale(): Locales {
   const storedLanguage = getCookie(NEXT_LOCALE) as string;

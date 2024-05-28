@@ -7,13 +7,13 @@ import Label from "../../Labels";
 import { PortfolioItemProps } from "@/app/common.types";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlide } from "@/store/redux/selectedSlide";
-import Image from "next/image";
 import { RootState } from "@/store";
-import { useTranslation }  from "@/i18n/client";
+import { useTranslation } from "react-i18next";
 import { memo, useState } from "react";
 import IconButton from "@/components/Buttons/IconButton";
 import { sliderChange } from "@/store/redux/isSlider";
 import { motion } from "framer-motion";
+import { CldImage } from "next-cloudinary";
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
@@ -97,14 +97,14 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                   } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
                   onClick={()=>clickHandler(index, slide)}
                 >
-                  <Image
-                    loading="lazy"
+                  <CldImage
                     src={slide.slideImage || ""}
                     alt={slide.imageAlt || ""}
                     width="1000"
                     height="1000"
                     className="object-cover w-full h-full"
-                    quality={100}
+                    quality="auto"
+                    fetchPriority="auto"
                   />
                   <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                     <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>

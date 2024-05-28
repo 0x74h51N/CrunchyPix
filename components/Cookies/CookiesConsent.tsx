@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import breaks from "remark-breaks";
-import { useTranslation } from "react-i18next";
 import { hasCookie, setCookie } from "cookies-next";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -12,6 +11,7 @@ import { RootState } from "@/store";
 import { clickableChange } from "@/store/redux/isClickable";
 import { useSelector, useDispatch } from "react-redux";
 import { setCookieConsent } from "@/store/redux/cookieConsent";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const CookieConsent = () => {
   const { t } = useTranslation(["index"]);

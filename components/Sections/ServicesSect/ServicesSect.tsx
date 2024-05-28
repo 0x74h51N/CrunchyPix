@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { generateSpans } from "@/components/GenerateSpans";
 import { RootState } from "@/store";
 import { polygonIn, slideIn } from "@/utils/motion";
-import { useTranslation } from "@/i18n/client";;
+import { useTranslation } from "@/hooks/useTranslation";
 import { useSelector, useDispatch } from "react-redux";
 import { servicesSectCards } from "@/constants/servicesSectCards";
 import { sliderChange } from "@/store/redux/isSlider";

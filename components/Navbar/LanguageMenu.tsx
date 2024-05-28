@@ -1,6 +1,6 @@
 "use client";
 import { RootState } from "@/store";
-import i18n, { getLocale } from "@/i18n/client";
+import i18n  from "@/i18n/client";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { DE, TR, GB } from "country-flag-icons/react/3x2";

@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { generateSpans } from "@/components/GenerateSpans";
 import { slideIn } from "@/utils/motion";
-import { useTranslation } from "@/i18n/client";;
+import { useTranslation } from "@/hooks/useTranslation";
 import { portfolioPageItems } from "@/constants/portfolioItems";
 import dynamic from "next/dynamic";
 import CarouselSlider from "@/components/Slider/Portfolio/CarouselSlider";

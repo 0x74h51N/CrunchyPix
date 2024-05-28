@@ -6,7 +6,7 @@ import ProjectSlide from "./ProjectSlide";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { sliderChange } from "@/store/redux/isSlider";
-import { useTranslation } from '@/i18n/client';
+import { useTranslation } from "react-i18next";
 
 const OtherProjects = () => {
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);

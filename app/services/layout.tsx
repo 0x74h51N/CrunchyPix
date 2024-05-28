@@ -1,4 +1,3 @@
-import Rooting from "@/components/Rooting";
 import { generatePageMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
 

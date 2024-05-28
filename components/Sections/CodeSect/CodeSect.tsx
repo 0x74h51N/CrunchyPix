@@ -5,12 +5,12 @@ import { generateSpans } from "@/components/GenerateSpans";
 import { textVariant, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { RootState } from "@/store";
-import { useTranslation } from  '@/i18n/client';
 import { useSelector, useDispatch } from "react-redux";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { codeString } from "@/constants/codeString";
 import { scrollState } from "@/store/redux/isScrollEnabled";
+import { useTranslation } from "react-i18next";
 
 const CodeSect = () => {
   const { t, i18n } = useTranslation("home");
