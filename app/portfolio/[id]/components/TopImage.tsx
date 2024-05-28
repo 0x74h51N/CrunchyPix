@@ -36,7 +36,7 @@ const TopImage = ({
           ? "linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)"
           : "linear-gradient(to bottom right,  #171717, #334155)",
       }}
-    >  {blurUrl!=="" && 
+    >  {blurUrl  && 
         <CldImage
           fill
           sizes="auto"
