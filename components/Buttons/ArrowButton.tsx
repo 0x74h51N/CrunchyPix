@@ -1,9 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { clickableChange } from "@/store/redux/isClickable";
 import { scrollToSection } from "@/utils/scrollToSection";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
 
 interface ArrowButtonProps {
   index?: number;
@@ -20,24 +18,12 @@ export const ArrowButton = ({
   duration = 0,
   sectionRefs,
 }: ArrowButtonProps) => {
-  const dispatch = useDispatch();
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
-  const handleMouseEnter = () => {
-    if (isClickable == false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
-  };
+const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const handleButtonClick = () => {
     if (index !== undefined) {
       scrollToSection(index, duration, sectionRefs);
     }
+    handleMouseLeave();
   };
 
   return (

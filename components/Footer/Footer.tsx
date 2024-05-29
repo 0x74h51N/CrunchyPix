@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { useTranslation } from '../../i18n/client';
 import { motion } from "framer-motion";
 import { slideIn, staggerContainer } from "@/utils/motion";
 import { footerIcons } from "@/constants/socialIcons";
@@ -9,6 +8,7 @@ import { Icon } from "@/app/common.types";
 import { footerLinks } from "@/constants";
 import FooterColumn from "./FooterColumn";
 import Contact from "../Contact";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const Footer = () => {
   const { t } = useTranslation("index");

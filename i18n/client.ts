@@ -1,10 +1,10 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import i18next, { i18n } from 'i18next';
-import { initReactI18next, useTranslation as useTransAlias } from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 import { FALLBACK_LOCALE, Locales, NEXT_LOCALE, getOptions, supportedLocales } from './settings';
 import resourcesToBackend from './resourcesToBackend';
-import useSWR from 'swr';
+import { getCookie } from 'cookies-next';
 
 const runsOnServerSide = typeof window === 'undefined';
 
@@ -28,37 +28,14 @@ i18next
 
 export default i18next;
 
-function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
+export function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
   useEffect(() => {
     if (!lng || i18n.resolvedLanguage === lng) return;
     i18n.changeLanguage(lng);
   }, [lng, i18n]);
 }
 
-export function useTranslation(ns: string) {
-  const fetcher = async (url: string) => {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error('Failed to fetch locale');
-    }
-    return await response.json();
-  };
-
-  const { data, error } = useSWR('/api/locale', fetcher);
-  const [lng, setLng] = useState<Locales>();
-
-  useEffect(() => {
-    if (data) {
-      setLng(data.locale);
-    }
-  }, [data]);
-
-  if (error) {
-    console.error('Failed to fetch locale:', error);
-  }
-
-  const translator = useTransAlias(ns);
-  const { i18n } = translator;
-  useCustomTranslationImplem(i18n, lng ?? FALLBACK_LOCALE);
-  return translator;
+export function getLocale(): Locales {
+  const storedLanguage = getCookie(NEXT_LOCALE) as string;
+  return (storedLanguage as Locales) || FALLBACK_LOCALE;
 }

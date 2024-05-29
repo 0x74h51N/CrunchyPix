@@ -1,23 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
 import SvgAnimator from "../SvgAnimator";
-import { RootState } from "@/store";
-import { clickableChange } from "@/store/redux/isClickable";
+
 
 const CancelButton = () => {
-  const dispatch = useDispatch();
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
-  const handleMouseEnter = () => {
-    if (isClickable == false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
-  };
+const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

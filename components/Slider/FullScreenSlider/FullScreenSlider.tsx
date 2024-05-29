@@ -10,8 +10,7 @@ import { useTranslation } from "react-i18next";
 import SlideCreator from "./SlideCreator";
 import { slide } from "@/app/common.types";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
-import { sliderChange } from "@/store/redux/isSlider";
+import useDragHandler from "@/hooks/useDragHandler";
 
 interface FullScreenSlideProps {
   slides: slide[];
@@ -20,23 +19,18 @@ interface FullScreenSlideProps {
 
 const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const dispatch = useDispatch();
   const { t } = useTranslation(["translation"]);
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
   };
+ const {hoverStart, hoverEnd } = useDragHandler();
   useEffect(() => {
     const timeout = setTimeout(() => {
       setActiveIndex(0);
     }, 1000);
     return () => clearTimeout(timeout);
   }, []);
-  const hoverStart = () => {
-    dispatch(sliderChange(true));
-  };
-  const hoverEnd = () => {
-    dispatch(sliderChange(false));
-  };
+
   return (
     <motion.div
       className="w-full h-full flex flex-center justify-center "

@@ -1,11 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { slideIn, textVariant } from "@/utils/motion";
-import { useTranslation } from "@/i18n/client";;
+import { useTranslation } from "@/hooks/useTranslation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
-import Image from "next/image";
 import { generateSpans } from "@/components/GenerateSpans";
+import { CldImage } from "next-cloudinary";
 
 const IntroductionSect = () => {
   const { t } = useTranslation("home");
@@ -14,8 +14,8 @@ const IntroductionSect = () => {
  
   return (
     <div className="flex flex-row items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto p-24 max-md:px-1 max-md:py-18 bg-cool-gray-800 md:rounded-3xl gap-12 max-sm:flex-col max-lg:gap-6">
-      <Image
-        src="/headColor.png"
+      <CldImage
+        src="crunchypix/headColor.png"
         alt="Photo"
         quality={100}
         width={250}

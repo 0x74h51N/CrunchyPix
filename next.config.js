@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   images: {
-    domains: [],
+    domains: ["res.cloudinary.com"],
   },
   async redirects() {
     return [

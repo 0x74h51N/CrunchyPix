@@ -9,9 +9,9 @@ import { Suspense } from "react";
 import LoadingComponent from "@/components/Loading";
 import CustomCursor from "@/components/CustomCursor";
 import { ArrowToTop } from "@/components/Buttons/ArrowToTop";
-import Rooting from "@/components/Rooting";
+import AllRoutes from "@/components/RooteTitles/AllRoutes";
 import CookieConsent from "@/components/Cookies/CookiesConsent";
-import Cookies from "@/components/Cookies";
+import Cookies from "@/components/Cookies/Cookies";
 import PageTracker from "@/components/PageTracker";
 import { getLocale } from "@/i18n/server";
 import { generatePageMetadata } from "../lib/metadata";
@@ -37,7 +37,7 @@ export default function RootLayout({
               <CustomCursor />
               <CookieConsent />
               <Navbar />
-              <Rooting />
+              <AllRoutes />
               <Cookies />
               <main>{children}</main>
               <Footer />

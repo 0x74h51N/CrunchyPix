@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { Links } from "@/app/common.types";
-import { RootState } from "@/store";
-import { useSelector, useDispatch } from "react-redux";
-import { clickableChange } from "@/store/redux/isClickable";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
 
 interface FooterColumnProps {
   Links: Links[];
@@ -12,21 +10,9 @@ interface FooterColumnProps {
 
 const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
   const { t } = useTranslation(["index"]);
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
-  const dispatch = useDispatch();
+  const {handleMouseEnter, handleMouseLeave} =useClickableHandlers();
+
   
-  const handleMouseEnter = () => {
-    if (isClickable == false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
-  };
   return (
     <div className="footer_column">
       <ul
@@ -43,11 +29,7 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
                 ? "text-log-col"
                 : ""
             } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap`}
-            onClick={() => {
-              if (isClickable == true) {
-                dispatch(clickableChange(false));
-              }
-            }}
+            onClick={() => {handleMouseLeave}}
           >
             {t(link.text)}
             <span

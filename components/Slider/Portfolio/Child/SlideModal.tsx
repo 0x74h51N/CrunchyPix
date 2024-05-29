@@ -6,11 +6,11 @@ import IconButton from "@/components/Buttons/IconButton";
 import Label from "@/components/Labels";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import Image from "next/image";
 import Loading from "@/components/Loading";
 import Link from "next/link";
 import CancelButton from "@/components/Buttons/CancelButton";
 import { sliderChange } from "@/store/redux/isSlider";
+import { CldImage } from "next-cloudinary";
 
 const SlideModal = () => {
   const dispatch = useDispatch();
@@ -69,14 +69,14 @@ const SlideModal = () => {
               >
                 <CancelButton />
               </button>
-              <Image
+              <CldImage
                 priority
                 src={selectedSlide.slideImage || ""}
                 alt={selectedSlide.title || ""}
                 width={1800}
                 height={1800}
                 style={{ objectFit: isMobile ? "cover" : "contain", opacity: imageLoading? 0 : 100}}
-                quality={100}
+                quality="auto"
                 className="w-full h-full"
                 onLoad={() => {
                   setImageLoading(false);
