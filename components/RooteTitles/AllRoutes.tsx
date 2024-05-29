@@ -7,7 +7,7 @@ import { CldImage } from "next-cloudinary";
 import useBlurUrl from "@/hooks/useBlurUrl";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Rooting = () => {
+const AllRoutes = () => {
   const [mainPage, setMainPage] = useState("");
   const [childPage, setChildPage] = useState("");
 
@@ -81,4 +81,4 @@ const Rooting = () => {
   }
 };
 
-export default Rooting;
+export default AllRoutes;
