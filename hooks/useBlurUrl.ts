@@ -4,10 +4,10 @@ const useBlurUrl = (id: string) => {
   const [blurUrl, setBlurUrl] = useState(null);
 
   useEffect(() => {
-    if (!id) {
+    if (!id || id === "crunchypix/.jpg") {
       return;
-    }
-    async function fetchBlurUrl() {
+    } else {
+    const fetchBlurUrl = async () => {
       try {
         const res = await fetch(`/api/generate-blur-url?id=${id}`);
         const data = await res.json();
@@ -15,12 +15,9 @@ const useBlurUrl = (id: string) => {
       } catch (error) {
         console.error("Failed to fetch blur image URL:", error);
       }
-    }
-
-    if (id) {
-      setBlurUrl(null)
-      fetchBlurUrl();
-    }
+    };
+    setBlurUrl(null);
+    fetchBlurUrl();}
   }, [id]);
 
   return blurUrl;
