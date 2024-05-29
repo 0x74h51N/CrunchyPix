@@ -1,10 +1,10 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import i18next, { i18n } from 'i18next';
 import { initReactI18next, useTranslation as useTransAlias } from 'react-i18next';
 import { FALLBACK_LOCALE, Locales, NEXT_LOCALE, getOptions, supportedLocales } from './settings';
-import { getCookie } from 'cookies-next';
 import resourcesToBackend from './resourcesToBackend';
+import useSWR from 'swr';
 
 const runsOnServerSide = typeof window === 'undefined';
 
@@ -34,7 +34,6 @@ export function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
     i18n.changeLanguage(lng);
   }, [lng, i18n]);
 }
-
 
 export function getLocale(): Locales {
   const storedLanguage = getCookie(NEXT_LOCALE) as string;
