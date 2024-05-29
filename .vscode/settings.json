@@ -1,5 +1,14 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.inlineSuggest.showToolbar": "always"
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+  "editor.inlineSuggest.showToolbar": "always",
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true
+  },
+
+ 
 }

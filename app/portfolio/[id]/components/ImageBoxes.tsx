@@ -1,7 +1,7 @@
 import { RootState } from "@/store";
 import { fadeIn } from "@/utils/motion";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import { useSelector } from "react-redux";
 
 const ImageBoxes = ({
@@ -30,12 +30,13 @@ const ImageBoxes = ({
           key={index}
         >
           <div className="overflow-hidden flexCenter">
-            <Image
+            <CldImage
               width={1200}
               height={1200}
               src={image}
               alt={_id}
-              quality={100}
+              quality="auto"
+              fetchPriority="auto"
               key={index}
               className="flex max-w-[400px] w-full h-auto object-contain hover:scale-[1.4] transition-all duration-[5000ms] out-expo"
               style={{

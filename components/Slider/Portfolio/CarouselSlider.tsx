@@ -7,13 +7,13 @@ import Label from "../../Labels";
 import { PortfolioItemProps } from "@/app/common.types";
 import { useDispatch, useSelector } from "react-redux";
 import { setSlide } from "@/store/redux/selectedSlide";
-import Image from "next/image";
 import { RootState } from "@/store";
-import { useTranslation }  from "@/i18n/client";
+import { useTranslation } from "react-i18next";
 import { memo, useState } from "react";
 import IconButton from "@/components/Buttons/IconButton";
-import { sliderChange } from "@/store/redux/isSlider";
 import { motion } from "framer-motion";
+import { CldImage } from "next-cloudinary";
+import useDragHandler from "@/hooks/useDragHandler";
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
@@ -23,27 +23,19 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   });
   const dispatch = useDispatch();
   const { t } = useTranslation("portfolio");
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height
   );
+ const {hoverStart, hoverEnd } = useDragHandler();
   const _selectedSlide = (_slide: PortfolioItemProps) => {
     dispatch(setSlide(_slide));
-    if (isSlider === true) {
-      dispatch(sliderChange(false));
-    }
+    hoverEnd();
   };
   
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
-  };
-  const hoverStart = () => {
-    dispatch(sliderChange(true));
-  };
-  const hoverEnd = () => {
-    dispatch(sliderChange(false));
   };
 
   const clickHandler = (index: number, slide: PortfolioItemProps) => {
@@ -97,14 +89,14 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                   } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
                   onClick={()=>clickHandler(index, slide)}
                 >
-                  <Image
-                    loading="lazy"
+                  <CldImage
                     src={slide.slideImage || ""}
                     alt={slide.imageAlt || ""}
                     width="1000"
                     height="1000"
                     className="object-cover w-full h-full"
-                    quality={100}
+                    quality="auto"
+                    fetchPriority="auto"
                   />
                   <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                     <h2 className="text-lg font-bold">{t(`${slide.title}`)}</h2>

@@ -1,11 +1,12 @@
-import { Icon } from "@/app/common.types";
-import IconButton from "@/components/Buttons/IconButton";
-import { RootState } from "@/store";
-import { slideIn } from "@/utils/motion";
-import { motion } from "framer-motion";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { Icon } from '@/app/common.types'
+import IconButton from '@/components/Buttons/IconButton'
+import useBlurUrl from '@/hooks/useBlurUrl'
+import { RootState } from '@/store'
+import { slideIn } from '@/utils/motion'
+import { motion } from 'framer-motion'
+import { CldImage } from 'next-cloudinary'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 const TopImage = ({
   imageTop,
@@ -13,63 +14,54 @@ const TopImage = ({
   imageAlt,
   icons,
 }: {
-  imageTop: string;
-  imageTopMobile?: string;
-  imageAlt: string;
-  icons?: Icon[];
+  imageTop: string
+  imageTopMobile?: string
+  imageAlt: string
+  icons?: Icon[]
 }) => {
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width
-  );
-  const [blurDataURL, setBlurDataURL] = useState<string>("");
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    async function fetchBlurDataURL() {
-        const response = await fetch(`/api/blur-placeholder?image=${encodeURIComponent(screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop)}`);
-        const data = await response.json();
-        setBlurDataURL(data.blurDataURL);
-    }
-    fetchBlurDataURL();
-  }, [imageTop, imageTopMobile, screenWidth]);
+  const screenWidth = useSelector((state: RootState) => state.screenWidth.width)
+  const [loading, setLoading] = useState(true)
+  const blurUrl = useBlurUrl(
+    screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop,
+  )
 
   return (
     <div
       className={`relative w-full h-auto overflow-hidden ${
-        imageTop.includes("catalog")
-          ? "lg:min-h-[870px] md:min-h-[700px]"
-          : "md:min-h-[700px]"
+        imageTop.includes('catalog')
+          ? 'lg:min-h-[870px] md:min-h-[700px]'
+          : 'md:min-h-[700px]'
       } min-h-[600px]`}
       style={{
-        backgroundImage: imageTop.includes("kyk")
-          ? "linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)"
-          : "linear-gradient(to bottom right,  #171717, #334155)",
+        backgroundImage: imageTop.includes('kyk')
+          ? 'linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)'
+          : 'linear-gradient(to bottom right,  #171717, #334155)',
       }}
     >
-      {blurDataURL && (
-        <Image
+      <CldImage
+        fill
+        sizes="auto"
+        fetchPriority="auto"
+        quality={100}
+        src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
+        alt={imageAlt}
+        onLoad={() => setLoading(false)}
+        className={`w-full h-full object-cover transition-opacity ease-in-out duration-1500 opacity:${loading ? 0 : 100}`}
+      />
+      {blurUrl && loading && (
+        <CldImage
           fill
           sizes="auto"
+          fetchPriority="auto"
           quality={100}
-          src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
-          alt={imageAlt}
-          className={`w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-          placeholder="blur"
-          blurDataURL={blurDataURL}
-          loading="eager"
-          onLoad={() => setIsLoaded(true)}
-        />
-      )}
-      {!isLoaded && blurDataURL && (
-        <img
-          src={blurDataURL}
-          alt="Blur placeholder"
-          className="absolute top-0 left-0 w-full h-full object-cover"
+          src={blurUrl}
+          alt={`${imageAlt}-blur`}
+          className={`w-full h-full object-cover`}
         />
       )}
       {icons && (
         <motion.div
-          variants={slideIn("right", "spring", 2, 1)}
+          variants={slideIn('right', 'spring', 2, 1)}
           className="absolute flex flex-row gap-4 bottom-5 py-3 right-0 pr-6 pl-4 bg-black bg-opacity-50 rounded-l-lg"
         >
           {icons.map((icon, iconIndex) => (
@@ -83,7 +75,7 @@ const TopImage = ({
         </motion.div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default TopImage;
+export default TopImage

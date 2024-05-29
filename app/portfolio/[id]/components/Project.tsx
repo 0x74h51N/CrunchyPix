@@ -1,10 +1,10 @@
 "use client";
 import { RootState } from "@/store";
-import { useTranslation } from "@/i18n/client";
+import { useTranslation } from "react-i18next";
 import { fadeIn, polygonIn, slideIn, textVariant } from "@/utils/motion";
 import { motion } from "framer-motion";
 import { memo, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Markdown from "react-markdown";
 import breaks from "remark-breaks";
 import rehypeRaw from "rehype-raw";
@@ -16,21 +16,15 @@ import ProjectInfo from "./ProjectInfo";
 import CatalogueViewer from "./CatalogueViewer/CatalogueViewer";
 import CustomLink from "@/components/CustomLink";
 import ImageBoxes from "./ImageBoxes";
-import { sliderChange } from "@/store/redux/isSlider";
-import { clickableChange } from "@/store/redux/isClickable";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
+import useDragHandler from "@/hooks/useDragHandler";
 
 const Project = memo(({ Item }: { Item: PortfolioItemProps }) => {
-  const dispatch = useDispatch();
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
+  const { hoverEnd } = useDragHandler();
+  const { handleMouseLeave } = useClickableHandlers();
   useEffect(() => {
-    if (isSlider) {
-      dispatch(sliderChange(false));
-    } else if (isClickable) {
-      dispatch(clickableChange(false));
-    }
+    hoverEnd();
+    handleMouseLeave();
   }, []);
   const { t } = useTranslation("portfolio");
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);

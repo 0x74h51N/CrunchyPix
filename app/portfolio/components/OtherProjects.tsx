@@ -3,24 +3,12 @@ import { portfolioPageItems } from "@/constants/portfolioItems";
 import { polygonIn, slideIn } from "@/utils/motion";
 import { motion } from "framer-motion";
 import ProjectSlide from "./ProjectSlide";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { sliderChange } from "@/store/redux/isSlider";
-import { useTranslation } from '@/i18n/client';
+import { useTranslation } from "react-i18next";
+import useDragHandler from "@/hooks/useDragHandler";
 
 const OtherProjects = () => {
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
-  const dispatch = useDispatch();
   const { t } = useTranslation("portfolio");
-
-  const hoverStart = () => {
-    if (isSlider === false) {
-      dispatch(sliderChange(true));
-    }
-  };
-  const hoverEnd = () => {
-    dispatch(sliderChange(false));
-  };
+  const { hoverStart, hoverEnd } = useDragHandler();
     return (
       <div className="flexCenter w-auto h-auto min-w-[100svw] overflow-hidden">
         <motion.div

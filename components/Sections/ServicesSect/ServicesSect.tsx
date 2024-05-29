@@ -6,21 +6,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { generateSpans } from "@/components/GenerateSpans";
 import { RootState } from "@/store";
 import { polygonIn, slideIn } from "@/utils/motion";
-import { useTranslation } from "@/i18n/client";;
-import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "@/hooks/useTranslation";
+import { useSelector } from "react-redux";
 import { servicesSectCards } from "@/constants/servicesSectCards";
-import { sliderChange } from "@/store/redux/isSlider";
-import { clickableChange } from "@/store/redux/isClickable";
+import useClickableHandlers from "@/hooks/useClickableHandlers";
+import useDragHandler from "@/hooks/useDragHandler";
 
 const ServicesSect = () => {
   const { t } = useTranslation("home");
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const dispatch = useDispatch();
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
-  );
-
+  const { hoverStart, hoverEnd } = useDragHandler();
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const pagination = {
     el: ".custom-pagy",
     clickable: true,
@@ -28,23 +25,6 @@ const ServicesSect = () => {
   const navigation = {
     nextEl: ".swiper-button-next-cus",
     prevEl: ".swiper-button-prev-cus",
-  };
-
-  const hoverStart = () => {
-    dispatch(sliderChange(true));
-  };
-  const hoverEnd = () => {
-    dispatch(sliderChange(false));
-  };
-  const handleMouseEnter = () => {
-    if (isClickable == false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
   };
 
   return (

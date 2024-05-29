@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { motion } from "framer-motion";
 import { slideIn, textVariant } from "@/utils/motion";
-import { useTranslation } from "@/i18n/client";
+import { useTranslation } from "react-i18next";
 import { generateSpans } from "@/components/GenerateSpans";
 import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
 import { phoneSlides } from "@/constants/phoneSlides";

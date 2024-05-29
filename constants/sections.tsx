@@ -12,8 +12,8 @@ export const sectionsData: SectionData[] = [
     name: "Landing Section",
     children: <LandingSect />,
     parallax: true,
-    background: "/galata_0.png",
-    topImage: "/galata_1.png",
+    background: "/crunchypix/galata_0_fc6x5j.png",
+    topImage: "/crunchypix/galata_1_upe9yo.png",
     className: "h-auto min-h-[100svh] w-[100svw]",
   },
   {

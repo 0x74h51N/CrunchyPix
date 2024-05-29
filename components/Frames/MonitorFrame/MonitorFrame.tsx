@@ -1,4 +1,5 @@
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
+
 
 interface MonitorFrameProps {
   screenImage?: string;
@@ -8,12 +9,12 @@ interface MonitorFrameProps {
 const MonitorFrame = ({ screenImage, children }: MonitorFrameProps) => {
   return (
     <div className="relative flex flex-wrap 2xl:w-[850px] 2xl:min-h-[640px] xl:w-[800px] xl:min-h-[600px] lg:w-[750px] lg:min-h-[550px]  md:w-[550px] md:min-h-[435px]  w-[350px] min-h-[300px] overflow-hidden hover:scale-[1.15] transition-all duration-[2500ms] in-expo mt-10">
-      <Image
+      <CldImage
         width={1600}
         height={1600}
         quality={100}
         loading="lazy"
-        src="/monitor.png"
+        src="crunchypix/monitor.png"
         alt="Monitor Frame"
         className="object-fit absolute top-0 left-0 z-20 pointer-events-none "
       />

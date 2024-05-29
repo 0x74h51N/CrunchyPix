@@ -2,11 +2,11 @@
 import { createRef, useEffect, useRef, useState } from "react";
 import { SectionData } from "@/app/common.types";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Image from "next/image";
 import { handleScroll } from "@/utils/handleScroll";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store";
 import { ArrowButton } from "./Buttons/ArrowButton";
+import { CldImage } from "next-cloudinary";
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const sectionRefs = useRef(sectionsData.map(() => createRef<HTMLDivElement>()));
@@ -17,7 +17,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const y = useTransform(scrollY, [0, 2000], [0, -900]);
   const scrollPosition = useSelector((state: RootState) => state.scrollSlice.scrollPosition);
   const [scrollEnabled, setScrollState] = useState(true);
-  
+
   useEffect(() => {
     sectionRefs.current.forEach((ref, index) => {
       const sectionTop = ref.current?.offsetTop ?? 0;
@@ -66,24 +66,24 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
           `}
         >
           {section.background && (
-            <Image
-              src={section.background}
-              alt={section.background}
-              quality={100}
-              width={2000}
-              height={2000}
-              priority
-              style={{
-                objectFit: "cover",
-                objectPosition: "center",
-                width: "100%",
-                height: "100%",
-                position: "absolute",
-                top: 0,
-                left: 0,
-                zIndex: 0,
-              }}
-            />
+             <CldImage
+             src={section.background}
+             alt={section.background}
+             width={2500}
+             height={2500}
+             fetchPriority="high"
+             priority
+             style={{
+               objectFit: "cover",
+               objectPosition: "center",
+               width: "100%",
+               height: "100%",
+               position: "absolute",
+               top: 0,
+               left: 0,
+               zIndex: 0,
+             }}
+           />
           )}
           {section.children}
           {section.topImage && (
@@ -104,12 +104,12 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
               key={section.topImage}
               className="relative"
             >
-              <Image
+              <CldImage
                 src={section.topImage}
                 alt={section.topImage}
-                quality={100}
-                width={2000}
-                height={2000}
+                width={1500}
+                height={1500}
+                fetchPriority="high"
                 priority
                 style={{
                   width: "100%",

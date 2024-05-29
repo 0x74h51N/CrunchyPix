@@ -1,6 +1,6 @@
 import { ProjectInfoType } from "@/app/common.types";
 import LogoImage from "@/components/LogoImage";
-import  { useTranslation } from "@/i18n/client";
+import { useTranslation } from "react-i18next";
 import Image from "next/image";
 
 const ProjectInfo = ({ ProjectInfo }: { ProjectInfo: ProjectInfoType }) => {
