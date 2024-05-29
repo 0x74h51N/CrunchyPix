@@ -39,7 +39,7 @@ const Rooting = () => {
     };
   }, [pathname, setMainPage, setChildPage]);
 
-  const blurUrl = useBlurUrl(`crunchypix/${mainPage}.jpg`)
+  const blurUrl = mainPage !== "" && useBlurUrl(`crunchypix/${mainPage}.jpg`)
   if (pathname === "" || pathname === "home" || pathname === "/" || mainPage==="") {
     return null;
   } else {

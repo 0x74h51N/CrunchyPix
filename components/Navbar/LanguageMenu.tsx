@@ -63,9 +63,9 @@ const LanguageMenu = () => {
     }
   };
   const languages = [
-    { code: 'en', label: 'EN', Component: GB, title: 'United Kingdom' },
-    { code: 'de', label: 'DE', Component: DE, title: 'Germany' },
-    { code: 'tr', label: 'TR', Component: TR, title: 'Turkey' },
+    { label: 'EN', Component: GB},
+    { label: 'DE', Component: DE},
+    { label: 'TR', Component: TR},
   ];
   return (
     <div
@@ -102,7 +102,7 @@ const LanguageMenu = () => {
             ? `${isMobile || isTablet ? "mt-6" : "mt-12"} flex justify-center`
             : isMobile || isTablet
             ? `mt-6 flex justify-center`
-            : "mt-[98px]"
+            : "mt-[96px]"
         } 
         `}
       >
@@ -110,12 +110,12 @@ const LanguageMenu = () => {
           <ul className="ul">
              {languages.map((language) => (
               <li
-                key={language.code}
-                className="hover:text-log-col transition-all duration-300 ease-in-out cursor-none"
-                onClick={() => handleChange(language.code)}
+                key={language.label.toLowerCase()}
+                className="hover:text-log-col transition-text duration-300 ease-in-out cursor-none"
+                onClick={() => handleChange(language.label.toLowerCase())}
               >
                 <div className="flex items-center gap-1">
-                  <language.Component title={language.title} />
+                  <language.Component />
                   <span>{language.label}</span>
                 </div>
               </li>
