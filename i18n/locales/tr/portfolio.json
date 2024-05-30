@@ -26,7 +26,7 @@
   "items": [
     {
       "title": "CrunchyPix",
-      "projectType": "Web Sayfası Tasarımı",
+      "projectType": "Web Sayfası Geliştirme",
       "slideDescription": "Websitesi ve ön yüz becerilerimi sergilemek amacıyla başlatıldı. Dinamik bileşenler ve sayfalar geliştirildi. Özellikler arasında uluslararası dil seçenekleri ve animasyon geçişleri bulunmaktadır. Kod detayları için GitHub'u ziyaret edebilirsiniz.",
       "title2": "Bu Sitenin Yaratılışı",
       "techDescription": "CrunchyPix'in şekillendirilmesinde, cutting-edge teknolojileri kullanarak, Next.js (14) ve TypeScript'i birincil araçlarımız olarak benimsedik. React, kolektif vizyonumuzu hayata geçirmek için gereken esnekliği ve gücü sağladı. Küresel ölçekte sorunsuz bir kullanıcı deneyimi sağlamak için i18n entegrasyonu ve özel dil tercüme bileşenleri kullanıldı. Redux ile state yönetimine derinlemesine inildi ve dil tercihleri, özel imleç etkileşimleri ve cihaz duyarlılığı gibi karmaşık detaylar bu araç ile yönetildi. Framer motion yeteneklerinden faydalanarak tasarlanan büyüleyici animasyon geçişleri, CrunchyPix'e hayat kattı. Ürün veya hizmetleri sergileyen her alt sayfa dinamik olarak oluşturuldu.\n&nbsp;\nTaahhüdümüzü, GitHub gibi versiyon kontrolü, Dependabot, CodeQL ve Vercel gibi iş akışımızı güçlendiren ek araçlar ile güvence altına alıyor ve geliştiriyoruz. Projenin kaynak koduna github üzerinden erişebilir ve daha ayrıntılı olarak inceleyebilirsiniz.",
@@ -37,9 +37,9 @@
         "Responsive & Adaptif",
         "Modüler Bileşenler",
         "Dinamik Yönlendirme",
-        "SEO Optimizasyonu",
-        "UX/UI Tasarımı & Optimizasyon",
-        "Performans Optimizasyonu",
+        "Multi-dil SEO Optimizasyonu",
+        "Cloudinary Image & Optimizasyon",
+        "Serversız API",
         "Çok Tarayıcı Uyumluluğu"
       ],
       "client": "Tahsin Ö.",

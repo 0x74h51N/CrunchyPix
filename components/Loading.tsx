@@ -1,6 +1,6 @@
-"use client";
-import React from "react";
-import { Hourglass } from "react-loader-spinner";
+'use client'
+import React from 'react'
+import { Hourglass } from 'react-loader-spinner'
 
 const LoadingComponent = () => {
   return (
@@ -13,12 +13,12 @@ const LoadingComponent = () => {
           ariaLabel="hourglass-loading"
           wrapperStyle={{}}
           wrapperClass=""
-          colors={["white", "#CFCFCF"]}
+          colors={['white', '#CFCFCF']}
         />
         <p className=" text-stone-200">Loading...</p>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default LoadingComponent;
+export default LoadingComponent
