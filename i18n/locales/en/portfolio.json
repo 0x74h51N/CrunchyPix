@@ -1,9 +1,9 @@
 {
   "meta": {
-  "title": "Portfolio",
-  "description": "Explore the portfolio of Tahsin Önemli, a passionate Front-End Developer specializing in modern web technologies and creative solutions. Discover projects showcasing expertise in TypeScript, JavaScript, Next.js, and React.",
-  "keywords": "portfolio, front-end development, TypeScript, JavaScript, Next.js, React, web development"
-},
+    "title": "Portfolio",
+    "description": "Explore the portfolio of Tahsin Önemli, a passionate Front-End Developer specializing in modern web technologies and creative solutions. Discover projects showcasing expertise in TypeScript, JavaScript, Next.js, and React.",
+    "keywords": "portfolio, front-end development, TypeScript, JavaScript, Next.js, React, web development"
+  },
   "page": {
     "title": "Portfolio",
     "details": "Project Details",
@@ -26,20 +26,20 @@
   "items": [
     {
       "title": "CrunchyPix",
-      "projectType": "Web Page Desing",
+      "projectType": "Web Page Development",
       "slideDescription": "Initiated to showcase my website and frontend skills. Developed dynamic components and pages with features including international language options and animation transitions.",
       "title2": "Creation of This Web Page",
-      "techDescription": "In crafting CrunchyPix, we harnessed cutting-edge technologies, utilizing Next.js (v14) and TypeScript as our primary tools. React, being the foundational library, provided the flexibility and robustness required to bring our collective vision to life. To ensure a seamless user experience worldwide, we integrated i18n and employed custom language translation components. Delving into state management, Redux orchestrated intricate details such as language preferences, custom cursor interactions, and device responsiveness. Enchanting animation transitions, crafted with motion.div and meticulously developed custom variants, breathe life into CrunchyPix. Each subpage, whether showcasing products or services, is dynamically generated, offering a responsive environment.\n&nbsp;\nOur commitment extends to version control and collaboration tools like GitHub, where we store and manage project files. Dependabot, CodeQL, and Vercel are additional tools enhancing our development workflow. Feel free to access the project's source code on GitHub for a more detailed exploration.",
+      "techDescription": "In crafting CrunchyPix, I harnessed cutting-edge technologies, utilizing Next.js (v14) and TypeScript as primary tools. React provided the flexibility and robustness required to bring the vision to life. To ensure a seamless user experience worldwide, I integrated i18n and employed custom language translation components. Using Redux for state management, I handled intricate details such as language preferences, custom cursor interactions, and device responsiveness. Enchanting animation transitions, crafted with motion.div and meticulously developed custom variants, breathe life into CrunchyPix. Each subpage, whether showcasing products or services, is dynamically generated, offering a responsive environment.\n&nbsp;\nMy commitment extends to using version control and collaboration tools like GitHub, where I store and manage project files. Dependabot, CodeQL, and Vercel are additional tools enhancing the development workflow. Feel free to access the project's source code on GitHub for a more detailed exploration.",
       "description": "CrunchyPix is not just a personal website; it's a testament to the power of minimal and impactful design.",
-      "description2": "It demonstrates how a website can be both long-lasting and easily adaptable with modular, dynamic, and custom components. Leveraging the capabilities of Next.js and its compatible libraries, I showcased how to find the most up-to-date and effective solutions tailored to specific needs. The site's responsive and adaptive design ensures seamless user experiences across various devices, including mobile and tablet screens, maximizing user satisfaction with optimal solutions and bringing unique designs together. ",
+      "description2": "It demonstrates how a website can be both long-lasting and easily adaptable with modular, dynamic, and custom components. Leveraging the capabilities of Next.js and its compatible libraries, I showcased how to find the most up-to-date and effective solutions tailored to specific needs. The site's responsive and adaptive design ensures seamless user experiences across various devices, including mobile and tablet screens, maximizing user satisfaction with optimal solutions and bringing unique designs together.",
       "ticks": [
         "Branding & Design",
         "Responsive & Adaptive",
         "Modular Components",
-        "Dynamic Rooting",
-        "SEO Optimization",
-        "UX/UI Design & Optimization",
-        "Performance Optimization",
+        "Dynamic Routing",
+        "Multilanguage SEO Optimization",
+        "Cloudinary Image & Optimization",
+        "Serverless API",
         "Cross-Browser Compatibility"
       ],
       "client": "Tahsin Ö.",

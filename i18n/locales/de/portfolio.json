@@ -1,9 +1,9 @@
 {
   "meta": {
-  "title": "Portfolio",
-  "description": "Entdecken Sie das Portfolio von Tahsin Önemli, einem leidenschaftlichen Front-End-Entwickler, der sich auf moderne Webtechnologien und kreative Lösungen spezialisiert hat. Entdecken Sie Projekte, die Fachkenntnisse in TypeScript, JavaScript, Next.js und React zeigen.",
-  "keywords": "Portfolio, Front-End-Entwicklung, TypeScript, JavaScript, Next.js, React, Webentwicklung"
-},
+    "title": "Portfolio",
+    "description": "Entdecken Sie das Portfolio von Tahsin Önemli, einem leidenschaftlichen Front-End-Entwickler, der sich auf moderne Webtechnologien und kreative Lösungen spezialisiert hat. Entdecken Sie Projekte, die Fachkenntnisse in TypeScript, JavaScript, Next.js und React zeigen.",
+    "keywords": "Portfolio, Front-End-Entwicklung, TypeScript, JavaScript, Next.js, React, Webentwicklung"
+  },
   "page": {
     "title": "Portfolio",
     "details": "Projektdetails",
@@ -26,24 +26,24 @@
   "items": [
     {
       "title": "CrunchyPix",
-      "projectType": "Webseitendesign",
-      "slideDescription": "Initiiert, um meine Website und Frontend-Fähigkeiten zu präsentieren. Entwicklung von dynamischen Komponenten und Seiten mit Funktionen wie internationalen Sprachoptionen und Animationsübergängen.",
+      "projectType": "Webseitenerstellung",
+      "slideDescription": "Initiiert, um meine Website und Frontend-Fähigkeiten zu präsentieren. Entwickelte dynamische Komponenten und Seiten mit Funktionen wie internationalen Sprachoptionen und Animationstransitionen.",
       "title2": "Erstellung dieser Webseite",
-      "techDescription": "Bei der Gestaltung von CrunchyPix haben wir modernste Technologien genutzt und Next.js (v14) sowie TypeScript als unsere Hauptwerkzeuge verwendet. React, als die Grundbibliothek, bot die Flexibilität und Robustheit, um unsere gemeinsame Vision zum Leben zu erwecken. Um eine nahtlose Benutzererfahrung weltweit zu gewährleisten, haben wir i18n integriert und benutzerdefinierte Sprachübersetzungskomponenten verwendet. Bei der Auseinandersetzung mit der Zustandsverwaltung hat Redux komplexe Details wie Spracheinstellungen, benutzerdefinierte Cursor-Interaktionen und Geräteempfindlichkeit orchestriert. Bezaubernde Animationsübergänge, gestaltet mit motion.div und sorgfältig entwickelten benutzerdefinierten Varianten, hauchen CrunchyPix Leben ein. Jede Unterseite, ob Produkte oder Dienstleistungen präsentierend, wird dynamisch generiert und bietet eine ansprechende Umgebung.\n&nbsp;\nUnsere Verpflichtung erstreckt sich auf Versionskontrolle und Zusammenarbeitstools wie GitHub, wo wir Projektdateien speichern und verwalten. Dependabot, CodeQL und Vercel sind zusätzliche Tools, die unseren Entwicklungsworkflow verbessern. Greifen Sie gerne auf den Quellcode des Projekts auf GitHub zu, um eine detailliertere Erkundung durchzuführen.",
-      "description": "CrunchyPix ist nicht nur eine persönliche Website; es ist ein Zeugnis für die Kraft von minimalem und wirkungsvollem Design.",
-      "description2": "Es zeigt, wie eine Website mit modularen, dynamischen und benutzerdefinierten Komponenten langfristig und leicht anpassbar sein kann. Unter Nutzung der Möglichkeiten von Next.js und seiner kompatiblen Bibliotheken habe ich gezeigt, wie man die aktuellsten und effektivsten Lösungen für spezifische Bedürfnisse findet. Das reaktionsfähige und adaptive Design der Website gewährleistet nahtlose Benutzererfahrungen auf verschiedenen Geräten, einschließlich mobiler und Tablet-Bildschirme, und maximiert die Benutzerzufriedenheit mit optimalen Lösungen und einzigartigen Designs.",
+      "techDescription": "Bei der Erstellung von CrunchyPix habe ich modernste Technologien genutzt, wobei Next.js (v14) und TypeScript als primäre Werkzeuge dienten. React bot die Flexibilität und Robustheit, die erforderlich war, um unsere Vision zum Leben zu erwecken. Um ein nahtloses Benutzererlebnis weltweit zu gewährleisten, habe ich i18n integriert und benutzerdefinierte Sprachübersetzungskomponenten verwendet. Mit Redux zur Zustandsverwaltung habe ich komplexe Details wie Spracheinstellungen, benutzerdefinierte Cursor-Interaktionen und Geräteanpassungen orchestriert. Bezaubernde Animationstransitionen, erstellt mit motion.div und sorgfältig entwickelten benutzerdefinierten Varianten, verleihen CrunchyPix Leben. Jede Unterseite, sei es zur Präsentation von Produkten oder Dienstleistungen, wird dynamisch generiert und bietet eine responsive Umgebung.\n&nbsp;\nMein Engagement erstreckt sich auf die Verwendung von Versionskontroll- und Kollaborationstools wie GitHub, wo ich Projektdateien speichere und verwalte. Dependabot, CodeQL und Vercel sind zusätzliche Tools, die unseren Entwicklungsworkflow verbessern. Weitere Details zum Projekt finden Sie im Quellcode auf GitHub.",
+      "description": "CrunchyPix ist nicht nur eine persönliche Website; es ist ein Beweis für die Kraft des minimalistischen und wirkungsvollen Designs.",
+      "description2": "Es zeigt, wie eine Website sowohl langlebig als auch leicht anpassbar sein kann, mit modularen, dynamischen und benutzerdefinierten Komponenten. Durch die Nutzung der Fähigkeiten von Next.js und seinen kompatiblen Bibliotheken habe ich gezeigt, wie man die aktuellsten und effektivsten Lösungen findet, die auf spezifische Bedürfnisse zugeschnitten sind. Das responsive und adaptive Design der Website sorgt für nahtlose Benutzererfahrungen auf verschiedenen Geräten, einschließlich Mobil- und Tablet-Bildschirmen, und maximiert die Benutzerzufriedenheit durch optimale Lösungen und einzigartige Designs.",
       "ticks": [
-        "Branding & Design",
-        "Responsiv & Adaptiv",
+        "Markenbildung & Design",
+        "Responsive & Adaptive",
         "Modulare Komponenten",
-        "Dynamisches Routing",
-        "SEO-Optimierung",
-        "UX/UI-Design & Optimierung",
-        "Leistungsoptimierung",
+        "Dynamische Routing",
+        "Mehrsprachige SEO-Optimierung",
+        "Cloudinary Bild & Optimierung",
+        "Serverless API",
         "Browserübergreifende Kompatibilität"
       ],
       "client": "Tahsin Ö.",
-      "location": "Istanbul / TÜRKEI"
+      "location": "Istanbul / TÜRKİYE"
     },
     {
       "title": "CC Order",
