@@ -64,7 +64,7 @@ const MobileMenu = ({ smallNav }: { smallNav: boolean }) => {
           <div>
             <ul className="ul">
               <div className="flex justify-end mr-10 mb-3 z-50">
-                <LanguageMenu />
+                <LanguageMenu smallNav={smallNav} />
               </div>
               {Links.map((link) => (
                 <li key={link.key}>
