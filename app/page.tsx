@@ -5,7 +5,7 @@ import { sectionsData } from '@/constants/sections'
 const Section = dynamic(() => import('@/components/Section'), {
   ssr: false,
   loading: () => (
-    <div className="absolute top-0 left-0 w-full min-h-full overflow-hidden z-50 bg-black">
+    <div className="absolute top-0 left-0 w-[100dvw] h-[100dvh] overflow-hidden z-50 bg-black">
       <LoadingComponent />
     </div>
   ),
