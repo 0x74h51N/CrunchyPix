@@ -77,60 +77,8 @@
       "description": "Diese Datenschutzrichtlinie kann bei Bedarf aktualisiert werden. Ankündigungen werden auf unserer Website gemacht, um Sie über Änderungen zu informieren. Es ist wichtig, diese Seite regelmäßig zu überprüfen, um über unsere aktuellen Richtlinien informiert zu bleiben."
     },
     {
-      "title": "More Information",
-      "description": "For more information about our privacy policy or if you have any questions or concerns, please reach out to us through our [contact](/contact) page."
-    }
-  ],
-  "termsOfServices": [
-    {
-      "mainTitle": "Nutzungsbedingungen"
-    },
-    {
-      "title": "1. Akzeptierte Nutzungsbedingungen",
-      "description": "Durch die Nutzung dieser Website stimmen Sie den folgenden Nutzungsbedingungen zu. Diese Bedingungen umfassen alle von CrunchyPix bereitgestellten Dienstleistungen und Inhalte."
-    },
-    {
-      "title": "2. Kontaktinformationen",
-      "description": "Die Website von CrunchyPix ermöglicht es Benutzern, für Front-End-Entwicklung, Design oder Marketing-Dienstleistungen zu kommunizieren. Benutzer, die sich über CrunchyPix für Dienstleistungen bewerben, erkennen an, dass sie diese Informationen für Zusammenarbeit und Kommunikationszwecke verwenden werden."
-    },
-    {
-      "title": "3. Teilen von Projekten und Arbeiten",
-      "description": "CrunchyPix kann Projekte und Arbeiten im Rahmen von Front-End-Entwicklungsdienstleistungen teilen. Die Freigabe von Projekten und Arbeiten kann jedoch aufgrund besonderer Vereinbarungen mit dem Kunden eingeschränkt sein."
-    },
-    {
-      "title": "4. Inhalt und Verantwortung",
-      "description": "CrunchyPix bemüht sich, die Richtigkeit und Aktualität der auf der Website geteilten Inhalte zu gewährleisten. CrunchyPix garantiert jedoch nicht deren Genauigkeit oder Aktualität. Benutzer tragen die Verantwortung für ihre Nutzung der Website."
-    },
-    {
-      "title": "5. Haftungsbeschränkungen",
-      "description": "CrunchyPix ist nicht verantwortlich für zusätzliche Aufgaben oder Änderungen, die über die in einem vordefinierten Dienstleistungsvertrag mit dem Kunden vereinbarten Aufgaben hinausgehen. Für zusätzliche Aufgaben oder Änderungen sind separate schriftliche Vereinbarungen zwischen den Parteien erforderlich."
-    },
-    {
-      "title": "6. Urheberrecht und geistiges Eigentum",
-      "description": "CrunchyPix hält die Urheberrechte an den dem Kunden zur Verfügung gestellten Inhalten, und diese Rechte sind nicht übertragbar. Die Berechtigungen und Lizenzen für die Nutzung durch den Kunden sind jedoch in dieser Vereinbarung festgelegt. Die Verwendung von gegen Gebühr bereitgestellten Inhalten ist auf das spezifizierte Projekt oder den spezifizierten Zweck beschränkt."
-    },
-    {
-      "title": "7. Änderungen und Aktualisierungen",
-      "description": "CrunchyPix behält sich das Recht vor, diese Nutzungsbedingungen jederzeit zu aktualisieren oder zu ändern. Es liegt in der Verantwortung des Benutzers, jederzeit Zugang zu den aktuellen Bedingungen zu haben."
-    },
-    {
-      "title": "8. Stornierung und Beendigung von Dienstleistungen",
-      "description": "Wenn ein Kunde der Meinung ist, dass ein Projekt vor Beginn storniert werden sollte, muss er CrunchyPix schriftlich benachrichtigen. Im Falle von Stornierungen durch den Kunden nach Projektbeginn wird die Hälfte der insgesamt ausstehenden Projektkosten in Rechnung gestellt. Stornierungsanfragen vor Projektbeginn müssen mindestens im voraus festgelegten Zeitraum erfolgen."
-    },
-    {
-      "title": "9. Zahlungsbedingungen und Stornierungsrichtlinien",
-      "description": "CrunchyPix fordert die im Geschäftsvertrag mit dem Kunden vereinbarte Gebühr innerhalb des festgelegten Zeitraums ab dem Startdatum des Projekts an. Wenn der Kunde die Zahlung nicht innerhalb dieses Zeitraums leistet, behält sich CrunchyPix das Recht vor, das Projekt zu stoppen oder zu stornieren. Bei Nichtzahlung wird CrunchyPix die erforderlichen Benachrichtigungen an den Kunden senden und kann rechtliche Schritte einleiten, wenn die Zahlung innerhalb einer bestimmten Frist nicht erfolgt. Zahlungen für Vereinbarungen mit Stundenlohn werden am Ende jedes festgelegten Zeitraums auf der Grundlage der gemeldeten Stunden gesammelt."
-    },
-    {
-      "title": "10. Datenschutzrichtlinie",
-      "description": "CrunchyPix legt Wert auf die Privatsphäre der Benutzer und bietet weitere Informationen dazu auf der Seite Datenschutzrichtlinie. Benutzer können sich informieren, indem sie unsere Datenschutzrichtlinie [hier](/policies/terms-of-privacy) überprüfen."
-    },
-    {
-      "title": "11. Kontakt",
-      "description": "Für weitere Informationen oder Fragen besuchen Sie bitte unsere [Kontaktseite](/contact)."
-    },
-    {
-      "description": "Gemäß diesen Nutzungsbedingungen können Sie die Dienste von CrunchyPix nutzen und gemeinsam genutzte Inhalte überprüfen. Bei Fragen oder Bedenken können Sie sich gerne mit uns in Verbindung setzen."
+      "title": "Weitere Informationen",
+      "description": "Für weitere Informationen zu unserer Datenschutzrichtlinie oder wenn Sie Fragen oder Bedenken haben, wenden Sie sich bitte an uns."
     }
   ],
   "kvkk": [
@@ -171,7 +119,7 @@
     },
     {
       "title": "6. Rechte der betroffenen Personen",
-      "description": "Unter der Datenschutz-Grundverordnung haben betroffene Personen bestimmte Rechte. Dazu gehören der Zugang zu Ihren personenbezogenen Daten, die Berichtigung, Löschung und der Widerspruch gegen die Verarbeitung. Sie können uns kontaktieren, um diese Rechte [hier](/contact) auszuüben."
+      "description": "Unter der Datenschutz-Grundverordnung haben betroffene Personen bestimmte Rechte. Dazu gehören der Zugang zu Ihren personenbezogenen Daten, die Berichtigung, Löschung und der Widerspruch gegen die Verarbeitung. Sie können uns kontaktieren, um diese Rechte."
     },
     {
       "title": "7. Cookies",

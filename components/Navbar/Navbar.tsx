@@ -94,14 +94,14 @@ export const Navbar = () => {
       />
       <div className="flex justify-center min-w-[100svw]">
         <nav
-          className={`fixed  w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] md:min-w-[80svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl md:px-10 px-5 ${
+          className={`fixed w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] min-w-[100svw]  top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl md:px-10 px-5 ${
             isMenuOpen
-              ? `navbar h-[360px] py-5 bg-opacity-0 ${
+              ? `navbar h-[280px] py-5 bg-opacity-0 ${
                   smallNav &&
-                  'h-[300px] bg-opacity-100 py-2 shadow-md shadow-black'
+                  'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black'
                 }`
               : smallNav
-                ? 'bg-opacity-100 h-[60px] py-1 shadow-md shadow-black'
+                ? 'bg-opacity-100 h-[70px] py-1 shadow-md shadow-black'
                 : 'py-5 bg-opacity-0 h-[150px] '
           }`}
         >
@@ -117,9 +117,9 @@ export const Navbar = () => {
                   <ul
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
-                    className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all  duration-1000 ease-in-out ${
+                    className={`flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 transition-all duration-1000 ease-in-out ${
                       smallNav
-                        ? 'text-md font-medium gap-8'
+                        ? 'text-md font-medium gap-8 mt-2'
                         : 'text-lg font-semibold'
                     }  text-stone-200 antialiased gap-12 `}
                   >

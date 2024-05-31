@@ -78,59 +78,7 @@
     },
     {
       "title": "More Information",
-      "description": "For more information about our privacy policy, or if you have questions or concerns, please contact us through our [Contact](/contact) page."
-    }
-  ],
-  "termsOfServices": [
-    {
-      "mainTitle": "Terms of Services"
-    },
-    {
-      "title": "1. Accepted Terms of Use",
-      "description": "By using this website, you agree to the following terms and conditions. These conditions encompass all services and content provided by CrunchyPix."
-    },
-    {
-      "title": "2. Contact Information",
-      "description": "CrunchyPix website enables users to communicate for Front-end development, design, or marketing services. Users applying for services through CrunchyPix acknowledge that they will use this information for collaboration and communication purposes."
-    },
-    {
-      "title": "3. Sharing of Projects and Works",
-      "description": "CrunchyPix may share projects and works undertaken within the scope of Front-end development services. However, the sharing of projects and works may be limited based on special agreements with the client."
-    },
-    {
-      "title": "4. Content and Responsibility",
-      "description": "CrunchyPix strives to ensure the accuracy and currency of content shared on the website. However, CrunchyPix does not guarantee its accuracy or currency. Users take responsibility for their use of the website."
-    },
-    {
-      "title": "5. Limitation of Responsibilities",
-      "description": "CrunchyPix is not responsible for additional tasks or changes beyond the tasks agreed upon in a pre-defined service contract with the client. Separate written agreements between the parties are required for additional tasks or changes."
-    },
-    {
-      "title": "6. Copyright and Intellectual Property",
-      "description": "CrunchyPix holds the copyright to the content provided to the client, and these rights are non-transferable. However, permissions and licenses for the client's usage are specified within this agreement. The use of content provided for a fee is limited to the specified project or purpose."
-    },
-    {
-      "title": "7. Changes and Updates",
-      "description": "CrunchyPix reserves the right to update or modify these terms of service at any time. It is the user's responsibility to always have access to the current terms."
-    },
-    {
-      "title": "8. Service Cancellation and Termination",
-      "description": "If a client believes that a project should be canceled before commencement, they must notify CrunchyPix in writing. In the case of cancellations made by the client after the project has started, half of the total project fee that remains unpaid will be charged. Cancellation requests before project initiation must be made at least the specified period in advance."
-    },
-    {
-      "title": "9. Payment Terms and Cancellation Policy",
-      "description": "CrunchyPix requests the fee agreed upon in the business agreement with the client within the specified period from the start date of the project. If the client does not make the payment within this period, CrunchyPix reserves the right to stop or cancel the project. In case of non-payment, CrunchyPix will provide the necessary notifications to the client and can exercise legal rights if the payment is not completed within a certain period. Payments for hourly rate agreements are collected at the end of each specified period based on reported hours."
-    },
-    {
-      "title": "10. Privacy Policy",
-      "description": "CrunchyPix values the privacy of users and provides more information on this matter in the Privacy Policy page. Users can become informed by reviewing our privacy policy [here](/policies/terms-of-privacy)."
-    },
-    {
-      "title": "11. Contact",
-      "description": "For more information or questions, please visit our [contact page](/contact)."
-    },
-    {
-      "description": "In accordance with these terms of service, you can use CrunchyPix services and review shared content. If you have any questions or concerns, please feel free to contact us."
+      "description": "For more information about our privacy policy, or if you have questions or concerns, please contact us."
     }
   ],
   "kvkk": [
@@ -171,7 +119,7 @@
     },
     {
       "title": "6. Rights of Data Subjects",
-      "description": "Under the General Data Protection Regulation, data subjects are granted certain rights. These rights include access to your personal data, correction, deletion, and objection to processing. You can contact us to exercise these rights [here](/contact)."
+      "description": "Under the General Data Protection Regulation, data subjects are granted certain rights. These rights include access to your personal data, correction, deletion, and objection to processing. You can contact us to exercise these rights."
     },
     {
       "title": "7. Cookies",

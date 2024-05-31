@@ -73,7 +73,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
     >
       <button
         onClick={handleToggleDropdown}
-        className="flex flex-row gap-1 items-center bg-transparent cursor-none"
+        className="flex flex-row gap-1 z-20 items-center bg-transparent cursor-none"
       >
         <div className="w-6">{getFlagComponent(i18n.language)}</div>
         <div>
@@ -89,21 +89,19 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
         </div>
       </button>
       <div
-        className={`relative mobile-menu text-neutral-200 w-20 right-6 bg-cool-gray-800 rounded-lg shadow-sm shadow-black  ${
-          isDropdownOpen
-            ? 'open2 border-2 border-cool-gray-700 border-opacity-40'
-            : 'close'
+        className={`relative text-md font-medium mobile-menu text-neutral-200 w-18 right-[15px] bg-cool-gray-800 rounded-lg shadow-sm shadow-black   ${
+          isDropdownOpen ? 'open2' : 'close'
         } ${
           smallNav
-            ? `${isMobile || isTablet ? 'mt-6' : 'mt-12'} flex justify-center`
+            ? `${isMobile || isTablet ? '-mt-2 right-[16px]' : 'mt-5'} flex justify-center`
             : isMobile || isTablet
-              ? `mt-6 flex justify-center`
-              : 'mt-[96px]'
+              ? `-mt-2 flex justify-center right-[16px]`
+              : 'mt-[70px]'
         } 
         `}
       >
         {isDropdownOpen && (
-          <ul className="ul">
+          <ul className="ul pt-5 font-medium leading-6 text-[15px]">
             {languages.map((language) => (
               <li
                 key={language.label.toLowerCase()}
@@ -111,7 +109,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
                 onClick={() => handleChange(language.label.toLowerCase())}
               >
                 <div className="flex items-center gap-1">
-                  <language.Component />
+                  <language.Component width={24} />
                   <span>{language.label}</span>
                 </div>
               </li>

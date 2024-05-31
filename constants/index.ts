@@ -15,11 +15,6 @@ export const footerLinks = [
   {
     links: [
       {
-        href: '/policies/terms-of-services',
-        key: 'TermsOfServices',
-        text: 'footerLinks.TermsOfServices',
-      },
-      {
         href: '/policies/terms-of-privacy',
         key: 'TermsOfPrivacy',
         text: 'footerLinks.TermsOfPrivacy',
@@ -42,11 +37,6 @@ export const pages = [
   { href: '/', key: 'Home', text: 'links.Home' },
   { href: '/portfolio', key: 'Portfolio', text: 'links.Portfolio' },
   { href: '/about', key: 'About', text: 'links.About' },
-  {
-    href: '/policies/terms-of-services',
-    key: 'TermsOfServices',
-    text: 'footerLinks.TermsOfServices',
-  },
   {
     href: '/policies/terms-of-privacy',
     key: 'TermsOfPrivacy',
