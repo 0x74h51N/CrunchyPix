@@ -24,7 +24,7 @@ const LandingSect = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
-        className={`anaDiv relative flex flex-wrap justify-center items-center w-full overflow-hidden`}
+        className={`anaDiv relative flex flex-wrap justify-center items-center w-full min-h-[100dvh] overflow-hidden`}
       >
         <div
           className={`w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 pb-40 ${
