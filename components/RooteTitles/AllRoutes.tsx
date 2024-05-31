@@ -70,25 +70,29 @@ const AllRoutes = () => {
             transition={{ duration: 0.4 }}
             className="absolute inset-0 z-[-10]"
           >
-            <CldImage
-              src={`crunchypix/${mainPage}.jpg`}
-              alt={mainPage}
-              fill
-              priority
-              sizes="100svw"
-              quality="auto"
-              className="object-cover -z-10 h-[700px]"
-              onLoad={() => setLoading(false)}
-            />
-            {blurUrl && loading && (
-              <CldImage
-                src={blurUrl}
-                alt={mainPage}
-                fill
-                sizes="100svw"
-                quality="auto"
-                className="object-cover -z-10 h-[700px]"
-              />
+            {mainPage !== 'policies' && (
+              <>
+                <CldImage
+                  src={`crunchypix/${mainPage}.jpg`}
+                  alt={mainPage}
+                  fill
+                  priority
+                  sizes="100svw"
+                  quality="auto"
+                  className="object-cover -z-10 h-[700px]"
+                  onLoad={() => setLoading(false)}
+                />
+                {blurUrl && loading && (
+                  <CldImage
+                    src={blurUrl}
+                    alt={mainPage}
+                    fill
+                    sizes="100svw"
+                    quality="auto"
+                    className="object-cover -z-10 h-[700px]"
+                  />
+                )}
+              </>
             )}
           </motion.div>
         </AnimatePresence>
