@@ -28,17 +28,13 @@ const CustomCursor = () => {
         dispatch(setTouch(true))
       }
 
-      if ('ontouchstart' in window) {
-        window.addEventListener('touchstart', handleTouchStart)
-      }
+      window.addEventListener('touchstart', handleTouchStart)
 
       return () => {
-        if ('ontouchstart' in window) {
-          window.removeEventListener('touchstart', handleTouchStart)
-        }
+        window.removeEventListener('touchstart', handleTouchStart)
       }
     }
-  }, [isBrowser, isTouchDevice])
+  }, [isBrowser, isTouchDevice, dispatch])
 
   useEffect(() => {
     if (!isTouchDevice) {
@@ -69,12 +65,9 @@ const CustomCursor = () => {
         document.removeEventListener('mousemove', handleMouseMove)
       }
     }
-  }, [i18n, isInitialMove, isTouchDevice])
+  }, [isInitialMove, isTouchDevice])
 
-  if (isTouchDevice) {
-    return null
-  }
-  if (cursorDisabled === true) {
+  if (isTouchDevice || cursorDisabled) {
     return null
   } else {
     return (
