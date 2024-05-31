@@ -17,41 +17,44 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const isScrollEnabled = useSelector(
     (state: RootState) => state.isScrollEnabled.enabled,
   )
-  const isTouch = useSelector((state: RootState) => state.isTouch.touch)
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch)
   const y = useTransform(scrollY, [0, 2000], [0, -900])
+
+  /**IntersectionObserver */
   useEffect(() => {
-    const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = sectionRefs.current.findIndex(
-            (ref) => ref.current === entry.target,
-          )
-          setCurrentSection(index)
-        }
-      })
-    }
-
-    const observer = new IntersectionObserver(observerCallback, {
-      threshold: 0.5,
-    })
-
-    sectionRefs.current.forEach((ref, index) => {
-      if (ref.current && index !== 0) {
-        observer.observe(ref.current)
+    if (!isTouchDevice) {
+      const observerCallback = (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = sectionRefs.current.findIndex(
+              (ref) => ref.current === entry.target,
+            )
+            setCurrentSection(index)
+          }
+        })
       }
-    })
 
-    return () => {
+      const observer = new IntersectionObserver(observerCallback, {
+        threshold: 0.5,
+      })
       sectionRefs.current.forEach((ref, index) => {
         if (ref.current && index !== 0) {
-          observer.unobserve(ref.current)
+          observer.observe(ref.current)
         }
       })
+      return () => {
+        sectionRefs.current.forEach((ref, index) => {
+          if (ref.current && index !== 0) {
+            observer.unobserve(ref.current)
+          }
+        })
+      }
     }
-  }, [sectionsData])
+  }, [sectionsData, isTouchDevice])
 
+  /**Wheel event listener */
   useEffect(() => {
-    if (!isTouch) {
+    if (!isTouchDevice) {
       const handleScrollEvent = (event: WheelEvent) => {
         if (
           isScrollEnabled &&
@@ -72,7 +75,13 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         window.removeEventListener('wheel', handleScrollEvent)
       }
     }
-  }, [currentSection, sectionRefs, sectionsData, isTouch, isScrollEnabled])
+  }, [
+    currentSection,
+    sectionRefs,
+    sectionsData,
+    isTouchDevice,
+    isScrollEnabled,
+  ])
 
   return (
     <div>

@@ -1,48 +1,48 @@
-import { CSSProperties, useEffect, useRef } from "react";
+import { CSSProperties, useEffect, useRef, memo } from 'react'
 
 interface ColorfulBorderProps {
-  children: React.ReactNode;
-  className?: string;
-  enabled?: boolean;
+  children: React.ReactNode
+  className?: string
+  enabled?: boolean
 }
 
-export const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
+const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
   children,
   className,
   enabled = true,
 }) => {
-  const boxRef = useRef<HTMLDivElement>(null);
+  const boxRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (enabled === false) {
-      return;
-    }
+    if (!enabled) return
 
-    const boxElement = boxRef.current;
+    const boxElement = boxRef.current
+    if (!boxElement) return
 
-    if (!boxElement) {
-      return;
-    }
-
+    let animationFrameId: number
     const updateAnimation = () => {
       const angle =
-        (parseFloat(boxElement.style.getPropertyValue("--angle")) + 0.7) % 360;
-      boxElement.style.setProperty("--angle", `${angle}deg`);
-      requestAnimationFrame(updateAnimation);
-    };
+        (parseFloat(boxElement.style.getPropertyValue('--angle')) + 0.7) % 360
+      boxElement.style.setProperty('--angle', `${angle}deg`)
+      animationFrameId = requestAnimationFrame(updateAnimation)
+    }
 
-    requestAnimationFrame(updateAnimation);
-  }, [enabled]);
+    animationFrameId = requestAnimationFrame(updateAnimation)
+
+    return () => {
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, [enabled])
 
   return enabled ? (
     <div
       ref={boxRef}
       style={
         {
-          "--angle": "0deg",
-          "--border-color":
-            "linear-gradient(var(--angle), #131313 55%, #ffffff)",
-          "--bg-color": "radial-gradient(#131313, #131313)",
+          '--angle': '0deg',
+          '--border-color':
+            'linear-gradient(var(--angle), #131313 55%, #ffffff)',
+          '--bg-color': 'radial-gradient(#131313, #131313)',
         } as CSSProperties
       }
       className={`${className} flex h-auto w-auto items-center justify-center rounded-lg border-[1px] border-transparent [background:padding-box_var(--bg-color),border-box_var(--border-color)]`}
@@ -51,5 +51,7 @@ export const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
     </div>
   ) : (
     <>{children}</>
-  );
-};
+  )
+}
+
+export default memo(ColorfulBorder)

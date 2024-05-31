@@ -89,7 +89,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
         </div>
       </button>
       <div
-        className={`relative text-md font-medium mobile-menu text-neutral-200 w-18 right-[15px] bg-cool-gray-800 rounded-lg shadow-sm shadow-black   ${
+        className={`relative mobile-menu text-md font-medium  text-neutral-200 w-[72px] right-[15px] bg-cool-gray-800 rounded-lg shadow-sm shadow-black   ${
           isDropdownOpen ? 'open2' : 'close'
         } ${
           smallNav

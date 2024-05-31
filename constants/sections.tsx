@@ -19,27 +19,27 @@ export const sectionsData: SectionData[] = [
   {
     name: 'Introduction',
     children: <IntroductionSect />,
-    className: 'h-auto min-h-[100dvh] repatingLines',
+    className: 'h-auto min-h-[100svh] repatingLines',
   },
   {
     name: 'What I do?',
-    className: 'h-auto min-h-[100dvh] w-full z-100  repatingLines',
+    className: 'h-auto min-h-[100svh] w-full z-100  repatingLines',
     children: <ServicesSect />,
   },
   {
     name: 'Responsive Design',
     children: <DesignSect />,
-    className: 'h-auto min-h-[100dvh] repatingLines',
+    className: 'h-auto min-h-[100svh] repatingLines',
   },
   {
     name: 'Code Sect',
     children: <CodeSect />,
-    className: 'h-auto min-h-[100dvh] repatingLines',
+    className: 'h-auto min-h-[100svh] repatingLines',
   },
   {
     name: 'Portfolio',
     children: <PortfolioSect />,
-    className: 'h-auto min-h-[100dvh] w-full repatingLines',
+    className: 'h-auto min-h-[100svh] w-full repatingLines',
   },
   {
     name: 'Logo',
