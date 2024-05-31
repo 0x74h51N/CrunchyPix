@@ -1,31 +1,26 @@
-import { CardSections } from "@/app/common.types";
-import { useTranslation } from "react-i18next";
-import { ColorfulBorder } from "./ColorfulBorder";
-import IconButton from "./Buttons/IconButton";
-import Image from "next/image";
-import { IoIosArrowDroprightCircle } from "react-icons/io";
-import { memo } from "react";
+import { CardSections } from '@/app/common.types'
+import { useTranslation } from 'react-i18next'
+import ColorfulBorder from './ColorfulBorder'
+import IconButton from './Buttons/IconButton'
+import { IoIosArrowDroprightCircle } from 'react-icons/io'
+import { memo } from 'react'
 
 const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
   return (
     prevProps.cardSections === nextProps.cardSections &&
     prevProps.cardHeight === nextProps.cardHeight &&
     prevProps.cardWidth === nextProps.cardWidth &&
-    prevProps.imageWidth === nextProps.imageWidth &&
-    prevProps.imageHeight === nextProps.imageHeight &&
     prevProps.className === nextProps.className &&
     prevProps.translatePath === nextProps.translatePath
-  );
-};
+  )
+}
 
 interface CardMakerProops {
-  cardSections: CardSections;
-  cardHeight?: number;
-  cardWidth?: number;
-  imageWidth?: number;
-  imageHeight?: number;
-  className?: string;
-  translatePath: string;
+  cardSections: CardSections
+  cardHeight?: number
+  cardWidth?: number
+  className?: string
+  translatePath: string
 }
 
 const CardMaker = memo(
@@ -33,12 +28,10 @@ const CardMaker = memo(
     cardSections,
     cardHeight = 340,
     cardWidth = 260,
-    imageWidth = 100,
-    imageHeight = 100,
     className,
     translatePath,
   }: CardMakerProops) => {
-    const { t } = useTranslation([translatePath]);
+    const { t } = useTranslation([translatePath])
     return (
       <div className="rounded-lg shadow-2xl cursor-none">
         <ColorfulBorder enabled={cardSections.colorFulBorder ?? false}>
@@ -47,18 +40,6 @@ const CardMaker = memo(
             style={{ width: cardWidth, height: cardHeight }}
           >
             <>
-              {cardSections.image && (
-                <div className="flex flex-col justify-center items-start ">
-                  <Image
-                    src={cardSections.image}
-                    alt={cardSections.image}
-                    width={imageWidth}
-                    height={imageHeight}
-                    quality={100}
-                    loading="lazy"
-                  />
-                </div>
-              )}
               <div className="flex flex-col w-full gap-12 justify-start items-start">
                 {cardSections.icon && <IconButton icon={cardSections.icon} />}
                 {cardSections.title && (
@@ -91,9 +72,9 @@ const CardMaker = memo(
           </div>
         </ColorfulBorder>
       </div>
-    );
+    )
   },
-  areEqual
-);
-CardMaker.displayName = "CardMaker";
-export default CardMaker;
+  areEqual,
+)
+CardMaker.displayName = 'CardMaker'
+export default CardMaker

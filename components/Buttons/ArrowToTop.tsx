@@ -28,9 +28,6 @@ export const ArrowToTop = () => {
   const handleButtonClick = () => {
     handleMouseLeave()
     scrollToTop(1500)
-    setTimeout(() => {
-      setArrowVisible(false)
-    }, 950)
   }
 
   return (
@@ -46,7 +43,7 @@ export const ArrowToTop = () => {
       ></div>
       <motion.div
         initial={'hidden'}
-        animate={isArrowVisible ? 'show' : ''}
+        animate={isArrowVisible ? 'show' : 'hidden'}
         variants={slideIn('right', 'spring', 0.1, 0.8)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
