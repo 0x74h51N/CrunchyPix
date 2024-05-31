@@ -1,57 +1,78 @@
-"use client";
-import { createRef, useEffect, useRef, useState } from "react";
-import { SectionData } from "@/app/common.types";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { handleScroll } from "@/utils/handleScroll";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { ArrowButton } from "./Buttons/ArrowButton";
-import { CldImage } from "next-cloudinary";
+'use client'
+import { createRef, useEffect, useRef, useState } from 'react'
+import { SectionData } from '@/app/common.types'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { handleScroll } from '@/utils/handleScroll'
+import { useSelector } from 'react-redux'
+import { RootState } from '@/store'
+import { ArrowButton } from './Buttons/ArrowButton'
+import { CldImage } from 'next-cloudinary'
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
-  const sectionRefs = useRef(sectionsData.map(() => createRef<HTMLDivElement>()));
-  const [currentIndex, setCurrentIndex] = useState(() => 0);
-  const { scrollY } = useScroll();
-  const isScrollEnabled = useSelector((state: RootState) => state.isScrollEnabled.enabled);
-  const isTouch = useSelector((state: RootState) => state.isTouch.touch);
-  const y = useTransform(scrollY, [0, 2000], [0, -900]);
-  const scrollPosition = useSelector((state: RootState) => state.scrollSlice.scrollPosition);
-  const [scrollEnabled, setScrollState] = useState(true);
-
+  const sectionRefs = useRef(
+    sectionsData.map(() => createRef<HTMLDivElement>()),
+  )
+  const [currentSection, setCurrentSection] = useState(() => 0)
+  const { scrollY } = useScroll()
+  const isScrollEnabled = useSelector(
+    (state: RootState) => state.isScrollEnabled.enabled,
+  )
+  const isTouch = useSelector((state: RootState) => state.isTouch.touch)
+  const y = useTransform(scrollY, [0, 2000], [0, -900])
   useEffect(() => {
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = sectionRefs.current.findIndex(
+            (ref) => ref.current === entry.target,
+          )
+          setCurrentSection(index)
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, {
+      threshold: 0.5,
+    })
+
     sectionRefs.current.forEach((ref, index) => {
-      const sectionTop = ref.current?.offsetTop ?? 0;
-      const sectionHeight = ref.current?.clientHeight ?? 0;
-      if (
-        scrollPosition >= sectionTop - sectionHeight / 2 &&
-        scrollPosition < sectionTop + sectionHeight / 2
-      ) {
-        setCurrentIndex(index);
+      if (ref.current && index !== 0) {
+        observer.observe(ref.current)
       }
-    });
-  }, [scrollPosition]);
+    })
+
+    return () => {
+      sectionRefs.current.forEach((ref, index) => {
+        if (ref.current && index !== 0) {
+          observer.unobserve(ref.current)
+        }
+      })
+    }
+  }, [sectionsData])
 
   useEffect(() => {
     if (!isTouch) {
       const handleScrollEvent = (event: WheelEvent) => {
-        if (isScrollEnabled && !(event.deltaY<0 && currentIndex===1) && currentIndex!==0 && scrollEnabled) {
+        if (
+          isScrollEnabled &&
+          !(event.deltaY < 0 && currentSection === 1) &&
+          currentSection !== 0
+        ) {
           handleScroll({
             event,
-            currentIndex,
+            currentSection,
             sectionsData,
             sectionRefs: sectionRefs.current,
-            setScrollState
-          });  
+          })
         }
-      };
-      window.addEventListener("wheel", handleScrollEvent);
-      
+      }
+      window.addEventListener('wheel', handleScrollEvent)
+
       return () => {
-      window.removeEventListener("wheel", handleScrollEvent);
-      };
+        window.removeEventListener('wheel', handleScrollEvent)
+      }
     }
-  }, [currentIndex, sectionRefs, sectionsData, isTouch, isScrollEnabled, scrollEnabled]);
- 
+  }, [currentSection, sectionRefs, sectionsData, isTouch, isScrollEnabled])
 
   return (
     <div>
@@ -62,44 +83,44 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
           className={`
             ${section.className} 
             w-full min-w-[350px] flex items-center justify-center overflow-hidden
-            ${section.parallax ? "sticky top-0 z-0 " : " relative"} 
+            ${section.parallax ? 'sticky top-0 z-0 ' : ' relative'} 
           `}
         >
           {section.background && (
-             <CldImage
-             src={section.background}
-             alt={section.background}
-             width={2500}
-             height={2500}
-             fetchPriority="high"
-             priority
-             style={{
-               objectFit: "cover",
-               objectPosition: "center",
-               width: "100%",
-               height: "100%",
-               position: "absolute",
-               top: 0,
-               left: 0,
-               zIndex: 0,
-             }}
-           />
+            <CldImage
+              src={section.background}
+              alt={section.background}
+              width={2500}
+              height={2500}
+              fetchPriority="high"
+              priority
+              style={{
+                objectFit: 'cover',
+                objectPosition: 'center',
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                zIndex: 0,
+              }}
+            />
           )}
           {section.children}
           {section.topImage && (
             <motion.div
               style={{
                 y,
-                width: "100%",
-                height: "auto",
-                minHeight: "100%",
-                minWidth: "350px",
-                pointerEvents: "none",
-                position: "absolute",
+                width: '100%',
+                height: 'auto',
+                minHeight: '100%',
+                minWidth: '350px',
+                pointerEvents: 'none',
+                position: 'absolute',
                 bottom: 0,
                 left: 0,
                 zIndex: 10,
-                overflow: "hidden",
+                overflow: 'hidden',
               }}
               key={section.topImage}
               className="relative"
@@ -112,10 +133,10 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
                 fetchPriority="high"
                 priority
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "center",
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
                 }}
                 className="galata1 absolute bottom-0 pointer-events-none"
               />
@@ -135,7 +156,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         </section>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Section;
+export default Section

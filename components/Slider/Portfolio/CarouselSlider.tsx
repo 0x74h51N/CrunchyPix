@@ -1,48 +1,50 @@
-"use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore from "swiper";
-import { EffectCoverflow, Autoplay } from "swiper/modules";
-import "swiper/css";
-import Label from "../../Labels";
-import { PortfolioItemProps } from "@/app/common.types";
-import { useDispatch, useSelector } from "react-redux";
-import { setSlide } from "@/store/redux/selectedSlide";
-import { RootState } from "@/store";
-import { useTranslation } from "react-i18next";
-import { memo, useState } from "react";
-import IconButton from "@/components/Buttons/IconButton";
-import { motion } from "framer-motion";
-import { CldImage } from "next-cloudinary";
-import useDragHandler from "@/hooks/useDragHandler";
+'use client'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore from 'swiper'
+import { EffectCoverflow, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import Label from '../../Labels'
+import { PortfolioItemProps } from '@/app/common.types'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSlide } from '@/store/redux/selectedSlide'
+import { RootState } from '@/store'
+import { useTranslation } from 'react-i18next'
+import { memo, useState } from 'react'
+import IconButton from '@/components/Buttons/IconButton'
+import { motion } from 'framer-motion'
+import { CldImage } from 'next-cloudinary'
+import useDragHandler from '@/hooks/useDragHandler'
+import { disableScroll } from '@/utils/scrollEventControl'
 
-SwiperCore.use([Autoplay, EffectCoverflow]);
+SwiperCore.use([Autoplay, EffectCoverflow])
 
 const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   const [activeIndex, setActiveIndex] = useState(() => {
-    return 0;
-  });
-  const dispatch = useDispatch();
-  const { t } = useTranslation("portfolio");
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+    return 0
+  })
+  const dispatch = useDispatch()
+  const { t } = useTranslation('portfolio')
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile)
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet)
   const screenHeight = useSelector(
-    (state: RootState) => state.screenHeight.height
-  );
- const {hoverStart, hoverEnd } = useDragHandler();
+    (state: RootState) => state.screenHeight.height,
+  )
+  const { hoverStart, hoverEnd } = useDragHandler()
   const _selectedSlide = (_slide: PortfolioItemProps) => {
-    dispatch(setSlide(_slide));
-    hoverEnd();
-  };
-  
+    dispatch(setSlide(_slide))
+    hoverEnd()
+  }
+
   const onSlideChange = (swiper: any) => {
-    setActiveIndex(swiper.realIndex);
-  };
+    setActiveIndex(swiper.realIndex)
+  }
 
   const clickHandler = (index: number, slide: PortfolioItemProps) => {
     if (index === activeIndex) {
-      _selectedSlide(slide);
+      _selectedSlide(slide)
+      disableScroll()
     }
-  };  
+  }
 
   return (
     <motion.div
@@ -82,16 +84,16 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                   key={index}
                   className={`relative  ${
                     isTablet && !isMobile
-                      ? "h-[340px]"
+                      ? 'h-[340px]'
                       : screenHeight < 500
-                      ? "h-[300px]"
-                      : "h-[485px]"
+                        ? 'h-[300px]'
+                        : 'h-[485px]'
                   } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
-                  onClick={()=>clickHandler(index, slide)}
+                  onClick={() => clickHandler(index, slide)}
                 >
                   <CldImage
-                    src={slide.slideImage || ""}
-                    alt={slide.imageAlt || ""}
+                    src={slide.slideImage || ''}
+                    alt={slide.imageAlt || ''}
                     width="1000"
                     height="1000"
                     className="object-cover w-full h-full"
@@ -129,11 +131,11 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
                   </div>
                 </div>
               </SwiperSlide>
-            )
+            ),
         )}
       </Swiper>
     </motion.div>
-  );
-});
-CarouselSlider.displayName = "CarouselSlider";
-export default CarouselSlider;
+  )
+})
+CarouselSlider.displayName = 'CarouselSlider'
+export default CarouselSlider
