@@ -1,86 +1,86 @@
-'use client'
-import { RootState } from '@/store'
-import { setTouch } from '@/store/redux/isTouch'
-import { useEffect, useRef, useState, useCallback } from 'react'
-import { useTranslation } from 'react-i18next'
-import { useDispatch, useSelector } from 'react-redux'
+'use client';
+import { RootState } from '@/store';
+import { setTouch } from '@/store/redux/isTouch';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 
 const CustomCursor = () => {
-  const isBrowser = typeof window !== 'undefined'
-  const cursorRef = useRef<HTMLDivElement | null>(null)
-  const circleRef = useRef<HTMLDivElement | null>(null)
-  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch)
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider)
-  const [isCursorVisible, setIsCursorVisible] = useState(false)
-  const [isInitialMove, setIsInitialMove] = useState(true)
+  const isBrowser = typeof window !== 'undefined';
+  const cursorRef = useRef<HTMLDivElement | null>(null);
+  const circleRef = useRef<HTMLDivElement | null>(null);
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
+  const [isCursorVisible, setIsCursorVisible] = useState(false);
+  const [isInitialMove, setIsInitialMove] = useState(true);
   const cursorDisabled = useSelector(
     (state: RootState) => state.cursorDisabled.disabled,
-  )
+  );
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable,
-  )
-  const { t } = useTranslation(['index'])
-  const dispatch = useDispatch()
-  const requestRef = useRef<number>()
+  );
+  const { t } = useTranslation(['index']);
+  const dispatch = useDispatch();
+  const requestRef = useRef<number>();
 
   useEffect(() => {
     if (isBrowser && !isTouchDevice) {
       const handleTouchStart = () => {
-        dispatch(setTouch(true))
-      }
+        dispatch(setTouch(true));
+      };
 
-      window.addEventListener('touchstart', handleTouchStart)
+      window.addEventListener('touchstart', handleTouchStart);
 
       return () => {
-        window.removeEventListener('touchstart', handleTouchStart)
-      }
+        window.removeEventListener('touchstart', handleTouchStart);
+      };
     }
-  }, [isBrowser, isTouchDevice, dispatch])
+  }, [isBrowser, isTouchDevice]);
 
   const updateMousePosition = useCallback(
     (clientX: number, clientY: number) => {
       if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`
+        cursorRef.current.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`;
       }
       if (circleRef.current) {
-        circleRef.current.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`
+        circleRef.current.style.transform = `translate3d(${clientX}px, ${clientY}px, 0)`;
       }
     },
     [],
-  )
+  );
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
       if (isInitialMove) {
-        setIsCursorVisible(true)
-        setIsInitialMove(false)
+        setIsCursorVisible(true);
+        setIsInitialMove(false);
       }
 
-      const { clientX, clientY } = e
-      updateMousePosition(clientX, clientY)
+      const { clientX, clientY } = e;
+      updateMousePosition(clientX, clientY);
     },
     [isInitialMove, updateMousePosition],
-  )
+  );
 
   useEffect(() => {
     if (!isTouchDevice) {
       const onMouseMove = (e: MouseEvent) => {
-        requestRef.current = requestAnimationFrame(() => handleMouseMove(e))
-      }
+        requestRef.current = requestAnimationFrame(() => handleMouseMove(e));
+      };
 
-      document.addEventListener('mousemove', onMouseMove)
+      document.addEventListener('mousemove', onMouseMove);
 
       return () => {
         if (requestRef.current) {
-          cancelAnimationFrame(requestRef.current)
+          cancelAnimationFrame(requestRef.current);
         }
-        document.removeEventListener('mousemove', onMouseMove)
-      }
+        document.removeEventListener('mousemove', onMouseMove);
+      };
     }
-  }, [handleMouseMove, isTouchDevice])
+  }, [handleMouseMove, isTouchDevice]);
 
   if (isTouchDevice || cursorDisabled) {
-    return null
+    return null;
   }
 
   return (
@@ -114,7 +114,7 @@ const CustomCursor = () => {
         </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CustomCursor
+export default CustomCursor;

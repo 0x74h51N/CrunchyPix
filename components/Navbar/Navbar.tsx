@@ -15,10 +15,13 @@ import CrunchyLogo from './CrunchyLogo';
 import { useTranslation } from '@/hooks/useTranslation';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import useThrottle from '@/hooks/useThrottle';
 
 const Navbar = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
+
   const isMenuOpen = useSelector(
     (state: RootState) => state.isMobileMenu.mobileMenu,
   );
@@ -50,38 +53,40 @@ const Navbar = () => {
     threshold: 0,
   });
 
+  const handleResize = () => {
+    const _screenWidth = window.innerWidth;
+    const _screenHeight = window.innerHeight;
+
+    dispatch(setScreenHeight(_screenHeight));
+    dispatch(setScreenWidth(_screenWidth));
+
+    if (_screenWidth <= 768) {
+      dispatch(mobileChange(true));
+      dispatch(tabletChange(false));
+    } else if (_screenWidth <= 1030) {
+      dispatch(mobileChange(false));
+      dispatch(tabletChange(true));
+    } else {
+      dispatch(mobileChange(false));
+      dispatch(tabletChange(false));
+      if (isMenuOpen) {
+        dispatch(mobileMenuChange(false));
+      }
+    }
+  };
+  const throttledHandleResize = useThrottle(
+    handleResize,
+    isTouchDevice ? 800 : 100,
+  );
   useEffect(() => {
     if (typeof window != 'undefined') {
-      const handleResize = () => {
-        const screenWidth = window.innerWidth;
-        const screenHeight = window.innerHeight;
-
-        dispatch(setScreenHeight(screenHeight));
-        dispatch(setScreenWidth(screenWidth));
-
-        if (screenWidth <= 768) {
-          dispatch(mobileChange(true));
-          dispatch(tabletChange(false));
-        } else if (screenWidth <= 1030) {
-          dispatch(mobileChange(false));
-          dispatch(tabletChange(true));
-        } else {
-          dispatch(mobileChange(false));
-          dispatch(tabletChange(false));
-          if (isMenuOpen) {
-            dispatch(mobileMenuChange(false));
-          }
-        }
-      };
-
-      window.addEventListener('resize', handleResize);
+      window.addEventListener('resize', throttledHandleResize);
       handleResize();
-
       return () => {
-        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('resize', throttledHandleResize);
       };
     }
-  }, [dispatch, isTablet, isTablet, screenWidth, screenHeight]);
+  }, [throttledHandleResize, isTouchDevice]);
 
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   return (
