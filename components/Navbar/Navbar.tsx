@@ -1,85 +1,94 @@
-'use client'
-import { Links } from '@/constants/index'
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import MobileMenu from './MobileMenu'
-import LanguageMenu from './LanguageMenu'
-import { useSelector, useDispatch } from 'react-redux'
-import { mobileChange } from '@/store/redux/isMobile'
-import { RootState } from '@/store'
-import { tabletChange } from '@/store/redux/isTablet'
-import { setScreenHeight } from '@/store/redux/screenHeight'
-import { setScreenWidth } from '@/store/redux/screenWidth'
-import { mobileMenuChange } from '@/store/redux/isMobileMenu'
-import CrunchyLogo from './CrunchyLogo'
-import { useTranslation } from '@/hooks/useTranslation'
-import useClickableHandlers from '@/hooks/useClickableHandlers'
-import useIntersectionObserver from '@/hooks/useIntersectionObserver'
+'use client';
+import { Links } from '@/constants/index';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import MobileMenu from './MobileMenu';
+import LanguageMenu from './LanguageMenu';
+import { useSelector, useDispatch } from 'react-redux';
+import { mobileChange } from '@/store/redux/isMobile';
+import { RootState } from '@/store';
+import { tabletChange } from '@/store/redux/isTablet';
+import { setScreenHeight } from '@/store/redux/screenHeight';
+import { setScreenWidth } from '@/store/redux/screenWidth';
+import { mobileMenuChange } from '@/store/redux/isMobileMenu';
+import CrunchyLogo from './CrunchyLogo';
+import { useTranslation } from '@/hooks/useTranslation';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import useThrottle from '@/hooks/useThrottle';
 
-export const Navbar = () => {
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile)
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet)
+const Navbar = () => {
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
+
   const isMenuOpen = useSelector(
     (state: RootState) => state.isMobileMenu.mobileMenu,
-  )
-  const selectedLink = useSelector((state: RootState) => state.page.currentPage)
-  const screenWidth = useSelector((state: RootState) => state.screenWidth.width)
+  );
+  const selectedLink = useSelector(
+    (state: RootState) => state.page.currentPage,
+  );
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width,
+  );
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height,
-  )
-  const [smallNav, setSmallNav] = useState(false)
+  );
+  const [smallNav, setSmallNav] = useState(false);
 
-  const dispatch = useDispatch()
-  const { t } = useTranslation('index')
+  const dispatch = useDispatch();
+  const { t } = useTranslation('index');
 
   const observerCallback: IntersectionObserverCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        setSmallNav(false)
+        setSmallNav(false);
       } else {
-        setSmallNav(true)
+        setSmallNav(true);
       }
-    })
-  }
+    });
+  };
 
   const { targetRef } = useIntersectionObserver(observerCallback, {
     threshold: 0,
-  })
+  });
 
-  useEffect(() => {
-    if (typeof window != 'undefined') {
-      const handleResize = () => {
-        const screenWidth = window.innerWidth
-        const screenHeight = window.innerHeight
+  const handleResize = () => {
+    const _screenWidth = window.innerWidth;
+    const _screenHeight = window.innerHeight;
 
-        dispatch(setScreenHeight(screenHeight))
-        dispatch(setScreenWidth(screenWidth))
+    dispatch(setScreenHeight(_screenHeight));
+    dispatch(setScreenWidth(_screenWidth));
 
-        if (screenWidth <= 768) {
-          dispatch(mobileChange(true))
-          dispatch(tabletChange(false))
-        } else if (screenWidth <= 1030) {
-          dispatch(mobileChange(false))
-          dispatch(tabletChange(true))
-        } else {
-          dispatch(mobileChange(false))
-          dispatch(tabletChange(false))
-          if (isMenuOpen) {
-            dispatch(mobileMenuChange(false))
-          }
-        }
-      }
-
-      window.addEventListener('resize', handleResize)
-      handleResize()
-
-      return () => {
-        window.removeEventListener('resize', handleResize)
+    if (_screenWidth <= 768) {
+      dispatch(mobileChange(true));
+      dispatch(tabletChange(false));
+    } else if (_screenWidth <= 1030) {
+      dispatch(mobileChange(false));
+      dispatch(tabletChange(true));
+    } else {
+      dispatch(mobileChange(false));
+      dispatch(tabletChange(false));
+      if (isMenuOpen) {
+        dispatch(mobileMenuChange(false));
       }
     }
-  }, [dispatch, isTablet, isTablet, screenWidth, screenHeight])
+  };
+  const throttledHandleResize = useThrottle(
+    handleResize,
+    isTouchDevice ? 800 : 100,
+  );
+  useEffect(() => {
+    if (typeof window != 'undefined') {
+      window.addEventListener('resize', throttledHandleResize);
+      handleResize();
+      return () => {
+        window.removeEventListener('resize', throttledHandleResize);
+      };
+    }
+  }, [throttledHandleResize, isTouchDevice]);
 
-  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers()
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   return (
     <>
       <div
@@ -101,17 +110,24 @@ export const Navbar = () => {
                   'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black'
                 }`
               : smallNav
-                ? 'bg-opacity-100 h-[70px] py-1 shadow-md shadow-black'
-                : 'py-5 bg-opacity-0 h-[150px] '
+                ? 'bg-opacity-100 h-[70px] py-2 shadow-md shadow-black'
+                : 'py-5 bg-opacity-0 h-[100px] '
           }`}
         >
           <div className="flex items-center">
-            <CrunchyLogo smallNav={smallNav} />
+            <Link
+              href="/"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="flex flex-row items-center justify-center pointer-events-auto cursor-none"
+            >
+              <CrunchyLogo smallNav={screenWidth <= 360 ? true : smallNav} />
+            </Link>
             <div
               className={`flex flex-center items-start ml-auto transition-all duration-1000 ease-in-out`}
             >
               {isMobile || isTablet ? (
-                <MobileMenu smallNav={smallNav} />
+                <MobileMenu smallNav={screenWidth <= 360 ? true : smallNav} />
               ) : (
                 <div>
                   <ul
@@ -158,5 +174,7 @@ export const Navbar = () => {
         </nav>
       </div>
     </>
-  )
-}
+  );
+};
+
+export default Navbar;

@@ -5,8 +5,8 @@ export const getCldBlurImageUrl = async (id: string): Promise<string> => {
     src: id,
     width: 100,
     height: 100,
-    blur: 150,
-    quality:1
+    blur: 300,
+    quality: 1,
   });
 
   const response = await fetch(imageUrl);
@@ -17,6 +17,6 @@ export const getCldBlurImageUrl = async (id: string): Promise<string> => {
   const arrayBuffer = await response.arrayBuffer();
   const buffer = Buffer.from(arrayBuffer);
   const base64 = buffer.toString('base64');
-  
+
   return `data:${response.type};base64,${base64}`;
 };

@@ -1,24 +1,24 @@
-'use client'
-import { createRef, useEffect, useRef, useState } from 'react'
-import { SectionData } from '@/app/common.types'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { handleScroll } from '@/utils/handleScroll'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
-import { ArrowButton } from './Buttons/ArrowButton'
-import { CldImage } from 'next-cloudinary'
+'use client';
+import { createRef, useEffect, useRef, useState } from 'react';
+import { SectionData } from '@/app/common.types';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { handleScroll } from '@/utils/handleScroll';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { ArrowButton } from './Buttons/ArrowButton';
+import { CldImage } from 'next-cloudinary';
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
   const sectionRefs = useRef(
     sectionsData.map(() => createRef<HTMLDivElement>()),
-  )
-  const [currentSection, setCurrentSection] = useState(() => 0)
-  const { scrollY } = useScroll()
+  );
+  const [currentSection, setCurrentSection] = useState(() => 0);
+  const { scrollY } = useScroll();
   const isScrollEnabled = useSelector(
     (state: RootState) => state.isScrollEnabled.enabled,
-  )
-  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch)
-  const y = useTransform(scrollY, [0, 2000], [0, -900])
+  );
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
+  const y = useTransform(scrollY, [0, 2000], [0, -900]);
 
   /**IntersectionObserver */
   useEffect(() => {
@@ -28,29 +28,29 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
           if (entry.isIntersecting) {
             const index = sectionRefs.current.findIndex(
               (ref) => ref.current === entry.target,
-            )
-            setCurrentSection(index)
+            );
+            setCurrentSection(index);
           }
-        })
-      }
+        });
+      };
 
       const observer = new IntersectionObserver(observerCallback, {
         threshold: 0.5,
-      })
+      });
       sectionRefs.current.forEach((ref, index) => {
         if (ref.current && index !== 0) {
-          observer.observe(ref.current)
+          observer.observe(ref.current);
         }
-      })
+      });
       return () => {
         sectionRefs.current.forEach((ref, index) => {
           if (ref.current && index !== 0) {
-            observer.unobserve(ref.current)
+            observer.unobserve(ref.current);
           }
-        })
-      }
+        });
+      };
     }
-  }, [sectionsData, isTouchDevice])
+  }, [sectionsData, isTouchDevice]);
 
   /**Wheel event listener */
   useEffect(() => {
@@ -66,14 +66,14 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             currentSection,
             sectionsData,
             sectionRefs: sectionRefs.current,
-          })
+          });
         }
-      }
-      window.addEventListener('wheel', handleScrollEvent)
+      };
+      window.addEventListener('wheel', handleScrollEvent);
 
       return () => {
-        window.removeEventListener('wheel', handleScrollEvent)
-      }
+        window.removeEventListener('wheel', handleScrollEvent);
+      };
     }
   }, [
     currentSection,
@@ -81,7 +81,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
     sectionsData,
     isTouchDevice,
     isScrollEnabled,
-  ])
+  ]);
 
   return (
     <div>
@@ -165,7 +165,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         </section>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;
