@@ -1,9 +1,11 @@
-import { CardSections } from '@/app/common.types'
-import { useTranslation } from 'react-i18next'
-import ColorfulBorder from './ColorfulBorder'
-import IconButton from './Buttons/IconButton'
-import { IoIosArrowDroprightCircle } from 'react-icons/io'
-import { memo } from 'react'
+import { CardSections } from '@/app/common.types';
+import { useTranslation } from 'react-i18next';
+import ColorfulBorder from './ColorfulBorder';
+import IconButton from './Buttons/IconButton';
+import { IoIosArrowDroprightCircle } from 'react-icons/io';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
   return (
@@ -12,15 +14,15 @@ const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
     prevProps.cardWidth === nextProps.cardWidth &&
     prevProps.className === nextProps.className &&
     prevProps.translatePath === nextProps.translatePath
-  )
-}
+  );
+};
 
 interface CardMakerProops {
-  cardSections: CardSections
-  cardHeight?: number
-  cardWidth?: number
-  className?: string
-  translatePath: string
+  cardSections: CardSections;
+  cardHeight?: number;
+  cardWidth?: number;
+  className?: string;
+  translatePath: string;
 }
 
 const CardMaker = memo(
@@ -31,10 +33,19 @@ const CardMaker = memo(
     className,
     translatePath,
   }: CardMakerProops) => {
-    const { t } = useTranslation([translatePath])
+    const { t } = useTranslation([translatePath]);
+    const isTouchDevice = useSelector(
+      (state: RootState) => state.isTouch.touch,
+    );
+
     return (
-      <div className="rounded-lg shadow-2xl cursor-none">
-        <ColorfulBorder enabled={cardSections.colorFulBorder ?? false}>
+      <div
+        className="rounded-lg shadow-2xl cursor-none"
+        style={{ border: isTouchDevice ? 'white solid 2px' : '' }}
+      >
+        <ColorfulBorder
+          enabled={isTouchDevice ? false : cardSections.colorFulBorder ?? false}
+        >
           <div
             className={`${className} flex justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}
             style={{ width: cardWidth, height: cardHeight }}
@@ -72,9 +83,9 @@ const CardMaker = memo(
           </div>
         </ColorfulBorder>
       </div>
-    )
+    );
   },
   areEqual,
-)
-CardMaker.displayName = 'CardMaker'
-export default CardMaker
+);
+CardMaker.displayName = 'CardMaker';
+export default CardMaker;
