@@ -29,13 +29,7 @@ export default function RootLayout({
   return (
     <html lang={getLocale()}>
       <body className="lg:overflow-x-hidden">
-        <Suspense
-          fallback={
-            <div className="absolute top-0 left-0 w-full min-h-full overflow-hidden z-50 bg-black">
-              <LoadingComponent />
-            </div>
-          }
-        >
+        <Suspense>
           <AppI18nProvider>
             <AppReduxProvider>
               <PageTracker />
