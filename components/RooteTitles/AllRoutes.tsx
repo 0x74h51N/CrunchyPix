@@ -79,8 +79,12 @@ const AllRoutes = () => {
                   priority
                   sizes="100svw"
                   quality="auto"
-                  className="object-cover -z-10 h-[700px]"
+                  className={`object-cover h-[700px] `}
                   onLoad={() => setLoading(false)}
+                  style={{
+                    opacity: loading ? 0 : 100,
+                    transition: 'ease-in-out 300ms',
+                  }}
                 />
                 {blurUrl && loading && (
                   <CldImage

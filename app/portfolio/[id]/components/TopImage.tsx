@@ -46,7 +46,8 @@ const TopImage = ({
         src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
         alt={imageAlt}
         onLoad={() => setLoading(false)}
-        className={`w-full h-full object-cover transition-opacity ease-in-out duration-1500 opacity:${loading ? 0 : 100}`}
+        className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
+        style={{ opacity: loading ? 0 : 100 }}
       />
       {blurUrl && loading && (
         <CldImage

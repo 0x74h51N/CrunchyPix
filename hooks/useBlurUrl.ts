@@ -1,27 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 
 const useBlurUrl = (id: string) => {
-  const [blurUrl, setBlurUrl] = useState(null)
+  const [blurUrl, setBlurUrl] = useState(null);
 
   useEffect(() => {
     if (!id || id === 'crunchypix/.jpg' || id === 'crunchypix/policies.jpg') {
-      return
+      return;
     } else {
       const fetchBlurUrl = async () => {
         try {
-          const res = await fetch(`/api/generate-blur-url?id=${id}`)
-          const data = await res.json()
-          setBlurUrl(data.blurUrl)
+          const res = await fetch(`/api/generate-blur-url?id=${id}`);
+          const data = await res.json();
+          setBlurUrl(data.blurUrl);
         } catch (error) {
-          console.error('Failed to fetch blur image URL:', error)
+          console.error('Failed to fetch blur image URL:', error);
         }
-      }
-      setBlurUrl(null)
-      fetchBlurUrl()
+      };
+      setBlurUrl(null);
+      fetchBlurUrl();
     }
-  }, [id])
+  }, [id]);
 
-  return blurUrl
-}
+  return blurUrl;
+};
 
-export default useBlurUrl
+export default useBlurUrl;

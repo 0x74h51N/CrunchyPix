@@ -1,24 +1,17 @@
-'use client'
-import React from 'react'
-import { Hourglass } from 'react-loader-spinner'
+'use client';
+import { useTranslation } from 'react-i18next';
+import CrunchyLogo from './Navbar/CrunchyLogo';
 
 const LoadingComponent = () => {
+  const { t } = useTranslation('index');
   return (
-    <>
-      <div className="absolute loading-container top-1/2 left-1/2">
-        <Hourglass
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="hourglass-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-          colors={['white', '#CFCFCF']}
-        />
-        <p className=" text-stone-200">Loading...</p>
+    <div className="absolute loading-container left-1/2 top-1/2">
+      <div className="m-auto absolute flex flex-row items-center justify-center pointer-events-auto cursor-none -translate-x-10">
+        <CrunchyLogo loadingMode={true} />
       </div>
-    </>
-  )
-}
+      <p className=" text-stone-200 mt-40">{t('loading')}</p>
+    </div>
+  );
+};
 
-export default LoadingComponent
+export default LoadingComponent;

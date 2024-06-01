@@ -1,21 +1,21 @@
-'use client'
-import { slideIn, staggerContainer, polygonIn } from '@/utils/motion'
-import { motion } from 'framer-motion'
-import { generateSpans } from '../../GenerateSpans'
-import { useTranslation } from '@/hooks/useTranslation'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
-import { SocialIcons } from '../../SocialIcons'
-import TypingText from '../../typeText'
-import { socialIcons } from '@/constants/socialIcons'
+'use client';
+import { slideIn, staggerContainer, polygonIn } from '@/utils/motion';
+import { motion } from 'framer-motion';
+import { generateSpans } from '../../GenerateSpans';
+import { useTranslation } from '@/hooks/useTranslation';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { SocialIcons } from '../../SocialIcons';
+import TypingText from '../../typeText';
+import { socialIcons } from '@/constants/socialIcons';
 
 const LandingSect = () => {
-  const { t } = useTranslation('home')
+  const { t } = useTranslation('home');
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height,
-  )
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile)
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet)
+  );
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
 
   return (
     <>
@@ -36,7 +36,6 @@ const LandingSect = () => {
           >
             <TypingText
               generateSpan={isMobile || isTablet ? false : true}
-              _code={false}
               text={t('landing.intro')}
               typingSpeed={50}
               colorType="vibrantColors"
@@ -45,7 +44,6 @@ const LandingSect = () => {
           <div className=" lg:text-[19px] text-[18px] leading-[30px] max-lg:leading-[20px] whitespace-pre-wrap text-white">
             <TypingText
               generateSpan={isMobile || isTablet ? false : true}
-              _code={false}
               text={t('landing.description')}
               typingSpeed={50}
               colorType="vibrantColors"
@@ -84,6 +82,6 @@ const LandingSect = () => {
         </motion.div>
       </motion.div>
     </>
-  )
-}
-export default LandingSect
+  );
+};
+export default LandingSect;

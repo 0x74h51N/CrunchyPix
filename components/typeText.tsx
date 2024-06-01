@@ -1,59 +1,64 @@
-"use client";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { generateSpans } from "./GenerateSpans";
-import { generateSpanType } from "@/app/common.types";
+'use client';
+import React, { useEffect, useMemo, useState } from 'react';
+import { generateSpans } from './GenerateSpans';
+import { generateSpanType } from '@/app/common.types';
 
 type TypingTextProps = {
   text: string;
   typingSpeed?: number;
-  _code?: boolean;
   textClass?: string;
   delay?: number;
   generateSpan?: boolean;
   fontSize?: string;
   lineHeight?: string;
+  loadingMode?: boolean;
+  reverseDelay?: number;
 };
 
 const TypingText = ({
   text,
   typingSpeed = 50,
-  _code = true,
   textClass,
-  delay = 0,
+  delay = 1,
   generateSpan = false,
   colorType,
   randomCount,
   zeroColor,
-  fontSize,
-  lineHeight,
+  loadingMode = false,
+  reverseDelay = 50,
 }: TypingTextProps & generateSpanType) => {
-  const [displayText, setDisplayText] = useState("");
-  const [isDelayed, setIsDelayed] = useState(false);
+  const [displayText, setDisplayText] = useState('');
+  const [isDelayed, setIsDelayed] = useState(true);
+  const [isWriting, setIsWriting] = useState(true);
+  const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
-    let charIndex = 0;
-
-    const typingInterval = setInterval(() => {
-      if (isDelayed && charIndex < text.length) {
-        setDisplayText(text.substring(0, charIndex + 1));
-        charIndex++;
-      } else if (!isDelayed) {
-        setDisplayText("");
-      } else {
-        clearInterval(typingInterval);
+    const handleTyping = () => {
+      if (isWriting && !isDelayed) {
+        if (charIndex < text.length) {
+          setDisplayText((prev) => prev + text[charIndex]);
+          setCharIndex((prev) => prev + 1);
+        } else {
+          setTimeout(() => setIsWriting(false), reverseDelay);
+        }
+      } else if (loadingMode && !isWriting) {
+        if (charIndex > 0) {
+          setDisplayText((prev) => prev.slice(0, -1));
+          setCharIndex((prev) => prev - 1);
+        } else {
+          setTimeout(() => setIsWriting(true), 50);
+        }
       }
-    }, typingSpeed);
-
-    return () => {
-      clearInterval(typingInterval);
     };
-  }, [text, isDelayed, typingSpeed, ""]);
+
+    const interval = setInterval(handleTyping, typingSpeed);
+
+    return () => clearInterval(interval);
+  }, [charIndex, isWriting, text, typingSpeed, isDelayed]);
 
   useEffect(() => {
     const delayTimeout = setTimeout(() => {
-      setIsDelayed(true);
+      setIsDelayed(false);
     }, delay);
 
     return () => {
@@ -62,33 +67,7 @@ const TypingText = ({
   }, [delay]);
 
   const content = useMemo(() => {
-    if (_code) {
-      return (
-        <div className={textClass}>
-          <SyntaxHighlighter
-            language="typescript"
-            style={vscDarkPlus}
-            showLineNumbers
-            wrapLines
-            customStyle={{
-              backgroundColor: "transparent",
-              opacity: "1",
-              overflow: "hidden",
-              lineHeight: lineHeight,
-              fontSize: fontSize,
-            }}
-            codeTagProps={{
-              style: {
-                lineHeight: "inherit",
-                fontSize: "inherit",
-              },
-            }}
-          >
-            {displayText}
-          </SyntaxHighlighter>
-        </div>
-      );
-    } else if (generateSpan) {
+    if (generateSpan) {
       return (
         <div className={textClass}>
           {generateSpans({
