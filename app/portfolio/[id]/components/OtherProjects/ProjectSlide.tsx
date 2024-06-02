@@ -1,17 +1,19 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination } from "swiper/modules";
-import SwiperCore from "swiper";
-import PortfolioItem from "./PortfolioItem";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { PortfolioItemProps } from "@/app/common.types";
-import { useRef, useEffect } from "react";
-import "swiper/css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import SwiperCore from 'swiper';
+import PortfolioItem from '../../../components/PortfolioItem';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { PortfolioItemProps } from '@/app/common.types';
+import { useRef, useEffect } from 'react';
+import 'swiper/css';
 
 SwiperCore.use([Autoplay, Pagination]);
 
 const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
-  const screenWidth = useSelector((state: RootState) => state.screenWidth.width);
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width,
+  );
   const swiperRef = useRef<SwiperCore | null>(null);
 
   useEffect(() => {
@@ -30,19 +32,19 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
       }}
       spaceBetween={
         screenWidth <= 450
-          ? 10
+          ? 15
           : screenWidth <= 610
-          ? 15
-          : screenWidth <= 769
-          ? 15
-          : screenWidth <= 1030
-          ? 20
-          : screenWidth <= 1250
-          ? 25
-          : 32
+            ? 15
+            : screenWidth <= 769
+              ? 15
+              : screenWidth <= 1030
+                ? 20
+                : screenWidth <= 1250
+                  ? 25
+                  : 32
       }
       loop
-      slidesPerView={"auto"}
+      slidesPerView={'auto'}
       autoplay={{
         delay: 5000,
         disableOnInteraction: false,
@@ -62,8 +64,8 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
             imageAlt={item.imageAlt}
             title={item.title}
             projectType={item.projectType}
-            slideImage={""}
-            slideDescription={""}
+            slideImage={''}
+            slideDescription={''}
             width={screenWidth <= 1030 ? 300 : 380}
             height={screenWidth <= 1030 ? 250 : 310}
             isSlide={true}

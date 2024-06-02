@@ -2,9 +2,9 @@
 import { portfolioPageItems } from '@/constants/portfolioItems';
 import { polygonIn, slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
-import ProjectSlide from './ProjectSlide';
 import { useTranslation } from 'react-i18next';
 import useDragHandler from '@/hooks/useDragHandler';
+import ProjectSlide from './ProjectSlide';
 
 const OtherProjects = () => {
   const { t } = useTranslation('portfolio');

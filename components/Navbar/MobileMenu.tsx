@@ -1,50 +1,48 @@
-import { Links } from '@/constants'
-import Link from 'next/link'
-import React, { useEffect, useRef } from 'react'
-import BurgerButton from '../Buttons/BurgerButton'
-import LanguageMenu from './LanguageMenu'
-import { RootState } from '@/store'
-import { useDispatch, useSelector } from 'react-redux'
-import { mobileMenuChange } from '@/store/redux/isMobileMenu'
-import { useTranslation } from '@/hooks/useTranslation'
-import { languageMenuChange } from '@/store/redux/isLanguageMenu'
+import { Links } from '@/constants';
+import Link from 'next/link';
+import React, { useEffect, useRef } from 'react';
+import BurgerButton from '../Buttons/BurgerButton';
+import LanguageMenu from './LanguageMenu';
+import { RootState } from '@/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { mobileMenuChange } from '@/store/redux/isMobileMenu';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const MobileMenu = ({ smallNav }: { smallNav: boolean }) => {
-  const dispatch = useDispatch()
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile)
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet)
+  const dispatch = useDispatch();
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const isMenuOpen = useSelector(
     (state: RootState) => state.isMobileMenu.mobileMenu,
-  )
-  const menuRef = useRef<HTMLDivElement | null>(null)
-  const isDropdownOpen = useSelector(
-    (state: RootState) => state.isLanguageMenu.languageMenu,
-  )
+  );
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
   const toggleMenu = () => {
-    dispatch(mobileMenuChange(!isMenuOpen))
-  }
-  const selectedLink = useSelector((state: RootState) => state.page.currentPage)
-  const { t } = useTranslation('index')
+    dispatch(mobileMenuChange(!isMenuOpen));
+  };
+  const selectedLink = useSelector(
+    (state: RootState) => state.page.currentPage,
+  );
+  const { t } = useTranslation('index');
   useEffect(() => {
     if (!isMobile || !isTablet) {
-      dispatch(mobileMenuChange(false))
+      dispatch(mobileMenuChange(false));
     }
-  }, [isMobile, isTablet])
+  }, [isMobile, isTablet]);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        dispatch(languageMenuChange(false))
-        dispatch(mobileMenuChange(false))
+        dispatch(mobileMenuChange(false));
       }
-    }
+    };
 
-    document.addEventListener('click', handleOutsideClick)
+    document.addEventListener('click', handleOutsideClick);
 
     return () => {
-      document.removeEventListener('click', handleOutsideClick)
-    }
-  }, [menuRef, isDropdownOpen])
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [menuRef]);
 
   return (
     <div ref={menuRef} className="flex flex-col mt-2">
@@ -94,7 +92,7 @@ const MobileMenu = ({ smallNav }: { smallNav: boolean }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MobileMenu
+export default MobileMenu;

@@ -378,7 +378,7 @@ body {
     margin 1s ease;
 }
 
-.mobile-menu ul {
+.ul {
   opacity: 0;
   animation:
     1s appear forwards,

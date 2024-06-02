@@ -1,25 +1,23 @@
-'use client'
-import { useForm } from 'react-hook-form'
-import { sendEmail } from '@/utils/send-email'
-import { useTranslation } from 'react-i18next'
+'use client';
+import { useForm } from 'react-hook-form';
+
+import { useTranslation } from 'react-i18next';
 
 export type FormData = {
-  name: string
-  email: string
-  message: string
-}
+  name: string;
+  email: string;
+  message: string;
+};
 
 const Contact = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>()
+  } = useForm<FormData>();
 
-  function onSubmit(data: FormData) {
-    sendEmail(data)
-  }
-  const { t } = useTranslation(['index'])
+  function onSubmit(data: FormData) {}
+  const { t } = useTranslation(['index']);
 
   return (
     <>
@@ -66,7 +64,7 @@ const Contact = () => {
         </div>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

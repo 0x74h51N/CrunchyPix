@@ -6,6 +6,15 @@
   },
   "search": "Ara...",
   "noItem": "Aradığın şeyi bulamadım...",
+  "sort": {
+    "def": "Sırala",
+    "options": {
+      "New to Old": "Yeniden Eskiye",
+      "Old to New": "Eskiden Yeniye",
+      "Alphabetically A-Z": "Alfabetik A-Z",
+      "Alphabetically Z-A": "Alfabetik Z-A"
+    }
+  },
   "page": {
     "title": "Portföy",
     "details": "Proje Detayları",

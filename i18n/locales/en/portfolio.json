@@ -6,6 +6,15 @@
   },
   "search": "Search...",
   "noItem": "Oops! I couldn't find what you're looking for...",
+  "sort": {
+    "def": "Sort",
+    "options": {
+      "New to Old": "New to Old",
+      "Old to New": "Old to New",
+      "Alphabetically A-Z": "Alphabetically A-Z",
+      "Alphabetically Z-A": "Alphabetically Z-A"
+    }
+  },
   "page": {
     "title": "Portfolio",
     "details": "Project Details",

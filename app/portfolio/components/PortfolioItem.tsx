@@ -48,7 +48,7 @@ const PortfolioItem = memo(
     const isTouch = useSelector((state: RootState) => state.isTouch.touch);
     const originalWidth = width;
     const originalHeight = height;
-    const mobileWidth = 300;
+    const mobileWidth = isSlide ? 300 : 350;
     const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
     const id = _id.toLowerCase().replace(/\s+/g, '');
     const { t } = useTranslation('portfolio');
@@ -63,7 +63,7 @@ const PortfolioItem = memo(
       <div
         className="relative flex flex-col items-center justify-between overflow-hidden"
         style={{
-          height: isSlide ? 'auto' : isMobile ? 320 : 600,
+          height: isSlide ? 'auto' : isMobile ? 345 : 600,
           width: isMobile ? mobileWidth : originalWidth,
           marginTop: isSlide ? 0 : 25,
         }}
@@ -81,6 +81,7 @@ const PortfolioItem = memo(
           <CldImage
             src={image}
             alt={imageAlt}
+            format="avif"
             quality="auto"
             fetchPriority="high"
             width={isMobile ? 500 : 900}
