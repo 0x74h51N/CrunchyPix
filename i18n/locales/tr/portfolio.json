@@ -4,6 +4,8 @@
     "description": "Modern web teknolojileri ve yaratıcı çözümler konusunda uzmanlaşmış tutkulu bir Ön Uç Geliştirici olan Tahsin Önemli'nin portföyünü keşfedin. TypeScript, JavaScript, Next.js ve React konularındaki projeleri inceleyin.",
     "keywords": "portföy, ön uç geliştirme, TypeScript, JavaScript, Next.js, React, web geliştirme, Front-end, Portföy, Web Developer"
   },
+  "search": "Ara...",
+  "noItem": "Aradığın şeyi bulamadım...",
   "page": {
     "title": "Portföy",
     "details": "Proje Detayları",

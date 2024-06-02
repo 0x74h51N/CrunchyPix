@@ -4,6 +4,8 @@
     "description": "Entdecken Sie das Portfolio von Tahsin Önemli, einem leidenschaftlichen Front-End-Entwickler, der sich auf moderne Webtechnologien und kreative Lösungen spezialisiert hat. Entdecken Sie Projekte, die Fachkenntnisse in TypeScript, JavaScript, Next.js und React zeigen.",
     "keywords": "Portfolio, Front-End-Entwicklung, TypeScript, JavaScript, Next.js, React, Webentwicklung"
   },
+  "search": "Suche...",
+  "noItem": "Ups! Ich konnte nicht finden, wonach du suchst...",
   "page": {
     "title": "Portfolio",
     "details": "Projektdetails",

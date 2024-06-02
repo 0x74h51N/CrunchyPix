@@ -99,8 +99,9 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
             <CldImage
               src={section.background}
               alt={section.background}
-              width={2500}
-              height={2500}
+              format="avif"
+              width={4000}
+              height={4000}
               fetchPriority="high"
               priority
               style={{
@@ -137,8 +138,9 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
               <CldImage
                 src={section.topImage}
                 alt={section.topImage}
-                width={1500}
-                height={1500}
+                format="avif"
+                width={4000}
+                height={4000}
                 fetchPriority="high"
                 priority
                 style={{

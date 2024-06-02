@@ -14,7 +14,6 @@ export async function GET(req: NextRequest) {
 
   try {
     const blurUrl = await getCldBlurImageUrl(id);
-
     return NextResponse.json({ blurUrl });
   } catch (error) {
     return NextResponse.json({ error: error }, { status: 500 });
