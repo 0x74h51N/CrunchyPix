@@ -90,8 +90,9 @@ const Dropdown = ({
         </div>
         <div>
           <Image
-            src="arrow.svg"
+            src="/arrow.svg"
             alt="Arrow"
+            priority
             width={8}
             height={8}
             className={`transition-transform duration-500 ease-in-out ${
