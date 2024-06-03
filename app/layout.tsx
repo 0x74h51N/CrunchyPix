@@ -6,7 +6,6 @@ import Footer from '@/components/Footer/Footer';
 import { AppI18nProvider } from '@/i18n/i18Provider';
 import { AppReduxProvider } from '@/store/provider';
 import { Suspense } from 'react';
-import LoadingComponent from '@/components/Loading';
 import CustomCursor from '@/components/CustomCursor';
 import { ArrowToTop } from '@/components/Buttons/ArrowToTop';
 import AllRoutes from '@/components/RooteTitles/AllRoutes';
