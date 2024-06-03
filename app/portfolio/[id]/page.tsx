@@ -2,6 +2,7 @@ import { portfolioPageItems } from '@/constants/portfolioItems';
 import { generateSubPageMetadata } from '@/lib/metadataSub';
 import dynamic from 'next/dynamic';
 import LoadingComponent from '@/components/Loading';
+import OtherProjects from './components/OtherProjects/OtherProjects';
 
 const Project = dynamic(() => import('./components/Project'), {
   ssr: false,
@@ -10,9 +11,6 @@ const Project = dynamic(() => import('./components/Project'), {
       <LoadingComponent />
     </div>
   ),
-});
-const OtherProjects = dynamic(() => import('../components/OtherProjects'), {
-  ssr: true,
 });
 
 export async function generateMetadata({ params }: { params: { id: string } }) {

@@ -1,19 +1,19 @@
-import { RootState } from "@/store";
-import { useTranslation } from "react-i18next";
-import { slideIn } from "@/utils/motion";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { memo } from "react";
-import { useSelector } from "react-redux";
-import { FaAnglesRight } from "react-icons/fa6";
-import { PortfolioItemProps } from "@/app/common.types";
-import { CldImage } from "next-cloudinary";
-import useClickableHandlers from "@/hooks/useClickableHandlers";
-import useDragHandler from "@/hooks/useDragHandler";
+import { RootState } from '@/store';
+import { useTranslation } from 'react-i18next';
+import { slideIn } from '@/utils/motion';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { FaAnglesRight } from 'react-icons/fa6';
+import { PortfolioItemProps } from '@/app/common.types';
+import { CldImage } from 'next-cloudinary';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
+import useDragHandler from '@/hooks/useDragHandler';
 
 const areEqual = (
   prevProps: PortfolioItemInterface,
-  nextProps: PortfolioItemInterface
+  nextProps: PortfolioItemInterface,
 ) => {
   return (
     prevProps._id === nextProps._id &&
@@ -48,10 +48,10 @@ const PortfolioItem = memo(
     const isTouch = useSelector((state: RootState) => state.isTouch.touch);
     const originalWidth = width;
     const originalHeight = height;
-    const mobileWidth = 300;
+    const mobileWidth = isSlide ? 300 : 350;
     const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
-    const id = _id.toLowerCase().replace(/\s+/g, "");
-    const { t } = useTranslation("portfolio");
+    const id = _id.toLowerCase().replace(/\s+/g, '');
+    const { t } = useTranslation('portfolio');
     const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
     const { hoverEnd } = useDragHandler();
     const onClickHandler = () => {
@@ -63,7 +63,7 @@ const PortfolioItem = memo(
       <div
         className="relative flex flex-col items-center justify-between overflow-hidden"
         style={{
-          height: isSlide ? "auto" : isMobile ? 320 : 600,
+          height: isSlide ? 'auto' : isMobile ? 345 : 600,
           width: isMobile ? mobileWidth : originalWidth,
           marginTop: isSlide ? 0 : 25,
         }}
@@ -71,7 +71,7 @@ const PortfolioItem = memo(
         <motion.div
           initial="hidden"
           whileHover="show"
-          whileTap={"show"}
+          whileTap={'show'}
           className="group relative flex justify-center items-center rounded-xl bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10"
           style={{
             width: isMobile ? mobileWidth : originalWidth,
@@ -81,6 +81,7 @@ const PortfolioItem = memo(
           <CldImage
             src={image}
             alt={imageAlt}
+            format="avif"
             quality="auto"
             fetchPriority="high"
             width={isMobile ? 500 : 900}
@@ -99,7 +100,7 @@ const PortfolioItem = memo(
           ) : (
             <>
               <motion.div
-                variants={slideIn("up", "spring", 0.2, 0.75)}
+                variants={slideIn('up', 'spring', 0.2, 0.75)}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 className="absolute flex justify-center items-center rounded-full bg-log-col opacity-0 group-hover:opacity-70 w-[70px] h-[70px]"
@@ -119,8 +120,8 @@ const PortfolioItem = memo(
         <div
           className={`absolute bottom-0 rounded-b-xl z-10 w-full flex justify-start ${
             isSlide
-              ? "left-0 bg-black bg-opacity-50  h-auto"
-              : "md:-bottom-5 bottom-0 md:h-32 h-20"
+              ? 'left-0 bg-black bg-opacity-50  h-auto'
+              : 'md:-bottom-5 bottom-0 md:h-32 h-20'
           }`}
         >
           <Link
@@ -136,7 +137,7 @@ const PortfolioItem = memo(
             </h2>
             <h1
               className={`${
-                isMobile || isSlide ? "h2" : "h1 half"
+                isMobile || isSlide ? 'h2' : 'h1 half'
               } hover:text-log-col transition-all duration-300 ease-in-out`}
             >
               {t(`${title}`)}
@@ -146,7 +147,7 @@ const PortfolioItem = memo(
       </div>
     );
   },
-  areEqual
+  areEqual,
 );
-PortfolioItem.displayName = "PortfolioItem";
+PortfolioItem.displayName = 'PortfolioItem';
 export default PortfolioItem;

@@ -1,12 +1,11 @@
-import { Icon } from '@/app/common.types'
-import IconButton from '@/components/Buttons/IconButton'
-import useBlurUrl from '@/hooks/useBlurUrl'
-import { RootState } from '@/store'
-import { slideIn } from '@/utils/motion'
-import { motion } from 'framer-motion'
-import { CldImage } from 'next-cloudinary'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { Icon } from '@/app/common.types';
+import IconButton from '@/components/Buttons/IconButton';
+import { RootState } from '@/store';
+import { slideIn } from '@/utils/motion';
+import { motion } from 'framer-motion';
+import { CldImage } from 'next-cloudinary';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const TopImage = ({
   imageTop,
@@ -14,16 +13,15 @@ const TopImage = ({
   imageAlt,
   icons,
 }: {
-  imageTop: string
-  imageTopMobile?: string
-  imageAlt: string
-  icons?: Icon[]
+  imageTop: string;
+  imageTopMobile?: string;
+  imageAlt: string;
+  icons?: Icon[];
 }) => {
-  const screenWidth = useSelector((state: RootState) => state.screenWidth.width)
-  const [loading, setLoading] = useState(true)
-  const blurUrl = useBlurUrl(
-    screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop,
-  )
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width,
+  );
+  const [loading, setLoading] = useState(true);
 
   return (
     <div
@@ -40,24 +38,22 @@ const TopImage = ({
     >
       <CldImage
         fill
-        sizes="auto"
-        fetchPriority="auto"
-        quality={100}
+        fetchPriority="high"
+        format="avif"
         src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
         alt={imageAlt}
         onLoad={() => setLoading(false)}
         className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
         style={{ opacity: loading ? 0 : 100 }}
       />
-      {blurUrl && loading && (
+      {loading && (
         <CldImage
           fill
-          sizes="auto"
-          fetchPriority="auto"
-          quality={100}
-          src={blurUrl}
-          alt={`${imageAlt}-blur`}
-          className={`w-full h-full object-cover`}
+          quality={5}
+          blur={250}
+          src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
+          alt={imageAlt}
+          className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
         />
       )}
       {icons && (
@@ -76,7 +72,7 @@ const TopImage = ({
         </motion.div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default TopImage
+export default TopImage;

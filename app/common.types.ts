@@ -1,141 +1,140 @@
-import { Dispatch, SetStateAction } from 'react'
-
 export type Links = {
-  href: string
-  key: string
-  text: string
-}
+  href: string;
+  key: string;
+  text: string;
+};
 
 export type Policy = {
-  title?: string
-  mainTitle?: string
-  description?: string
-  subTitles?: SubTitles[]
-}
+  title?: string;
+  mainTitle?: string;
+  description?: string;
+  subTitles?: SubTitles[];
+};
 
 export type SubTitles = {
-  title?: string
-  description?: string
-}
+  title?: string;
+  description?: string;
+};
 
 export type SectionData = {
-  name?: string
-  className?: string
-  image?: string
-  textStyle?: string
-  children?: React.ReactNode
-  parallax?: boolean | false
-  parallaxImageSrc?: string
-  parallaxImageAlt?: string
-  background?: string
-  topImage?: string
-}
+  name?: string;
+  className?: string;
+  image?: string;
+  textStyle?: string;
+  children?: React.ReactNode;
+  parallax?: boolean | false;
+  parallaxImageSrc?: string;
+  parallaxImageAlt?: string;
+  background?: string;
+  topImage?: string;
+};
 
 export type HandleScroll = {
-  event: WheelEvent
-  currentSection: number
-  sectionsData: SectionData[]
-  sectionRefs: React.RefObject<HTMLDivElement>[]
-  duration?: number
-}
+  event: WheelEvent;
+  currentSection: number;
+  sectionsData: SectionData[];
+  sectionRefs: React.RefObject<HTMLDivElement>[];
+  duration?: number;
+};
 
 export type slide = {
-  imageUrl?: string
-  image?: string
-  imageUrlV?: string
-  imageUrlH?: string
-  title?: string
-  description?: string
-  left?: boolean
-  active?: boolean
-  children?: React.ReactNode | React.ReactElement<{ active: boolean }>
-  box?: boolean
-  githubLink?: string
-  icons?: Icon[]
-  labels?: string[]
-}
+  imageUrl?: string;
+  image?: string;
+  imageUrlV?: string;
+  imageUrlH?: string;
+  title?: string;
+  description?: string;
+  left?: boolean;
+  active?: boolean;
+  children?: React.ReactNode | React.ReactElement<{ active: boolean }>;
+  box?: boolean;
+  githubLink?: string;
+  icons?: Icon[];
+  labels?: string[];
+};
 
 export type CardSections = {
-  title?: string
-  description?: string
-  icon?: Icon
-  index?: number
-  colorFulBorder?: boolean
-  image?: string
-  list?: string[]
-}
+  title?: string;
+  description?: string;
+  icon?: Icon;
+  index?: number;
+  colorFulBorder?: boolean;
+  image?: string;
+  list?: string[];
+};
 
 export type ColorPacks = {
-  [key: string]: string[]
-}
+  [key: string]: string[];
+};
 
-export type ColorType = keyof ColorPacks
+export type ColorType = keyof ColorPacks;
 
 export type generateSpanType = {
-  text: string
-  colorType?: ColorType
-  zeroColor?: string
-  randomCount?: number
-  _className?: string
-}
+  text: string;
+  colorType?: ColorType;
+  zeroColor?: string;
+  randomCount?: number;
+  _className?: string;
+};
 
 export type ColorfulHoverType = {
-  char?: string
-  icon?: Icon
-  initial?: any
-  style?: React.CSSProperties
-  className?: string
-  key?: string | number
-  span?: boolean
-  onClick?: () => void
-  _colorType?: ColorType
-  randomCount?: number
-  zeroColor?: string
-}
+  char?: string;
+  icon?: Icon;
+  initial?: any;
+  style?: React.CSSProperties;
+  className?: string;
+  key?: string | number;
+  span?: boolean;
+  onClick?: () => void;
+  _colorType?: ColorType;
+  randomCount?: number;
+  zeroColor?: string;
+};
 
 export type Icon = {
-  type?: string
-  link?: string
-  size?: number
-  color?: string
-  alt?: string
-  substance?: string
-}
+  type?: string;
+  link?: string;
+  size?: number;
+  color?: string;
+  alt?: string;
+  substance?: string;
+};
 
 export type logoType = {
-  text: string
-  icon: string
-}
+  text: string;
+  icon: string;
+};
 
 export type PortfolioItemProps = {
-  _id: string
-  slideImage?: string
-  image: string
-  imageAlt: string
-  imageTop?: string
-  imageTopMobile?: string
-  imageBoxes?: string[]
-  title: string
-  title2?: string
-  techTitle?: string
-  projectType: string
-  slideDescription: string
-  description?: string
-  description2?: string
-  techDescription?: string
-  ticks?: string[]
-  description3?: string
-  githubLink?: string
-  icons?: Icon[]
-  labels?: string[]
-  ProjectInfo?: ProjectInfoType
-  catalogue?: { folderPath: string; pageNumber: number }
-}
+  _id: string;
+  slideImage?: string;
+  image: string;
+  imageAlt: string;
+  imageTop?: string;
+  imageTopMobile?: string;
+  imageBoxes?: string[];
+  title: string;
+  title2?: string;
+  techTitle?: string;
+  projectType: string;
+  slideDescription: string;
+  description?: string;
+  description2?: string;
+  techDescription?: string;
+  ticks?: string[];
+  description3?: string;
+  githubLink?: string;
+  icons?: Icon[];
+  labels?: string[];
+  ProjectInfo?: ProjectInfoType;
+  catalogue?: { folderPath: string; pageNumber: number };
+  date: string;
+};
 
 export type ProjectInfoType = {
-  category: string
-  client: string
-  location: string
-  date: string
-  tech?: string[]
-}
+  category: string;
+  client: string;
+  location: string;
+  date: string;
+  tech?: string[];
+};

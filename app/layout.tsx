@@ -6,13 +6,11 @@ import Footer from '@/components/Footer/Footer';
 import { AppI18nProvider } from '@/i18n/i18Provider';
 import { AppReduxProvider } from '@/store/provider';
 import { Suspense } from 'react';
-import LoadingComponent from '@/components/Loading';
 import CustomCursor from '@/components/CustomCursor';
 import { ArrowToTop } from '@/components/Buttons/ArrowToTop';
 import AllRoutes from '@/components/RooteTitles/AllRoutes';
 import CookieConsent from '@/components/Cookies/CookiesConsent';
 import Cookies from '@/components/Cookies/Cookies';
-import PageTracker from '@/components/PageTracker';
 import { getLocale } from '@/i18n/server';
 import { generatePageMetadata } from '../lib/metadata';
 
@@ -32,7 +30,6 @@ export default function RootLayout({
         <Suspense>
           <AppI18nProvider>
             <AppReduxProvider>
-              <PageTracker />
               <CustomCursor />
               <CookieConsent />
               <Navbar />
