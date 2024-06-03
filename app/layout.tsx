@@ -11,7 +11,6 @@ import { ArrowToTop } from '@/components/Buttons/ArrowToTop';
 import AllRoutes from '@/components/RooteTitles/AllRoutes';
 import CookieConsent from '@/components/Cookies/CookiesConsent';
 import Cookies from '@/components/Cookies/Cookies';
-import PageTracker from '@/components/PageTracker';
 import { getLocale } from '@/i18n/server';
 import { generatePageMetadata } from '../lib/metadata';
 
@@ -31,7 +30,6 @@ export default function RootLayout({
         <Suspense>
           <AppI18nProvider>
             <AppReduxProvider>
-              <PageTracker />
               <CustomCursor />
               <CookieConsent />
               <Navbar />
