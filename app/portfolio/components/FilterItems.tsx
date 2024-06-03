@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { PortfolioItemProps } from '@/app/common.types';
 import { portfolioPageItems } from '@/constants/portfolioItems';
 import { useTranslation } from 'react-i18next';
@@ -10,10 +9,9 @@ type FilterItemsProps = {
 };
 
 const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
-  const { register, watch } = useForm();
   const { t } = useTranslation('portfolio');
   const [sortedItems, setSortedItems] = useState<PortfolioItemProps[]>([]);
-  const searchParam = watch('search', '');
+  const [searchParam, setSearchParam] = useState('');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSortOption] = useState('');
   useEffect(() => {
@@ -37,6 +35,7 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
 
   const handleSortChange = (sortOption: string) => {
     setSortOption(sortOption);
+    setDropdownOpen(false);
     if (sortOption.includes('new')) {
       const dateSorted = [...sortedItems].sort((a, b) => {
         const dateA = new Date(a.date);
@@ -80,36 +79,32 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
   })) as option[];
   const classes = `${isDropdownOpen ? 'h-[170px] py-3 ' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40`;
   return (
-    <form>
-      <div className="flex flex-row md:justify-end justify-between gap-6 w-full z-30">
-        <div className="relative z-20">
-          <Dropdown
-            classes={classes}
-            defaultValue={
-              selectedOption
-                ? t(`sort.options.${selectedOption}`)
-                : t('sort.def')
-            }
-            options={options}
-            optionClickHandler={handleSortChange}
-            isDropdownOpen={isDropdownOpen}
-            setDropdownOpen={setDropdownOpen}
-            width={135}
-            ulClasses="pt-7 transition-all ease-in-out duration-500"
-            flagMode={false}
-            selectedOption={selectedOption}
-            liClass="px-3 py-1"
-          />
-        </div>
-        <input
-          id="search"
-          type="text"
-          {...register('search')}
-          placeholder={t('search')}
-          className="contactBox md:max-w-[16rem] max-w-[10rem] focus:border-log-col focus:shadow-inner"
+    <div className="flex flex-row md:justify-end justify-between gap-6 w-full z-30">
+      <div className="relative z-20">
+        <Dropdown
+          classes={classes}
+          defaultValue={
+            selectedOption ? t(`sort.options.${selectedOption}`) : t('sort.def')
+          }
+          options={options}
+          optionClickHandler={handleSortChange}
+          isDropdownOpen={isDropdownOpen}
+          setDropdownOpen={setDropdownOpen}
+          width={135}
+          ulClasses="pt-7 transition-all ease-in-out duration-500"
+          flagMode={false}
+          selectedOption={selectedOption}
+          liClass="px-3 py-1"
         />
       </div>
-    </form>
+      <input
+        id="search"
+        type="text"
+        onChange={(e) => setSearchParam(e.target.value.toLowerCase().trim())}
+        placeholder={t('search')}
+        className="contactBox md:max-w-[16rem] max-w-[10rem] focus:border-log-col focus:shadow-inner"
+      />
+    </div>
   );
 };
 

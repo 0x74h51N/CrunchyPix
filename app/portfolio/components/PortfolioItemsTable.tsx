@@ -30,7 +30,7 @@ const PortfolioItemsTable = () => {
     >
       <div className="w-auto">
         <FilterItems setFilteredItems={setFilteredItems} />
-        <div className="grid xl:grid-cols-2 grid-cols-1 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-4 transition-all ease-in-out duration-300 xl:min-w-[1316px] lg:min-w-[630px] md:min-w-[300px] min-h-[60vh]">
+        <div className="grid xl:grid-cols-2 grid-cols-1 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-4 transition-all ease-in-out duration-300 xl:min-w-[1316px] lg:min-w-[630px] md:min-w-[300px] min-h-[700px]">
           {filteredItems.length > 0 ? (
             filteredItems.map((item: PortfolioItemProps, index: number) => {
               const initial =
@@ -66,7 +66,7 @@ const PortfolioItemsTable = () => {
               );
             })
           ) : (
-            <div className="flex md:flex-row flex-col justify-start md:items-end items-center h-[350px] max-w-[550px]">
+            <div className="flex md:flex-row flex-col justify-start md:items-end items-center h-[350px] md:max-w-[550px] max-w-[350px]">
               <CldImage
                 width={300}
                 height={300}
