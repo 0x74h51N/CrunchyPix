@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
+  reactStrictMode: false,
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ['res.cloudinary.com'],
   },
   async redirects() {
     return [
       {
-        source: "/policies",
-        destination: "/",
+        source: '/policies',
+        destination: '/',
         permanent: true,
       },
     ];

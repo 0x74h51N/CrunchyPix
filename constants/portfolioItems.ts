@@ -50,7 +50,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
       date: 'March 1, 2024',
       tech: ['TypeScript', 'Next.js', 'Tailwind', 'React', 'Redux'],
     },
-    date: new Date('2024-3-1'),
+    date: '2024-3-1',
     icons: [
       {
         ...commonIcons.github,
@@ -95,7 +95,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
       date: 'July 15, 2019',
       tech: ['HTML', 'CSS', 'JavaScript', 'WordPress'],
     },
-    date: new Date('2019-7-15'),
+    date: '2019-7-15',
     icons: [
       {
         ...commonIcons.github,
@@ -142,7 +142,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
       date: 'September 28, 2023',
       tech: ['TypeScript', 'Next.js', 'CSS', 'React', 'Redux'],
     },
-    date: new Date('2023-9-28'),
+    date: '2023-9-28',
     icons: [
       {
         ...commonIcons.github,
@@ -191,7 +191,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
       date: 'Agust 24, 2023',
       tech: ['TypeScript', 'Next.js', 'Tailwind', 'Hardhat', 'React'],
     },
-    date: new Date('2023-8-24'),
+    date: '2023-8-24',
     icons: [
       {
         ...commonIcons.github,
@@ -230,7 +230,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
       'items.4.ticks.4',
       'items.4.ticks.5',
     ],
-    date: new Date('2019-10-5'),
+    date: '2019-10-5',
     catalogue: {
       folderPath: 'crunchypix/portfolioItems/kyk_catalogue',
       pageNumber: 32,

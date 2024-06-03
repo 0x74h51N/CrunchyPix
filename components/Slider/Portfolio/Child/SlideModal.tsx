@@ -1,48 +1,48 @@
-import { RootState } from '@/store'
-import { clearSlide } from '@/store/redux/selectedSlide'
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import IconButton from '@/components/Buttons/IconButton'
-import Label from '@/components/Labels'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useTranslation } from 'react-i18next'
-import Loading from '@/components/Loading'
-import Link from 'next/link'
-import CancelButton from '@/components/Buttons/CancelButton'
-import { sliderChange } from '@/store/redux/isSlider'
-import { CldImage } from 'next-cloudinary'
-import { enableScroll } from '@/utils/scrollEventControl'
+import { RootState } from '@/store';
+import { clearSlide } from '@/store/redux/selectedSlide';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import IconButton from '@/components/Buttons/IconButton';
+import Label from '@/components/Labels';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import Loading from '@/components/Loading';
+import Link from 'next/link';
+import CancelButton from '@/components/Buttons/CancelButton';
+import { sliderChange } from '@/store/redux/isSlider';
+import { CldImage } from 'next-cloudinary';
+import { enableScroll } from '@/utils/scrollEventControl';
 
 const SlideModal = () => {
-  const dispatch = useDispatch()
-  const [imageLoading, setImageLoading] = useState(true)
-  const { t } = useTranslation(['portfolio'])
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile)
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider)
+  const dispatch = useDispatch();
+  const [imageLoading, setImageLoading] = useState(true);
+  const { t } = useTranslation(['portfolio']);
+  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const selectedSlide = useSelector(
     (state: RootState) => state.selectedSlide.selectedSlide,
-  )
+  );
   const id =
-    selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, '')
+    selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, '');
 
   const closeModal = () => {
-    dispatch(clearSlide())
-    enableScroll()
+    dispatch(clearSlide());
+    enableScroll();
     setTimeout(() => {
-      setImageLoading(true)
-    }, 300)
-  }
+      setImageLoading(true);
+    }, 300);
+  };
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.5 },
     visible: { opacity: 1, scale: 1 },
-  }
+  };
 
   const onClickHandler = () => {
     if (isSlider === true) {
-      dispatch(sliderChange(false))
+      dispatch(sliderChange(false));
     }
-  }
+  };
   return (
     <AnimatePresence>
       {selectedSlide && (
@@ -80,7 +80,7 @@ const SlideModal = () => {
                 quality="auto"
                 className="w-full h-full"
                 onLoad={() => {
-                  setImageLoading(false)
+                  setImageLoading(false);
                 }}
               />
               {imageLoading ? (
@@ -136,7 +136,7 @@ const SlideModal = () => {
         </div>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
-export default SlideModal
+export default SlideModal;

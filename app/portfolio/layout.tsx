@@ -1,6 +1,6 @@
-import { portfolioPageItems } from "@/constants/portfolioItems";
-import { generatePageMetadata } from "@/lib/metadata";
-import { Metadata } from "next";
+import { portfolioPageItems } from '@/constants/portfolioItems';
+import { generatePageMetadata } from '@/lib/metadata';
+import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata('portfolio');
@@ -20,7 +20,7 @@ export default function PortfolioLayout({
 
 export async function generateStaticParams() {
   const paths = portfolioPageItems.map((item) => ({
-    params: { id: item._id.toLowerCase().replace(/\s+/g, "") },
+    params: { id: item._id.toLowerCase().replace(/\s+/g, '') },
   }));
 
   return paths;

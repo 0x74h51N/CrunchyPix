@@ -21,6 +21,8 @@ type dropdownProps = {
   background?: string;
   ulClasses?: string;
   flagMode?: boolean;
+  selectedOption?: string;
+  liClass?: string;
 };
 
 const Dropdown = ({
@@ -35,6 +37,8 @@ const Dropdown = ({
   background,
   ulClasses,
   flagMode = true,
+  selectedOption,
+  liClass,
 }: dropdownProps) => {
   const [isRotated, setIsRotated] = useState(false);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
@@ -79,7 +83,7 @@ const Dropdown = ({
         className="flex flex-row justify-center items-center gap-1 z-20 bg-transparent cursor-none w-full"
       >
         <div
-          className="p text-start pl-3"
+          className="p text-start pl-3 truncate ..."
           style={{ width: width, background: background ?? 'transparent' }}
         >
           {defaultValue}
@@ -104,11 +108,9 @@ const Dropdown = ({
             {options.map((option) => (
               <li
                 key={option.label.toLowerCase()}
-                className={`hover:text-log-col transition-text duration-300 ease-in-out cursor-none  border-log-col`}
+                className={`w-full hover:text-log-col transition-text duration-300 ease-in-out cursor-none ${selectedOption === option.label.toLowerCase() ? 'bg-cool-gray-700' : ''} ${liClass}`}
                 onClick={() =>
-                  optionClickHandler(
-                    option.label.toLowerCase().trim().replaceAll(' ', '_'),
-                  )
+                  optionClickHandler(option.label.trim().toLowerCase())
                 }
               >
                 <div className="flex items-center gap-1">

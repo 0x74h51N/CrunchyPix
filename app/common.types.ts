@@ -128,7 +128,7 @@ export type PortfolioItemProps = {
   labels?: string[];
   ProjectInfo?: ProjectInfoType;
   catalogue?: { folderPath: string; pageNumber: number };
-  date: Date | undefined;
+  date: string;
 };
 
 export type ProjectInfoType = {

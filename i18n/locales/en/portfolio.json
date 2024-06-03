@@ -9,10 +9,10 @@
   "sort": {
     "def": "Sort",
     "options": {
-      "New to Old": "New to Old",
-      "Old to New": "Old to New",
-      "Alphabetically A-Z": "Alphabetically A-Z",
-      "Alphabetically Z-A": "Alphabetically Z-A"
+      "new_to_old": "New to Old",
+      "old_to_new": "Old to New",
+      "alphabetically_a-z": "Alphabetically A-Z",
+      "alphabetically_z-a": "Alphabetically Z-A"
     }
   },
   "page": {

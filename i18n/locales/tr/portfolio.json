@@ -9,10 +9,10 @@
   "sort": {
     "def": "Sırala",
     "options": {
-      "New to Old": "Yeniden Eskiye",
-      "Old to New": "Eskiden Yeniye",
-      "Alphabetically A-Z": "Alfabetik A-Z",
-      "Alphabetically Z-A": "Alfabetik Z-A"
+      "new_to_old": "Yeniden Eskiye",
+      "old_to_new": "Eskiden Yeniye",
+      "alphabetically_a-z": "Alfabetik A-Z",
+      "alphabetically_z-a": "Alfabetik Z-A"
     }
   },
   "page": {

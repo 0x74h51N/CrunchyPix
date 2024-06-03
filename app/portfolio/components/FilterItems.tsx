@@ -15,7 +15,7 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
   const [sortedItems, setSortedItems] = useState<PortfolioItemProps[]>([]);
   const searchParam = watch('search', '');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  //const [sortOption, setSortOption] = useState('');
+  const [selectedOption, setSortOption] = useState('');
   useEffect(() => {
     const filteredItems = portfolioPageItems.filter(
       (item: PortfolioItemProps) => {
@@ -36,12 +36,15 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
   }, [sortedItems]);
 
   const handleSortChange = (sortOption: string) => {
+    setSortOption(sortOption);
     if (sortOption.includes('new')) {
       const dateSorted = [...sortedItems].sort((a, b) => {
-        if (!a.date || !b.date) {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        if (!dateA || !dateB) {
           return 0;
         }
-        return b.date.getTime() - a.date.getTime();
+        return dateB.getTime() - dateA.getTime();
       });
       if (sortOption === 'new_to_old') {
         setSortedItems(dateSorted);
@@ -75,21 +78,27 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
     label: key,
     value: value,
   })) as option[];
-  const classes = `${isDropdownOpen ? 'h-[150px] p-3 transition-all ease-in-out duration-500' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40`;
+  const classes = `${isDropdownOpen ? 'h-[170px] py-3 ' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40`;
   return (
     <form>
       <div className="flex flex-row md:justify-end justify-between gap-6 w-full z-30">
         <div className="relative z-20">
           <Dropdown
             classes={classes}
-            defaultValue={t('sort.def')}
+            defaultValue={
+              selectedOption
+                ? t(`sort.options.${selectedOption}`)
+                : t('sort.def')
+            }
             options={options}
             optionClickHandler={handleSortChange}
             isDropdownOpen={isDropdownOpen}
             setDropdownOpen={setDropdownOpen}
             width={135}
-            ulClasses="pt-8 transition-all ease-in-out duration-500"
+            ulClasses="pt-7 transition-all ease-in-out duration-500"
             flagMode={false}
+            selectedOption={selectedOption}
+            liClass="px-3 py-1"
           />
         </div>
         <input
@@ -97,7 +106,7 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
           type="text"
           {...register('search')}
           placeholder={t('search')}
-          className="p-2 contactBox md:max-w-[16rem] max-w-[10rem] focus:border-log-col focus:shadow-inner"
+          className="contactBox md:max-w-[16rem] max-w-[10rem] focus:border-log-col focus:shadow-inner"
         />
       </div>
     </form>
