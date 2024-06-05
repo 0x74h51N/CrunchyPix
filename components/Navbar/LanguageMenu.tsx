@@ -52,7 +52,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
       optionClickHandler={handleChange}
       isDropdownOpen={isDropdownOpen}
       setDropdownOpen={setIsDropdownOpen}
-      width={36}
+      style={{ width: 36 }}
       ulClasses="pt-5"
     />
   );

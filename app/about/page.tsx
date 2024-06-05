@@ -1,16 +1,16 @@
-'use client'
+'use client';
 
-import { motion } from 'framer-motion'
-import { polygonIn } from '@/utils/motion'
-import { useTranslation } from 'react-i18next'
-import { CldImage } from 'next-cloudinary'
-import Construction from '@/components/Construction'
+import { motion } from 'framer-motion';
+import { polygonIn } from '@/utils/motion';
+import { useTranslation } from 'react-i18next';
+import { CldImage } from 'next-cloudinary';
+import Construction from '@/components/Construction';
 
 const AboutPage = () => {
-  const { t } = useTranslation('about')
-  let descriptions = t('description', { returnObjects: true }) as string[]
+  const { t } = useTranslation('about');
+  let descriptions = t('description', { returnObjects: true }) as string[];
   if (!Array.isArray(descriptions)) {
-    descriptions = []
+    descriptions = [];
   }
   return (
     // <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden">
@@ -39,7 +39,7 @@ const AboutPage = () => {
     //   </motion.div>
     // </div>
     <Construction />
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

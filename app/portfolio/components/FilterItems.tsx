@@ -90,7 +90,7 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
           optionClickHandler={handleSortChange}
           isDropdownOpen={isDropdownOpen}
           setDropdownOpen={setDropdownOpen}
-          width={135}
+          style={{ width: 135 }}
           ulClasses="pt-7 transition-all ease-in-out duration-500"
           flagMode={false}
           selectedOption={selectedOption}
