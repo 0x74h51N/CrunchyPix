@@ -17,12 +17,11 @@ type dropdownProps = {
   isDropdownOpen: boolean;
   setDropdownOpen: Dispatch<SetStateAction<boolean>>;
   hoverMode?: boolean;
-  width: number | string;
-  background?: string;
   ulClasses?: string;
   flagMode?: boolean;
   selectedOption?: string;
   liClass?: string;
+  style?: React.CSSProperties;
 };
 
 const Dropdown = ({
@@ -33,12 +32,11 @@ const Dropdown = ({
   setDropdownOpen,
   isDropdownOpen,
   hoverMode = true,
-  width,
-  background,
   ulClasses,
   flagMode = true,
   selectedOption,
   liClass,
+  style,
 }: dropdownProps) => {
   const [isRotated, setIsRotated] = useState(false);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
@@ -82,10 +80,7 @@ const Dropdown = ({
         onClick={(e) => handleToggleDropdown(e)}
         className="flex flex-row justify-center items-center gap-1 z-20 bg-transparent cursor-none w-full"
       >
-        <div
-          className="p text-start pl-3 truncate ..."
-          style={{ width: width, background: background ?? 'transparent' }}
-        >
+        <div className="p text-start pl-3 truncate ..." style={style}>
           {defaultValue}
         </div>
         <div>
