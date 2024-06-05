@@ -2,9 +2,17 @@ import { Metadata } from 'next';
 import { portfolioPageItems } from '@/constants/portfolioItems';
 import { createTranslation } from '@/i18n/server';
 
-export async function generateSubPageMetadata({ params, page }: { params: { id: string }, page: string }): Promise<Metadata> {
+export async function generateSubPageMetadata({
+  params,
+  page,
+}: {
+  params: { id: string };
+  page: string;
+}): Promise<Metadata> {
   const { t } = await createTranslation(page);
-  const selectedItem = portfolioPageItems.find(item => item._id.toLowerCase().replace(/\s+/g, '') === params.id);
+  const selectedItem = portfolioPageItems.find(
+    (item) => item._id.toLowerCase().replace(/\s+/g, '') === params.id,
+  );
 
   if (!selectedItem) {
     return {
@@ -12,12 +20,14 @@ export async function generateSubPageMetadata({ params, page }: { params: { id: 
       description: 'This project does not exist in the portfolio.',
     };
   }
-  const ticksTranslate = selectedItem.ticks ? selectedItem.ticks.map((item)=>t(item)) : [];
+  const ticksTranslate = selectedItem.ticks
+    ? selectedItem.ticks.map((item) => t(item))
+    : [];
   return {
     title: `${t('meta.title')} | ${t(selectedItem.title)}`,
-    description:selectedItem.description && t(selectedItem.description),
+    description: selectedItem.description && t(selectedItem.description),
     keywords: ticksTranslate.join(', '),
-    openGraph:{
+    openGraph: {
       title: `${t('meta.title')} | ${t(selectedItem.title)}`,
       description: selectedItem.description ? t(selectedItem.description) : '',
       url: `https://crunchypix.vercel.app/portfolio/${params.id}`,
@@ -30,6 +40,6 @@ export async function generateSubPageMetadata({ params, page }: { params: { id: 
         },
       ],
     },
-    authors: [{ name: "Tahsin Önemli", url: "https://github.com/0x74h51N" }]
+    authors: [{ name: 'Tahsin Önemli', url: 'https://github.com/0x74h51N' }],
   };
 }
