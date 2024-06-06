@@ -21,7 +21,7 @@ export async function generateSubPageMetadata({
     };
   }
   const ticksTranslate = selectedItem.ticks
-    ? selectedItem.ticks.map((item) => t(item))
+    ? selectedItem.ticks.map((item: string[]) => t(item))
     : [];
   return {
     title: `${t('meta.title')} | ${t(selectedItem.title)}`,
