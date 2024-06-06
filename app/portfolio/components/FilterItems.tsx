@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { PortfolioItemProps } from '@/app/common.types';
 import { useTranslation } from 'react-i18next';
 import Dropdown from '@/components/Dropdown';
 import i18next from 'i18next';
+import { PortfolioItemProps } from '@/schemas';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];

@@ -90,7 +90,11 @@ const IconButton = ({ icon, size }: { icon: IconProps; size?: number }) => {
           rel="noopener noreferrer"
           className="cursor-none"
         >
-          <IconComponent size={size} />
+          <IconComponent
+            size={icon.size ? icon.size : size}
+            color={icon.color}
+          />
+
           {icon.alt && (
             <span className="absolute self-center rounded-md border-spacing-1 border-cool-gray-700 border-2 w-auto p-[2px] text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 ease-in-out duration-300 pointer-events-none cursor-none whitespace-nowrap">
               {icon.alt}

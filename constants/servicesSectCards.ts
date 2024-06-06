@@ -1,15 +1,16 @@
-import { CardSections, Icon } from "@/app/common.types";
+import { CardSections } from '@/app/common.types';
+import { IconProps } from '@/schemas';
 
-const createIcon = (type: string): Icon => ({
+const createIcon = (type: string): IconProps => ({
   type,
   size: 60,
-  color: "#eeb30d",
+  color: '#eeb30d',
 });
 
 const createCardSection = (
   title: string,
   list: string[],
-  iconType: string
+  iconType: string,
 ): CardSections => ({
   title: title,
   list: list,
@@ -19,51 +20,51 @@ const createCardSection = (
 
 export const servicesSectCards: CardSections[] = [
   createCardSection(
-    "servicesSect.cards.0.title",
+    'servicesSect.cards.0.title',
     [
-      "servicesSect.cards.0.list.0",
-      "servicesSect.cards.0.list.1",
-      "servicesSect.cards.0.list.2",
-      "servicesSect.cards.0.list.3",
-      "servicesSect.cards.0.list.4",
-      "servicesSect.cards.0.list.5",
+      'servicesSect.cards.0.list.0',
+      'servicesSect.cards.0.list.1',
+      'servicesSect.cards.0.list.2',
+      'servicesSect.cards.0.list.3',
+      'servicesSect.cards.0.list.4',
+      'servicesSect.cards.0.list.5',
     ],
-    "code"
+    'code',
   ),
   createCardSection(
-    "servicesSect.cards.1.title",
+    'servicesSect.cards.1.title',
     [
-      "servicesSect.cards.1.list.0",
-      "servicesSect.cards.1.list.1",
-      "servicesSect.cards.1.list.2",
-      "servicesSect.cards.1.list.3",
-      "servicesSect.cards.1.list.4",
-      "servicesSect.cards.1.list.5",
+      'servicesSect.cards.1.list.0',
+      'servicesSect.cards.1.list.1',
+      'servicesSect.cards.1.list.2',
+      'servicesSect.cards.1.list.3',
+      'servicesSect.cards.1.list.4',
+      'servicesSect.cards.1.list.5',
     ],
-    "layout"
+    'layout',
   ),
   createCardSection(
-    "servicesSect.cards.2.title",
+    'servicesSect.cards.2.title',
     [
-      "servicesSect.cards.2.list.0",
-      "servicesSect.cards.2.list.1",
-      "servicesSect.cards.2.list.2",
-      "servicesSect.cards.2.list.3",
-      "servicesSect.cards.2.list.4",
-      "servicesSect.cards.2.list.5",
+      'servicesSect.cards.2.list.0',
+      'servicesSect.cards.2.list.1',
+      'servicesSect.cards.2.list.2',
+      'servicesSect.cards.2.list.3',
+      'servicesSect.cards.2.list.4',
+      'servicesSect.cards.2.list.5',
     ],
-    "brush"
+    'brush',
   ),
   createCardSection(
-    "servicesSect.cards.3.title",
+    'servicesSect.cards.3.title',
     [
-      "servicesSect.cards.3.list.0",
-      "servicesSect.cards.3.list.1",
-      "servicesSect.cards.3.list.2",
-      "servicesSect.cards.3.list.3",
-      "servicesSect.cards.3.list.4",
-      "servicesSect.cards.3.list.5",
+      'servicesSect.cards.3.list.0',
+      'servicesSect.cards.3.list.1',
+      'servicesSect.cards.3.list.2',
+      'servicesSect.cards.3.list.3',
+      'servicesSect.cards.3.list.4',
+      'servicesSect.cards.3.list.5',
     ],
-    "chart"
+    'chart',
   ),
 ];

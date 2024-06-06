@@ -1,12 +1,13 @@
-import { ColorfulHover } from "./ColorfulHover";
-import { ColorfulHoverType, Icon } from "@/app/common.types";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import IconButton from "./Buttons/IconButton";
-import { motion } from "framer-motion";
+import { ColorfulHover } from './ColorfulHover';
+import { ColorfulHoverType } from '@/app/common.types';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import IconButton from './Buttons/IconButton';
+import { motion } from 'framer-motion';
+import { IconProps } from '@/schemas';
 
 type SocialIconProp = {
-  iconPack: Icon[];
+  iconPack: IconProps[];
   row?: boolean;
   colorful?: boolean;
 };
@@ -19,10 +20,10 @@ export const SocialIcons = ({
   colorful = false,
 }: SocialIconProp & ColorfulHoverType) => {
   const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width
+    (state: RootState) => state.screenWidth.width,
   );
   const screenHeight = useSelector(
-    (state: RootState) => state.screenHeight.height
+    (state: RootState) => state.screenHeight.height,
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
@@ -36,7 +37,7 @@ export const SocialIcons = ({
 
   return (
     <>
-      {iconList.map((icon: Icon, index: number) => {
+      {iconList.map((icon: IconProps, index: number) => {
         const angle = index * angleIncrement;
         const x =
           isMobile || screenHeight <= 600 || row
@@ -48,8 +49,8 @@ export const SocialIcons = ({
             ? 0
             : -iconRadius * Math.sin(angle) + screenHeight / 2.2;
 
-        const fontSize = isMobile || screenHeight <= 600 ? "35px" : "50px";
-        const color = "white";
+        const fontSize = isMobile || screenHeight <= 600 ? '35px' : '50px';
+        const color = 'white';
         const iconStyle = { x, y, fontSize, color };
 
         return colorful ? (

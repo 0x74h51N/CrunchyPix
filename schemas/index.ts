@@ -2,8 +2,10 @@ import { z } from 'zod';
 
 export const IconSchema = z.object({
   type: z.string(),
-  link: z.string(),
-  alt: z.string(),
+  link: z.string().optional(),
+  alt: z.string().optional(),
+  size: z.number().optional(),
+  color: z.string().optional(),
 });
 
 export const TranslationSchema = z.object({

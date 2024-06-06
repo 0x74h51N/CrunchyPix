@@ -1,61 +1,61 @@
-import { Icon } from "@/app/common.types";
+import { IconProps } from '@/schemas';
 
-export const socialIcons: Icon[] = [
+export const socialIcons: IconProps[] = [
   {
-    link: "mailto:mr.tahsin@windowslive.com",
-    type: "mail",
-    alt: "E-Mail",
+    link: 'mailto:mr.tahsin@windowslive.com',
+    type: 'mail',
+    alt: 'E-Mail',
   },
   {
-    link: "https://codepen.io/0x74h51N",
-    type: "codepen",
-    alt: "Codepen.io",
+    link: 'https://codepen.io/0x74h51N',
+    type: 'codepen',
+    alt: 'Codepen.io',
   },
   {
-    link: "https://github.com/0x74h51N",
-    type: "github",
-    alt: "Github",
+    link: 'https://github.com/0x74h51N',
+    type: 'github',
+    alt: 'Github',
   },
   {
-    link: "https://www.linkedin.com/in/0x74h51n/",
-    type: "linkedin",
-    alt: "Linkedin",
-  }  
+    link: 'https://www.linkedin.com/in/0x74h51n/',
+    type: 'linkedin',
+    alt: 'Linkedin',
+  },
 ];
-export const footerIcons: Icon[] = [
+export const footerIcons: IconProps[] = [
   {
-    link: "https://www.instagram.com/thetahsin_/",
-    type: "instagram",
-    alt: "Instagram",
+    link: 'https://www.instagram.com/thetahsin_/',
+    type: 'instagram',
+    alt: 'Instagram',
   },
   {
-    link: "https://github.com/0x74h51N",
-    type: "github",
-    alt: "Github",
-  }, 
-  {
-    link: "https://www.linkedin.com/in/0x74h51n/",
-    type: "linkedin",
-    alt: "Linkedin",
+    link: 'https://github.com/0x74h51N',
+    type: 'github',
+    alt: 'Github',
   },
   {
-    link: "https://codepen.io/0x74h51N",
-    type: "codepen",
-    alt: "Codepen.io",
+    link: 'https://www.linkedin.com/in/0x74h51n/',
+    type: 'linkedin',
+    alt: 'Linkedin',
   },
   {
-    link: "https://www.freecodecamp.org/0x74h51N",
-    type: "freecodecamp",
-    alt: "freeCodeCamp",
+    link: 'https://codepen.io/0x74h51N',
+    type: 'codepen',
+    alt: 'Codepen.io',
   },
   {
-    link: "https://t.me/Ox74h51N",
-    type: "telegram",
-    alt: "Telegram",
+    link: 'https://www.freecodecamp.org/0x74h51N',
+    type: 'freecodecamp',
+    alt: 'freeCodeCamp',
   },
   {
-    link: "mailto:mr.tahsin@windowslive.com",
-    type: "mail",
-    alt: "Mail",
+    link: 'https://t.me/Ox74h51N',
+    type: 'telegram',
+    alt: 'Telegram',
+  },
+  {
+    link: 'mailto:mr.tahsin@windowslive.com',
+    type: 'mail',
+    alt: 'Mail',
   },
 ];
