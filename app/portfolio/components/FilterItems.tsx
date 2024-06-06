@@ -1,14 +1,19 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { PortfolioItemProps } from '@/app/common.types';
-import { portfolioPageItems } from '@/constants/portfolioItems';
 import { useTranslation } from 'react-i18next';
 import Dropdown from '@/components/Dropdown';
+import i18next from 'i18next';
 
 type FilterItemsProps = {
+  portfolioPageItems: PortfolioItemProps[];
   setFilteredItems: Dispatch<SetStateAction<PortfolioItemProps[]>>;
 };
 
-const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
+const FilterItems = ({
+  portfolioPageItems,
+  setFilteredItems,
+}: FilterItemsProps) => {
+  const language = i18next.language;
   const { t } = useTranslation('portfolio');
   const [sortedItems, setSortedItems] = useState<PortfolioItemProps[]>([]);
   const [searchParam, setSearchParam] = useState('');
@@ -17,8 +22,8 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
   useEffect(() => {
     const filteredItems = portfolioPageItems.filter(
       (item: PortfolioItemProps) => {
-        const title = t(item.title).toLowerCase();
-        const type = item.projectType ? t(item.projectType).toLowerCase() : '';
+        const title = item.translations[language].title.toLowerCase();
+        const type = item.translations[language].projectType.toLowerCase();
         return (
           title.includes(searchParam) ||
           type.includes(searchParam) ||
@@ -53,8 +58,8 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
       }
     } else if (sortOption.includes('alphabetically')) {
       const alphaSort = [...sortedItems].sort((a, b) => {
-        const aTitle = t(a.title);
-        const bTitle = t(b.title);
+        const aTitle = a.translations[language].title;
+        const bTitle = b.translations[language].title;
         return aTitle.replace('_', '').localeCompare(bTitle);
       });
       if (sortOption === 'alphabetically_a-z') {

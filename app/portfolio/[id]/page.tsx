@@ -27,7 +27,7 @@ const PortfolioPage = ({ params }: { params: { id: string } }) => {
   return (
     <>
       <Project Item={selectedItem} />
-      <OtherProjects />
+      {/* <OtherProjects /> */}
     </>
   );
 };

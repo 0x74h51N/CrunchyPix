@@ -1,5 +1,6 @@
 import { portfolioPageItems } from '@/constants/portfolioItems';
 import { generatePageMetadata } from '@/lib/metadata';
+import supabase from '@/lib/supabaseClient';
 import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,7 +20,16 @@ export default function PortfolioLayout({
 }
 
 export async function generateStaticParams() {
-  const paths = portfolioPageItems.map((item) => ({
+  const { data: portfolioItems, error } = await supabase
+    .from('portfolio_items')
+    .select('_id');
+
+  if (error) {
+    console.error('Error fetching portfolio items:', error);
+    return [];
+  }
+
+  const paths = portfolioItems.map((item) => ({
     params: { id: item._id.toLowerCase().replace(/\s+/g, '') },
   }));
 

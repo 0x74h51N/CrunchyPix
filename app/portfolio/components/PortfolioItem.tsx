@@ -6,10 +6,11 @@ import Link from 'next/link';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { FaAnglesRight } from 'react-icons/fa6';
-import { PortfolioItemProps } from '@/app/common.types';
 import { CldImage } from 'next-cloudinary';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
+import i18next from 'i18next';
+import { PortfolioItemProps } from '@/schemas';
 
 const areEqual = (
   prevProps: PortfolioItemInterface,
@@ -17,10 +18,7 @@ const areEqual = (
 ) => {
   return (
     prevProps._id === nextProps._id &&
-    prevProps.image === nextProps.image &&
-    prevProps.imageAlt === nextProps.imageAlt &&
-    prevProps.title === nextProps.title &&
-    prevProps.projectType === nextProps.projectType &&
+    prevProps.translations === nextProps.translations &&
     prevProps.width === nextProps.width &&
     prevProps.height === nextProps.height &&
     prevProps.isSlide === nextProps.isSlide
@@ -34,16 +32,7 @@ interface PortfolioItemInterface extends PortfolioItemProps {
 }
 
 const PortfolioItem = memo(
-  ({
-    _id,
-    image,
-    imageAlt,
-    title,
-    projectType,
-    width,
-    height,
-    isSlide,
-  }: PortfolioItemInterface) => {
+  ({ _id, translations, width, height, isSlide }: PortfolioItemInterface) => {
     const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
     const isTouch = useSelector((state: RootState) => state.isTouch.touch);
     const originalWidth = width;
@@ -51,7 +40,7 @@ const PortfolioItem = memo(
     const mobileWidth = isSlide ? 300 : 350;
     const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
     const id = _id.toLowerCase().replace(/\s+/g, '');
-    const { t } = useTranslation('portfolio');
+    const language = i18next.language;
     const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
     const { hoverEnd } = useDragHandler();
     const onClickHandler = () => {
@@ -79,8 +68,8 @@ const PortfolioItem = memo(
           }}
         >
           <CldImage
-            src={image}
-            alt={imageAlt}
+            src={`crunchypix/portfolioItems/${_id}.png`}
+            alt={_id}
             format="avif"
             quality="auto"
             fetchPriority="high"
@@ -133,14 +122,14 @@ const PortfolioItem = memo(
             onClick={onClickHandler}
           >
             <h2 className="md:text-md text-sm text-log-col">
-              {t(`${projectType}`)}
+              {translations[language].projectType}
             </h2>
             <h1
               className={`${
                 isMobile || isSlide ? 'h2' : 'h1 half'
               } hover:text-log-col transition-all duration-300 ease-in-out`}
             >
-              {t(`${title}`)}
+              {translations[language].title}
             </h1>
           </Link>
         </div>

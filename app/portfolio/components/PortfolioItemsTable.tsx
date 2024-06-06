@@ -1,6 +1,4 @@
 'use client';
-import { PortfolioItemProps } from '@/app/common.types';
-import { portfolioPageItems } from '@/constants/portfolioItems';
 import { RootState } from '@/store';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -10,8 +8,13 @@ import { motion } from 'framer-motion';
 import PortfolioItem from './PortfolioItem';
 import { CldImage } from 'next-cloudinary';
 import { polygonIn } from '@/utils/motion';
+import { PortfolioItemProps } from '@/schemas';
 
-const PortfolioItemsTable = () => {
+const PortfolioItemsTable = ({
+  portfolioPageItems,
+}: {
+  portfolioPageItems: PortfolioItemProps[];
+}) => {
   const { t } = useTranslation('portfolio');
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width,
@@ -29,10 +32,13 @@ const PortfolioItemsTable = () => {
       className=" h-auto w-auto flex flex-col justify-center items-center min-w-screen mt-8 mb-40"
     >
       <div className="w-auto">
-        <FilterItems setFilteredItems={setFilteredItems} />
+        <FilterItems
+          portfolioPageItems={portfolioPageItems}
+          setFilteredItems={setFilteredItems}
+        />
         <div className="grid xl:grid-cols-2 grid-cols-1 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-4 transition-all ease-in-out duration-300 xl:min-w-[1316px] lg:min-w-[630px] md:min-w-[300px] min-h-[700px]">
           {filteredItems.length > 0 ? (
-            filteredItems.map((item: PortfolioItemProps, index: number) => {
+            filteredItems.map((item: any, index: number) => {
               const initial =
                 screenWidth > 1280
                   ? index > 1
@@ -51,16 +57,14 @@ const PortfolioItemsTable = () => {
                   <PortfolioItem
                     _id={item._id}
                     key={index}
-                    image={item.image}
-                    imageAlt={item.imageAlt}
-                    title={item.title}
-                    projectType={item.projectType}
-                    slideImage={''}
-                    slideDescription={''}
+                    translations={item.translations}
                     width={630}
                     height={500}
                     isSlide={false}
                     date={''}
+                    catalogue={null}
+                    id={index}
+                    tech={[]}
                   />
                 </motion.div>
               );

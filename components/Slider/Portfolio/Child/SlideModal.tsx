@@ -5,18 +5,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import IconButton from '@/components/Buttons/IconButton';
 import Label from '@/components/Labels';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 import Loading from '@/components/Loading';
 import Link from 'next/link';
 import CancelButton from '@/components/Buttons/CancelButton';
 import { sliderChange } from '@/store/redux/isSlider';
 import { CldImage } from 'next-cloudinary';
 import { enableScroll } from '@/utils/scrollEventControl';
+import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 const SlideModal = () => {
   const dispatch = useDispatch();
-  const [imageLoading, setImageLoading] = useState(true);
   const { t } = useTranslation(['portfolio']);
+  const [imageLoading, setImageLoading] = useState(true);
+  const language = i18next.language;
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const selectedSlide = useSelector(
@@ -69,8 +71,8 @@ const SlideModal = () => {
               </button>
               <CldImage
                 priority
-                src={selectedSlide.slideImage || ''}
-                alt={selectedSlide.title || ''}
+                src={`crunchypix/PortfolioSlides/${selectedSlide._id}.png`}
+                alt={selectedSlide._id || ''}
                 width={1800}
                 height={1800}
                 style={{
@@ -90,14 +92,14 @@ const SlideModal = () => {
               ) : (
                 <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                   <h2 className="text-lg font-bold">
-                    {t(`${selectedSlide.title}`)}
+                    {selectedSlide.translations[language].title}
                   </h2>
                   <p
                     className={`font-extralight overflow-hidden ${
                       isMobile ? 'text-[10px]' : 'text-[13px]'
                     }`}
                   >
-                    {t(`${selectedSlide.slideDescription}`)}
+                    {selectedSlide.translations[language].slide_description}
                   </p>
                   <Link
                     href={`/portfolio/${id}`}
@@ -112,21 +114,25 @@ const SlideModal = () => {
                   </Link>
                   <div className="flex">
                     <div className="flex flex-wrap items-start mr-auto">
-                      {selectedSlide.labels &&
-                        selectedSlide.labels.map((label, labelIndex) => (
-                          <Label key={labelIndex} text={label} />
-                        ))}
+                      {selectedSlide.tech &&
+                        selectedSlide.tech.map(
+                          (label: string, labelIndex: number) => (
+                            <Label key={`label-${labelIndex}`} text={label} />
+                          ),
+                        )}
                     </div>
                     <div className="flex items-end gap-2">
                       {selectedSlide.icons &&
-                        selectedSlide.icons.map((icon, iconIndex) => (
-                          <span
-                            key={iconIndex}
-                            className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-2xl text-xl"
-                          >
-                            <IconButton key={iconIndex} icon={icon} />
-                          </span>
-                        ))}
+                        Object.entries(selectedSlide.icons).map(
+                          ([key, icon], iconIndex) => (
+                            <span
+                              key={iconIndex}
+                              className="lg:text-2xl text-xl"
+                            >
+                              <IconButton key={`icon-${key}`} icon={icon} />
+                            </span>
+                          ),
+                        )}
                     </div>
                   </div>
                 </div>

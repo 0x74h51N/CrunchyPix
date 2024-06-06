@@ -1,5 +1,5 @@
-import { Icon } from '@/app/common.types';
 import IconButton from '@/components/Buttons/IconButton';
+import { IconProps } from '@/schemas';
 import { RootState } from '@/store';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
@@ -16,7 +16,7 @@ const TopImage = ({
   imageTop: string;
   imageTopMobile?: string;
   imageAlt: string;
-  icons?: Icon[];
+  icons?: IconProps[];
 }) => {
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width,

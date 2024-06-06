@@ -1,4 +1,8 @@
+'use client';
+import Loading from '@/components/Loading';
 import LoadingComponent from '@/components/Loading';
+import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
 import dynamic from 'next/dynamic';
 
 const PortfolioItemsTable = dynamic(
@@ -13,7 +17,23 @@ const PortfolioItemsTable = dynamic(
   },
 );
 const Portfolio = () => {
-  return <PortfolioItemsTable />;
+  const { data, loading, error } = useSupabaseFetch<PortfolioItemProps>(
+    'portfolio_items',
+    '*',
+    PortfolioItemSchema,
+  );
+
+  if (loading) return <LoadingComponent />;
+  if (error) console.log(error);
+
+  if (loading)
+    return (
+      <div className="flexCenter w-full p-20 min-h-[100svh] overflow-hidden">
+        <Loading />
+      </div>
+    );
+  if (error) return <div className="text-red-500">Error: {error}</div>;
+  return data && <PortfolioItemsTable portfolioPageItems={data} />;
 };
 
 export default Portfolio;

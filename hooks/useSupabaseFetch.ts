@@ -1,8 +1,21 @@
+'use client';
 import { useState, useEffect } from 'react';
+import supabase from '@/lib/supabaseClient';
+import { z, ZodError, ZodSchema } from 'zod';
 
-const useSupabaseFetch = (table: string, select: string) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+type Filter = {
+  column: string;
+  value: any;
+};
+
+const useSupabaseFetch = <T>(
+  table: string,
+  select: string,
+  schema: ZodSchema<T>,
+  filters?: Filter[],
+) => {
+  const [data, setData] = useState<T[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -10,14 +23,29 @@ const useSupabaseFetch = (table: string, select: string) => {
       setLoading(true);
       setError(null);
       try {
-        const response = await fetch(
-          `/api/supabase-fetch?table=${table}&select=${select}`,
-        );
-        const result = await response.json();
-        if (response.ok) {
-          setData(result.data);
+        let query = supabase.from(table).select(select);
+        if (filters) {
+          filters.forEach((filter) => {
+            query = query.eq(filter.column, filter.value);
+          });
+        }
+        const { data, error } = await query;
+        if (error) {
+          setError(error.message);
         } else {
-          setError(result.error);
+          try {
+            const validatedData = schema.array().parse(data);
+            setData(validatedData);
+          } catch (err: unknown) {
+            if (err instanceof ZodError) {
+              setError(
+                'Validation error: ' +
+                  err.errors.map((e) => e.message).join(', '),
+              );
+            } else {
+              setError('Unknown validation error');
+            }
+          }
         }
       } catch (err: unknown) {
         if (err instanceof Error) {
@@ -31,7 +59,7 @@ const useSupabaseFetch = (table: string, select: string) => {
     };
 
     fetchData();
-  }, [table, select]);
+  }, [table, select, schema]);
 
   return { data, loading, error };
 };

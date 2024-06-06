@@ -1,3 +1,5 @@
+import { IconProps } from '@/schemas';
+
 export type Links = {
   href: string;
   key: string;
@@ -49,14 +51,14 @@ export type slide = {
   children?: React.ReactNode | React.ReactElement<{ active: boolean }>;
   box?: boolean;
   githubLink?: string;
-  icons?: Icon[];
+  icons?: IconProps[];
   labels?: string[];
 };
 
 export type CardSections = {
   title?: string;
   description?: string;
-  icon?: Icon;
+  icon?: IconProps;
   index?: number;
   colorFulBorder?: boolean;
   image?: string;
@@ -79,7 +81,7 @@ export type generateSpanType = {
 
 export type ColorfulHoverType = {
   char?: string;
-  icon?: Icon;
+  icon?: IconProps;
   initial?: any;
   style?: React.CSSProperties;
   className?: string;
@@ -91,44 +93,9 @@ export type ColorfulHoverType = {
   zeroColor?: string;
 };
 
-export type Icon = {
-  type?: string;
-  link?: string;
-  size?: number;
-  color?: string;
-  alt?: string;
-  substance?: string;
-};
-
 export type logoType = {
   text: string;
   icon: string;
-};
-
-export type PortfolioItemProps = {
-  _id: string;
-  slideImage?: string;
-  image: string;
-  imageAlt: string;
-  imageTop?: string;
-  imageTopMobile?: string;
-  imageBoxes?: string[];
-  title: string;
-  title2?: string;
-  techTitle?: string;
-  projectType: string;
-  slideDescription: string;
-  description?: string;
-  description2?: string;
-  techDescription?: string;
-  ticks?: string[];
-  description3?: string;
-  githubLink?: string;
-  icons?: Icon[];
-  labels?: string[];
-  ProjectInfo?: ProjectInfoType;
-  catalogue?: { folderPath: string; pageNumber: number };
-  date: string;
 };
 
 export type ProjectInfoType = {

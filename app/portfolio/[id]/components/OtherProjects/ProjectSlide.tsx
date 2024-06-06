@@ -4,9 +4,9 @@ import SwiperCore from 'swiper';
 import PortfolioItem from '../../../components/PortfolioItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { PortfolioItemProps } from '@/app/common.types';
 import { useRef, useEffect } from 'react';
 import 'swiper/css';
+import { PortfolioItemProps } from '@/schemas';
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -60,16 +60,15 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
         >
           <PortfolioItem
             _id={item._id}
-            image={item.image}
-            imageAlt={item.imageAlt}
-            title={item.title}
-            projectType={item.projectType}
-            slideImage={''}
-            slideDescription={''}
+            translations={item.translations}
             width={screenWidth <= 1030 ? 300 : 380}
             height={screenWidth <= 1030 ? 250 : 310}
             isSlide={true}
             date={''}
+            id={0}
+            icons={{}}
+            tech={[]}
+            catalogue={null}
           />
         </SwiperSlide>
       ))}

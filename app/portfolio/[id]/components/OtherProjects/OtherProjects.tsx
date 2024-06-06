@@ -1,13 +1,15 @@
 'use client';
-import { portfolioPageItems } from '@/constants/portfolioItems';
+
 import { polygonIn, slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import useDragHandler from '@/hooks/useDragHandler';
 import ProjectSlide from './ProjectSlide';
+import { PortfolioItemProps } from '@/schemas';
 
-const OtherProjects = () => {
+const OtherProjects = ({ items }: { items: PortfolioItemProps[] }) => {
   const { t } = useTranslation('portfolio');
+
   const { hoverStart, hoverEnd } = useDragHandler();
   return (
     <div className="flexCenter w-auto h-auto min-w-[100svw] overflow-hidden">
@@ -25,7 +27,7 @@ const OtherProjects = () => {
             {t('page.otherProjects')}
           </h2>
         </motion.div>
-        <ProjectSlide Items={portfolioPageItems} />
+        <ProjectSlide Items={items} />
       </motion.div>
     </div>
   );
