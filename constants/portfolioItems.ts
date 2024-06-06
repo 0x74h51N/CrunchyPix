@@ -1,8 +1,4 @@
-import { PortfolioItemProps } from '@/app/common.types';
-
-import { Icon } from '@/app/common.types';
-
-const commonIcons: Record<string, Icon> = {
+const commonIcons: Record<string, any> = {
   github: {
     type: 'github',
     alt: 'Github',
@@ -13,7 +9,7 @@ const commonIcons: Record<string, Icon> = {
   },
 };
 
-export const portfolioPageItems: PortfolioItemProps[] = [
+export const portfolioPageItems: any[] = [
   {
     _id: 'crunchypix',
     slideImage: 'crunchypix/PortfolioSlides/crunchypix_mq3hnu.png',
@@ -64,10 +60,10 @@ export const portfolioPageItems: PortfolioItemProps[] = [
   },
   {
     _id: 'KYK_Electric',
-    slideImage: 'crunchypix/PortfolioSlides/kykelectric_pohudp.jpg',
-    image: 'crunchypix/PortfolioSlides/kykelectric_pohudp.jpg',
+    slideImage: 'crunchypix/portfolioItems/kyk_electric.png',
+    image: 'crunchypix/portfolioItems/kyk_electric.png',
     imageAlt: 'Kyk Electric',
-    imageTop: 'crunchypix/PortfolioSlides/kykelectric_pohudp.jpg',
+    imageTop: 'crunchypix/portfolioItems/kyk_electric.png',
     title2: 'items.3.title2',
     techDescription: 'items.3.techDescription',
     description: 'items.3.description',
@@ -108,7 +104,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
-    _id: 'CC_Order',
+    _id: 'cc_order',
     slideImage: 'crunchypix/PortfolioSlides/ccorder_qqafax.jpg',
     image: 'crunchypix/portfolioItems/ccorder.png',
     imageAlt: 'CC Order',
@@ -155,7 +151,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
-    _id: 'Minting_UI',
+    _id: 'minting_ui',
     slideImage: 'crunchypix/PortfolioSlides/mintingui_gzl77i.jpg',
     image: 'crunchypix/portfolioItems/mintingui.png',
     imageAlt: 'MintingUI',
@@ -204,7 +200,7 @@ export const portfolioPageItems: PortfolioItemProps[] = [
     ],
   },
   {
-    _id: 'KYK_Catalogue',
+    _id: 'kyk_catalogue',
     image: 'crunchypix/portfolioItems/kyk_catalog.png',
     imageAlt: 'Kyk Electric Catalogue',
     imageTop: 'crunchypix/portfolioItems/kyk_catalog.png',
