@@ -1,28 +1,13 @@
 import IconButton from '@/components/Buttons/IconButton';
 import { IconProps } from '@/schemas';
-import { RootState } from '@/store';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
-const TopImage = ({
-  imageTop,
-  imageTopMobile,
-  imageAlt,
-  icons,
-}: {
-  imageTop: string;
-  imageTopMobile?: string;
-  imageAlt: string;
-  icons?: IconProps[];
-}) => {
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width,
-  );
+const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
   const [loading, setLoading] = useState(true);
-
+  const imageTop = `crunchypix/portfolioItems/${id.includes('kyk') ? id.replaceAll('_', '') : id + 'Top'}`;
   return (
     <div
       className={`relative w-full h-auto overflow-hidden ${
@@ -40,8 +25,8 @@ const TopImage = ({
         fill
         fetchPriority="high"
         format="avif"
-        src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
-        alt={imageAlt}
+        src={imageTop}
+        alt={id}
         onLoad={() => setLoading(false)}
         className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
         style={{ opacity: loading ? 0 : 100 }}
@@ -51,8 +36,8 @@ const TopImage = ({
           fill
           quality={5}
           blur={250}
-          src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
-          alt={imageAlt}
+          src={imageTop}
+          alt={id}
           className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
         />
       )}

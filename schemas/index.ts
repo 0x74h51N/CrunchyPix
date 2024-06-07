@@ -13,15 +13,21 @@ export const TranslationSchema = z.object({
   projectType: z.string(),
   slide_description: z.string().optional(),
 });
+export const ProjectInfoSchema = z.object({
+  category: z.string(),
+  client: z.string(),
+  location: z.string(),
+  date: z.string(),
+});
 export const ProjectPageSchema = z.object({
   project_id: z.string(),
   lang: z.string(),
   title2: z.string(),
-  slideDescription: z.string(),
   description: z.string(),
   description2: z.string(),
   techDescription: z.string(),
   ticks: z.array(z.string()),
+  project_info: ProjectInfoSchema,
 });
 
 export const PortfolioItemSchema = z.object({
@@ -43,3 +49,4 @@ export const PortfolioItemSchema = z.object({
 export type IconProps = z.infer<typeof IconSchema>;
 export type PortfolioItemProps = z.infer<typeof PortfolioItemSchema>;
 export type ProjectPageProps = z.infer<typeof ProjectPageSchema>;
+export type ProjectInfoProps = z.infer<typeof ProjectInfoSchema>;

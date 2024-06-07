@@ -4,9 +4,9 @@ import { generateSpans } from '@/components/GenerateSpans';
 import { slideIn } from '@/utils/motion';
 import dynamic from 'next/dynamic';
 import LoadingComponent from '@/components/Loading';
-import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { useTranslation } from 'react-i18next';
-import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const CarouselSlider = dynamic(
   () => import('@/components/Slider/Portfolio/CarouselSlider'),
@@ -26,17 +26,11 @@ const SlideModal = dynamic(
 
 const PortfolioSect = () => {
   const { t } = useTranslation('portfolio');
-  const { data, loading, error } = useSupabaseFetch<PortfolioItemProps>(
-    'portfolio_items',
-    '*',
-    PortfolioItemSchema,
+  const portfolioItems = useSelector(
+    (state: RootState) => state.portfolio.items,
   );
-
-  if (loading) return <LoadingComponent />;
-  if (error) console.log(error);
-
   return (
-    data && (
+    portfolioItems && (
       <div className="h-auto flex flex-col items-center justify-center w-full">
         <div className="flex flex-col text-center">
           <motion.h1
@@ -54,7 +48,7 @@ const PortfolioSect = () => {
           </motion.h1>
         </div>
         <div className="w-full h-auto min-w-[100sv] z-0 bg-cool-gray-800">
-          <CarouselSlider slides={data} />
+          <CarouselSlider slides={portfolioItems} />
         </div>
         <div className="z-50">
           <SlideModal />

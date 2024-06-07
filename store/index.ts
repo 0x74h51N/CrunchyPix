@@ -13,6 +13,7 @@ import touchReducer from './redux/isTouch';
 import cursorDisabledReducer from './redux/cursorDisabled';
 import isScrollEnabledReducer from './redux/isScrollEnabled';
 import cookieConsentReducer from './redux/cookieConsent';
+import portfolioReducer from './redux/portfolioItems';
 
 const store = configureStore({
   reducer: {
@@ -30,6 +31,7 @@ const store = configureStore({
     cursorDisabled: cursorDisabledReducer,
     isScrollEnabled: isScrollEnabledReducer,
     cookieConsent: cookieConsentReducer,
+    portfolio: portfolioReducer,
   },
 });
 

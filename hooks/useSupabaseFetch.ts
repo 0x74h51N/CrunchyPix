@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import supabase from '@/lib/supabaseClient';
-import { z, ZodError, ZodSchema } from 'zod';
+import { ZodError, ZodSchema } from 'zod';
 
 type Filter = {
   column: string;

@@ -97,11 +97,3 @@ export type logoType = {
   text: string;
   icon: string;
 };
-
-export type ProjectInfoType = {
-  category: string;
-  client: string;
-  location: string;
-  date: string;
-  tech?: string[];
-};

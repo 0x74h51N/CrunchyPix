@@ -1,8 +1,9 @@
-import { portfolioPageItems } from '@/constants/portfolioItems';
 import { generateSubPageMetadata } from '@/lib/metadataSub';
 import dynamic from 'next/dynamic';
 import LoadingComponent from '@/components/Loading';
 import OtherProjects from './components/OtherProjects/OtherProjects';
+import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
+import { fetchSupabaseData } from '@/lib/fetchSupabaseData';
 
 const Project = dynamic(() => import('./components/Project'), {
   ssr: false,
@@ -16,20 +17,27 @@ const Project = dynamic(() => import('./components/Project'), {
 export async function generateMetadata({ params }: { params: { id: string } }) {
   return await generateSubPageMetadata({ params, page: 'portfolio' });
 }
-const PortfolioPage = ({ params }: { params: { id: string } }) => {
-  const selectedItem = portfolioPageItems.find(
-    (item) => item._id.toLowerCase().replace(/\s+/g, '') === params.id,
-  );
-
-  if (!selectedItem) {
-    return null;
-  }
+const PortfolioPage = async ({ params }: { params: { id: string } }) => {
   return (
     <>
-      <Project Item={selectedItem} />
-      {/* <OtherProjects /> */}
+      <Project id={params.id} />
+      <OtherProjects />
     </>
   );
 };
 
 export default PortfolioPage;
+
+export async function generateStaticParams() {
+  const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
+    'portfolio_items',
+    '*',
+    PortfolioItemSchema,
+  );
+
+  const paths = portfolioItems.map((item) => ({
+    params: { id: item._id.toLowerCase().replace(/\s+/g, '') },
+  }));
+
+  return paths;
+}

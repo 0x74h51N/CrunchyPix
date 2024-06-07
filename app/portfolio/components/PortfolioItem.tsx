@@ -68,7 +68,7 @@ const PortfolioItem = memo(
           }}
         >
           <CldImage
-            src={`crunchypix/portfolioItems/${_id}.png`}
+            src={`crunchypix/portfolioItems/${_id.replaceAll('_', '')}`}
             alt={_id}
             format="avif"
             quality="auto"
