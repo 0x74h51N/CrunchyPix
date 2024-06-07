@@ -27,17 +27,3 @@ const PortfolioPage = async ({ params }: { params: { id: string } }) => {
 };
 
 export default PortfolioPage;
-
-export async function generateStaticParams() {
-  const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
-    'portfolio_items',
-    '*',
-    PortfolioItemSchema,
-  );
-
-  const paths = portfolioItems.map((item) => ({
-    params: { id: item._id.toLowerCase().replace(/\s+/g, '') },
-  }));
-
-  return paths;
-}
