@@ -1,13 +1,13 @@
 import LogoImage from '@/components/LogoImage';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import { ProjectInfoProps } from '@/schemas';
+import { ProjectCardProps } from '@/schemas';
 
 const ProjectInfo = ({
   ProjectInfo,
   Tech,
 }: {
-  ProjectInfo: ProjectInfoProps;
+  ProjectInfo: ProjectCardProps;
   Tech: string[];
 }) => {
   const { t } = useTranslation('portfolio');

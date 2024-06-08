@@ -1,9 +1,9 @@
-import { logoType } from "@/app/common.types";
+import { logoType } from '@/app/common.types';
 
 export const LogoComponent = ({ key }: { key: string }) => {
-  const normalizedKey = key.toLowerCase().replace(/\./g, "");
+  const normalizedKey = key.toLowerCase().replace(/\./g, '');
   const logo: logoType = {
-    icon: `/logoSlides/${normalizedKey}.svg`,
+    icon: `/crunchypix/logo/${normalizedKey}.svg`,
     text: key,
   };
 

@@ -1,9 +1,7 @@
-import { generateSubPageMetadata } from '@/lib/metadataSub';
+// import { generateSubPageMetadata } from '@/lib/metadataSub';
 import dynamic from 'next/dynamic';
 import LoadingComponent from '@/components/Loading';
 import OtherProjects from './components/OtherProjects/OtherProjects';
-import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
-import { fetchSupabaseData } from '@/lib/fetchSupabaseData';
 
 const Project = dynamic(() => import('./components/Project'), {
   ssr: false,
@@ -14,9 +12,9 @@ const Project = dynamic(() => import('./components/Project'), {
   ),
 });
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  return await generateSubPageMetadata({ params, page: 'portfolio' });
-}
+// export async function generateMetadata({ params }: { params: { id: string } }) {
+//   return await generateSubPageMetadata({ params, page: 'portfolio' });
+// }
 const PortfolioPage = async ({ params }: { params: { id: string } }) => {
   return (
     <>

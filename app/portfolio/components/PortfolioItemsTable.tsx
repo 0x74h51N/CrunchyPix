@@ -1,6 +1,6 @@
 'use client';
 import { RootState } from '@/store';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import FilterItems from './FilterItems';
@@ -19,10 +19,11 @@ const PortfolioItemsTable = ({
   const screenWidth = useSelector(
     (state: RootState) => state.screenWidth.width,
   );
-  const [filteredItems, setFilteredItems] = useState<PortfolioItemProps[]>(
-    () => portfolioPageItems,
-  );
-
+  const [filteredItems, setFilteredItems] =
+    useState<PortfolioItemProps[]>(portfolioPageItems);
+  useEffect(() => {
+    setFilteredItems(portfolioPageItems);
+  }, [portfolioPageItems]);
   return (
     <motion.div
       initial="hidden"
@@ -57,7 +58,7 @@ const PortfolioItemsTable = ({
                   <PortfolioItem
                     _id={item._id}
                     key={index}
-                    translations={item.translations}
+                    project_overview={item.project_overview}
                     width={630}
                     height={500}
                     isSlide={false}

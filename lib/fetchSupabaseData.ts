@@ -31,9 +31,7 @@ export const fetchSupabaseData = async <T>(
       return validatedData;
     } catch (err: unknown) {
       if (err instanceof ZodError) {
-        throw new Error(
-          'Validation error: ' + err.errors.map((e) => e.message).join(', '),
-        );
+        throw new Error('Validation error: ' + err);
       } else {
         throw new Error('Unknown validation error');
       }

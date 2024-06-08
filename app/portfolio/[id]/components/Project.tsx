@@ -18,7 +18,6 @@ import ImageBoxes from './ImageBoxes';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
 import { ProjectPageProps, ProjectPageSchema } from '@/schemas';
-import i18next from 'i18next';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import LoadingComponent from '@/components/Loading';
 
@@ -27,7 +26,7 @@ const Project = memo(({ id }: { id: string }) => {
   const { i18n, t } = useTranslation('portfolio');
   const { data, loading } = useSupabaseFetch<ProjectPageProps>(
     'project_page',
-    '*',
+    '*, project_card(*)',
     ProjectPageSchema,
     [{ column: 'project_id', value: id }],
   );
@@ -144,7 +143,7 @@ const Project = memo(({ id }: { id: string }) => {
                 {storeItem && (
                   <ProjectInfo
                     Tech={storeItem?.tech}
-                    ProjectInfo={Item.project_info}
+                    ProjectInfo={Item.project_card[0]}
                     key={Item.project_id}
                   />
                 )}

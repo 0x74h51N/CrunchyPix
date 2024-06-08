@@ -24,7 +24,6 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
     return 0;
   });
   const dispatch = useDispatch();
-  const language = i18next.language;
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const screenHeight = useSelector(
@@ -101,7 +100,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
               />
               <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                 <h2 className="text-lg font-bold">
-                  {slide.translations[language].title}
+                  {slide.project_overview[0].title}
                 </h2>
                 <div className="flex">
                   <div className="flex flex-wrap items-start mr-auto">

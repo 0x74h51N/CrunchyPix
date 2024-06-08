@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Dropdown from '@/components/Dropdown';
-import i18next from 'i18next';
 import { PortfolioItemProps } from '@/schemas';
+import i18next from 'i18next';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];
@@ -13,17 +13,20 @@ const FilterItems = ({
   portfolioPageItems,
   setFilteredItems,
 }: FilterItemsProps) => {
-  const language = i18next.language;
   const { t } = useTranslation('portfolio');
   const [sortedItems, setSortedItems] = useState<PortfolioItemProps[]>([]);
   const [searchParam, setSearchParam] = useState('');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSortOption] = useState('');
   useEffect(() => {
+    setSearchParam('');
+    setSortOption('');
+  }, [i18next.language]);
+  useEffect(() => {
     const filteredItems = portfolioPageItems.filter(
       (item: PortfolioItemProps) => {
-        const title = item.translations[language].title.toLowerCase();
-        const type = item.translations[language].projectType.toLowerCase();
+        const title = item.project_overview[0].title.toLowerCase();
+        const type = item.project_overview[0].project_type.toLowerCase();
         return (
           title.includes(searchParam) ||
           type.includes(searchParam) ||
@@ -58,8 +61,8 @@ const FilterItems = ({
       }
     } else if (sortOption.includes('alphabetically')) {
       const alphaSort = [...sortedItems].sort((a, b) => {
-        const aTitle = a.translations[language].title;
-        const bTitle = b.translations[language].title;
+        const aTitle = a.project_overview[0].title;
+        const bTitle = b.project_overview[0].title;
         return aTitle.replace('_', '').localeCompare(bTitle);
       });
       if (sortOption === 'alphabetically_a-z') {
@@ -105,6 +108,7 @@ const FilterItems = ({
       <input
         id="search"
         type="text"
+        value={searchParam}
         onChange={(e) => setSearchParam(e.target.value.toLowerCase().trim())}
         placeholder={t('search')}
         className="contactBox md:max-w-[16rem] max-w-[10rem] focus:border-log-col focus:shadow-inner"

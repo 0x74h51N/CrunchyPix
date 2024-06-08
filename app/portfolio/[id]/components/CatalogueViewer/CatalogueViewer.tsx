@@ -1,36 +1,40 @@
-"use client";
-import { useEffect, useMemo, useRef, useState } from "react";
-import HTMLFlipBook from "react-pageflip";
-import { RootState } from "@/store";
-import { useSelector } from "react-redux";
-import FlipButton from "./FlipButton";
-import { CldImage } from "next-cloudinary";
-import { getFlipBookConfig } from "./config";
+'use client';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import HTMLFlipBook from 'react-pageflip';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
+import FlipButton from './FlipButton';
+import { CldImage } from 'next-cloudinary';
+import { getFlipBookConfig } from './config';
 
 const CatalogueViewer = ({
   Item,
 }: {
-  Item: { folderPath: string; pageNumber: number };
+  Item: { folderPath: string; pageNumber: string };
 }) => {
   const flipBookRef = useRef<any>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [mouseEvent, setMouseEvent] = useState(false);
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
-  const screenWidth = useSelector((state: RootState) => state.screenWidth.width);
-  
-  const [flipBookConfig, setFlipBookConfig] = useState(()=>getFlipBookConfig(screenWidth));
-  useEffect(()=>{
-  const flipBookConfig = getFlipBookConfig(screenWidth);
-    setFlipBookConfig(flipBookConfig)
-  },[screenWidth])
+  const screenWidth = useSelector(
+    (state: RootState) => state.screenWidth.width,
+  );
+
+  const [flipBookConfig, setFlipBookConfig] = useState(() =>
+    getFlipBookConfig(screenWidth),
+  );
+  useEffect(() => {
+    const flipBookConfig = getFlipBookConfig(screenWidth);
+    setFlipBookConfig(flipBookConfig);
+  }, [screenWidth]);
 
   const imagePaths = useMemo(() => {
     const folderPath = Item.folderPath;
     const pageNumber = Item.pageNumber;
     const paths: string[] = [];
-    for (let count = 1; count <= pageNumber; count++) {
+    for (let count = 1; count <= parseInt(pageNumber); count++) {
       const imagePath = `${folderPath}/page${count}.png`;
-      if (imagePath.endsWith(".png")) {
+      if (imagePath.endsWith('.png')) {
         paths.push(imagePath);
       }
     }
@@ -64,25 +68,26 @@ const CatalogueViewer = ({
         ref={flipBookRef}
         useMouseEvents={mouseEvent}
         {...flipBookConfig}
-        className= "w-full h-full relative"
+        className="w-full h-full relative"
       >
         {imagePaths.length > 1 &&
           imagePaths.map((imagePath, index) => (
             <div key={index}>
-            <CldImage
-              src={imagePath}
-              alt={`Page-${index + 1}`}
-              fetchPriority="auto"
-              quality="auto"
-              loading="eager"
-              fill
-              sizes="(max-width: 700px) 100vw, 40vw"
-              style={{
-                objectFit: "cover",
-              }}
-              placeholder="empty"
-              className="w-full h-full bg-white "
-            /></div>
+              <CldImage
+                src={imagePath}
+                alt={`Page-${index + 1}`}
+                fetchPriority="auto"
+                quality="auto"
+                loading="eager"
+                fill
+                sizes="(max-width: 700px) 100vw, 40vw"
+                style={{
+                  objectFit: 'cover',
+                }}
+                placeholder="empty"
+                className="w-full h-full bg-white "
+              />
+            </div>
           ))}
       </HTMLFlipBook>
       {!isTouch && imagePaths.length > 0 && (

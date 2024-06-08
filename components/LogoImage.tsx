@@ -1,6 +1,6 @@
-import { LogoComponent } from "@/utils/logoComponent";
-import Image from "next/image";
-import { useState } from "react";
+import { LogoComponent } from '@/utils/logoComponent';
+import { CldImage } from 'next-cloudinary';
+import { useState } from 'react';
 
 interface LogoImageProps {
   logoKey: string;
@@ -20,16 +20,17 @@ const LogoImage = ({ logoKey, index }: LogoImageProps) => {
 
   return (
     <>
-      <Image
-        loading="lazy"
+      <CldImage
         fill
         src={item.icon}
         alt={item.text}
+        quality={100}
+        format="svg"
         onMouseEnter={() => handleMouseEnter(index)}
         onMouseLeave={handleMouseLeave}
-        className={`h-auto w-full ${
-          item.text == "Next.js" &&
-          " bg-blue-500 rounded-full border-blue-500 border-2"
+        className={`object-contain h-auto w-full ${
+          item.text == 'Next.js' &&
+          ' bg-blue-500 rounded-full border-blue-500 border-2'
         }`}
       />
       {hoveredIndex === index && (

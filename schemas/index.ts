@@ -9,16 +9,19 @@ export const IconSchema = z.object({
 });
 
 export const TranslationSchema = z.object({
+  lang: z.string(),
   title: z.string(),
-  projectType: z.string(),
-  slide_description: z.string().optional(),
+  project_type: z.string(),
+  slide_description: z.string().nullable(),
 });
-export const ProjectInfoSchema = z.object({
+
+export const ProjectCardSchema = z.object({
   category: z.string(),
   client: z.string(),
   location: z.string(),
   date: z.string(),
 });
+
 export const ProjectPageSchema = z.object({
   project_id: z.string(),
   lang: z.string(),
@@ -27,19 +30,19 @@ export const ProjectPageSchema = z.object({
   description2: z.string(),
   techDescription: z.string(),
   ticks: z.array(z.string()),
-  project_info: ProjectInfoSchema,
+  project_card: z.array(ProjectCardSchema),
 });
 
 export const PortfolioItemSchema = z.object({
   id: z.number(),
   _id: z.string(),
-  translations: z.record(TranslationSchema),
-  icons: z.record(IconSchema).optional(),
+  project_overview: z.array(TranslationSchema),
+  icons: z.array(IconSchema).optional(),
   tech: z.array(z.string()),
   catalogue: z
     .object({
       folderPath: z.string(),
-      pageNumber: z.number(),
+      pageNumber: z.string(),
     })
     .nullable(),
   date: z.string(),
@@ -49,4 +52,4 @@ export const PortfolioItemSchema = z.object({
 export type IconProps = z.infer<typeof IconSchema>;
 export type PortfolioItemProps = z.infer<typeof PortfolioItemSchema>;
 export type ProjectPageProps = z.infer<typeof ProjectPageSchema>;
-export type ProjectInfoProps = z.infer<typeof ProjectInfoSchema>;
+export type ProjectCardProps = z.infer<typeof ProjectCardSchema>;

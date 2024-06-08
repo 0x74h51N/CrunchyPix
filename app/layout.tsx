@@ -26,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
     'portfolio_items',
-    '*',
+    '*, icons(*), project_overview(*)',
     PortfolioItemSchema,
   );
   return (

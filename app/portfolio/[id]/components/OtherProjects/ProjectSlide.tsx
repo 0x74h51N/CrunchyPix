@@ -60,13 +60,13 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
         >
           <PortfolioItem
             _id={item._id}
-            translations={item.translations}
+            project_overview={item.project_overview}
             width={screenWidth <= 1030 ? 300 : 380}
             height={screenWidth <= 1030 ? 250 : 310}
             isSlide={true}
             date={''}
             id={0}
-            icons={{}}
+            icons={[]}
             tech={[]}
             catalogue={null}
           />

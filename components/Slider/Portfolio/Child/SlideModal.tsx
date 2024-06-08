@@ -11,14 +11,13 @@ import CancelButton from '@/components/Buttons/CancelButton';
 import { sliderChange } from '@/store/redux/isSlider';
 import { CldImage } from 'next-cloudinary';
 import { enableScroll } from '@/utils/scrollEventControl';
-import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 
 const SlideModal = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation(['portfolio']);
   const [imageLoading, setImageLoading] = useState(true);
-  const language = i18next.language;
+
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const selectedSlide = useSelector(
@@ -92,14 +91,14 @@ const SlideModal = () => {
               ) : (
                 <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                   <h2 className="text-lg font-bold">
-                    {selectedSlide.translations[language].title}
+                    {selectedSlide.project_overview[0].title}
                   </h2>
                   <p
                     className={`font-extralight overflow-hidden ${
                       isMobile ? 'text-[10px]' : 'text-[13px]'
                     }`}
                   >
-                    {selectedSlide.translations[language].slide_description}
+                    {selectedSlide.project_overview[0].slide_description}
                   </p>
                   <Link
                     href={`/portfolio/${id}`}
