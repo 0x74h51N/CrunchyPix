@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Pagination, Autoplay } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import "swiper/css/navigation";
-import "swiper/css/effect-creative";
-import { useTranslation } from "react-i18next";
-import SlideCreator from "./SlideCreator";
-import { slide } from "@/app/common.types";
-import { motion } from "framer-motion";
-import useDragHandler from "@/hooks/useDragHandler";
+import React, { useEffect, useState } from 'react';
+import { Pagination, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/navigation';
+import 'swiper/css/effect-creative';
+import { useTranslation } from 'react-i18next';
+import SlideCreator from './SlideCreator';
+import { slide } from '@/app/common.types';
+import { motion } from 'framer-motion';
+import useDragHandler from '@/hooks/useDragHandler';
 
 interface FullScreenSlideProps {
   slides: slide[];
@@ -19,11 +19,11 @@ interface FullScreenSlideProps {
 
 const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const { t } = useTranslation(["translation"]);
+  const { t } = useTranslation(['translation']);
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
   };
- const {hoverStart, hoverEnd } = useDragHandler();
+  const { hoverStart, hoverEnd } = useDragHandler();
   useEffect(() => {
     const timeout = setTimeout(() => {
       setActiveIndex(0);
@@ -61,7 +61,8 @@ const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
               imageUrl={slide.imageUrl && slide.imageUrl}
               active={activeIndex === index}
               left={slide.left}
-            >{slide.children}
+            >
+              {slide.children}
             </SlideCreator>
           </SwiperSlide>
         ))}

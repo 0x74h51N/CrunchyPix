@@ -22,9 +22,11 @@ const LogoImage = ({ logoKey, index }: LogoImageProps) => {
     <>
       <CldImage
         fill
+        sizes="auto"
         src={item.icon}
         alt={item.text}
         quality={100}
+        priority
         format="svg"
         onMouseEnter={() => handleMouseEnter(index)}
         onMouseLeave={handleMouseLeave}

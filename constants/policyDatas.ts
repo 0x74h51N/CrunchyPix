@@ -1,15 +1,14 @@
-import { Policy } from '@/app/common.types'
+import { Policy } from '@/app/common.types';
 
 interface PolicyPagesProps {
-  _id: string
-  image?: string
-  policyData: Policy[]
+  _id: string;
+  image?: string;
+  policyData: Policy[];
 }
 
 export const policiesPages: PolicyPagesProps[] = [
   {
     _id: 'Cookie-Policy',
-    image: '/policy/cookie.png',
     policyData: [
       {
         description: 'cookiePolicy.0.description',
@@ -142,4 +141,4 @@ export const policiesPages: PolicyPagesProps[] = [
       },
     ],
   },
-]
+];

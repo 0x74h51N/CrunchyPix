@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import supabase from '@/lib/supabaseClient';
 import { ZodError, ZodSchema } from 'zod';
+import { getCachedData } from '@/lib/utils/cache';
 
 type Filter = {
   column: string;
@@ -9,10 +10,12 @@ type Filter = {
 };
 
 const useSupabaseFetch = <T>(
+  schemaPath: string,
   table: string,
   select: string,
   schema: ZodSchema<T>,
   filters?: Filter[],
+  cacheDuration: number = 1000 * 60 * 10,
 ) => {
   const [data, setData] = useState<T[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -22,29 +25,36 @@ const useSupabaseFetch = <T>(
     const fetchData = async () => {
       setLoading(true);
       setError(null);
+      const cacheKey = `${table}-${JSON.stringify(filters)}`;
+
       try {
-        let query = supabase.from(table).select(select);
-        if (filters) {
-          filters.forEach((filter) => {
-            query = query.eq(filter.column, filter.value);
-          });
-        }
-        const { data, error } = await query;
-        if (error) {
-          setError(error.message);
-        } else {
-          try {
-            const validatedData = schema.array().parse(data);
-            setData(validatedData);
-          } catch (err: unknown) {
-            if (err instanceof ZodError) {
-              setError(
-                'Validation error: ' +
-                  err.errors.map((e) => e.message).join(', '),
-              );
-            } else {
-              setError('Unknown validation error');
-            }
+        const fetcher = async () => {
+          let query = supabase.schema(schemaPath).from(table).select(select);
+          if (filters) {
+            filters.forEach((filter) => {
+              query = query.eq(filter.column, filter.value);
+            });
+          }
+          const { data, error } = await query;
+          if (error) {
+            throw new Error(error.message);
+          }
+          return data;
+        };
+
+        const data = await getCachedData(cacheKey, fetcher, cacheDuration);
+
+        try {
+          const validatedData = schema.array().parse(data);
+          setData(validatedData);
+        } catch (err: unknown) {
+          if (err instanceof ZodError) {
+            setError(
+              'Validation error: ' +
+                err.errors.map((e) => e.message).join(', '),
+            );
+          } else {
+            setError('Unknown validation error');
           }
         }
       } catch (err: unknown) {

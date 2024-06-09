@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
   const [loading, setLoading] = useState(true);
-  const imageTop = `crunchypix/portfolioItems/${id.includes('kyk') ? id.replaceAll('_', '') : id + 'Top'}`;
+  const imageTop = `crunchypix/portfolioItems/${id.includes('kyk') ? id.replaceAll('_', '') : id.replaceAll('_', '') + 'Top'}`;
   return (
     <div
       className={`relative w-full h-auto overflow-hidden ${

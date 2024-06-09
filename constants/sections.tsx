@@ -44,6 +44,6 @@ export const sectionsData: SectionData[] = [
   {
     name: 'Logo',
     children: <LogoSect />,
-    className: 'h-auto min-h-auto',
+    className: 'h-auto min-h-auto repatingLines',
   },
 ];

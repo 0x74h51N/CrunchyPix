@@ -49,6 +49,12 @@ export const PortfolioItemSchema = z.object({
   project_page: z.array(ProjectPageSchema).optional(),
 });
 
+export const LogoSlideSchema = z.object({
+  id: z.number(),
+  logo_name: z.string(),
+});
+
+export type LogoSlideType = z.infer<typeof LogoSlideSchema>;
 export type IconProps = z.infer<typeof IconSchema>;
 export type PortfolioItemProps = z.infer<typeof PortfolioItemSchema>;
 export type ProjectPageProps = z.infer<typeof ProjectPageSchema>;

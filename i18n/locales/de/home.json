@@ -3,20 +3,9 @@
     "title": "Startseite",
     "description": "Willkommen auf unserer Startseite, wo digitale Möglichkeiten zum Leben erwachen."
   },
-  "slides": [
-    {
-      "title": "Entfesseln Sie die Kraft der Web-Innovation",
-      "description": "Wir sind Ihr vertrauenswürdiger Partner in der Webentwicklung. Unsere Mission ist es, Ihre digitalen Träume Wirklichkeit werden zu lassen. Lassen Sie uns gemeinsam etwas Erstaunliches erschaffen!"
-    },
-    {
-      "title": "Kreativität, Innovation und Perfektion",
-      "description": "Im Herzen unserer Philosophie liegt die Kraft des Wissens. Wir streben nach kreativen Lösungen, innovativen Ansätzen und Perfektion in jedem Detail."
-    },
-    {
-      "title": "Kontakt mit mir aufnehmen",
-      "description": "Lassen Sie uns in Verbindung treten und optimale Lösungen für Ihre Bedürfnisse finden. Ihr Erfolg hat für uns oberste Priorität."
-    }
-  ],
+  "logoSect": {
+    "title": "Was ich benutze?"
+  },
   "landing": {
     "intro": "Hallo!",
     "title": "Ich bin Tahsin",

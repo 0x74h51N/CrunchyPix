@@ -1,6 +1,6 @@
 import supabase from '@/lib/supabaseClient';
 import { ZodError, ZodSchema } from 'zod';
-import { getCachedData } from './cache';
+import { getCachedData } from './utils/cache';
 
 type Filter = {
   column: string;
@@ -8,13 +8,14 @@ type Filter = {
 };
 
 export const fetchSupabaseData = async <T>(
+  schemaPath: string,
   table: string,
   select: string,
   schema: ZodSchema<T>,
   filters?: Filter[],
 ): Promise<T[]> => {
   return getCachedData(table, async () => {
-    let query = supabase.from(table).select(select);
+    let query = supabase.schema(schemaPath).from(table).select(select);
     if (filters) {
       filters.forEach((filter) => {
         query = query.eq(filter.column, filter.value);

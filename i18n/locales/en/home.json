@@ -3,20 +3,9 @@
     "title": "Homepage",
     "description": "Welcome to our homepage, where digital possibilities come to life."
   },
-  "slides": [
-    {
-      "title": "Unleash the Power of Web Innovation",
-      "description": "We're your trusted partner in web development. Our mission is to bring your digital dreams to life. Let's create something amazing together!"
-    },
-    {
-      "title": "Creativity, Innovation, and Perfection",
-      "description": "At the heart of our philosophy lies the power of knowledge. We strive for creative solutions, innovative approaches, and perfection in every detail."
-    },
-    {
-      "title": "Contact With Me",
-      "description": "Let's connect and find optimum solutions for your needs. Your success is our priority."
-    }
-  ],
+  "logoSect": {
+    "title": "What I Use?"
+  },
   "landing": {
     "intro": "Hey there!",
     "title": "I'm Tahsin",
@@ -29,7 +18,7 @@
     "title": "About Me",
     "description": "I am an experienced Front-end Developer with expertise in TypeScript and React. I have experience with the Next.js framework and am proficient in using tools like Redux, Tailwind, and Git. With my quick learning abilities and excellent communication skills, I collaborate closely with clients to develop efficient, scalable, and user-friendly solutions that solve real-world problems. Let's work together to bring your ideas to life!"
   },
-  
+
   "servicesSect": {
     "intro": "My Services",
     "title": "What I Do?",
@@ -118,7 +107,7 @@
       { "title": "Always Up-to-Date with Technology" }
     ]
   },
-  "meta":{
+  "meta": {
     "title": "CrunchyPix",
     "description": "Discover CrunchyPix, the portfolio of a passionate Front-End Developer Tahsin specializing in modern web technologies and creative solutions. Explore projects showcasing expertise in TypeScript, JavaScript, Next.js and React.",
     "keywords": "HTML, CSS, JavaScript, TypeScript, React, Web Development, Front-End Engineering, Portfolio, Tahsin, 0x74h51N"
