@@ -91,11 +91,11 @@ const Navbar = () => {
     let baseClass =
       'fixed flex w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl md:px-10 px-5';
     if (isMenuOpen) {
-      return `${baseClass}  navbar h-[280px] py-5 bg-opacity-0 ${smallNav ? 'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black' : ''}`;
+      return `${baseClass} navbar h-[280px] py-5 bg-opacity-0 ${smallNav ? 'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black' : ''}`;
     } else if (smallNav) {
-      return `${baseClass}  bg-opacity-100 h-[70px] py-2 shadow-md shadow-black`;
+      return `${baseClass} bg-opacity-100 h-[70px] py-2 shadow-md shadow-black`;
     } else {
-      return `${baseClass} py-5 bg-opacity-0 h-[100px]`;
+      return `${baseClass} pt-12 py-5 bg-opacity-0 h-[100px]`;
     }
   }, [isMenuOpen, smallNav]);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
