@@ -19,14 +19,11 @@ export type SubTitles = {
 };
 
 export type SectionData = {
-  name?: string;
-  className?: string;
-  image?: string;
-  textStyle?: string;
-  children?: React.ReactNode;
+  name: string;
+  className: string;
+  children: React.ReactNode;
   parallax?: boolean | false;
   parallaxImageSrc?: string;
-  parallaxImageAlt?: string;
   background?: string;
   topImage?: string;
 };
@@ -53,16 +50,6 @@ export type slide = {
   githubLink?: string;
   icons?: IconProps[];
   labels?: string[];
-};
-
-export type CardSections = {
-  title?: string;
-  description?: string;
-  icon?: IconProps;
-  index?: number;
-  colorFulBorder?: boolean;
-  image?: string;
-  list?: string[];
 };
 
 export type ColorPacks = {

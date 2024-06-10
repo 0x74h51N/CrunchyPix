@@ -45,7 +45,7 @@ const MobileMenu = ({ smallNav }: { smallNav: boolean }) => {
   }, [menuRef]);
 
   return (
-    <div ref={menuRef} className="flex flex-col mt-2">
+    <div ref={menuRef} className="flex flex-col">
       <BurgerButton
         color={'#FFFFFF'}
         width={40}
@@ -53,11 +53,7 @@ const MobileMenu = ({ smallNav }: { smallNav: boolean }) => {
         isToggled={isMenuOpen}
         onClick={toggleMenu}
       />
-      <div
-        className={`mobile-menu w-full backdrop-blur ${
-          smallNav ? 'mt-20 ' : 'mt-24 '
-        }`}
-      >
+      <div className={`mobile-menu w-full backdrop-blur mt-20`}>
         {isMenuOpen && (
           <div>
             <ul className="ul">

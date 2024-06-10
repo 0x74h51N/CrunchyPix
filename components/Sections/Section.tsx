@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { handleScroll } from '@/utils/handleScroll';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { ArrowButton } from './Buttons/ArrowButton';
+import { ArrowButton } from '../Buttons/ArrowButton';
 import { CldImage } from 'next-cloudinary';
 
 const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {

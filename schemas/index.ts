@@ -8,7 +8,7 @@ export const IconSchema = z.object({
   color: z.string().optional(),
 });
 
-export const TranslationSchema = z.object({
+export const ProjectOverviewSchema = z.object({
   lang: z.string(),
   title: z.string(),
   project_type: z.string(),
@@ -36,7 +36,7 @@ export const ProjectPageSchema = z.object({
 export const PortfolioItemSchema = z.object({
   id: z.number(),
   _id: z.string(),
-  project_overview: z.array(TranslationSchema),
+  project_overview: z.array(ProjectOverviewSchema),
   icons: z.array(IconSchema).optional(),
   tech: z.array(z.string()),
   catalogue: z
@@ -54,6 +54,33 @@ export const LogoSlideSchema = z.object({
   logo_name: z.string(),
 });
 
+export const CardsSchema = z.object({
+  id: z.number().optional(),
+  lang: z.string().optional(),
+  title: z.string(),
+  list: z.array(z.string()),
+  icon_name: z.string(),
+});
+
+export const TranslationSchema = z.object({
+  id: z.number(),
+  sect_name: z.string(),
+  lang: z.string(),
+  intro: z.string(),
+  title: z.string(),
+  description: z.string().nullable(),
+  cards: z.array(CardsSchema).optional(),
+});
+
+export const SectionsSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  translations: z.array(TranslationSchema),
+});
+
+export type CardsTypes = z.infer<typeof CardsSchema>;
+export type TranslationTypes = z.infer<typeof TranslationSchema>;
+export type SectionsTypes = z.infer<typeof SectionsSchema>;
 export type LogoSlideType = z.infer<typeof LogoSlideSchema>;
 export type IconProps = z.infer<typeof IconSchema>;
 export type PortfolioItemProps = z.infer<typeof PortfolioItemSchema>;

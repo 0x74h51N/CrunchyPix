@@ -1,9 +1,9 @@
-import { CSSProperties, useEffect, useRef, memo } from 'react'
+import { CSSProperties, useEffect, useRef, memo } from 'react';
 
 interface ColorfulBorderProps {
-  children: React.ReactNode
-  className?: string
-  enabled?: boolean
+  children: React.ReactNode;
+  className?: string;
+  enabled?: boolean;
 }
 
 const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
@@ -11,28 +11,28 @@ const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
   className,
   enabled = true,
 }) => {
-  const boxRef = useRef<HTMLDivElement>(null)
+  const boxRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!enabled) return
+    if (!enabled) return;
 
-    const boxElement = boxRef.current
-    if (!boxElement) return
+    const boxElement = boxRef.current;
+    if (!boxElement) return;
 
-    let animationFrameId: number
+    let animationFrameId: number;
     const updateAnimation = () => {
       const angle =
-        (parseFloat(boxElement.style.getPropertyValue('--angle')) + 0.7) % 360
-      boxElement.style.setProperty('--angle', `${angle}deg`)
-      animationFrameId = requestAnimationFrame(updateAnimation)
-    }
+        (parseFloat(boxElement.style.getPropertyValue('--angle')) + 0.7) % 360;
+      boxElement.style.setProperty('--angle', `${angle}deg`);
+      animationFrameId = requestAnimationFrame(updateAnimation);
+    };
 
-    animationFrameId = requestAnimationFrame(updateAnimation)
+    animationFrameId = requestAnimationFrame(updateAnimation);
 
     return () => {
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [enabled])
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [enabled]);
 
   return enabled ? (
     <div
@@ -50,8 +50,8 @@ const ColorfulBorder: React.FC<ColorfulBorderProps> = ({
       {children}
     </div>
   ) : (
-    <>{children}</>
-  )
-}
+    <div className=" bg-neutral-800 rounded-lg">{children}</div>
+  );
+};
 
-export default memo(ColorfulBorder)
+export default memo(ColorfulBorder);

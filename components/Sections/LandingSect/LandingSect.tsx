@@ -2,21 +2,27 @@
 import { slideIn, staggerContainer, polygonIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { generateSpans } from '../../GenerateSpans';
-import { useTranslation } from '@/hooks/useTranslation';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { SocialIcons } from '../../SocialIcons';
 import TypingText from '../../typeText';
 import { socialIcons } from '@/constants/socialIcons';
+import useFilteredData from '@/hooks/useFilteredData';
+import { SectionsTypes } from '@/schemas';
 
 const LandingSect = () => {
-  const { t } = useTranslation('home');
   const screenHeight = useSelector(
     (state: RootState) => state.screenHeight.height,
   );
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-
+  const landSect = useFilteredData<SectionsTypes>(
+    (state: RootState) => state.section.items,
+    {
+      key: 'name',
+      value: 'landing_sect',
+    },
+  );
   return (
     <>
       <motion.div
@@ -36,7 +42,7 @@ const LandingSect = () => {
           >
             <TypingText
               generateSpan={isMobile || isTablet ? false : true}
-              text={t('landing.intro')}
+              text={landSect[0].translations[0].intro}
               typingSpeed={50}
               colorType="vibrantColors"
             />
@@ -44,7 +50,7 @@ const LandingSect = () => {
           <div className=" lg:text-[19px] text-[18px] leading-[30px] max-lg:leading-[20px] whitespace-pre-wrap text-white">
             <TypingText
               generateSpan={isMobile || isTablet ? false : true}
-              text={t('landing.description')}
+              text={landSect[0].translations[0].description ?? 'null'}
               typingSpeed={50}
               colorType="vibrantColors"
               delay={700}
@@ -56,9 +62,9 @@ const LandingSect = () => {
             className="font-black text-white md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px] mt-2"
           >
             {isMobile || isTablet
-              ? t('landing.title')
+              ? landSect[0].translations[0].title
               : generateSpans({
-                  text: t('landing.title'),
+                  text: landSect[0].translations[0].title,
                   colorType: 'vibrantColors',
                 })}
           </motion.h1>

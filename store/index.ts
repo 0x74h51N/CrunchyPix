@@ -14,6 +14,7 @@ import cursorDisabledReducer from './redux/cursorDisabled';
 import isScrollEnabledReducer from './redux/isScrollEnabled';
 import cookieConsentReducer from './redux/cookieConsent';
 import portfolioReducer from './redux/portfolioItems';
+import sectionReducer from './redux/sectionItems';
 
 const store = configureStore({
   reducer: {
@@ -32,6 +33,7 @@ const store = configureStore({
     isScrollEnabled: isScrollEnabledReducer,
     cookieConsent: cookieConsentReducer,
     portfolio: portfolioReducer,
+    section: sectionReducer,
   },
 });
 

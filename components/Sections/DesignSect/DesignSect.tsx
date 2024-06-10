@@ -1,25 +1,26 @@
-"use client";
-import { slide } from "@/app/common.types";
-import React, { useMemo } from "react";
-import FullScreenSlider from "../../Slider/FullScreenSlider/FullScreenSlider";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { motion } from "framer-motion";
-import { slideIn, textVariant } from "@/utils/motion";
-import { useTranslation } from "react-i18next";
-import { generateSpans } from "@/components/GenerateSpans";
-import PhoneFrame from "@/components/Frames/PhoneFrame/PhoneFrame";
-import { phoneSlides } from "@/constants/phoneSlides";
+'use client';
+import { slide } from '@/app/common.types';
+import React, { useMemo } from 'react';
+import FullScreenSlider from '../../Slider/FullScreenSlider/FullScreenSlider';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { motion } from 'framer-motion';
+import { slideIn, textVariant } from '@/utils/motion';
+import { useTranslation } from 'react-i18next';
+import { generateSpans } from '@/components/GenerateSpans';
+import PhoneFrame from '@/components/Frames/PhoneFrame/PhoneFrame';
+import { phoneSlides } from '@/constants/phoneSlides';
+import TitleText from '../TitleText';
 
 const DesignSect = () => {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation('home');
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const rotateStart = useSelector(
-    (state: RootState) => state.rotateChange.rotateStart
+    (state: RootState) => state.rotateChange.rotateStart,
   );
   const rotateEnd = useSelector(
-    (state: RootState) => state.rotateChange.rotateEnd
+    (state: RootState) => state.rotateChange.rotateEnd,
   );
   const slides = useMemo(() => {
     return phoneSlides.map((slide: slide) => ({
@@ -28,7 +29,7 @@ const DesignSect = () => {
       description: slide.description,
     }));
   }, [rotateEnd]);
-  
+
   return (
     <motion.div
       initial="hidden"
@@ -39,15 +40,15 @@ const DesignSect = () => {
       <div className={`flex flex-wrap gap-10 p-6 w-auto h-auto`}>
         <div
           className={`flex flex-wrap items-center justify-center xl:h-[600px] h-auto z-10 ${
-            rotateStart ? "w-[800px]" : "w-[500px] "
+            rotateStart ? 'w-[800px]' : 'w-[500px] '
           } transition-all ease-in-out duration-500`}
         >
-          <motion.div variants={slideIn("left", "spring", 0.5, 0.5)}>
+          <motion.div variants={slideIn('left', 'spring', 0.5, 0.5)}>
             <PhoneFrame>
               <FullScreenSlider
                 slides={slides}
                 className={`w-full h-full object-cover ${
-                  isMobile ? "rounded-2xl" : "rounded-[42px]"
+                  isMobile ? 'rounded-2xl' : 'rounded-[42px]'
                 }`}
               />
             </PhoneFrame>
@@ -55,35 +56,10 @@ const DesignSect = () => {
         </div>
       </div>
       <motion.div
-        variants={slideIn("right", "spring", 0.5, 0.5)}
-        className="flex flex-col h-auto 2xl:min-h-[700px] 2xl:max-w-[1000px] xl:items-end justify-center items-center 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 bg-cool-gray-800 2xl:rounded-l-3xl"
+        variants={slideIn('right', 'spring', 0.5, 0.5)}
+        className="flex flex-col h-auto 2xl:min-h-[700px] 2xl:max-w-[1000px] xl:items-end justify-center 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 bg-cool-gray-800 2xl:rounded-l-3xl"
       >
-        <h2 className="w-full max-xs:w-2/3 max-xs:self-start font-medium lg:text-[22px] sm:text-[20px] text-[14px] lg:leading-[40px] text-cool-gray-300 xl:text-right text-left ">
-          {isMobile || isTablet
-            ? t("designSect.title2")
-            : generateSpans({
-                text: t("designSect.title2"),
-                colorType: "vibrantColors",
-                zeroColor: "#737373",
-              })}
-        </h2>
-        <h1 className="w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[30px] text-[22px] leading-relaxed xl:text-right text-left">
-          {isMobile || isTablet
-            ? t("designSect.title")
-            : generateSpans({
-                text: t("designSect.title"),
-                colorType: "vibrantColors",
-              })}
-        </h1>
-        <div
-          className={`text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full ${
-            rotateStart ? "w-full" : "xl:w-4/5"
-          } transition-all ease-in-out duration-500 xl:leading-[30px] xl:text-right text-left`}
-        >
-          <motion.p variants={textVariant(1)}>
-            {t("designSect.description")}
-          </motion.p>
-        </div>
+        <TitleText sectName="design_sect" />
       </motion.div>
     </motion.div>
   );

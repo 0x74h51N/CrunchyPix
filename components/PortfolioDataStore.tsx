@@ -25,7 +25,6 @@ const PortfolioDataStore = ({ portfolioItems }: PortfolioDataStoreProps) => {
   }, [portfolioItems, language]);
 
   useEffect(() => {
-    console.log(translated);
     dispatch(setPortfolioItems(translated));
   }, [dispatch, translated]);
 

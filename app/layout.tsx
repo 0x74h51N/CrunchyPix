@@ -35,23 +35,15 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
       <body className="lg:overflow-x-hidden">
         <AppI18nProvider>
           <AppReduxProvider>
-            <Suspense
-              fallback={
-                <div className="absolute top-0 left-0 w-[100dvw] h-[100dvh] overflow-hidden z-50 bg-black">
-                  <LoadingComponent />
-                </div>
-              }
-            >
-              <CustomCursor />
-              <CookieConsent />
-              <PortfolioDataStore portfolioItems={portfolioItems} />
-              <Navbar />
-              <AllRoutes />
-              <Cookies />
-              <main>{children}</main>
-              <Footer />
-              <ArrowToTop />
-            </Suspense>
+            <CustomCursor />
+            <CookieConsent />
+            <PortfolioDataStore portfolioItems={portfolioItems} />
+            <Navbar />
+            <AllRoutes />
+            <Cookies />
+            {children}
+            <Footer />
+            <ArrowToTop />
           </AppReduxProvider>
         </AppI18nProvider>
       </body>
