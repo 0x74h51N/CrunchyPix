@@ -17,7 +17,7 @@ const useFilteredData = <T>(
 
   const filteredData = useMemo(() => {
     return data.filter((item) => item[filter.key] === filter.value);
-  }, [data]);
+  }, [data, filter.key, filter.value]);
 
   return filteredData;
 };

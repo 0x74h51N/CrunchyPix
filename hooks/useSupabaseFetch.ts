@@ -18,7 +18,7 @@ const useSupabaseFetch = <T>(
   cacheDuration: number = 1000 * 60 * 10,
 ) => {
   const [data, setData] = useState<T[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

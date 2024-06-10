@@ -13,7 +13,6 @@ interface PortfolioDataStoreProps {
 const PortfolioDataStore = ({ portfolioItems }: PortfolioDataStoreProps) => {
   const language = getLocale();
   const dispatch = useDispatch();
-  const [translated, setTranslated] = useState<PortfolioItemProps[]>([]);
 
   useEffect(() => {
     const filteredItems = filterByLanguage({
@@ -21,12 +20,8 @@ const PortfolioDataStore = ({ portfolioItems }: PortfolioDataStoreProps) => {
       language,
       localPath: 'project_overview',
     });
-    setTranslated(filteredItems);
-  }, [portfolioItems, language]);
-
-  useEffect(() => {
-    dispatch(setPortfolioItems(translated));
-  }, [dispatch, translated]);
+    dispatch(setPortfolioItems(filteredItems));
+  }, [portfolioItems, language, dispatch]);
 
   return null;
 };

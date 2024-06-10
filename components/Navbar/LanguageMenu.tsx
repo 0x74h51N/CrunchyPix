@@ -36,7 +36,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
       ? `${isMobile || isTablet ? '-mt-2 right-[16px]' : 'mt-5'} flex justify-center`
       : isMobile || isTablet
         ? `-mt-2 flex justify-center right-[16px]`
-        : 'mt-[35px]'
+        : 'mt-[50px]'
   }
 `;
   const languages = [

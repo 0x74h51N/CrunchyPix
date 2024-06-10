@@ -24,7 +24,6 @@ const Section = dynamic(() => import('@/components/Sections/Section'), {
 
 const Home = () => {
   const dispatch = useDispatch();
-  const [translated, setTranslated] = useState<SectionsTypes[]>([]);
   const { data, loading, error } = useSupabaseFetch<SectionsTypes>(
     'home_schema',
     'sections',
@@ -39,16 +38,18 @@ const Home = () => {
         language,
         localPath: 'translations',
       });
-      setTranslated(filteredItems);
+      dispatch(setSectionItems(filteredItems));
     }
-  }, [data, language]);
+  }, [data, language, dispatch]);
+
   if (error) {
-    console.log(error);
+    console.error(error);
   }
-  useEffect(() => {
-    dispatch(setSectionItems(translated));
-  }, [dispatch, translated]);
-  return loading ? <FsLoading /> : <Section sectionsData={sectionsData} />;
+  return !data && loading ? (
+    <FsLoading />
+  ) : (
+    <Section sectionsData={sectionsData} />
+  );
 };
 
 export default Home;
