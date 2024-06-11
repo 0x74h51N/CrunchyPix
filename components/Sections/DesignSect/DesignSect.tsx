@@ -1,6 +1,6 @@
 'use client';
 import { slide } from '@/app/common.types';
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import FullScreenSlider from '../../Slider/FullScreenSlider/FullScreenSlider';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
@@ -65,4 +65,4 @@ const DesignSect = () => {
   );
 };
 
-export default DesignSect;
+export default memo(DesignSect);

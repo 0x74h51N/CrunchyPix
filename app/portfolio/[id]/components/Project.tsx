@@ -19,7 +19,7 @@ import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
 import { ProjectPageProps, ProjectPageSchema } from '@/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import LoadingComponent from '@/components/Loading';
+import LoadingComponent from '@/components/Loading/Loading';
 
 const Project = memo(({ id }: { id: string }) => {
   const [Item, setItem] = useState<ProjectPageProps>();

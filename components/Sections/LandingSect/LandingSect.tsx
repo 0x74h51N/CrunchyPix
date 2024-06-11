@@ -9,6 +9,7 @@ import TypingText from '../../typeText';
 import { socialIcons } from '@/constants/socialIcons';
 import useFilteredData from '@/hooks/useFilteredData';
 import { SectionsTypes } from '@/schemas';
+import { memo } from 'react';
 
 const LandingSect = () => {
   const screenHeight = useSelector(
@@ -90,4 +91,4 @@ const LandingSect = () => {
     </>
   );
 };
-export default LandingSect;
+export default memo(LandingSect);

@@ -1,16 +1,15 @@
 import { RootState } from '@/store';
 import { clearSlide } from '@/store/redux/selectedSlide';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import IconButton from '@/components/Buttons/IconButton';
 import Label from '@/components/Labels';
 import { motion, AnimatePresence } from 'framer-motion';
-import Loading from '@/components/Loading';
+import Loading from '@/components/Loading/Loading';
 import Link from 'next/link';
 import CancelButton from '@/components/Buttons/CancelButton';
 import { sliderChange } from '@/store/redux/isSlider';
 import { CldImage } from 'next-cloudinary';
-import { enableScroll } from '@/utils/scrollEventControl';
 import { useTranslation } from 'react-i18next';
 
 const SlideModal = () => {
@@ -28,7 +27,6 @@ const SlideModal = () => {
 
   const closeModal = () => {
     dispatch(clearSlide());
-    enableScroll();
     setTimeout(() => {
       setImageLoading(true);
     }, 300);
@@ -44,6 +42,20 @@ const SlideModal = () => {
       dispatch(sliderChange(false));
     }
   };
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      closeModal();
+    };
+    if (selectedSlide) {
+      document.addEventListener('scroll', scrollHandler);
+    } else {
+      document.removeEventListener('scroll', scrollHandler);
+    }
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, [selectedSlide, clearSlide]);
   return (
     <AnimatePresence>
       {selectedSlide && (
@@ -60,7 +72,6 @@ const SlideModal = () => {
               animate="visible"
               exit="hidden"
               variants={modalVariants}
-              onClick={closeModal}
             >
               <button
                 onClick={closeModal}

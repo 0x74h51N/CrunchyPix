@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { generateSpans } from '@/components/GenerateSpans';
 import { slideIn } from '@/utils/motion';
 import dynamic from 'next/dynamic';
-import LoadingComponent from '@/components/Loading';
+import LoadingComponent from '@/components/Loading/Loading';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';

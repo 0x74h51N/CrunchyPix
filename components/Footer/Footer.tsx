@@ -9,6 +9,7 @@ import FooterColumn from './FooterColumn';
 import Contact from '../Contact';
 import { useTranslation } from '@/hooks/useTranslation';
 import { IconProps } from '@/schemas';
+import { memo } from 'react';
 
 const Footer = () => {
   const { t } = useTranslation('index');
@@ -83,4 +84,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);

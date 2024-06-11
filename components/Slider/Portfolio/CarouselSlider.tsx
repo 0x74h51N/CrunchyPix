@@ -12,8 +12,6 @@ import IconButton from '@/components/Buttons/IconButton';
 import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
 import useDragHandler from '@/hooks/useDragHandler';
-import { disableScroll } from '@/utils/scrollEventControl';
-import i18next from 'i18next';
 import { PortfolioItemProps } from '@/schemas';
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
@@ -42,7 +40,6 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   const clickHandler = (index: number, slide: PortfolioItemProps) => {
     if (index === activeIndex) {
       _selectedSlide(slide);
-      disableScroll();
     }
   };
 

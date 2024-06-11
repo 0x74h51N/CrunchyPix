@@ -1,23 +1,17 @@
 'use client';
 import dynamic from 'next/dynamic';
-import LoadingComponent from '@/components/Loading';
+
 import { sectionsData } from '@/constants/sections';
 import { SectionsSchema, SectionsTypes } from '@/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect } from 'react';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
 import { getLocale } from '@/i18n/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSectionItems } from '@/store/redux/sectionItems';
 import { RootState } from '@/store';
+import FsLoading from '@/components/Loading/FsLoading';
 
-const FsLoading = () => {
-  return (
-    <div className="absolute top-0 left-0 w-[100dvw] h-[100dvh] overflow-hidden z-50 bg-black">
-      <LoadingComponent />
-    </div>
-  );
-};
 const Section = dynamic(() => import('@/components/Sections/Section'), {
   ssr: false,
   loading: () => <FsLoading />,

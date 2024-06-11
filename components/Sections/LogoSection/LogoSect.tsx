@@ -1,10 +1,11 @@
 'use client';
-import LoadingComponent from '@/components/Loading';
 import LogoSlider from '../../Slider/LogoSlide';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { LogoSlideSchema, LogoSlideType } from '@/schemas';
 import { motion } from 'framer-motion';
 import TitleText from '../TitleText';
+import { memo } from 'react';
+import LoadingComponent from '@/components/Loading/Loading';
 
 const LogoSect = () => {
   const { data, loading } = useSupabaseFetch<LogoSlideType>(
@@ -36,4 +37,4 @@ const LogoSect = () => {
   }
 };
 
-export default LogoSect;
+export default memo(LogoSect);

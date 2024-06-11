@@ -1,4 +1,4 @@
-import CrunchyLogo from './Navbar/CrunchyLogo';
+import CrunchyLogo from '../Navbar/CrunchyLogo';
 
 const LoadingComponent = () => {
   return (

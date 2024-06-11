@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import MonitorFrame from '@/components/Frames/MonitorFrame/MonitorFrame';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
@@ -104,4 +104,4 @@ const CodeSect = () => {
   );
 };
 
-export default CodeSect;
+export default memo(CodeSect);

@@ -5,6 +5,7 @@ import React, {
   memo,
   SetStateAction,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import { useSelector } from 'react-redux';
@@ -47,7 +48,7 @@ const Dropdown = ({
   const [isRotated, setIsRotated] = useState(false);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
-
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const handleToggleDropdown = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
@@ -75,9 +76,36 @@ const Dropdown = ({
       setDropdownOpen(false);
     }
   }, []);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
 
+    const scrollHandler = () => {
+      setDropdownOpen(false);
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('scroll', scrollHandler);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('scroll', scrollHandler);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, [isDropdownOpen, setDropdownOpen]);
   return (
     <div
+      ref={dropdownRef}
       onMouseEnter={mouseEnterHandler}
       onMouseLeave={mouseLeaveHandler}
       className="flex flex-col justify-center items-center h-full"
