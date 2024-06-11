@@ -85,11 +85,12 @@ const FilterItems = ({
     label: key,
     value: value,
   })) as option[];
-  const classes = `${isDropdownOpen ? 'h-[170px] py-3 ' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40`;
+  const classes = `${isDropdownOpen ? 'h-[170px] py-3 ' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40 `;
   return (
     <div className="flex flex-row md:justify-end justify-between gap-6 w-full z-30">
-      <div className="relative z-20">
+      <div className="relative z-20 transform brightness-100 hover:brightness-150 transition-all ease-in-out duration-500">
         <Dropdown
+          hoverMode={false}
           classes={classes}
           defaultValue={
             selectedOption ? t(`sort.options.${selectedOption}`) : t('sort.def')

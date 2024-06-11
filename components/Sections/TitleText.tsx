@@ -1,6 +1,6 @@
 import { slideIn, textVariant } from '@/utils/motion';
 import { motion } from 'framer-motion';
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { generateSpans } from '../GenerateSpans';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
@@ -87,4 +87,4 @@ const TitleText = ({ sectName }: { sectName: string }) => {
   );
 };
 
-export default TitleText;
+export default memo(TitleText);

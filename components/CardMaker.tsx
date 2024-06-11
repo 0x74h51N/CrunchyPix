@@ -4,7 +4,7 @@ import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import { Key, memo } from 'react';
 import { CardsTypes, IconProps } from '@/schemas';
 
-const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
+const areEqual = (prevProps: CardMakerProps, nextProps: CardMakerProps) => {
   return (
     prevProps.cardSections === nextProps.cardSections &&
     prevProps.cardHeight === nextProps.cardHeight &&
@@ -13,7 +13,7 @@ const areEqual = (prevProps: CardMakerProops, nextProps: CardMakerProops) => {
   );
 };
 
-interface CardMakerProops {
+interface CardMakerProps {
   cardSections: CardsTypes;
   cardHeight: number;
   cardWidth: number;
@@ -30,7 +30,7 @@ const CardMaker = memo(
     cardHeight = 340,
     cardWidth = 260,
     className,
-  }: CardMakerProops) => {
+  }: CardMakerProps) => {
     return (
       <ColorfulBorder>
         <div

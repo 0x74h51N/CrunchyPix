@@ -2,6 +2,7 @@
 import LoadingComponent from '@/components/Loading';
 import { RootState } from '@/store';
 import dynamic from 'next/dynamic';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 
 const PortfolioItemsTable = dynamic(
@@ -26,4 +27,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default memo(Portfolio);

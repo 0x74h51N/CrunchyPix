@@ -1,6 +1,6 @@
 import supabase from '@/lib/supabaseClient';
 import { ZodError, ZodSchema } from 'zod';
-import { getCachedData } from './utils/cache';
+import { getCachedData } from './cache';
 
 type Filter = {
   column: string;

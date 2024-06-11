@@ -15,8 +15,7 @@ import { getLocale } from '@/i18n/server';
 import { generatePageMetadata } from '../lib/metadata';
 import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
 import PortfolioDataStore from '@/components/PortfolioDataStore';
-import { fetchSupabaseData } from '@/lib/fetchSupabaseData';
-import LoadingComponent from '@/components/Loading';
+import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
 
 const inter = Inter({ subsets: ['latin'] });
 export async function generateMetadata(): Promise<Metadata> {

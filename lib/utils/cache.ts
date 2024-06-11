@@ -3,7 +3,7 @@ let cache: { [key: string]: any } = {};
 export const getCachedData = async <T>(
   key: string,
   fetcher: () => Promise<T>,
-  cacheDuration: number = 1000 * 60 * 60,
+  cacheDuration: number = 5000 * 60,
 ): Promise<T> => {
   const now = Date.now();
   if (cache[key] && cache[key].expiry > now) {
@@ -17,3 +17,14 @@ export const getCachedData = async <T>(
   };
   return data;
 };
+
+export const clearExpiredCache = () => {
+  const now = Date.now();
+  for (const key in cache) {
+    if (cache[key].expiry <= now) {
+      delete cache[key];
+    }
+  }
+};
+
+setInterval(clearExpiredCache, 10 * 60 * 1000);

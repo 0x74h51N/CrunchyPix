@@ -7,6 +7,7 @@ import LoadingComponent from '@/components/Loading';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { memo } from 'react';
 
 const CarouselSlider = dynamic(
   () => import('@/components/Slider/Portfolio/CarouselSlider'),
@@ -58,4 +59,4 @@ const PortfolioSect = () => {
   );
 };
 
-export default PortfolioSect;
+export default memo(PortfolioSect);

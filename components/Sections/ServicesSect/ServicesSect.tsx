@@ -11,6 +11,7 @@ import useDragHandler from '@/hooks/useDragHandler';
 import useFilteredData from '@/hooks/useFilteredData';
 import { SectionsTypes } from '@/schemas';
 import TitleText from '../TitleText';
+import { memo } from 'react';
 
 const ServicesSect = () => {
   const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
@@ -35,13 +36,11 @@ const ServicesSect = () => {
   };
 
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      className="flex justify-center items-center w-full h-full min-h-[100svh]"
-    >
+    <div className="flex justify-center items-center w-full h-full min-h-[100svh]">
       <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 'some' }}
         variants={polygonIn('screen', 'spring', 0.7, 2.2)}
         className="flex flex-col items-start h-full w-auto md:p-16 xs:p-6 p-4 z-10 mt-14 rounded-lg 2xl:ml-36 bg-neutral-900 shadow-lg relative"
       >
@@ -92,12 +91,15 @@ const ServicesSect = () => {
         </div>
       </motion.div>
       <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 'some' }}
         variants={polygonIn('down', 'spring', 0.7, 2.2)}
         className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
         w-full 2xl:max-w-[180px] 2xl:bg-neutral-900 2xl:p-40 lg:p-10 p-8 2xl:gap-8 gap-4"
       />
-    </motion.div>
+    </div>
   );
 };
 
-export default ServicesSect;
+export default memo(ServicesSect);

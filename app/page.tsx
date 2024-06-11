@@ -4,11 +4,12 @@ import LoadingComponent from '@/components/Loading';
 import { sectionsData } from '@/constants/sections';
 import { SectionsSchema, SectionsTypes } from '@/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
 import { getLocale } from '@/i18n/client';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setSectionItems } from '@/store/redux/sectionItems';
+import { RootState } from '@/store';
 
 const FsLoading = () => {
   return (
@@ -24,6 +25,7 @@ const Section = dynamic(() => import('@/components/Sections/Section'), {
 
 const Home = () => {
   const dispatch = useDispatch();
+  const filteredData = useSelector((state: RootState) => state.section.items);
   const { data, loading, error } = useSupabaseFetch<SectionsTypes>(
     'home_schema',
     'sections',
@@ -32,7 +34,7 @@ const Home = () => {
   );
   const language = getLocale();
   useEffect(() => {
-    if (data) {
+    if (data && !loading) {
       const filteredItems = filterByLanguage({
         items: data,
         language,
@@ -40,16 +42,20 @@ const Home = () => {
       });
       dispatch(setSectionItems(filteredItems));
     }
-  }, [data, language, dispatch]);
+  }, [data, language, dispatch, loading]);
 
   if (error) {
     console.error(error);
   }
-  return !data && loading ? (
+  return !data ||
+    !filteredData ||
+    filteredData.length <= 0 ||
+    error ||
+    loading ? (
     <FsLoading />
   ) : (
     <Section sectionsData={sectionsData} />
   );
 };
 
-export default Home;
+export default memo(Home);

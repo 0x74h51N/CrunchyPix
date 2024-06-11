@@ -1,6 +1,12 @@
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { RootState } from '@/store';
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, {
+  Dispatch,
+  memo,
+  SetStateAction,
+  useEffect,
+  useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 
@@ -78,7 +84,7 @@ const Dropdown = ({
     >
       <button
         onClick={(e) => handleToggleDropdown(e)}
-        className="flex flex-row justify-center items-center gap-1 z-20 bg-transparent cursor-none w-full"
+        className="flex flex-row justify-center items-center gap-1 z-20 bg-transparent cursor-none w-full h-full"
       >
         <div className="p text-start pl-3 truncate ..." style={style}>
           {defaultValue}
@@ -122,4 +128,4 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default memo(Dropdown);

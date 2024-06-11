@@ -1,6 +1,6 @@
 'use client';
 import { RootState } from '@/store';
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import FilterItems from './FilterItems';
@@ -89,4 +89,4 @@ const PortfolioItemsTable = ({
   );
 };
 
-export default PortfolioItemsTable;
+export default memo(PortfolioItemsTable);

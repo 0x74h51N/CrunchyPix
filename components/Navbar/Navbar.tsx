@@ -1,7 +1,7 @@
 'use client';
 import { Links } from '@/constants/index';
 import Link from 'next/link';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import MobileMenu from './MobileMenu';
 import LanguageMenu from './LanguageMenu';
 import { useSelector, useDispatch } from 'react-redux';
@@ -177,4 +177,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default memo(Navbar);
