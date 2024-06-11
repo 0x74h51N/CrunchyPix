@@ -6,6 +6,7 @@ import useDragHandler from '@/hooks/useDragHandler';
 import ProjectSlide from './ProjectSlide';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
+import { memo } from 'react';
 
 const OtherProjects = () => {
   const { t } = useTranslation('portfolio');
@@ -35,4 +36,4 @@ const OtherProjects = () => {
   );
 };
 
-export default OtherProjects;
+export default memo(OtherProjects);

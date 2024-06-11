@@ -4,7 +4,7 @@ import SwiperCore from 'swiper';
 import PortfolioItem from '../../../components/PortfolioItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, memo, useMemo } from 'react';
 import 'swiper/css';
 import { PortfolioItemProps } from '@/schemas';
 
@@ -21,6 +21,12 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
       swiperRef.current.update();
     }
   }, []);
+  const spaceBetween = useMemo(() => {
+    if (screenWidth <= 769) return 15;
+    if (screenWidth <= 1030) return 20;
+    if (screenWidth <= 1250) return 25;
+    return 32;
+  }, [screenWidth]);
   return (
     <Swiper
       onInit={(swiper) => (swiperRef.current = swiper)}
@@ -30,19 +36,7 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
         dynamicBullets: true,
         clickable: true,
       }}
-      spaceBetween={
-        screenWidth <= 450
-          ? 15
-          : screenWidth <= 610
-            ? 15
-            : screenWidth <= 769
-              ? 15
-              : screenWidth <= 1030
-                ? 20
-                : screenWidth <= 1250
-                  ? 25
-                  : 32
-      }
+      spaceBetween={spaceBetween}
       loop
       slidesPerView={'auto'}
       autoplay={{
@@ -76,4 +70,4 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
   );
 };
 
-export default ProjectSlide;
+export default memo(ProjectSlide);
