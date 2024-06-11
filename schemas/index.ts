@@ -78,6 +78,39 @@ export const SectionsSchema = z.object({
   translations: z.array(TranslationSchema),
 });
 
+export const PolicySectionSchema = z.object({
+  id: z.number(),
+  lang: z.string(),
+  title: z.string().nullable(),
+  description: z.string(),
+  sub_titles: z
+    .array(
+      z.object({
+        id: z.number(),
+        title: z.string().nullable(),
+        description: z.string(),
+      }),
+    )
+    .optional(),
+});
+
+export const PolicyTranslationSchema = z.object({
+  id: z.number(),
+  sect_name: z.string(),
+  lang: z.string(),
+  intro: z.string().nullable(),
+  title: z.string().nullable(),
+  policy_sections: z.array(PolicySectionSchema).optional(),
+});
+
+export const PoliciesSchema = z.object({
+  id: z.number(),
+  policy_name: z.string(),
+  translations: z.array(PolicyTranslationSchema).optional(),
+});
+
+export type PoliciesTypes = z.infer<typeof PoliciesSchema>;
+export type PolicySectionTypes = z.infer<typeof PolicySectionSchema>;
 export type CardsTypes = z.infer<typeof CardsSchema>;
 export type TranslationTypes = z.infer<typeof TranslationSchema>;
 export type SectionsTypes = z.infer<typeof SectionsSchema>;

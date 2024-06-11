@@ -7,7 +7,6 @@ import { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Markdown from 'react-markdown';
 import breaks from 'remark-breaks';
-import rehypeRaw from 'rehype-raw';
 import { generateSpans } from '@/components/GenerateSpans';
 import TopImage from './TopImage';
 import Ticks from './ticks';
@@ -96,10 +95,9 @@ const Project = memo(({ id }: { id: string }) => {
                     </span>
                     <Markdown
                       remarkPlugins={[breaks]}
-                      rehypePlugins={[rehypeRaw]}
                       className="h4 lg:ml-14 xs:ml-12 ml-10"
                     >
-                      {Item.description.slice(1)}
+                      {Item.description.slice(1).replace(/\\n/g, '\n')}
                     </Markdown>
                   </motion.div>
                 )}
@@ -110,10 +108,9 @@ const Project = memo(({ id }: { id: string }) => {
                   >
                     <Markdown
                       remarkPlugins={[breaks]}
-                      rehypePlugins={[rehypeRaw]}
                       components={{ a: CustomLink }}
                     >
-                      {Item.description2}
+                      {Item.description2.replace(/\\n/g, '\n')}
                     </Markdown>
                   </motion.div>
                 )}
@@ -181,11 +178,8 @@ const Project = memo(({ id }: { id: string }) => {
                   variants={polygonIn('down', 'spring', 1.8, 2.2)}
                   className="p mt-4 w-full "
                 >
-                  <Markdown
-                    remarkPlugins={[breaks]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {Item.techDescription}
+                  <Markdown remarkPlugins={[breaks]}>
+                    {Item.techDescription.replace(/\\n/g, '\n')}
                   </Markdown>
                 </motion.div>
               </motion.div>
