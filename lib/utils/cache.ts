@@ -27,4 +27,4 @@ export const clearExpiredCache = () => {
   }
 };
 
-setInterval(clearExpiredCache, 10 * 60 * 1000);
+setInterval(clearExpiredCache, 6 * 60 * 1000);
