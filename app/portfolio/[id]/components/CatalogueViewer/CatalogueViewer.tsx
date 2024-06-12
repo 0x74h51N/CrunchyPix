@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import HTMLFlipBook from 'react-pageflip';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
@@ -16,9 +16,19 @@ const CatalogueViewer = ({
   const [currentPage, setCurrentPage] = useState(0);
   const [mouseEvent, setMouseEvent] = useState(false);
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width,
-  );
+
+  const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const [flipBookConfig, setFlipBookConfig] = useState(() =>
     getFlipBookConfig(screenWidth),
@@ -26,7 +36,7 @@ const CatalogueViewer = ({
   useEffect(() => {
     const flipBookConfig = getFlipBookConfig(screenWidth);
     setFlipBookConfig(flipBookConfig);
-  }, [screenWidth]);
+  }, [screenWidth, setFlipBookConfig]);
 
   const imagePaths = useMemo(() => {
     const folderPath = Item.folderPath;
@@ -108,4 +118,4 @@ const CatalogueViewer = ({
   );
 };
 
-export default CatalogueViewer;
+export default memo(CatalogueViewer);

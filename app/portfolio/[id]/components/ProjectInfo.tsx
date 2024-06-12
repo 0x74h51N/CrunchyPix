@@ -14,7 +14,7 @@ const ProjectInfo = ({
 
   if (ProjectInfo)
     return (
-      <div className="relative flex lg:h-[570px] md:w-[400px] sm:w-[350px] md:h-[480px] sm:h-[450px] h-[440px] w-[300px] rounded-xl bg-log-col md:ml-6 ml-0">
+      <div className="relative flex lg:h-[570px] md:w-[400px] sm:w-[350px] md:h-[480px] sm:h-[450px] h-[440px] w-[340px] rounded-xl bg-log-col md:ml-6 ml-0">
         <Image
           src="/projectInfo.png"
           alt="project info background"
