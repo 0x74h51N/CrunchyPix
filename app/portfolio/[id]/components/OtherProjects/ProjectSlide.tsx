@@ -11,9 +11,6 @@ import { PortfolioItemProps } from '@/schemas';
 SwiperCore.use([Autoplay, Pagination]);
 
 const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width,
-  );
   const swiperRef = useRef<SwiperCore | null>(null);
 
   useEffect(() => {
@@ -21,12 +18,25 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
       swiperRef.current.update();
     }
   }, []);
-  const spaceBetween = useMemo(() => {
-    if (screenWidth <= 769) return 15;
-    if (screenWidth <= 1030) return 20;
-    if (screenWidth <= 1250) return 25;
-    return 32;
-  }, [screenWidth]);
+  const breakpoints = {
+    0: {
+      spaceBetween: 15,
+    },
+    769: {
+      spaceBetween: 20,
+    },
+    1030: {
+      spaceBetween: 25,
+    },
+    1250: {
+      spaceBetween: 32,
+    },
+  };
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.update();
+    }
+  }, [breakpoints]);
   return (
     <Swiper
       onInit={(swiper) => (swiperRef.current = swiper)}
@@ -36,7 +46,7 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
         dynamicBullets: true,
         clickable: true,
       }}
-      spaceBetween={spaceBetween}
+      breakpoints={breakpoints}
       loop
       slidesPerView={'auto'}
       autoplay={{
@@ -55,8 +65,6 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
           <PortfolioItem
             _id={item._id}
             project_overview={item.project_overview}
-            width={screenWidth <= 1030 ? 300 : 380}
-            height={screenWidth <= 1030 ? 250 : 310}
             isSlide={true}
             date={''}
             id={0}

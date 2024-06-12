@@ -14,7 +14,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         imageTop.includes('catalog')
           ? 'lg:min-h-[870px] md:min-h-[700px]'
           : 'md:min-h-[700px]'
-      } min-h-[600px]`}
+      } min-h-[400px]`}
       style={{
         backgroundImage: imageTop.includes('kyk')
           ? 'linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)'
@@ -28,7 +28,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         src={imageTop}
         alt={id}
         onLoad={() => setLoading(false)}
-        className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
+        className={`w-full h-full object-cover max-md:object-contain max-md:scale-150 transition-opacity ease-in-out duration-300 `}
         style={{ opacity: loading ? 0 : 100 }}
       />
       {loading && (

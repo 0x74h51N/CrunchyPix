@@ -16,15 +16,13 @@ const getClassNames = (
   if (sectName.includes('design') || sectName.includes('code')) {
     classNames = altClass;
     if (sectName.includes('design')) {
-      classNames += ` xl:text-right`;
+      classNames += ' xl:text-right';
     }
   }
   return classNames;
 };
 
 const TitleText = ({ sectName }: { sectName: string }) => {
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const section = useFilteredData<SectionsTypes>(
     (state: RootState) => state.section.items,
     {
@@ -57,31 +55,24 @@ const TitleText = ({ sectName }: { sectName: string }) => {
     <>
       <motion.h1 variants={variants}>
         <div className={h2Class}>
-          {isMobile || isTablet
-            ? section[0].translations[0].intro
-            : generateSpans({
-                text: section[0].translations[0].intro,
-                colorType: 'vibrantColors',
-                zeroColor: '#737373',
-              })}
+          {generateSpans({
+            text: section[0].translations[0].intro,
+            colorType: 'vibrantColors',
+            zeroColor: '#737373',
+          })}
         </div>
         <div className={titleClass}>
-          {isMobile || isTablet
-            ? section[0].translations[0].title
-            : generateSpans({
-                text: section[0].translations[0].title,
-                colorType: 'vibrantColors',
-              })}
+          {generateSpans({
+            text: section[0].translations[0].title,
+            colorType: 'vibrantColors',
+          })}
         </div>
       </motion.h1>
       {section[0].translations[0].description &&
         section[0].translations[0].description !== 'NULL' && (
-          <>
-            <motion.p variants={textVariant(1)} className={pClass}>
-              {section[0].translations[0].description}
-            </motion.p>
-            ,
-          </>
+          <motion.p variants={textVariant(1)} className={pClass}>
+            {section[0].translations[0].description}
+          </motion.p>
         )}
     </>
   );

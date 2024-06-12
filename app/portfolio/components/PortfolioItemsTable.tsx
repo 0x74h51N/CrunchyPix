@@ -1,8 +1,6 @@
 'use client';
-import { RootState } from '@/store';
 import React, { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import FilterItems from './FilterItems';
 import { motion } from 'framer-motion';
 import PortfolioItem from './PortfolioItem';
@@ -16,9 +14,7 @@ const PortfolioItemsTable = ({
   portfolioPageItems: PortfolioItemProps[];
 }) => {
   const { t } = useTranslation('portfolio');
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width,
-  );
+
   const [filteredItems, setFilteredItems] =
     useState<PortfolioItemProps[]>(portfolioPageItems);
   useEffect(() => {
@@ -30,22 +26,17 @@ const PortfolioItemsTable = ({
       whileInView="show"
       viewport={{ once: true, amount: 'some' }}
       variants={polygonIn('screen', 'easeInOut', 0.5, 1.5)}
-      className=" h-auto w-auto flex flex-col justify-center items-center min-w-screen mt-8 mb-40"
+      className=" h-auto w-auto flex flex-col justify-center items-center min-w-screen mt-8 mb-40 lg:px-14 max-w-[1310px]"
     >
       <div className="w-auto">
         <FilterItems
           portfolioPageItems={portfolioPageItems}
           setFilteredItems={setFilteredItems}
         />
-        <div className="grid xl:grid-cols-2 grid-cols-1 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-4 transition-all ease-in-out duration-300 xl:min-w-[1316px] lg:min-w-[630px] md:min-w-[300px] min-h-[700px]">
+        <div className="grid xl:grid-cols-2 grid-cols-1 max-md:gap-5 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-4 transition-all ease-in-out duration-300 xl:min-w-full lg:min-w-[630px] md:min-w-[300px] min-h-[700px]">
           {filteredItems.length > 0 ? (
             filteredItems.map((item: any, index: number) => {
-              const initial =
-                screenWidth > 1280
-                  ? index > 1
-                    ? { y: 30, x: 0 }
-                    : { y: 0, x: 30 }
-                  : { y: 30, x: 0 };
+              const initial = index > 1 ? { y: 30, x: 0 } : { y: 0, x: 30 };
 
               return (
                 <motion.div
@@ -59,8 +50,8 @@ const PortfolioItemsTable = ({
                     _id={item._id}
                     key={index}
                     project_overview={item.project_overview}
-                    width={630}
-                    height={500}
+                    width={'560px'}
+                    height={'500px'}
                     isSlide={false}
                     date={''}
                     catalogue={null}

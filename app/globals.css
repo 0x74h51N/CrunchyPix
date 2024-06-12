@@ -65,6 +65,39 @@ body {
   }
 }
 
+.line-height-font-size {
+  line-height: 5px;
+  font-size: 0.7em;
+}
+
+@media (min-width: 768px) {
+  .line-height-font-size {
+    line-height: 6px;
+    font-size: 0.8em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .line-height-font-size {
+    line-height: 10px;
+    font-size: 0.85em;
+  }
+}
+
+@media (min-width: 1280px) {
+  .line-height-font-size {
+    line-height: 10px;
+    font-size: 0.95em;
+  }
+}
+
+@media (min-width: 1536px) {
+  .line-height-font-size {
+    line-height: 20px;
+    font-size: 1.1em;
+  }
+}
+
 .flexCenter {
   @apply flex justify-center items-center;
 }

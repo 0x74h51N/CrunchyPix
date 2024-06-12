@@ -19,7 +19,9 @@ const Portfolio = () => {
   );
   return (
     portfolioItems && (
-      <PortfolioItemsTable portfolioPageItems={portfolioItems} />
+      <div className="flex flexCenter w-full min-h-[100svh]">
+        <PortfolioItemsTable portfolioPageItems={portfolioItems} />
+      </div>
     )
   );
 };

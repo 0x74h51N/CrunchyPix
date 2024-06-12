@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 interface isTouch {
   touch: boolean;
 }
@@ -7,7 +7,7 @@ const initialState: isTouch = {
   touch: false,
 };
 const touchSlice = createSlice({
-  name: "isTouch",
+  name: 'isTouch',
   initialState,
   reducers: {
     setTouch: (state, action) => {

@@ -131,14 +131,14 @@ const Dropdown = ({
         </div>
       </button>
       <div
-        className={`${classes} bg-cool-gray-800 rounded-lg shadow-sm shadow-black `}
+        className={`${classes} bg-cool-gray-800 rounded-lg shadow-sm shadow-black`}
       >
         {isDropdownOpen && (
           <ul className={`${ulClasses} ul font-medium leading-6 text-[15px]`}>
             {options.map((option) => (
               <li
                 key={option.label.toLowerCase()}
-                className={`w-full hover:text-log-col transition-text duration-300 ease-in-out cursor-none ${selectedOption === option.label.toLowerCase() ? 'bg-cool-gray-700' : ''} ${liClass}`}
+                className={`w-full hover:text-log-col hover:brightness-75 transition-text duration-300 ease-in-out cursor-none ${selectedOption === option.label.toLowerCase() ? 'bg-cool-gray-700' : ''} ${liClass}`}
                 onClick={() =>
                   optionClickHandler(option.label.trim().toLowerCase())
                 }

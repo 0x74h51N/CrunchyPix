@@ -4,10 +4,9 @@ import SwiperCore from 'swiper';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import Label from '../../Labels';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setSlide } from '@/store/redux/selectedSlide';
-import { RootState } from '@/store';
-import { memo, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import IconButton from '@/components/Buttons/IconButton';
 import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
@@ -18,15 +17,11 @@ SwiperCore.use([Autoplay, EffectCoverflow]);
 
 const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   const filteredSlides = slides.filter((slide) => !slide.catalogue);
+  const swiperRef = useRef<SwiperCore | null>(null);
   const [activeIndex, setActiveIndex] = useState(() => {
     return 0;
   });
   const dispatch = useDispatch();
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const screenHeight = useSelector(
-    (state: RootState) => state.screenHeight.height,
-  );
   const { hoverStart, hoverEnd } = useDragHandler();
   const _selectedSlide = (_slide: PortfolioItemProps) => {
     dispatch(setSlide(_slide));
@@ -43,6 +38,23 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
     }
   };
 
+  const breakPoints = {
+    0: {
+      slidesPerView: 1.2,
+    },
+    640: {
+      slidesPerView: 1.5,
+    },
+    1020: {
+      slidesPerView: 2,
+    },
+  };
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.update();
+    }
+  }, [breakPoints]);
+
   return (
     <motion.div
       onHoverStart={hoverStart}
@@ -50,11 +62,10 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
       className="h-auto overflow-visible z-50"
     >
       <Swiper
+        onInit={(swiper) => (swiperRef.current = swiper)}
         effect="coverflow"
         centeredSlides
-        slidesPerView={
-          isMobile ? (screenHeight < 500 ? 1.7 : 1.2) : isTablet ? 1.5 : 2
-        }
+        breakpoints={breakPoints}
         spaceBetween={0}
         loop
         coverflowEffect={{
@@ -77,13 +88,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
           <SwiperSlide key={index + 1}>
             <div
               key={index}
-              className={`relative  ${
-                isTablet && !isMobile
-                  ? 'h-[340px]'
-                  : screenHeight < 500
-                    ? 'h-[300px]'
-                    : 'h-[485px]'
-              } w-auto shadow-2xl shadow-black lg:my-8 my-4`}
+              className={`relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto shadow-2xl shadow-black lg:my-8 my-4`}
               onClick={() => clickHandler(index, slide)}
             >
               <CldImage

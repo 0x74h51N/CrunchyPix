@@ -1,6 +1,6 @@
 import { RootState } from '@/store';
 import { clearSlide } from '@/store/redux/selectedSlide';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import IconButton from '@/components/Buttons/IconButton';
 import Label from '@/components/Labels';
@@ -16,8 +16,6 @@ const SlideModal = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation(['portfolio']);
   const [imageLoading, setImageLoading] = useState(true);
-
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const selectedSlide = useSelector(
     (state: RootState) => state.selectedSlide.selectedSlide,
@@ -86,11 +84,10 @@ const SlideModal = () => {
                 width={1800}
                 height={1800}
                 style={{
-                  objectFit: isMobile ? 'cover' : 'contain',
                   opacity: imageLoading ? 0 : 100,
                 }}
                 quality="auto"
-                className="w-full h-full"
+                className="w-full h-full md:object-cover object-contain"
                 onLoad={() => {
                   setImageLoading(false);
                 }}
@@ -104,20 +101,14 @@ const SlideModal = () => {
                   <h2 className="text-lg font-bold">
                     {selectedSlide.project_overview[0].title}
                   </h2>
-                  <p
-                    className={`font-extralight overflow-hidden ${
-                      isMobile ? 'text-[10px]' : 'text-[13px]'
-                    }`}
-                  >
+                  <p className="font-extralight overflow-hidden md:text-[13px] text-[10px]">
                     {selectedSlide.project_overview[0].slide_description}
                   </p>
                   <Link
                     href={`/portfolio/${id}`}
                     key={'portfolio'}
                     title={t('projectSlides.title2')}
-                    className={`font-extralight hover:text-log-col underline underline-offset-2 cursor-none ${
-                      isMobile ? 'text-[10px]' : 'text-[13px]'
-                    } `}
+                    className="font-extralight hover:text-log-col underline underline-offset-2 cursor-none md:text-[13px] text-[10px]"
                     onClick={onClickHandler}
                   >
                     {t('projectSlides.click')}

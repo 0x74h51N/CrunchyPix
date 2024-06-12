@@ -1,5 +1,5 @@
 'use client';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo } from 'react';
 import MonitorFrame from '@/components/Frames/MonitorFrame/MonitorFrame';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
@@ -12,37 +12,10 @@ import { scrollState } from '@/store/redux/isScrollEnabled';
 import TitleText from '../TitleText';
 
 const CodeSect = () => {
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width,
-  );
   const isScrollEnabled = useSelector(
     (state: RootState) => state.isScrollEnabled.enabled,
   );
   const dispatch = useDispatch();
-  const [lineHeight, setLineHeight] = useState<string>(() => {
-    return '';
-  });
-  const [fontSize, setFontSize] = useState<string>(() => {
-    return '';
-  });
-  useEffect(() => {
-    if (screenWidth >= 1535) {
-      setLineHeight('1.35');
-      setFontSize('0.75em');
-    } else if (screenWidth >= 1280) {
-      setLineHeight('1.3');
-      setFontSize('0.7em');
-    } else if (screenWidth >= 1024) {
-      setLineHeight('1.25');
-      setFontSize('0.650em');
-    } else if (screenWidth >= 768) {
-      setLineHeight('1.25');
-      setFontSize('0.6em');
-    } else {
-      setLineHeight('1.25');
-      setFontSize('0.4em');
-    }
-  }, [screenWidth]);
 
   const scrollHandlerEnter = () => {
     if (isScrollEnabled) {
@@ -85,14 +58,9 @@ const CodeSect = () => {
                 opacity: '1',
                 overflow: 'scroll',
                 cursor: 'none',
-                lineHeight: lineHeight,
-                fontSize: fontSize,
               }}
               codeTagProps={{
-                style: {
-                  lineHeight: 'inherit',
-                  fontSize: 'inherit',
-                },
+                className: 'line-height-font-size',
               }}
             >
               {codeString}

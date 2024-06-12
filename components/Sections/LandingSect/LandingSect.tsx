@@ -12,11 +12,7 @@ import { SectionsTypes } from '@/schemas';
 import { memo } from 'react';
 
 const LandingSect = () => {
-  const screenHeight = useSelector(
-    (state: RootState) => state.screenHeight.height,
-  );
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const landSect = useFilteredData<SectionsTypes>(
     (state: RootState) => state.section.items,
     {
@@ -34,15 +30,13 @@ const LandingSect = () => {
         className={`anaDiv relative flex flex-wrap justify-center items-center w-full min-h-[100dvh] overflow-hidden`}
       >
         <div
-          className={`w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 pb-40 ${
-            screenHeight <= 600 ? 'pb-[0px] z-30' : isMobile ? 'pb-[220px]' : ''
-          }`}
+          className={`w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 md:pb-40 pb-[220px]`}
         >
           <div
             className={`font-medium lg:text-[40px] sm:text-[30px] text-[25px] text-white`}
           >
             <TypingText
-              generateSpan={isMobile || isTablet ? false : true}
+              generateSpan={isTouchDevice ? false : true}
               text={landSect[0].translations[0].intro}
               typingSpeed={50}
               colorType="vibrantColors"
@@ -50,7 +44,7 @@ const LandingSect = () => {
           </div>
           <div className=" lg:text-[19px] text-[18px] leading-[30px] max-lg:leading-[20px] whitespace-pre-wrap text-white">
             <TypingText
-              generateSpan={isMobile || isTablet ? false : true}
+              generateSpan={isTouchDevice ? false : true}
               text={landSect[0].translations[0].description ?? 'null'}
               typingSpeed={50}
               colorType="vibrantColors"
@@ -62,7 +56,7 @@ const LandingSect = () => {
             variants={slideIn('up', 'spring', 2, 1.5)}
             className="font-black text-white md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px] mt-2"
           >
-            {isMobile || isTablet
+            {isTouchDevice
               ? landSect[0].translations[0].title
               : generateSpans({
                   text: landSect[0].translations[0].title,
@@ -73,13 +67,7 @@ const LandingSect = () => {
 
         <motion.div
           variants={polygonIn('down', 'spring', 2, 2.5)}
-          className={`absolute h-full w-full pointer-events-none  ${
-            isMobile || screenHeight <= 600
-              ? `flex flex-row gap-4 justify-center items-center pb-10 ${
-                  screenHeight <= 600 && 'pt-[240px] pb-0 z-30'
-                }`
-              : ''
-          }`}
+          className={`absolute h-full w-full pointer-events-none max-md:flex max-md:flexCenter max-md:gap-4 max-md:pb-10 pt-0 pb-0 md:z-0 z-30`}
         >
           <SocialIcons
             colorful={true}

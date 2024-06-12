@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Dropdown from '@/components/Dropdown';
 import { PortfolioItemProps } from '@/schemas';
 import i18next from 'i18next';
+import Dropdown from '@/components/Buttons/Dropdown';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];
@@ -85,7 +85,7 @@ const FilterItems = ({
     label: key,
     value: value,
   })) as option[];
-  const classes = `${isDropdownOpen ? 'h-[170px] py-3 ' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40 `;
+  const classes = `${isDropdownOpen ? 'h-[180px] py-4' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40 `;
   return (
     <div className="flex flex-row md:justify-end justify-between gap-6 w-full z-30">
       <div className="relative z-20 transform brightness-100 hover:brightness-150 transition-all ease-in-out duration-500">
@@ -103,7 +103,7 @@ const FilterItems = ({
           ulClasses="pt-7 transition-all ease-in-out duration-500"
           flagMode={false}
           selectedOption={selectedOption}
-          liClass="px-3 py-1"
+          liClass="px-3 py-1 first:border-t first:border-t-1 border-cool-gray-700"
         />
       </div>
       <input

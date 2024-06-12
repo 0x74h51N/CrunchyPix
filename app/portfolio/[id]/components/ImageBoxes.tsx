@@ -1,14 +1,12 @@
-import { RootState } from '@/store';
 import { fadeIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
-import { useSelector } from 'react-redux';
+import { memo } from 'react';
 
 const ImageBoxes = ({ _id }: { _id: string }) => {
   const imageBoxes = ['Respo0', 'Respo', 'Respo2'];
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width,
-  );
+  const isLargeScreen =
+    typeof window !== 'undefined' && window.innerWidth >= 768;
   console.log(_id);
   return (
     <div className="flex md:flex-row flex-col items-center justify-between w-full h-auto md:mt-24 mt-10 mb-8 gap-6">
@@ -16,13 +14,8 @@ const ImageBoxes = ({ _id }: { _id: string }) => {
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: screenWidth >= 768 ? 'all' : 0.5 }}
-          variants={fadeIn(
-            'down',
-            'spring',
-            screenWidth >= 768 ? index : 0.5,
-            1,
-          )}
+          viewport={{ once: true, amount: 'all' }}
+          variants={fadeIn('down', 'spring', isLargeScreen ? index : 0.5, 1)}
           key={index}
         >
           <div className="overflow-hidden flexCenter">
@@ -49,4 +42,4 @@ const ImageBoxes = ({ _id }: { _id: string }) => {
   );
 };
 
-export default ImageBoxes;
+export default memo(ImageBoxes);

@@ -4,36 +4,33 @@ import React, { useEffect, useRef } from 'react';
 import BurgerButton from '../Buttons/BurgerButton';
 import LanguageMenu from './LanguageMenu';
 import { RootState } from '@/store';
-import { useDispatch, useSelector } from 'react-redux';
-import { mobileMenuChange } from '@/store/redux/isMobileMenu';
+import { useSelector } from 'react-redux';
 import { useTranslation } from '@/hooks/useTranslation';
 
-const MobileMenu = ({ smallNav }: { smallNav: boolean }) => {
-  const dispatch = useDispatch();
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const isMenuOpen = useSelector(
-    (state: RootState) => state.isMobileMenu.mobileMenu,
-  );
-  const menuRef = useRef<HTMLDivElement | null>(null);
+type MobileMenuProps = {
+  smallNav: boolean;
+  isMenuOpen: boolean;
+  setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
+const MobileMenu = ({
+  smallNav,
+  isMenuOpen,
+  setMobileMenu,
+}: MobileMenuProps) => {
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const toggleMenu = () => {
-    dispatch(mobileMenuChange(!isMenuOpen));
+    setMobileMenu(!isMenuOpen);
   };
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage,
   );
   const { t } = useTranslation('index');
-  useEffect(() => {
-    if (!isMobile || !isTablet) {
-      dispatch(mobileMenuChange(false));
-    }
-  }, [isMobile, isTablet]);
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        dispatch(mobileMenuChange(false));
+        setMobileMenu(false);
       }
     };
 

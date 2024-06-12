@@ -43,16 +43,13 @@ const Project = memo(({ id }: { id: string }) => {
     hoverEnd();
     handleMouseLeave();
   }, []);
-
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const storedItems = useSelector((state: RootState) => state.portfolio.items);
   const storeItem = Item && storedItems.find((a) => a._id === Item.project_id);
   const iconsArray =
     storeItem && storeItem.icons ? Object.values(storeItem.icons) : [];
   return (
     <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden">
-      {' '}
       {loading ? (
         <LoadingComponent />
       ) : (
@@ -70,14 +67,14 @@ const Project = memo(({ id }: { id: string }) => {
               whileInView="show"
               viewport={{
                 once: true,
-                amount: isTablet || isMobile ? 'some' : 0.65,
+                amount: 'some',
               }}
               className="lg:relative flex flex-wrap w-full h-auto lg:min-h-[590px] md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
             >
               <div className="lg:w-2/3 w-full lg:pr-[120px] ">
                 {Item.title2 && (
                   <motion.h2 variants={textVariant(1)} className="h1 half mb-4">
-                    {isMobile || isTablet
+                    {isTouchDevice
                       ? Item.title2
                       : generateSpans({
                           text: Item.title2,
@@ -121,12 +118,7 @@ const Project = memo(({ id }: { id: string }) => {
                     initial="hidden"
                     whileInView="show"
                     viewport={{ once: true, amount: 'some' }}
-                    variants={polygonIn(
-                      'down',
-                      'spring',
-                      isMobile ? 0.85 : 1.8,
-                      2,
-                    )}
+                    variants={polygonIn('down', 'spring', 1.5, 2)}
                     className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
                   >
                     <Ticks ticks={Item.ticks} />

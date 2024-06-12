@@ -5,18 +5,17 @@ import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { RootState } from '@/store';
 import { polygonIn } from '@/utils/motion';
-import { useSelector } from 'react-redux';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
 import useFilteredData from '@/hooks/useFilteredData';
-import { SectionsTypes } from '@/schemas';
+import { CardsTypes } from '@/schemas';
 import TitleText from '../TitleText';
-import { memo } from 'react';
+import { memo, useEffect, useRef } from 'react';
+import SwiperCore from 'swiper';
 
 const ServicesSect = () => {
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-  const serviceSect = useFilteredData<SectionsTypes>(
+  const swiperRef = useRef<SwiperCore | null>(null);
+  const serviceSect = useFilteredData<any>(
     (state: RootState) => state.section.items,
     {
       key: 'name',
@@ -34,6 +33,22 @@ const ServicesSect = () => {
     nextEl: '.swiper-button-next-cus',
     prevEl: '.swiper-button-prev-cus',
   };
+  const breakpoints = {
+    400: {
+      slidesPerView: 1.1,
+    },
+    640: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  };
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.update();
+    }
+  }, [breakpoints]);
 
   return (
     <div className="flex justify-center items-center w-full h-full min-h-[100svh]">
@@ -51,8 +66,11 @@ const ServicesSect = () => {
           onMouseLeave={hoverEnd}
         >
           <Swiper
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
             modules={[Pagination, Navigation]}
-            slidesPerView={isMobile ? 1.1 : isTablet ? 1.8 : 3}
+            breakpoints={breakpoints}
             spaceBetween={30}
             centeredSlides
             initialSlide={1}
@@ -62,17 +80,19 @@ const ServicesSect = () => {
             className="2xl:w-[1030px] lg:w-[900px] md:w-[680px] w-[340px] h-auto cursor-none"
           >
             {serviceSect[0].translations[0].cards &&
-              serviceSect[0].translations[0].cards.map((section, index) => (
-                <SwiperSlide key={index} className="w-[300px] h-auto ">
-                  <CardMaker
-                    key={index}
-                    cardSections={section}
-                    cardWidth={320}
-                    cardHeight={520}
-                    className="cursor-none"
-                  />
-                </SwiperSlide>
-              ))}
+              serviceSect[0].translations[0].cards.map(
+                (section: CardsTypes, index: number) => (
+                  <SwiperSlide key={index} className="w-[300px] h-auto ">
+                    <CardMaker
+                      key={index}
+                      cardSections={section}
+                      cardWidth={320}
+                      cardHeight={520}
+                      className="cursor-none"
+                    />
+                  </SwiperSlide>
+                ),
+              )}
           </Swiper>
         </div>
         <div className="absolute swiper-button-next-cus top-10 right-1 h-full w-[50px] bg- z-50 ">

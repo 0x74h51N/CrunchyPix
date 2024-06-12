@@ -6,13 +6,6 @@ export type Links = {
   text: string;
 };
 
-export type Policy = {
-  title?: string;
-  mainTitle?: string;
-  description?: string;
-  subTitles?: SubTitles[];
-};
-
 export type SubTitles = {
   title?: string;
   description?: string;
@@ -78,9 +71,4 @@ export type ColorfulHoverType = {
   _colorType?: ColorType;
   randomCount?: number;
   zeroColor?: string;
-};
-
-export type logoType = {
-  text: string;
-  icon: string;
 };

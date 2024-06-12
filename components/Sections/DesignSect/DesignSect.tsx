@@ -5,17 +5,12 @@ import FullScreenSlider from '../../Slider/FullScreenSlider/FullScreenSlider';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { motion } from 'framer-motion';
-import { slideIn, textVariant } from '@/utils/motion';
-import { useTranslation } from 'react-i18next';
-import { generateSpans } from '@/components/GenerateSpans';
+import { slideIn } from '@/utils/motion';
 import PhoneFrame from '@/components/Frames/PhoneFrame/PhoneFrame';
 import { phoneSlides } from '@/constants/phoneSlides';
 import TitleText from '../TitleText';
 
 const DesignSect = () => {
-  const { t } = useTranslation('home');
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
   const rotateStart = useSelector(
     (state: RootState) => state.rotateChange.rotateStart,
   );
@@ -47,9 +42,7 @@ const DesignSect = () => {
             <PhoneFrame>
               <FullScreenSlider
                 slides={slides}
-                className={`w-full h-full object-cover ${
-                  isMobile ? 'rounded-2xl' : 'rounded-[42px]'
-                }`}
+                className={`w-full h-full object-cover md:rounded-[42px] rounded-2xl`}
               />
             </PhoneFrame>
           </motion.div>
