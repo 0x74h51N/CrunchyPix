@@ -1,5 +1,3 @@
-import { Policy } from '@/app/common.types';
-
 interface PolicyPagesProps {
   _id: string;
 }
