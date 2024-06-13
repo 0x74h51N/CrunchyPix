@@ -23,6 +23,7 @@ const createIcon = (type: string): IconProps => ({
   type,
   size: 60,
   color: '#eeb30d',
+  id: 0,
 });
 const CardMaker = memo(
   ({
