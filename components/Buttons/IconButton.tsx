@@ -1,5 +1,4 @@
-import { Icon } from "@/app/common.types";
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 import {
   FaDesktop,
   FaMobileAlt,
@@ -28,13 +27,14 @@ import {
   FaFile,
   FaChartBar,
   FaCodepen,
-  FaFreeCodeCamp  
-} from "react-icons/fa";
-import { MdAccessibility, MdTouchApp } from "react-icons/md";
-import { DiResponsive } from "react-icons/di";
-import { TfiLayoutAccordionList } from "react-icons/tfi";
-import { SiFreelancer } from "react-icons/si";
-import useClickableHandlers from "@/hooks/useClickableHandlers";
+  FaFreeCodeCamp,
+} from 'react-icons/fa';
+import { MdAccessibility, MdTouchApp } from 'react-icons/md';
+import { DiResponsive } from 'react-icons/di';
+import { TfiLayoutAccordionList } from 'react-icons/tfi';
+import { SiFreelancer } from 'react-icons/si';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
+import { IconProps } from '@/schemas';
 
 const iconComponents: { [key: string]: IconType } = {
   github: FaGithub,
@@ -69,10 +69,10 @@ const iconComponents: { [key: string]: IconType } = {
   chart: FaChartBar,
   freelancer: SiFreelancer,
   codepen: FaCodepen,
-  freecodecamp: FaFreeCodeCamp 
+  freecodecamp: FaFreeCodeCamp,
 };
 
-const IconButton = ({ icon, size }: { icon: Icon; size?: number }) => {
+const IconButton = ({ icon, size }: { icon: IconProps; size?: number }) => {
   const iconType = icon.type && icon.type.toLowerCase();
   const IconComponent = icon.type && iconType && iconComponents[iconType];
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
@@ -94,6 +94,7 @@ const IconButton = ({ icon, size }: { icon: Icon; size?: number }) => {
             size={icon.size ? icon.size : size}
             color={icon.color}
           />
+
           {icon.alt && (
             <span className="absolute self-center rounded-md border-spacing-1 border-cool-gray-700 border-2 w-auto p-[2px] text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 ease-in-out duration-300 pointer-events-none cursor-none whitespace-nowrap">
               {icon.alt}

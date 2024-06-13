@@ -1,14 +1,22 @@
 'use client';
-import { createRef, useEffect, useRef, useState } from 'react';
+import { createRef, memo, useEffect, useRef, useState } from 'react';
 import { SectionData } from '@/app/common.types';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { handleScroll } from '@/utils/handleScroll';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { ArrowButton } from './Buttons/ArrowButton';
+import { ArrowButton } from '../Buttons/ArrowButton';
 import { CldImage } from 'next-cloudinary';
 
-const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
+const areEqual = (prevProps: SectionDataProps, nextProps: SectionDataProps) => {
+  return prevProps.sectionsData === nextProps.sectionsData;
+};
+
+interface SectionDataProps {
+  sectionsData: SectionData[];
+}
+
+const Section = memo(({ sectionsData }: SectionDataProps) => {
   const sectionRefs = useRef(
     sectionsData.map(() => createRef<HTMLDivElement>()),
   );
@@ -50,7 +58,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         });
       };
     }
-  }, [sectionsData, isTouchDevice]);
+  }, [isTouchDevice]);
 
   /**Wheel event listener */
   useEffect(() => {
@@ -64,7 +72,6 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
           handleScroll({
             event,
             currentSection,
-            sectionsData,
             sectionRefs: sectionRefs.current,
           });
         }
@@ -75,13 +82,7 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
         window.removeEventListener('wheel', handleScrollEvent);
       };
     }
-  }, [
-    currentSection,
-    sectionRefs,
-    sectionsData,
-    isTouchDevice,
-    isScrollEnabled,
-  ]);
+  }, [currentSection, sectionRefs, isTouchDevice, isScrollEnabled]);
 
   return (
     <div>
@@ -168,6 +169,6 @@ const Section = ({ sectionsData }: { sectionsData: SectionData[] }) => {
       ))}
     </div>
   );
-};
-
+}, areEqual);
+Section.displayName = 'Section';
 export default Section;

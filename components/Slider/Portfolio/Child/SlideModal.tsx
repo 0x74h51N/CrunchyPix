@@ -1,23 +1,21 @@
 import { RootState } from '@/store';
 import { clearSlide } from '@/store/redux/selectedSlide';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import IconButton from '@/components/Buttons/IconButton';
 import Label from '@/components/Labels';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
-import Loading from '@/components/Loading';
+import Loading from '@/components/Loading/Loading';
 import Link from 'next/link';
 import CancelButton from '@/components/Buttons/CancelButton';
 import { sliderChange } from '@/store/redux/isSlider';
 import { CldImage } from 'next-cloudinary';
-import { enableScroll } from '@/utils/scrollEventControl';
+import { useTranslation } from 'react-i18next';
 
 const SlideModal = () => {
   const dispatch = useDispatch();
-  const [imageLoading, setImageLoading] = useState(true);
   const { t } = useTranslation(['portfolio']);
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
+  const [imageLoading, setImageLoading] = useState(true);
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const selectedSlide = useSelector(
     (state: RootState) => state.selectedSlide.selectedSlide,
@@ -27,7 +25,6 @@ const SlideModal = () => {
 
   const closeModal = () => {
     dispatch(clearSlide());
-    enableScroll();
     setTimeout(() => {
       setImageLoading(true);
     }, 300);
@@ -43,6 +40,20 @@ const SlideModal = () => {
       dispatch(sliderChange(false));
     }
   };
+
+  useEffect(() => {
+    const scrollHandler = () => {
+      closeModal();
+    };
+    if (selectedSlide) {
+      document.addEventListener('scroll', scrollHandler);
+    } else {
+      document.removeEventListener('scroll', scrollHandler);
+    }
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, [selectedSlide, clearSlide]);
   return (
     <AnimatePresence>
       {selectedSlide && (
@@ -59,7 +70,6 @@ const SlideModal = () => {
               animate="visible"
               exit="hidden"
               variants={modalVariants}
-              onClick={closeModal}
             >
               <button
                 onClick={closeModal}
@@ -69,16 +79,15 @@ const SlideModal = () => {
               </button>
               <CldImage
                 priority
-                src={selectedSlide.slideImage || ''}
-                alt={selectedSlide.title || ''}
+                src={`crunchypix/PortfolioSlides/${selectedSlide._id}.png`}
+                alt={selectedSlide._id || ''}
                 width={1800}
                 height={1800}
                 style={{
-                  objectFit: isMobile ? 'cover' : 'contain',
                   opacity: imageLoading ? 0 : 100,
                 }}
                 quality="auto"
-                className="w-full h-full"
+                className="w-full h-full md:object-cover object-contain"
                 onLoad={() => {
                   setImageLoading(false);
                 }}
@@ -90,43 +99,41 @@ const SlideModal = () => {
               ) : (
                 <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                   <h2 className="text-lg font-bold">
-                    {t(`${selectedSlide.title}`)}
+                    {selectedSlide.project_overview[0].title}
                   </h2>
-                  <p
-                    className={`font-extralight overflow-hidden ${
-                      isMobile ? 'text-[10px]' : 'text-[13px]'
-                    }`}
-                  >
-                    {t(`${selectedSlide.slideDescription}`)}
+                  <p className="font-extralight overflow-hidden md:text-[13px] text-[10px]">
+                    {selectedSlide.project_overview[0].slide_description}
                   </p>
                   <Link
                     href={`/portfolio/${id}`}
                     key={'portfolio'}
                     title={t('projectSlides.title2')}
-                    className={`font-extralight hover:text-log-col underline underline-offset-2 cursor-none ${
-                      isMobile ? 'text-[10px]' : 'text-[13px]'
-                    } `}
+                    className="font-extralight hover:text-log-col underline underline-offset-2 cursor-none md:text-[13px] text-[10px]"
                     onClick={onClickHandler}
                   >
                     {t('projectSlides.click')}
                   </Link>
                   <div className="flex">
                     <div className="flex flex-wrap items-start mr-auto">
-                      {selectedSlide.labels &&
-                        selectedSlide.labels.map((label, labelIndex) => (
-                          <Label key={labelIndex} text={label} />
-                        ))}
+                      {selectedSlide.tech &&
+                        selectedSlide.tech.map(
+                          (label: string, labelIndex: number) => (
+                            <Label key={`label-${labelIndex}`} text={label} />
+                          ),
+                        )}
                     </div>
                     <div className="flex items-end gap-2">
                       {selectedSlide.icons &&
-                        selectedSlide.icons.map((icon, iconIndex) => (
-                          <span
-                            key={iconIndex}
-                            className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-2xl text-xl"
-                          >
-                            <IconButton key={iconIndex} icon={icon} />
-                          </span>
-                        ))}
+                        Object.entries(selectedSlide.icons).map(
+                          ([key, icon], iconIndex) => (
+                            <span
+                              key={iconIndex}
+                              className="lg:text-2xl text-xl"
+                            >
+                              <IconButton key={`icon-${key}`} icon={icon} />
+                            </span>
+                          ),
+                        )}
                     </div>
                   </div>
                 </div>

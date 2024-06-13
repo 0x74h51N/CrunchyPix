@@ -1,4 +1,3 @@
-import { portfolioPageItems } from '@/constants/portfolioItems';
 import { generatePageMetadata } from '@/lib/metadata';
 import { Metadata } from 'next';
 
@@ -16,12 +15,4 @@ export default function PortfolioLayout({
       <main>{children}</main>
     </>
   );
-}
-
-export async function generateStaticParams() {
-  const paths = portfolioPageItems.map((item) => ({
-    params: { id: item._id.toLowerCase().replace(/\s+/g, '') },
-  }));
-
-  return paths;
 }

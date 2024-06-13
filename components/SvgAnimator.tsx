@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
-import React from "react";
-import { useTranslation } from "react-i18next";
-
+import { motion } from 'framer-motion';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Path = {
   d: string;
@@ -11,7 +10,7 @@ type Path = {
 interface SvgAnimatorProps {
   paths: Path[];
   repeat?: boolean;
-  direction?: "forwards" | "back";
+  direction?: 'forwards' | 'back';
   duration: number;
   pathDelay?: number;
   delay?: number;
@@ -19,16 +18,16 @@ interface SvgAnimatorProps {
 const SvgAnimator = ({
   paths,
   repeat = false,
-  direction = "forwards",
+  direction = 'forwards',
   duration,
   pathDelay = 0,
   delay = 0,
 }: SvgAnimatorProps) => {
-  const { t } = useTranslation(["home"]);
- 
+  const { t } = useTranslation(['home']);
+
   const initialAnimation = {
     pathLength: 0,
-    pathOffset: direction === "back" ? 0 : 1,
+    pathOffset: direction === 'back' ? 0 : 1,
   };
 
   const animateAnimation = {
@@ -37,27 +36,25 @@ const SvgAnimator = ({
   };
 
   return (
-    <>
-      {paths &&
-        paths.map((path, index) => (
-          <motion.path
-            key={index}
-            d={t(path.d)}
-            initial={initialAnimation}
-            animate={animateAnimation}
-            transition={{
-              duration: duration,
-              ease: "easeInOut",
-              delay: path.delay ? path.delay : index * pathDelay + delay,
-              ...(repeat && {
-                repeat: Infinity,
-                repeatType: "loop",
-                repeatDelay: delay,
-              }),
-            }}
-          />
-        ))}
-    </>
+    paths &&
+    paths.map((path, index) => (
+      <motion.path
+        key={index}
+        d={t(path.d)}
+        initial={initialAnimation}
+        animate={animateAnimation}
+        transition={{
+          duration: duration,
+          ease: 'easeInOut',
+          delay: path.delay ? path.delay : index * pathDelay + delay,
+          ...(repeat && {
+            repeat: Infinity,
+            repeatType: 'loop',
+            repeatDelay: delay,
+          }),
+        }}
+      />
+    ))
   );
 };
 

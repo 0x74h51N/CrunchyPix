@@ -19,7 +19,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none !important;
 }
 
 body {
@@ -63,6 +62,39 @@ body {
 @media screen and (max-width: 450px) {
   :root {
     --line-height: 130px;
+  }
+}
+
+.line-height-font-size {
+  line-height: 5px;
+  font-size: 0.7em;
+}
+
+@media (min-width: 768px) {
+  .line-height-font-size {
+    line-height: 6px;
+    font-size: 0.8em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .line-height-font-size {
+    line-height: 10px;
+    font-size: 0.85em;
+  }
+}
+
+@media (min-width: 1280px) {
+  .line-height-font-size {
+    line-height: 10px;
+    font-size: 0.95em;
+  }
+}
+
+@media (min-width: 1536px) {
+  .line-height-font-size {
+    line-height: 20px;
+    font-size: 1.1em;
   }
 }
 
@@ -440,4 +472,17 @@ body {
 
 .scroll-container {
   animation: smoothScroll 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/**Section**/
+.sect-h2 {
+  @apply w-full max-xs:w-2/3 max-xs:self-start font-medium lg:text-[22px] sm:text-[20px] text-[14px] lg:leading-[40px] text-cool-gray-300 text-left;
+}
+
+.sect-h1 {
+  @apply w-full font-black text-cool-gray-50 md:text-[50px] sm:text-[40px] xs:text-[30px] text-[22px] leading-relaxed text-left;
+}
+
+.sect-p {
+  @apply text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full xl:leading-[30px] text-left;
 }

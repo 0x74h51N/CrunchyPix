@@ -1,35 +1,20 @@
-import { Icon } from '@/app/common.types';
 import IconButton from '@/components/Buttons/IconButton';
-import { RootState } from '@/store';
+import { IconProps } from '@/schemas';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
-const TopImage = ({
-  imageTop,
-  imageTopMobile,
-  imageAlt,
-  icons,
-}: {
-  imageTop: string;
-  imageTopMobile?: string;
-  imageAlt: string;
-  icons?: Icon[];
-}) => {
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width,
-  );
+const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
   const [loading, setLoading] = useState(true);
-
+  const imageTop = `crunchypix/portfolioItems/${id.includes('kyk') ? id.replaceAll('_', '') : id.replaceAll('_', '') + 'Top'}`;
   return (
     <div
       className={`relative w-full h-auto overflow-hidden ${
         imageTop.includes('catalog')
           ? 'lg:min-h-[870px] md:min-h-[700px]'
           : 'md:min-h-[700px]'
-      } min-h-[600px]`}
+      } min-h-[400px]`}
       style={{
         backgroundImage: imageTop.includes('kyk')
           ? 'linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)'
@@ -40,10 +25,10 @@ const TopImage = ({
         fill
         fetchPriority="high"
         format="avif"
-        src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
-        alt={imageAlt}
+        src={imageTop}
+        alt={id}
         onLoad={() => setLoading(false)}
-        className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
+        className={`w-full h-full object-cover max-md:object-contain max-md:scale-150 transition-opacity ease-in-out duration-300 `}
         style={{ opacity: loading ? 0 : 100 }}
       />
       {loading && (
@@ -51,8 +36,8 @@ const TopImage = ({
           fill
           quality={5}
           blur={250}
-          src={screenWidth <= 768 && imageTopMobile ? imageTopMobile : imageTop}
-          alt={imageAlt}
+          src={imageTop}
+          alt={id}
           className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
         />
       )}

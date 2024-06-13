@@ -1,25 +1,29 @@
-export const codeString = `import { portfolioPageItems } from "@/constants/portfolioItems";
-import Project from "./components/Project";
-import OtherProjects from "../components/OtherProjects";
-import { generateSubPageMetadata} from '@/lib/metadataSub';
+export const codeString = `'use client';
+import FsLoading from '@/components/Loading/FsLoading';
+import { RootState } from '@/store';
+import dynamic from 'next/dynamic';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  return await generateSubPageMetadata({ params, page: 'portfolio' });
-}
-const PortfolioPage = ({ params }: { params: { id: string } }) => {
-  const selectedItem = portfolioPageItems.find(
-    (item) => item._id.toLowerCase().replace(/\\s+/g, "") === params.id
+const PortfolioItemsTable = dynamic(
+  () => import('./components/PortfolioItemsTable'),
+  {
+    ssr: false,
+    loading: () => <FsLoading />,
+  },
+);
+const Portfolio = () => {
+  const portfolioItems = useSelector(
+    (state: RootState) => state.portfolio.items,
   );
-
-  if (!selectedItem) {
-    return null;
-  }
   return (
-  <>
-    <Project Item={selectedItem} />
-    <OtherProjects />
-  </>
+    portfolioItems && (
+      <div className="flex flexCenter w-full min-h-[100svh]">
+        <PortfolioItemsTable portfolioPageItems={portfolioItems} />
+      </div>
+    )
   );
 };
 
-export default PortfolioPage;`;
+export default memo(Portfolio);
+`;

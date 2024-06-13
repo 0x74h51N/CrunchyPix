@@ -1,10 +1,8 @@
 {
   "links": {
     "home": "Startseite",
-    "services": "Dienstleistungen",
     "portfolio": "Portfolio",
     "about": "Über uns",
-    "contact": "Kontakt",
     "policies": "Politiken",
     "termsofservices": "Nutzungsbedingungen",
     "termsofprivacy": "Datenschutzrichtlinie",
@@ -13,10 +11,8 @@
   },
   "footerLinks": {
     "Home": "Startseite",
-    "Services": "Dienstleistungen",
     "Portfolio": "Portfolio",
     "About": "Über uns",
-    "Contact": "Kontakt",
     "TermsOfServices": "Nutzungsbedingungen",
     "TermsOfPrivacy": "Datenschutzrichtlinie",
     "CookiePolicy": "Cookie-Richtlinie",

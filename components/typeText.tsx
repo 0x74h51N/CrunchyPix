@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import { generateSpans } from './GenerateSpans';
 import { generateSpanType } from '@/app/common.types';
 
@@ -65,7 +65,11 @@ const TypingText = ({
       clearTimeout(delayTimeout);
     };
   }, [delay]);
-
+  useEffect(() => {
+    if (text !== displayText && !isWriting) {
+      setDisplayText(text);
+    }
+  }, [text]);
   const content = useMemo(() => {
     if (generateSpan) {
       return (
@@ -86,4 +90,4 @@ const TypingText = ({
   return <>{content}</>;
 };
 
-export default TypingText;
+export default memo(TypingText);
