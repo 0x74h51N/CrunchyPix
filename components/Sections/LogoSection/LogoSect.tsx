@@ -26,7 +26,7 @@ const LogoSect = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.6 }}
-          variants={slideIn('up', 'spring', 0.6, 1.4)}
+          variants={slideIn('up', 'spring', 0.5, 1.4)}
           className="flex flex-col text-center"
         >
           <TitleText sectName="logo_sect" />

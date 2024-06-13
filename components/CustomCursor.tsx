@@ -35,7 +35,7 @@ const CustomCursor = () => {
         window.removeEventListener('touchstart', handleTouchStart);
       };
     }
-  }, [isBrowser, isTouchDevice]);
+  }, [isBrowser, isTouchDevice, dispatch]);
 
   const updateMousePosition = useCallback(
     (clientX: number, clientY: number) => {
