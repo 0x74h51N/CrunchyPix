@@ -3,7 +3,7 @@ import { RootState } from '@/store';
 import { useTranslation } from 'react-i18next';
 import { fadeIn, polygonIn, slideIn, textVariant } from '@/utils/motion';
 import { motion } from 'framer-motion';
-import { memo, useEffect, useState } from 'react';
+import { memo, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Markdown from 'react-markdown';
 import breaks from 'remark-breaks';
@@ -50,7 +50,9 @@ const Project = memo(({ id }: { id: string }) => {
   }, []);
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const storedItems = useSelector((state: RootState) => state.portfolio.items);
-  const storeItem = Item && storedItems.find((a) => a._id === Item.project_id);
+  const storeItem = useMemo(() => {
+    return Item && storedItems.find((a) => a._id === Item.project_id);
+  }, [Item, storedItems]);
   const iconsArray =
     storeItem && storeItem.icons ? Object.values(storeItem.icons) : [];
   return (

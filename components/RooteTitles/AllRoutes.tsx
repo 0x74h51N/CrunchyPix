@@ -16,9 +16,7 @@ const AllRoutes = () => {
       const urlParts = pathname.split('/');
       const currentPage = urlParts[1];
       if (urlParts[2]) {
-        const currentChildPage = urlParts[2]
-          .replace('_', ' ')
-          .replaceAll('-', '');
+        const currentChildPage = urlParts[2];
         setChildPage(currentChildPage);
       } else setChildPage('');
       setMainPage(currentPage);
