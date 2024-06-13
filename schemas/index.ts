@@ -26,12 +26,13 @@ export const ProjectCardSchema = z.object({
 export const ProjectPageSchema = z.object({
   project_id: z.string(),
   lang: z.string(),
-  title2: z.string(),
+  title: z.string().optional(),
+  title2: z.string().optional(),
   description: z.string(),
-  description2: z.string(),
-  techDescription: z.string(),
+  description2: z.string().optional(),
+  techDescription: z.string().optional(),
   ticks: z.array(z.string()),
-  project_card: z.array(ProjectCardSchema),
+  project_card: z.array(ProjectCardSchema).optional(),
 });
 
 export const PortfolioItemSchema = z.object({
