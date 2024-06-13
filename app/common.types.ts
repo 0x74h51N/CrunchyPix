@@ -1,14 +1,9 @@
+import { IconProps } from '@/schemas';
+
 export type Links = {
   href: string;
   key: string;
   text: string;
-};
-
-export type Policy = {
-  title?: string;
-  mainTitle?: string;
-  description?: string;
-  subTitles?: SubTitles[];
 };
 
 export type SubTitles = {
@@ -17,14 +12,11 @@ export type SubTitles = {
 };
 
 export type SectionData = {
-  name?: string;
-  className?: string;
-  image?: string;
-  textStyle?: string;
-  children?: React.ReactNode;
+  name: string;
+  className: string;
+  children: React.ReactNode;
   parallax?: boolean | false;
   parallaxImageSrc?: string;
-  parallaxImageAlt?: string;
   background?: string;
   topImage?: string;
 };
@@ -32,7 +24,6 @@ export type SectionData = {
 export type HandleScroll = {
   event: WheelEvent;
   currentSection: number;
-  sectionsData: SectionData[];
   sectionRefs: React.RefObject<HTMLDivElement>[];
   duration?: number;
 };
@@ -49,18 +40,8 @@ export type slide = {
   children?: React.ReactNode | React.ReactElement<{ active: boolean }>;
   box?: boolean;
   githubLink?: string;
-  icons?: Icon[];
+  icons?: IconProps[];
   labels?: string[];
-};
-
-export type CardSections = {
-  title?: string;
-  description?: string;
-  icon?: Icon;
-  index?: number;
-  colorFulBorder?: boolean;
-  image?: string;
-  list?: string[];
 };
 
 export type ColorPacks = {
@@ -79,7 +60,7 @@ export type generateSpanType = {
 
 export type ColorfulHoverType = {
   char?: string;
-  icon?: Icon;
+  icon?: IconProps;
   initial?: any;
   style?: React.CSSProperties;
   className?: string;
@@ -89,52 +70,4 @@ export type ColorfulHoverType = {
   _colorType?: ColorType;
   randomCount?: number;
   zeroColor?: string;
-};
-
-export type Icon = {
-  type?: string;
-  link?: string;
-  size?: number;
-  color?: string;
-  alt?: string;
-  substance?: string;
-};
-
-export type logoType = {
-  text: string;
-  icon: string;
-};
-
-export type PortfolioItemProps = {
-  _id: string;
-  slideImage?: string;
-  image: string;
-  imageAlt: string;
-  imageTop?: string;
-  imageTopMobile?: string;
-  imageBoxes?: string[];
-  title: string;
-  title2?: string;
-  techTitle?: string;
-  projectType: string;
-  slideDescription: string;
-  description?: string;
-  description2?: string;
-  techDescription?: string;
-  ticks?: string[];
-  description3?: string;
-  githubLink?: string;
-  icons?: Icon[];
-  labels?: string[];
-  ProjectInfo?: ProjectInfoType;
-  catalogue?: { folderPath: string; pageNumber: number };
-  date: string;
-};
-
-export type ProjectInfoType = {
-  category: string;
-  client: string;
-  location: string;
-  date: string;
-  tech?: string[];
 };

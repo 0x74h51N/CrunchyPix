@@ -4,16 +4,13 @@ import SwiperCore from 'swiper';
 import PortfolioItem from '../../../components/PortfolioItem';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { PortfolioItemProps } from '@/app/common.types';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, memo, useMemo } from 'react';
 import 'swiper/css';
+import { PortfolioItemProps } from '@/schemas';
 
 SwiperCore.use([Autoplay, Pagination]);
 
 const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
-  const screenWidth = useSelector(
-    (state: RootState) => state.screenWidth.width,
-  );
   const swiperRef = useRef<SwiperCore | null>(null);
 
   useEffect(() => {
@@ -21,6 +18,25 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
       swiperRef.current.update();
     }
   }, []);
+  const breakpoints = {
+    0: {
+      spaceBetween: 15,
+    },
+    769: {
+      spaceBetween: 20,
+    },
+    1030: {
+      spaceBetween: 25,
+    },
+    1250: {
+      spaceBetween: 32,
+    },
+  };
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.update();
+    }
+  }, [breakpoints]);
   return (
     <Swiper
       onInit={(swiper) => (swiperRef.current = swiper)}
@@ -30,19 +46,7 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
         dynamicBullets: true,
         clickable: true,
       }}
-      spaceBetween={
-        screenWidth <= 450
-          ? 15
-          : screenWidth <= 610
-            ? 15
-            : screenWidth <= 769
-              ? 15
-              : screenWidth <= 1030
-                ? 20
-                : screenWidth <= 1250
-                  ? 25
-                  : 32
-      }
+      breakpoints={breakpoints}
       loop
       slidesPerView={'auto'}
       autoplay={{
@@ -60,16 +64,13 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
         >
           <PortfolioItem
             _id={item._id}
-            image={item.image}
-            imageAlt={item.imageAlt}
-            title={item.title}
-            projectType={item.projectType}
-            slideImage={''}
-            slideDescription={''}
-            width={screenWidth <= 1030 ? 300 : 380}
-            height={screenWidth <= 1030 ? 250 : 310}
+            project_overview={item.project_overview}
             isSlide={true}
             date={''}
+            id={0}
+            icons={[]}
+            tech={[]}
+            catalogue={null}
           />
         </SwiperSlide>
       ))}
@@ -77,4 +78,4 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
   );
 };
 
-export default ProjectSlide;
+export default memo(ProjectSlide);

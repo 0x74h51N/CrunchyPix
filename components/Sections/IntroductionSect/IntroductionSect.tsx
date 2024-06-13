@@ -1,17 +1,10 @@
-"use client";
-import { motion } from "framer-motion";
-import { slideIn, textVariant } from "@/utils/motion";
-import { useTranslation } from "@/hooks/useTranslation";
-import { useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { generateSpans } from "@/components/GenerateSpans";
-import { CldImage } from "next-cloudinary";
+'use client';
+import { motion } from 'framer-motion';
+import { CldImage } from 'next-cloudinary';
+import TitleText from '../TitleText';
+import { memo } from 'react';
 
 const IntroductionSect = () => {
-  const { t } = useTranslation("home");
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
- 
   return (
     <div className="flex flex-row items-center justify-center max-2xl:gap-10 lg-gap-auto h-auto p-24 max-md:px-1 max-md:py-18 bg-cool-gray-800 md:rounded-3xl gap-12 max-sm:flex-col max-lg:gap-6">
       <CldImage
@@ -29,31 +22,10 @@ const IntroductionSect = () => {
         viewport={{ once: true, amount: 0.6 }}
         className="flex flex-col items-start h-full w-auto p-5 z-10"
       >
-        <motion.h1 variants={slideIn("left", "spring", 0.5, 1)}>
-          <div className="h2">
-            {isMobile || isTablet
-              ? t("introduction.intro")
-              : generateSpans({
-                  text: t("introduction.intro"),
-                  colorType: "vibrantColors",
-                  zeroColor: "#737373",
-                })}
-          </div>
-          <div className="h1">
-            {isMobile || isTablet
-              ? t("introduction.title")
-              : generateSpans({
-                  text: t("introduction.title"),
-                  colorType: "vibrantColors",
-                })}
-          </div>
-        </motion.h1>
-        <motion.p variants={textVariant(1)} className="mt-4 p max-w-3xl ">
-          {t("introduction.description")}
-        </motion.p>
+        <TitleText sectName={'introduction_sect'} />
       </motion.div>
     </div>
   );
 };
 
-export default IntroductionSect;
+export default memo(IntroductionSect);

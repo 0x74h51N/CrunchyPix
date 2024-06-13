@@ -1,5 +1,5 @@
-import { PortfolioItemProps } from "@/app/common.types";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PortfolioItemProps } from '@/schemas';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface SelectedSlideState {
   selectedSlide: PortfolioItemProps | undefined;
@@ -12,7 +12,7 @@ const initialState: SelectedSlideState = {
 };
 
 const selectedSlideSlice = createSlice({
-  name: "selectedSlide",
+  name: 'selectedSlide',
   initialState,
   reducers: {
     setSlide: (state, action: PayloadAction<PortfolioItemProps>) => {

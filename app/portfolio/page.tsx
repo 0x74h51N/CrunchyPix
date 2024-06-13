@@ -1,19 +1,28 @@
-import LoadingComponent from '@/components/Loading';
+'use client';
+import FsLoading from '@/components/Loading/FsLoading';
+import { RootState } from '@/store';
 import dynamic from 'next/dynamic';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
 
 const PortfolioItemsTable = dynamic(
   () => import('./components/PortfolioItemsTable'),
   {
     ssr: false,
-    loading: () => (
-      <div className="absolute top-0 left-0 w-[100dvw] h-[100dvh] overflow-hidden z-50 bg-black">
-        <LoadingComponent />
-      </div>
-    ),
+    loading: () => <FsLoading />,
   },
 );
 const Portfolio = () => {
-  return <PortfolioItemsTable />;
+  const portfolioItems = useSelector(
+    (state: RootState) => state.portfolio.items,
+  );
+  return (
+    portfolioItems && (
+      <div className="flex flexCenter w-full min-h-[100svh]">
+        <PortfolioItemsTable portfolioPageItems={portfolioItems} />
+      </div>
+    )
+  );
 };
 
-export default Portfolio;
+export default memo(Portfolio);

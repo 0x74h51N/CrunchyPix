@@ -1,8 +1,7 @@
 'use client';
 import Image from 'next/image';
 import TypingText from '../typeText';
-import { RootState } from '@/store';
-import { useSelector } from 'react-redux';
+import { memo } from 'react';
 
 const CrunchyLogo = ({
   smallNav = false,
@@ -11,19 +10,18 @@ const CrunchyLogo = ({
   smallNav?: boolean;
   loadingMode?: boolean;
 }) => {
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
-
   return (
     <>
       <Image
         src={'/logo_leftw.svg'}
-        width={smallNav ? 12.5 : isMobile ? 18.5 : isTablet ? 27.5 : 32.5}
+        width={100}
         height={100}
         alt="Crunchypix"
         priority
-        className={`${
-          smallNav ? '' : 'navImage'
+        className={`h-auto ${
+          smallNav
+            ? 'w-[12.5px]'
+            : 'navImage lg:w-[32.5px] md:w-[27.5px] w-[18.5px]'
         } transition-all hover:scale-105 duration-1000 ease-in-out pb-3`}
       />
       {smallNav ? null : (
@@ -31,11 +29,7 @@ const CrunchyLogo = ({
           className={`flex items-center logo_text lg:mt-0 -mt-1 lg:-ml-2 -ml-1 ${
             smallNav
               ? 'text-[25px]'
-              : isMobile
-                ? 'text-[30px]'
-                : isTablet
-                  ? 'text-[45px]'
-                  : 'text-[55px]'
+              : 'text-[30px] md:text-[45px] lg:text-[55px]'
           } text-stone-50 hover:scale-105 transition-all duration-1000 ease-in-out`}
         >
           <TypingText
@@ -57,18 +51,18 @@ const CrunchyLogo = ({
       )}
       <Image
         src={'/logoRight.svg'}
-        width={smallNav ? 19.3 : isMobile ? 28 : isTablet ? 40 : 50}
+        width={100}
         height={100}
         alt="Crunchypix"
         priority
-        className={`${
+        className={`h-auto ${
           smallNav
-            ? 'mt-2'
-            : 'navImage lg:translate-y-6 translate-y-[22px] -translate-x-2'
-        } hover:scale-105 transition-all duration-1000 ease-in-out `}
+            ? 'mt-2 w-[19.3px]'
+            : 'navImage lg:translate-y-6 translate-y-[22px] -translate-x-2 lg:w-[50px] md:w-[40px] w-[28px]'
+        } hover:scale-105 transition-all duration-1000 ease-in-out`}
       />
     </>
   );
 };
 
-export default CrunchyLogo;
+export default memo(CrunchyLogo);

@@ -1,15 +1,12 @@
-"use client";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
-import SwiperCore from "swiper";
-import "swiper/css";
-import LogoImage from "../LogoImage";
+'use client';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import SwiperCore from 'swiper';
+import 'swiper/css';
+import LogoImage from '../LogoImage';
+import { LogoSlideType } from '@/schemas';
 
-interface logoSlideProops {
-  logos: string[];
-}
-
-const LogoSlider = ({ logos }: logoSlideProops) => {
+const LogoSlider = ({ data }: { data: LogoSlideType[] }) => {
   SwiperCore.use([Autoplay]);
 
   const breaks = {
@@ -29,24 +26,24 @@ const LogoSlider = ({ logos }: logoSlideProops) => {
 
   return (
     <Swiper
-      freeMode
+      freeMode={true}
       loop
       spaceBetween={0}
       slidesPerView={4}
       autoplay={{
+        delay: 0,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
-        reverseDirection: true,
-        delay: 0,
+        reverseDirection: false,
       }}
       speed={2000}
       breakpoints={breaks}
       className="w-full h-auto cursor-none"
     >
-      {logos.map((item, index) => (
+      {data.map((item, index) => (
         <SwiperSlide key={index}>
           <div className="relative w-[84px] h-[84px] max-lg:w-[70px] max-lg:h-[70px] max-sm:w-[55px] max-sm:h-[55px] flex justify-center my-8 grayscale">
-            <LogoImage logoKey={item} index={index} />
+            <LogoImage logoKey={item.logo_name} index={index} />
           </div>
         </SwiperSlide>
       ))}

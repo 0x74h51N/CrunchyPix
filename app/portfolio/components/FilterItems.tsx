@@ -1,24 +1,32 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { PortfolioItemProps } from '@/app/common.types';
-import { portfolioPageItems } from '@/constants/portfolioItems';
 import { useTranslation } from 'react-i18next';
-import Dropdown from '@/components/Dropdown';
+import { PortfolioItemProps } from '@/schemas';
+import i18next from 'i18next';
+import Dropdown from '@/components/Buttons/Dropdown';
 
 type FilterItemsProps = {
+  portfolioPageItems: PortfolioItemProps[];
   setFilteredItems: Dispatch<SetStateAction<PortfolioItemProps[]>>;
 };
 
-const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
+const FilterItems = ({
+  portfolioPageItems,
+  setFilteredItems,
+}: FilterItemsProps) => {
   const { t } = useTranslation('portfolio');
   const [sortedItems, setSortedItems] = useState<PortfolioItemProps[]>([]);
   const [searchParam, setSearchParam] = useState('');
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSortOption] = useState('');
   useEffect(() => {
+    setSearchParam('');
+    setSortOption('');
+  }, [i18next.language]);
+  useEffect(() => {
     const filteredItems = portfolioPageItems.filter(
       (item: PortfolioItemProps) => {
-        const title = t(item.title).toLowerCase();
-        const type = item.projectType ? t(item.projectType).toLowerCase() : '';
+        const title = item.project_overview[0].title.toLowerCase();
+        const type = item.project_overview[0].project_type.toLowerCase();
         return (
           title.includes(searchParam) ||
           type.includes(searchParam) ||
@@ -53,8 +61,8 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
       }
     } else if (sortOption.includes('alphabetically')) {
       const alphaSort = [...sortedItems].sort((a, b) => {
-        const aTitle = t(a.title);
-        const bTitle = t(b.title);
+        const aTitle = a.project_overview[0].title;
+        const bTitle = b.project_overview[0].title;
         return aTitle.replace('_', '').localeCompare(bTitle);
       });
       if (sortOption === 'alphabetically_a-z') {
@@ -77,11 +85,12 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
     label: key,
     value: value,
   })) as option[];
-  const classes = `${isDropdownOpen ? 'h-[170px] py-3 ' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40`;
+  const classes = `${isDropdownOpen ? 'h-[180px] py-4' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40 `;
   return (
     <div className="flex flex-row md:justify-end justify-between gap-6 w-full z-30">
-      <div className="relative z-20">
+      <div className="relative z-20 transform brightness-100 hover:brightness-150 transition-all ease-in-out duration-500">
         <Dropdown
+          hoverMode={false}
           classes={classes}
           defaultValue={
             selectedOption ? t(`sort.options.${selectedOption}`) : t('sort.def')
@@ -94,12 +103,13 @@ const FilterItems = ({ setFilteredItems }: FilterItemsProps) => {
           ulClasses="pt-7 transition-all ease-in-out duration-500"
           flagMode={false}
           selectedOption={selectedOption}
-          liClass="px-3 py-1"
+          liClass="px-3 py-1 first:border-t first:border-t-1 border-cool-gray-700"
         />
       </div>
       <input
         id="search"
         type="text"
+        value={searchParam}
         onChange={(e) => setSearchParam(e.target.value.toLowerCase().trim())}
         placeholder={t('search')}
         className="contactBox md:max-w-[16rem] max-w-[10rem] focus:border-log-col focus:shadow-inner"

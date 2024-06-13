@@ -35,7 +35,7 @@ const CustomCursor = () => {
         window.removeEventListener('touchstart', handleTouchStart);
       };
     }
-  }, [isBrowser, isTouchDevice]);
+  }, [isBrowser, isTouchDevice, dispatch]);
 
   const updateMousePosition = useCallback(
     (clientX: number, clientY: number) => {
@@ -91,7 +91,7 @@ const CustomCursor = () => {
         border-cool-gray-100 pointer-events-none cursor-none`}
         style={{
           transition:
-            'width 300ms ease-in-out, height 300ms, transform 105ms ease-out, backgroundColor 300ms ease-in-out',
+            'width 300ms ease-in-out, height 300ms, transform 85ms ease-out, backgroundColor 300ms ease-in-out',
           width: isSlider ? '70px' : isClickable ? '20px' : '45px',
           height: isSlider ? '70px' : isClickable ? '20px' : '45px',
           margin: isSlider ? '-7px' : '-20px',

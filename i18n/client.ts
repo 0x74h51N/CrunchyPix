@@ -2,7 +2,13 @@
 import { useEffect } from 'react';
 import i18next, { i18n } from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { FALLBACK_LOCALE, Locales, NEXT_LOCALE, getOptions, supportedLocales } from './settings';
+import {
+  FALLBACK_LOCALE,
+  Locales,
+  NEXT_LOCALE,
+  getOptions,
+  supportedLocales,
+} from './settings';
 import resourcesToBackend from './resourcesToBackend';
 import { getCookie } from 'cookies-next';
 
@@ -12,8 +18,8 @@ i18next
   .use(initReactI18next)
   .use(
     resourcesToBackend(
-      (lang: string, ns: string) => import(`./locales/${lang}/${ns}.json`)
-    )
+      (lang: string, ns: string) => import(`./locales/${lang}/${ns}.json`),
+    ),
   )
   .init({
     ...getOptions(),

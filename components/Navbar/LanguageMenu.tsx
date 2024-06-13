@@ -1,16 +1,12 @@
 'use client';
-import { RootState } from '@/store';
 import i18n from '@/i18n/client';
-import { useSelector } from 'react-redux';
 import { DE, TR, GB } from 'country-flag-icons/react/3x2';
 import { switchLocaleAction } from '@/i18n/actions/switch-locale';
-import Dropdown from '../Dropdown';
+import Dropdown from '../Buttons/Dropdown';
 import { useState } from 'react';
 
 const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
-  const isTablet = useSelector((state: RootState) => state.isTablet.tablet);
 
   const handleChange = async (selectedLanguage: string) => {
     const result = await switchLocaleAction(selectedLanguage);
@@ -31,12 +27,8 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
     }
   };
   const defaultValue = getFlagComponent(i18n.language);
-  const classes = `relative mobile-menu text-md font-medium text-neutral-200 w-[72px] right-[15px] ${isDropdownOpen ? 'open2' : 'close'} ${
-    smallNav
-      ? `${isMobile || isTablet ? '-mt-2 right-[16px]' : 'mt-5'} flex justify-center`
-      : isMobile || isTablet
-        ? `-mt-2 flex justify-center right-[16px]`
-        : 'mt-[70px]'
+  const classes = `relative flex justify-center mobile-menu text-md font-medium text-neutral-200 w-[72px] right-[15px] ${isDropdownOpen ? 'open2' : 'close'} ${
+    smallNav ? `-mt-2 right-[16px] lg:mt-5 ` : `-mt-2 right-[16px] lg:mt-[50px]`
   }
 `;
   const languages = [

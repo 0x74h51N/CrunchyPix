@@ -1,6 +1,13 @@
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { RootState } from '@/store';
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import React, {
+  Dispatch,
+  memo,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 
@@ -41,7 +48,7 @@ const Dropdown = ({
   const [isRotated, setIsRotated] = useState(false);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
-
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const handleToggleDropdown = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
@@ -69,16 +76,43 @@ const Dropdown = ({
       setDropdownOpen(false);
     }
   }, []);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdownOpen(false);
+      }
+    };
 
+    const scrollHandler = () => {
+      setDropdownOpen(false);
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('scroll', scrollHandler);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('scroll', scrollHandler);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, [isDropdownOpen, setDropdownOpen]);
   return (
     <div
+      ref={dropdownRef}
       onMouseEnter={mouseEnterHandler}
       onMouseLeave={mouseLeaveHandler}
       className="flex flex-col justify-center items-center h-full"
     >
       <button
         onClick={(e) => handleToggleDropdown(e)}
-        className="flex flex-row justify-center items-center gap-1 z-20 bg-transparent cursor-none w-full"
+        className="flex flex-row justify-center items-center gap-1 z-20 bg-transparent cursor-none w-full h-full"
       >
         <div className="p text-start pl-3 truncate ..." style={style}>
           {defaultValue}
@@ -97,14 +131,14 @@ const Dropdown = ({
         </div>
       </button>
       <div
-        className={`${classes} bg-cool-gray-800 rounded-lg shadow-sm shadow-black `}
+        className={`${classes} bg-cool-gray-800 rounded-lg shadow-sm shadow-black`}
       >
         {isDropdownOpen && (
           <ul className={`${ulClasses} ul font-medium leading-6 text-[15px]`}>
             {options.map((option) => (
               <li
                 key={option.label.toLowerCase()}
-                className={`w-full hover:text-log-col transition-text duration-300 ease-in-out cursor-none ${selectedOption === option.label.toLowerCase() ? 'bg-cool-gray-700' : ''} ${liClass}`}
+                className={`w-full hover:text-log-col hover:brightness-75 transition-text duration-300 ease-in-out cursor-none ${selectedOption === option.label.toLowerCase() ? 'bg-cool-gray-700' : ''} ${liClass}`}
                 onClick={() =>
                   optionClickHandler(option.label.trim().toLowerCase())
                 }
@@ -122,4 +156,4 @@ const Dropdown = ({
   );
 };
 
-export default Dropdown;
+export default memo(Dropdown);

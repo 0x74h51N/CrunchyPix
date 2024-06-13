@@ -1,11 +1,11 @@
-import { SectionData } from '@/app/common.types'
-import CodeSect from '@/components/Sections/CodeSect/CodeSect'
-import DesignSect from '@/components/Sections/DesignSect/DesignSect'
-import IntroductionSect from '@/components/Sections/IntroductionSect/IntroductionSect'
-import LandingSect from '@/components/Sections/LandingSect/LandingSect'
-import LogoSect from '@/components/Sections/LogoSection/LogoSect'
-import PortfolioSect from '@/components/Sections/PortfolioSect/PortfolioSect'
-import ServicesSect from '@/components/Sections/ServicesSect/ServicesSect'
+import { SectionData } from '@/app/common.types';
+import CodeSect from '@/components/Sections/CodeSect/CodeSect';
+import DesignSect from '@/components/Sections/DesignSect/DesignSect';
+import IntroductionSect from '@/components/Sections/IntroductionSect/IntroductionSect';
+import LandingSect from '@/components/Sections/LandingSect/LandingSect';
+import LogoSect from '@/components/Sections/LogoSection/LogoSect';
+import PortfolioSect from '@/components/Sections/PortfolioSect/PortfolioSect';
+import ServicesSect from '@/components/Sections/ServicesSect/ServicesSect';
 
 export const sectionsData: SectionData[] = [
   {
@@ -44,6 +44,6 @@ export const sectionsData: SectionData[] = [
   {
     name: 'Logo',
     children: <LogoSect />,
-    className: 'h-auto min-h-auto',
+    className: 'h-auto min-h-auto repatingLines',
   },
-]
+];

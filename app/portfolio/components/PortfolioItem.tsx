@@ -1,15 +1,15 @@
 import { RootState } from '@/store';
-import { useTranslation } from 'react-i18next';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { FaAnglesRight } from 'react-icons/fa6';
-import { PortfolioItemProps } from '@/app/common.types';
 import { CldImage } from 'next-cloudinary';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
+
+import { PortfolioItemProps } from '@/schemas';
 
 const areEqual = (
   prevProps: PortfolioItemInterface,
@@ -17,10 +17,7 @@ const areEqual = (
 ) => {
   return (
     prevProps._id === nextProps._id &&
-    prevProps.image === nextProps.image &&
-    prevProps.imageAlt === nextProps.imageAlt &&
-    prevProps.title === nextProps.title &&
-    prevProps.projectType === nextProps.projectType &&
+    prevProps.project_overview === nextProps.project_overview &&
     prevProps.width === nextProps.width &&
     prevProps.height === nextProps.height &&
     prevProps.isSlide === nextProps.isSlide
@@ -28,30 +25,23 @@ const areEqual = (
 };
 
 interface PortfolioItemInterface extends PortfolioItemProps {
-  width: number;
-  height: number;
+  width?: string;
+  height?: string;
   isSlide: boolean;
 }
 
 const PortfolioItem = memo(
   ({
     _id,
-    image,
-    imageAlt,
-    title,
-    projectType,
+    project_overview,
     width,
     height,
     isSlide,
   }: PortfolioItemInterface) => {
-    const isMobile = useSelector((state: RootState) => state.isMobile.mobile);
     const isTouch = useSelector((state: RootState) => state.isTouch.touch);
-    const originalWidth = width;
-    const originalHeight = height;
-    const mobileWidth = isSlide ? 300 : 350;
-    const mobileHeight = (mobileWidth / originalWidth) * originalHeight;
+    const mobileWidth = isSlide ? '300px' : '350px';
     const id = _id.toLowerCase().replace(/\s+/g, '');
-    const { t } = useTranslation('portfolio');
+
     const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
     const { hoverEnd } = useDragHandler();
     const onClickHandler = () => {
@@ -61,32 +51,23 @@ const PortfolioItem = memo(
 
     return (
       <div
-        className="relative flex flex-col items-center justify-between overflow-hidden"
-        style={{
-          height: isSlide ? 'auto' : isMobile ? 345 : 600,
-          width: isMobile ? mobileWidth : originalWidth,
-          marginTop: isSlide ? 0 : 25,
-        }}
+        className={`relative flex flex-col items-center justify-between rounded-xl overflow-hidden ${isSlide ? 'h-auto mt-[25px]' : `md:w-[${width}] w-[${mobileWidth}] md:h-[550px] h-[345px] mt-0`}`}
       >
         <motion.div
           initial="hidden"
           whileHover="show"
           whileTap={'show'}
-          className="group relative flex justify-center items-center rounded-xl bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10"
-          style={{
-            width: isMobile ? mobileWidth : originalWidth,
-            height: isMobile ? mobileHeight : originalHeight,
-          }}
+          className={`group relative flex justify-center items-center rounded-xl bg-gradient-to-br to-cool-gray-700 from-slate-800 z-10 ${isSlide ? 'lg:w-[380px] w-[300px] lg:h-[310px] h-[250px]' : `md:w-[${width}] w-[${mobileWidth}] h-auto md:h-[${height}]`} `}
         >
           <CldImage
-            src={image}
-            alt={imageAlt}
+            src={`crunchypix/portfolioItems/${_id.replaceAll('_', '')}`}
+            alt={_id}
             format="avif"
             quality="auto"
             fetchPriority="high"
-            width={isMobile ? 500 : 900}
-            height={isMobile ? 500 : 900}
-            className="object-cover object-center w-full h-full rounded-xl"
+            width={900}
+            height={900}
+            className={`object-cover object-center rounded-xl md:h-full ${isSlide ? 'md:min-h-[250px]' : 'md:min-h-[450px]'} w-full h-[280px]`}
           />
 
           <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
@@ -121,7 +102,7 @@ const PortfolioItem = memo(
           className={`absolute bottom-0 rounded-b-xl z-10 w-full flex justify-start ${
             isSlide
               ? 'left-0 bg-black bg-opacity-50  h-auto'
-              : 'md:-bottom-5 bottom-0 md:h-32 h-20'
+              : 'md:-bottom-5 bottom-0 md:h-32 h-22'
           }`}
         >
           <Link
@@ -132,15 +113,17 @@ const PortfolioItem = memo(
             className="flex flex-col justify-center w-auto md:p-4 p-2 text-stone-200 cursor-none"
             onClick={onClickHandler}
           >
-            <h2 className="md:text-md text-sm text-log-col">
-              {t(`${projectType}`)}
+            <h2 className="md:text-sm text-xs text-log-col">
+              {project_overview[0].project_type}
             </h2>
             <h1
               className={`${
-                isMobile || isSlide ? 'h2' : 'h1 half'
+                isSlide
+                  ? 'h2'
+                  : 'text-cool-gray-50 font-black md:text-[40px] sm:text-[30px] xs:text-[28px] text-[25px] antialiased'
               } hover:text-log-col transition-all duration-300 ease-in-out`}
             >
-              {t(`${title}`)}
+              {project_overview[0].title}
             </h1>
           </Link>
         </div>

@@ -1,12 +1,12 @@
-import React from "react";
-import SlideBox from "./SlideBox";
-import { slide } from "@/app/common.types";
-import { CldImage } from "next-cloudinary";
+import React from 'react';
+import SlideBox from './SlideBox';
+import { slide } from '@/app/common.types';
+import { CldImage } from 'next-cloudinary';
 
 const SlideCreator: React.FC<slide> = ({
   title,
   description,
-  imageUrl = "",
+  imageUrl = '',
   active = false,
   left,
   children,
@@ -17,8 +17,9 @@ const SlideCreator: React.FC<slide> = ({
       <div className="absolute inset-0 z-0">
         <CldImage
           src={imageUrl}
-          alt={"Image"}
+          alt={'Image'}
           fill
+          sizes="auto"
           loading="lazy"
           className=" object-cover w-full h-full"
         />
@@ -29,7 +30,7 @@ const SlideCreator: React.FC<slide> = ({
           title={title}
           description={description}
           left={left}
-          imageUrl={""}
+          imageUrl={''}
         />
       )}
       {children &&

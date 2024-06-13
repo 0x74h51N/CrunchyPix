@@ -1,36 +1,35 @@
-import { HandleScroll } from '@/app/common.types'
-import { scrollToSection } from './scrollToSection'
+import { HandleScroll } from '@/app/common.types';
+import { scrollToSection } from './scrollToSection';
 
 export const handleScroll = ({
   event,
   currentSection,
-  sectionsData,
   sectionRefs,
   duration = 500,
 }: HandleScroll) => {
   if (!event) {
-    return
+    return;
   }
-  const scrollDirection = event.deltaY > 0 ? 'down' : 'up'
+  const scrollDirection = event.deltaY > 0 ? 'down' : 'up';
 
-  if (scrollDirection === 'down' && currentSection < sectionsData.length - 1) {
-    const currentSectionRef = sectionRefs[currentSection].current
+  if (scrollDirection === 'down' && currentSection < sectionRefs.length - 1) {
+    const currentSectionRef = sectionRefs[currentSection].current;
 
     const currentSectionBottom =
       currentSectionRef &&
       window.scrollY + window.innerHeight >=
-        currentSectionRef.offsetTop + currentSectionRef.clientHeight
+        currentSectionRef.offsetTop + currentSectionRef.clientHeight;
     if (currentSectionBottom) {
-      scrollToSection(currentSection + 1, duration, sectionRefs)
+      scrollToSection(currentSection + 1, duration, sectionRefs);
     }
   }
 
   if (scrollDirection === 'up' && currentSection > 0) {
-    const currentSectionRef = sectionRefs[currentSection].current
+    const currentSectionRef = sectionRefs[currentSection].current;
     const currentSectionTop =
-      currentSectionRef && window.scrollY <= currentSectionRef.offsetTop
+      currentSectionRef && window.scrollY <= currentSectionRef.offsetTop;
     if (currentSectionTop) {
-      scrollToSection(currentSection - 1, duration, sectionRefs)
+      scrollToSection(currentSection - 1, duration, sectionRefs);
     }
   }
-}
+};

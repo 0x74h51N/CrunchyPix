@@ -1,26 +1,47 @@
-'use client'
-import PolicyCreator from '@/app/policies/[id]/components/PolicyCreator'
-import { policiesPages } from '@/constants/policyDatas'
-import Image from 'next/image'
+'use client';
+import PolicyCreator from '@/app/policies/[id]/components/PolicyCreator';
+import LoadingComponent from '@/components/Loading/Loading';
+import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import { getLocale } from '@/i18n/client';
+import filterByLanguage from '@/lib/utils/filterByLanguage';
+import { PoliciesSchema, PoliciesTypes } from '@/schemas';
+import { useEffect, useState } from 'react';
 
 const PolicyPage = ({ params }: { params: { id: string } }) => {
-  const selectedItem = policiesPages.find(
-    (item) => item._id.toLowerCase().replace(/\s+/g, '') == params.id,
-  )
-
-  if (!selectedItem) {
-    console.log("Couldn't find a policyPage item.")
-    return null
+  const { data, loading, error } = useSupabaseFetch<PoliciesTypes>(
+    'policy_schema',
+    'policies',
+    `*, translations(*, policy_sections(*, sub_titles(*)))`,
+    PoliciesSchema,
+    [{ column: 'policy_name', value: params.id }],
+  );
+  const [filteredData, setFilteredData] = useState<PoliciesTypes[]>([]);
+  const language = getLocale();
+  useEffect(() => {
+    if (data) {
+      const filteredDat = filterByLanguage({
+        items: data,
+        language,
+        localPath: 'translations',
+      });
+      setFilteredData(filteredDat);
+    }
+  }, [data, language, setFilteredData, loading]);
+  if (error) {
+    console.log(error);
   }
+  console.log(data);
   return (
-    <div className=" flex justify-center items-center w-full h-full min-h-[100svh] md:pb-20 pb-5">
-      <div className="relative bg-cool-gray-900  md:px-28 md:py-12  p-5 rounded-xl max-w-[1100px] z-0">
-        <div className="z-50">
-          <PolicyCreator data={selectedItem.policyData} />
-        </div>
+    <div className=" flex justify-center items-center w-full h-auto  md:pb-20 pb-5 min-h-[100svh]">
+      <div className="relative bg-cool-gray-900  md:px-28 md:py-16 p-5 rounded-xl max-w-[1100px] z-0 min-h-48">
+        {loading || !data ? (
+          <LoadingComponent />
+        ) : (
+          <PolicyCreator data={filteredData} />
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PolicyPage
+export default PolicyPage;

@@ -1,10 +1,8 @@
 {
   "links": {
     "home": "Home",
-    "services": "Services",
     "portfolio": "Portfolio",
     "about": "About",
-    "contact": "Contact",
     "policies": "Policies",
     "termsofservices": "Terms of Service",
     "termsofprivacy": "Privacy Policy",
@@ -13,10 +11,8 @@
   },
   "footerLinks": {
     "Home": "Home",
-    "Services": "Services",
     "Portfolio": "Portfolio",
     "About": "About",
-    "Contact": "Contact",
     "policies": "policies",
     "TermsOfServices": "Terms of Service",
     "TermsOfPrivacy": "Privacy Policy",

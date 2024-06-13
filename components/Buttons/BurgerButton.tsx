@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 interface ComponentProps {
   isToggled: React.ComponentState;
   onClick?: React.MouseEventHandler<SVGElement> | undefined;
@@ -17,7 +19,7 @@ interface ComponentProps {
 const BurgerButton = ({
   isToggled = false,
   onClick,
-  color = "white",
+  color = 'white',
   width = 100,
   height = 100,
   rounded = true,
@@ -27,43 +29,43 @@ const BurgerButton = ({
   rotate = 0,
   innerlineSpeed = 350,
   outerLineSpeed = 500,
-  animationType = "cubic-bezier(0.4, 0.45, 0.5, 1)",
+  animationType = 'cubic-bezier(0.4, 0.45, 0.5, 1)',
 }: ComponentProps) => {
   const transition = `${outerLineSpeed}ms ${animationType}`;
 
   const wrapper: React.CSSProperties = {
     transform: `rotate(${rotate}deg)`,
-    margin: "0",
-    cursor: "none",
-    WebkitTapHighlightColor: "transparent",
-    touchAction: "manipulation",
-    userSelect: "none",
-    msUserSelect: "none",
-    WebkitUserSelect: "none",
-    MozUserSelect: "none",
+    margin: '0',
+    cursor: 'none',
+    WebkitTapHighlightColor: 'transparent',
+    touchAction: 'manipulation',
+    userSelect: 'none',
+    msUserSelect: 'none',
+    WebkitUserSelect: 'none',
+    MozUserSelect: 'none',
   };
 
   const centerPath: React.CSSProperties = {
     transition:
       `stroke-dasharray ${transition},` +
       `stroke-dashoffset ${innerlineSpeed}ms ${animationType}`,
-    fill: "none",
+    fill: 'none',
     stroke: color,
     strokeWidth: strokeWidth,
-    strokeLinecap: rounded ? "round" : "butt",
-    strokeDasharray: isToggled ? "10 24" : "10 24",
+    strokeLinecap: rounded ? 'round' : 'butt',
+    strokeDasharray: isToggled ? '10 24' : '10 24',
     strokeDashoffset: isToggled ? (reverse ? 10 : -10) : 0,
   };
 
   const outerPath: React.CSSProperties = {
     transition:
       `stroke-dasharray ${transition},` + `stroke-dashoffset ${transition}`,
-    fill: "none",
+    fill: 'none',
     stroke: color,
     strokeWidth: strokeWidth,
-    strokeLinecap: rounded ? "round" : "butt",
-    strokeDasharray: isToggled ? "7 28" : "10 27",
-    strokeDashoffset: isToggled ? "-27" : 0,
+    strokeLinecap: rounded ? 'round' : 'butt',
+    strokeDasharray: isToggled ? '7 28' : '10 27',
+    strokeDashoffset: isToggled ? '-27' : 0,
   };
 
   return (
@@ -90,4 +92,4 @@ const BurgerButton = ({
   );
 };
 
-export default BurgerButton;
+export default memo(BurgerButton);
