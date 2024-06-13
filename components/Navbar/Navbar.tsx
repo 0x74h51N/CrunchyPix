@@ -1,7 +1,7 @@
 'use client';
 import { Links } from '@/constants/index';
 import Link from 'next/link';
-import React, { memo, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import MobileMenu from './MobileMenu';
 import LanguageMenu from './LanguageMenu';
 import { useSelector } from 'react-redux';
@@ -44,6 +44,26 @@ const Navbar = () => {
     }
   }, [isMenuOpen, smallNav]);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  const linkItems = useMemo(() => {
+    return Links.map((link) => (
+      <Link
+        href={link.href}
+        key={link.key}
+        className={`hover:text-log-col hover:scale-110 cursor-none ${
+          selectedLink === link.href && link.href !== '/' ? 'text-log-col' : ''
+        } relative group transition-all duration-700 ease-in-out transform origin-bottom whitespace-nowrap`}
+      >
+        {t(link.text)}
+        <span
+          className={`absolute -bottom-1 transition-all duration-500 ease-in-out left-0 h-0.5 bg-log-col ${
+            selectedLink === link.href && link.href !== '/'
+              ? 'w-full'
+              : 'w-0 group-hover:w-full'
+          }`}
+        ></span>
+      </Link>
+    ));
+  }, [Links, selectedLink, t]);
   return (
     <>
       <div
@@ -87,26 +107,7 @@ const Navbar = () => {
                     : 'text-lg font-semibold'
                 }  text-stone-200 antialiased gap-12`}
               >
-                {Links.map((link) => (
-                  <Link
-                    href={link.href}
-                    key={link.key}
-                    className={`hover:text-log-col hover:scale-110 cursor-none  ${
-                      selectedLink === link.href && link.href !== '/'
-                        ? 'text-log-col'
-                        : ''
-                    } relative group transition-all duration-700 ease-in-out transform origin-bottom whitespace-nowrap`}
-                  >
-                    {t(link.text)}
-                    <span
-                      className={`absolute -bottom-1  transition-all duration-500 ease-in-out  left-0 h-0.5 bg-log-col ${
-                        selectedLink === link.href && link.href !== '/'
-                          ? 'w-full'
-                          : 'w-0 group-hover:w-full'
-                      }`}
-                    ></span>
-                  </Link>
-                ))}
+                {linkItems}
                 <div
                   className="h-auto w-auto flex justify-center"
                   onMouseEnter={handleMouseEnter}
@@ -123,4 +124,4 @@ const Navbar = () => {
   );
 };
 
-export default memo(Navbar);
+export default Navbar;

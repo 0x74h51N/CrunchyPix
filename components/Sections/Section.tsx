@@ -58,7 +58,7 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
         });
       };
     }
-  }, [sectionsData, isTouchDevice]);
+  }, [isTouchDevice]);
 
   /**Wheel event listener */
   useEffect(() => {
@@ -72,7 +72,6 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
           handleScroll({
             event,
             currentSection,
-            sectionsData,
             sectionRefs: sectionRefs.current,
           });
         }
@@ -83,13 +82,7 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
         window.removeEventListener('wheel', handleScrollEvent);
       };
     }
-  }, [
-    currentSection,
-    sectionRefs,
-    sectionsData,
-    isTouchDevice,
-    isScrollEnabled,
-  ]);
+  }, [currentSection, sectionRefs, isTouchDevice, isScrollEnabled]);
 
   return (
     <div>

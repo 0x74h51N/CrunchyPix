@@ -15,7 +15,7 @@ export const SocialIcons = ({
   _colorType,
   randomCount = 6,
 }: SocialIconProp & ColorfulHoverType) => {
-  const iconRadius = 200;
+  const iconRadius = 250;
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
   return (

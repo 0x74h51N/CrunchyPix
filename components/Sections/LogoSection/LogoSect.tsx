@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import TitleText from '../TitleText';
 import { memo } from 'react';
 import LoadingComponent from '@/components/Loading/Loading';
+import { slideIn } from '@/utils/motion';
 
 const LogoSect = () => {
   const { data, loading } = useSupabaseFetch<LogoSlideType>(
@@ -25,6 +26,7 @@ const LogoSect = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.6 }}
+          variants={slideIn('up', 'spring', 0.6, 1.4)}
           className="flex flex-col text-center"
         >
           <TitleText sectName="logo_sect" />

@@ -6,10 +6,11 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { SocialIcons } from '../../SocialIcons';
 import TypingText from '../../typeText';
-import { socialIcons } from '@/constants/socialIcons';
 import useFilteredData from '@/hooks/useFilteredData';
-import { SectionsTypes } from '@/schemas';
-import { memo } from 'react';
+import { IconProps, IconSchema, SectionsTypes } from '@/schemas';
+import { memo, useMemo } from 'react';
+import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import FsLoading from '@/components/Loading/FsLoading';
 
 const LandingSect = () => {
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
@@ -20,7 +21,21 @@ const LandingSect = () => {
       value: 'landing_sect',
     },
   );
-  return (
+  const { data, loading, error } = useSupabaseFetch<IconProps>(
+    'public',
+    'social_icons',
+    `*`,
+    IconSchema,
+  );
+  if (error) {
+    console.log(error);
+  }
+  const filteredData = useMemo(() => {
+    return data && data.length > 1 && data.sort((a, b) => b.id - a.id).slice(3);
+  }, [data]);
+  return loading || !data || !filteredData ? (
+    <FsLoading />
+  ) : (
     <>
       <motion.div
         variants={staggerContainer(2, 0)}
@@ -72,7 +87,7 @@ const LandingSect = () => {
           <SocialIcons
             colorful={true}
             _colorType={'vibrantColors'}
-            iconPack={socialIcons}
+            iconPack={filteredData}
           />
         </motion.div>
       </motion.div>

@@ -1,5 +1,3 @@
-import { slideIn, textVariant } from '@/utils/motion';
-import { motion } from 'framer-motion';
 import React, { memo, useMemo } from 'react';
 import { generateSpans } from '../GenerateSpans';
 import { RootState } from '@/store';
@@ -23,6 +21,7 @@ const getClassNames = (
 };
 
 const TitleText = ({ sectName }: { sectName: string }) => {
+  const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const section = useFilteredData<SectionsTypes>(
     (state: RootState) => state.section.items,
     {
@@ -45,34 +44,30 @@ const TitleText = ({ sectName }: { sectName: string }) => {
   if (!sectName.length || !section[0].translations.length) {
     return null;
   }
-  const variants =
-    sectName.includes('design') || sectName.includes('code')
-      ? undefined
-      : sectName.includes('logo')
-        ? slideIn('up', 'spring', 0.6, 1.4)
-        : slideIn('left', 'spring', 0.8, 1);
   return (
     <>
-      <motion.h1 variants={variants}>
+      <h1>
         <div className={h2Class}>
-          {generateSpans({
-            text: section[0].translations[0].intro,
-            colorType: 'vibrantColors',
-            zeroColor: '#737373',
-          })}
+          {isTouchDevice
+            ? section[0].translations[0].intro
+            : generateSpans({
+                text: section[0].translations[0].intro,
+                colorType: 'vibrantColors',
+                zeroColor: '#737373',
+              })}
         </div>
         <div className={titleClass}>
-          {generateSpans({
-            text: section[0].translations[0].title,
-            colorType: 'vibrantColors',
-          })}
+          {isTouchDevice
+            ? section[0].translations[0].title
+            : generateSpans({
+                text: section[0].translations[0].title,
+                colorType: 'vibrantColors',
+              })}
         </div>
-      </motion.h1>
+      </h1>
       {section[0].translations[0].description &&
         section[0].translations[0].description !== 'NULL' && (
-          <motion.p variants={textVariant(1)} className={pClass}>
-            {section[0].translations[0].description}
-          </motion.p>
+          <p className={pClass}>{section[0].translations[0].description}</p>
         )}
     </>
   );

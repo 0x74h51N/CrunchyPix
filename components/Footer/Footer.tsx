@@ -2,19 +2,34 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { slideIn, staggerContainer } from '@/utils/motion';
-import { footerIcons } from '@/constants/socialIcons';
 import IconButton from '../Buttons/IconButton';
 import { footerLinks } from '@/constants';
 import FooterColumn from './FooterColumn';
 import Contact from '../Contact';
 import { useTranslation } from '@/hooks/useTranslation';
-import { IconProps } from '@/schemas';
-import { memo } from 'react';
+import { IconProps, IconSchema } from '@/schemas';
+import { memo, useMemo } from 'react';
+import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import LoadingComponent from '../Loading/Loading';
 
 const Footer = () => {
   const { t } = useTranslation('index');
+  const { data, loading, error } = useSupabaseFetch<IconProps>(
+    'public',
+    'social_icons',
+    `*`,
+    IconSchema,
+  );
 
-  return (
+  if (error) {
+    console.log(error);
+  }
+  const filteredData = useMemo(() => {
+    return data && data.length > 1 && data.sort((a, b) => a.id - b.id);
+  }, [data]);
+  return !data || loading || !filteredData ? (
+    <LoadingComponent />
+  ) : (
     <div className="relative flex justify-center footer py-24 bg-neutral-50 shadow-inner shadow-black">
       <motion.div
         variants={staggerContainer(2, 2)}
@@ -68,7 +83,7 @@ const Footer = () => {
           <div className="text-neutral-900 flex flex-row justify-between items-center footer_copyright w-full max-w-[1300px]">
             <p>@ 2023 Tahsin Ö. aka 0x74h51N</p>
             <div className="flex flex-row gap-3 text-neutral-900 items-center justify-center h-auto">
-              {footerIcons.map((icon: IconProps, index: number) => (
+              {filteredData.map((icon: IconProps, index: number) => (
                 <span
                   key={index}
                   className="hover:text-log-col hover:-translate-y-2 transition-all ease-in-out duration-300 py-2"
@@ -84,4 +99,4 @@ const Footer = () => {
   );
 };
 
-export default memo(Footer);
+export default Footer;

@@ -34,15 +34,11 @@ const ServicesSect = () => {
     prevEl: '.swiper-button-prev-cus',
   };
   const breakpoints = {
-    400: {
-      slidesPerView: 1.1,
-    },
-    640: {
-      slidesPerView: 2,
-    },
-    1024: {
-      slidesPerView: 3,
-    },
+    0: { slidesPerView: 1.1 },
+    640: { slidesPerView: 1.5 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 2.5 },
+    1280: { slidesPerView: 3 },
   };
   useEffect(() => {
     if (swiperRef.current) {
@@ -59,7 +55,9 @@ const ServicesSect = () => {
         variants={polygonIn('screen', 'spring', 0.7, 2.2)}
         className="flex flex-col items-start h-full w-auto md:p-16 xs:p-6 p-4 z-10 mt-14 rounded-lg 2xl:ml-36 bg-neutral-900 shadow-lg relative"
       >
-        <TitleText sectName="service_sect" />
+        <div className="max-sm:ml-5">
+          <TitleText sectName="service_sect" />
+        </div>
         <div
           className="flex flex-wrap justify-center gap-8 w-auto relative"
           onMouseEnter={hoverStart}
@@ -77,7 +75,7 @@ const ServicesSect = () => {
             loop
             pagination={pagination}
             navigation={navigation}
-            className="2xl:w-[1030px] lg:w-[900px] md:w-[680px] w-[340px] h-auto cursor-none"
+            className="xl:w-[1030px] lg:w-[900px] md:w-[680px] sm:w-[500px] w-[340px] h-auto cursor-none"
           >
             {serviceSect[0].translations[0].cards &&
               serviceSect[0].translations[0].cards.map(

@@ -1,12 +1,9 @@
 {
   "links": {
     "home": "Anasayfa",
-    "services": "Hizmetler",
     "portfolio": "Portföy",
-    "about": "Hakkımızda",
-    "contact": "İletişim",
+    "about": "Hakkımda",
     "policies": "Politikalar",
-    "termsofservices": "Hizmet Şartları",
     "termsofprivacy": "Gizlilik Politikası",
     "cookiepolicy": "Çerez Politikası",
     "gdpr": "KVKK"
@@ -14,11 +11,9 @@
 
   "footerLinks": {
     "Home": "Ana Sayfa",
-    "Services": "Hizmetler",
     "Portfolio": "Portföy",
     "About": "Hakkımda",
     "Contact": "İletişim",
-    "TermsOfServices": "Hizmet Şartları",
     "TermsOfPrivacy": "Gizlilik Politikası",
     "CookiePolicy": "Çerez Politikası",
     "kvkk": "KVKK"

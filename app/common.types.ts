@@ -24,7 +24,6 @@ export type SectionData = {
 export type HandleScroll = {
   event: WheelEvent;
   currentSection: number;
-  sectionsData: SectionData[];
   sectionRefs: React.RefObject<HTMLDivElement>[];
   duration?: number;
 };

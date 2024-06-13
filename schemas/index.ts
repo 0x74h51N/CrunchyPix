@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 export const IconSchema = z.object({
+  id: z.number(),
   type: z.string(),
   link: z.string().optional(),
   alt: z.string().optional(),
