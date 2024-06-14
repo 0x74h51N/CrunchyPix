@@ -87,7 +87,7 @@ const SlideModal = () => {
                   opacity: imageLoading ? 0 : 100,
                 }}
                 quality="auto"
-                className="w-full h-full md:object-cover object-contain"
+                className="w-full h-full object-cover"
                 onLoad={() => {
                   setImageLoading(false);
                 }}
@@ -101,7 +101,7 @@ const SlideModal = () => {
                   <h2 className="text-lg font-bold">
                     {selectedSlide.project_overview[0].title}
                   </h2>
-                  <p className="font-extralight overflow-hidden md:text-[13px] text-[10px]">
+                  <p className="font-extralight overflow-hidden md:text-[13px] text-[10px] md:line-clamp-3 line-clamp-2">
                     {selectedSlide.project_overview[0].slide_description}
                   </p>
                   <Link
