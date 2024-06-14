@@ -7,7 +7,6 @@ import { PoliciesTypes } from '@/schemas';
 
 const PolicyCreator = ({ data }: { data: PoliciesTypes[] }) => {
   return (
-    data &&
     data[0] &&
     data[0].translations &&
     data[0].translations[0].policy_sections && (

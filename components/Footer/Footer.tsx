@@ -27,8 +27,8 @@ const Footer = () => {
   const filteredData = useMemo(() => {
     return data && data.length > 1 && data.sort((a, b) => a.id - b.id);
   }, [data]);
-  return !data || loading || !filteredData ? (
-    <LoadingComponent />
+  return loading || !filteredData ? (
+    <></>
   ) : (
     <div className="relative flex justify-center footer py-24 bg-neutral-50 shadow-inner shadow-black">
       <motion.div

@@ -58,9 +58,11 @@ const CodeSect = () => {
                 opacity: '1',
                 overflow: 'scroll',
                 cursor: 'none',
+                fontSize: '0.6rem', // font-size ayarı
+                lineHeight: '0.7rem',
               }}
               codeTagProps={{
-                className: 'line-height-font-size',
+                className: 'lg:text-md md:text-xs',
               }}
             >
               {codeString}
