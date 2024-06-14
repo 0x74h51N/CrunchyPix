@@ -8,14 +8,14 @@ import { polygonIn } from '@/utils/motion';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
 import useFilteredData from '@/hooks/useFilteredData';
-import { CardsTypes } from '@/schemas';
+import { CardsTypes, SectionsTypes } from '@/schemas';
 import TitleText from '../TitleText';
 import { memo, useEffect, useRef } from 'react';
 import SwiperCore from 'swiper';
 
 const ServicesSect = () => {
   const swiperRef = useRef<SwiperCore | null>(null);
-  const serviceSect = useFilteredData<any>(
+  const serviceSect = useFilteredData<SectionsTypes>(
     (state: RootState) => state.section.items,
     {
       key: 'name',

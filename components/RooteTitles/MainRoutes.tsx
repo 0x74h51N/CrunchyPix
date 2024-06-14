@@ -35,7 +35,7 @@ const MainRoutes = ({
             <span className="text-log-col mr-5">Pix</span>
           </>
         ) : mainPage === 'policies' ? (
-          t(`links.${childPage.toLowerCase()}`)
+          t(`links.${childPage.replaceAll('-', '').toLowerCase()}`)
         ) : (
           storeItem?.project_overview[0].title
         )

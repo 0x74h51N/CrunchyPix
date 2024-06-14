@@ -9,9 +9,5 @@ export default function PoliciesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <main>{children}</main>
-    </>
-  );
+  return <>{children}</>;
 }

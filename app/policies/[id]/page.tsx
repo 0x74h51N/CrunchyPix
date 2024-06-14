@@ -6,8 +6,10 @@ import { getLocale } from '@/i18n/client';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
 import { PoliciesSchema, PoliciesTypes } from '@/schemas';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const PolicyPage = ({ params }: { params: { id: string } }) => {
+  const { t } = useTranslation('policies');
   const { data, loading, error } = useSupabaseFetch<PoliciesTypes>(
     'policy_schema',
     'policies',
@@ -27,14 +29,16 @@ const PolicyPage = ({ params }: { params: { id: string } }) => {
       setFilteredData(filteredDat);
     }
   }, [data, language, setFilteredData, loading]);
+  useEffect(() => {
+    document.title = t('meta.title');
+  }, [t, language]);
   if (error) {
     console.log(error);
   }
-  console.log(data);
   return (
     <div className=" flex justify-center items-center w-full h-auto  md:pb-20 pb-5 min-h-[100svh]">
-      <div className="relative bg-cool-gray-900  md:px-28 md:py-16 p-5 rounded-xl max-w-[1100px] z-0 min-h-48">
-        {loading || !data ? (
+      <div className="relative bg-cool-gray-900  md:px-28 md:py-16 p-5 rounded-xl max-w-[1100px] z-0 h-auto">
+        {loading || !filteredData ? (
           <LoadingComponent />
         ) : (
           <PolicyCreator data={filteredData} />
