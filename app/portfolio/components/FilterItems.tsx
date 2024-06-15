@@ -85,10 +85,10 @@ const FilterItems = ({
     label: key,
     value: value,
   })) as option[];
-  const classes = `${isDropdownOpen ? 'h-[180px] py-4' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-all ease-in-out duration-500 w-40 `;
+  const classes = `${isDropdownOpen ? 'h-[180px] py-4' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-height ease-in-out duration-500 w-40 `;
   return (
-    <div className="flex flex-row md:justify-end justify-between gap-6 w-full z-30">
-      <div className="relative z-20 transform brightness-100 hover:brightness-150 transition-all ease-in-out duration-500">
+    <div className="flex flex-row xl:justify-end xl:px-0 lg:px-8 justify-between gap-6 w-full z-30">
+      <div className="relative z-20 transform brightness-100 hover:brightness-150 transition-brightness ease-in-out duration-500">
         <Dropdown
           hoverMode={false}
           classes={classes}
@@ -100,7 +100,7 @@ const FilterItems = ({
           isDropdownOpen={isDropdownOpen}
           setDropdownOpen={setDropdownOpen}
           style={{ width: 135 }}
-          ulClasses="pt-7 transition-all ease-in-out duration-500"
+          ulClasses="pt-7"
           flagMode={false}
           selectedOption={selectedOption}
           liClass="px-3 py-1 first:border-t first:border-t-1 border-cool-gray-700"

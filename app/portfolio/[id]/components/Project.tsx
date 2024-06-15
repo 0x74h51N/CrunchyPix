@@ -124,7 +124,7 @@ const Project = memo(({ id }: { id: string }) => {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true, amount: 'some' }}
-                  variants={polygonIn('down', 'spring', 1.5, 2)}
+                  variants={polygonIn('down', 'spring', 1, 2)}
                   className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
                 >
                   <Ticks ticks={Item.ticks} />

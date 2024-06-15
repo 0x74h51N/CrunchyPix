@@ -1,5 +1,4 @@
 'use client';
-import CardMaker from '@/components/CardMaker';
 import { Navigation, Pagination } from 'swiper/modules';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,6 +11,11 @@ import { CardsTypes, SectionsTypes } from '@/schemas';
 import TitleText from '../TitleText';
 import { memo, useEffect, useRef } from 'react';
 import SwiperCore from 'swiper';
+import dynamic from 'next/dynamic';
+
+const CardMaker = dynamic(() => import('@/components/CardMaker'), {
+  ssr: false,
+});
 
 const ServicesSect = () => {
   const swiperRef = useRef<SwiperCore | null>(null);
