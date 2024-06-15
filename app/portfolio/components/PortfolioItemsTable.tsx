@@ -26,14 +26,14 @@ const PortfolioItemsTable = ({
       whileInView="show"
       viewport={{ once: true, amount: 'some' }}
       variants={polygonIn('screen', 'easeInOut', 0.5, 1.5)}
-      className=" h-auto w-auto flex flex-col justify-center items-center min-w-screen mt-8 mb-40 lg:px-14 max-w-[1310px]"
+      className=" h-auto w-auto flex flexCenter min-w-screen mt-8 mb-40 lg:px-14 max-w-[1310px]"
     >
       <div className="w-auto">
         <FilterItems
           portfolioPageItems={portfolioPageItems}
           setFilteredItems={setFilteredItems}
         />
-        <div className="grid xl:grid-cols-2 grid-cols-1 max-md:gap-5 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-4 transition-all ease-in-out duration-300 xl:min-w-full lg:min-w-[630px] md:min-w-[300px] min-h-[700px]">
+        <div className="grid xl:grid-cols-2 grid-cols-1 max-md:gap-5 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-8 transition-all ease-in-out duration-300 xl:min-w-full lg:min-w-[630px] md:min-w-[300px] min-h-[700px]">
           {filteredItems.length > 0 ? (
             filteredItems.map((item: any, index: number) => {
               const initial = index > 1 ? { y: 30, x: 0 } : { y: 0, x: 30 };
@@ -71,7 +71,9 @@ const PortfolioItemsTable = ({
                 alt={'Cat photo'}
                 className="object-contain max-md:scale-75"
               />
-              <p className="w-full h2 pb-20">{t('noItem')}</p>
+              <p className="w-full h2 pb-20 max-sm:px-7 -mt-10">
+                {t('noItem')}
+              </p>
             </div>
           )}
         </div>

@@ -2,7 +2,7 @@ import { RootState } from '@/store';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { CldImage } from 'next-cloudinary';
@@ -41,14 +41,16 @@ const PortfolioItem = memo(
     const isTouch = useSelector((state: RootState) => state.isTouch.touch);
     const mobileWidth = isSlide ? '300px' : '350px';
     const id = _id.toLowerCase().replace(/\s+/g, '');
-
     const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
     const { hoverEnd } = useDragHandler();
     const onClickHandler = () => {
       handleMouseLeave();
       hoverEnd();
     };
-
+    useEffect(() => {
+      hoverEnd();
+      handleMouseLeave();
+    }, []);
     return (
       <div
         className={`relative flex flex-col items-center justify-between rounded-xl overflow-hidden ${isSlide ? 'h-auto mt-[25px]' : `md:w-[${width}] w-[${mobileWidth}] md:h-[550px] h-[345px] mt-0`}`}

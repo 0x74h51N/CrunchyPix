@@ -18,7 +18,7 @@ const Portfolio = () => {
   );
   return (
     portfolioItems && (
-      <div className="flex flexCenter w-full min-h-[100svh]">
+      <div className="flex justify-center items-start w-full min-h-[100svh]">
         <PortfolioItemsTable portfolioPageItems={portfolioItems} />
       </div>
     )

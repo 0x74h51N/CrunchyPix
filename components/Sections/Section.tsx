@@ -89,6 +89,7 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
       {sectionsData.map((section, index) => (
         <section
           key={index}
+          id={section.name.toLowerCase().replaceAll(' ', '-')}
           ref={sectionRefs.current[index]}
           className={`
             ${section.className} 
@@ -102,7 +103,8 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
               alt={section.background}
               format="avif"
               width={4000}
-              height={4000}
+              height={2160}
+              quality={100}
               fetchPriority="high"
               priority
               style={{
@@ -140,8 +142,9 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
                 src={section.topImage}
                 alt={section.topImage}
                 format="avif"
+                quality={100}
                 width={4000}
-                height={4000}
+                height={2160}
                 fetchPriority="high"
                 priority
                 style={{
