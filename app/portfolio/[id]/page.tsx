@@ -19,42 +19,61 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 const PortfolioPage = async ({ params }: { params: { id: string } }) => {
-  if (typeof params.id !== 'string') {
-    notFound();
-  }
+  try {
+    if (typeof params.id !== 'string') {
+      notFound();
+    }
 
-  const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
-    'portfolio_schema',
-    'portfolio_items',
-    '*',
-    PortfolioItemSchema,
-  );
-  const portfolioItem = portfolioItems.find((item) => item._id === params.id);
+    const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
+      'portfolio_schema',
+      'portfolio_items',
+      '*',
+      PortfolioItemSchema,
+    );
 
-  if (!portfolioItem) {
-    notFound();
-  } else {
+    if (!portfolioItems) {
+      notFound();
+    }
+
+    const portfolioItem = portfolioItems.find((item) => item._id === params.id);
+
+    if (!portfolioItem) {
+      notFound();
+    }
+
     return (
       <>
         <Project id={params.id} />
         <OtherProjects />
       </>
     );
+  } catch (error) {
+    console.error('Error fetching portfolio item:', error);
+    notFound();
   }
 };
 
 export default PortfolioPage;
 
 export async function generateStaticParams() {
-  const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
-    'portfolio_schema',
-    'portfolio_items',
-    '*',
-    PortfolioItemSchema,
-  );
+  try {
+    const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
+      'portfolio_schema',
+      'portfolio_items',
+      '*',
+      PortfolioItemSchema,
+    );
 
-  const paths = portfolioItems.map((item) => ({
-    params: { id: item._id },
-  }));
-  return paths;
+    if (!portfolioItems) {
+      throw new Error('Failed to fetch portfolio items');
+    }
+
+    const paths = portfolioItems.map((item) => ({
+      params: { id: item._id },
+    }));
+    return paths;
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
