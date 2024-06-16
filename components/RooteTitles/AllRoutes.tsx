@@ -12,7 +12,7 @@ const AllRoutes = () => {
   const [childPage, setChildPage] = useState('');
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
-  const [pageExists, setPageExists] = useState(true);
+  const [pageExists, setPageExists] = useState(false);
 
   useEffect(() => {
     const updatePageInfo = async () => {
@@ -23,7 +23,6 @@ const AllRoutes = () => {
       setChildPage(currentChildPage);
       setMainPage(currentPage);
 
-      // Mevcut olmayan sayfa kontrolü
       const isValidPage = await checkIfPageExists(
         currentPage,
         currentChildPage,
