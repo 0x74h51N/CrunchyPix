@@ -14,12 +14,8 @@ const PolicyPage = async ({ params }: { params: { id: string } }) => {
     `*`,
     PoliciesSchema,
   );
-
-  if (
-    !policyItems ||
-    policyItems.length === 0 ||
-    policyItems.map((item) => item.policy_name !== params.id)
-  ) {
+  const policyItem = policyItems.find((item) => item._id === params.id);
+  if (!policyItem) {
     notFound();
   } else {
     return (

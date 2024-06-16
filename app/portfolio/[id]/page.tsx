@@ -17,31 +17,30 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   }
   return await generateSubPageMetadata({ params, page: 'portfolio' });
 }
+
 const PortfolioPage = async ({ params }: { params: { id: string } }) => {
   if (typeof params.id !== 'string') {
     notFound();
   }
 
-  const portfolioItem = await fetchSupabaseData<PortfolioItemProps>(
+  const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
     'portfolio_schema',
     'portfolio_items',
     '*',
     PortfolioItemSchema,
   );
+  const portfolioItem = portfolioItems.find((item) => item._id === params.id);
 
-  if (
-    !portfolioItem ||
-    portfolioItem.length === 0 ||
-    portfolioItem.map((item) => item._id !== params.id)
-  ) {
+  if (!portfolioItem) {
     notFound();
+  } else {
+    return (
+      <>
+        <Project id={params.id} />
+        <OtherProjects />
+      </>
+    );
   }
-  return (
-    <>
-      <Project id={params.id} />
-      <OtherProjects />
-    </>
-  );
 };
 
 export default PortfolioPage;
