@@ -39,7 +39,7 @@ const MobileMenu = ({
     return () => {
       document.removeEventListener('click', handleOutsideClick);
     };
-  }, [menuRef]);
+  }, [menuRef, setMobileMenu]);
 
   return (
     <div ref={menuRef} className="flex flex-col">

@@ -21,7 +21,7 @@ const FilterItems = ({
   useEffect(() => {
     setSearchParam('');
     setSortOption('');
-  }, [i18next.language]);
+  }, [t]);
   useEffect(() => {
     const filteredItems = portfolioPageItems.filter(
       (item: PortfolioItemProps) => {
@@ -36,11 +36,11 @@ const FilterItems = ({
       },
     );
     setSortedItems(filteredItems);
-  }, [searchParam]);
+  }, [searchParam, portfolioPageItems]);
 
   useEffect(() => {
     setFilteredItems(sortedItems);
-  }, [sortedItems]);
+  }, [sortedItems, setFilteredItems]);
 
   const handleSortChange = (sortOption: string) => {
     setSortOption(sortOption);

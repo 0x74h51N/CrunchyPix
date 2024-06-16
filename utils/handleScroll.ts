@@ -5,7 +5,7 @@ export const handleScroll = ({
   event,
   currentSection,
   sectionRefs,
-  duration = 500,
+  duration = 0,
 }: HandleScroll) => {
   if (!event) {
     return;

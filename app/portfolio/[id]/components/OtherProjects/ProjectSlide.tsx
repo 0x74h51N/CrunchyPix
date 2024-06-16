@@ -18,20 +18,23 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
       swiperRef.current.update();
     }
   }, []);
-  const breakpoints = {
-    0: {
-      spaceBetween: 15,
-    },
-    769: {
-      spaceBetween: 20,
-    },
-    1030: {
-      spaceBetween: 25,
-    },
-    1250: {
-      spaceBetween: 32,
-    },
-  };
+  const breakpoints = useMemo(
+    () => ({
+      0: {
+        spaceBetween: 15,
+      },
+      769: {
+        spaceBetween: 20,
+      },
+      1030: {
+        spaceBetween: 25,
+      },
+      1250: {
+        spaceBetween: 32,
+      },
+    }),
+    [],
+  );
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.update();

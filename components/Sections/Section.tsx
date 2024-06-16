@@ -45,13 +45,16 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
       const observer = new IntersectionObserver(observerCallback, {
         threshold: 0.5,
       });
-      sectionRefs.current.forEach((ref, index) => {
+      const currentSectionRefs = sectionRefs.current;
+
+      currentSectionRefs.forEach((ref, index) => {
         if (ref.current && index !== 0) {
           observer.observe(ref.current);
         }
       });
+
       return () => {
-        sectionRefs.current.forEach((ref, index) => {
+        currentSectionRefs.forEach((ref, index) => {
           if (ref.current && index !== 0) {
             observer.unobserve(ref.current);
           }

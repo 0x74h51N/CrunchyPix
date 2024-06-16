@@ -9,7 +9,7 @@ import useDragHandler from '@/hooks/useDragHandler';
 import useFilteredData from '@/hooks/useFilteredData';
 import { CardsTypes, SectionsTypes } from '@/schemas';
 import TitleText from '../TitleText';
-import { memo, useEffect, useRef } from 'react';
+import { memo, useEffect, useMemo, useRef } from 'react';
 import SwiperCore from 'swiper';
 import dynamic from 'next/dynamic';
 
@@ -37,13 +37,16 @@ const ServicesSect = () => {
     nextEl: '.swiper-button-next-cus',
     prevEl: '.swiper-button-prev-cus',
   };
-  const breakpoints = {
-    0: { slidesPerView: 1.1 },
-    640: { slidesPerView: 1.5 },
-    768: { slidesPerView: 2 },
-    1024: { slidesPerView: 2.5 },
-    1280: { slidesPerView: 3 },
-  };
+  const breakpoints = useMemo(
+    () => ({
+      0: { slidesPerView: 1.1 },
+      640: { slidesPerView: 1.5 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 2.5 },
+      1280: { slidesPerView: 3 },
+    }),
+    [],
+  );
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.update();

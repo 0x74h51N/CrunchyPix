@@ -1,8 +1,8 @@
-import { ColorfulHoverType } from "@/app/common.types";
-import { getRandomColor } from "@/utils/getRandomColor";
-import { useAnimation, motion } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
-import IconButton from "./Buttons/IconButton";
+import { ColorfulHoverType } from '@/app/common.types';
+import { getRandomColor } from '@/utils/getRandomColor';
+import { useAnimation, motion } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
+import IconButton from './Buttons/IconButton';
 
 export const ColorfulHover = ({
   char,
@@ -11,9 +11,9 @@ export const ColorfulHover = ({
   style,
   className,
   span,
-  _colorType = "themeColors",
+  _colorType = 'themeColors',
   randomCount = 6,
-  zeroColor = "#FFFFFF",
+  zeroColor = '#FFFFFF',
 }: ColorfulHoverType) => {
   const controls = useAnimation();
   const [isHovered, setIsHovered] = useState(false);
@@ -26,14 +26,14 @@ export const ColorfulHover = ({
     controls.start({
       color: isHovered
         ? getRandomColor(
-            _colorType === "random"
-              ? { colorType: "random", randomCount: randomCount }
-              : { colorType: _colorType }
+            _colorType === 'random'
+              ? { colorType: 'random', randomCount: randomCount }
+              : { colorType: _colorType },
           )
         : zeroColor,
       transition: { duration: isHovered ? 0.1 : 1.5 },
     });
-  }, [isHovered, controls, _colorType]);
+  }, [isHovered, controls, _colorType, randomCount, zeroColor]);
 
   if (span) {
     return (
@@ -44,7 +44,7 @@ export const ColorfulHover = ({
         initial={initial}
         animate={controls}
       >
-        {char === " " ? "\u00A0" : char}
+        {char === ' ' ? '\u00A0' : char}
       </motion.span>
     );
   } else {

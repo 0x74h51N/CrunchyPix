@@ -41,7 +41,7 @@ const Home = () => {
   if (error) {
     console.error(error);
   }
-  return !filteredData || filteredData.length <= 0 || error || loading ? (
+  return !filteredData || filteredData.length <= 1 || error || loading ? (
     <FsLoading />
   ) : (
     <Section sectionsData={sectionsData} />
