@@ -19,7 +19,7 @@ export default function middleware(req: NextRequest) {
 
   if (cookieLang) {
     lng = cookieLang;
-  } else if (referer) {
+  } else if (referer && !cookieLang) {
     const url = new URL(referer);
     const urlParams = new URLSearchParams(url.search);
     let searchLang: string | null = null;
@@ -54,10 +54,8 @@ export default function middleware(req: NextRequest) {
       sameSite: 'strict',
       secure: process.env.NODE_ENV === 'production',
     });
+    response.headers.set('x-preferred-language', lng);
   }
-
-  response.headers.set('x-preferred-language', lng);
-
   return response;
 }
 
