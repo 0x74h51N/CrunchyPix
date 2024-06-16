@@ -37,7 +37,7 @@ const MainRoutes = ({
         ) : mainPage === 'policies' ? (
           t(`links.${childPage.replaceAll('-', '').toLowerCase()}`)
         ) : (
-          storeItem?.project_overview[0].title
+          storeItem?.project_overview && storeItem?.project_overview[0].title
         )
       ) : (
         t(`links.${mainPage}`)
