@@ -13,7 +13,7 @@ const AllRoutes = () => {
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
   const [pageExists, setPageExists] = useState(false);
-
+  const [hasGrandchildPage, setHasGrand] = useState(false);
   useEffect(() => {
     const updatePageInfo = async () => {
       const urlParts = pathname.split('/');
@@ -36,6 +36,8 @@ const AllRoutes = () => {
       updatePageInfo();
     };
 
+    const urlParts = pathname.split('/');
+    urlParts.length > 3 && setHasGrand(true);
     window.addEventListener('popstate', handlePopState);
 
     return () => {
@@ -45,6 +47,7 @@ const AllRoutes = () => {
 
   if (
     !pageExists ||
+    hasGrandchildPage ||
     pathname === '' ||
     pathname === 'home' ||
     pathname === '/' ||
