@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Pagination, Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-creative';
 import SlideCreator from './SlideCreator';
 import { slide } from '@/app/common.types';
 import { motion } from 'framer-motion';

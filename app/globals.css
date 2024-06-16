@@ -223,6 +223,9 @@ body {
 }
 
 /* Swiper Slide */
+.logo-swiper-wrapper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
 .swiper-button-next,
 .swiper-button-prev {
   cursor: none !important;

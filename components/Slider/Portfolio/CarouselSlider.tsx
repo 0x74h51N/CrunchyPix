@@ -2,7 +2,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
-import 'swiper/css';
 import Label from '../../Labels';
 import { useDispatch } from 'react-redux';
 import { setSlide } from '@/store/redux/selectedSlide';
