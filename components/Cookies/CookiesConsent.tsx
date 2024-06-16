@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import breaks from 'remark-breaks';
 import { hasCookie, setCookie } from 'cookies-next';
 import ReactMarkdown from 'react-markdown';
@@ -13,7 +13,7 @@ import useClickableHandlers from '@/hooks/useClickableHandlers';
 
 const CookieConsent = () => {
   const { t } = useTranslation('index');
-  const oneYearInSeconds = 365 * 24 * 60 * 60;
+  const oneMouth = 30 * 24 * 60 * 60;
   const [showConsent, setShowConsent] = useState(true);
 
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const CookieConsent = () => {
   const handleAccept = () => {
     setCookie('cookiesConsent', 'true', {
       path: '/',
-      expires: new Date(Date.now() + oneYearInSeconds * 1000),
+      expires: new Date(Date.now() + oneMouth * 1000),
       sameSite: 'lax',
       secure: true,
     });
@@ -37,14 +37,15 @@ const CookieConsent = () => {
 
   useEffect(() => {
     setShowConsent(hasCookie('cookiesConsent'));
-  }, []);
+  }, [showConsent]);
+
   if (showConsent) {
     return null;
   } else {
     return (
       <div
-        id="cookie-banner"
-        className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-50 cursor-none pointer-events-none"
+        id="cookie-consent"
+        className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-[999] cursor-none pointer-events-none w-50 h-50"
       >
         <motion.div
           initial="hidden"
@@ -90,4 +91,4 @@ const CookieConsent = () => {
   }
 };
 
-export default CookieConsent;
+export default memo(CookieConsent);

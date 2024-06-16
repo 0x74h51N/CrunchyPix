@@ -38,7 +38,7 @@ export const ProjectPageSchema = z.object({
 export const PortfolioItemSchema = z.object({
   id: z.number(),
   _id: z.string(),
-  project_overview: z.array(ProjectOverviewSchema),
+  project_overview: z.array(ProjectOverviewSchema).optional(),
   icons: z.array(IconSchema).optional(),
   tech: z.array(z.string()),
   catalogue: z
@@ -100,7 +100,7 @@ export const PolicyTranslationSchema = z.object({
   id: z.number(),
   sect_name: z.string(),
   lang: z.string(),
-  intro: z.string().nullable(),
+  intro: z.string().nullable().optional(),
   title: z.string().nullable(),
   policy_sections: z.array(PolicySectionSchema).optional(),
 });
