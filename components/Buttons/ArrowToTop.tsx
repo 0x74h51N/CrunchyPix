@@ -1,34 +1,34 @@
-'use client'
-import { slideIn } from '@/utils/motion'
-import { scrollToTop } from '@/utils/scrollToSection'
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import ArrowSVG from './ArrowSVG'
-import useClickableHandlers from '@/hooks/useClickableHandlers'
-import useIntersectionObserver from '@/hooks/useIntersectionObserver'
+'use client';
+import { slideIn } from '@/utils/motion';
+import { scrollToTop } from '@/utils/scrollToSection';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import ArrowSVG from './ArrowSVG';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
+import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 
 export const ArrowToTop = () => {
-  const [isArrowVisible, setArrowVisible] = useState(false)
-  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers()
+  const [isArrowVisible, setArrowVisible] = useState(false);
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
 
   const observerCallback: IntersectionObserverCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        setArrowVisible(false)
+        setArrowVisible(false);
       } else {
-        setArrowVisible(true)
+        setArrowVisible(true);
       }
-    })
-  }
+    });
+  };
 
   const { targetRef } = useIntersectionObserver(observerCallback, {
     threshold: 0,
-  })
+  });
 
   const handleButtonClick = () => {
-    handleMouseLeave()
-    scrollToTop(1500)
-  }
+    handleMouseLeave();
+    scrollToTop(1500);
+  };
 
   return (
     <>
@@ -36,7 +36,7 @@ export const ArrowToTop = () => {
         ref={targetRef}
         style={{
           position: 'absolute',
-          top: '800px',
+          top: '500px',
           width: '1px',
           height: '1px',
         }}
@@ -57,5 +57,5 @@ export const ArrowToTop = () => {
         </button>
       </motion.div>
     </>
-  )
-}
+  );
+};

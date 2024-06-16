@@ -5,7 +5,7 @@
     "keywords": "Portfolio, Front-End-Entwicklung, TypeScript, JavaScript, Next.js, React, Webentwicklung"
   },
   "search": "Suche...",
-  "noItem": "Ups! Ich konnte nicht finden, wonach du suchst...",
+  "noItem": "Ich konnte nicht finden, wonach du suchst...",
   "sort": {
     "def": "Sortieren",
     "options": {
