@@ -9,9 +9,13 @@ const Custom404 = () => {
   const { t } = useTranslation('index');
 
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       router.push('/');
     }, 6000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
   }, [router]);
 
   return (

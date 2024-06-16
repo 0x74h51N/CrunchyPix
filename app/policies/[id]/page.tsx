@@ -14,12 +14,8 @@ const PolicyPage = async ({ params }: { params: { id: string } }) => {
     `*`,
     PoliciesSchema,
   );
-
-  if (
-    !policyItems ||
-    policyItems.length === 0 ||
-    policyItems.map((item) => item.policy_name !== params.id)
-  ) {
+  const policyItem = policyItems.find((item) => item.policy_name === params.id);
+  if (!policyItem) {
     notFound();
   } else {
     return (
@@ -33,17 +29,3 @@ const PolicyPage = async ({ params }: { params: { id: string } }) => {
 };
 
 export default PolicyPage;
-
-export async function generateStaticParams() {
-  const portfolioItems = await fetchSupabaseData<PoliciesTypes>(
-    'policy_schema',
-    'policies',
-    `*`,
-    PoliciesSchema,
-  );
-
-  const paths = portfolioItems.map((item) => ({
-    params: { id: item.policy_name },
-  }));
-  return paths;
-}

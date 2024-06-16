@@ -11,10 +11,12 @@ const filterByLanguage = <T extends { [key: string]: any }>({
 }: FilterByLanguageProps<T>): T[] => {
   return items
     .map((item) => {
-      if (localPath !== '') {
-        const filtered = item[localPath].find(
-          (innerItem: { lang: string }) => innerItem.lang === language,
-        );
+      if (localPath !== '' || localPath) {
+        const filtered =
+          item[localPath] &&
+          item[localPath].find(
+            (innerItem: { lang: string }) => innerItem.lang === language,
+          );
         if (filtered) {
           return { ...item, [localPath]: [filtered] };
         }
