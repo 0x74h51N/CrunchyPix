@@ -2,17 +2,25 @@ import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
 import { PoliciesTypes, PoliciesSchema } from '@/schemas';
 
 export async function generateStaticParams() {
-  const portfolioItems = await fetchSupabaseData<PoliciesTypes>(
-    'policy_schema',
-    'policies',
-    `*`,
-    PoliciesSchema,
-  );
+  try {
+    const policyItems = await fetchSupabaseData<PoliciesTypes>(
+      'policy_schema',
+      'policies',
+      `*`,
+      PoliciesSchema,
+    );
 
-  const paths = portfolioItems.map((item) => ({
-    params: { id: item.policy_name },
-  }));
-  return paths;
+    if (!policyItems) {
+      throw new Error('Failed to fetch portfolio items');
+    }
+
+    return policyItems.map((item) => ({
+      id: item.policy_name,
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
 export default function PolicyPageLayout({
