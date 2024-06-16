@@ -1,22 +1,8 @@
-import { generateSubPageMetadata } from '@/lib/metadataSub';
-import dynamic from 'next/dynamic';
 import OtherProjects from './components/OtherProjects/OtherProjects';
-import FsLoading from '@/components/Loading/FsLoading';
 import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
 import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
 import { notFound } from 'next/navigation';
-
-const Project = dynamic(() => import('./components/Project'), {
-  ssr: false,
-  loading: () => <FsLoading />,
-});
-
-export async function generateMetadata({ params }: { params: { id: string } }) {
-  if (typeof params.id !== 'string') {
-    notFound();
-  }
-  return await generateSubPageMetadata({ params, page: 'portfolio' });
-}
+import Project from './components/Project';
 
 const PortfolioPage = async ({ params }: { params: { id: string } }) => {
   try {

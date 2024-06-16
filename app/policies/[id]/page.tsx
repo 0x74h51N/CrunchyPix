@@ -29,17 +29,3 @@ const PolicyPage = async ({ params }: { params: { id: string } }) => {
 };
 
 export default PolicyPage;
-
-export async function generateStaticParams() {
-  const portfolioItems = await fetchSupabaseData<PoliciesTypes>(
-    'policy_schema',
-    'policies',
-    `*`,
-    PoliciesSchema,
-  );
-
-  const paths = portfolioItems.map((item) => ({
-    params: { id: item.policy_name },
-  }));
-  return paths;
-}
