@@ -21,12 +21,13 @@ const FilterItems = ({
   useEffect(() => {
     setSearchParam('');
     setSortOption('');
-  }, [i18next.language]);
+  }, [t]);
   useEffect(() => {
     const filteredItems = portfolioPageItems.filter(
       (item: PortfolioItemProps) => {
-        const title = item.project_overview[0].title.toLowerCase();
-        const type = item.project_overview[0].project_type.toLowerCase();
+        const title = item.project_overview?.[0]?.title?.toLowerCase() ?? '';
+        const type =
+          item.project_overview?.[0]?.project_type?.toLowerCase() ?? '';
         return (
           title.includes(searchParam) ||
           type.includes(searchParam) ||
@@ -35,11 +36,11 @@ const FilterItems = ({
       },
     );
     setSortedItems(filteredItems);
-  }, [searchParam]);
+  }, [searchParam, portfolioPageItems]);
 
   useEffect(() => {
     setFilteredItems(sortedItems);
-  }, [sortedItems]);
+  }, [sortedItems, setFilteredItems]);
 
   const handleSortChange = (sortOption: string) => {
     setSortOption(sortOption);
@@ -61,8 +62,8 @@ const FilterItems = ({
       }
     } else if (sortOption.includes('alphabetically')) {
       const alphaSort = [...sortedItems].sort((a, b) => {
-        const aTitle = a.project_overview[0].title;
-        const bTitle = b.project_overview[0].title;
+        const aTitle = a.project_overview?.[0]?.title ?? '';
+        const bTitle = b.project_overview?.[0]?.title ?? '';
         return aTitle.replace('_', '').localeCompare(bTitle);
       });
       if (sortOption === 'alphabetically_a-z') {
@@ -73,6 +74,7 @@ const FilterItems = ({
       }
     }
   };
+
   type option = {
     label: string;
     value: string | React.ReactNode;

@@ -63,7 +63,7 @@ const Navbar = () => {
         ></span>
       </Link>
     ));
-  }, [Links, selectedLink, t]);
+  }, [selectedLink, t]);
   return (
     <>
       <div

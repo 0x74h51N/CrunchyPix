@@ -37,5 +37,10 @@
     "accept": "Accept",
     "decline": "Decline"
   },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "description": "The page you are looking for could not be found. You are being redirected to the homepage...",
+    "info": "Smoking also kills. No animals were harmed during the making and publication of this site. CrunchyPix does not endorse, recommend, or encourage the consumption of cigarettes."
+  },
   "loading": "Loading..."
 }

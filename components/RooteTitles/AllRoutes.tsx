@@ -5,21 +5,30 @@ import MainRoutes from './MainRoutes';
 import SubRoutes from './SubRoutes';
 import { CldImage } from 'next-cloudinary';
 import { AnimatePresence, motion } from 'framer-motion';
+import { checkIfPageExists } from './checkIfPageExist';
 
 const AllRoutes = () => {
   const [mainPage, setMainPage] = useState('');
   const [childPage, setChildPage] = useState('');
   const pathname = usePathname();
   const [loading, setLoading] = useState(true);
+  const [pageExists, setPageExists] = useState(true);
+
   useEffect(() => {
-    const updatePageInfo = () => {
+    const updatePageInfo = async () => {
       const urlParts = pathname.split('/');
       const currentPage = urlParts[1];
-      if (urlParts[2]) {
-        const currentChildPage = urlParts[2];
-        setChildPage(currentChildPage);
-      } else setChildPage('');
+      const currentChildPage = urlParts[2] || '';
+
+      setChildPage(currentChildPage);
       setMainPage(currentPage);
+
+      // Mevcut olmayan sayfa kontrolü
+      const isValidPage = await checkIfPageExists(
+        currentPage,
+        currentChildPage,
+      );
+      setPageExists(isValidPage);
     };
 
     updatePageInfo();
@@ -33,9 +42,10 @@ const AllRoutes = () => {
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [pathname, setMainPage, setChildPage]);
+  }, [pathname]);
 
   if (
+    !pageExists ||
     pathname === '' ||
     pathname === 'home' ||
     pathname === '/' ||

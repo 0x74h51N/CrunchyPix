@@ -26,14 +26,14 @@ const PortfolioItemsTable = ({
       whileInView="show"
       viewport={{ once: true, amount: 'some' }}
       variants={polygonIn('screen', 'easeInOut', 0.5, 1.5)}
-      className=" h-auto w-auto flex flexCenter min-w-screen mt-8 mb-40 lg:px-14 max-w-[1310px]"
+      className="h-auto w-auto flex flexCenter  mt-8 mb-40 lg:px-14 max-w-[1310px] xl:w-full  lg:min-w-[630px] md:min-w-[300px]"
     >
-      <div className="w-auto">
+      <div className="w-full">
         <FilterItems
           portfolioPageItems={portfolioPageItems}
           setFilteredItems={setFilteredItems}
         />
-        <div className="grid xl:grid-cols-2 grid-cols-1 max-md:gap-5 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-8 transition-all ease-in-out duration-300 xl:min-w-full lg:min-w-[630px] md:min-w-[300px] min-h-[700px]">
+        <div className="relative grid xl:grid-cols-2 grid-cols-1 max-md:gap-5 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-8 transition-all ease-in-out duration-300 min-h-[850px]">
           {filteredItems.length > 0 ? (
             filteredItems.map((item: any, index: number) => {
               const initial = index > 1 ? { y: 30, x: 0 } : { y: 0, x: 30 };
@@ -62,16 +62,16 @@ const PortfolioItemsTable = ({
               );
             })
           ) : (
-            <div className="flex md:flex-row flex-col justify-start md:items-end items-center h-[350px] md:max-w-[550px] max-w-[350px]">
+            <div className="flex flex-col md:absolute right-0 md:mt-14 md:justify-center justify-start md:items-end items-center h-auto md:max-w-full max-w-[350px] max-sm:px-7">
               <CldImage
-                width={300}
-                height={300}
+                width={550}
+                height={550}
                 format="avif"
-                src="crunchypix/portfolioItems/cat_qth7cg.png"
+                src="crunchypix/item_not_found_cat"
                 alt={'Cat photo'}
-                className="object-contain max-md:scale-75"
+                className="object-contain object-center"
               />
-              <p className="w-full h2 pb-20 max-sm:px-7 -mt-10">
+              <p className="w-full h2 pb-20 md:pl-14 pl-6 text-end mt-4">
                 {t('noItem')}
               </p>
             </div>

@@ -3,6 +3,7 @@ import { createTranslation, getLocale } from '@/i18n/server';
 import { fetchSupabaseData } from './utils/fetchSupabaseData';
 import { ProjectPageProps, ProjectPageSchema } from '@/schemas';
 import { getCldImageUrl } from 'next-cloudinary';
+import { notFound } from 'next/navigation';
 
 export async function generateSubPageMetadata({
   params,
@@ -25,10 +26,7 @@ export async function generateSubPageMetadata({
   );
 
   if (!selectedItem) {
-    return {
-      title: 'Project Not Found',
-      description: 'This project does not exist in the portfolio.',
-    };
+    return notFound();
   }
   const imageUrl = getCldImageUrl({
     src: `crunchypix/portfolioItems/${params.id.replaceAll('_', '') + 'Top'}`,

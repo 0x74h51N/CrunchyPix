@@ -107,27 +107,29 @@ const PortfolioItem = memo(
               : 'md:-bottom-5 bottom-0 md:h-32 h-22'
           }`}
         >
-          <Link
-            href={`/portfolio/${id}`}
-            passHref
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className="flex flex-col justify-center w-auto md:p-4 p-2 text-stone-200 cursor-none"
-            onClick={onClickHandler}
-          >
-            <h2 className="md:text-sm text-xs text-log-col">
-              {project_overview[0].project_type}
-            </h2>
-            <h1
-              className={`${
-                isSlide
-                  ? 'h2'
-                  : 'text-cool-gray-50 font-black md:text-[40px] sm:text-[30px] xs:text-[28px] text-[25px] antialiased'
-              } hover:text-log-col transition-all duration-300 ease-in-out`}
+          {project_overview && (
+            <Link
+              href={`/portfolio/${id}`}
+              passHref
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="flex flex-col justify-center w-auto md:p-4 p-2 text-stone-200 cursor-none"
+              onClick={onClickHandler}
             >
-              {project_overview[0].title}
-            </h1>
-          </Link>
+              <h2 className="md:text-sm text-xs text-log-col">
+                {project_overview[0].project_type}
+              </h2>
+              <h1
+                className={`${
+                  isSlide
+                    ? 'h2'
+                    : 'text-cool-gray-50 font-black md:text-[40px] sm:text-[30px] xs:text-[28px] text-[25px] antialiased'
+                } hover:text-log-col transition-all duration-300 ease-in-out`}
+              >
+                {project_overview[0].title}
+              </h1>
+            </Link>
+          )}
         </div>
       </div>
     );

@@ -40,7 +40,7 @@ const Project = memo(({ id }: { id: string }) => {
     if (Item?.lang === i18n.language) {
       document.title = `${pageTitle} | ${Item.title}`;
     }
-  }, [Item]);
+  }, [Item, pageTitle, t]);
 
   const { hoverEnd } = useDragHandler();
   const { handleMouseLeave } = useClickableHandlers();

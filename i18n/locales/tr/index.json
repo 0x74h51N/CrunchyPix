@@ -36,5 +36,10 @@
     "accept": "Kabul Et",
     "decline": "Reddet"
   },
+  "notFound": {
+    "title": "404 - Sayfa Bulunamadı",
+    "description": "Aradığınız sayfa bulunamadı. Ana sayfaya yönlendiriliyorsunuz...",
+    "info": "Ayrıca sigara içmek de sizi öldürür, bu sitenin yapımı ve yayını esnasında hiç bir hayvana zarar verilmemiştir. CrunchyPix sigara tüketimini onaylamaz, tavsiye etmez, özendirmez."
+  },
   "loading": "Yükleniyor..."
 }

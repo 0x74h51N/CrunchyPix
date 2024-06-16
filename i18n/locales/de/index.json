@@ -36,5 +36,11 @@
     "accept": "Akzeptieren",
     "decline": "Ablehnen"
   },
+  "notFound": {
+    "title": "404 - Seite nicht gefunden",
+    "description": "Die gesuchte Seite wurde nicht gefunden. Sie werden zur Startseite weitergeleitet...",
+    "info": "Rauchen kann auch tödlich sein. Bei der Erstellung und Veröffentlichung dieser Seite wurden keine Tiere verletzt. CrunchyPix unterstützt, empfiehlt oder fördert nicht den Konsum von Zigaretten."
+  },
+
   "loading": "Laden..."
 }

@@ -53,7 +53,7 @@ const SlideModal = () => {
     return () => {
       document.removeEventListener('scroll', scrollHandler);
     };
-  }, [selectedSlide, clearSlide]);
+  }, [selectedSlide, clearSlide, closeModal]);
   return (
     <AnimatePresence>
       {selectedSlide && (
@@ -98,12 +98,16 @@ const SlideModal = () => {
                 </div>
               ) : (
                 <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
-                  <h2 className="text-lg font-bold">
-                    {selectedSlide.project_overview[0].title}
-                  </h2>
-                  <p className="font-extralight overflow-hidden md:text-[13px] text-[10px] md:line-clamp-3 line-clamp-2">
-                    {selectedSlide.project_overview[0].slide_description}
-                  </p>
+                  {selectedSlide.project_overview && (
+                    <>
+                      <h2 className="text-lg font-bold">
+                        {selectedSlide.project_overview[0].title}
+                      </h2>
+                      <p className="font-extralight overflow-hidden md:text-[13px] text-[10px] md:line-clamp-3 line-clamp-2">
+                        {selectedSlide.project_overview[0].slide_description}
+                      </p>
+                    </>
+                  )}
                   <Link
                     href={`/portfolio/${id}`}
                     key={'portfolio'}

@@ -6,7 +6,7 @@ import 'swiper/css';
 import Label from '../../Labels';
 import { useDispatch } from 'react-redux';
 import { setSlide } from '@/store/redux/selectedSlide';
-import { memo, useEffect, useRef, useState } from 'react';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import IconButton from '@/components/Buttons/IconButton';
 import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
@@ -38,17 +38,20 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
     }
   };
 
-  const breakPoints = {
-    0: {
-      slidesPerView: 1.2,
-    },
-    640: {
-      slidesPerView: 1.5,
-    },
-    1020: {
-      slidesPerView: 2,
-    },
-  };
+  const breakPoints = useMemo(
+    () => ({
+      0: {
+        slidesPerView: 1.2,
+      },
+      640: {
+        slidesPerView: 1.5,
+      },
+      1020: {
+        slidesPerView: 2,
+      },
+    }),
+    [],
+  );
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.update();
@@ -102,7 +105,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
               />
               <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
                 <h2 className="text-lg font-bold">
-                  {slide.project_overview[0].title}
+                  {slide.project_overview && slide.project_overview[0].title}
                 </h2>
                 <div className="flex">
                   <div className="flex flex-wrap items-start mr-auto">
