@@ -54,26 +54,3 @@ const PortfolioPage = async ({ params }: { params: { id: string } }) => {
 };
 
 export default PortfolioPage;
-
-export async function generateStaticParams() {
-  try {
-    const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
-      'portfolio_schema',
-      'portfolio_items',
-      '*',
-      PortfolioItemSchema,
-    );
-
-    if (!portfolioItems) {
-      throw new Error('Failed to fetch portfolio items');
-    }
-
-    const paths = portfolioItems.map((item) => ({
-      params: { id: item._id },
-    }));
-    return paths;
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
-}
