@@ -14,7 +14,7 @@ const PolicyPage = async ({ params }: { params: { id: string } }) => {
     `*`,
     PoliciesSchema,
   );
-  const policyItem = policyItems.find((item) => item._id === params.id);
+  const policyItem = policyItems.find((item) => item.policy_name === params.id);
   if (!policyItem) {
     notFound();
   } else {
