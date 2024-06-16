@@ -2,10 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import PortfolioItem from '../../../components/PortfolioItem';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
 import { useRef, useEffect, memo, useMemo } from 'react';
-import 'swiper/css';
 import { PortfolioItemProps } from '@/schemas';
 
 SwiperCore.use([Autoplay, Pagination]);
