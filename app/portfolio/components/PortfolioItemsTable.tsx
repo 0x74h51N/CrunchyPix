@@ -7,14 +7,14 @@ import PortfolioItem from './PortfolioItem';
 import { CldImage } from 'next-cloudinary';
 import { polygonIn } from '@/utils/motion';
 import { PortfolioItemProps } from '@/schemas';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
-const PortfolioItemsTable = ({
-  portfolioPageItems,
-}: {
-  portfolioPageItems: PortfolioItemProps[];
-}) => {
+const PortfolioItemsTable = () => {
   const { t } = useTranslation('portfolio');
-
+  const portfolioPageItems = useSelector(
+    (state: RootState) => state.portfolio.items,
+  );
   const [filteredItems, setFilteredItems] =
     useState<PortfolioItemProps[]>(portfolioPageItems);
   useEffect(() => {

@@ -1,9 +1,13 @@
-'use client';
 import FsLoading from '@/components/Loading/FsLoading';
-import { RootState } from '@/store';
 import dynamic from 'next/dynamic';
 import { memo } from 'react';
-import { useSelector } from 'react-redux';
+
+import { generatePageMetadata } from '@/lib/metadata';
+import { Metadata } from 'next';
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generatePageMetadata('portfolio');
+}
 
 const PortfolioItemsTable = dynamic(
   () => import('./components/PortfolioItemsTable'),
@@ -13,15 +17,10 @@ const PortfolioItemsTable = dynamic(
   },
 );
 const Portfolio = () => {
-  const portfolioItems = useSelector(
-    (state: RootState) => state.portfolio.items,
-  );
   return (
-    portfolioItems && (
-      <div className="flex justify-center items-start w-full min-h-[100svh]">
-        <PortfolioItemsTable portfolioPageItems={portfolioItems} />
-      </div>
-    )
+    <div className="flex justify-center items-start w-full min-h-[100svh]">
+      <PortfolioItemsTable />
+    </div>
   );
 };
 
