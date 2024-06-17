@@ -58,9 +58,9 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
   }, [breakPoints]);
 
   return (
-    <motion.div
-      onHoverStart={hoverStart}
-      onHoverEnd={hoverEnd}
+    <div
+      onMouseEnter={hoverStart}
+      onMouseLeave={hoverEnd}
       className="h-auto overflow-visible z-50"
     >
       <Swiper
@@ -83,7 +83,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
         }}
-        speed={1000}
+        speed={2000}
         className="h-auto cursor-none "
       >
         {filteredSlides.map((slide: PortfolioItemProps, index: number) => (
@@ -135,7 +135,7 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </motion.div>
+    </div>
   );
 });
 CarouselSlider.displayName = 'CarouselSlider';

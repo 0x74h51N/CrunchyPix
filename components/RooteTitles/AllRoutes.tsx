@@ -44,7 +44,12 @@ const AllRoutes = () => {
       window.removeEventListener('popstate', handlePopState);
     };
   }, [pathname]);
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
   if (
     !pageExists ||
     hasGrandchildPage ||

@@ -1,13 +1,31 @@
-let cache: { [key: string]: any } = {};
+interface CacheEntry<T> {
+  data: T;
+  expiry: number;
+}
+
+let cache: { [key: string]: CacheEntry<any> } = {};
 
 export const getCachedData = async <T>(
   key: string,
   fetcher: () => Promise<T>,
-  cacheDuration: number = 5000 * 60,
+  cacheDuration: number = 5 * 60 * 1000,
 ): Promise<T> => {
   const now = Date.now();
-  if (cache[key] && cache[key].expiry > now) {
-    return cache[key].data;
+
+  if (cache[key] && cache[key].expiry > now && cache[key].data) {
+    const cachedData = cache[key].data;
+
+    if (Array.isArray(cachedData) && cachedData.length > 0) {
+      return cachedData as T;
+    }
+
+    if (
+      typeof cachedData === 'object' &&
+      cachedData !== null &&
+      Object.keys(cachedData).length > 0
+    ) {
+      return cachedData as T;
+    }
   }
 
   const data = await fetcher();

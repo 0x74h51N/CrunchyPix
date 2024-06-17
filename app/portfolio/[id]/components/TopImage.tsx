@@ -41,21 +41,22 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
           className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
         />
       )}
-      {icons && (
-        <motion.div
-          variants={slideIn('right', 'spring', 2, 1)}
-          className="absolute flex flex-row gap-4 bottom-5 py-3 right-0 pr-6 pl-4 bg-black bg-opacity-50 rounded-l-lg"
-        >
-          {icons.map((icon, iconIndex) => (
-            <span
-              key={iconIndex}
-              className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-4xl text-2xl"
-            >
-              <IconButton key={iconIndex} icon={icon} />
-            </span>
-          ))}
-        </motion.div>
-      )}
+      {icons &&
+        (icons.length > 1 ? (
+          <motion.div
+            variants={slideIn('right', 'spring', 2, 1)}
+            className="absolute flex flex-row gap-4 bottom-5 py-3 right-0 pr-6 pl-4 bg-black bg-opacity-50 rounded-l-lg"
+          >
+            {icons.map((icon, iconIndex) => (
+              <span
+                key={iconIndex}
+                className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-4xl text-2xl"
+              >
+                <IconButton key={iconIndex} icon={icon} />
+              </span>
+            ))}
+          </motion.div>
+        ) : null)}
     </div>
   );
 };

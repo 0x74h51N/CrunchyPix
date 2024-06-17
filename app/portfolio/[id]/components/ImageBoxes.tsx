@@ -7,7 +7,6 @@ const ImageBoxes = ({ _id }: { _id: string }) => {
   const imageBoxes = ['Respo0', 'Respo', 'Respo2'];
   const isLargeScreen =
     typeof window !== 'undefined' && window.innerWidth >= 768;
-  console.log(_id);
   return (
     <div className="flex md:flex-row flex-col items-center justify-between w-full h-auto md:mt-24 mt-10 mb-8 gap-6">
       {imageBoxes.map((image: string, index: number) => (

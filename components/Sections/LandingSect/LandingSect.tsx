@@ -79,10 +79,9 @@ const LandingSect = () => {
                 })}
           </motion.h1>
         </div>
-
         <motion.div
           variants={polygonIn('down', 'spring', 2, 2.5)}
-          className={`absolute h-full w-full pointer-events-none max-md:flex max-md:flexCenter max-md:gap-4 max-md:pb-10 pt-0 pb-0 lg:z-0 z-30`}
+          className={`absolute h-full w-full  pointer-events-none max-md:pb-10 pt-0 pb-0 lg:z-0 z-30`}
         >
           <SocialIcons
             colorful={true}

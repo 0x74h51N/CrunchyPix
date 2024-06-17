@@ -15,7 +15,7 @@ export const SocialIcons = ({
   _colorType,
   randomCount = 6,
 }: SocialIconProp & ColorfulHoverType) => {
-  const iconRadius = 250;
+  const iconRadius = 210;
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
   return (
@@ -44,14 +44,14 @@ export const SocialIcons = ({
               span={false}
               _colorType={_colorType}
               randomCount={randomCount}
-              className="w-9 h-9 max-lg:hidden"
+              className="w-9 h-9 max-md:hidden"
             />
             <div
-              className={`lg:hidden w-12 h-12 cursor-none pointer-events-auto flex justify-center items-center md:mt-12 mt-0 md:text-[40px] text-[30px]`}
+              className={`md:hidden w-12 h-12 cursor-none pointer-events-auto sm:mt-8 mt-0 sm:ml-2 ml-0 sm:text-[40px] text-[30px]`}
               style={mobileStyle}
               key={index + ' mobile'}
             >
-              {icon && <IconButton icon={icon} key={index + ' mobile icon'} />}
+              {<IconButton icon={icon} key={index + ' mobile icon'} />}
             </div>
           </Fragment>
         );

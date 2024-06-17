@@ -1,6 +1,5 @@
 import FsLoading from '@/components/Loading/FsLoading';
 import dynamic from 'next/dynamic';
-import { memo } from 'react';
 
 import { generatePageMetadata } from '@/lib/metadata';
 import { Metadata } from 'next';
@@ -24,4 +23,4 @@ const Portfolio = () => {
   );
 };
 
-export default memo(Portfolio);
+export default Portfolio;
