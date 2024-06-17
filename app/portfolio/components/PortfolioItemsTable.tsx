@@ -9,19 +9,20 @@ import { polygonIn } from '@/utils/motion';
 import { PortfolioItemProps } from '@/schemas';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import i18next from 'i18next';
 
 const PortfolioItemsTable = () => {
   const { t } = useTranslation('portfolio');
   const portfolioPageItems = useSelector(
     (state: RootState) => state.portfolio.items,
   );
-  const [filteredItems, setFilteredItems] =
-    useState<PortfolioItemProps[]>(portfolioPageItems);
+
+  const [filteredItems, setFilteredItems] = useState<PortfolioItemProps[]>([]);
 
   useEffect(() => {
-    setFilteredItems(portfolioPageItems);
-  }, [portfolioPageItems, i18next.language]);
+    if (portfolioPageItems.length > 1) {
+      setFilteredItems(portfolioPageItems);
+    }
+  }, [portfolioPageItems]);
   return (
     <motion.div
       initial="hidden"

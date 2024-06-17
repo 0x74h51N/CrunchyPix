@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { PortfolioItemProps } from '@/schemas';
 import { setPortfolioItems } from '@/store/redux/portfolioItems';
-import i18next, { getLocale } from '@/i18n/client';
+import i18next from '@/i18n/client';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
 
 interface PortfolioDataStoreProps {
@@ -11,19 +11,28 @@ interface PortfolioDataStoreProps {
 }
 
 const PortfolioDataStore = ({ portfolioItems }: PortfolioDataStoreProps) => {
+  const [portfolioState, setPortfolioState] = useState<PortfolioItemProps[]>(
+    [],
+  );
   const language = i18next.language;
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (portfolioItems && portfolioItems.length > 1) {
+      setPortfolioState(portfolioItems);
+    }
+  }, [portfolioItems]);
+
+  useEffect(() => {
     const filteredItems = filterByLanguage({
-      items: portfolioItems.sort((a, b) => a.id - b.id),
+      items: portfolioState.sort((a, b) => a.id - b.id),
       language,
       localPath: 'project_overview',
     });
     if (filteredItems.length > 1) {
       dispatch(setPortfolioItems(filteredItems));
     }
-  }, [portfolioItems, language, dispatch]);
+  }, [portfolioState, language, dispatch]);
 
   return null;
 };
