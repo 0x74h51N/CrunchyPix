@@ -4,6 +4,22 @@ interface CacheEntry<T> {
 }
 
 let cache: { [key: string]: CacheEntry<any> } = {};
+let timeoutId: NodeJS.Timeout | null = null;
+
+const clearExpiredCache = (interval: number) => {
+  const now = Date.now();
+  for (const key in cache) {
+    if (cache[key].expiry <= now) {
+      delete cache[key];
+    }
+  }
+  if (Object.keys(cache).length === 0 && timeoutId) {
+    clearTimeout(timeoutId);
+    timeoutId = null;
+  } else {
+    timeoutId = setTimeout(() => clearExpiredCache(interval), interval);
+  }
+};
 
 export const getCachedData = async <T>(
   key: string,
@@ -33,16 +49,9 @@ export const getCachedData = async <T>(
     data,
     expiry: now + cacheDuration,
   };
+
+  if (!timeoutId) {
+    clearExpiredCache(cacheDuration + 500);
+  }
   return data;
 };
-
-export const clearExpiredCache = () => {
-  const now = Date.now();
-  for (const key in cache) {
-    if (cache[key].expiry <= now) {
-      delete cache[key];
-    }
-  }
-};
-
-setInterval(clearExpiredCache, 6 * 60 * 1000);
