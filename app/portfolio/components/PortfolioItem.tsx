@@ -47,10 +47,6 @@ const PortfolioItem = memo(
       handleMouseLeave();
       hoverEnd();
     };
-    useEffect(() => {
-      hoverEnd();
-      handleMouseLeave();
-    }, []);
     return (
       <div
         className={`relative flex flex-col items-center justify-between rounded-xl overflow-hidden ${isSlide ? 'h-auto mt-[25px]' : `md:w-[${width}] w-[${mobileWidth}] md:h-[550px] h-[345px] mt-0`}`}

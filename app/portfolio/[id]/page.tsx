@@ -53,18 +53,15 @@ const PortfolioPage = async ({ params }: { params: { id: string } }) => {
       notFound();
     }
 
-    const portfolioItem = portfolioItems.find((item) => item._id === params.id);
+    const portfolioItem = portfolioItems
+      ? portfolioItems.find((item) => item._id === params.id)
+      : notFound();
 
     if (!portfolioItem) {
       notFound();
     }
 
-    return (
-      <>
-        <Project id={params.id} />
-        <OtherProjects />
-      </>
-    );
+    return <Project id={params.id} />;
   } catch (error) {
     console.error('Error fetching portfolio item on page:', error);
     notFound();

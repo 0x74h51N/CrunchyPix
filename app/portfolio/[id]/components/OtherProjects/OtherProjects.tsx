@@ -6,15 +6,27 @@ import useDragHandler from '@/hooks/useDragHandler';
 import ProjectSlide from './ProjectSlide';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const OtherProjects = () => {
+  const pathname = usePathname();
+  const [show, setShow] = useState(false);
   const { t } = useTranslation('portfolio');
   const portfolioItems = useSelector(
     (state: RootState) => state.portfolio.items,
   );
+  useEffect(() => {
+    const urlParts = pathname.split('/');
+    const currentChildPage = urlParts[2];
+    if (!currentChildPage || currentChildPage === '') {
+      setShow(false);
+    } else {
+      setShow(true);
+    }
+  }, [pathname]);
   const { hoverStart, hoverEnd } = useDragHandler();
-  return (
+  return show ? (
     <div className="flexCenter w-auto h-auto min-w-[100svw] overflow-hidden">
       <motion.div
         initial="hidden"
@@ -33,7 +45,7 @@ const OtherProjects = () => {
         <ProjectSlide Items={portfolioItems} />
       </motion.div>
     </div>
-  );
+  ) : null;
 };
 
 export default memo(OtherProjects);

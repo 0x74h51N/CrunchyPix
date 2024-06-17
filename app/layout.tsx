@@ -25,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata('home');
 }
 
-const Layout = async ({ children }: { children: React.ReactNode }) => {
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
   const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
     'portfolio_schema',
     'portfolio_items',
@@ -53,4 +53,4 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default Layout;
+export default RootLayout;
