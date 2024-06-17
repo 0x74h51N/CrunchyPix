@@ -53,7 +53,7 @@ const SlideModal = () => {
     return () => {
       document.removeEventListener('scroll', scrollHandler);
     };
-  }, [selectedSlide, clearSlide, closeModal]);
+  }, [selectedSlide, closeModal]);
   return (
     <AnimatePresence>
       {selectedSlide && (

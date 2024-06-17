@@ -6,8 +6,12 @@ import SubRoutes from './SubRoutes';
 import { CldImage } from 'next-cloudinary';
 import { AnimatePresence, motion } from 'framer-motion';
 import { checkIfPageExists } from './checkIfPageExist';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
+import useDragHandler from '@/hooks/useDragHandler';
 
 const AllRoutes = () => {
+  const { hoverEnd } = useDragHandler();
+  const { handleMouseLeave } = useClickableHandlers();
   const [mainPage, setMainPage] = useState('');
   const [childPage, setChildPage] = useState('');
   const pathname = usePathname();
@@ -49,6 +53,8 @@ const AllRoutes = () => {
       top: 0,
       behavior: 'smooth',
     });
+    hoverEnd();
+    handleMouseLeave();
   }, []);
   if (
     !pageExists ||

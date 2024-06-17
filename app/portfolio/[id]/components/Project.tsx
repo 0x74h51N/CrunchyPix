@@ -14,8 +14,6 @@ import ProjectInfo from './ProjectInfo';
 import CatalogueViewer from './CatalogueViewer/CatalogueViewer';
 import CustomLink from '@/components/CustomLink';
 import ImageBoxes from './ImageBoxes';
-import useClickableHandlers from '@/hooks/useClickableHandlers';
-import useDragHandler from '@/hooks/useDragHandler';
 import { ProjectPageProps, ProjectPageSchema } from '@/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import LoadingComponent from '@/components/Loading/Loading';
@@ -23,14 +21,8 @@ import LoadingComponent from '@/components/Loading/Loading';
 const Project = memo(({ id }: { id: string }) => {
   const [Item, setItem] = useState<ProjectPageProps>();
   const { i18n, t } = useTranslation('portfolio');
-  const { hoverEnd } = useDragHandler();
-  const { handleMouseLeave } = useClickableHandlers();
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const storedItems = useSelector((state: RootState) => state.portfolio.items);
-  useEffect(() => {
-    hoverEnd();
-    handleMouseLeave();
-  }, []);
 
   const { data, loading, error } = useSupabaseFetch<ProjectPageProps>(
     'portfolio_schema',
@@ -45,17 +37,15 @@ const Project = memo(({ id }: { id: string }) => {
   }
   useEffect(() => {
     if (data) {
-      console.log('data found');
       setItem(data.find((item) => item.lang === i18n.language));
-    } else {
-      console.log('no data');
     }
-  }, [i18n.language, data, Item, loading]);
+  }, [data, i18n.language]);
+
   useEffect(() => {
     if (Item?.lang === i18n.language) {
       document.title = `${pageTitle} | ${Item.title}`;
     }
-  }, [Item, pageTitle, t]);
+  }, [Item, i18n.language, pageTitle]);
 
   const storeItem = useMemo(() => {
     return Item && storedItems.find((a) => a._id === Item.project_id);

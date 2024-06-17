@@ -54,7 +54,15 @@ const TypingText = ({
     const interval = setInterval(handleTyping, typingSpeed);
 
     return () => clearInterval(interval);
-  }, [charIndex, isWriting, text, typingSpeed, isDelayed]);
+  }, [
+    charIndex,
+    isWriting,
+    text,
+    typingSpeed,
+    isDelayed,
+    loadingMode,
+    reverseDelay,
+  ]);
 
   useEffect(() => {
     const delayTimeout = setTimeout(() => {
@@ -69,7 +77,7 @@ const TypingText = ({
     if (text !== displayText && !isWriting) {
       setDisplayText(text);
     }
-  }, [text]);
+  }, [text, displayText, isWriting]);
   const content = useMemo(() => {
     if (generateSpan) {
       return (
