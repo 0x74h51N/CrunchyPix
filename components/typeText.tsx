@@ -54,15 +54,7 @@ const TypingText = ({
     const interval = setInterval(handleTyping, typingSpeed);
 
     return () => clearInterval(interval);
-  }, [
-    charIndex,
-    isWriting,
-    text,
-    typingSpeed,
-    isDelayed,
-    loadingMode,
-    reverseDelay,
-  ]);
+  }, [charIndex, isWriting, text, typingSpeed, isDelayed, loadingMode]);
 
   useEffect(() => {
     const delayTimeout = setTimeout(() => {
