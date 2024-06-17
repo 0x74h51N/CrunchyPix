@@ -69,7 +69,7 @@ const useSupabaseFetch = <T>(
     };
 
     fetchData();
-  }, [table, select, schema]);
+  }, [table, select, schema, cacheDuration]);
 
   return { data, loading, error };
 };
