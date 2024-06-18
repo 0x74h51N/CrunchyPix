@@ -53,6 +53,23 @@ const ServicesSect = () => {
     }
   }, [breakpoints]);
 
+  const slides = useMemo(
+    () =>
+      serviceSect[0].translations[0].cards?.map(
+        (section: CardsTypes, index: number) => (
+          <SwiperSlide key={index} className="w-[300px] h-auto swiper-lazy">
+            <CardMaker
+              key={index}
+              cardSections={section}
+              cardWidth={320}
+              cardHeight={520}
+              className="cursor-none"
+            />
+          </SwiperSlide>
+        ),
+      ),
+    [serviceSect],
+  );
   return (
     <div className="flex justify-center items-center w-full h-full min-h-[100svh]">
       <motion.div
@@ -84,20 +101,7 @@ const ServicesSect = () => {
             navigation={navigation}
             className="xl:w-[1030px] lg:w-[900px] md:w-[680px] sm:w-[500px] w-[340px] h-auto cursor-none"
           >
-            {serviceSect[0].translations[0].cards &&
-              serviceSect[0].translations[0].cards.map(
-                (section: CardsTypes, index: number) => (
-                  <SwiperSlide key={index} className="w-[300px] h-auto ">
-                    <CardMaker
-                      key={index}
-                      cardSections={section}
-                      cardWidth={320}
-                      cardHeight={520}
-                      className="cursor-none"
-                    />
-                  </SwiperSlide>
-                ),
-              )}
+            {slides}
           </Swiper>
         </div>
         <div className="absolute swiper-button-next-cus top-10 right-1 h-full w-[50px] bg- z-50 ">
