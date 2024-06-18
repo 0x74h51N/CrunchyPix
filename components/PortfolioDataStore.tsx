@@ -1,38 +1,36 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
 import { setPortfolioItems } from '@/store/redux/portfolioItems';
 import i18next from '@/i18n/client';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
+import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 
-interface PortfolioDataStoreProps {
-  portfolioItems: PortfolioItemProps[];
-}
-
-const PortfolioDataStore = ({ portfolioItems }: PortfolioDataStoreProps) => {
-  const [portfolioState, setPortfolioState] = useState<PortfolioItemProps[]>(
-    [],
-  );
+const PortfolioDataStore = () => {
   const language = i18next.language;
   const dispatch = useDispatch();
+  const { data, loading, error } = useSupabaseFetch<PortfolioItemProps>(
+    'portfolio_schema',
+    'portfolio_items',
+    '*, icons(*), project_overview(*)',
+    PortfolioItemSchema,
+  );
 
   useEffect(() => {
-    if (portfolioItems && portfolioItems.length > 1) {
-      setPortfolioState(portfolioItems);
+    if (data || !error || !loading) {
+      const filteredItems =
+        data &&
+        filterByLanguage({
+          items: data.sort((a, b) => a.id - b.id),
+          language,
+          localPath: 'project_overview',
+        });
+      if (filteredItems && filteredItems.length > 1) {
+        dispatch(setPortfolioItems(filteredItems));
+      }
     }
-  }, [portfolioItems]);
-
-  useEffect(() => {
-    const filteredItems = filterByLanguage({
-      items: portfolioState.sort((a, b) => a.id - b.id),
-      language,
-      localPath: 'project_overview',
-    });
-    if (filteredItems.length > 1) {
-      dispatch(setPortfolioItems(filteredItems));
-    }
-  }, [portfolioState, language, dispatch]);
+  }, [data, language, dispatch]);
 
   return null;
 };

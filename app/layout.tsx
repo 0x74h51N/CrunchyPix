@@ -26,12 +26,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const RootLayout = async ({ children }: { children: React.ReactNode }) => {
-  const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
-    'portfolio_schema',
-    'portfolio_items',
-    '*, icons(*), project_overview(*)',
-    PortfolioItemSchema,
-  );
   return (
     <html lang={getLocale()}>
       <body className="lg:overflow-x-hidden">
@@ -39,7 +33,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <AppReduxProvider>
             <CustomCursor />
             <CookieConsent />
-            <PortfolioDataStore portfolioItems={portfolioItems} />
+            <PortfolioDataStore />
             <Navbar />
             <AllRoutes />
             <Cookies />
