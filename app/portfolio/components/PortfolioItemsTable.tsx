@@ -16,13 +16,9 @@ const PortfolioItemsTable = () => {
     (state: RootState) => state.portfolio.items,
   );
 
-  const [filteredItems, setFilteredItems] = useState<PortfolioItemProps[]>([]);
+  const [filteredItems, setFilteredItems] =
+    useState<PortfolioItemProps[]>(portfolioPageItems);
 
-  useEffect(() => {
-    if (portfolioPageItems.length > 1) {
-      setFilteredItems(portfolioPageItems);
-    }
-  }, [portfolioPageItems]);
   return (
     <motion.div
       initial="hidden"
