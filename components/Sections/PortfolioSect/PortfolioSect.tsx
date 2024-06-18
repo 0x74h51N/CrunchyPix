@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import LoadingComponent from '@/components/Loading/Loading';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import TitleText from '../TitleText';
 
 const CarouselSlider = dynamic(
@@ -28,6 +28,7 @@ const PortfolioSect = () => {
   const portfolioItems = useSelector(
     (state: RootState) => state.portfolio.items,
   );
+  useEffect(() => {}, [portfolioItems]);
   return (
     portfolioItems && (
       <div className="h-auto flex flex-col items-center justify-center w-full">
