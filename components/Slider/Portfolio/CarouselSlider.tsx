@@ -9,7 +9,7 @@ import SlideMaker from './SlideMaker';
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
-const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
+const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
   const filteredSlides = slides.filter((slide) => !slide.catalogue);
   const swiperRef = useRef<SwiperCore | null>(null);
   const [activeIndex, setActiveIndex] = useState(() => {
@@ -84,6 +84,5 @@ const CarouselSlider = memo(({ slides }: { slides: PortfolioItemProps[] }) => {
       </Swiper>
     </div>
   );
-});
-CarouselSlider.displayName = 'CarouselSlider';
-export default CarouselSlider;
+};
+export default memo(CarouselSlider);

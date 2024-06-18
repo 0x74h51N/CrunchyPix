@@ -28,7 +28,6 @@ const PortfolioSect = () => {
   const portfolioItems = useSelector(
     (state: RootState) => state.portfolio.items,
   );
-  useEffect(() => {}, [portfolioItems]);
   return (
     portfolioItems && (
       <div className="h-auto flex flex-col items-center justify-center w-full">
