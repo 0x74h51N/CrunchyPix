@@ -1,6 +1,9 @@
 'use client';
 import dynamic from 'next/dynamic';
-
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 import { sectionsData } from '@/constants/sections';
 import { SectionsSchema, SectionsTypes } from '@/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';

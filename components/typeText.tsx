@@ -9,8 +9,6 @@ type TypingTextProps = {
   textClass?: string;
   delay?: number;
   generateSpan?: boolean;
-  fontSize?: string;
-  lineHeight?: string;
   loadingMode?: boolean;
   reverseDelay?: number;
 };
@@ -31,30 +29,28 @@ const TypingText = ({
   const [isDelayed, setIsDelayed] = useState(true);
   const [isWriting, setIsWriting] = useState(true);
   const [charIndex, setCharIndex] = useState(0);
-
-  useEffect(() => {
-    const handleTyping = () => {
-      if (isWriting && !isDelayed) {
-        if (charIndex < text.length) {
-          setDisplayText((prev) => prev + text[charIndex]);
-          setCharIndex((prev) => prev + 1);
-        } else {
-          setTimeout(() => setIsWriting(false), reverseDelay);
-        }
-      } else if (loadingMode && !isWriting) {
-        if (charIndex > 0) {
-          setDisplayText((prev) => prev.slice(0, -1));
-          setCharIndex((prev) => prev - 1);
-        } else {
-          setTimeout(() => setIsWriting(true), 50);
-        }
+  const handleTyping = () => {
+    if (isWriting && !isDelayed) {
+      if (charIndex < text.length) {
+        setDisplayText((prev) => prev + text[charIndex]);
+        setCharIndex((prev) => prev + 1);
+      } else {
+        setTimeout(() => setIsWriting(false), reverseDelay);
       }
-    };
-
+    } else if (loadingMode && !isWriting) {
+      if (charIndex > 0) {
+        setDisplayText((prev) => prev.slice(0, -1));
+        setCharIndex((prev) => prev - 1);
+      } else {
+        setTimeout(() => setIsWriting(true), 50);
+      }
+    }
+  };
+  useEffect(() => {
     const interval = setInterval(handleTyping, typingSpeed);
 
     return () => clearInterval(interval);
-  }, [charIndex, isWriting, text, typingSpeed, isDelayed, loadingMode]);
+  }, [typingSpeed, handleTyping]);
 
   useEffect(() => {
     const delayTimeout = setTimeout(() => {
@@ -69,7 +65,7 @@ const TypingText = ({
     if (text !== displayText && !isWriting) {
       setDisplayText(text);
     }
-  }, [text, displayText, isWriting]);
+  }, [text]);
   const content = useMemo(() => {
     if (generateSpan) {
       return (

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import LoadingComponent from '@/components/Loading/Loading';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import TitleText from '../TitleText';
 
 const CarouselSlider = dynamic(

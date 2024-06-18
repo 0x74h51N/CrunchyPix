@@ -47,7 +47,7 @@ export const SocialIcons = ({
               className="w-9 h-9 max-md:hidden"
             />
             <div
-              className={`md:hidden w-12 h-12 cursor-none pointer-events-auto sm:mt-8 mt-0 sm:ml-2 ml-0 sm:text-[40px] text-[30px]`}
+              className={`md:hidden flexCenter w-12 h-12 cursor-none pointer-events-auto sm:mt-8 mt-0 sm:ml-2 ml-0 sm:text-[40px] text-[30px]`}
               style={mobileStyle}
               key={index + ' mobile'}
             >

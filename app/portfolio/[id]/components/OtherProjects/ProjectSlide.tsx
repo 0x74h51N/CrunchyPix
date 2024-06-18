@@ -4,6 +4,7 @@ import SwiperCore from 'swiper';
 import PortfolioItem from '../../../components/PortfolioItem';
 import { useRef, useEffect, memo, useMemo } from 'react';
 import { PortfolioItemProps } from '@/schemas';
+import 'swiper/css';
 
 SwiperCore.use([Autoplay, Pagination]);
 
