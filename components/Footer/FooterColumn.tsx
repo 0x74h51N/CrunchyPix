@@ -28,7 +28,7 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
               selectedLink === link.href && link.href !== '/'
                 ? 'text-log-col'
                 : ''
-            } relative group transition-all duration-300 ease-in-out transform origin-bottom whitespace-nowrap`}
+            } relative group transition-all duration-1000 ease-in-out transform origin-bottom whitespace-nowrap`}
             onClick={() => {
               handleMouseLeave;
             }}
@@ -38,7 +38,7 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
               className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
                 selectedLink === link.href && link.href !== '/'
                   ? 'w-full'
-                  : 'w-0 transition-all duration-300 ease-in-out group-hover:w-full'
+                  : 'w-0 transition-all duration-1000 ease-in-out group-hover:w-full'
               }`}
             ></span>
           </Link>

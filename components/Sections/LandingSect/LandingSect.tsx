@@ -68,8 +68,8 @@ const LandingSect = () => {
           </div>
 
           <motion.h1
-            variants={slideIn('up', 'spring', 2, 1.5)}
-            className="font-black text-white md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px] mt-2"
+            variants={slideIn('up', 'spring', 0, 0)}
+            className="font-black text-white md:text-[55x] sm:text-[50px] xs:text-[40px] text-[30px] max-w-2xl leading-[40px] mt-2 delay-[2000ms] duration-[1000ms]"
           >
             {isTouchDevice
               ? landSect[0].translations[0].title
@@ -81,7 +81,7 @@ const LandingSect = () => {
         </div>
         <motion.div
           variants={polygonIn('down', 'spring', 2, 2.5)}
-          className={`absolute h-full w-full  pointer-events-none max-md:pb-10 pt-0 pb-0 lg:z-0 z-30`}
+          className={`absolute h-full w-full pointer-events-none max-md:pb-10 pt-0 pb-0 lg:z-0 z-30`}
         >
           <SocialIcons
             colorful={true}

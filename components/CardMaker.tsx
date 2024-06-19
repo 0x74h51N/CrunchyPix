@@ -3,6 +3,8 @@ import IconButton from './Buttons/IconButton';
 import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import { Key, memo } from 'react';
 import { CardsTypes, IconProps } from '@/schemas';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 const areEqual = (prevProps: CardMakerProps, nextProps: CardMakerProps) => {
   return (
@@ -32,8 +34,9 @@ const CardMaker = memo(
     cardWidth = 260,
     className,
   }: CardMakerProps) => {
+    const isTouch = useSelector((state: RootState) => state.isTouch.touch);
     return (
-      <ColorfulBorder>
+      <ColorfulBorder enabled={!isTouch}>
         <div
           className={`${className} flex justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}
           style={{ width: cardWidth, height: cardHeight }}

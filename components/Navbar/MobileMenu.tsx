@@ -43,14 +43,20 @@ const MobileMenu = ({
 
   return (
     <div ref={menuRef} className="flex flex-col">
-      <BurgerButton
-        color={'#FFFFFF'}
-        width={40}
-        height={40}
-        isToggled={isMenuOpen}
-        onClick={toggleMenu}
-      />
-      <div className={`mobile-menu w-full backdrop-blur mt-20`}>
+      <div
+        className={`absolute ${smallNav ? 'top-5' : 'top-10'} right-6 transition-all duration-700 ease-in-out`}
+      >
+        <BurgerButton
+          color={'#FFFFFF'}
+          width={40}
+          height={40}
+          isToggled={isMenuOpen}
+          onClick={toggleMenu}
+        />
+      </div>
+      <div
+        className={`mobile-menu w-full backdrop-blur ${smallNav ? 'mt-[74px]' : 'mt-[95px]'}`}
+      >
         {isMenuOpen && (
           <div>
             <ul className="ul">

@@ -39,7 +39,6 @@ const ServicesSect = () => {
   };
   const breakpoints = useMemo(
     () => ({
-      0: { slidesPerView: 1.1 },
       640: { slidesPerView: 1.5 },
       768: { slidesPerView: 2 },
       1024: { slidesPerView: 2.5 },
@@ -57,9 +56,9 @@ const ServicesSect = () => {
     () =>
       serviceSect[0].translations[0].cards?.map(
         (section: CardsTypes, index: number) => (
-          <SwiperSlide key={index} className="w-[300px] h-auto swiper-lazy">
+          <SwiperSlide key={index} className="w-[320px] h-[520px] swiper-lazy">
             <CardMaker
-              key={index}
+              key={index + ' card'}
               cardSections={section}
               cardWidth={320}
               cardHeight={520}
@@ -77,9 +76,9 @@ const ServicesSect = () => {
         whileInView="show"
         viewport={{ once: true, amount: 'some' }}
         variants={polygonIn('screen', 'spring', 0.7, 2.2)}
-        className="flex flex-col items-start h-full w-auto md:p-16 xs:p-6 p-4 z-10 mt-14 rounded-lg 2xl:ml-36 bg-neutral-900 shadow-lg relative"
+        className="flex flex-col items-start h-full w-auto md:p-16 xs:p-6 xs:py-10 p-4 z-10 mt-14 rounded-lg 2xl:ml-36 bg-neutral-900 shadow-lg relative"
       >
-        <div className="max-sm:ml-5">
+        <div className="max-sm:ml-5 md:mb-3">
           <TitleText sectName="service_sect" />
         </div>
         <div

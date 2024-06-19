@@ -4,6 +4,8 @@ import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 import { SectionsTypes } from '@/schemas';
 import useFilteredData from '@/hooks/useFilteredData';
+import { motion } from 'framer-motion';
+import { fadeIn, textVariant } from '@/utils/motion';
 
 const getClassNames = (
   sectName: string,
@@ -45,8 +47,15 @@ const TitleText = ({ sectName }: { sectName: string }) => {
     return null;
   }
   return (
-    <>
-      <h1>
+    <motion.div
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 'some' }}
+    >
+      <motion.h1
+        variants={fadeIn('up', 'spring', 0, 0)}
+        className="duration-1000 delay-500"
+      >
         <div className={h2Class}>
           {isTouchDevice
             ? section[0].translations[0].intro
@@ -64,12 +73,17 @@ const TitleText = ({ sectName }: { sectName: string }) => {
                 colorType: 'vibrantColors',
               })}
         </div>
-      </h1>
+      </motion.h1>
       {section[0].translations[0].description &&
         section[0].translations[0].description !== 'NULL' && (
-          <p className={pClass}>{section[0].translations[0].description}</p>
+          <motion.p
+            variants={textVariant(0)}
+            className={`${pClass} duration-[1500ms] delay-700`}
+          >
+            {section[0].translations[0].description}
+          </motion.p>
         )}
-    </>
+    </motion.div>
   );
 };
 

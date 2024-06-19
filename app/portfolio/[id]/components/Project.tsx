@@ -138,7 +138,7 @@ const Project = memo(({ id }: { id: string }) => {
                   whileInView="show"
                   viewport={{ once: true, amount: 'some' }}
                   variants={slideIn('right', 'spring', 1.5, 1.5)}
-                  className="lg:absolute right-0 lg:top-0"
+                  className="lg:absolute right-0 lg:top-0 flex self-center "
                 >
                   {Item.project_card && (
                     <ProjectInfo
