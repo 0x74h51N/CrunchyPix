@@ -19,7 +19,7 @@ export const SocialIcons = ({
   const totalIcons = iconPack.length;
   const angleIncrement = Math.PI / 2 / totalIcons;
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
+    <div className="relative w-full h-full flexCenter max-md:flex-row-reverse">
       {iconPack.map((icon: IconProps, index: number) => {
         const angle = index * angleIncrement;
         const x = iconRadius * Math.cos(angle);

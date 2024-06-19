@@ -34,9 +34,9 @@ const Navbar = () => {
   });
   const navClassName = useMemo(() => {
     let baseClass =
-      'fixed flex w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-1000 ease-in-out rounded-b-xl md:px-10 px-5';
+      'fixed flex w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5';
     if (isMenuOpen) {
-      return `${baseClass} navbar h-[280px] py-5 bg-opacity-0 ${smallNav ? 'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black' : ''}`;
+      return `${baseClass} navbar py-5 ${smallNav ? 'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black' : 'h-[280px]  bg-opacity-0'}`;
     } else if (smallNav) {
       return `${baseClass} bg-opacity-100 h-[70px] py-2 shadow-md shadow-black`;
     } else {
@@ -76,19 +76,17 @@ const Navbar = () => {
           height: '1px',
         }}
       />
-      <div className="flex justify-center min-w-[100svw] md:mt-0 lg:mt-0 xl:mt-0">
+      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0">
         <nav className={navClassName}>
           <Link
             href="/"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="flex flex-row items-center justify-center pointer-events-auto cursor-none"
+            className="flexCenter absolute top-2 pointer-events-auto cursor-none"
           >
             <CrunchyLogo smallNav={smallNav} />
           </Link>
-          <div
-            className={`flex flex-center items-start ml-auto transition-all duration-500 ease-in-out`}
-          >
+          <div className={`ml-auto transition-all duration-500 ease-in-out`}>
             <div className={`lg:hidden h-full max-h-[70px] flex items-center`}>
               <MobileMenu
                 smallNav={smallNav}
@@ -97,11 +95,11 @@ const Navbar = () => {
               />
             </div>
 
-            <div className="hidden lg:flex flexCenter h-full">
+            <div className="max-lg:hidden flexCenter h-full">
               <ul
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className={`lg:flex hidden max-lg:text-base max-xl:gap-6 max-lg:gap-5 ${
+                className={`lg:flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 ${
                   smallNav
                     ? 'text-md font-medium gap-8'
                     : 'text-lg font-semibold'

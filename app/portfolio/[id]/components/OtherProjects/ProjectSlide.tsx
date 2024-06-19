@@ -5,6 +5,7 @@ import PortfolioItem from '../../../components/PortfolioItem';
 import { useRef, useEffect, memo, useMemo } from 'react';
 import { PortfolioItemProps } from '@/schemas';
 import 'swiper/css';
+import 'swiper/css/pagination';
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -60,7 +61,7 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
     >
       {Items.map((item) => (
         <SwiperSlide
-          className="w-auto lg:max-w-[380px] max-w-[300px] h-auto"
+          className="lg:max-w-[380px] max-w-[300px] h-[320px]"
           key={`${item._id}-slide`}
         >
           <PortfolioItem

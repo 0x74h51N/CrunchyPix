@@ -25,7 +25,7 @@ const MainRoutes = ({
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none lg:mt-[175px] md:mt-[140px] mt-[120px]"
+      className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none lg:mt-[175px] md:mt-[140px] mt-[120px] line-clamp-1"
       style={{ textTransform: 'capitalize' }}
     >
       {childPage ? (

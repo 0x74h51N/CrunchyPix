@@ -49,7 +49,7 @@ const PortfolioItem = memo(
     };
     return (
       <div
-        className={`relative flex flex-col items-center justify-between rounded-xl overflow-hidden ${isSlide ? 'h-auto mt-[25px]' : `md:w-[${width}] w-[${mobileWidth}] md:h-[550px] h-[345px] mt-0`}`}
+        className={`relative flex flex-col items-center justify-between rounded-xl overflow-hidden ${isSlide ? 'md:h-[250px] mt-[25px]' : `md:w-[${width}] w-[${mobileWidth}] md:h-[550px] h-[345px] mt-0`}`}
       >
         <motion.div
           initial="hidden"
@@ -65,7 +65,7 @@ const PortfolioItem = memo(
             fetchPriority="high"
             width={900}
             height={900}
-            className={`object-cover object-center rounded-xl md:h-full ${isSlide ? 'md:min-h-[250px]' : 'md:min-h-[450px]'} w-full h-[280px]`}
+            className={`object-cover object-center rounded-xl  ${isSlide ? 'md:h-[250px]' : 'md:h-full md:min-h-[450px]'} w-full h-[280px]`}
           />
 
           <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
@@ -99,8 +99,8 @@ const PortfolioItem = memo(
         <div
           className={`absolute bottom-0 rounded-b-xl z-10 w-full flex justify-start ${
             isSlide
-              ? 'left-0 bg-black bg-opacity-50  h-auto'
-              : 'md:-bottom-5 bottom-0 md:h-32 h-22'
+              ? 'left-0 bg-black bg-opacity-50 h-auto'
+              : 'md:-bottom-4 -bottom-2 md:h-32 h-22'
           }`}
         >
           {project_overview && (

@@ -28,7 +28,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         src={imageTop}
         alt={id}
         onLoad={() => setLoading(false)}
-        className={`w-full h-full object-cover max-md:object-contain max-md:scale-150 transition-opacity ease-in-out duration-300 `}
+        className={`w-full h-full object-cover  ${imageTop.includes('kyk') ? '' : 'max-md:object-contain max-md:scale-150'}  transition-opacity ease-in-out duration-300 `}
         style={{ opacity: loading ? 0 : 100 }}
       />
       {loading && (
