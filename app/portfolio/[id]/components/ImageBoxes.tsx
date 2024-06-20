@@ -14,27 +14,26 @@ const ImageBoxes = ({ _id }: { _id: string }) => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 'all' }}
-          variants={fadeIn('down', 'spring', isLargeScreen ? index : 0.5, 1)}
+          variants={fadeIn('down', 'spring', isLargeScreen ? index : 0.3, 0)}
           key={index}
+          className="duration-1000 overflow-hidden flexCenter"
         >
-          <div className="overflow-hidden flexCenter">
-            <CldImage
-              width={1200}
-              height={1200}
-              src={`crunchypix/portfolioItems/boxes/${_id.replaceAll('_', '').toLowerCase() + image}`}
-              alt={_id}
-              quality="auto"
-              fetchPriority="auto"
-              key={index}
-              className="flex max-w-[400px] w-full h-auto object-contain hover:scale-[1.4] transition-all duration-[5000ms] out-expo"
-              style={{
-                backgroundImage:
-                  _id == 'kyk_electric'
-                    ? 'linear-gradient(to bottom right,  #e2e8f0, #d6d3d1 90%)'
-                    : 'linear-gradient(to bottom right,  #171717, #1e293b 90%)',
-              }}
-            />
-          </div>
+          <CldImage
+            width={1200}
+            height={1200}
+            src={`crunchypix/portfolioItems/boxes/${_id.replaceAll('_', '').toLowerCase() + image}`}
+            alt={_id}
+            quality="auto"
+            fetchPriority="auto"
+            key={index + ' image'}
+            className="flex max-w-[400px] w-full h-auto object-contain hover:scale-[1.4] transition-all duration-[5000ms] out-expo"
+            style={{
+              backgroundImage:
+                _id == 'kyk_electric'
+                  ? 'linear-gradient(to bottom right,  #e2e8f0, #d6d3d1 90%)'
+                  : 'linear-gradient(to bottom right,  #171717, #1e293b 90%)',
+            }}
+          />
         </motion.div>
       ))}
     </div>

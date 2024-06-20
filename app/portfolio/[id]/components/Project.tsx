@@ -67,8 +67,8 @@ const Project = memo(({ id }: { id: string }) => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 'some' }}
-            variants={polygonIn('screen', 'easeInOut', 0.7, 0.8)}
-            className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] md:py-20 py-14 px-8"
+            variants={polygonIn('screen', 'easeInOut', 0, 0)}
+            className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] md:py-20 py-14 px-8 delay-700 duration-1000"
           >
             <TopImage id={Item.project_id} icons={iconsArray} />
             <motion.div
@@ -82,7 +82,10 @@ const Project = memo(({ id }: { id: string }) => {
             >
               <div className="lg:w-2/3 w-full lg:pr-[120px] ">
                 {Item.title2 && (
-                  <motion.h2 variants={textVariant(1)} className="h1 half mb-4">
+                  <motion.h2
+                    variants={textVariant(0)}
+                    className="h1 half mb-4 delay-[1000ms] duration-[1500ms]"
+                  >
                     {isTouchDevice
                       ? Item.title2
                       : generateSpans({
@@ -93,8 +96,8 @@ const Project = memo(({ id }: { id: string }) => {
                 )}
                 {Item.description && (
                   <motion.div
-                    variants={textVariant(1.5)}
-                    className="relative flex flex-row"
+                    variants={textVariant(0)}
+                    className="relative flex flex-row delay-[1200ms] duration-[1500ms]"
                   >
                     <span className="absolute h2 bold cool top-0 left-0 bg-log-col -rotate-6 hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-3 py-1">
                       {Item.description.charAt(0)}
@@ -109,8 +112,8 @@ const Project = memo(({ id }: { id: string }) => {
                 )}
                 {Item.description2 && (
                   <motion.div
-                    variants={textVariant(2)}
-                    className="p lg:mt-8 mt-4"
+                    variants={textVariant(0)}
+                    className="p lg:mt-8 mt-4 delay-[1500ms] duration-[1500ms]"
                   >
                     <Markdown
                       remarkPlugins={[breaks]}
@@ -137,8 +140,8 @@ const Project = memo(({ id }: { id: string }) => {
                   initial="hidden"
                   whileInView="show"
                   viewport={{ once: true, amount: 'some' }}
-                  variants={slideIn('right', 'spring', 1.5, 1.5)}
-                  className="lg:absolute right-0 lg:top-0 flex self-center "
+                  variants={slideIn('right', 'spring', 0, 0)}
+                  className="lg:absolute right-0 lg:top-0 flex self-center delay-[1500ms] duration-[1500ms]"
                 >
                   {Item.project_card && (
                     <ProjectInfo
@@ -155,8 +158,8 @@ const Project = memo(({ id }: { id: string }) => {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 'some' }}
-                variants={fadeIn('up', 'spring', 1.5, 2)}
-                className="w-full my-14 cursor-none"
+                variants={fadeIn('up', 'spring', 0, 0)}
+                className="w-full my-14 cursor-none delay-[1500ms] duration-[1500ms]"
               >
                 <CatalogueViewer Item={storeItem.catalogue} />
               </motion.div>
@@ -170,14 +173,14 @@ const Project = memo(({ id }: { id: string }) => {
                 viewport={{ once: true }}
               >
                 <motion.h3
-                  variants={textVariant(1.5)}
-                  className="h3 self-start"
+                  variants={polygonIn('up', 'spring', 0, 0)}
+                  className="h3 self-start delay-[1500ms] duration-[1500ms]"
                 >
                   {t('page.techTitle')}
                 </motion.h3>
                 <motion.div
-                  variants={polygonIn('down', 'spring', 1, 2.2)}
-                  className="p mt-4 w-full "
+                  variants={textVariant(0)}
+                  className="p mt-4 w-full delay-[1000ms] duration-[1500ms]"
                 >
                   <Markdown remarkPlugins={[breaks]}>
                     {Item.techDescription.replace(/\\n/g, '\n')}
