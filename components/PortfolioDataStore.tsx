@@ -9,7 +9,6 @@ import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { useTranslation } from 'react-i18next';
 
 const PortfolioDataStore = () => {
-  const language = i18next.language;
   const dispatch = useDispatch();
   const { i18n } = useTranslation();
   const { data, loading, error } = useSupabaseFetch<PortfolioItemProps>(
@@ -19,27 +18,36 @@ const PortfolioDataStore = () => {
     PortfolioItemSchema,
   );
 
-  useEffect(() => {
-    if (data || !error || !loading) {
-      const filteredItems =
-        data &&
-        filterByLanguage({
-          items: data.sort((a, b) => a.id - b.id),
-          language,
-          localPath: 'project_overview',
-        });
+  const updatePortfolioItems = (language: string) => {
+    if (data && !loading && !error) {
+      const filteredItems = filterByLanguage({
+        items: data.sort((a, b) => a.id - b.id),
+        language,
+        localPath: 'project_overview',
+      });
 
-      if (filteredItems && filteredItems.length > 1) {
-        if (i18n.isInitialized) {
-          dispatch(setPortfolioItems(filteredItems));
-        } else {
-          i18n.on('initialized', () => {
-            dispatch(setPortfolioItems(filteredItems));
-          });
-        }
+      if (filteredItems && filteredItems.length > 0) {
+        dispatch(setPortfolioItems(filteredItems));
       }
     }
-  }, [data, language, dispatch, error, loading, i18n]);
+  };
+
+  useEffect(() => {
+    const handleLanguageChange = (lng: string) => {
+      updatePortfolioItems(lng);
+    };
+
+    i18n.on('languageChanged', handleLanguageChange);
+
+    return () => {
+      i18n.off('languageChanged', handleLanguageChange);
+    };
+  }, [data, loading, error, dispatch, i18n]);
+
+  useEffect(() => {
+    updatePortfolioItems(i18next.language);
+  }, [data, loading, error, i18next.language, dispatch]);
+
   return <></>;
 };
 
