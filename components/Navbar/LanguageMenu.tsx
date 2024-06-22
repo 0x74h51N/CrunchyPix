@@ -38,6 +38,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
   ];
   return (
     <Dropdown
+      hoverMode={false}
       classes={classes}
       defaultValue={defaultValue}
       options={languages}
