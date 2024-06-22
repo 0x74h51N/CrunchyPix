@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PortfolioItemProps } from '@/schemas';
-import i18next from 'i18next';
 import Dropdown from '@/components/Buttons/Dropdown';
 
 type FilterItemsProps = {

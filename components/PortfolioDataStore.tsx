@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
 import { setPortfolioItems } from '@/store/redux/portfolioItems';
@@ -18,19 +18,22 @@ const PortfolioDataStore = () => {
     PortfolioItemSchema,
   );
 
-  const updatePortfolioItems = (language: string) => {
-    if (data && !loading && !error) {
-      const filteredItems = filterByLanguage({
-        items: data.sort((a, b) => a.id - b.id),
-        language,
-        localPath: 'project_overview',
-      });
+  const updatePortfolioItems = useCallback(
+    (language: string) => {
+      if (data && !loading && !error) {
+        const filteredItems = filterByLanguage({
+          items: data.sort((a, b) => a.id - b.id),
+          language,
+          localPath: 'project_overview',
+        });
 
-      if (filteredItems && filteredItems.length > 0) {
-        dispatch(setPortfolioItems(filteredItems));
+        if (filteredItems && filteredItems.length > 0) {
+          dispatch(setPortfolioItems(filteredItems));
+        }
       }
-    }
-  };
+    },
+    [data, loading, error, dispatch],
+  );
 
   useEffect(() => {
     const handleLanguageChange = (lng: string) => {
@@ -42,11 +45,11 @@ const PortfolioDataStore = () => {
     return () => {
       i18n.off('languageChanged', handleLanguageChange);
     };
-  }, [data, loading, error, dispatch, i18n]);
+  }, [i18n, updatePortfolioItems]);
 
   useEffect(() => {
     updatePortfolioItems(i18next.language);
-  }, [data, loading, error, i18next.language, dispatch]);
+  }, [data, loading, error, i18next.language, updatePortfolioItems]);
 
   return <></>;
 };
