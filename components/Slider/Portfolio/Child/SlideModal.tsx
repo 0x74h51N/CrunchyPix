@@ -1,6 +1,6 @@
 import { RootState } from '@/store';
 import { clearSlide } from '@/store/redux/selectedSlide';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import IconButton from '@/components/Buttons/IconButton';
 import Label from '@/components/Labels';
@@ -23,12 +23,12 @@ const SlideModal = () => {
   const id =
     selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, '');
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     dispatch(clearSlide());
     setTimeout(() => {
       setImageLoading(true);
     }, 300);
-  };
+  }, [dispatch]);
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.5 },

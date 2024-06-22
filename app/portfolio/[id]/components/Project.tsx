@@ -49,7 +49,7 @@ const Project = memo(({ id }: { id: string }) => {
 
   const storeItem = useMemo(() => {
     return Item && storedItems.find((a) => a._id === Item.project_id);
-  }, [Item]);
+  }, [Item, storedItems]);
 
   const iconsArray = useMemo(
     () => (storeItem && storeItem.icons ? Object.values(storeItem.icons) : []),
