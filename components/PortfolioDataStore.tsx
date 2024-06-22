@@ -6,10 +6,12 @@ import { setPortfolioItems } from '@/store/redux/portfolioItems';
 import i18next from '@/i18n/client';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import { useTranslation } from 'react-i18next';
 
 const PortfolioDataStore = () => {
   const language = i18next.language;
   const dispatch = useDispatch();
+  const { i18n } = useTranslation();
   const { data, loading, error } = useSupabaseFetch<PortfolioItemProps>(
     'portfolio_schema',
     'portfolio_items',
@@ -26,13 +28,18 @@ const PortfolioDataStore = () => {
           language,
           localPath: 'project_overview',
         });
+
       if (filteredItems && filteredItems.length > 1) {
-        dispatch(setPortfolioItems(filteredItems));
+        if (i18n.isInitialized) {
+          dispatch(setPortfolioItems(filteredItems));
+        } else {
+          i18n.on('initialized', () => {
+            dispatch(setPortfolioItems(filteredItems));
+          });
+        }
       }
     }
-  }, [data, language, dispatch]);
-
-  return null;
+  }, [data, language, dispatch, error, loading, i18n]);
 };
 
 export default PortfolioDataStore;
