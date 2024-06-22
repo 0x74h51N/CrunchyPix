@@ -40,6 +40,7 @@ const PortfolioDataStore = () => {
       }
     }
   }, [data, language, dispatch, error, loading, i18n]);
+  return <></>;
 };
 
 export default PortfolioDataStore;
