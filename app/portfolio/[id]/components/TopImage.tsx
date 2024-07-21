@@ -24,7 +24,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
       <CldImage
         fill
         fetchPriority="high"
-        format="avif"
+        format={imageTop.includes('bsctokens') ? undefined : 'avif'}
         src={imageTop}
         alt={id}
         onLoad={() => setLoading(false)}
