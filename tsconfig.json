@@ -29,8 +29,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "utils/motion.js",
-    "components/ParticlesBack/Config/particles-config.js"
+    "utils/motion.js"
   ],
   "exclude": ["node_modules"]
 }
