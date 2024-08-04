@@ -22,8 +22,10 @@
     "title": "Benimle İletişime Geç",
     "description": "Bizimle iletişime geçin. Buradayız, dinlemeye, işbirliği yapmaya ve fikirlerinizi gerçeğe dönüştürmeye hazırız.",
     "placeName": "Tam Adınız",
-    "placeMessage": "İletişim formu aktif değildir",
-    "button": "Gönder"
+    "placeMessage": "Bir şeyler yaz!",
+    "button": "Gönder",
+    "submit": "Mesajınız başarıyla gönderildi, bizimle iletişime geçtiğiniz için teşekkürler!",
+    "submitFail": "Mesajınız gönderilemedi, lütfen daha sonra tekrar deneyin."
   },
   "footer": {
     "title": "Web İnovasyonun Gücünü Ortaya Çıkar!",

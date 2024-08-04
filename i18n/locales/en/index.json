@@ -23,8 +23,10 @@
     "title": "Contact With Me",
     "description": "Get in touch with us. We're here to listen, collaborate, and turn your ideas into reality.",
     "placeName": "Full Name",
-    "placeMessage": "Contact form is not active",
-    "button": "Submit"
+    "placeMessage": "Tell me something!",
+    "button": "Submit",
+    "submit": "Your message send successfully, thanks for reaching out!",
+    "submitFail": "Your message couldn't send succesfully, please try again later."
   },
   "footer": {
     "title": "Unleash the Power of Web Innovation",
