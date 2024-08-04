@@ -1,5 +1,6 @@
 'use client';
 
+import useClickableHandlers from '@/hooks/useClickableHandlers';
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -26,7 +27,7 @@ export default function Captcha(
 ) {
   const { t } = useTranslation(['index']);
   const { sitekey, errorCallback, expiredCallback, ...rest } = props;
-
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const widgetID = useRef<string>();
   const [isError, setIsError] = useState(false);
 
@@ -73,19 +74,30 @@ export default function Captcha(
   }, []);
 
   return (
-    <div className="absolute -bottom-[75px] gap-1 flex overflow-hidden">
-      <div id="captcha-container"></div>
-      {isError && (
-        <div
-          className="h-[65px] flexCenter flex-col  hover:shadow-form rounded-md bg-neutral-500 bg-opacity-70 py-2 px-3 text-sm font-semibold text-red-700 outline-none hover:bg-opacity-100 active:bg-log-col cursor-none"
-          onClick={retry}
-        >
-          {t('contact.captchaError')}
-          <span className="text-neutral-200 text-sm font-semibold">
-            {t('contact.captchaRetry')}
-          </span>
-        </div>
-      )}
+    <div className="absolute -bottom-[75px] gap-1 flex overflow-hidden md:pointer-events-none">
+      <div className="relative" id="captcha-container">
+        <a
+          className="absolute bottom-2 right-14 h-5 w-9 pointer-events-auto cursor-none"
+          href="https://www.cloudflare.com/privacypolicy/"
+          target="_blank"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+        <a
+          className="absolute bottom-2 right-3 h-5 w-9 pointer-events-auto cursor-none"
+          href="https://www.cloudflare.com/website-terms/"
+          target="_blank"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+        <a
+          className="absolute bottom-8 right-3 h-8 w-20 pointer-events-auto cursor-none"
+          href="https://www.cloudflare.com/products/turnstile/?utm_source=turnstile&utm_campaign=widget"
+          target="_blank"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+      </div>
       <Script
         src={scriptLink}
         onLoad={onLoad}

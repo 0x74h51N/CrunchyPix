@@ -6,9 +6,8 @@ import FooterColumn from './FooterColumn';
 import Contact from '../Contact';
 import { useTranslation } from '@/hooks/useTranslation';
 import { IconProps, IconSchema } from '@/schemas';
-import { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import LoadingComponent from '../Loading/Loading';
 
 const Footer = () => {
   const { t } = useTranslation('index');
@@ -28,7 +27,7 @@ const Footer = () => {
   return loading || !filteredData ? (
     <></>
   ) : (
-    <div className="relative flex justify-center footer py-24 bg-neutral-50 shadow-inner shadow-black">
+    <div className="relative flex justify-center w-full footerCust py-24 bg-neutral-50 shadow-inner shadow-black">
       <div className="overflow-hidden">
         <div className="flex flexCenter py-24 pb-26 lg:px-14 px-8 bg-neutral-950">
           <div className="flex lg:flexBetween flex-col w-full h-auto z-10 max-w-[1300px]">

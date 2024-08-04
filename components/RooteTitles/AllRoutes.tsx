@@ -67,19 +67,20 @@ const AllRoutes = () => {
     return null;
   } else {
     return (
-      <div
-        className="flex flex-col justify-center items-center w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative"
-        style={{
-          background:
-            mainPage !== 'policies'
-              ? 'radial-gradient(circle, rgba(0,0,0,0.7), rgba(0,0,0,1))'
-              : 'transparent',
-          boxShadow:
-            mainPage !== 'policies'
-              ? 'inset 0 0 10px 5px rgba(0, 0, 0, 0.8)'
-              : '',
-        }}
-      >
+      <div className="flexCenter flex-col w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative">
+        <div
+          className="absolute inset-0  w-full z-50"
+          style={{
+            background:
+              mainPage !== 'policies'
+                ? 'radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.9))'
+                : 'transparent',
+            boxShadow:
+              mainPage !== 'policies'
+                ? 'inset 0 0 10px 5px rgba(0, 0, 0, 0.8)'
+                : '',
+          }}
+        ></div>
         <AnimatePresence>
           <motion.div
             key={mainPage}
@@ -87,29 +88,31 @@ const AllRoutes = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="absolute inset-0 z-[-10]"
+            className="absolute inset-0"
           >
             {mainPage !== 'policies' && (
               <CldImage
-                src={`crunchypix/${mainPage}.jpg`}
+                src={`crunchypix/${mainPage}`}
                 alt={mainPage}
                 fill
                 priority
-                sizes="100svw"
+                sizes="100vw"
                 quality="auto"
                 format="avif"
-                className={`object-cover h-[700px] `}
+                className="object-cover h-[700px]"
                 onLoad={() => setLoading(false)}
                 style={{
-                  opacity: loading ? 0 : 100,
-                  transition: 'ease-in-out 300ms',
+                  opacity: loading ? 0 : 1,
+                  transition: 'opacity 300ms ease-in-out',
                 }}
               />
             )}
           </motion.div>
         </AnimatePresence>
-        <MainRoutes childPage={childPage} mainPage={mainPage} />
-        <SubRoutes childPage={childPage} mainPage={mainPage} />
+        <div className="z-50 flex-col flexCenter">
+          <MainRoutes childPage={childPage} mainPage={mainPage} />
+          <SubRoutes childPage={childPage} mainPage={mainPage} />
+        </div>
       </div>
     );
   }
