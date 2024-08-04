@@ -1,4 +1,4 @@
-import { ColorfulHoverType } from '@/app/common.types';
+import { ColorfulHoverType } from '@/types/common.types';
 import { getRandomColor } from '@/utils/getRandomColor';
 import { useAnimation, motion } from 'framer-motion';
 import { useState, useEffect, useCallback } from 'react';

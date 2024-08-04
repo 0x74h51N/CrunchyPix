@@ -25,7 +25,9 @@
     "placeMessage": "Bir şeyler yaz!",
     "button": "Gönder",
     "submit": "Mesajınız başarıyla gönderildi, bizimle iletişime geçtiğiniz için teşekkürler!",
-    "submitFail": "Mesajınız gönderilemedi, lütfen daha sonra tekrar deneyin."
+    "submitFail": "Mesajınız gönderilemedi, lütfen daha sonra tekrar deneyin.",
+    "captchaError": "Capthca Yüklenmedi",
+    "captchaRetry": "Yeniden Dene"
   },
   "footer": {
     "title": "Web İnovasyonun Gücünü Ortaya Çıkar!",

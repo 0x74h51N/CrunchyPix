@@ -26,7 +26,9 @@
     "placeMessage": "Tell me something!",
     "button": "Submit",
     "submit": "Your message send successfully, thanks for reaching out!",
-    "submitFail": "Your message couldn't send succesfully, please try again later."
+    "submitFail": "Your message couldn't send succesfully, please try again later.",
+    "captchaError": "Capthca Load Error",
+    "captchaRetry": "Retry"
   },
   "footer": {
     "title": "Unleash the Power of Web Innovation",

@@ -1,5 +1,5 @@
 'use client';
-import { slide } from '@/app/common.types';
+import { slide } from '@/types/common.types';
 import React, { memo, useMemo } from 'react';
 import FullScreenSlider from '../../Slider/FullScreenSlider/FullScreenSlider';
 import { motion } from 'framer-motion';

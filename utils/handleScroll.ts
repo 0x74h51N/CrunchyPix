@@ -1,4 +1,4 @@
-import { HandleScroll } from '@/app/common.types';
+import { HandleScroll } from '@/types/common.types';
 import { scrollToSection } from './scrollToSection';
 
 export const handleScroll = ({

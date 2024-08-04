@@ -2,6 +2,12 @@
 
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+
+/**
+ * Coppied from https://gist.github.com/suhaotian/c2851d1938da31d349e8cfe65c97c47e
+ * Thanks to the author.
+ */
 
 const scriptLink =
   'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
@@ -18,6 +24,7 @@ export default function Captcha(
     expiredCallback?: TurnstileRenderParameters['expired-callback'];
   },
 ) {
+  const { t } = useTranslation(['index']);
   const { sitekey, errorCallback, expiredCallback, ...rest } = props;
 
   const widgetID = useRef<string>();
@@ -56,40 +63,34 @@ export default function Captcha(
   }
 
   useEffect(() => {
-    if (!widgetID.current && (window as any).turnstile) {
+    if (!widgetID.current && window.turnstile) {
       renderWidget();
     }
     return () => {
-      (window as any).turnstile?.remove(widgetID.current || '');
+      window.turnstile?.remove(widgetID.current || '');
       widgetID.current = undefined;
     };
   }, []);
 
-  if (isError) {
-    return (
-      <div
-        className="text-red-500 shadow-lg absolute -bottom-10"
-        onClick={retry}
-      >
-        Load captcha error
-        <span className="text-neutral-200 cursor-pointer inline-block text-sm font-semibold ml-2">
-          Retry
-        </span>
-      </div>
-    );
-  }
-
   return (
-    <>
-      <div
-        className="absolute -bottom-20 !cursor-none"
-        id="captcha-container"
-      ></div>
+    <div className="absolute -bottom-[75px] gap-1 flex overflow-hidden">
+      <div id="captcha-container"></div>
+      {isError && (
+        <div
+          className="h-[65px] flexCenter flex-col  hover:shadow-form rounded-md bg-neutral-500 bg-opacity-70 py-2 px-3 text-sm font-semibold text-red-700 outline-none hover:bg-opacity-100 active:bg-log-col cursor-none"
+          onClick={retry}
+        >
+          {t('contact.captchaError')}
+          <span className="text-neutral-200 text-sm font-semibold">
+            {t('contact.captchaRetry')}
+          </span>
+        </div>
+      )}
       <Script
         src={scriptLink}
         onLoad={onLoad}
         onError={(e) => onError('load error: ' + e.message)}
       />
-    </>
+    </div>
   );
 }

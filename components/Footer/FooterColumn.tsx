@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { Links } from '@/app/common.types';
+import { Links } from '@/types/common.types';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { memo } from 'react';
 

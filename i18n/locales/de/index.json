@@ -25,7 +25,9 @@
     "placeMessage": "Lass von dir hören!",
     "button": "Senden",
     "submit": "Ihre Nachricht wurde erfolgreich gesendet, danke, dass Sie uns kontaktiert haben!",
-    "submitFail": "Ihre Nachricht konnte nicht gesendet werden, bitte versuchen Sie es später erneut."
+    "submitFail": "Ihre Nachricht konnte nicht gesendet werden, bitte versuchen Sie es später erneut.",
+    "captchaError": "Captcha-Ladefehler",
+    "captchaRetry": "Erneut versuchen"
   },
   "footer": {
     "title": "Entfesseln Sie die Kraft der Web Innovation",

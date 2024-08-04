@@ -26,7 +26,7 @@ export const sendEmail = async (
     from: process.env.EMAIL_USER,
     to: email,
     subject: 'Thank you for contacting us!',
-    text: `Dear ${name},\n\nThank you for reaching out! We have received your message and will get back to you soon.\n\nBest regards,\nYour Company Name`,
+    text: `Dear ${name},\n\n...`,
   };
   await transporter.sendMail(mailOptionsToSelf);
   await transporter.sendMail(mailOptionsToUser);
