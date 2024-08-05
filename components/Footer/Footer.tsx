@@ -3,7 +3,7 @@ import Image from 'next/image';
 import IconButton from '../Buttons/IconButton';
 import { footerLinks } from '@/constants';
 import FooterColumn from './FooterColumn';
-import Contact from '../Contact';
+import Contact from './Contact';
 import { useTranslation } from '@/hooks/useTranslation';
 import { IconProps, IconSchema } from '@/schemas';
 import { useMemo } from 'react';

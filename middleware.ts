@@ -55,7 +55,7 @@ export default async function middleware(req: NextRequest) {
       );
     }
 
-    const secret = process.env.TURNSLITE_SECRET_KEY;
+    const secret = process.env.TURNSTILE_SECRET_KEY;
     if (!secret) {
       return NextResponse.json(
         { message: 'Turnstile secret key missing' },
