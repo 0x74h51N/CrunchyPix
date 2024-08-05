@@ -73,7 +73,7 @@ const AllRoutes = () => {
           style={{
             background:
               mainPage !== 'policies'
-                ? 'radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.9))'
+                ? 'radial-gradient(circle, rgba(0,0,0,0.6), rgba(0,0,0,0.9))'
                 : 'transparent',
             boxShadow:
               mainPage !== 'policies'

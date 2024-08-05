@@ -1,9 +1,9 @@
 {
   "name": "crunchypix",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "private": false,
   "description": "A project showcasing 0x74h51N skills and portfolio.",
-  "author": "Tahsin O. aka 0x74h51N <mr.tahsin@windowslive.com>",
+  "author": "Tahsin Onemli aka 0x74h51N <mr.tahsin@windowslive.com>",
   "repository": {
     "type": "git",
     "url": "https://github.com/0x74h51N/CrunchyPix"
@@ -41,7 +41,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "redux": "^5.0.1",
     "remark-breaks": "^4.0.0",
-    "swiper": "^11.1.9",
+    "swiper": "11.1.8",
     "zod": "^3.23.8"
   },
   "devDependencies": {
