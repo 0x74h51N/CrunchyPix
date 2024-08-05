@@ -1,7 +1,9 @@
 'use server';
+import { createTranslation } from '@/i18n/server';
 import { readFile } from 'fs';
 import nodemailer from 'nodemailer';
 import path from 'path';
+
 import { promisify } from 'util';
 
 const readFileAsync = promisify(readFile);
@@ -11,6 +13,7 @@ export const sendEmail = async (
   email: string,
   message: string,
 ) => {
+  const { t } = await createTranslation('index');
   const templatePath = path.join(
     process.cwd(),
     'services',
@@ -25,19 +28,32 @@ export const sendEmail = async (
   }
 
   htmlTemplate = htmlTemplate
-    .replace('{name}', name)
-    .replace('{message}', message);
+    .replace('{{mailHello}}', t('mail.mailHello'))
+    .replace('{{name}}', name)
+    .replace('{{mailTitle}}', t('mail.mailTitle'))
+    .replace('{{mailText}}', t('mail.mailText'))
+    .replace('{{endText}}', t('mail.endText'))
+    .replace('{{contactUs}}', t('mail.contactUs'))
+    .replace('{{crunchyBotDescription}}', t('mail.crunchyBotDescription'))
+    .replace('{{footerTitle}}', t('footer.title'))
+    .replace('{{footerDescription}}', t('footer.description'))
+    .replace('{{footerText}}', t('mail.footerText'))
+    .replace('{{footerText2}}', t('mail.footerText2'))
+    .replace('{{footerPrivacy}}', t('mail.footerPrivacy'))
+    .replace('{{footerKVKK}}', t('mail.footerKVKK'));
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'email-smtp.eu-north-1.amazonaws.com',
+    port: 587,
+    secure: false,
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: process.env.AWS_SMTP_USER,
+      pass: process.env.AWS_SMTP_PASS,
     },
   });
 
   const mailOptionsToSelf = {
-    from: process.env.EMAIL_USER,
+    from: 'info@crunchypix.com',
     to: process.env.EMAIL_USER,
     subject: `New message from ${name}`,
     text: `You have received a new message from: ${email}\n\n${message}`,
@@ -45,9 +61,9 @@ export const sendEmail = async (
   };
 
   const mailOptionsToUser = {
-    from: process.env.EMAIL_USER,
+    from: 'info@crunchypix.com',
     to: email,
-    subject: 'Thank you for contacting us!',
+    subject: t('mail.subject'),
     html: htmlTemplate,
   };
 

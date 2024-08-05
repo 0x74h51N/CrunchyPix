@@ -25,7 +25,6 @@ export default function Captcha(
     expiredCallback?: TurnstileRenderParameters['expired-callback'];
   },
 ) {
-  const { t } = useTranslation(['index']);
   const { sitekey, errorCallback, expiredCallback, ...rest } = props;
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const widgetID = useRef<string>();
@@ -98,6 +97,7 @@ export default function Captcha(
           onMouseLeave={handleMouseLeave}
         />
       </div>
+      {isError && <div className="text-error mt-2">{isError}</div>}
       <Script
         src={scriptLink}
         onLoad={onLoad}

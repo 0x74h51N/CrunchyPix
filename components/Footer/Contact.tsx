@@ -45,10 +45,10 @@ const Contact = () => {
       console.log('0x74h51N - Message send successfully');
       alert(t('contact.submit'));
       reset();
-      setCaptchaKey(Date.now());
     } else {
       alert(t('contact.submitFail'));
     }
+    setCaptchaKey(Date.now());
     setePending(false);
     setTurnstileToken('');
   };
