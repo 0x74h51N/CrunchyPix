@@ -69,7 +69,7 @@ export const sendEmail = async (
   try {
     await transporter.sendMail(mailOptionsToSelf);
     await transporter.sendMail(mailOptionsToUser);
-    await notifySNS(`New message from ${name} (${email}): ${message}`);
+    await notifySNS(name, email, message);
   } catch (error) {
     console.error('Error sending mail: ', error);
     throw new Error('Failed to send email.');
