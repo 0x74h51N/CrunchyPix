@@ -42,7 +42,7 @@ export const sendEmail = async (
     .replace('{{footerKVKK}}', t('mail.footerKVKK'));
 
   const transporter = nodemailer.createTransport({
-    host: 'smtp.zoho.com',
+    host: 'smtppro.zoho.com',
     port: 465,
     secure: true,
     auth: {
