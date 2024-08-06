@@ -3,7 +3,7 @@ import { createTranslation } from '@/i18n/server';
 import { readFile } from 'fs';
 import nodemailer from 'nodemailer';
 import path from 'path';
-
+import { notifySNS } from './sns';
 import { promisify } from 'util';
 
 const readFileAsync = promisify(readFile);
@@ -66,7 +66,12 @@ export const sendEmail = async (
     subject: t('mail.subject'),
     html: htmlTemplate,
   };
-
-  await transporter.sendMail(mailOptionsToSelf);
-  await transporter.sendMail(mailOptionsToUser);
+  try {
+    await transporter.sendMail(mailOptionsToSelf);
+    await transporter.sendMail(mailOptionsToUser);
+    await notifySNS(`New message from ${name} (${email}): ${message}`);
+  } catch (error) {
+    console.error('Error sending mail: ', error);
+    throw new Error('Failed to send email.');
+  }
 };
