@@ -53,15 +53,15 @@ export const sendEmail = async (
   });
 
   const mailOptionsToSelf = {
-    from: 'info@crunchypix.com',
-    to: process.env.EMAIL_USER,
+    from: 'no-reply@crunchypix.com',
+    to: 'info@crunchypix.com',
     subject: `New message from ${name}`,
     text: `You have received a new message from: ${email}\n\n${message}`,
     replyTo: email,
   };
 
   const mailOptionsToUser = {
-    from: 'info@crunchypix.com',
+    from: 'no-reply@crunchypix.com',
     to: email,
     subject: t('mail.subject'),
     html: htmlTemplate,
