@@ -3,7 +3,6 @@ import { createTranslation } from '@/i18n/server';
 import { readFile } from 'fs';
 import nodemailer from 'nodemailer';
 import path from 'path';
-import { notifySNS } from './sns';
 import { promisify } from 'util';
 
 const readFileAsync = promisify(readFile);
@@ -43,12 +42,12 @@ export const sendEmail = async (
     .replace('{{footerKVKK}}', t('mail.footerKVKK'));
 
   const transporter = nodemailer.createTransport({
-    host: 'email-smtp.eu-north-1.amazonaws.com',
-    port: 587,
-    secure: false,
+    host: 'smtp.zoho.com',
+    port: 465,
+    secure: true,
     auth: {
-      user: process.env.AWS_SMTP_USER,
-      pass: process.env.AWS_SMTP_PASS,
+      user: process.env.ZOHO_SMTP_USER,
+      pass: process.env.ZOHO_SMTP_PASS,
     },
   });
 
@@ -69,7 +68,6 @@ export const sendEmail = async (
   try {
     await transporter.sendMail(mailOptionsToSelf);
     await transporter.sendMail(mailOptionsToUser);
-    await notifySNS(name, email, message);
   } catch (error) {
     console.error('Error sending mail: ', error);
     throw new Error('Failed to send email.');

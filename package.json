@@ -20,7 +20,6 @@
     "@supabase/supabase-js": "^2.44.4",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.1",
-    "aws-sdk": "^2.1668.0",
     "cookies-next": "^4.1.1",
     "country-flag-icons": "^1.5.9",
     "daisyui": "^4.12.10",
