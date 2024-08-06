@@ -66,7 +66,16 @@ const Footer = () => {
         </div>
         <div className="absolute bottom-0 left-0 flex justify-center sm:px-16 px-2 w-full">
           <div className="text-neutral-900 flex flex-row justify-between items-center footer_copyright w-full max-w-[1300px]">
-            <p>@ 2024 - Copyleft - Tahsin Önemli aka 0x74h51N</p>
+            <p className="flex items-center">
+              <span>@ 2024 ·</span>
+              <img
+                src="https://res.cloudinary.com/dkwz95xft/image/upload/v1722866557/Copyleft.svg.png"
+                width={12}
+                height={12}
+                className="object-contain self-center pt-0.5 mx-1"
+              />
+              <span>Copyleft · Tahsin Önemli · 0x74h51N</span>
+            </p>
             <div className="flex flex-row gap-3 text-neutral-900 items-center justify-center h-auto">
               {filteredData.map((icon: IconProps, index: number) => (
                 <span

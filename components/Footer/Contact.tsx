@@ -90,7 +90,7 @@ const Contact = () => {
           <textarea
             rows={4}
             placeholder={t('contact.placeMessage')}
-            className={`contactBox h-20 max-h-40 ${
+            className={`contactBox h-20 min-h-[80px] max-h-40 ${
               errors.message ? 'focus:border-red-700' : 'focus:border-log-col'
             } focus:shadow-md`}
             {...register('message', { required: true })}
