@@ -1,4 +1,4 @@
-import { SectionData } from '@/app/common.types';
+import { SectionData } from '@/types/common.types';
 import CodeSect from '@/components/Sections/CodeSect/CodeSect';
 import DesignSect from '@/components/Sections/DesignSect/DesignSect';
 import IntroductionSect from '@/components/Sections/IntroductionSect/IntroductionSect';

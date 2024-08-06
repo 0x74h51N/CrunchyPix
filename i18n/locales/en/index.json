@@ -23,8 +23,12 @@
     "title": "Contact With Me",
     "description": "Get in touch with us. We're here to listen, collaborate, and turn your ideas into reality.",
     "placeName": "Full Name",
-    "placeMessage": "Contact form is not active",
-    "button": "Submit"
+    "placeMessage": "Tell me something!",
+    "button": "Submit",
+    "submit": "Your message send successfully, thanks for reaching out!",
+    "submitFail": "Your message couldn't send succesfully, please try again later.",
+    "captchaError": "Capthca Load Error",
+    "captchaRetry": "Retry"
   },
   "footer": {
     "title": "Unleash the Power of Web Innovation",
@@ -42,5 +46,18 @@
     "description": "The page you are looking for could not be found. You are being redirected to the homepage...",
     "info": "Smoking also kills. No animals were harmed during the making and publication of this site. CrunchyPix does not endorse, recommend, or encourage the consumption of cigarettes."
   },
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "mail": {
+    "subject": "Thank you for reaching out to us!",
+    "mailHello": "Hello",
+    "mailTitle": "We received your message",
+    "mailText": "Thank you for reaching out to us by filling out our contact form.<br /><br />We will get back to you as soon as possible 😊.",
+    "contactUs": "If you have any questions or anything to add, <br />please do not hesitate to contact us:",
+    "endText": "We wish you Crunchy days...",
+    "crunchyBotDescription": "Support representative optimizing your digital experiences <br />and enhancing customer satisfaction",
+    "footerText": "At CrunchyPix, we place great importance on your privacy and the protection of your personal data. Your contact information and other personal data will only be used to communicate with you and improve our services. You can find detailed information about the processing and protection of your personal data from the relevant links.",
+    "footerText2": "All necessary measures are taken to ensure the security and confidentiality of your personal data.",
+    "footerPrivacy": "Privacy Policy",
+    "footerKVKK": "KVKK Clarification Text"
+  }
 }

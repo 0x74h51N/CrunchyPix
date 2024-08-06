@@ -1,5 +1,5 @@
 import React from 'react';
-import { slide } from '@/app/common.types';
+import { slide } from '@/types/common.types';
 import { CldImage } from 'next-cloudinary';
 
 const SlideCreator: React.FC<slide> = ({ imageUrl = '' }) => {

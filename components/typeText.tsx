@@ -1,7 +1,7 @@
 'use client';
 import React, { memo, useEffect, useMemo, useState } from 'react';
 import { generateSpans } from './GenerateSpans';
-import { generateSpanType } from '@/app/common.types';
+import { generateSpanType } from '@/types/common.types';
 
 type TypingTextProps = {
   text: string;

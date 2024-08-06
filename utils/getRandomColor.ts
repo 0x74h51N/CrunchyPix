@@ -1,6 +1,6 @@
-import { ColorType } from "@/app/common.types";
-import { randomColor } from "./randomColors";
-import { colorPacks } from "@/constants/colorPacks";
+import { ColorType } from '@/types/common.types';
+import { randomColor } from './randomColors';
+import { colorPacks } from '@/constants/colorPacks';
 
 type getRandomColorType = {
   colorType: ColorType;
@@ -13,12 +13,12 @@ export const getRandomColor = ({
 }: getRandomColorType) => {
   const selectedColorPack = colorPacks[colorType] || [];
   const cachedColors = Array.from({ length: randomCount }, () =>
-    randomColor(randomCount)
+    randomColor(randomCount),
   );
-  const colorArray = colorType === "random" ? cachedColors : selectedColorPack;
+  const colorArray = colorType === 'random' ? cachedColors : selectedColorPack;
 
   if (colorArray.length === 0) {
-    return "";
+    return '';
   }
 
   const randomIndex = Math.floor(Math.random() * colorArray.length);

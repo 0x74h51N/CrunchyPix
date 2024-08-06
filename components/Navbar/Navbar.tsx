@@ -34,7 +34,7 @@ const Navbar = () => {
   });
   const navClassName = useMemo(() => {
     let baseClass =
-      'fixed flex w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] min-w-[100svw] top-0 z-50 gap-4 bg-cool-gray-900 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5';
+      'fixed flex w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] min-w-[100svw] top-0 z-[450] gap-4 bg-cool-gray-900 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5';
     if (isMenuOpen) {
       return `${baseClass} navbar py-5 ${smallNav ? 'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black' : 'h-[280px]  bg-opacity-0'}`;
     } else if (smallNav) {

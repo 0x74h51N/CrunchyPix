@@ -17,12 +17,15 @@ import ImageBoxes from './ImageBoxes';
 import { ProjectPageProps, ProjectPageSchema } from '@/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import LoadingComponent from '@/components/Loading/Loading';
+import useDragHandler from '@/hooks/useDragHandler';
 
 const Project = memo(({ id }: { id: string }) => {
   const [Item, setItem] = useState<ProjectPageProps>();
   const { i18n, t } = useTranslation('portfolio');
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const storedItems = useSelector((state: RootState) => state.portfolio.items);
+
+  const { hoverEnd } = useDragHandler();
 
   const { data, loading, error } = useSupabaseFetch<ProjectPageProps>(
     'portfolio_schema',
@@ -36,6 +39,7 @@ const Project = memo(({ id }: { id: string }) => {
     console.log(error);
   }
   useEffect(() => {
+    hoverEnd();
     if (data) {
       setItem(data.find((item) => item.lang === i18n.language));
     }

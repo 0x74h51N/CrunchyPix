@@ -10,7 +10,7 @@ const languageMappings: { [key: string]: Locales } = {
   'tr-TR': 'tr',
 };
 
-export default function middleware(req: NextRequest) {
+export default async function middleware(req: NextRequest) {
   let lng: Locales = FALLBACK_LOCALE;
   const cookieLang = req.cookies.get('preferred_language')?.value as Locales;
 
@@ -42,6 +42,46 @@ export default function middleware(req: NextRequest) {
     const lngInp = acceptLang.split(',')[0].split('-')[0];
     if (languageMappings[lngInp]) {
       lng = languageMappings[lngInp];
+    }
+  }
+
+  const url = req.nextUrl.clone();
+  if (url.pathname === '/api/contact') {
+    const token = req.headers.get('x-turnstile-token');
+    if (!token) {
+      return NextResponse.json(
+        { message: 'Turnstile token missing' },
+        { status: 400 },
+      );
+    }
+
+    const secret = process.env.TURNSTILE_SECRET_KEY;
+    if (!secret) {
+      return NextResponse.json(
+        { message: 'Turnstile secret key missing' },
+        { status: 500 },
+      );
+    }
+    const verificationUrl = `https://challenges.cloudflare.com/turnstile/v0/siteverify`;
+
+    const response = await fetch(verificationUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${encodeURIComponent(secret)}&response=${encodeURIComponent(token)}`,
+    });
+
+    const verification = await response.json();
+
+    if (!verification.success) {
+      return NextResponse.json(
+        {
+          message: 'Turnstile verification failed',
+          errors: verification['error-codes'],
+        },
+        { status: 400 },
+      );
     }
   }
 

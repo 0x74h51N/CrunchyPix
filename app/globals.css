@@ -150,7 +150,7 @@ body {
 }
 
 /* Footer */
-.footer {
+.footerCust {
   @apply flex-col w-full gap-5;
 }
 

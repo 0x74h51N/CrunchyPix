@@ -22,8 +22,12 @@
     "title": "Kontakt mit mir aufnehmen",
     "description": "Treten Sie mit uns in Kontakt. Wir sind hier, um zuzuhören, zusammenzuarbeiten und Ihre Ideen in die Realität umzusetzen.",
     "placeName": "Vollständiger Name",
-    "placeMessage": "Dieses Kontakt Formular ist nicht aktiv",
-    "button": "Senden"
+    "placeMessage": "Lass von dir hören!",
+    "button": "Senden",
+    "submit": "Ihre Nachricht wurde erfolgreich gesendet, danke, dass Sie uns kontaktiert haben!",
+    "submitFail": "Ihre Nachricht konnte nicht gesendet werden, bitte versuchen Sie es später erneut.",
+    "captchaError": "Captcha-Ladefehler",
+    "captchaRetry": "Erneut versuchen"
   },
   "footer": {
     "title": "Entfesseln Sie die Kraft der Web Innovation",
@@ -42,5 +46,18 @@
     "info": "Rauchen kann auch tödlich sein. Bei der Erstellung und Veröffentlichung dieser Seite wurden keine Tiere verletzt. CrunchyPix unterstützt, empfiehlt oder fördert nicht den Konsum von Zigaretten."
   },
 
-  "loading": "Laden..."
+  "loading": "Laden...",
+  "mail": {
+    "subject": "Vielen Dank, dass Sie uns kontaktiert haben!",
+    "mailHello": "Hallo",
+    "mailTitle": "Wir haben Ihre Nachricht erhalten",
+    "mailText": "Vielen Dank, dass Sie uns über unser Kontaktformular kontaktiert haben.<br /><br />Wir werden uns so schnell wie möglich bei Ihnen melden 😊.",
+    "contactUs": "Wenn Sie Fragen haben oder etwas hinzufügen möchten, <br />zögern Sie bitte nicht, uns zu kontaktieren:",
+    "endText": "Wir wünschen Ihnen knusprige Tage...",
+    "crunchyBotDescription": "Support-Mitarbeiter, der Ihre digitalen Erfahrungen optimiert <br />und die Kundenzufriedenheit verbessert",
+    "footerText": "Bei CrunchyPix legen wir großen Wert auf Ihre Privatsphäre und den Schutz Ihrer persönlichen Daten. Ihre Kontaktinformationen und andere persönliche Daten werden nur verwendet, um mit Ihnen zu kommunizieren und unsere Dienstleistungen zu verbessern. Detaillierte Informationen zur Verarbeitung und zum Schutz Ihrer persönlichen Daten finden Sie in den entsprechenden Links.",
+    "footerText2": "Alle notwendigen Maßnahmen werden ergriffen, um die Sicherheit und Vertraulichkeit Ihrer persönlichen Daten zu gewährleisten.",
+    "footerPrivacy": "Datenschutzrichtlinie",
+    "footerKVKK": "KVKK Aufklärungstext"
+  }
 }

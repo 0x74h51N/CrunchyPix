@@ -58,7 +58,7 @@ const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
     <div
       onMouseEnter={hoverStart}
       onMouseLeave={hoverEnd}
-      className="h-auto overflow-visible z-50"
+      className="overflow-visible z-50"
     >
       <Swiper
         onInit={(swiper) => (swiperRef.current = swiper)}
@@ -81,7 +81,7 @@ const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
           pauseOnMouseEnter: true,
         }}
         speed={1500}
-        className="h-auto cursor-none "
+        className="cursor-none "
       >
         {carouselSlides}
       </Swiper>

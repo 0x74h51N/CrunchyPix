@@ -3,12 +3,11 @@ import Image from 'next/image';
 import IconButton from '../Buttons/IconButton';
 import { footerLinks } from '@/constants';
 import FooterColumn from './FooterColumn';
-import Contact from '../Contact';
+import Contact from './Contact';
 import { useTranslation } from '@/hooks/useTranslation';
 import { IconProps, IconSchema } from '@/schemas';
-import { memo, useMemo } from 'react';
+import { useMemo } from 'react';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import LoadingComponent from '../Loading/Loading';
 
 const Footer = () => {
   const { t } = useTranslation('index');
@@ -28,7 +27,7 @@ const Footer = () => {
   return loading || !filteredData ? (
     <></>
   ) : (
-    <div className="relative flex justify-center footer py-24 bg-neutral-50 shadow-inner shadow-black">
+    <div className="relative flex justify-center w-full footerCust py-24 bg-neutral-50 shadow-inner shadow-black">
       <div className="overflow-hidden">
         <div className="flex flexCenter py-24 pb-26 lg:px-14 px-8 bg-neutral-950">
           <div className="flex lg:flexBetween flex-col w-full h-auto z-10 max-w-[1300px]">
@@ -67,7 +66,16 @@ const Footer = () => {
         </div>
         <div className="absolute bottom-0 left-0 flex justify-center sm:px-16 px-2 w-full">
           <div className="text-neutral-900 flex flex-row justify-between items-center footer_copyright w-full max-w-[1300px]">
-            <p>@ 2023 Tahsin Ö. aka 0x74h51N</p>
+            <p className="flex items-center">
+              <span>@ 2024 ·</span>
+              <img
+                src="https://res.cloudinary.com/dkwz95xft/image/upload/v1722866557/Copyleft.svg.png"
+                width={12}
+                height={12}
+                className="object-contain self-center pt-0.5 mx-1"
+              />
+              <span>Copyleft · Tahsin Önemli · 0x74h51N</span>
+            </p>
             <div className="flex flex-row gap-3 text-neutral-900 items-center justify-center h-auto">
               {filteredData.map((icon: IconProps, index: number) => (
                 <span

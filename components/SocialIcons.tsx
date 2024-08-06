@@ -1,5 +1,5 @@
 import { ColorfulHover } from './ColorfulHover';
-import { ColorfulHoverType } from '@/app/common.types';
+import { ColorfulHoverType } from '@/types/common.types';
 import { IconProps } from '@/schemas';
 import IconButton from './Buttons/IconButton';
 import { Fragment } from 'react';
