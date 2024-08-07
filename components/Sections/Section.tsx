@@ -105,7 +105,7 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
               src={section.background}
               alt={section.background}
               format="avif"
-              width={4000}
+              width={3000}
               height={2160}
               quality={100}
               fetchPriority="high"
@@ -146,7 +146,7 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
                 alt={section.topImage}
                 format="avif"
                 quality={100}
-                width={4000}
+                width={3000}
                 height={2160}
                 fetchPriority="high"
                 priority

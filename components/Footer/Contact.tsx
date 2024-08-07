@@ -77,12 +77,12 @@ const Contact = () => {
             {...register('name', {
               required: t('contact.data-tips.required'),
               pattern: {
-                value: /^[A-Za-z\s-']+$/,
+                value: /^[\p{L}\p{N}\s\-']+$/u,
                 message: t('contact.data-tips.invalidChars'),
               },
               maxLength: {
-                value: 35,
-                message: `${t('contact.data-tips.tooLong')} 35`,
+                value: 25,
+                message: `${t('contact.data-tips.tooLong')} 25`,
               },
             })}
           />
@@ -129,7 +129,7 @@ const Contact = () => {
                 message: `${t('contact.data-tips.tooLong')} 500`,
               },
               pattern: {
-                value: /^[A-Za-z0-9\s.,?!'"\-()]+$/,
+                value: /^[\p{L}\p{N}\s.,?!'"-()]+$/u,
                 message: t('contact.data-tips.invalidChars'),
               },
             })}
