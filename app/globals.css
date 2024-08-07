@@ -455,5 +455,5 @@ body {
 }
 
 .input-error-tooltip {
-  @apply tooltip tooltip-top tooltip-error before:left-24 after:left-14 !flex;
+  @apply tooltip tooltip-top tooltip-error md:before:left-24 before:left-32 md:after:left-14 after:left-24 !flex;
 }

@@ -149,7 +149,7 @@ const Contact = () => {
             })}
           />
           <button
-            disabled={pending || (errors.turnstileToken ? true : false)}
+            disabled={pending}
             data-tip={
               errors.turnstileToken ? errors.turnstileToken.message : ''
             }
