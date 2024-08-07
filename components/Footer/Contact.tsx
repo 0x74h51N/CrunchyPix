@@ -77,7 +77,7 @@ const Contact = () => {
             {...register('name', {
               required: t('contact.data-tips.required'),
               pattern: {
-                value: /^[\p{L}\p{N}\s\-']+$/u,
+                value: /^[\p{L}\s\-']+$/u,
                 message: t('contact.data-tips.invalidChars'),
               },
               maxLength: {
