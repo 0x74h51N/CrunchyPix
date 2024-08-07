@@ -453,3 +453,7 @@ body {
 .sect-p {
   @apply text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full xl:leading-[30px] text-left;
 }
+
+.input-error-tooltip {
+  @apply tooltip tooltip-top tooltip-error md:before:left-24 before:left-32 md:after:left-14 after:left-24 !flex;
+}
