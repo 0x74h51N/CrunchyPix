@@ -26,8 +26,13 @@
     "button": "Senden",
     "submit": "Ihre Nachricht wurde erfolgreich gesendet, danke, dass Sie uns kontaktiert haben!",
     "submitFail": "Ihre Nachricht konnte nicht gesendet werden, bitte versuchen Sie es später erneut.",
-    "captchaError": "Captcha-Ladefehler",
-    "captchaRetry": "Erneut versuchen"
+    "data-tips": {
+      "required": "Eingabe ist erforderlich",
+      "invalidChars": "Ungültige Zeichen",
+      "invalidMail": "Ungültiges E-Mail-Format",
+      "tooLong": "Zu lang. Maximale erlaubte Zeichen:",
+      "chaptcha": "CAPTCHA konnte nicht verifiziert werden"
+    }
   },
   "footer": {
     "title": "Entfesseln Sie die Kraft der Web Innovation",
@@ -52,7 +57,7 @@
     "mailHello": "Hallo",
     "mailTitle": "Wir haben Ihre Nachricht erhalten",
     "mailText": "Vielen Dank, dass Sie uns über unser Kontaktformular kontaktiert haben.<br /><br />Wir werden uns so schnell wie möglich bei Ihnen melden 😊.",
-    "contactUs": "Wenn Sie Fragen haben oder etwas hinzufügen möchten, <br />zögern Sie bitte nicht, uns zu kontaktieren:",
+    "contactUs": "Wenn Sie Fragen haben oder etwas hinzufügen möchten, <br />zögern Sie bitte nicht, uns zu kontaktieren.<br />info@crunchypix.com",
     "endText": "Wir wünschen Ihnen knusprige Tage...",
     "crunchyBotDescription": "Support-Mitarbeiter, der Ihre digitalen Erfahrungen optimiert <br />und die Kundenzufriedenheit verbessert",
     "footerText": "Bei CrunchyPix legen wir großen Wert auf Ihre Privatsphäre und den Schutz Ihrer persönlichen Daten. Ihre Kontaktinformationen und andere persönliche Daten werden nur verwendet, um mit Ihnen zu kommunizieren und unsere Dienstleistungen zu verbessern. Detaillierte Informationen zur Verarbeitung und zum Schutz Ihrer persönlichen Daten finden Sie in den entsprechenden Links.",
