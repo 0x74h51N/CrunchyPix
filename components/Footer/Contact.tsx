@@ -4,13 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 import Captcha from './Captcha';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
-
-export type FormData = {
-  name: string;
-  email: string;
-  message: string;
-  turnstileToken: string;
-};
+import { sendEmail } from '@/app/actions/sendMailAction';
+import { ContactTypes } from '@/schemas';
 
 const Contact = () => {
   const {
@@ -19,43 +14,42 @@ const Contact = () => {
     formState: { errors },
     setValue,
     reset,
-  } = useForm<FormData>();
+  } = useForm<ContactTypes>();
   const [turnstileToken, setTurnstileToken] = useState('');
-  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
-  const [pending, setePending] = useState(false);
+  const [pending, setPending] = useState(false);
   const { t } = useTranslation(['index']);
   const [captchaKey, setCaptchaKey] = useState(Date.now());
-  const onSubmit = async (data: FormData) => {
-    setePending(true);
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+
+  const onSubmit = async (data: ContactTypes) => {
+    setPending(true);
     if (!turnstileToken) {
       alert('Please complete the CAPTCHA challenge.');
-      setePending(false);
+      setPending(false);
       return;
     }
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-turnstile-token': turnstileToken,
-      },
-      body: JSON.stringify(data),
-    });
 
-    if (response.ok) {
-      console.log('0x74h51N - Message send successfully');
-      alert(t('contact.submit'));
-      reset();
-    } else {
+    try {
+      const response = await sendEmail(data);
+      if (response.success) {
+        alert(t('contact.submit'));
+        reset();
+      } else {
+        alert(t('contact.submitFail'));
+      }
+    } catch (error) {
+      console.error('Error sending email:', error);
       alert(t('contact.submitFail'));
     }
+
     setCaptchaKey(Date.now());
-    setePending(false);
+    setPending(false);
     setTurnstileToken('');
   };
+
   useEffect(() => {
     setValue('turnstileToken', turnstileToken);
   }, [turnstileToken, setValue]);
-
   return (
     <>
       <h1 className="text-start text-stone-300 text-2xl font-medium mb-2">
