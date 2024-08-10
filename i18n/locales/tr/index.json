@@ -50,18 +50,5 @@
     "description": "Aradığınız sayfa bulunamadı. Ana sayfaya yönlendiriliyorsunuz...",
     "info": "Ayrıca sigara içmek de sizi öldürür, bu sitenin yapımı ve yayını esnasında hiç bir hayvana zarar verilmemiştir. CrunchyPix sigara tüketimini onaylamaz, tavsiye etmez, özendirmez."
   },
-  "loading": "Yükleniyor...",
-  "mail": {
-    "subject": "Bize ulaştığınız için teşekkürler!",
-    "mailHello": "Merhaba",
-    "mailTitle": "Mesajını aldık",
-    "mailText": " İletişim formumuzu doldurarak bize ulaştığın için teşekkür ederiz.<br /><br />En kısa sürede sana geri dönüş yapacağız 😊.",
-    "contactUs": " Herhangi bir sorunuz veya ekleyeceğiniz bir şey varsa, <br />lütfen bizimle iletişime geçmekten çekinme.<br />info@crunchypix.com",
-    "endText": "Crunchy günler dileriz...",
-    "crunchyBotDescription": "Dijital deneyimlerini optimize eden ve <br />müşteri memnuniyetini artıran destek temsilcisi",
-    "footerText": "CrunchyPix olarak gizliliğinize ve kişisel verilerinizin korunmasına büyük önem veriyoruz. İletişim bilgileriniz ve diğer kişisel verileriniz, yalnızca sizinle iletişime geçmek ve hizmetlerimizi geliştirmek amacıyla kullanılacaktır. Kişisel verilerinizin işlenmesi ve korunması ile ilgili detaylı bilgilere ilgili bağlantılardan ulaşabilirsiniz.",
-    "footerText2": "Kişisel verilerinizin güvenliği ve gizliliği için gerekli tüm tedbirler alınmaktadır.",
-    "footerPrivacy": "Gizlilik Politikası",
-    "footerKVKK": "KVKK Aydınlatma Metni"
-  }
+  "loading": "Yükleniyor..."
 }
