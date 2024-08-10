@@ -65,7 +65,7 @@ export async function sendEmail(data: ContactTypes) {
 
   const tokenData = await tokenResponse.json();
   const accessToken = tokenData.access_token;
-  console.log(tokenData);
+
   if (!accessToken) {
     throw new Error('Failed to obtain access token');
   }
@@ -75,9 +75,12 @@ export async function sendEmail(data: ContactTypes) {
     console.log('List key env variable errors');
     throw new Error('Missing list key environment variable');
   }
+  const contactInfo = encodeURIComponent(
+    `{First Name:${sanitizedName},Contact Email:${sanitizedEmail}}`,
+  );
 
   const subscribeResponse = await fetch(
-    `https://campaigns.zoho.com/api/v1.1/json/listsubscribe?resfmt=JSON&listkey=${listKey}&contactinfo=${encodeURIComponent(`{First Name:${sanitizedName},Contact Email:${sanitizedEmail}}`)}`,
+    `https://campaigns.zoho.com/api/v1.1/json/listsubscribe?resfmt=JSON&listkey=${listKey}&contactinfo=${contactInfo}`,
     {
       method: 'POST',
       headers: {
