@@ -1,7 +1,7 @@
 'use server';
 import { ContactSchema, ContactTypes } from '@/schemas';
 import nodemailer from 'nodemailer';
-import { sanitize } from 'dompurify';
+import xss from 'xss';
 
 export async function sendEmail(data: ContactTypes) {
   const parsed = ContactSchema.safeParse(data);
@@ -32,9 +32,9 @@ export async function sendEmail(data: ContactTypes) {
     throw new Error('Invalid CAPTCHA');
   }
 
-  const sanitizedEmail = sanitize(email);
-  const sanitizedMessage = sanitize(message);
-  const sanitizedName = sanitize(name);
+  const sanitizedEmail = xss(email);
+  const sanitizedMessage = xss(message);
+  const sanitizedName = xss(name);
 
   const refreshToken = process.env.ZOHO_REFRESH_TOKEN;
   const clientId = process.env.ZOHO_CLIENT_ID;
