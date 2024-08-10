@@ -59,12 +59,13 @@ export async function sendEmail(data: ContactTypes) {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: params,
+      next: { revalidate: 3600 },
     },
   );
 
   const tokenData = await tokenResponse.json();
   const accessToken = tokenData.access_token;
-  console.log(tokenResponse);
+  console.log(tokenData);
   if (!accessToken) {
     throw new Error('Failed to obtain access token');
   }
@@ -87,9 +88,14 @@ export async function sendEmail(data: ContactTypes) {
   );
 
   const subscribeData = await subscribeResponse.json();
+  if (!subscribeResponse.ok) {
+    throw new Error(JSON.stringify(subscribeData));
+  }
 
   if (subscribeData.code !== '0') {
-    throw new Error('Failed to subscribe user to list');
+    throw new Error(
+      `Failed to subscribe user to list: ${JSON.stringify(subscribeData)}`,
+    );
   }
 
   const transporter = nodemailer.createTransport({
