@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { PortfolioItemProps } from '@/schemas';
 import Dropdown from '@/components/Buttons/Dropdown';
+import { Option } from '@/types/common.types';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];
@@ -15,7 +16,6 @@ const FilterItems = ({
   const { t } = useTranslation('portfolio');
   const [sortedItems, setSortedItems] = useState<PortfolioItemProps[]>([]);
   const [searchParam, setSearchParam] = useState('');
-  const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSortOption] = useState('');
   useEffect(() => {
     setSearchParam('');
@@ -41,70 +41,69 @@ const FilterItems = ({
     setFilteredItems(sortedItems);
   }, [sortedItems, setFilteredItems]);
 
-  const handleSortChange = (sortOption: string) => {
-    setSortOption(sortOption);
-    setDropdownOpen(false);
-    if (sortOption.includes('new')) {
-      const dateSorted = [...sortedItems].sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        if (!dateA || !dateB) {
-          return 0;
+  useEffect(() => {
+    const handleSortChange = (sortOption: string) => {
+      setSortOption(sortOption);
+      if (sortOption.includes('new')) {
+        const dateSorted = [...sortedItems].sort((a, b) => {
+          const dateA = new Date(a.date);
+          const dateB = new Date(b.date);
+          if (!dateA || !dateB) {
+            return 0;
+          }
+          return dateB.getTime() - dateA.getTime();
+        });
+        if (sortOption === 'new_to_old') {
+          setSortedItems(dateSorted);
+        } else if (sortOption === 'old_to_new') {
+          const rev = dateSorted.reverse();
+          setSortedItems(rev);
         }
-        return dateB.getTime() - dateA.getTime();
-      });
-      if (sortOption === 'new_to_old') {
-        setSortedItems(dateSorted);
-      } else if (sortOption === 'old_to_new') {
-        const rev = dateSorted.reverse();
-        setSortedItems(rev);
+      } else if (sortOption.includes('alphabetically')) {
+        const alphaSort = [...sortedItems].sort((a, b) => {
+          const aTitle = a.project_overview?.[0]?.title ?? '';
+          const bTitle = b.project_overview?.[0]?.title ?? '';
+          return aTitle.replace('_', '').localeCompare(bTitle);
+        });
+        if (sortOption === 'alphabetically_a-z') {
+          setSortedItems(alphaSort);
+        } else {
+          const aplhRev = alphaSort.reverse();
+          setSortedItems(aplhRev);
+        }
       }
-    } else if (sortOption.includes('alphabetically')) {
-      const alphaSort = [...sortedItems].sort((a, b) => {
-        const aTitle = a.project_overview?.[0]?.title ?? '';
-        const bTitle = b.project_overview?.[0]?.title ?? '';
-        return aTitle.replace('_', '').localeCompare(bTitle);
-      });
-      if (sortOption === 'alphabetically_a-z') {
-        setSortedItems(alphaSort);
-      } else {
-        const aplhRev = alphaSort.reverse();
-        setSortedItems(aplhRev);
-      }
-    }
-  };
-
-  type option = {
-    label: string;
-    value: string | React.ReactNode;
-  };
+    };
+    handleSortChange(selectedOption);
+  }, [selectedOption]);
 
   const optionsObj = t('sort.options', { returnObjects: true }) as {
     [key: string]: string;
   };
   const options = Object.entries(optionsObj).map(([key, value]) => ({
-    label: key,
+    key: key,
     value: value,
-  })) as option[];
-  const classes = `${isDropdownOpen ? 'h-[180px] py-4' : ' h-full p-0 '} -z-10 absolute top-0 left-0 p items-end transition-height ease-in-out duration-500 w-40 `;
+  })) as Option[];
+
   return (
     <div className="flex flex-row xl:justify-end xl:px-0 justify-between gap-6 w-full z-30">
-      <div className="relative z-20 transform brightness-100 hover:brightness-150 transition-brightness ease-in-out duration-500">
+      <div className="relative w-40 z-20 pr-4 transform brightness-100 hover:brightness-150 transition-brightness ease-in-out duration-500">
         <Dropdown
           hoverMode={false}
-          classes={classes}
+          classes={
+            '-z-10 absolute top-0 left-0 p items-end transition-height ease-in-out duration-500 w-full '
+          }
           defaultValue={
             selectedOption ? t(`sort.options.${selectedOption}`) : t('sort.def')
           }
           options={options}
-          optionClickHandler={handleSortChange}
-          isDropdownOpen={isDropdownOpen}
-          setDropdownOpen={setDropdownOpen}
           style={{ width: 135 }}
           ulClasses="pt-7"
           flagMode={false}
           selectedOption={selectedOption}
           liClass="px-3 py-1 first:border-t first:border-t-1 border-cool-gray-700"
+          setSelectedOption={setSortOption}
+          openClass={'h-[180px] py-4'}
+          closeClass={'h-full p-0 '}
         />
       </div>
       <input

@@ -380,7 +380,6 @@ body {
     background-color 1s ease,
     margin 1s ease;
 }
-
 .ul {
   opacity: 0;
   animation:
@@ -456,4 +455,12 @@ body {
 
 .input-error-tooltip {
   @apply tooltip tooltip-top tooltip-error md:before:left-24 before:left-32 md:after:left-14 after:left-24 !flex;
+}
+
+ul,
+li,
+a,
+input,
+button {
+  cursor: none !important;
 }

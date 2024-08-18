@@ -1,7 +1,19 @@
 {
   "meta": {
-    "title": "Hakkında",
+    "title": "Hakkımda",
     "description": "Modern web teknolojileri ve yaratıcı çözümler konusunda uzmanlaşmış tutkulu bir Front-End Geliştirici olan Tahsin Önemli hakkında bilgi edinin.",
     "keywords": "hakkımda, front-end, geliştirme, frontend mühendisi"
+  },
+  "page": {
+    "defOption": "Anlatım",
+    "options": {
+      "timeline": "Çizgisel",
+      "sum": "Özet",
+      "normal": "Makul",
+      "long": "Hikaye",
+      "full": "Tüm Hikaye"
+    },
+    "list-tip": "Premium İçerik",
+    "faqs": "SSS"
   }
 }

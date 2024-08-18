@@ -1,5 +1,5 @@
 'use client';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import breaks from 'remark-breaks';
 import CustomLink from '@/components/CustomLink';
@@ -12,12 +12,13 @@ import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 
 const PolicyCreator = ({ id }: { id: string }) => {
   const { t } = useTranslation('policies');
+  const filters = useMemo(() => [{ column: 'policy_name', value: id }], [id]);
   const { data, loading, error } = useSupabaseFetch<PoliciesTypes>(
     'policy_schema',
     'policies',
-    `*, translations(*, policy_sections(*, sub_titles(*)))`,
+    `*, translations(*, sub_sections(*, sub_titles(*)))`,
     PoliciesSchema,
-    [{ column: 'policy_name', value: id }],
+    filters,
   );
 
   const [filteredData, setFilteredData] = useState<PoliciesTypes[]>([]);
@@ -43,7 +44,7 @@ const PolicyCreator = ({ id }: { id: string }) => {
   return loading ||
     !filteredData[0] ||
     !filteredData[0].translations ||
-    !filteredData[0].translations[0].policy_sections ? (
+    !filteredData[0].translations[0].sub_sections ? (
     <LoadingComponent />
   ) : (
     <div className="flex flex-col gap-10">
@@ -57,7 +58,7 @@ const PolicyCreator = ({ id }: { id: string }) => {
           {filteredData[0].translations[0].title}
         </h1>
       )}
-      {filteredData[0].translations[0].policy_sections.map((item, index) => (
+      {filteredData[0].translations[0].sub_sections.map((item, index) => (
         <div key={index}>
           {item.title && <h2 className="h2">{item.title}</h2>}
           <div className="p mt-2 cursor-none">
