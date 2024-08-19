@@ -80,6 +80,13 @@ const AboutMe = () => {
     }
   }, [i18n.language, data, selectedOption]);
 
+  const sortedFaqs = useMemo(() => {
+    if (faqs) {
+      return faqs.sub_sections!.slice().sort((a, b) => a.id - b.id);
+    }
+    return [];
+  }, [faqs]);
+
   if (error) {
     console.log(error);
   }
@@ -164,7 +171,7 @@ const AboutMe = () => {
                     {t('page.faqs')}
                   </h3>
                   <hr className="mb-4" />
-                  {faqs.sub_sections!.map((item, index) => (
+                  {sortedFaqs.map((item, index) => (
                     <Accordiona
                       key={index}
                       title={item.title!}
