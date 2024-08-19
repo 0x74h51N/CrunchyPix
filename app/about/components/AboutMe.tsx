@@ -106,7 +106,10 @@ const AboutMe = () => {
             ) : (
               <LoadingComponent />
             )}
-            <div className="self-start h-12 relative mb-4 w-[152px] pr-4 z-20 transform brightness-100 hover:brightness-150 transition-brightness ease-in-out duration-500">
+            <div
+              data-tip={t('page.mode')}
+              className="self-start h-12 relative mb-4 w-[152px] pr-4 z-20 transform brightness-100 hover:brightness-150 transition-brightness ease-in-out duration-500 tooltip tooltip-right"
+            >
               <Dropdown
                 setSelectedOption={setSelectedOption}
                 selectedOption={selectedOption}

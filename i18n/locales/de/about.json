@@ -6,6 +6,7 @@
   },
   "page": {
     "defOption": "Erzählung",
+    "mode": "Wählen Sie den Detailgrad",
     "options": {
       "timeline": "Zeitleiste",
       "sum": "Kurzfassung",

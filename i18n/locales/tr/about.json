@@ -6,12 +6,13 @@
   },
   "page": {
     "defOption": "Anlatım",
+    "mode": "Detay seviyesini seçin",
     "options": {
       "timeline": "Çizgisel",
       "sum": "Özet",
       "normal": "Makul",
-      "long": "Hikaye",
-      "full": "Tüm Hikaye"
+      "long": "Hikâye",
+      "full": "Tüm Hikâye"
     },
     "list-tip": "Premium İçerik",
     "faqs": "SSS",

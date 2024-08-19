@@ -6,6 +6,7 @@
   },
   "page": {
     "defOption": "Narrative",
+    "mode": "Select the level of detail",
     "options": {
       "timeline": "Timeline",
       "sum": "Summary",
