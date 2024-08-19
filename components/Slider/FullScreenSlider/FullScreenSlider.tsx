@@ -44,13 +44,11 @@ const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
         onSlideChange={onSlideChange}
         centeredSlides={true}
         className={`text-center bg-stone-900 ${className} cursor-none`}
+        lazyPreloadPrevNext={1}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
-            <SlideCreator
-              imageUrl={slide.imageUrl && slide.imageUrl}
-              active={activeIndex === index}
-            ></SlideCreator>
+            <SlideCreator imageUrl={slide.imageUrl!}></SlideCreator>
           </SwiperSlide>
         ))}
       </Swiper>
