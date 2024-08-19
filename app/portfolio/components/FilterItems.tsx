@@ -89,9 +89,6 @@ const FilterItems = ({
       <div className="relative w-40 z-20 pr-4 transform brightness-100 hover:brightness-150 transition-brightness ease-in-out duration-500">
         <Dropdown
           hoverMode={false}
-          classes={
-            '-z-10 absolute top-0 left-0 p items-end transition-height ease-in-out duration-500 w-full '
-          }
           defaultValue={
             selectedOption ? t(`sort.options.${selectedOption}`) : t('sort.def')
           }
