@@ -31,9 +31,10 @@ const useSupabaseFetch = <T>(
         const fetcher = async () => {
           let query = supabase.schema(schemaPath).from(table).select(select);
           if (filters) {
-            filters.forEach((filter) => {
-              query = query.eq(filter.column, filter.value);
-            });
+            const filterQueries = filters
+              .map((filter) => `${filter.column}.eq.${filter.value}`)
+              .join(',');
+            query = query.or(filterQueries);
           }
           const { data, error } = await query;
           if (error) {
@@ -69,7 +70,7 @@ const useSupabaseFetch = <T>(
     };
 
     fetchData();
-  }, [table, select, schema, cacheDuration]);
+  }, [table, select, schema, cacheDuration, filters]);
 
   return { data, loading, error };
 };

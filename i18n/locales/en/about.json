@@ -3,5 +3,19 @@
     "title": "About",
     "description": "About Tahsin Önemli, a passionate Front-End Developer specializing in modern web technologies and creative solutions.",
     "keywords": "about me, front-end, development, frontend engineer, web development, seo, design"
+  },
+  "page": {
+    "defOption": "Narrative",
+    "mode": "Select the level of detail",
+    "options": {
+      "timeline": "Timeline",
+      "sum": "Summary",
+      "normal": "Reasonable",
+      "long": "Story",
+      "full": "Full Story"
+    },
+    "list-tip": "Premium Content",
+    "faqs": "FAQs",
+    "faqsLong": "Frequently Asked Questions"
   }
 }

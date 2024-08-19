@@ -1,14 +1,14 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store";
-import { clickableChange } from "@/store/redux/isClickable";
-import Link from "next/link";
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { clickableChange } from '@/store/redux/isClickable';
+import Link from 'next/link';
 
 const CustomLink = ({
   children,
   ...props
 }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
   const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable
+    (state: RootState) => state.isClickable.clickable,
   );
   const dispatch = useDispatch();
   const handleMouseEnter = () => {
@@ -24,6 +24,7 @@ const CustomLink = ({
   return (
     <Link
       href={props.href as string}
+      target="_blank"
       className="text-log-col underline underline-offset-3 cursor-none"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

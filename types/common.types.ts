@@ -35,10 +35,7 @@ export type slide = {
   imageUrlH?: string;
   title?: string;
   description?: string;
-  left?: boolean;
   active?: boolean;
-  children?: React.ReactNode | React.ReactElement<{ active: boolean }>;
-  box?: boolean;
   githubLink?: string;
   icons?: IconProps[];
   labels?: string[];
@@ -70,4 +67,10 @@ export type ColorfulHoverType = {
   _colorType?: ColorType;
   randomCount?: number;
   zeroColor?: string;
+};
+
+export type Option = {
+  key: string;
+  value?: string | React.ReactNode;
+  disabledTip?: string;
 };

@@ -26,13 +26,13 @@ const Project = memo(({ id }: { id: string }) => {
   const storedItems = useSelector((state: RootState) => state.portfolio.items);
 
   const { hoverEnd } = useDragHandler();
-
+  const filters = useMemo(() => [{ column: 'project_id', value: id }], [id]);
   const { data, loading, error } = useSupabaseFetch<ProjectPageProps>(
     'portfolio_schema',
     'project_page',
     '*, project_card(*)',
     ProjectPageSchema,
-    [{ column: 'project_id', value: id }],
+    filters,
   );
   const pageTitle = t('meta.title');
   if (error) {

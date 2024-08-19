@@ -86,7 +86,9 @@ const Navbar = () => {
           >
             <CrunchyLogo smallNav={smallNav} />
           </Link>
-          <div className={`ml-auto transition-all duration-500 ease-in-out`}>
+          <div
+            className={`ml-auto transition-all duration-500 ease-in-out flex`}
+          >
             <div className={`lg:hidden h-full max-h-[70px] flex items-center`}>
               <MobileMenu
                 smallNav={smallNav}
@@ -107,7 +109,7 @@ const Navbar = () => {
               >
                 {linkItems}
                 <div
-                  className="h-auto w-auto flex justify-center"
+                  className="h-auto flex justify-center"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >

@@ -11,7 +11,7 @@ const filterByLanguage = <T extends { [key: string]: any }>({
 }: FilterByLanguageProps<T>): T[] => {
   return items
     .map((item) => {
-      if (localPath !== '' || localPath) {
+      if (localPath !== '' || Array.isArray(item[localPath])) {
         const filtered =
           item[localPath] &&
           item[localPath].find(

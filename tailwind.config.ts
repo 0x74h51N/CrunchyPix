@@ -11,6 +11,17 @@ module.exports = {
       fontFamily: {
         britannic: ['"Britannic Bold"', 'sans-serif'],
       },
+      keyframes: {
+        beat: {
+          '0%, 40%': { transform: 'scale(1)' },
+          '20%': { transform: 'scale(1.2)' },
+          '60%': { transform: 'scale(1.2)' },
+          '80%, 100%': { transform: 'scale(1)' },
+        },
+      },
+      animation: {
+        beat: 'beat 2s ease-in-out infinite',
+      },
       colors: {
         'cool-gray': {
           50: '#F7F7F7',

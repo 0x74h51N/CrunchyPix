@@ -64,23 +64,7 @@ export const CardsSchema = z.object({
   icon_name: z.string(),
 });
 
-export const TranslationSchema = z.object({
-  id: z.number(),
-  sect_name: z.string(),
-  lang: z.string(),
-  intro: z.string(),
-  title: z.string(),
-  description: z.string().nullable(),
-  cards: z.array(CardsSchema).optional(),
-});
-
-export const SectionsSchema = z.object({
-  id: z.number(),
-  name: z.string(),
-  translations: z.array(TranslationSchema),
-});
-
-export const PolicySectionSchema = z.object({
+export const SubSectionSchema = z.object({
   id: z.number(),
   lang: z.string(),
   title: z.string().nullable(),
@@ -95,20 +79,26 @@ export const PolicySectionSchema = z.object({
     )
     .optional(),
 });
-
-export const PolicyTranslationSchema = z.object({
+export const TranslationSchema = z.object({
   id: z.number(),
   sect_name: z.string(),
   lang: z.string(),
-  intro: z.string().nullable().optional(),
-  title: z.string().nullable(),
-  policy_sections: z.array(PolicySectionSchema).optional(),
+  intro: z.string(),
+  title: z.string(),
+  description: z.string().nullable().optional(),
+  cards: z.array(CardsSchema).optional(),
+  sub_sections: z.array(SubSectionSchema).optional(),
+});
+export const SectionsSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  translations: z.array(TranslationSchema),
 });
 
 export const PoliciesSchema = z.object({
   id: z.number(),
   policy_name: z.string(),
-  translations: z.array(PolicyTranslationSchema).optional(),
+  translations: z.array(TranslationSchema).optional(),
 });
 
 export const ContactSchema = z.object({
@@ -120,7 +110,7 @@ export const ContactSchema = z.object({
 
 export type ContactTypes = z.infer<typeof ContactSchema>;
 export type PoliciesTypes = z.infer<typeof PoliciesSchema>;
-export type PolicySectionTypes = z.infer<typeof PolicySectionSchema>;
+export type SubSectionType = z.infer<typeof SubSectionSchema>;
 export type CardsTypes = z.infer<typeof CardsSchema>;
 export type TranslationTypes = z.infer<typeof TranslationSchema>;
 export type SectionsTypes = z.infer<typeof SectionsSchema>;
