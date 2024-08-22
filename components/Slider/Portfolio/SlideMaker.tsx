@@ -30,8 +30,8 @@ const SlideMaker = ({
   };
   return (
     <div
-      key={index}
-      className={`relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto shadow-2xl shadow-black lg:my-8 my-4`}
+      key={`${index}-${slide._id}-slide`}
+      className={`relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto overflow-visible shadow-2xl shadow-black lg:my-8 my-4`}
       onClick={() => clickHandler(index, slide)}
     >
       <CldImage
@@ -50,14 +50,14 @@ const SlideMaker = ({
         <div className="flex">
           <div className="flex flex-wrap items-start mr-auto">
             {slide.tech &&
-              slide.tech.map((label, labelIndex) => (
+              slide.tech.map((label:string, labelIndex:number) => (
                 <Label key={`label-${index}-${labelIndex}`} text={label} />
               ))}
           </div>
           <div className="flex items-end gap-2">
             {slide.icons &&
               Object.entries(slide.icons).map(([key, icon], iconIndex) => (
-                <span key={iconIndex} className="lg:text-2xl text-xl">
+                <span key={`${slide._id}-${iconIndex}-icon`} className="lg:text-2xl text-xl">
                   <IconButton key={`icon-${index}-${key}`} icon={icon} />
                 </span>
               ))}

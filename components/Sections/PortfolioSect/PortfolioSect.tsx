@@ -44,7 +44,7 @@ const PortfolioSect = () => {
             <TitleText sectName="portfolio_sect" />
           </motion.div>
         </div>
-        <div className="w-full h-auto min-w-[100sv] z-0 bg-cool-gray-800 max-w-[2200px]">
+        <div className="w-full sm:h-[600px] h-[500px] min-w-[100sv] z-0 bg-cool-gray-800 max-w-[2200px]">
           <CarouselSlider slides={extendedPortfolioItems} />
         </div>
         <div className="z-50">
