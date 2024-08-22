@@ -61,7 +61,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         <CldImage
           fill
           quality={5}
-          blur={250}
+          blur={"250"}
           src={mobile ? imageMobile : imageTop}
           alt={id}
           className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}

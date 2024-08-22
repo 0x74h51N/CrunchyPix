@@ -105,10 +105,12 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
               src={section.background}
               alt={section.background}
               format="avif"
-              width={3000}
-              height={2160}
+              sizes="auto"
+              width={2400}
+              height={1860}
               quality={100}
               fetchPriority="high"
+              loading="eager"
               priority
               style={{
                 objectFit: 'cover',
@@ -146,9 +148,11 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
                 alt={section.topImage}
                 format="avif"
                 quality={100}
-                width={3000}
-                height={2160}
+                sizes="auto"
+                width={2400}
+                height={1860}
                 fetchPriority="high"
+                loading="eager"
                 priority
                 style={{
                   width: '100%',
