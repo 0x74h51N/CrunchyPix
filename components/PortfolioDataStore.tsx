@@ -49,7 +49,7 @@ const PortfolioDataStore = () => {
 
   useEffect(() => {
     updatePortfolioItems(i18next.language);
-  }, [data, loading, error, i18next.language, updatePortfolioItems]);
+  }, [updatePortfolioItems]);
 
   return <></>;
 };

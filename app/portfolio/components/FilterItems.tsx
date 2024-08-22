@@ -1,4 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { PortfolioItemProps } from '@/schemas';
 import Dropdown from '@/components/Buttons/Dropdown';
@@ -13,14 +19,15 @@ const FilterItems = ({
   portfolioPageItems,
   setFilteredItems,
 }: FilterItemsProps) => {
-  const { t } = useTranslation('portfolio');
+  const { t, i18n } = useTranslation('portfolio');
   const [sortedItems, setSortedItems] = useState<PortfolioItemProps[]>([]);
   const [searchParam, setSearchParam] = useState('');
   const [selectedOption, setSortOption] = useState('');
   useEffect(() => {
     setSearchParam('');
     setSortOption('');
-  }, [t]);
+  }, [i18n.language]);
+
   useEffect(() => {
     const filteredItems = portfolioPageItems.filter(
       (item: PortfolioItemProps) => {
@@ -35,7 +42,7 @@ const FilterItems = ({
       },
     );
     setSortedItems(filteredItems);
-  }, [searchParam, portfolioPageItems]);
+  }, [portfolioPageItems, searchParam]);
 
   useEffect(() => {
     setFilteredItems(sortedItems);
@@ -73,7 +80,9 @@ const FilterItems = ({
         }
       }
     };
+
     handleSortChange(selectedOption);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedOption]);
 
   const optionsObj = t('sort.options', { returnObjects: true }) as {

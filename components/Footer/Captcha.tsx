@@ -2,8 +2,7 @@
 
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import Script from 'next/script';
-import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useCallback, useEffect, useRef } from 'react';
 
 /**
  * Coppied from https://gist.github.com/suhaotian/c2851d1938da31d349e8cfe65c97c47e
@@ -28,21 +27,20 @@ export default function Captcha(
   const { sitekey, errorCallback, expiredCallback, ...rest } = props;
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const widgetID = useRef<string>();
-  const [isError, setIsError] = useState(false);
 
-  function retry() {
-    setIsError(false);
-  }
+  const onError = useCallback(
+    (e?: string | Error) => {
+      const errorMessage =
+        typeof e === 'string' ? e : e?.message || 'Unknown error';
+      console.log(`Captcha error`, errorMessage);
+      if (errorCallback) {
+        errorCallback();
+      }
+    },
+    [errorCallback],
+  );
 
-  function onError(e?: string | Error) {
-    console.log(`Captcha error`, e);
-    setIsError(true);
-    if (errorCallback) {
-      errorCallback();
-    }
-  }
-
-  function renderWidget() {
+  const renderWidget = useCallback(() => {
     try {
       widgetID.current = turnstile.render('#captcha-container', {
         ...rest,
@@ -56,7 +54,7 @@ export default function Captcha(
     } catch (e: unknown) {
       onError(e as Error);
     }
-  }
+  }, [rest, sitekey, expiredCallback, onError]);
 
   function onLoad() {
     renderWidget();
@@ -70,7 +68,7 @@ export default function Captcha(
       window.turnstile?.remove(widgetID.current || '');
       widgetID.current = undefined;
     };
-  }, []);
+  }, [renderWidget]);
 
   return (
     <div className="absolute -bottom-[75px] gap-1 flex overflow-hidden md:pointer-events-none">
@@ -97,7 +95,6 @@ export default function Captcha(
           onMouseLeave={handleMouseLeave}
         />
       </div>
-      {isError && <div className="text-error mt-2">{isError}</div>}
       <Script
         src={scriptLink}
         onLoad={onLoad}

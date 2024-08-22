@@ -43,10 +43,9 @@ const AboutMe = () => {
     SectionsSchema,
   );
 
-  const language = getLocale() || i18next.language;
-
   useEffect(() => {
     hoverEnd();
+    const language = i18next.language;
     const optionsObj = t('page.options', { returnObjects: true }) as string[];
     setOptions(
       Object.entries(optionsObj).map(([key, value]) => ({
@@ -78,7 +77,8 @@ const AboutMe = () => {
         setFaqs(filteredDat[fI].translations[0]);
       }
     }
-  }, [i18n.language, data, selectedOption]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, selectedOption, i18next.language]);
 
   const sortedFaqs = useMemo(() => {
     if (faqs) {

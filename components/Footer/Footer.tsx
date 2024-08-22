@@ -68,11 +68,12 @@ const Footer = () => {
           <div className="text-neutral-900 flex flex-row justify-between items-center footer_copyright w-full max-w-[1300px]">
             <p className="flex items-center">
               <span>@ 2024 ·</span>
-              <img
+              <Image
                 src="https://res.cloudinary.com/dkwz95xft/image/upload/v1722866557/Copyleft.svg.png"
                 width={12}
                 height={12}
                 className="object-contain self-center pt-0.5 mx-1"
+                alt={'CopyLeft Icon'}
               />
               <span>Copyleft · Tahsin Önemli · 0x74h51N</span>
             </p>

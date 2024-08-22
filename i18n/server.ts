@@ -1,7 +1,7 @@
 import { createInstance } from 'i18next';
 import resourcesToBackend from './resourcesToBackend';
 import { initReactI18next } from 'react-i18next/initReactI18next';
-import { FALLBACK_LOCALE, getOptions, Locales, NEXT_LOCALE } from './settings';
+import { FALLBACK_LOCALE, getOptions, Locales } from './settings';
 import { cookies, headers } from 'next/headers';
 
 async function initI18next(lang: Locales, namespace: string) {
@@ -29,7 +29,9 @@ export async function createTranslation(ns: string) {
 
 export function getLocale() {
   const preferredLanguageHeader = headers().get('x-preferred-language');
-  return (preferredLanguageHeader ??
-    cookies().get('preferred_language')?.value ??
-    FALLBACK_LOCALE) as Locales;
+  if (preferredLanguageHeader) {
+    return preferredLanguageHeader as Locales;
+  }
+  const cookieLang = cookies().get('preferred_language')?.value;
+  return (cookieLang ?? FALLBACK_LOCALE) as Locales;
 }
