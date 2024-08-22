@@ -74,16 +74,24 @@ const Dropdown = ({
 }: dropdownProps) => {
   const [isRotated, setIsRotated] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const [summary, setSummary] = useState<string | React.ReactNode>(
+    defaultValue,
+  );
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const handleToggleDropdown = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    e.preventDefault();
+  useEffect(() => {
+    setSummary(defaultValue);
+  }, [defaultValue]);
+  const handleToggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
+    setIsRotated(!isRotated);
   };
-  useOutsideClick(dropdownRef, () => setDropdownOpen(false));
+
+  useOutsideClick(dropdownRef, () => {
+    setDropdownOpen(false);
+    setIsRotated(false);
+  });
 
   const mouseEnterHandler = () => {
     if (!isTouch && hoverMode) {
@@ -91,31 +99,22 @@ const Dropdown = ({
     }
     handleMouseEnter();
   };
+
   const mouseLeaveHandler = () => {
     if (!isTouch && hoverMode) {
       setDropdownOpen(false);
     }
     handleMouseLeave();
   };
-  useEffect(() => {
-    setIsRotated(isDropdownOpen);
-  }, [isDropdownOpen]);
-  useEffect(() => {
-    if (isDropdownOpen) {
-      setDropdownOpen(false);
-    }
-  }, []);
-  const [summary, setSummary] = useState<string | React.ReactNode>(
-    () => defaultValue,
-  );
+
   const clickHandler = (option: Option) => {
     setSelectedOption(option.key.toLowerCase());
     setSummary(option.value);
     setDropdownOpen(false);
+    setIsRotated(false);
+    handleMouseLeave();
   };
-  useEffect(() => {
-    setSummary(defaultValue);
-  });
+
   return (
     <div
       ref={dropdownRef}
@@ -124,7 +123,7 @@ const Dropdown = ({
       className="flex flex-col items-center h-full"
     >
       <button
-        onClick={(e) => handleToggleDropdown(e)}
+        onClick={handleToggleDropdown}
         className="flex flex-row justify-between items-center gap-1 z-20 bg-transparent cursor-none w-full h-full"
       >
         <div className="p text-start pl-3 truncate ..." style={style}>

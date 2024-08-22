@@ -18,8 +18,7 @@ const languages = [
 ];
 
 const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
-  const defLan = i18n.language || 'en';
-  const [selectedLanguage, setSelectedLanguage] = useState<string>(defLan);
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('');
 
   useEffect(() => {
     const handleChange = async (selectedLanguage: string) => {
@@ -28,7 +27,9 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
         i18n.changeLanguage(selectedLanguage);
       }
     };
-    handleChange(selectedLanguage);
+    if (selectedLanguage) {
+      handleChange(selectedLanguage);
+    }
   }, [selectedLanguage]);
 
   const getFlagComponent = (language: string) => {
@@ -42,6 +43,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
     }
   };
   const defaultValue = getFlagComponent(i18n.language);
+
   const classes = `relative flex justify-center mobile-menu text-md font-medium text-neutral-200 w-[72px] right-[15px] ${
     smallNav ? `-mt-2 right-[16px] lg:mt-5 ` : `-mt-2 right-[16px] lg:mt-[50px]`
   }

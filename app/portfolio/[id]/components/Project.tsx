@@ -43,6 +43,7 @@ const Project = memo(({ id }: { id: string }) => {
     if (data) {
       setItem(data.find((item) => item.lang === i18n.language));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, i18n.language]);
 
   useEffect(() => {

@@ -1,5 +1,5 @@
 'use client';
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import { generateSpans } from './GenerateSpans';
 import { generateSpanType } from '@/types/common.types';
 
@@ -23,17 +23,20 @@ const TypingText = ({
   randomCount,
   zeroColor,
   loadingMode = false,
-  reverseDelay = 50,
+  reverseDelay = 150,
 }: TypingTextProps & generateSpanType) => {
   const [displayText, setDisplayText] = useState('');
   const [isDelayed, setIsDelayed] = useState(true);
   const [isWriting, setIsWriting] = useState(true);
   const [charIndex, setCharIndex] = useState(0);
-  const handleTyping = () => {
+
+  const handleTyping = useCallback(() => {
     if (isWriting && !isDelayed) {
       if (charIndex < text.length) {
         setDisplayText((prev) => prev + text[charIndex]);
         setCharIndex((prev) => prev + 1);
+      } else if (!loadingMode) {
+        setIsWriting(false);
       } else {
         setTimeout(() => setIsWriting(false), reverseDelay);
       }
@@ -42,13 +45,13 @@ const TypingText = ({
         setDisplayText((prev) => prev.slice(0, -1));
         setCharIndex((prev) => prev - 1);
       } else {
-        setTimeout(() => setIsWriting(true), 50);
+        setTimeout(() => setIsWriting(true), reverseDelay);
       }
     }
-  };
+  }, [isWriting, isDelayed, charIndex, text, reverseDelay, loadingMode]);
+
   useEffect(() => {
     const interval = setInterval(handleTyping, typingSpeed);
-
     return () => clearInterval(interval);
   }, [typingSpeed, handleTyping]);
 
@@ -61,29 +64,27 @@ const TypingText = ({
       clearTimeout(delayTimeout);
     };
   }, [delay]);
+
   useEffect(() => {
-    if (text !== displayText && !isWriting) {
+    if (!isWriting && !loadingMode && charIndex === text.length) {
       setDisplayText(text);
     }
-  }, [text]);
-  const content = useMemo(() => {
-    if (generateSpan) {
-      return (
-        <div className={textClass}>
-          {generateSpans({
-            text: displayText,
-            colorType: colorType,
-            randomCount: randomCount,
-            zeroColor: zeroColor,
-          })}
-        </div>
-      );
-    } else {
-      return <span className={textClass}>{displayText}</span>;
-    }
-  }, [displayText]);
+  }, [text, isWriting, loadingMode, charIndex]);
 
-  return <>{content}</>;
+  if (generateSpan) {
+    return (
+      <div className={textClass}>
+        {generateSpans({
+          text: displayText,
+          colorType: colorType,
+          randomCount: randomCount,
+          zeroColor: zeroColor,
+        })}
+      </div>
+    );
+  } else {
+    return <span className={textClass}>{displayText}</span>;
+  }
 };
 
 export default memo(TypingText);

@@ -70,6 +70,7 @@ export default function Captcha(
       window.turnstile?.remove(widgetID.current || '');
       widgetID.current = undefined;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

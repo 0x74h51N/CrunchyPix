@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: false,
+  reactStrictMode: process.env.NODE_ENV !== "production",
   images: {
     domains: ['res.cloudinary.com'],
   },

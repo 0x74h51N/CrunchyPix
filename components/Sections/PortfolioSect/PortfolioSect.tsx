@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import LoadingComponent from '@/components/Loading/Loading';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { memo, useEffect } from 'react';
+import { memo, useEffect, useMemo } from 'react';
 import TitleText from '../TitleText';
 
 const CarouselSlider = dynamic(
@@ -28,6 +28,9 @@ const PortfolioSect = () => {
   const portfolioItems = useSelector(
     (state: RootState) => state.portfolio.items,
   );
+  const extendedPortfolioItems = useMemo(() => {
+    return [...portfolioItems, ...portfolioItems];
+  }, [portfolioItems]);
   return (
     portfolioItems && (
       <div className="h-auto flex flex-col items-center justify-center w-full">
@@ -41,8 +44,8 @@ const PortfolioSect = () => {
             <TitleText sectName="portfolio_sect" />
           </motion.div>
         </div>
-        <div className="w-full h-auto min-w-[100sv] z-0 bg-cool-gray-800 max-w-[2200px]">
-          <CarouselSlider slides={portfolioItems} />
+        <div className="w-full sm:h-[600px] h-[500px] min-w-[100sv] z-0 bg-cool-gray-800 max-w-[2200px]">
+          <CarouselSlider slides={extendedPortfolioItems} />
         </div>
         <div className="z-50">
           <SlideModal />

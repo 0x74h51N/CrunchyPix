@@ -13,6 +13,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
   const imageMobile = `crunchypix/portfolioItems/${id.replaceAll('_', '') + 'Mobile'}`;
 
   useEffect(() => {
+    const currentContainerRef = containerRef.current;
     const handleResize = (entry: ResizeObserverEntry) => {
       if (entry.contentRect.width < 450) {
         setMobile(true);
@@ -22,16 +23,16 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
     };
 
     const resizeObserver = new ResizeObserver(([entry]) => handleResize(entry));
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+    if (currentContainerRef) {
+      resizeObserver.observe(currentContainerRef);
     }
-    console.log(mobile);
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
+      if (currentContainerRef) {
+        resizeObserver.unobserve(currentContainerRef);
       }
     };
   }, []);
+
   return (
     <div
       ref={containerRef}
@@ -60,7 +61,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         <CldImage
           fill
           quality={5}
-          blur={250}
+          blur={"250"}
           src={mobile ? imageMobile : imageTop}
           alt={id}
           className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
@@ -72,19 +73,20 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
             variants={slideIn('right', 'spring', 2, 1)}
             className="absolute flex flex-row gap-4 bottom-5 py-3 right-0 pr-7 pl-4 bg-black bg-opacity-50 rounded-l-lg"
           >
-            {icons.map((icon, iconIndex) => (
-              <span
-                key={iconIndex}
-                className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-4xl text-3xl relative  hover:scale-110"
-              >
-                {icon.type === 'web' && (
-                  <span className="absolute -right-6 -top-3 badge badge-sm badge-warning animate-beat">
-                    Live
+            {icons
+              .sort((a, b) => a.id - b.id)
+              .map((icon, iconIndex) => (
+                <div key={`${id}-${iconIndex}-icon`} className="relative">
+                  {icon.type === 'web' && (
+                    <span className="absolute -right-6 -top-3 badge badge-sm badge-warning animate-beat z-10">
+                      Live
+                    </span>
+                  )}
+                  <span className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-4xl text-3xl hover:scale-110">
+                    <IconButton key={iconIndex} icon={icon} />
                   </span>
-                )}
-                <IconButton key={iconIndex} icon={icon} />
-              </span>
-            ))}
+                </div>
+              ))}
           </motion.div>
         ) : null)}
     </div>

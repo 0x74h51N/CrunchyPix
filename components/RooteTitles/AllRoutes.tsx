@@ -48,6 +48,7 @@ const AllRoutes = () => {
       window.removeEventListener('popstate', handlePopState);
     };
   }, [pathname]);
+
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -55,6 +56,7 @@ const AllRoutes = () => {
     });
     hoverEnd();
     handleMouseLeave();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (
     !pageExists ||
