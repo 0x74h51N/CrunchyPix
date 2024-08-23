@@ -1,5 +1,5 @@
 import IconButton from '@/components/Buttons/IconButton';
-import Label from '@/components/Labels';
+import LogoImage from '@/components/LogoImage';
 import useDragHandler from '@/hooks/useDragHandler';
 import { PortfolioItemProps } from '@/schemas';
 import { setSlide } from '@/store/redux/selectedSlide';
@@ -31,7 +31,7 @@ const SlideMaker = ({
   return (
     <div
       key={`${index}-${slide._id}-slide`}
-      className={`relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto overflow-visible shadow-2xl shadow-black lg:my-8 my-4`}
+      className={`relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto overflow-visible shadow-xl shadow-black mt-6`}
       onClick={() => clickHandler(index, slide)}
     >
       <CldImage
@@ -48,16 +48,24 @@ const SlideMaker = ({
           {slide.project_overview && slide.project_overview[0].title}
         </h2>
         <div className="flex">
-          <div className="flex flex-wrap items-start mr-auto">
+          <div className="flex items-start mr-auto grayscale">
             {slide.tech &&
-              slide.tech.map((label:string, labelIndex:number) => (
-                <Label key={`label-${index}-${labelIndex}`} text={label} />
+              slide.tech.map((label: string, labelIndex: number) => (
+                <div
+                  className="w-5 h-5 flex flex-row mr-1"
+                  key={`tech key ${label + index}`}
+                >
+                  <LogoImage logoKey={label} index={labelIndex} />
+                </div>
               ))}
           </div>
           <div className="flex items-end gap-2">
             {slide.icons &&
               Object.entries(slide.icons).map(([key, icon], iconIndex) => (
-                <span key={`${slide._id}-${iconIndex}-icon`} className="lg:text-2xl text-xl">
+                <span
+                  key={`${slide._id}-${iconIndex}-icon`}
+                  className="lg:text-2xl text-xl"
+                >
                   <IconButton key={`icon-${index}-${key}`} icon={icon} />
                 </span>
               ))}

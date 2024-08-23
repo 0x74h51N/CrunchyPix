@@ -36,7 +36,7 @@ export const SocialIcons = ({
         };
 
         return (
-          <Fragment key={icon.alt}>
+          <Fragment key={icon.alt + ' key'}>
             <ColorfulHover
               icon={icon}
               style={iconStyle}
@@ -49,7 +49,7 @@ export const SocialIcons = ({
             <div
               className={`md:hidden flexCenter w-12 h-12 cursor-none pointer-events-auto sm:mt-8 mt-0 sm:ml-2 ml-0 sm:text-[40px] text-[30px]`}
               style={mobileStyle}
-              key={index + ' mobile'}
+              key={index + ' mobile ' + icon.type}
             >
               {<IconButton icon={icon} key={index + ' mobile icon'} />}
             </div>

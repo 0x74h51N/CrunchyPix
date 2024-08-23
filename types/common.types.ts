@@ -58,12 +58,10 @@ export type generateSpanType = {
 export type ColorfulHoverType = {
   char?: string;
   icon?: IconProps;
-  initial?: any;
   style?: React.CSSProperties;
   className?: string;
   key?: string | number;
   span?: boolean;
-  onClick?: () => void;
   _colorType?: ColorType;
   randomCount?: number;
   zeroColor?: string;

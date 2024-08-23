@@ -115,7 +115,7 @@ const AboutMe = () => {
             )}
             <div
               data-tip={t('page.mode')}
-              className="self-start h-12 relative mb-4 w-[152px] pr-4 z-20 transform brightness-100 hover:brightness-150 transition-brightness ease-in-out duration-500 tooltip tooltip-right"
+              className="self-start h-12 relative mb-4 w-[152px] pr-4 z-20 transform brightness-100 hover:brightness-150 transition-brightness ease-in-out duration-500 tooltip tooltip-right before:bg-nav-col"
             >
               <Dropdown
                 setSelectedOption={setSelectedOption}
@@ -166,7 +166,7 @@ const AboutMe = () => {
                 <>
                   <h3
                     data-tip={t('page.faqsLong')}
-                    className="h3 mt-20 self-start tooltip tooltip-top before:left-16 before:bg-nav-col"
+                    className="h3 mt-20 self-start tooltip tooltip-top before:left-20 before:bg-nav-col"
                   >
                     {t('page.faqs')}
                   </h3>

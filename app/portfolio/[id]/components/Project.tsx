@@ -73,7 +73,7 @@ const Project = memo(({ id }: { id: string }) => {
             whileInView="show"
             viewport={{ once: true, amount: 'some' }}
             variants={polygonIn('screen', 'easeInOut', 0, 0)}
-            className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] md:py-20 py-14 px-8 delay-700 duration-1000"
+            className="flex flex-col items-center h-full w-full max-w-[1300px] min-h-[100svh] md:py-20 py-14 sm:px-8 px-4 delay-700 duration-1000"
           >
             <TopImage id={Item.project_id} icons={iconsArray} />
             <motion.div
@@ -136,7 +136,7 @@ const Project = memo(({ id }: { id: string }) => {
                     whileInView="show"
                     viewport={{ once: true, amount: 'some' }}
                     variants={polygonIn('down', 'spring', 1.2, 2)}
-                    className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6"
+                    className="lg:w-2/3 sm:w-full w-auto xl:pr-0 lg:pr-24 max-sm:mb-6 max-sm:ml-6"
                   >
                     <Ticks ticks={Item.ticks} />
                   </motion.div>

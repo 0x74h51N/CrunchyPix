@@ -8,18 +8,14 @@ interface LogoImageProps {
 }
 
 const LogoImage = ({ logoKey, index }: LogoImageProps) => {
-  const [hoveredIndex, setHoveredIndex] = useState(-1);
   const item = LogoComponent({ key: logoKey });
-  const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIndex(-1);
-  };
 
   return (
-    <>
+    <div
+      key={item.icon + ' key ' + index}
+      data-tip={item.text}
+      className="tooltip tooltip-top tooltip-crunchy flex w-full"
+    >
       <CldImage
         fill
         sizes="auto"
@@ -28,19 +24,11 @@ const LogoImage = ({ logoKey, index }: LogoImageProps) => {
         quality={100}
         priority
         format="svg"
-        onMouseEnter={() => handleMouseEnter(index)}
-        onMouseLeave={handleMouseLeave}
         className={`object-contain h-auto w-full ${
-          item.text == 'Next.js' &&
-          ' bg-blue-500 rounded-full border-blue-500 border-2'
+          item.text == 'Next.js' && ' bg-blue-400 rounded-full'
         }`}
       />
-      {hoveredIndex === index && (
-        <div className="fixed self-center -bottom-7 rounded-md border-spacing-1 border-cool-gray-700 border-2 w-auto p-1 text-center text-white text-xs bg-cool-gray-400 opacity-80 transition-opacity duration-300 cursor-none pointer-events-none">
-          {item.text}
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 

@@ -40,7 +40,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         imageTop.includes('catalog')
           ? 'lg:min-h-[870px] md:min-h-[700px]'
           : 'md:min-h-[700px]'
-      } md:min-h-[400px] min-h-[650px]`}
+      } md:min-h-[400px] min-h-[630px]`}
       style={{
         backgroundImage: imageTop.includes('kyk')
           ? 'linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)'
@@ -61,7 +61,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         <CldImage
           fill
           quality={5}
-          blur={"250"}
+          blur={'250'}
           src={mobile ? imageMobile : imageTop}
           alt={id}
           className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
@@ -71,7 +71,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         (icons.length > 0 ? (
           <motion.div
             variants={slideIn('right', 'spring', 2, 1)}
-            className="absolute flex flex-row gap-4 bottom-5 py-3 right-0 pr-7 pl-4 bg-black bg-opacity-50 rounded-l-lg"
+            className="absolute flex flex-row sm:gap-4 gap-3 bottom-5 sm:py-3 py-2 sm:right-0 -right-3 pr-7 pl-4 bg-black bg-opacity-50 rounded-l-lg"
           >
             {icons
               .sort((a, b) => a.id - b.id)
@@ -82,7 +82,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
                       Live
                     </span>
                   )}
-                  <span className="hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-4xl text-3xl hover:scale-110">
+                  <span className="flex hover:text-log-col transition-all ease-in-out duration-300 text-cool-gray-50 lg:text-4xl text-3xl hover:scale-110">
                     <IconButton key={iconIndex} icon={icon} />
                   </span>
                 </div>
