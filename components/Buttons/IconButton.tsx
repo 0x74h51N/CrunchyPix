@@ -72,7 +72,15 @@ const iconComponents: { [key: string]: IconType } = {
   freecodecamp: FaFreeCodeCamp,
 };
 
-const IconButton = ({ icon, size }: { icon: IconProps; size?: number }) => {
+const IconButton = ({
+  icon,
+  size,
+  tooltipDirection = 'top',
+}: {
+  icon: IconProps;
+  size?: number;
+  tooltipDirection?: string;
+}) => {
   const iconType = icon.type && icon.type.toLowerCase();
   const IconComponent = icon.type && iconType && iconComponents[iconType];
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
@@ -80,7 +88,8 @@ const IconButton = ({ icon, size }: { icon: IconProps; size?: number }) => {
   if (iconType && IconComponent) {
     return (
       <div
-        className="relative group cursor-none"
+        data-tip={icon.alt}
+        className={`cursor-none tooltip tooltip-${tooltipDirection} tooltip-crunchy`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -94,12 +103,6 @@ const IconButton = ({ icon, size }: { icon: IconProps; size?: number }) => {
             size={icon.size ? icon.size : size}
             color={icon.color}
           />
-
-          {icon.alt && (
-            <span className="absolute self-center rounded-md border-spacing-1 border-cool-gray-700 border-2 w-auto p-[2px] text-center text-white text-xs bg-cool-gray-400 opacity-0 transition-opacity group-hover:opacity-80 ease-in-out duration-300 pointer-events-none cursor-none whitespace-nowrap">
-              {icon.alt}
-            </span>
-          )}
         </a>
       </div>
     );

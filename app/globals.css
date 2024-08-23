@@ -464,3 +464,7 @@ input,
 button {
   cursor: none !important;
 }
+
+.tooltip-crunchy {
+  @apply before:text-white before:text-xs before:bg-cool-gray-700 before:border-[1px] before:py-0.5 before:border-nav-col after:text-nav-col;
+}

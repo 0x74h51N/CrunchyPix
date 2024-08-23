@@ -1,6 +1,6 @@
 # Introduction
 
-This project began with the goal of creating a personal website to showcase my skills and portfolio. I have chosen "CrunchyPix" as the website and brand name. This website supports multiple languages through i18n and was built from scratch using Next.js 14. Although Tailwind CSS and DaisyUI are used for styling, the site also includes custom UI elements and components, such as [Dropdown](/components/buttons/Dropdown.tsx) or [Acordiona](/app/about/components/Accordiona.tsx). Localization is handled both on the [server](/i18n/server.ts) and [client](/i18n/client.ts) sides[\*](/i18n/settings.ts), without relying on routing, by configuring i18n on the server to detect and set the language based on the user's browser or referrer information. Third-party services like Cloudinary, Supabase, and Vercel Analytics / SpeedInsight have been integrated, ensuring that Vercel Analytics or SpeedInsight are not activated without user consent, and no personal information is collected without permission.
+This project began with the goal of creating a personal website to showcase my skills and portfolio. I have chosen "CrunchyPix" as the website and brand name. This website supports multiple languages through i18n and was built from scratch using Next.js 14. Although Tailwind CSS and DaisyUI are used for styling, the site also includes custom UI elements and components. Localization is handled both on the [server](/i18n/server.ts) and [client](/i18n/client.ts) sides[\*](/i18n/settings.ts), without relying on routing, by configuring i18n on the server to detect and set the language based on the user's browser or referrer information. Third-party services like Cloudinary, Supabase, and Vercel Analytics / SpeedInsight have been integrated, ensuring that Vercel Analytics or SpeedInsight are not activated without user consent, and no personal information is collected without permission.
 
 ## 📦 Technology Stack
 
@@ -61,172 +61,50 @@ This project began with the goal of creating a personal website to showcase my s
 ## 🗃️ Directory
 
 ```
-├── LICENSE.md
-├── README.md
 ├── app
-│   ├── about
-│   │   ├── components
-│   │   └── page.tsx
-│   ├── actions
-│   │   └── sendMailAction.ts
-│   ├── favicon.ico
-│   ├── globals.css
-│   ├── layout.tsx
-│   ├── not-found.tsx
-│   ├── page.tsx
-│   ├── policies
+│   ├── actions                 # Contains server-side actions for validating and processing user inputs.
+│   ├── about                   # About page, includes components and dynamically generated subpages.
+│   │   └── components          # Specific components used within the About page.
+│   ├── policies                # Policies page, with components and dynamic subpages for each policy ([id]).
 │   │   └── [id]
-│   └── portfolio
+│   │       └── components      # Components related to individual policy subpages.
+│   └── portfolio               # Portfolio page, includes components and dynamically generated subpages.
 │       ├── [id]
-│       ├── components
-│       ├── layout.tsx
-│       └── page.tsx
+│       │   └── components      # Components for individual portfolio items' subpages.
+│       └── components          # General components used within the Portfolio page.
 ├── components
-│   ├── Buttons
-│   │   ├── ArrowButton.tsx
-│   │   ├── ArrowSVG.tsx
-│   │   ├── ArrowToTop.tsx
-│   │   ├── BurgerButton.tsx
-│   │   ├── CancelButton.tsx
-│   │   ├── Dropdown.tsx
-│   │   └── IconButton.tsx
-│   ├── CardMaker.tsx
-│   ├── ColorfulBorder.tsx
-│   ├── ColorfulHover.tsx
-│   ├── Construction.tsx
-│   ├── Cookies
-│   │   ├── Cookies.tsx
-│   │   └── CookiesConsent.tsx
-│   ├── CustomCursor.tsx
-│   ├── CustomLink.tsx
-│   ├── Footer
-│   │   ├── Captcha.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Footer.tsx
-│   │   └── FooterColumn.tsx
-│   ├── Frames
-│   │   ├── MonitorFrame
-│   │   └── PhoneFrame
-│   ├── GenerateSpans.tsx
-│   ├── Labels.tsx
-│   ├── Loading
-│   │   ├── FsLoading.tsx
-│   │   └── Loading.tsx
-│   ├── LogoImage.tsx
-│   ├── Navbar
-│   │   ├── CrunchyLogo.tsx
-│   │   ├── LanguageMenu.tsx
-│   │   ├── MobileMenu.tsx
-│   │   └── Navbar.tsx
-│   ├── PortfolioDataStore.tsx
-│   ├── RooteTitles
-│   │   ├── AllRoutes.tsx
-│   │   ├── MainRoutes.tsx
-│   │   ├── SubRoutes.tsx
-│   │   └── checkIfPageExist.ts
-│   ├── Sections
-│   │   ├── CodeSect
-│   │   ├── DesignSect
-│   │   ├── IntroductionSect
-│   │   ├── LandingSect
-│   │   ├── LogoSection
-│   │   ├── PortfolioSect
-│   │   ├── Section.tsx
-│   │   ├── ServicesSect
-│   │   └── TitleText.tsx
-│   ├── Slider
-│   │   ├── FullScreenSlider
-│   │   ├── LogoSlide.tsx
-│   │   └── Portfolio
-│   ├── SocialIcons.tsx
-│   ├── SvgAnimator.tsx
-│   └── typeText.tsx
-├── constants
-│   ├── codeString.ts
-│   ├── colorPacks.ts
-│   ├── index.ts
-│   ├── phoneSlides.ts
-│   ├── policyDatas.ts
-│   └── sections.tsx
-├── global.d.ts
-├── hooks
-│   ├── useBlurUrl.ts
-│   ├── useClickableHandlers.ts
-│   ├── useDragHandler.ts
-│   ├── useFilteredData.ts
-│   ├── useIntersectionObserver.ts
-│   ├── useOutsideClick.ts
-│   ├── useSupabaseFetch.ts
-│   ├── useThrottle.ts
-│   └── useTranslation.ts
-├── i18n
-│   ├── actions
-│   │   └── switch-locale.ts
-│   ├── client.ts
-│   ├── i18Provider.tsx
-│   ├── locales
-│   │   ├── de
-│   │   ├── en
-│   │   └── tr
-│   ├── resourcesToBackend.ts
-│   ├── server.ts
-│   └── settings.ts
+│   ├── Buttons                 # Contains various buttons used across the site.
+│   ├── Cookies                 # Manages user consent for enabling Vercel Analytics and Speedinsight.
+│   ├── Footer                  # The footer component for the site, typically includes site links and credits.
+│   ├── Frames                  # Contains components for displaying monitor and phone frames with embedded content.
+│   ├── Loading                 # Components that display loading animations or placeholders.
+│   ├── Navbar                  # The site's main navigation bar component.
+│   ├── RootTitles              # Displays the current page or subsection title, used on pages other than the homepage.
+│   ├── Sections                # Components that define different sections of the homepage.
+│   │   ├── CodeSect            # Section focused on coding or development content.
+│   │   ├── DesignSect          # Section related to design content.
+│   │   ├── IntroductionSect    # The introduction section of the homepage.
+│   │   ├── LandingSect         # Landing section, typically the first visible section on the homepage.
+│   │   ├── LogoSection         # Displays logos or branding elements.
+│   │   ├── PortfolioSect       # Section showcasing portfolio items.
+│   │   └── ServicesSect        # Section outlining the services offered.
+│   └── Slider
+│       ├── FullScreenSlider    # A slider component that adjusts to the size of the parent div, creating full-screen slides.
+│       └── Portfolio           # Contains a Carousel slider for portfolio items with Modal components for detailed views.
+├── constants               # Stores constant values used throughout the application.
+├── hooks                   # Contains custom React hooks for managing state and side effects.
+├── i18n                    # Contains i18next settings, providers, server and client side functions.
+│   ├── actions             # Actions related to internationalization (i18n).
+│   └── locales             # Contains translation files and locale-specific data.
 ├── lib
-│   ├── metadata.ts
-│   ├── metadataSub.ts
-│   ├── supabaseClient.ts
-│   └── utils
-│       ├── cache.ts
-│       ├── fetchSupabaseData.ts
-│       └── filterByLanguage.ts
-├── middleware.ts
-├── next-env.d.ts
-├── next.config.js
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── public
-│   ├── LogoL.svg
-│   ├── arrow.svg
-│   ├── fonts
-│   │   └── britannic-bold
-│   ├── logo.svg
-│   ├── logoRight.svg
-│   ├── logo_L.svg
-│   ├── logo_leftw.svg
-│   ├── ogImage.avif
-│   ├── phone.svg
-│   ├── projectInfo.png
-│   └── rotateArrow.svg
-├── schemas
-│   └── index.ts
+│   └── utils               # General utility functions used across the application.
+├── public                  # Public assets, such as images and fonts, accessible by the browser.
+├── schemas                 # Defines schemas for data validation or database models.
 ├── store
-│   ├── index.ts
-│   ├── provider.tsx
-│   └── redux
-│       ├── cookieConsent.ts
-│       ├── cursorDisabled.ts
-│       ├── isClickable.ts
-│       ├── isScrollEnabled.ts
-│       ├── isSlider.ts
-│       ├── isTouch.ts
-│       ├── pageReducer.ts
-│       ├── portfolioItems.ts
-│       ├── sectionItems.ts
-│       └── selectedSlide.ts
-├── tailwind.config.ts
-├── tsconfig.json
-├── types
-│   ├── common.types.ts
-│   └── turnstile.d.ts
-└── utils
-    ├── getRandomColor.ts
-    ├── handleScroll.ts
-    ├── logoComponent.ts
-    ├── motion.ts
-    ├── randomColors.ts
-    ├── scrollEventControl.ts
-    └── scrollToSection.ts
+│   └── redux               # Redux store configuration and related files.
+├── types                   # TypeScript type definitions used throughout the project.
+└── utils                   # Miscellaneous utility functions and helpers.
+
 ```
 
 ## License
@@ -266,4 +144,3 @@ npm run start
 ```
 
 - Open [http://localhost:3000](http://localhost:8080)
-
