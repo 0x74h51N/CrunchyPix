@@ -40,8 +40,8 @@ export async function generateSubPageMetadata({
       keywords: selectedItem[0].ticks.join(', '),
       openGraph: {
         title: `${t('meta.title')} | ${selectedItem[0].title && selectedItem[0].title}`,
-        description: selectedItem[0].description
-          ? selectedItem[0].description
+        description: selectedItem[0].description2
+          ? selectedItem[0].description2
           : '',
         url: `https://crunchypix.vercel.app/portfolio/${params.id}`,
         images: [

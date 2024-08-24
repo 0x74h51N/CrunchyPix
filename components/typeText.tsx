@@ -12,12 +12,27 @@ type TypingTextProps = {
   loadingMode?: boolean;
   reverseDelay?: number;
 };
-
+/**
+ * TypingText Component
+ *
+ * This component simulates a typing effect by incrementally displaying the given text string.
+ * It can also simulate a "loading mode" where the text is typed out, then deleted in reverse, and retyped in a loop.
+ *
+ * @param text - The text to be displayed with the typing effect.
+ * @param typingSpeed - The speed (in milliseconds) at which each character is typed. Default is 50ms.
+ * @param textClass - An optional CSS class for styling the text.
+ * @param delay - An optional delay (in milliseconds) before typing starts. Default is 100ms.
+ * @param generateSpan - If true, wraps each character in a span element, allowing for additional styling.
+ * @param loadingMode - If true, the component enters a loop where the text is typed out and then deleted in reverse.
+ * @param reverseDelay - The delay (in milliseconds) between finishing typing and starting to delete the text in loading mode. Default is 150ms.
+ *
+ * @returns A React component that renders the text with a typing animation. If generateSpan is true, the text is wrapped in span elements.
+ */
 const TypingText = ({
   text,
   typingSpeed = 50,
   textClass,
-  delay = 1,
+  delay = 100,
   generateSpan = false,
   colorType,
   randomCount,
@@ -70,7 +85,11 @@ const TypingText = ({
       setDisplayText(text);
     }
   }, [text, isWriting, loadingMode, charIndex]);
-
+  useEffect(() => {
+    if (!isWriting && !loadingMode && text !== displayText) {
+      setDisplayText(text);
+    }
+  }, [text]);
   if (generateSpan) {
     return (
       <div className={textClass}>

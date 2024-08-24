@@ -1,11 +1,12 @@
 import { Links } from '@/constants';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import BurgerButton from '../Buttons/BurgerButton';
 import LanguageMenu from './LanguageMenu';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 import { useTranslation } from '@/hooks/useTranslation';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 type MobileMenuProps = {
   smallNav: boolean;
@@ -27,19 +28,7 @@ const MobileMenu = ({
   );
   const { t } = useTranslation('index');
 
-  useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setMobileMenu(false);
-      }
-    };
-
-    document.addEventListener('click', handleOutsideClick);
-
-    return () => {
-      document.removeEventListener('click', handleOutsideClick);
-    };
-  }, [menuRef, setMobileMenu]);
+  useOutsideClick(menuRef, () => setMobileMenu(false));
 
   return (
     <div ref={menuRef} className="flex flex-col">
