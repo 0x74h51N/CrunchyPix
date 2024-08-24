@@ -63,22 +63,22 @@ This project began with the goal of creating a personal website to showcase my s
 ```
 ├── app
 │   ├── actions                 # Contains server-side actions for validating and processing user inputs.
-│   ├── about                   # About page, includes components and dynamically generated subpages.
+│   ├── about                   # About page, includes components.
 │   │   └── components          # Specific components used within the About page.
-│   ├── policies                # Policies page, with components and dynamic subpages for each policy ([id]).
+│   ├── policies                # Contains components and dynamic subpages for each policy ([id]).
 │   │   └── [id]
 │   │       └── components      # Components related to individual policy subpages.
-│   └── portfolio               # Portfolio page, includes components and dynamically generated subpages.
+│   └── portfolio               # Portfolio main page, includes components and dynamically generated subpages.
 │       ├── [id]
 │       │   └── components      # Components for individual portfolio items' subpages.
 │       └── components          # General components used within the Portfolio page.
 ├── components
-│   ├── Buttons                 # Contains various buttons used across the site.
+│   ├── Buttons                 # Contains various buttons used across the site as like arrow, burger or dropdown buttons.
 │   ├── Cookies                 # Manages user consent for enabling Vercel Analytics and Speedinsight.
 │   ├── Footer                  # The footer component for the site, typically includes site links and credits.
 │   ├── Frames                  # Contains components for displaying monitor and phone frames with embedded content.
-│   ├── Loading                 # Components that display loading animations or placeholders.
-│   ├── Navbar                  # The site's main navigation bar component.
+│   ├── Loading                 # Components that display custom loading component.
+│   ├── Navbar                  # The site's main navigation, language menu and mobile menu components.
 │   ├── RootTitles              # Displays the current page or subsection title, used on pages other than the homepage.
 │   ├── Sections                # Components that define different sections of the homepage.
 │   │   ├── CodeSect            # Section focused on coding or development content.
@@ -96,12 +96,12 @@ This project began with the goal of creating a personal website to showcase my s
 ├── i18n                    # Contains i18next settings, providers, server and client side functions.
 │   ├── actions             # Actions related to internationalization (i18n).
 │   └── locales             # Contains translation files and locale-specific data.
-├── lib
-│   └── utils               # General utility functions used across the application.
-├── public                  # Public assets, such as images and fonts, accessible by the browser.
-├── schemas                 # Defines schemas for data validation or database models.
-├── store
-│   └── redux               # Redux store configuration and related files.
+├── lib                     # Contains meta data generate functions, Supabase client settings.
+│   └── utils               # Contains server side Supabase fetch function, custom query cache function and language filter function.
+├── public
+├── schemas                 # Defines schemas and types for data validation on fetched PostgreSQL data.
+├── store                   # Redux store configuration and provider component.
+│   └── redux               # Contains related store files.
 ├── types                   # TypeScript type definitions used throughout the project.
 └── utils                   # Miscellaneous utility functions and helpers.
 
