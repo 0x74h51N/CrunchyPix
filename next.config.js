@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: process.env.NODE_ENV !== "production",
+  reactStrictMode: process.env.NODE_ENV !== 'production',
   images: {
     domains: ['res.cloudinary.com'],
   },
   async redirects() {
     return [
       {
-        source: '/policies',
+        source: '/:lang(en|tr|de)/policies',
         destination: '/',
         permanent: true,
       },
@@ -16,8 +16,12 @@ module.exports = {
   async rewrites() {
     return [
       {
+        source: '/:lang(en|tr|de)/:path*',
+        destination: '/:lang/:path*',
+      },
+      {
         source: '/:path*',
-        destination: '/:path*',
+        destination: '/en/:path*',
       },
     ];
   },

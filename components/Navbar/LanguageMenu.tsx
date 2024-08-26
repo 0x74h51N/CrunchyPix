@@ -1,9 +1,11 @@
 'use client';
 import i18n from '@/i18n/client';
 import { DE, TR, GB } from 'country-flag-icons/react/3x2';
-import { switchLocaleAction } from '@/i18n/actions/switch-locale';
+import { switchLocaleAction } from '@/app/actions/switch-locale';
 import Dropdown from '../Buttons/Dropdown';
 import { useEffect, useState } from 'react';
+import { Locales } from '@/i18n/settings';
+import { usePathname, useRouter } from 'next/navigation';
 
 const languages = [
   {
@@ -19,18 +21,26 @@ const languages = [
 
 const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('');
+  const router = useRouter();
+  const currentPathname = usePathname();
 
   useEffect(() => {
     const handleChange = async (selectedLanguage: string) => {
-      const result = await switchLocaleAction(selectedLanguage);
+      const result = await switchLocaleAction(selectedLanguage as Locales);
       if (result.status === 'success') {
+        const newPath = currentPathname.replace(
+          `/${i18n.language}`,
+          `/${selectedLanguage}`,
+        );
+        router.replace(newPath);
+
         i18n.changeLanguage(selectedLanguage);
       }
     };
     if (selectedLanguage) {
       handleChange(selectedLanguage);
     }
-  }, [selectedLanguage]);
+  }, [selectedLanguage, currentPathname]);
 
   const getFlagComponent = (language: string) => {
     switch (language) {

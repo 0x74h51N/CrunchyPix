@@ -5,12 +5,12 @@ import ReactMarkdown from 'react-markdown';
 import CustomLink from '../CustomLink';
 import { motion } from 'framer-motion';
 import { fadeIn } from '@/utils/motion';
-import { useTranslation } from '@/hooks/useTranslation';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import {
   getCookieConsent,
   setCookiesConsent,
 } from '@/app/actions/setCookiesConsent';
+import { useTranslation } from 'react-i18next';
 
 const CookieConsent = () => {
   const { t } = useTranslation('index');

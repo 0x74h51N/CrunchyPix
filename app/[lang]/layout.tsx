@@ -10,20 +10,31 @@ import { ArrowToTop } from '@/components/Buttons/ArrowToTop';
 import AllRoutes from '@/components/RooteTitles/AllRoutes';
 import CookieConsent from '@/components/Cookies/CookiesConsent';
 import Cookies from '@/components/Cookies/Cookies';
-import { getLocale } from '@/i18n/server';
-import { generatePageMetadata } from '../lib/metadata';
+import { generatePageMetadata } from '../../lib/metadata';
 import PortfolioDataStore from '@/components/PortfolioDataStore';
+import { Locales, supportedLocales } from '@/i18n/settings';
+import { dir } from 'i18next';
 
 const inter = Inter({ subsets: ['latin'] });
 export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata('home');
 }
 
-const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+export function generateStaticParams() {
+  return supportedLocales.map((lang) => ({ lang }));
+}
+
+const RootLayout = async ({
+  children,
+  params: { lang },
+}: {
+  children: React.ReactNode;
+  params: { lang: Locales };
+}) => {
   return (
-    <html lang={getLocale()}>
+    <html lang={lang} dir={dir(lang)}>
       <body className="lg:overflow-x-hidden">
-        <AppI18nProvider>
+        <AppI18nProvider lang={lang}>
           <AppReduxProvider>
             <CustomCursor />
             <CookieConsent />

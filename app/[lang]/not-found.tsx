@@ -1,8 +1,8 @@
 'use client';
-import { useTranslation } from '@/hooks/useTranslation';
 import { CldImage } from 'next-cloudinary';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Custom404 = () => {
   const router = useRouter();

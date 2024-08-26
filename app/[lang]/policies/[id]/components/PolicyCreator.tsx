@@ -22,10 +22,19 @@ const PolicyCreator = ({ id }: { id: string }) => {
   );
 
   const [filteredData, setFilteredData] = useState<PoliciesTypes[]>([]);
-  const language = getLocale() || i18next.language;
+  const [language, setLanguage] = useState<string | null>(null);
 
   useEffect(() => {
-    if (data) {
+    const fetchLanguage = async () => {
+      const locale = await getLocale();
+      setLanguage(locale || i18next.language);
+    };
+
+    fetchLanguage();
+  }, []);
+
+  useEffect(() => {
+    if (data && language) {
       const filteredDat = filterByLanguage({
         items: data,
         language,
@@ -33,8 +42,8 @@ const PolicyCreator = ({ id }: { id: string }) => {
       });
       setFilteredData(filteredDat);
     }
-  }, [data, language, setFilteredData]);
-  console.log(filteredData);
+  }, [data, language]);
+
   useEffect(() => {
     document.title = t('meta.title');
   }, [t, language]);
