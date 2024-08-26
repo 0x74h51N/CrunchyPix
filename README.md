@@ -40,7 +40,6 @@ This project began with the goal of creating a personal website to showcase my s
 
 - [Nodemailer](https://nodemailer.com) - Email sending library.
 - [Country-Flag-Icons](https://github.com/catamphetamine/country-flag-icons) - Collection of country flag icons.
-- [Cookies-next](https://github.com/cookie-notice/cookies-next) - Utility for handling cookies in Next.js applications.
 
 ### Third-party Services
 

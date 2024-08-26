@@ -1,32 +1,18 @@
-'use client';
-import { RootState } from '@/store';
+import { getCookieConsent } from '@/app/actions/setCookiesConsent';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { getCookie, hasCookie } from 'cookies-next';
-import React, { useCallback, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 
-const Cookies = () => {
-  const cookiesConsent = useSelector(
-    (state: RootState) => state.cookieConsent.cookieConsent,
-  );
-  const beforeSendHandler = useCallback((e: any) => {
-    if (hasCookie('cookiesConsent') && getCookie('cookiesConsent') === 'true') {
-      return e;
-    }
-    return null;
-  }, []);
-
-  useEffect(() => {
-    beforeSendHandler(undefined);
-  }, [beforeSendHandler]);
+export default async function Layout() {
+  const cookieConsent = await getCookieConsent();
 
   return (
     <>
-      <Analytics mode="auto" beforeSend={beforeSendHandler} />
-      <SpeedInsights beforeSend={beforeSendHandler} />
+      {cookieConsent === 'true' ? (
+        <>
+          <Analytics mode="auto" />
+          <SpeedInsights />
+        </>
+      ) : null}
     </>
   );
-};
-
-export default Cookies;
+}
