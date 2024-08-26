@@ -29,7 +29,7 @@
     "next-cloudinary": "^6.6.2",
     "next-navigation": "^1.0.6",
     "nodemailer": "^6.9.14",
-    "postcss-nesting": "^12.1.5",
+    "postcss-nesting": "^13.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.2",
