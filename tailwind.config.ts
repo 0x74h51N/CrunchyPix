@@ -70,4 +70,40 @@ module.exports = {
     },
   },
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          primary: '#333333',
+          secondary: '#4D4D4D',
+          accent: '#666666',
+          neutral: '#3D3D3D',
+          'base-100': '#ffffff',
+          'base-200': '#F2F2F2',
+          'base-300': '#E5E5E5',
+          'base-content': '#1A1A1A',
+          info: '#737373',
+          success: '#4CAF50',
+          warning: '#FFA726',
+          error: '#F44336',
+        },
+      },
+      {
+        dark: {
+          primary: '#1E1E1E',
+          secondary: '#2C2C2C',
+          accent: '#383838',
+          neutral: '#1A1A1A',
+          'base-100': '#121212',
+          'base-200': '#1A1A1A',
+          'base-300': '#232323',
+          'base-content': '#E0E0E0',
+          info: '#616161',
+          success: '#388E3C',
+          warning: '#FFB74D',
+          error: '#E57373',
+        },
+      },
+    ],
+  },
 };

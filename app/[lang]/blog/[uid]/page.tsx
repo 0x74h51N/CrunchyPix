@@ -1,5 +1,3 @@
-// ./src/app/blog/[uid]/page.tsx
-
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -12,6 +10,7 @@ import { PrismicNextImage } from '@prismicio/next';
 import { PostCard } from '@/components/PostCard';
 import { RichText } from '@/components/RichText';
 import { Navigation } from '@/components/Navigation';
+import ThemeToggle from '@/components/Buttons/ThemeToggle';
 
 type Params = { uid: string };
 
@@ -70,19 +69,18 @@ export default async function Page({ params }: { params: Params }) {
     page.data;
 
   return (
-    <div className="flex flex-col gap-12 w-full max-w-3xl">
-      <Navigation client={client} />
-
+    <div className="flex flex-col gap-12 w-full px-52 bg-base-200 -mt-[250px] pt-52 pb-20 after:bg-base-300 after:h-full -mb-20">
       {/* Display the "hero" section of the blog post */}
+      <ThemeToggle />
       <section className="flex flex-col gap-12 ">
         <div className="flex flex-col items-center gap-3 w-full">
           <div className="flex flex-col gap-6 items-center">
-            <p className="opacity-75 border-b-2 w-min pb-1">
-              {new Date(publication_date || '').toLocaleDateString()}
-            </p>
             <div className="text-center">
               <RichText field={title} />
             </div>
+            <p className="opacity-75 w-min pb-1 self-end">
+              {new Date(publication_date || '').toLocaleDateString()}
+            </p>
           </div>
           <div className="text-center">
             <RichText field={description} />
@@ -91,7 +89,7 @@ export default async function Page({ params }: { params: Params }) {
         <PrismicNextImage
           field={feutured_image}
           sizes="100vw"
-          className="w-full max-w-3xl max-h-96 rounded-xl object-cover"
+          className="w-full max-w-3xl self-center max-h-96 rounded-xl object-cover"
         />
       </section>
 
@@ -99,7 +97,7 @@ export default async function Page({ params }: { params: Params }) {
       <SliceZone slices={slices} components={components} />
 
       {/* Display the Recommended Posts section using the posts we requested earlier */}
-      <h2 className="font-bold text-3xl">Recommended Posts</h2>
+      <h2 className="font-bold w-full mt-20 h3">Recommended Posts</h2>
       <section className="grid grid-cols-1 gap-8 max-w-3xl w-full">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
