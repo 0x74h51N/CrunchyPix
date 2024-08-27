@@ -7,20 +7,20 @@ import 'swiper/css/navigation';
 import { sectionsData } from '@/constants/sections';
 import { SectionsSchema, SectionsTypes } from '@/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import { memo, useEffect } from 'react';
+import { memo, useEffect, useState } from 'react';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
-import { getLocale } from '@/i18n/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSectionItems } from '@/store/redux/sectionItems';
 import { RootState } from '@/store';
 import FsLoading from '@/components/Loading/FsLoading';
+import { Locales } from '@/i18n/settings';
 
 const Section = dynamic(() => import('@/components/Sections/Section'), {
   ssr: false,
   loading: () => <FsLoading />,
 });
 
-const Home = () => {
+const Home = ({ params: { lang } }: { params: { lang: Locales } }) => {
   const dispatch = useDispatch();
   const filteredData = useSelector((state: RootState) => state.section.items);
   const { data, loading, error } = useSupabaseFetch<SectionsTypes>(
@@ -29,9 +29,19 @@ const Home = () => {
     `*, translations(*, cards(*))`,
     SectionsSchema,
   );
-  const language = getLocale();
+
+  const [language, setLanguage] = useState<string | null>(null);
+
   useEffect(() => {
-    if (data && !loading) {
+    const fetchLanguage = () => {
+      setLanguage(lang);
+    };
+
+    fetchLanguage();
+  }, [lang]);
+
+  useEffect(() => {
+    if (language && data && !loading) {
       const filteredItems = filterByLanguage({
         items: data,
         language,
@@ -44,6 +54,7 @@ const Home = () => {
   if (error) {
     console.error(error);
   }
+
   return !filteredData || filteredData.length <= 1 || error || loading ? (
     <FsLoading />
   ) : (

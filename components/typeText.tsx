@@ -89,7 +89,7 @@ const TypingText = ({
     if (!isWriting && !loadingMode && text !== displayText) {
       setDisplayText(text);
     }
-  }, [text]);
+  }, [text, displayText, isWriting, loadingMode]);
   if (generateSpan) {
     return (
       <div className={textClass}>

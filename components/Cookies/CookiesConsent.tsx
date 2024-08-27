@@ -1,31 +1,24 @@
 'use client';
 import { memo, useEffect, useState } from 'react';
 import breaks from 'remark-breaks';
-import { hasCookie, setCookie } from 'cookies-next';
 import ReactMarkdown from 'react-markdown';
 import CustomLink from '../CustomLink';
 import { motion } from 'framer-motion';
 import { fadeIn } from '@/utils/motion';
-import { useDispatch } from 'react-redux';
-import { setCookieConsent } from '@/store/redux/cookieConsent';
-import { useTranslation } from '@/hooks/useTranslation';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
+import {
+  getCookieConsent,
+  setCookiesConsent,
+} from '@/app/actions/setCookiesConsent';
+import { useTranslation } from 'react-i18next';
 
 const CookieConsent = () => {
   const { t } = useTranslation('index');
-  const oneMouth = 30 * 24 * 60 * 60;
   const [showConsent, setShowConsent] = useState(true);
-
-  const dispatch = useDispatch();
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
-  const handleAccept = () => {
-    setCookie('cookiesConsent', 'true', {
-      path: '/',
-      expires: new Date(Date.now() + oneMouth * 1000),
-      sameSite: 'lax',
-      secure: true,
-    });
-    dispatch(setCookieConsent(true));
+
+  const handleAccept = async () => {
+    await setCookiesConsent();
     setShowConsent(true);
     handleMouseLeave();
   };
@@ -36,8 +29,15 @@ const CookieConsent = () => {
   };
 
   useEffect(() => {
-    setShowConsent(hasCookie('cookiesConsent'));
-  }, [showConsent]);
+    const getCookie = async () => {
+      const response = await getCookieConsent();
+      if (response !== 'true') {
+        setShowConsent(false);
+      }
+    };
+
+    getCookie();
+  }, []);
 
   if (showConsent) {
     return null;

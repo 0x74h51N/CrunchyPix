@@ -1,6 +1,6 @@
 'use client';
-import { useEffect } from 'react';
-import i18next, { i18n } from 'i18next';
+
+import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import {
   FALLBACK_LOCALE,
@@ -10,7 +10,9 @@ import {
   supportedLocales,
 } from './settings';
 import resourcesToBackend from './resourcesToBackend';
-import { getCookie } from 'cookies-next';
+import { getLocaleCookie } from '@/app/actions/switch-locale';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const runsOnServerSide = typeof window === 'undefined';
 
@@ -25,23 +27,30 @@ i18next
     ...getOptions(),
     lng: undefined,
     detection: {
-      order: ['cookie'],
+      order: ['path', 'cookie', 'header'],
       lookupCookie: NEXT_LOCALE,
       caches: ['cookie'],
+      lookupFromPathIndex: 1,
     },
     preload: runsOnServerSide ? supportedLocales : [],
   });
 
 export default i18next;
 
-export function useCustomTranslationImplem(i18n: i18n, lng: Locales) {
-  useEffect(() => {
-    if (!lng || i18n.resolvedLanguage === lng) return;
-    i18n.changeLanguage(lng);
-  }, [lng, i18n]);
+export async function getLocale(): Promise<Locales> {
+  const storedLanguage = await getLocaleCookie();
+
+  if (storedLanguage) {
+    return storedLanguage;
+  }
+
+  return FALLBACK_LOCALE;
 }
 
-export function getLocale(): Locales {
-  const storedLanguage = getCookie(NEXT_LOCALE) as string;
-  return (storedLanguage as Locales) || FALLBACK_LOCALE;
+export function useClientLanguageSetup(lang: string) {
+  useEffect(() => {
+    if (!runsOnServerSide && lang) {
+      i18next.changeLanguage(lang);
+    }
+  }, [lang]);
 }

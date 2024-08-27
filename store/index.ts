@@ -6,7 +6,6 @@ import clickableReducer from './redux/isClickable';
 import touchReducer from './redux/isTouch';
 import cursorDisabledReducer from './redux/cursorDisabled';
 import isScrollEnabledReducer from './redux/isScrollEnabled';
-import cookieConsentReducer from './redux/cookieConsent';
 import portfolioReducer from './redux/portfolioItems';
 import sectionReducer from './redux/sectionItems';
 
@@ -19,7 +18,6 @@ const store = configureStore({
     isTouch: touchReducer,
     cursorDisabled: cursorDisabledReducer,
     isScrollEnabled: isScrollEnabledReducer,
-    cookieConsent: cookieConsentReducer,
     portfolio: portfolioReducer,
     section: sectionReducer,
   },

@@ -1,4 +1,4 @@
-import PolicyCreator from '@/app/policies/[id]/components/PolicyCreator';
+import PolicyCreator from '@/app/[lang]/policies/[id]/components/PolicyCreator';
 import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
 import { PoliciesTypes, PoliciesSchema } from '@/schemas';
 import { notFound } from 'next/navigation';

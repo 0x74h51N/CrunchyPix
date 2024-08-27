@@ -1,7 +1,7 @@
 import useClickableHandlers from '@/hooks/useClickableHandlers';
-import { useTranslation } from '@/hooks/useTranslation';
 import { RootState } from '@/store';
 import React, { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 const MainRoutes = ({

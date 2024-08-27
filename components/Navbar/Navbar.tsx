@@ -7,9 +7,9 @@ import LanguageMenu from './LanguageMenu';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import CrunchyLogo from './CrunchyLogo';
-import { useTranslation } from '@/hooks/useTranslation';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const [isMenuOpen, setMobileMenu] = useState(false);

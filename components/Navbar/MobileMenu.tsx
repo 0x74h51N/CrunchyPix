@@ -5,8 +5,8 @@ import BurgerButton from '../Buttons/BurgerButton';
 import LanguageMenu from './LanguageMenu';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
-import { useTranslation } from '@/hooks/useTranslation';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { useTranslation } from 'react-i18next';
 
 type MobileMenuProps = {
   smallNav: boolean;

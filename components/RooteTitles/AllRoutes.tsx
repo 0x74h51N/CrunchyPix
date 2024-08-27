@@ -21,8 +21,8 @@ const AllRoutes = () => {
   useEffect(() => {
     const updatePageInfo = async () => {
       const urlParts = pathname.split('/');
-      const currentPage = urlParts[1];
-      const currentChildPage = urlParts[2] || '';
+      const currentPage = urlParts[2];
+      const currentChildPage = urlParts[3] || '';
 
       setChildPage(currentChildPage);
       setMainPage(currentPage);
@@ -41,7 +41,7 @@ const AllRoutes = () => {
     };
 
     const urlParts = pathname.split('/');
-    urlParts.length > 3 && setHasGrand(true);
+    urlParts.length > 4 && setHasGrand(true);
     window.addEventListener('popstate', handlePopState);
 
     return () => {

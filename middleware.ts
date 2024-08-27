@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Locales } from './i18n/settings';
+import { FALLBACK_LOCALE, Locales } from './i18n/settings';
+import { switchLocaleAction } from './app/actions/switch-locale';
 
 const languageMappings: { [key: string]: Locales } = {
   en: 'en',
@@ -11,56 +12,44 @@ const languageMappings: { [key: string]: Locales } = {
 };
 
 export default async function middleware(req: NextRequest) {
-  let lng: Locales;
+  const url = req.nextUrl.clone();
+  const pathLocale = url.pathname.split('/')[1] as Locales;
   const cookieLang = req.cookies.get('preferred_language')?.value as Locales;
-  const referer = req.headers.get('referer');
   const acceptLang = req.headers.get('accept-language');
+  let lng: Locales | undefined;
 
-  if (cookieLang) {
+  if (pathLocale && Object.keys(languageMappings).includes(pathLocale)) {
+    lng = pathLocale;
+  } else if (cookieLang) {
     lng = cookieLang;
+    url.pathname = `/${lng}${url.pathname}`;
+    return NextResponse.redirect(url);
+  } else if (acceptLang) {
+    const lngInp = acceptLang.split(',')[0];
+    const primaryLang = lngInp.split('-')[0];
+    if (languageMappings[primaryLang]) {
+      lng = languageMappings[primaryLang];
+      url.pathname = `/${lng}${url.pathname}`;
+      return NextResponse.redirect(url);
+    }
   } else {
-    if (referer) {
-      const url = new URL(referer);
-      const urlParams = new URLSearchParams(url.search);
-      let searchLang: string | null = null;
-
-      if (url.hostname.includes('google')) {
-        searchLang = urlParams.get('hl');
-      } else if (url.hostname.includes('bing')) {
-        const mkt = urlParams.get('mkt');
-        if (mkt) {
-          searchLang = mkt.split('-')[0];
-        }
-      }
-
-      if (searchLang && languageMappings[searchLang]) {
-        lng = languageMappings[searchLang];
-      }
-    }
-
-    if (!cookieLang && !referer && acceptLang) {
-      const lngInp = acceptLang.split(',')[0];
-      const primaryLang = lngInp.split('-')[0];
-      if (languageMappings[primaryLang]) {
-        lng = languageMappings[primaryLang];
-      }
-    }
+    lng = FALLBACK_LOCALE;
+    url.pathname = `/${lng}${url.pathname}`;
+    return NextResponse.redirect(url);
   }
 
-  const response = NextResponse.next();
-  if (!cookieLang) {
-    response.cookies.set('preferred_language', lng!, {
-      path: '/',
-      maxAge: 365 * 24 * 60 * 60,
-      httpOnly: false,
-      sameSite: 'strict',
-      secure: process.env.NODE_ENV === 'production',
-    });
-    response.headers.set('x-preferred-language', lng!);
+  if (pathLocale === lng) {
+    return NextResponse.next();
   }
-  return response;
+
+  if (cookieLang !== lng) {
+    await switchLocaleAction(lng as Locales);
+    return NextResponse.redirect(url);
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: '/:path*',
+  matcher: '/((?!api|static|.*\\..*|_next).*)',
 };

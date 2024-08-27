@@ -18,7 +18,7 @@ const OtherProjects = () => {
   );
   useEffect(() => {
     const urlParts = pathname.split('/');
-    const currentChildPage = urlParts[2];
+    const currentChildPage = urlParts[3];
     if (!currentChildPage || currentChildPage === '') {
       setShow(false);
     } else {
