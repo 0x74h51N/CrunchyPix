@@ -28,7 +28,7 @@ const getDynamicPages = async (mainPage: string): Promise<string[]> => {
 };
 
 export const checkIfPageExists = async (mainPage: string, subPage?: string) => {
-  const mainPages = ['policies', 'portfolio', 'about'];
+  const mainPages = ['policies', 'portfolio', 'about', 'blog'];
   if (!mainPages.includes(mainPage)) {
     return false;
   }
