@@ -5,6 +5,7 @@ import {
   PortfolioItemProps,
   PortfolioItemSchema,
 } from '@/schemas';
+import { Post } from '@/types/common.types';
 
 const getDynamicPages = async (mainPage: string): Promise<string[]> => {
   if (mainPage === 'policies') {
@@ -27,14 +28,29 @@ const getDynamicPages = async (mainPage: string): Promise<string[]> => {
   return [];
 };
 
-export const checkIfPageExists = async (mainPage: string, subPage?: string) => {
+export const checkIfPageExists = async (
+  mainPage: string,
+  subPage?: string,
+  posts?: Post[],
+): Promise<boolean> => {
   const mainPages = ['policies', 'portfolio', 'about', 'blog'];
+
+  // 1. Main Page Kontrolü
   if (!mainPages.includes(mainPage)) {
     return false;
   }
+
+  // 2. SubPage Kontrolü
   if (subPage) {
     const subPages = await getDynamicPages(mainPage);
-    return subPages.includes(subPage);
+
+    // 3. Postların SubPage ile Eşleşme Kontrolü
+    const postMatch = posts && posts.some((post) => post.uid === subPage);
+
+    // SubPage ya da Post Match Eşleşmiyorsa False Döndür
+    return subPages.includes(subPage) || postMatch || false;
   }
+
+  // Eğer SubPage yoksa ve sadece MainPage kontrol ediliyorsa True Döndür
   return true;
 };

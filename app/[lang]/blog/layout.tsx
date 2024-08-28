@@ -1,14 +1,24 @@
 import { PrismicPreview } from '@prismicio/next';
-import { repositoryName } from '@/prismicio';
+import { createClient, repositoryName } from '@/prismicio';
+import PostsReducer from './components/PostsReducer';
 
-export default function RootLayout({
+export default async function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const client = createClient();
+
+  const posts = await client.getAllByType('blog_post', {
+    orderings: [
+      { field: 'my.blog_post.publication_date', direction: 'desc' },
+      { field: 'document.first_publication_date', direction: 'desc' },
+    ],
+  });
   return (
     <div className="flex flex-col items-center">
-      <div className="mt-20 pt-40 lg:w-[1300px] max-w-full min-h-screen p-12 w-full flex flex-col gap-20 items-center">
+      <PostsReducer posts={posts} />
+      <div className=" w-full min-h-screen flex flex-col gap-20 items-center">
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </div>

@@ -8,6 +8,7 @@ import cursorDisabledReducer from './redux/cursorDisabled';
 import isScrollEnabledReducer from './redux/isScrollEnabled';
 import portfolioReducer from './redux/portfolioItems';
 import sectionReducer from './redux/sectionItems';
+import postsSliceReducer from './redux/postSlice';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     isScrollEnabled: isScrollEnabledReducer,
     portfolio: portfolioReducer,
     section: sectionReducer,
+    postSlice: postsSliceReducer,
   },
 });
 

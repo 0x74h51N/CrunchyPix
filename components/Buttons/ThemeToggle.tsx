@@ -4,7 +4,7 @@ import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { useState, useEffect } from 'react';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
@@ -34,7 +34,8 @@ export default function ThemeToggle() {
           type="checkbox"
           value="synthwave"
           className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1 !cursor-none"
-          onClick={toggleTheme}
+          onChange={toggleTheme}
+          checked={theme === 'dark'}
         />
         <svg
           className="stroke-base-100 fill-base-100 col-start-1 row-start-1 !cursor-none"

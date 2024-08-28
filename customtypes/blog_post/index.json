@@ -50,6 +50,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "code_slice": {
+              "type": "SharedSlice"
+            },
+            "image_slice": {
+              "type": "SharedSlice"
+            },
             "rich_text": {
               "type": "SharedSlice"
             }

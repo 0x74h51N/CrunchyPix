@@ -4,7 +4,10 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogPostDocumentDataSlicesSlice = RichTextSlice;
+type BlogPostDocumentDataSlicesSlice =
+  | CodeSliceSlice
+  | ImageSliceSlice
+  | RichTextSlice;
 
 /**
  * Content for Blog Post documents
@@ -248,6 +251,65 @@ export type AllDocumentTypes =
   | PageDocument;
 
 /**
+ * Primary content in *CodeSlice → Default → Primary*
+ */
+export interface CodeSliceSliceDefaultPrimary {
+  /**
+   * language field in *CodeSlice → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: code lang
+   * - **Default Value**: typescript
+   * - **API ID Path**: code_slice.default.primary.language
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  language: prismic.SelectField<
+    'typescript' | 'javascript' | 'python' | 'json' | 'html' | 'css' | 'text',
+    'filled'
+  >;
+
+  /**
+   * codeblock field in *CodeSlice → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: code_slice.default.primary.codeblock
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  codeblock: prismic.RichTextField;
+}
+
+/**
+ * Default variation for CodeSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CodeSliceSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<CodeSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CodeSlice*
+ */
+type CodeSliceSliceVariation = CodeSliceSliceDefault;
+
+/**
+ * CodeSlice Shared Slice
+ *
+ * - **API ID**: `code_slice`
+ * - **Description**: CodeSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CodeSliceSlice = prismic.SharedSlice<
+  'code_slice',
+  CodeSliceSliceVariation
+>;
+
+/**
  * Default variation for Hero Slice
  *
  * - **API ID**: `default`
@@ -273,6 +335,51 @@ type HeroSliceVariation = HeroSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>;
+
+/**
+ * Primary content in *ImageSlice → Default → Primary*
+ */
+export interface ImageSliceSliceDefaultPrimary {
+  /**
+   * image field in *ImageSlice → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_slice.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ImageSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliceSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<ImageSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageSlice*
+ */
+type ImageSliceSliceVariation = ImageSliceSliceDefault;
+
+/**
+ * ImageSlice Shared Slice
+ *
+ * - **API ID**: `image_slice`
+ * - **Description**: ImageSlice
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageSliceSlice = prismic.SharedSlice<
+  'image_slice',
+  ImageSliceSliceVariation
+>;
 
 /**
  * Primary content in *RichText → Default → Primary*
@@ -339,9 +446,17 @@ declare module '@prismicio/client' {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      CodeSliceSlice,
+      CodeSliceSliceDefaultPrimary,
+      CodeSliceSliceVariation,
+      CodeSliceSliceDefault,
       HeroSlice,
       HeroSliceVariation,
       HeroSliceDefault,
+      ImageSliceSlice,
+      ImageSliceSliceDefaultPrimary,
+      ImageSliceSliceVariation,
+      ImageSliceSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

@@ -10,9 +10,15 @@ import CrunchyLogo from './CrunchyLogo';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { useTranslation } from 'react-i18next';
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const [isMenuOpen, setMobileMenu] = useState(false);
+  const route = usePathname();
+  const fixed = useMemo(() => {
+    const path = route.split('/');
+    return path.length < 3;
+  }, [route]);
   const selectedLink = useSelector(
     (state: RootState) => state.page.currentPage,
   );
@@ -23,7 +29,7 @@ const Navbar = () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setSmallNav(false);
-      } else {
+      } else if (fixed) {
         setSmallNav(true);
       }
     });
@@ -33,8 +39,7 @@ const Navbar = () => {
     threshold: 0,
   });
   const navClassName = useMemo(() => {
-    let baseClass =
-      'fixed flex w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] min-w-[100svw] top-0 z-[450] gap-4 bg-cool-gray-900 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5';
+    let baseClass = `${fixed ? 'fixed' : 'absolute'} flex w-auto 2xl:min-w-[1450px] min-w-full top-0 z-[450] gap-4 bg-cool-gray-900 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5`;
     if (isMenuOpen) {
       return `${baseClass} navbar py-5 ${smallNav ? 'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black' : 'h-[280px]  bg-opacity-0'}`;
     } else if (smallNav) {
@@ -42,7 +47,7 @@ const Navbar = () => {
     } else {
       return `${baseClass} pt-12 py-5 bg-opacity-0 h-[100px]`;
     }
-  }, [isMenuOpen, smallNav]);
+  }, [isMenuOpen, smallNav, fixed]);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const linkItems = useMemo(() => {
     return Links.map((link) => (
@@ -76,7 +81,7 @@ const Navbar = () => {
           height: '1px',
         }}
       />
-      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0">
+      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0 c">
         <nav className={navClassName}>
           <Link
             href="/"

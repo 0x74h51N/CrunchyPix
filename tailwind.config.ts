@@ -59,6 +59,7 @@ module.exports = {
       },
       screens: {
         xs: '400px',
+        xsm: '500px',
       },
       maxWidth: {
         '10xl': '1680px',
@@ -94,7 +95,7 @@ module.exports = {
           secondary: '#2C2C2C',
           accent: '#383838',
           neutral: '#1A1A1A',
-          'base-100': '#121212',
+          'base-100': '#0a0a0a',
           'base-200': '#1A1A1A',
           'base-300': '#232323',
           'base-content': '#E0E0E0',

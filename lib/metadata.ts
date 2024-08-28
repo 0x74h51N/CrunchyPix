@@ -11,6 +11,18 @@ export async function generatePageMetadata(page: string): Promise<Metadata> {
     title: t('meta.title'),
     description: t('meta.description'),
     keywords: t('meta.keywords'),
+    icons: {
+      icon: [
+        {
+          url: '/favicon-light.ico',
+          media: '(prefers-color-scheme: light)',
+        },
+        {
+          url: '/favicon-dark.ico',
+          media: '(prefers-color-scheme: dark)',
+        },
+      ],
+    },
     openGraph: {
       title: t('meta.title'),
       description: t('meta.description'),

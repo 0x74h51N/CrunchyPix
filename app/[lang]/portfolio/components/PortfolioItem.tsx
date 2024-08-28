@@ -2,7 +2,7 @@ import { RootState } from '@/store';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { CldImage } from 'next-cloudinary';

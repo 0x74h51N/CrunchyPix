@@ -1,4 +1,5 @@
 import { IconProps } from '@/schemas';
+import { RichTextField } from '@prismicio/types';
 
 export type Links = {
   href: string;
@@ -72,3 +73,8 @@ export type Option = {
   value?: string | React.ReactNode;
   disabledTip?: string;
 };
+
+export interface Post {
+  uid: string;
+  title: RichTextField;
+}

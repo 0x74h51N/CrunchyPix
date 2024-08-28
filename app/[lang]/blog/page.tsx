@@ -4,9 +4,8 @@ import { SliceZone } from '@prismicio/react';
 import * as prismic from '@prismicio/client';
 
 import { createClient } from '@/prismicio';
-import { components } from '@/slices';
-import { PostCard } from '@/components/PostCard';
-import { Navigation } from '@/components/Navigation';
+import { components } from '@/app/[lang]/blog/slices';
+import { PostCard } from './components/PostCard';
 
 /**
  * This component renders your homepage.
@@ -36,7 +35,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Index() {
   // The client queries content from the Prismic API
   const client = createClient();
-
   // Fetch the content of the home page from Prismic
   const home = await client.getByUID('page', 'home');
 
@@ -52,10 +50,8 @@ export default async function Index() {
     <>
       <SliceZone slices={home.data.slices} components={components} />
       {/* Map over each of the blog posts created and display a `PostCard` for it */}
-      <section className="grid grid-cols-1 gap-8 max-w-3xl w-full">
-        {posts.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
+      <section className="grid xl:grid-cols-2 grid-cols-1 gap-8 xl:max-w-7xl max-w-3xl w-full max-lg:px-8 max-xsm:px-4">
+        {posts && posts.map((post) => <PostCard key={post.id} post={post} />)}
       </section>
     </>
   );

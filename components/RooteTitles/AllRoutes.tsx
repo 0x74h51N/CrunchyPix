@@ -8,6 +8,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { checkIfPageExists } from './checkIfPageExist';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 const AllRoutes = () => {
   const { hoverEnd } = useDragHandler();
@@ -18,6 +20,8 @@ const AllRoutes = () => {
   const [loading, setLoading] = useState(true);
   const [pageExists, setPageExists] = useState(false);
   const [hasGrandchildPage, setHasGrand] = useState(false);
+  const posts = useSelector((state: RootState) => state.postSlice.posts);
+
   useEffect(() => {
     const updatePageInfo = async () => {
       const urlParts = pathname.split('/');
@@ -26,10 +30,11 @@ const AllRoutes = () => {
 
       setChildPage(currentChildPage);
       setMainPage(currentPage);
-
+      console.log('allroutePosts', posts);
       const isValidPage = await checkIfPageExists(
         currentPage,
         currentChildPage,
+        posts,
       );
       setPageExists(isValidPage);
     };
@@ -47,7 +52,7 @@ const AllRoutes = () => {
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [pathname]);
+  }, [pathname, posts]);
 
   useEffect(() => {
     window.scrollTo({
@@ -58,14 +63,7 @@ const AllRoutes = () => {
     handleMouseLeave();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (
-    !pageExists ||
-    hasGrandchildPage ||
-    pathname === '' ||
-    pathname === 'home' ||
-    pathname === '/' ||
-    mainPage === ''
-  ) {
+  if (!pageExists || hasGrandchildPage || !mainPage) {
     return null;
   } else {
     return (

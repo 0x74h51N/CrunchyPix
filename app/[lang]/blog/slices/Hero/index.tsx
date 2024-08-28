@@ -1,7 +1,7 @@
 import { Content } from '@prismicio/client';
 import { SliceComponentProps, PrismicText } from '@prismicio/react';
-import { RichText } from '@/components/RichText';
 import { PrismicNextImage } from '@prismicio/next';
+import { RichText } from '../../components/RichText';
 
 /**
  * Props for `Hero`.

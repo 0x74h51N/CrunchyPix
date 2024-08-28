@@ -1,5 +1,6 @@
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 
 const SubRoutes = ({
@@ -9,6 +10,8 @@ const SubRoutes = ({
   childPage: string;
   mainPage: string;
 }) => {
+  const path = usePathname();
+  const blogPath = path.includes('blog');
   const { t } = useTranslation(['index', 'portfolio']);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   return (
@@ -46,7 +49,7 @@ const SubRoutes = ({
             className="md:text-2xl text-lg text-log-col font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
             style={{ textTransform: 'capitalize' }}
           >
-            {t('portfolio:page.details')}
+            {blogPath ? 'Article' : t('portfolio:page.details')}
           </div>
         </div>
       )}
