@@ -159,20 +159,22 @@ export function Toc({ slices, title }: TocProps) {
                         heading1: ({ node, children, key }) => (
                           <TocNavElement
                             node={node}
-                            children={children}
                             key={key}
                             level={1}
                             activeId={activeId}
-                          />
+                          >
+                            {children}
+                          </TocNavElement>
                         ),
                         heading2: ({ node, children, key }) => (
                           <TocNavElement
                             node={node}
-                            children={children}
                             key={key}
                             level={2}
                             activeId={activeId}
-                          />
+                          >
+                            {children}
+                          </TocNavElement>
                         ),
                         heading3: () => <></>,
                         paragraph: () => <></>,

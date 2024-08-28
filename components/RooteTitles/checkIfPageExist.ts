@@ -35,22 +35,17 @@ export const checkIfPageExists = async (
 ): Promise<boolean> => {
   const mainPages = ['policies', 'portfolio', 'about', 'blog'];
 
-  // 1. Main Page Kontrolü
   if (!mainPages.includes(mainPage)) {
     return false;
   }
 
-  // 2. SubPage Kontrolü
   if (subPage) {
     const subPages = await getDynamicPages(mainPage);
 
-    // 3. Postların SubPage ile Eşleşme Kontrolü
     const postMatch = posts && posts.some((post) => post.uid === subPage);
 
-    // SubPage ya da Post Match Eşleşmiyorsa False Döndür
     return subPages.includes(subPage) || postMatch || false;
   }
 
-  // Eğer SubPage yoksa ve sadece MainPage kontrol ediliyorsa True Döndür
   return true;
 };
