@@ -1,0 +1,17 @@
+{
+  "blog-post": {
+    "recommend": "Recommended Posts",
+    "menu": {
+      "fontPlus": "Increase Font",
+      "font": "Reset Font",
+      "fontMinus": "Decrease Font",
+      "fontSize": "Font size:",
+      "themeToggle": "Toggle Theme"
+    },
+    "share": {
+      "twitter": "Share on X",
+      "linkedin": "Share on Linkedin",
+      "facebook": "Share on Facebook"
+    }
+  }
+}

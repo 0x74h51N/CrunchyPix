@@ -74,7 +74,8 @@ export type Option = {
   disabledTip?: string;
 };
 
-export interface Post {
+export type SimplifiedPrismicLink = {
   uid: string;
-  title: RichTextField;
-}
+  url: string;
+  link_type: 'Document';
+};

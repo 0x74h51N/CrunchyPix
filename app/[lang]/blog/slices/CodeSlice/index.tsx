@@ -13,7 +13,8 @@ export type CodeSliceProps = SliceComponentProps<Content.CodeSliceSlice>;
  */
 const CodeSlice = ({ slice }: CodeSliceProps): JSX.Element => {
   return (
-    <section
+    <div
+      className="-my-9"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -22,7 +23,7 @@ const CodeSlice = ({ slice }: CodeSliceProps): JSX.Element => {
         code={asText(slice.primary.codeblock)}
       />
       {/* { Placeholder component for code_slice (variation: {slice.variation}) Slices} */}
-    </section>
+    </div>
   );
 };
 

@@ -64,16 +64,18 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
           className="lg:max-w-[380px] max-w-[300px] h-[320px]"
           key={`${item._id}-slide`}
         >
-          <PortfolioItem
-            _id={item._id}
-            project_overview={item.project_overview}
-            isSlide={true}
-            date={''}
-            id={0}
-            icons={[]}
-            tech={[]}
-            catalogue={null}
-          />
+          {item.project_overview && (
+            <PortfolioItem
+              _id={item._id}
+              project_overview={item.project_overview}
+              isSlide={true}
+              date={''}
+              id={0}
+              icons={[]}
+              tech={[]}
+              catalogue={null}
+            />
+          )}
         </SwiperSlide>
       ))}
     </Swiper>

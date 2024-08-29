@@ -13,18 +13,23 @@ export const PostCard = ({
 }): JSX.Element => {
   const { data } = post;
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+
   return (
     <Link
-      href={post.url!}
-      className="card glass min-h-72 grid xsm:grid-cols-2 grid-cols-1 xsm:rounded-xl rounded-lg hover:scale-105 transition-all duration-500 overflow-hidden"
+      href={`/blog/${post.uid}`}
+      passHref
+      className="card hover:z-50 shadow-xl shadow-bg-base-300 flex flex-col h-auto rounded-xl hover:scale-105 transition-all duration-500 overflow-hidden w-auto max-w-[380px] glass bg-base-300"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <PrismicNextImage
-        field={data.feutured_image}
-        className="w-full h-full object-cover col-span-1"
-      />
-      <div className="flex flex-col gap-3 justify-between col-span-1 p-8 box-border max-h-full">
+      <div className="min-h-64">
+        <PrismicNextImage
+          field={data.feutured_image}
+          fill
+          className="w-full max-h-64 object-cover"
+        />
+      </div>
+      <div className="flex flex-col gap-3 justify-between p-8 h-full">
         <div className="flex flex-col gap-2">
           <h2 className="font-bold text-xl hover:text-log-col transition-all ease-in-out duration-500">
             <PrismicText field={data.title} />
@@ -41,12 +46,12 @@ export const PostCard = ({
               ))}
             </p>
             <p className="text-sm opacity-75 self-center w-min">
-              {new Date(data?.publication_date || '').toLocaleDateString()}
+              {/* {new Date(data?.publication_date || '').toLocaleDateString()} */}
             </p>
           </div>
         </div>
 
-        <div className="line-clamp-6">
+        <div className="line-clamp-6 text-opacity-90 mt-12">
           <RichText field={data.description} />
         </div>
       </div>

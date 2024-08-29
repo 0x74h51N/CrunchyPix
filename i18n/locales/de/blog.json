@@ -1,0 +1,17 @@
+{
+  "blog-post": {
+    "recommend": "Empfohlene Beiträge",
+    "menu": {
+      "fontPlus": "Schrift vergrößern",
+      "font": "Schrift zurücksetzen",
+      "fontMinus": "Schrift verkleinern",
+      "fontSize": "Schriftgröße:",
+      "themeToggle": "Thema wechseln"
+    },
+    "share": {
+      "twitter": "Auf X teilen",
+      "linkedin": "Auf Linkedin teilen",
+      "facebook": "Auf Facebook teilen"
+    }
+  }
+}

@@ -22,13 +22,13 @@ import breaks from 'remark-breaks';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { SectionsSchema, SectionsTypes, TranslationTypes } from '@/schemas';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
-import i18next, { getLocale } from '@/i18n/client';
+import i18next from '@/i18n/client';
 import LoadingComponent from '@/components/Loading/Loading';
 
 const AboutMe = () => {
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const { hoverEnd } = useDragHandler();
-  const { i18n, t } = useTranslation('about');
+  const { t } = useTranslation('about');
   const [selectedOption, setSelectedOption] = useState('normal');
   const [filteredData, setFilteredData] = useState<TranslationTypes>();
   const [faqs, setFaqs] = useState<TranslationTypes>();
@@ -66,7 +66,7 @@ const AboutMe = () => {
 
       const filteredDat = filterByLanguage({
         items: data,
-        language,
+        language: language,
         localPath: 'translations',
       });
 

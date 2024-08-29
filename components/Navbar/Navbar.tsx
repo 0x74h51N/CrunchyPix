@@ -81,7 +81,7 @@ const Navbar = () => {
           height: '1px',
         }}
       />
-      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0 c">
+      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0">
         <nav className={navClassName}>
           <Link
             href="/"

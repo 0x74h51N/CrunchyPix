@@ -7,10 +7,12 @@ import * as prismic from '@prismicio/client';
 import { createClient } from '@/prismicio';
 import { components } from '@/app/[lang]/blog/slices';
 import { PrismicNextImage } from '@prismicio/next';
-import ThemeToggle from '@/components/Buttons/ThemeToggle';
+
 import { PostCard } from '../components/PostCard';
 import { RichText } from '../components/RichText';
 import { Toc } from '../components/ToC';
+import Menu from '../components/Menu';
+import { createTranslation } from '@/i18n/server';
 
 type Params = { uid: string };
 
@@ -75,25 +77,29 @@ export default async function Page({ params }: { params: Params }) {
       { field: 'my.blog_post.publication_date', direction: 'desc' },
       { field: 'document.first_publication_date', direction: 'desc' },
     ],
-    limit: 4,
+    limit: 2,
   });
 
   // Destructure out the content of the current page
   const { slices, title, publication_date, description, feutured_image } =
     page.data;
-  console.log(slices);
+  const { t } = await createTranslation('blog');
   return (
-    <div className="flex flex-col items-center bg-base-100 w-full h-full py-20">
-      <div className="flex flex-col gap-12 w-full max-w-[1150px] lg:px-52 md:px-10 px-4 relative">
+    <div className="flex flex-col items-center bg-base-100 w-full h-full pb-20">
+      <div className="flex flex-col gap-12 w-full max-w-[1150px] lg:px-52 md:px-10 px-4">
         {/* Display the "hero" section of the blog post */}
-        <ThemeToggle />
-        <section className="flex flex-col gap-12 ">
+
+        <section
+          id={'blog-section'}
+          className="flex flex-col gap-12 mb-40 -pb-40 relative"
+        >
+          <Menu />
           <div className="flex flex-col items-center gap-3 w-full">
             <div className="flex flex-col gap-6 items-center">
-              <div className="text-center hidden">
+              <div className="text-center">
                 <RichText field={title} />
               </div>
-              <p className="opacity-75 min-w-full pb-1 self-end">
+              <p className="opacity-75 w-full pb-1 text-right">
                 {new Date(publication_date || '').toLocaleDateString()}
               </p>
             </div>
@@ -106,20 +112,21 @@ export default async function Page({ params }: { params: Params }) {
             sizes="100vw"
             className="w-full max-w-3xl self-center max-h-96 rounded-xl object-cover"
           />
+          {/* Display the content of the blog post */}
+          <Toc slices={slices} title={title} />
+          <SliceZone slices={slices} components={components} />
         </section>
-
-        {/* Display the content of the blog post */}
-
-        <Toc slices={slices} title={title} />
-        <SliceZone slices={slices} components={components} />
-
         {/* Display the Recommended Posts section using the posts we requested earlier */}
-        <h2 className="font-bold w-full mt-20 h3">Recommended Posts</h2>
-        <section className="grid grid-cols-1 gap-8 max-w-3xl w-full">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </section>
+        {posts.length > 1 && (
+          <>
+            <h2 className="font-bold w-full">{t('blog-post.recommend')}</h2>
+            <section className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl w-full justify-items-center mx-auto">
+              {posts.map((post) => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </section>
+          </>
+        )}
       </div>
     </div>
   );

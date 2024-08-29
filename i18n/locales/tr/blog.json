@@ -1,0 +1,17 @@
+{
+  "blog-post": {
+    "recommend": "Önerilen Gönderiler",
+    "menu": {
+      "fontPlus": "Yazı Boyutunu Büyüt",
+      "font": "Yazı Boyutunu Sıfırla",
+      "fontMinus": "Yazı Boyutunu Küçült",
+      "fontSize": "Yazı Boyutu:",
+      "themeToggle": "Temayı Değiştir"
+    },
+    "share": {
+      "twitter": "X'te Paylaş",
+      "linkedin": "Linkedin'de Paylaş",
+      "facebook": "Facebook'ta Paylaş"
+    }
+  }
+}

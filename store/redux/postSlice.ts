@@ -1,20 +1,23 @@
-import { Post } from '@/types/common.types';
+import { NavigationDocumentDataMenuItemsItem } from '@/prismicio-types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface PostsState {
-  posts: Post[];
+  items: NavigationDocumentDataMenuItemsItem[];
 }
 
 const initialState: PostsState = {
-  posts: [],
+  items: [],
 };
 
 const postsSlice = createSlice({
-  name: 'posts',
+  name: 'items',
   initialState,
   reducers: {
-    setPosts: (state, action: PayloadAction<Post[]>) => {
-      state.posts = action.payload;
+    setPosts: (
+      state,
+      action: PayloadAction<NavigationDocumentDataMenuItemsItem[]>,
+    ) => {
+      state.items = action.payload;
     },
   },
 });

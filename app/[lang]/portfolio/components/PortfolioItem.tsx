@@ -2,7 +2,7 @@ import { RootState } from '@/store';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { CldImage } from 'next-cloudinary';
@@ -33,7 +33,7 @@ interface PortfolioItemInterface extends PortfolioItemProps {
 const PortfolioItem = memo(
   ({
     _id,
-    project_overview,
+    project_overview = [],
     width,
     height,
     isSlide,
@@ -47,6 +47,11 @@ const PortfolioItem = memo(
       handleMouseLeave();
       hoverEnd();
     };
+    useEffect(() => {
+      if (!project_overview) {
+        console.warn('Project overview is undefined or missing');
+      }
+    }, [project_overview]);
     return (
       <div
         className={`relative flex flex-col items-center justify-between rounded-xl overflow-hidden ${isSlide ? 'md:h-[250px] mt-[25px]' : `md:w-[${width}] w-[${mobileWidth}] md:h-[550px] h-[345px] mt-0`}`}
@@ -103,7 +108,7 @@ const PortfolioItem = memo(
               : 'md:-bottom-4 -bottom-2 md:h-32 h-22'
           }`}
         >
-          {project_overview && (
+          {project_overview && project_overview.length > 0 && (
             <Link
               href={`/portfolio/${id}`}
               passHref

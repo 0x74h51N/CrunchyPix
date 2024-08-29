@@ -1,16 +1,15 @@
-// ./src/components/Toc.js
-
 'use client';
 
 import { PrismicRichText } from '@prismicio/react';
 import { clsx } from 'clsx';
 
-import { asText, Content, Slice, SliceZone } from '@prismicio/client';
+import { asText, SliceZone } from '@prismicio/client';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { slugifyHeading } from '@/lib/slugifyHeading';
 import { Heading } from './Heading';
 import { RichTextField } from '@prismicio/types';
 import { BlogPostDocumentDataSlicesSlice } from '@/prismicio-types';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
 
 interface TocNavElementProps {
   node: { text: string };
@@ -34,12 +33,16 @@ const TocNavElement = ({
 
   return (
     <li
-      className={clsx('list-disc transition-colors', {
-        'pl-2': level === 1,
-        'pl-4': level === 2,
-        '': id !== activeId,
-        'text-log-col': id === activeId,
-      })}
+      className={clsx(
+        'list-disc transition-colors hover:text-accent md:text-md text-sm',
+        {
+          'pl-2': level === 1,
+          'pl-4': level === 2,
+          'pl-6': level === 3,
+          '': id !== activeId,
+          'text-log-col': id === activeId,
+        },
+      )}
     >
       <a className="line-clamp-1" href={`#${id}`}>
         {children ? children : node.text}
@@ -49,6 +52,7 @@ const TocNavElement = ({
 };
 
 export function Toc({ slices, title }: TocProps) {
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const headingsList = useRef<HTMLOListElement | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [headings, setHeadings] = useState<
@@ -74,7 +78,6 @@ export function Toc({ slices, title }: TocProps) {
           }
         },
       );
-      console.log('headingList', headingsList);
     }
   }, [headingsList]);
 
@@ -132,16 +135,21 @@ export function Toc({ slices, title }: TocProps) {
       });
     };
   }, [headings]);
-  console.log(activeId);
   return (
     <div className="xl:sticky xl:top-4 px-4 md:px-6 w-full ">
       <div className="xl:absolute xl:top-0 2xl:-left-80 xl:-left-72">
-        <aside className="border p-6 mx-auto max-w-3xl mt-6 md:mt-0 2xl:w-72 xl:w-64 card glass bg-secondary bg-opacity-40">
+        <aside className="border p-6 mx-auto max-w-3xl mt-6 md:mt-0 2xl:w-72 xl:w-64 card bg-base-300">
           <nav aria-labelledby="toc-heading">
             <Heading as="h2" size="xl" id="toc-heading">
               Table of Contents
             </Heading>
-            <ol className="pl-4 mt-4" ref={headingsList} role="list">
+            <ol
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className="pl-4 mt-4"
+              ref={headingsList}
+              role="list"
+            >
               <TocNavElement
                 node={{
                   text: asText(title) || '',

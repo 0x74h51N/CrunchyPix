@@ -13,6 +13,9 @@ import Cookies from '@/components/Cookies/Cookies';
 import { generatePageMetadata } from '../../lib/metadata';
 import PortfolioDataStore from '@/components/PortfolioDataStore';
 import { Locales, supportedLocales } from '@/i18n/settings';
+import { generateStaticParams as generateBlogStaticParams } from './blog/[uid]/page';
+import { generateStaticParams as generatePortfolioStaticParams } from './portfolio/[id]/page';
+import { generateStaticParams as generatePoliciesStaticParams } from './policies/[id]/page';
 import { dir } from 'i18next';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -31,6 +34,18 @@ const RootLayout = async ({
   children: React.ReactNode;
   params: { lang: Locales };
 }) => {
+  const blogStaticParams = await generateBlogStaticParams();
+  const blogStaticParamsWithId = blogStaticParams.map((param) => ({
+    id: param.uid,
+  }));
+  const policiesStaticParams = await generatePoliciesStaticParams();
+  const portfolioStaticParams = await generatePortfolioStaticParams();
+  const staticParams = [
+    ...blogStaticParamsWithId,
+    ...portfolioStaticParams,
+    ...policiesStaticParams,
+  ];
+
   return (
     <html lang={lang} dir={dir(lang)}>
       <body className="lg:overflow-x-hidden">
@@ -40,7 +55,7 @@ const RootLayout = async ({
             <CookieConsent />
             <PortfolioDataStore />
             <Navbar />
-            <AllRoutes />
+            <AllRoutes staticParams={staticParams} />
             <Cookies />
             {children}
             <Footer />

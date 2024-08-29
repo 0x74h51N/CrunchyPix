@@ -8,7 +8,7 @@ import {
   PrismicLink,
 } from '@prismicio/react';
 import { Heading } from './Heading';
-import { CodeBlock, supportedLanguages } from './CodeBlock';
+import { CodeBlock } from './CodeBlock';
 import { RTPreformattedNode } from '@prismicio/types';
 
 export const richTextComponents: JSXMapSerializer = {
@@ -49,7 +49,10 @@ export const richTextComponents: JSXMapSerializer = {
   ),
   paragraph: ({ children }) => <p>{children}</p>,
   hyperlink: ({ children, node }) => (
-    <PrismicLink field={node.data} className="font-bold underline">
+    <PrismicLink
+      field={node.data}
+      className="font-bold underline text-log-col hover:text-opacity-80"
+    >
       {children}
     </PrismicLink>
   ),

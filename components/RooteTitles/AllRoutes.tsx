@@ -8,10 +8,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { checkIfPageExists } from './checkIfPageExist';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
-import { RootState } from '@/store';
-import { useSelector } from 'react-redux';
 
-const AllRoutes = () => {
+const AllRoutes = ({ staticParams }: { staticParams: { id: string }[] }) => {
   const { hoverEnd } = useDragHandler();
   const { handleMouseLeave } = useClickableHandlers();
   const [mainPage, setMainPage] = useState('');
@@ -20,23 +18,25 @@ const AllRoutes = () => {
   const [loading, setLoading] = useState(true);
   const [pageExists, setPageExists] = useState(false);
   const [hasGrandchildPage, setHasGrand] = useState(false);
-  const posts = useSelector((state: RootState) => state.postSlice.posts);
 
   useEffect(() => {
-    const updatePageInfo = async () => {
+    const updatePageInfo = () => {
       const urlParts = pathname.split('/');
-      const currentPage = urlParts[2];
+
+      const currentPage = urlParts[2] || '';
       const currentChildPage = urlParts[3] || '';
 
-      setChildPage(currentChildPage);
       setMainPage(currentPage);
-      console.log('allroutePosts', posts);
-      const isValidPage = await checkIfPageExists(
+      setChildPage(currentChildPage);
+
+      const isValidPage = checkIfPageExists(
         currentPage,
         currentChildPage,
-        posts,
+        staticParams,
       );
+
       setPageExists(isValidPage);
+      setHasGrand(urlParts.length > 4);
     };
 
     updatePageInfo();
@@ -45,14 +45,12 @@ const AllRoutes = () => {
       updatePageInfo();
     };
 
-    const urlParts = pathname.split('/');
-    urlParts.length > 4 && setHasGrand(true);
     window.addEventListener('popstate', handlePopState);
 
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [pathname, posts]);
+  }, [pathname, staticParams]);
 
   useEffect(() => {
     window.scrollTo({

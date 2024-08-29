@@ -30,7 +30,7 @@ const Home = ({ params: { lang } }: { params: { lang: Locales } }) => {
     SectionsSchema,
   );
 
-  const [language, setLanguage] = useState<string | null>(null);
+  const [language, setLanguage] = useState<Locales | null>(null);
 
   useEffect(() => {
     const fetchLanguage = () => {
