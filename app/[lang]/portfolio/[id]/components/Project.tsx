@@ -62,7 +62,7 @@ const Project = memo(({ id }: { id: string }) => {
   );
 
   return (
-    <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden">
+    <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden !select-none">
       {loading ? (
         <LoadingComponent />
       ) : (

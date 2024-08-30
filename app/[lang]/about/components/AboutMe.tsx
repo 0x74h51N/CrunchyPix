@@ -92,7 +92,7 @@ const AboutMe = () => {
   }
   return (
     <>
-      <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden relative">
+      <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden relative !select-none">
         <motion.div
           initial="hidden"
           whileInView="show"

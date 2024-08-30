@@ -94,7 +94,7 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
           key={index}
           id={section.name.toLowerCase().replaceAll(' ', '-')}
           ref={sectionRefs.current[index]}
-          className={`
+          className={`!select-none 
             ${section.className} 
             w-full min-w-[350px] flex items-center justify-center overflow-hidden
             ${section.parallax ? 'sticky top-0 z-0 ' : ' relative'} 

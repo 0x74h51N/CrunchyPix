@@ -2,20 +2,20 @@
 
 import IconButton from '@/components/Buttons/IconButton';
 import React, { useState, useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 
 const ProgressAndShare = () => {
   const [progress, setProgress] = useState(0);
   const [shareUrl, setShareUrl] = useState('');
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const { t } = useTranslation('blog');
 
   useEffect(() => {
-    const url = `${window.location.origin}${pathname}${searchParams.toString()}`;
+    const url = `${window.location.origin}${pathname}`;
     setShareUrl(url);
-  }, [pathname, searchParams]);
+    console.log(url, 'social url');
+  }, [pathname]);
 
   useEffect(() => {
     const blogPostElement = document.getElementById('blog-section');
@@ -46,11 +46,13 @@ const ProgressAndShare = () => {
         ></div>
       </div>
       <div className="flex justify-between items-center">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-lg">
+          {t('blog-post.share.share')}
+        </span>
         <div className="flex items-center justify-center">
           <div
             className="flex items-center p-2 tooltip tooltip-bottom tooltip-accent hover:text-log-col"
             aria-label={t('blog-post.share.twitter')}
-            data-tip={t('blog-post.share.twitter')}
           >
             <IconButton
               size={27}
@@ -64,7 +66,6 @@ const ProgressAndShare = () => {
           <div
             className="flex items-center p-2 tooltip tooltip-bottom tooltip-accent hover:text-log-col"
             aria-label={t('blog-post.share.linkedin')}
-            data-tip={t('blog-post.share.linkedin')}
           >
             <IconButton
               tooltipDirection={'top'}
@@ -79,7 +80,6 @@ const ProgressAndShare = () => {
           <div
             className="flex items-center p-2 tooltip tooltip-bottom tooltip-accent hover:text-log-col"
             aria-label={t('blog-post.share.facebook')}
-            data-tip={t('blog-post.share.facebook')}
           >
             <IconButton
               size={27}

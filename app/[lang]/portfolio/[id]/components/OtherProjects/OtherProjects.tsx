@@ -16,7 +16,7 @@ const OtherProjects = () => {
 
   const { hoverStart, hoverEnd } = useDragHandler();
   return (
-    <div className="flexCenter w-auto h-auto min-w-[100svw] overflow-hidden">
+    <div className="flexCenter w-auto h-auto min-w-[100svw] overflow-hidden !select-none">
       <motion.div
         initial="hidden"
         whileInView="show"

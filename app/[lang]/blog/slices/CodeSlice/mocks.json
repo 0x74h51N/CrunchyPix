@@ -18,6 +18,11 @@
 						}
 					}
 				]
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "so",
+				"type": "Text"
 			}
 		},
 		"items": []

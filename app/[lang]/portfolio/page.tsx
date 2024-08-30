@@ -17,7 +17,7 @@ const PortfolioItemsTable = dynamic(
 );
 const Portfolio = () => {
   return (
-    <div className="flex justify-center items-start w-full min-h-[100svh]">
+    <div className="flex justify-center items-start w-full min-h-[100svh] !select-none">
       <PortfolioItemsTable />
     </div>
   );

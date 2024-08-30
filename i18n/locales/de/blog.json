@@ -1,4 +1,5 @@
 {
+  "toc": "Inhaltsverzeichnis",
   "blog-post": {
     "recommend": "Empfohlene Beiträge",
     "menu": {
@@ -6,12 +7,14 @@
       "font": "Schrift zurücksetzen",
       "fontMinus": "Schrift verkleinern",
       "fontSize": "Schriftgröße:",
-      "themeToggle": "Thema wechseln"
+      "themeToggle": "Design umschalten",
+      "expand": "Erweitern"
     },
     "share": {
-      "twitter": "Auf X teilen",
-      "linkedin": "Auf Linkedin teilen",
-      "facebook": "Auf Facebook teilen"
+      "share": "Teilen",
+      "twitter": "Tweet",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook"
     }
   }
 }

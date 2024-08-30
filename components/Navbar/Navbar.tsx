@@ -41,7 +41,7 @@ const Navbar = () => {
   const navClassName = useMemo(() => {
     let baseClass = `${fixed ? 'fixed' : 'absolute'} flex w-auto 2xl:min-w-[1450px] min-w-full top-0 z-[450] gap-4 bg-cool-gray-900 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5`;
     if (isMenuOpen) {
-      return `${baseClass} navbar py-5 ${smallNav ? 'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black' : 'h-[280px]  bg-opacity-0'}`;
+      return `${baseClass} navbar py-5 ${smallNav ? 'h-[300px] bg-opacity-100 py-2 shadow-md shadow-black' : 'h-[310px]  bg-opacity-0'}`;
     } else if (smallNav) {
       return `${baseClass} bg-opacity-100 h-[70px] py-2 shadow-md shadow-black`;
     } else {
@@ -81,7 +81,7 @@ const Navbar = () => {
           height: '1px',
         }}
       />
-      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0">
+      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0 !select-none">
         <nav className={navClassName}>
           <Link
             href="/"

@@ -65,7 +65,7 @@ const AllRoutes = ({ staticParams }: { staticParams: { id: string }[] }) => {
     return null;
   } else {
     return (
-      <div className="flexCenter flex-col w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative">
+      <div className="flexCenter flex-col w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative !select-none">
         <div
           className="absolute inset-0  w-full z-50"
           style={{

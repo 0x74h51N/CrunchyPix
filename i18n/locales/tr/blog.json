@@ -1,4 +1,5 @@
 {
+  "toc": "İçindekiler",
   "blog-post": {
     "recommend": "Önerilen Gönderiler",
     "menu": {
@@ -6,12 +7,14 @@
       "font": "Yazı Boyutunu Sıfırla",
       "fontMinus": "Yazı Boyutunu Küçült",
       "fontSize": "Yazı Boyutu:",
-      "themeToggle": "Temayı Değiştir"
+      "themeToggle": "Temayı Değiştir",
+      "expand": "Genişlet"
     },
     "share": {
-      "twitter": "X'te Paylaş",
-      "linkedin": "Linkedin'de Paylaş",
-      "facebook": "Facebook'ta Paylaş"
+      "share": "Paylaş",
+      "twitter": "Tweetle",
+      "linkedin": "Linkedin",
+      "facebook": "Facebook"
     }
   }
 }

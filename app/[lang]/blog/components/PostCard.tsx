@@ -1,10 +1,8 @@
-'use client';
 import { PrismicNextImage } from '@prismicio/next';
 import { PrismicText } from '@prismicio/react';
 import { RichText } from './RichText';
 import { Content } from '@prismicio/client';
 import Link from 'next/link';
-import useClickableHandlers from '@/hooks/useClickableHandlers';
 
 export const PostCard = ({
   post,
@@ -12,19 +10,16 @@ export const PostCard = ({
   post: Content.BlogPostDocument;
 }): JSX.Element => {
   const { data } = post;
-  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
 
   return (
     <Link
       href={`/blog/${post.uid}`}
       passHref
       className="card hover:z-50 shadow-xl shadow-bg-base-300 flex flex-col h-auto rounded-xl hover:scale-105 transition-all duration-500 overflow-hidden w-auto max-w-[380px] glass bg-base-300"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <div className="min-h-64">
         <PrismicNextImage
-          field={data.feutured_image}
+          field={data.featured_image}
           fill
           className="w-full max-h-64 object-cover"
         />

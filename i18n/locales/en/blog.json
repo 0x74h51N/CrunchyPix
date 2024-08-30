@@ -1,4 +1,5 @@
 {
+  "toc": "Table of Content",
   "blog-post": {
     "recommend": "Recommended Posts",
     "menu": {
@@ -6,12 +7,14 @@
       "font": "Reset Font",
       "fontMinus": "Decrease Font",
       "fontSize": "Font size:",
-      "themeToggle": "Toggle Theme"
+      "themeToggle": "Toggle Theme",
+      "expand": "Expand"
     },
     "share": {
-      "twitter": "Share on X",
-      "linkedin": "Share on Linkedin",
-      "facebook": "Share on Facebook"
+      "share": "Share",
+      "twitter": "Tweet",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook"
     }
   }
 }

@@ -13,7 +13,7 @@ export default async function BlogLayout({
   const menuItems = navigation.data.menu_items;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center !select-text">
       <PostsReducer items={menuItems} />
       <div className=" w-full min-h-screen flex flex-col gap-20 items-center">
         {children}

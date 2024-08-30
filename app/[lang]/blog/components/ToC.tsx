@@ -4,12 +4,13 @@ import { PrismicRichText } from '@prismicio/react';
 import { clsx } from 'clsx';
 
 import { asText, SliceZone } from '@prismicio/client';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { slugifyHeading } from '@/lib/slugifyHeading';
 import { Heading } from './Heading';
 import { RichTextField } from '@prismicio/types';
 import { BlogPostDocumentDataSlicesSlice } from '@/prismicio-types';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
+import { useTranslation } from 'react-i18next';
 
 interface TocNavElementProps {
   node: { text: string };
@@ -30,11 +31,27 @@ const TocNavElement = ({
   activeId,
 }: TocNavElementProps) => {
   const id = slugifyHeading(node);
+  const handleScroll = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      e.preventDefault();
+      const targetElement = document.getElementById(id);
+      if (targetElement) {
+        const navbarHeight = 100;
+        const y =
+          targetElement.getBoundingClientRect().top +
+          window.scrollY -
+          navbarHeight;
 
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        window.history.pushState(null, '', `#${id}`);
+      }
+    },
+    [id],
+  );
   return (
     <li
       className={clsx(
-        'list-disc transition-colors hover:text-accent md:text-md text-sm',
+        'list-disc transition-colors hover:underline hover:text-log-col md:text-md text-sm',
         {
           'pl-2': level === 1,
           'pl-4': level === 2,
@@ -44,7 +61,7 @@ const TocNavElement = ({
         },
       )}
     >
-      <a className="line-clamp-1" href={`#${id}`}>
+      <a className="line-clamp-1" href={`#${id}`} onClick={handleScroll}>
         {children ? children : node.text}
       </a>
     </li>
@@ -107,7 +124,7 @@ export function Toc({ slices, title }: TocProps) {
         });
       },
       {
-        rootMargin: '0px 0px -95% 0px',
+        rootMargin: '0px 0px -70% 0px',
       },
     );
 
@@ -135,13 +152,14 @@ export function Toc({ slices, title }: TocProps) {
       });
     };
   }, [headings]);
+  const { t } = useTranslation('blog');
   return (
-    <div className="xl:sticky xl:top-4 px-4 md:px-6 w-full ">
-      <div className="xl:absolute xl:top-0 2xl:-left-80 xl:-left-72">
-        <aside className="border p-6 mx-auto max-w-3xl mt-6 md:mt-0 2xl:w-72 xl:w-64 card bg-base-300">
+    <div className="lg:sticky lg:top-0 px-4 md:px-6 w-full !select-none">
+      <div className="lg:absolute lg:top-0 2xl:-left-72 lg:-left-64 2xl:ml-3 xl:ml-6 lg:ml-10">
+        <aside className="border p-6 mx-auto max-w-3xl mt-6 md:mt-0 2xl:w-64 xl:w-56 lg:w-52 hover:lg:!w-80 card border-none bg-base-300 transition-all ease-in-out duration-500">
           <nav aria-labelledby="toc-heading">
             <Heading as="h2" size="xl" id="toc-heading">
-              Table of Contents
+              {t('toc')}
             </Heading>
             <ol
               onMouseEnter={handleMouseEnter}

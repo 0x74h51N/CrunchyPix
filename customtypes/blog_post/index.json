@@ -30,10 +30,10 @@
           "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
-      "feutured_image": {
+      "featured_image": {
         "type": "Image",
         "config": {
-          "label": "Feutured Image",
+          "label": "Featured Image",
           "constraint": {},
           "thumbnails": []
         }
@@ -50,6 +50,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "blockquote": {
+              "type": "SharedSlice"
+            },
             "code_slice": {
               "type": "SharedSlice"
             },

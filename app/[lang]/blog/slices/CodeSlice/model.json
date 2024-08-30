@@ -29,6 +29,13 @@
             "default_value": "typescript"
           }
         },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
         "codeblock": {
           "type": "StructuredText",
           "config": {

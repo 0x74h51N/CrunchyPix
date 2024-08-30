@@ -4,12 +4,29 @@ import React, { useEffect, useState } from 'react';
 import ProgressAndShare from './ProgressAndShare';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { useTranslation } from 'react-i18next';
+import { RiContractLeftRightLine, RiExpandLeftRightLine } from 'react-icons/ri';
 
 const Menu = () => {
   const [fontSize, setFontSize] = useState(16);
   const [originalFontSize, setOriginalFontSize] = useState(16);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const { t } = useTranslation('blog');
+  const [isWide, setIsWide] = useState(false);
+
+  const toggleWidth = () => {
+    setIsWide(!isWide);
+  };
+  useEffect(() => {
+    const articleWrapper = document.getElementById('article-wrapper');
+    if (articleWrapper) {
+      articleWrapper.style.maxWidth = isWide ? '1850px' : '1300px';
+      if (isWide) {
+        articleWrapper.style.paddingRight = '1rem';
+      } else {
+        articleWrapper.style.paddingRight = '';
+      }
+    }
+  }, [isWide]);
 
   useEffect(() => {
     const blogSection = document.getElementById('blog-section');
@@ -37,48 +54,46 @@ const Menu = () => {
   };
 
   return (
-    <div className="flex items-center justify-between bg-base-300 rounded-b-lg md:sticky top-0 p-2 md:px-6 md:gap-6 md:flex-row flex-col z-50">
-      <div className="flex gap-4 items-center px-">
-        <div
-          className="tooltip tooltip-bottom tooltip-accent"
-          data-tip={t('blog-post.menu.themeToggle')}
-        >
+    <div className="relative flex items-center justify-between bg-base-300 rounded-b-lg lg:sticky top-0 p-2 md:px-6 md:gap-6 md:flex-row flex-col z-50 !select-none">
+      <div className="flex gap-4 items-center">
+        <div className="tooltip tooltip-bottom tooltip-accent">
           <ThemeToggle />
         </div>
         <div
-          className="join join-horizontal"
+          className="flex gap-1"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <button
-            className="btn btn-ghost btn-sm join-item text-xs h-10 tooltip tooltip-bottom tooltip-accent"
-            onClick={() => changeFontSize(fontSize - 2)}
-            aria-label={t('blog-post.menu.fontMinus')}
-            data-tip={t('blog-post.menu.fontMinus')}
+            onClick={toggleWidth}
+            className=" btn btn-ghost btn-sm text-lg h-10 max-lg:hidden tooltip tooltip-bottom tooltip-accent"
+            aria-label={t('blog-post.menu.expand')}
           >
-            A<sup>-</sup>
+            {isWide ? <RiContractLeftRightLine /> : <RiExpandLeftRightLine />}
           </button>
-          <button
-            className="btn btn-ghost btn-sm join-item h-10  tooltip tooltip-bottom tooltip-accent"
-            onClick={resetFontSize}
-            aria-label={t('blog-post.menu.font')}
-            data-tip={t('blog-post.menu.font')}
-          >
-            A
-          </button>
-
-          <button
-            className="btn btn-ghost btn-sm join-item text-lg h-10  tooltip tooltip-bottom tooltip-accent"
-            onClick={() => changeFontSize(fontSize + 2)}
-            aria-label={t('blog-post.menu.fontPlus')}
-            data-tip={t('blog-post.menu.fontPlus')}
-          >
-            A<sup>+</sup>
-          </button>
-        </div>
-        <div className="flex flex-wrap max-md:w-16 md:text-md text-xs">
-          {t('blog-post.menu.fontSize')}{' '}
-          <span className="ml-1">{fontSize.toFixed(1)}px</span>
+          <div className="join join-horizontal">
+            <button
+              className="btn btn-ghost btn-sm join-item text-xs px-2 h-10 tooltip tooltip-bottom tooltip-accent"
+              onClick={() => changeFontSize(fontSize - 2)}
+              aria-label={t('blog-post.menu.fontMinus')}
+            >
+              A<sup>-</sup>
+            </button>
+            <button
+              className="btn btn-ghost btn-sm join-item h-10 px-2 tooltip tooltip-bottom tooltip-accent"
+              onClick={resetFontSize}
+              aria-label={t('blog-post.menu.font')}
+            >
+              A
+            </button>
+            <button
+              className="btn btn-ghost btn-sm join-item text-lg h-10 px-2 tooltip tooltip-bottom tooltip-accent"
+              onClick={() => changeFontSize(fontSize + 2)}
+              aria-label={t('blog-post.menu.fontPlus')}
+            >
+              A<sup>+</sup>
+            </button>
+          </div>
         </div>
       </div>
       <ProgressAndShare />

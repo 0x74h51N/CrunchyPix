@@ -81,17 +81,19 @@ export default async function Page({ params }: { params: Params }) {
   });
 
   // Destructure out the content of the current page
-  const { slices, title, publication_date, description, feutured_image } =
+  const { slices, title, publication_date, description, featured_image } =
     page.data;
   const { t } = await createTranslation('blog');
+
   return (
     <div className="flex flex-col items-center bg-base-100 w-full h-full pb-20">
-      <div className="flex flex-col gap-12 w-full max-w-[1150px] lg:px-52 md:px-10 px-4">
-        {/* Display the "hero" section of the blog post */}
-
+      <div
+        id={'article-wrapper'}
+        className="flex flex-col gap-12 w-full xl:max-w-[1300px] max-w-[1150px] xl:px-64 lg:px-48 md:px-10 px-4 transition-all ease-in-out duration-500"
+      >
         <section
           id={'blog-section'}
-          className="flex flex-col gap-12 mb-40 -pb-40 relative"
+          className="flex flex-col gap-12 mb-10 relative"
         >
           <Menu />
           <div className="flex flex-col items-center gap-3 w-full">
@@ -108,13 +110,14 @@ export default async function Page({ params }: { params: Params }) {
             </div>
           </div>
           <PrismicNextImage
-            field={feutured_image}
+            field={featured_image}
             sizes="100vw"
             className="w-full max-w-3xl self-center max-h-96 rounded-xl object-cover"
           />
           {/* Display the content of the blog post */}
           <Toc slices={slices} title={title} />
           <SliceZone slices={slices} components={components} />
+          <div className="min-h-24"></div>
         </section>
         {/* Display the Recommended Posts section using the posts we requested earlier */}
         {posts.length > 1 && (

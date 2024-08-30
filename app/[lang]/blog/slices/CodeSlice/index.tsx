@@ -21,8 +21,8 @@ const CodeSlice = ({ slice }: CodeSliceProps): JSX.Element => {
       <CodeBlock
         language={slice.primary.language}
         code={asText(slice.primary.codeblock)}
+        title={slice.primary.title || ''}
       />
-      {/* { Placeholder component for code_slice (variation: {slice.variation}) Slices} */}
     </div>
   );
 };

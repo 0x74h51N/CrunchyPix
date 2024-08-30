@@ -1,15 +1,11 @@
 import { slugifyHeading } from '@/lib/slugifyHeading';
 import { RichTextField } from '@prismicio/client';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
-import {
-  JSXMapSerializer,
-  PrismicRichText,
-  PrismicLink,
-} from '@prismicio/react';
+import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 import { Heading } from './Heading';
 import { CodeBlock } from './CodeBlock';
 import { RTPreformattedNode } from '@prismicio/types';
+import Hyperlink from './Hyperlink';
+import { FaArrowRight } from 'react-icons/fa6';
 
 export const richTextComponents: JSXMapSerializer = {
   label: ({ node, children }) => {
@@ -49,12 +45,7 @@ export const richTextComponents: JSXMapSerializer = {
   ),
   paragraph: ({ children }) => <p>{children}</p>,
   hyperlink: ({ children, node }) => (
-    <PrismicLink
-      field={node.data}
-      className="font-bold underline text-log-col hover:text-opacity-80"
-    >
-      {children}
-    </PrismicLink>
+    <Hyperlink node={node}>{children}</Hyperlink>
   ),
   preformatted: ({ node }: { node: RTPreformattedNode }) => {
     const languageSpan = node.spans.find((span) => span.type === 'label');
@@ -63,8 +54,17 @@ export const richTextComponents: JSXMapSerializer = {
       ? node.text.substring(languageSpan.start, languageSpan.end)
       : 'text';
 
-    return <CodeBlock language={language} code={node.text} />;
+    return <CodeBlock language={language} code={node.text} title={node.type} />;
   },
+  list: ({ children }) => (
+    <ul className="list-none bg-base-200 p-5 rounded-md">{children}</ul>
+  ),
+  listItem: ({ children }) => (
+    <li className="ml-3 flex items-center">
+      <FaArrowRight className="mr-2" />
+      {children}
+    </li>
+  ),
 };
 
 interface RichTextProps {

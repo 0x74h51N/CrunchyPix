@@ -1,5 +1,6 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import TopTitle from './TopTitle';
 export const supportedLanguages = [
   'javascript',
   'typescript',
@@ -13,15 +14,17 @@ export const supportedLanguages = [
 interface CodeBlockProps {
   language: string;
   code: string;
+  title: string;
 }
 
-export const CodeBlock = ({ language, code }: CodeBlockProps) => {
+export const CodeBlock = ({ language, code, title }: CodeBlockProps) => {
   const validLanguage = supportedLanguages.includes(language)
     ? language
     : 'text';
 
   return (
     <div>
+      <TopTitle title={title} code={code} />
       <SyntaxHighlighter language={validLanguage} style={vscDarkPlus}>
         {code}
       </SyntaxHighlighter>

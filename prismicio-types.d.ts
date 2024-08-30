@@ -5,6 +5,7 @@ import type * as prismic from '@prismicio/client';
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type BlogPostDocumentDataSlicesSlice =
+  | BlockquoteSlice
   | CodeSliceSlice
   | ImageSliceSlice
   | RichTextSlice;
@@ -36,15 +37,15 @@ interface BlogPostDocumentData {
   description: prismic.RichTextField;
 
   /**
-   * Feutured Image field in *Blog Post*
+   * Featured Image field in *Blog Post*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog_post.feutured_image
+   * - **API ID Path**: blog_post.featured_image
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  feutured_image: prismic.ImageField<never>;
+  featured_image: prismic.ImageField<never>;
 
   /**
    * Publication Date field in *Blog Post*
@@ -251,6 +252,51 @@ export type AllDocumentTypes =
   | PageDocument;
 
 /**
+ * Primary content in *Blockquote → Default → Primary*
+ */
+export interface BlockquoteSliceDefaultPrimary {
+  /**
+   * Blockquote Richtext field in *Blockquote → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blockquote.default.primary.blockquote_richtext
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  blockquote_richtext: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Blockquote Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlockquoteSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<BlockquoteSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Blockquote*
+ */
+type BlockquoteSliceVariation = BlockquoteSliceDefault;
+
+/**
+ * Blockquote Shared Slice
+ *
+ * - **API ID**: `blockquote`
+ * - **Description**: Blockquote
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlockquoteSlice = prismic.SharedSlice<
+  'blockquote',
+  BlockquoteSliceVariation
+>;
+
+/**
  * Primary content in *CodeSlice → Default → Primary*
  */
 export interface CodeSliceSliceDefaultPrimary {
@@ -267,6 +313,16 @@ export interface CodeSliceSliceDefaultPrimary {
     'typescript' | 'javascript' | 'python' | 'json' | 'html' | 'css' | 'text',
     'filled'
   >;
+
+  /**
+   * title field in *CodeSlice → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: code_slice.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
 
   /**
    * codeblock field in *CodeSlice → Default → Primary*
@@ -446,6 +502,10 @@ declare module '@prismicio/client' {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      BlockquoteSlice,
+      BlockquoteSliceDefaultPrimary,
+      BlockquoteSliceVariation,
+      BlockquoteSliceDefault,
       CodeSliceSlice,
       CodeSliceSliceDefaultPrimary,
       CodeSliceSliceVariation,
