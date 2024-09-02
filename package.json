@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.6",
-    "@supabase/supabase-js": "^2.44.4",
+    "@supabase/supabase-js": "^2.45.3",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.1",
     "country-flag-icons": "^1.5.9",
