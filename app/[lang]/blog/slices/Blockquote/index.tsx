@@ -1,5 +1,6 @@
 import { asText, Content } from '@prismicio/client';
-import { SliceComponentProps } from '@prismicio/react';
+import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
+import { richTextComponents } from '../../components/RichText';
 
 /**
  * Props for `Blockquote`.
@@ -16,8 +17,11 @@ const Blockquote = ({ slice }: BlockquoteProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       {slice.primary.blockquote_richtext && (
-        <div className="p-7 rounded-md bg-base-200">
-          {asText(slice.primary.blockquote_richtext)}
+        <div className="p-7 rounded-md rounded-l-none text-sm bg-base-200 border-l-4 border-nav-col">
+          <PrismicRichText
+            field={slice.primary.blockquote_richtext}
+            components={richTextComponents}
+          />
         </div>
       )}
     </section>

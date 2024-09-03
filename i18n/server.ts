@@ -5,6 +5,7 @@ import {
   FALLBACK_LOCALE,
   getOptions,
   Locales,
+  NEXT_LOCALE,
   supportedLocales,
 } from './settings';
 import { cookies, headers } from 'next/headers';
@@ -48,7 +49,7 @@ export function getLocale(req?: NextRequest) {
     return preferredLanguageHeader as Locales;
   }
 
-  const cookieLang = cookies().get('preferred_language')?.value;
+  const cookieLang = cookies().get(NEXT_LOCALE)?.value;
   if (cookieLang && supportedLocales.includes(cookieLang as Locales)) {
     return cookieLang as Locales;
   }

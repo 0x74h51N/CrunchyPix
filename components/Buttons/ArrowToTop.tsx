@@ -6,6 +6,8 @@ import { useState } from 'react';
 import ArrowSVG from './ArrowSVG';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 export const ArrowToTop = () => {
   const [isArrowVisible, setArrowVisible] = useState(false);
@@ -20,6 +22,7 @@ export const ArrowToTop = () => {
       }
     });
   };
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   const { targetRef } = useIntersectionObserver(observerCallback, {
     threshold: 0,
@@ -50,7 +53,7 @@ export const ArrowToTop = () => {
         className="fixed flexCenter bottom-5 right-3 bg-cool-gray-900 w-[40px] h-[40px] z-50 bg-opacity-50 hover:bg-opacity-100 rounded-lg"
       >
         <button
-          className={`cursor-none stroke-white hover:stroke-log-col -rotate-90 -mb-2`}
+          className={`${isBlog ? 'curosr-pointer' : 'cursor-none'} stroke-white hover:stroke-log-col -rotate-90 -mb-2`}
           onClick={handleButtonClick}
         >
           <ArrowSVG width={45} height={45} strokeWidth={3} />

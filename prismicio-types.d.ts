@@ -5,6 +5,7 @@ import type * as prismic from '@prismicio/client';
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type BlogPostDocumentDataSlicesSlice =
+  | TipsTricksSlice
   | BlockquoteSlice
   | CodeSliceSlice
   | ImageSliceSlice
@@ -310,7 +311,15 @@ export interface CodeSliceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   language: prismic.SelectField<
-    'typescript' | 'javascript' | 'python' | 'json' | 'html' | 'css' | 'text',
+    | 'typescript'
+    | 'javascript'
+    | 'python'
+    | 'json'
+    | 'html'
+    | 'css'
+    | 'bash'
+    | 'structure'
+    | 'table',
     'filled'
   >;
 
@@ -482,6 +491,51 @@ export type RichTextSlice = prismic.SharedSlice<
   RichTextSliceVariation
 >;
 
+/**
+ * Primary content in *TipsTricks → Default → Primary*
+ */
+export interface TipsTricksSliceDefaultPrimary {
+  /**
+   * Tips field in *TipsTricks → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tips_tricks.default.primary.tips
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  tips: prismic.RichTextField;
+}
+
+/**
+ * Default variation for TipsTricks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TipsTricksSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<TipsTricksSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TipsTricks*
+ */
+type TipsTricksSliceVariation = TipsTricksSliceDefault;
+
+/**
+ * TipsTricks Shared Slice
+ *
+ * - **API ID**: `tips_tricks`
+ * - **Description**: TipsTricks
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TipsTricksSlice = prismic.SharedSlice<
+  'tips_tricks',
+  TipsTricksSliceVariation
+>;
+
 declare module '@prismicio/client' {
   interface CreateClient {
     (
@@ -521,6 +575,10 @@ declare module '@prismicio/client' {
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
       RichTextSliceDefault,
+      TipsTricksSlice,
+      TipsTricksSliceDefaultPrimary,
+      TipsTricksSliceVariation,
+      TipsTricksSliceDefault,
     };
   }
 }

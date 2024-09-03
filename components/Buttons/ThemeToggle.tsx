@@ -1,6 +1,5 @@
 'use client';
 
-import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { useState, useEffect } from 'react';
 
 export default function ThemeToggle() {
@@ -22,23 +21,18 @@ export default function ThemeToggle() {
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   };
-  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   return (
-    <div
-      className="w-12"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <label className="grid place-items-center !cursor-none">
+    <div className="w-12">
+      <label className="grid place-items-center !cursor-pointer">
         <input
           type="checkbox"
           value="synthwave"
-          className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1 !cursor-none"
+          className="toggle theme-controller bg-base-content col-span-2 col-start-1 row-start-1"
           onChange={toggleTheme}
           checked={theme === 'dark'}
         />
         <svg
-          className="stroke-base-100 fill-base-100 col-start-1 row-start-1 !cursor-none"
+          className="stroke-base-100 fill-base-100 col-start-1 row-start-1"
           xmlns="http://www.w3.org/2000/svg"
           width="14"
           height="14"
@@ -53,7 +47,7 @@ export default function ThemeToggle() {
           <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
         </svg>
         <svg
-          className="stroke-base-100 fill-base-100 col-start-2 row-start-1 !cursor-none"
+          className="stroke-base-100 fill-base-100 col-start-2 row-start-1"
           xmlns="http://www.w3.org/2000/svg"
           width="14"
           height="14"

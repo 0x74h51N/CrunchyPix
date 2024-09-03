@@ -88,7 +88,7 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
   }, [currentSection, sectionRefs, isTouchDevice, isScrollEnabled]);
 
   return (
-    <div>
+    <div className="!cursor-none">
       {sectionsData.map((section, index) => (
         <section
           key={index}

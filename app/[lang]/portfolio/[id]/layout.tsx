@@ -10,10 +10,10 @@ const OtherProjects = dynamic(
 );
 const PortfolioLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
+    <div className="!cursor-none">
       {children}
       <OtherProjects />
-    </>
+    </div>
   );
 };
 

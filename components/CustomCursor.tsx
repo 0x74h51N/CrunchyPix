@@ -1,6 +1,8 @@
 'use client';
 import { RootState } from '@/store';
 import { setTouch } from '@/store/redux/isTouch';
+import { setPathname } from '@/store/redux/pathSlice';
+import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,16 +15,15 @@ const CustomCursor = () => {
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const [isCursorVisible, setIsCursorVisible] = useState(false);
   const [isInitialMove, setIsInitialMove] = useState(true);
-  const cursorDisabled = useSelector(
-    (state: RootState) => state.cursorDisabled.disabled,
-  );
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
+
   const isClickable = useSelector(
     (state: RootState) => state.isClickable.clickable,
   );
   const { t } = useTranslation(['index']);
   const dispatch = useDispatch();
   const requestRef = useRef<number>();
-
+  const pathname = usePathname();
   useEffect(() => {
     if (isBrowser && !isTouchDevice) {
       const handleTouchStart = () => {
@@ -36,6 +37,10 @@ const CustomCursor = () => {
       };
     }
   }, [isBrowser, isTouchDevice, dispatch]);
+
+  useEffect(() => {
+    dispatch(setPathname(pathname));
+  }, [pathname, dispatch]);
 
   const updateMousePosition = useCallback(
     (clientX: number, clientY: number) => {
@@ -79,7 +84,7 @@ const CustomCursor = () => {
     }
   }, [handleMouseMove, isTouchDevice]);
 
-  if (isTouchDevice || cursorDisabled) {
+  if (isTouchDevice || isBlog) {
     return null;
   }
 
@@ -88,7 +93,7 @@ const CustomCursor = () => {
       <div
         ref={circleRef}
         className={`flex items-center justify-center fixed z-[1000] rounded-full border-2
-        border-cool-gray-100 pointer-events-none cursor-none`}
+        border-cool-gray-100 pointer-events-none`}
         style={{
           transition:
             'width 300ms ease-in-out, height 300ms, transform 85ms ease-out, backgroundColor 300ms ease-in-out',

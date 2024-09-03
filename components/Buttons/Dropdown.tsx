@@ -114,6 +114,7 @@ const Dropdown = ({
     setIsRotated(false);
     handleMouseLeave();
   };
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   return (
     <div
@@ -124,7 +125,7 @@ const Dropdown = ({
     >
       <button
         onClick={handleToggleDropdown}
-        className="flex flex-row justify-between items-center gap-1 z-20 bg-transparent cursor-none w-full h-full"
+        className={`flex flex-row justify-between items-center gap-1 z-20 bg-transparent w-full h-full ${isBlog ? 'cursor-pointer' : '!cursor-none'}`}
       >
         <div className="p text-start pl-3 truncate ..." style={style}>
           {summary}
@@ -151,7 +152,7 @@ const Dropdown = ({
               <li
                 data-tip={option.disabledTip}
                 key={option.key.toLowerCase() + index}
-                className={`w-full hover:text-log-col hover:brightness-75 transition-text duration-300 ease-in-out cursor-none ${selectedOption?.toLowerCase() === option.key.toLowerCase() ? 'bg-cool-gray-700' : ''} ${liClass} ${option.disabledTip && 'disabled text-cool-gray-600 hover:!text-cool-gray-400 tooltip tooltip-bottom tooltip-error'}`}
+                className={`w-full hover:text-log-col hover:brightness-75 transition-text duration-300 ease-in-out ${selectedOption?.toLowerCase() === option.key.toLowerCase() ? 'bg-cool-gray-700' : ''} ${liClass} ${option.disabledTip && 'disabled text-cool-gray-600 hover:!text-cool-gray-400 tooltip tooltip-bottom tooltip-error'}`}
                 onClick={() => !option.disabledTip && clickHandler(option)}
               >
                 <div className="flex items-center gap-1">

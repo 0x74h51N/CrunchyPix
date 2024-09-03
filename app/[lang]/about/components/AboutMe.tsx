@@ -92,7 +92,7 @@ const AboutMe = () => {
   }
   return (
     <>
-      <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden relative !select-none">
+      <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden relative !select-none !cursor-none">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -145,7 +145,16 @@ const AboutMe = () => {
               {selectedOption !== 'timeline' && filteredData && !loading && (
                 <div className="p">
                   <ReactMarkdown
-                    components={{ a: CustomLink }}
+                    components={{
+                      a: ({
+                        children,
+                        ...props
+                      }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+                        <CustomLink href={props.href as string}>
+                          {children as JSX.Element}
+                        </CustomLink>
+                      ),
+                    }}
                     remarkPlugins={[breaks]}
                   >
                     {filteredData.description?.replace(/\\n/g, '\n')}

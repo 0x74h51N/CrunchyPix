@@ -8,6 +8,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { checkIfPageExists } from './checkIfPageExist';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 const AllRoutes = ({ staticParams }: { staticParams: { id: string }[] }) => {
   const { hoverEnd } = useDragHandler();
@@ -18,6 +20,7 @@ const AllRoutes = ({ staticParams }: { staticParams: { id: string }[] }) => {
   const [loading, setLoading] = useState(true);
   const [pageExists, setPageExists] = useState(false);
   const [hasGrandchildPage, setHasGrand] = useState(false);
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   useEffect(() => {
     const updatePageInfo = () => {
@@ -61,11 +64,13 @@ const AllRoutes = ({ staticParams }: { staticParams: { id: string }[] }) => {
     handleMouseLeave();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (!pageExists || hasGrandchildPage || !mainPage) {
+  if (!pageExists || hasGrandchildPage || !mainPage || (isBlog && childPage)) {
     return null;
   } else {
     return (
-      <div className="flexCenter flex-col w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative !select-none">
+      <div
+        className={`${isBlog ? 'cursor-auto' : '!cursor-none'} flexCenter flex-col w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative !select-none`}
+      >
         <div
           className="absolute inset-0  w-full z-50"
           style={{

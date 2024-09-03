@@ -1,20 +1,20 @@
 import { LogoComponent } from '@/utils/logoComponent';
 import { CldImage } from 'next-cloudinary';
-import { useState } from 'react';
 
 interface LogoImageProps {
   logoKey: string;
   index: number;
+  tooltip?: boolean;
 }
 
-const LogoImage = ({ logoKey, index }: LogoImageProps) => {
+const LogoImage = ({ logoKey, index, tooltip = true }: LogoImageProps) => {
   const item = LogoComponent({ key: logoKey });
 
   return (
     <div
       key={item.icon + ' key ' + index}
       data-tip={item.text}
-      className="tooltip tooltip-top tooltip-crunchy flex w-full"
+      className={`${tooltip ? 'tooltip tooltip-top tooltip-crunchy' : ''} flex w-full`}
     >
       <CldImage
         fill

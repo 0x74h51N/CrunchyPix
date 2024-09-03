@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
 import { memo, useEffect, useMemo, useRef, useState } from 'react';
-import useDragHandler from '@/hooks/useDragHandler';
 import { PortfolioItemProps } from '@/schemas';
 import SlideMaker from './SlideMaker';
 
@@ -18,8 +17,6 @@ const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
   const [activeIndex, setActiveIndex] = useState(() => {
     return 0;
   });
-
-  const { hoverStart, hoverEnd } = useDragHandler();
 
   const onSlideChange = (swiper: any) => {
     setActiveIndex(swiper.realIndex);
@@ -55,11 +52,7 @@ const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
   );
 
   return (
-    <div
-      onMouseEnter={hoverStart}
-      onMouseLeave={hoverEnd}
-      className="overflow-visible z-50 h-full"
-    >
+    <div className="overflow-visible z-50 h-full">
       <Swiper
         onInit={(swiper) => (swiperRef.current = swiper)}
         effect="coverflow"

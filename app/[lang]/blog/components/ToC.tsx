@@ -9,7 +9,6 @@ import { slugifyHeading } from '@/lib/slugifyHeading';
 import { Heading } from './Heading';
 import { RichTextField } from '@prismicio/types';
 import { BlogPostDocumentDataSlicesSlice } from '@/prismicio-types';
-import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { useTranslation } from 'react-i18next';
 
 interface TocNavElementProps {
@@ -69,7 +68,6 @@ const TocNavElement = ({
 };
 
 export function Toc({ slices, title }: TocProps) {
-  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const headingsList = useRef<HTMLOListElement | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [headings, setHeadings] = useState<
@@ -161,13 +159,7 @@ export function Toc({ slices, title }: TocProps) {
             <Heading as="h2" size="xl" id="toc-heading">
               {t('toc')}
             </Heading>
-            <ol
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className="pl-4 mt-4"
-              ref={headingsList}
-              role="list"
-            >
+            <ol className="pl-4 mt-4" ref={headingsList} role="list">
               <TocNavElement
                 node={{
                   text: asText(title) || '',

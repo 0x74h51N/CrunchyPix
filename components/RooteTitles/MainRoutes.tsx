@@ -1,6 +1,5 @@
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { RootState } from '@/store';
-import { SimplifiedPrismicLink } from '@/types/common.types';
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
@@ -17,13 +16,6 @@ const MainRoutes = ({
   const portfolioItems = useSelector(
     (state: RootState) => state.portfolio.items,
   );
-  const blogItems = useSelector((state: RootState) => state.postSlice.items);
-  const blogTitle = useMemo(
-    () =>
-      blogItems.find((a) => (a.link as SimplifiedPrismicLink).uid === childPage)
-        ?.label,
-    [blogItems, childPage],
-  );
 
   const storeItem = useMemo(() => {
     return portfolioItems.find((a) => a._id === childPage);
@@ -32,7 +24,7 @@ const MainRoutes = ({
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none lg:mt-[175px] md:mt-[140px] mt-[120px] line-clamp-1"
+      className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out lg:mt-[175px] md:mt-[140px] mt-[120px] line-clamp-1"
       style={{ textTransform: 'capitalize' }}
     >
       {childPage ? (
@@ -43,12 +35,11 @@ const MainRoutes = ({
           </>
         ) : mainPage === 'policies' ? (
           t(`links.${childPage.replaceAll('-', '').toLowerCase()}`)
-        ) : mainPage === 'portfolio' ? (
+        ) : (
+          mainPage === 'portfolio' &&
           storeItem &&
           storeItem.project_overview &&
           storeItem.project_overview[0]!.title
-        ) : (
-          blogTitle
         )
       ) : (
         t(`links.${mainPage}`)

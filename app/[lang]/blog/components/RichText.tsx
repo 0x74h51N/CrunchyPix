@@ -5,7 +5,6 @@ import { Heading } from './Heading';
 import { CodeBlock } from './CodeBlock';
 import { RTPreformattedNode } from '@prismicio/types';
 import Hyperlink from './Hyperlink';
-import { FaArrowRight } from 'react-icons/fa6';
 
 export const richTextComponents: JSXMapSerializer = {
   label: ({ node, children }) => {
@@ -17,17 +16,18 @@ export const richTextComponents: JSXMapSerializer = {
     <Heading
       as="h2"
       size="3xl"
-      className="mb-7 mt-12 first:mt-0 last:mb-0"
+      className="mb-7 mt-12 first:mt-0 last:mb-0 w-full font-bold"
       id={slugifyHeading(node)}
     >
       {children}
+      <hr className="border mt-2 w-full" />
     </Heading>
   ),
   heading2: ({ children, node }) => (
     <Heading
       as="h3"
       size="2xl"
-      className="mb-7 last:mb-0"
+      className="mb-7 mt-10 last:mb-0"
       id={slugifyHeading(node)}
     >
       {children}
@@ -37,34 +37,23 @@ export const richTextComponents: JSXMapSerializer = {
     <Heading
       as="h4"
       size="xl"
-      className="mb-7 last:mb-0"
+      className="mb-5 mt-8 last:mb-0"
       id={slugifyHeading(node)}
     >
       {children}
     </Heading>
   ),
-  paragraph: ({ children }) => <p>{children}</p>,
+  paragraph: ({ children }) => <div className="paragraph">{children}</div>,
   hyperlink: ({ children, node }) => (
     <Hyperlink node={node}>{children}</Hyperlink>
   ),
   preformatted: ({ node }: { node: RTPreformattedNode }) => {
-    const languageSpan = node.spans.find((span) => span.type === 'label');
-
-    const language = languageSpan
-      ? node.text.substring(languageSpan.start, languageSpan.end)
-      : 'text';
-
-    return <CodeBlock language={language} code={node.text} title={node.type} />;
+    return <CodeBlock code={node.text} title={node.type} language={'text'} />;
   },
   list: ({ children }) => (
-    <ul className="list-none bg-base-200 p-5 rounded-md">{children}</ul>
+    <ul className="p-3 pl-10 list-disc rounded-md paragraph">{children}</ul>
   ),
-  listItem: ({ children }) => (
-    <li className="ml-3 flex items-center">
-      <FaArrowRight className="mr-2" />
-      {children}
-    </li>
-  ),
+  listItem: ({ children }) => <li>{children}</li>,
 };
 
 interface RichTextProps {

@@ -51,8 +51,11 @@ export default async function Index() {
       <SliceZone slices={home.data.slices} components={components} />
       {/* Map over each of the blog posts created and display a `PostCard` for it */}
       <div className="container mx-auto px-4 sm:px-6 xl:px-0 lg:px-8 max-w-7xl w-auto pb-40">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 lg:gap-14 md:gap-8 gap-4 justify-items-center">
-          {posts && posts.map((post) => <PostCard key={post.id} post={post} />)}
+        <div className="grid grid-cols-1 xmd:grid-cols-2 2xl:gap-14 md:gap-8 gap-4 justify-items-center">
+          {posts &&
+            posts.map((post, index) => (
+              <PostCard key={post.uid + 'postcard-' + index} post={post} />
+            ))}
         </div>
       </div>
     </>

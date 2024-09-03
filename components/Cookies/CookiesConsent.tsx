@@ -11,11 +11,14 @@ import {
   setCookiesConsent,
 } from '@/app/actions/setCookiesConsent';
 import { useTranslation } from 'react-i18next';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 const CookieConsent = () => {
   const { t } = useTranslation('index');
   const [showConsent, setShowConsent] = useState(true);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   const handleAccept = async () => {
     await setCookiesConsent();
@@ -45,7 +48,7 @@ const CookieConsent = () => {
     return (
       <div
         id="cookie-consent"
-        className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-[999] cursor-none pointer-events-none w-50 h-50"
+        className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-[599] pointer-events-none w-50 h-50"
       >
         <motion.div
           initial="hidden"
@@ -59,7 +62,16 @@ const CookieConsent = () => {
               <h1 className="p">{t('cookies.title')}</h1>
               <div className="p half  mt-1 pointer-events-auto">
                 <ReactMarkdown
-                  components={{ a: CustomLink }}
+                  components={{
+                    a: ({
+                      children,
+                      ...props
+                    }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+                      <CustomLink href={props.href as string}>
+                        {children as JSX.Element}
+                      </CustomLink>
+                    ),
+                  }}
                   remarkPlugins={[breaks]}
                 >
                   {t('cookies.description')}
@@ -72,13 +84,13 @@ const CookieConsent = () => {
               className="flex flex-row-reverse max-lg:self-end max-lg:-mt-10 max-sm:mt-0 max-sm:self-center w-auto gap-3"
             >
               <button
-                className=" bg-neutral-400 hover:bg-green-700 hover:bg-opacity-40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 cursor-none pointer-events-auto w-full h-auto whitespace-nowrap"
+                className=" bg-neutral-400 hover:bg-green-700 hover:bg-opacity-40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 pointer-events-auto w-full h-auto whitespace-nowrap"
                 onClick={handleAccept}
               >
                 {t('cookies.accept')}
               </button>
               <button
-                className="bg-neutral-600 hover:bg-red-800 hover:bg-opacity-40 text-white font-bold sm:text-sm text-[12px] py-2 px-4 rounded  active:bg-red-800  z-50 cursor-none pointer-events-auto w-full h-auto"
+                className="bg-neutral-600 hover:bg-red-800 hover:bg-opacity-40 text-white font-bold sm:text-sm text-[12px] py-2 px-4 rounded  active:bg-red-800 z-50 pointer-events-auto w-full h-auto"
                 onClick={handleReject}
               >
                 {t('cookies.decline')}

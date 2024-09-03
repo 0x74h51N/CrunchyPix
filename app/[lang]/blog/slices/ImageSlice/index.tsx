@@ -1,4 +1,5 @@
 import { Content } from '@prismicio/client';
+import { PrismicNextImage } from '@prismicio/next';
 import { SliceComponentProps } from '@prismicio/react';
 
 /**
@@ -14,9 +15,13 @@ const ImageSlice = ({ slice }: ImageSliceProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="flex w-full justify-center"
     >
-      Placeholder component for image_slice (variation: {slice.variation})
-      Slices
+      <PrismicNextImage
+        field={slice.primary.image}
+        sizes="auto"
+        className="w-full max-w-4xl self-center h-auto rounded-xl object-cover"
+      />
     </section>
   );
 };

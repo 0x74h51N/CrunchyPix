@@ -24,7 +24,9 @@
               "json",
               "html",
               "css",
-              "text"
+              "bash",
+              "structure",
+              "table"
             ],
             "default_value": "typescript"
           }

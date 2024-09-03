@@ -11,7 +11,6 @@ import {
 } from './settings';
 import resourcesToBackend from './resourcesToBackend';
 import { getLocaleCookie } from '@/app/actions/switch-locale';
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 const runsOnServerSide = typeof window === 'undefined';
@@ -26,12 +25,6 @@ i18next
   .init({
     ...getOptions(),
     lng: undefined,
-    detection: {
-      order: ['path', 'cookie', 'header'],
-      lookupCookie: NEXT_LOCALE,
-      caches: ['cookie'],
-      lookupFromPathIndex: 1,
-    },
     preload: runsOnServerSide ? supportedLocales : [],
   });
 

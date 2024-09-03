@@ -1,7 +1,6 @@
 'use client';
-import useClickableHandlers from '@/hooks/useClickableHandlers';
+import CustomLink from '@/components/CustomLink';
 import { RTLinkNode } from '@prismicio/client';
-import { PrismicLink } from '@prismicio/react';
 import React from 'react';
 
 const Hyperlink = ({
@@ -11,21 +10,8 @@ const Hyperlink = ({
   children: JSX.Element[];
   node: RTLinkNode;
 }) => {
-  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
-  return (
-    <span
-      className=""
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <PrismicLink
-        field={node.data}
-        className="font-bold hover:underline text-log-col hover:brightness-110"
-      >
-        {children}
-      </PrismicLink>
-    </span>
-  );
+  const href = (node.data as { url: string }).url;
+  return <CustomLink href={href}>{children}</CustomLink>;
 };
 
 export default Hyperlink;

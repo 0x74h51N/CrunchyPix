@@ -63,7 +63,7 @@ const SlideModal = () => {
           onClick={closeModal}
         >
           <div
-            className={`absolute flex justify-center items-center top-1/2 left-1/2  md:w-[70svw] md:h-[63svh] w-[95svw] h-[65svh] translate-x-[-50%] translate-y-[-50%] outline-none`}
+            className={`absolute flex justify-center items-center top-1/2 left-1/2  xl:w-[75vw] h-auto w-[95vw] translate-x-[-50%] translate-y-[-50%] outline-none`}
           >
             <motion.div
               className="relative flex justify-center md:h-auto h-full w-full max-w-[1900px]"

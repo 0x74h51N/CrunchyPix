@@ -16,11 +16,9 @@ const SlideMaker = ({
   index: number;
   activeIndex: number;
 }) => {
-  const { hoverEnd } = useDragHandler();
   const dispatch = useDispatch();
   const _selectedSlide = (_slide: PortfolioItemProps) => {
     dispatch(setSlide(_slide));
-    hoverEnd();
   };
 
   const clickHandler = (index: number, slide: PortfolioItemProps) => {

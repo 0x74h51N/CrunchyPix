@@ -5,7 +5,7 @@
 		"primary": {
 			"language": {
 				"__TYPE__": "FieldContent",
-				"value": "typescript",
+				"value": "structure",
 				"type": "Select"
 			},
 			"codeblock": {

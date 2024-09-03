@@ -6,6 +6,8 @@ import Dropdown from '../Buttons/Dropdown';
 import { useEffect, useState } from 'react';
 import { Locales } from '@/i18n/settings';
 import { usePathname, useRouter } from 'next/navigation';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 const languages = [
   {
@@ -23,6 +25,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('');
   const router = useRouter();
   const currentPathname = usePathname();
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   useEffect(() => {
     const handleChange = async (selectedLanguage: string) => {
@@ -69,6 +72,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
       options={languages}
       style={{ width: 36 }}
       ulClasses="pt-5"
+      liClass={isBlog ? '!cursor-pointer' : '!cursor-none'}
       setSelectedOption={setSelectedLanguage}
       flagMode
     />

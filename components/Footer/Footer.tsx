@@ -8,8 +8,11 @@ import { IconProps, IconSchema } from '@/schemas';
 import { useMemo } from 'react';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { useTranslation } from 'react-i18next';
+import { usePathname } from 'next/navigation';
+import Credits from './Credits';
 
 const Footer = () => {
+  const path = usePathname();
   const { t } = useTranslation('index');
   const { data, loading, error } = useSupabaseFetch<IconProps>(
     'public',
@@ -26,8 +29,12 @@ const Footer = () => {
   }, [data]);
   return loading || !filteredData ? (
     <></>
+  ) : path.includes('blog') ? (
+    <div className="bg-base-100 curosr-auto">
+      <Credits data={filteredData} />
+    </div>
   ) : (
-    <div className="relative flex justify-center w-full footerCust py-24 bg-neutral-50 shadow-inner shadow-black !select-none">
+    <div className="relative !cursor-none flex justify-center w-full footerCust pt-24 bg-white shadow-inner shadow-black !select-none">
       <div className="overflow-hidden">
         <div className="flex flexCenter py-24 pb-26 lg:px-14 px-8 bg-neutral-950">
           <div className="flex lg:flexBetween flex-col w-full h-auto z-10 max-w-[1300px]">
@@ -64,30 +71,8 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 flex justify-center sm:px-16 px-2 w-full">
-          <div className="text-neutral-900 flex flex-row justify-between items-center footer_copyright w-full max-w-[1300px]">
-            <p className="flex items-center">
-              <span>@ 2024 ·</span>
-              <Image
-                src="https://res.cloudinary.com/dkwz95xft/image/upload/v1722866557/Copyleft.svg.png"
-                width={12}
-                height={12}
-                className="object-contain self-center pt-0.5 mx-1"
-                alt={'CopyLeft Icon'}
-              />
-              <span>Copyleft · Tahsin Önemli · 0x74h51N</span>
-            </p>
-            <div className="flex flex-row gap-3 text-neutral-900 items-center justify-center h-auto">
-              {filteredData.map((icon: IconProps, index: number) => (
-                <span
-                  key={index}
-                  className="hover:text-log-col hover:-translate-y-2 transition-all ease-in-out duration-500 py-2"
-                >
-                  <IconButton key={index} icon={icon} size={25} />
-                </span>
-              ))}
-            </div>
-          </div>
+        <div className="bg-white text-stone-900 !cursor-none">
+          <Credits data={filteredData} />
         </div>
       </div>
     </div>
