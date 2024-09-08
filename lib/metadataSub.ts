@@ -55,7 +55,7 @@ export async function generateSubPageMetadata({
         description: selectedItem[0].description2
           ? selectedItem[0].description2
           : '',
-        url: `https://crunchypix.vercel.app/portfolio/${params.id}`,
+        url: `https://crunchypix.com/portfolio/${params.id}`,
         images: [
           {
             url: imageUrl,

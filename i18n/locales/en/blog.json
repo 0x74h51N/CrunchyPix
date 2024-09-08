@@ -10,6 +10,11 @@
       "themeToggle": "Toggle Theme",
       "expand": "Expand"
     },
+    "tipsSlice": {
+      "tips": "Tips & Tricks",
+      "question": "❔ Wondering?",
+      "warn": "⚠️ Caution!"
+    },
     "share": {
       "share": "Share",
       "twitter": "Tweet",

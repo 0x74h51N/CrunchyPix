@@ -10,6 +10,11 @@
       "themeToggle": "Design umschalten",
       "expand": "Erweitern"
     },
+    "tipsSlice": {
+      "tips": "Tipps & Tricks",
+      "question": "❔ Fragst du dich?",
+      "warn": "⚠️ Vorsicht!"
+    },
     "share": {
       "share": "Teilen",
       "twitter": "Tweet",

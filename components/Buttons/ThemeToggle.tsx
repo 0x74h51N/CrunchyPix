@@ -1,15 +1,19 @@
 'use client';
 
+import { getTheme, setThemeAction } from '@/app/actions/setThemeAction';
 import { useState, useEffect } from 'react';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState('');
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme');
-    if (storedTheme) {
-      setTheme(storedTheme);
-    }
+    const themeTook = async () => {
+      const themeCookie = await getTheme();
+      if (themeCookie) {
+        setTheme(themeCookie);
+      } else setTheme('dark');
+    };
+    themeTook();
   }, []);
 
   useEffect(() => {
@@ -19,7 +23,7 @@ export default function ThemeToggle() {
   const toggleTheme = () => {
     const newTheme = theme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+    setThemeAction(newTheme);
   };
   return (
     <div className="w-12">

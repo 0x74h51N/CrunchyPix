@@ -24,7 +24,7 @@ const CustomLink = ({ children, href }: CustomLinkProps) => {
     <Link
       href={href as string}
       target="_blank"
-      className={isBlog ? 'cursor-pointer' : 'cursor-none'}
+      className={isBlogReady ? 'cursor-pointer' : 'cursor-none'}
     >
       <span
         className={`text-log-col underline underline-offset-3 ${

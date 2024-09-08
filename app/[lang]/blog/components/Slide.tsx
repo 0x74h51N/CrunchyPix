@@ -6,20 +6,28 @@ import { useRef, useEffect, memo, useMemo } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { BlogPostDocument } from '@/prismicio-types';
+import {
+  BlogPostDocument,
+  NavigationDocumentDataMenuItemsItem,
+  Simplify,
+} from '@/prismicio-types';
 import { PostCard } from './PostCard';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
-const ProjectSlide = ({ posts }: { posts: BlogPostDocument<string>[] }) => {
+const ProjectSlide = ({
+  navigationItems,
+}: {
+  navigationItems: Simplify<NavigationDocumentDataMenuItemsItem>[];
+}) => {
   const navigation = {
     nextEl: '.swiper-button-next-cus',
     prevEl: '.swiper-button-prev-cus',
   };
   const swiperRef = useRef<SwiperCore | null>(null);
   const extendedPosts = useMemo(() => {
-    return [...posts, ...posts];
-  }, [posts]);
+    return [...navigationItems, ...navigationItems];
+  }, [navigationItems]);
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -51,9 +59,9 @@ const ProjectSlide = ({ posts }: { posts: BlogPostDocument<string>[] }) => {
         {extendedPosts.map((post, i) => (
           <SwiperSlide
             className="max-w-[400px] max-h-[400px]"
-            key={`${post.uid}-slide-${i}`}
+            key={`${post.label}-slide-${i}`}
           >
-            <PostCard post={post} recSec />
+            <PostCard post={post} recomendSec />
           </SwiperSlide>
         ))}
       </Swiper>

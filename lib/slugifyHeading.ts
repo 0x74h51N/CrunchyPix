@@ -1,5 +1,3 @@
-// ./src/lib/slugifyHeading.js
-
 export const slugifyHeading = ({ text }: { text: string }) => {
   return text
     .toLowerCase()

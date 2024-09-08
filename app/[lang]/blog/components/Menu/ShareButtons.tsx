@@ -15,7 +15,7 @@ const ShareButtons = () => {
   }, [pathname]);
   return (
     <div className="flex justify-between items-center">
-      <span className="max-xs:hidden bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-lg">
+      <span className="max-xs:hidden cool-text font-bold text-lg antialiased">
         {t('blog-post.share.share')}
       </span>
       <div className="flex items-center justify-center ml-2">
@@ -54,8 +54,8 @@ const ShareButtons = () => {
             size={22}
             icon={{
               id: 3,
-              type: 'facebook',
-              link: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`,
+              type: 'bsky',
+              link: `https://bsky.app/intent/compose?text=Check%20this%20out%3A%20${shareUrl}`,
             }}
           />
         </div>

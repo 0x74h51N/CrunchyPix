@@ -2,5 +2,5 @@
   "repositoryName": "crunchypix",
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./app/[lang]/blog/slices"],
-  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+  "localSliceSimulatorURL": "http://localhost:8080/en/blog/slice-simulator"
 }

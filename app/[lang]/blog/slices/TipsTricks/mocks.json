@@ -13,6 +13,11 @@
 						}
 					}
 				]
+			},
+			"option": {
+				"__TYPE__": "FieldContent",
+				"value": "tips",
+				"type": "Select"
 			}
 		},
 		"items": []

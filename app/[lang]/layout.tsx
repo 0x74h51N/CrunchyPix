@@ -13,10 +13,9 @@ import Cookies from '@/components/Cookies/Cookies';
 import { generatePageMetadata } from '../../lib/metadata';
 import PortfolioDataStore from '@/components/PortfolioDataStore';
 import { Locales, supportedLocales } from '@/i18n/settings';
-import { generateStaticParams as generateBlogStaticParams } from './blog/[uid]/page';
 import { generateStaticParams as generatePortfolioStaticParams } from './portfolio/[id]/page';
 import { generateStaticParams as generatePoliciesStaticParams } from './policies/[id]/page';
-import { dir } from 'i18next';
+import { getTheme } from '../actions/setThemeAction';
 
 const inter = Inter({ subsets: ['latin'] });
 export async function generateMetadata(): Promise<Metadata> {
@@ -34,21 +33,13 @@ const RootLayout = async ({
   children: React.ReactNode;
   params: { lang: Locales };
 }) => {
-  const blogStaticParams = await generateBlogStaticParams();
-  const blogStaticParamsWithId = blogStaticParams.map((param) => ({
-    id: param.uid,
-  }));
   const policiesStaticParams = await generatePoliciesStaticParams();
   const portfolioStaticParams = await generatePortfolioStaticParams();
-  const staticParams = [
-    ...blogStaticParamsWithId,
-    ...portfolioStaticParams,
-    ...policiesStaticParams,
-  ];
-
+  const staticParams = [...portfolioStaticParams, ...policiesStaticParams];
+  const theme = (await getTheme()) || 'dark';
   return (
-    <html lang={lang} dir={dir(lang)}>
-      <body className="lg:overflow-x-hidden">
+    <html lang={lang} data-theme={theme}>
+      <body>
         <AppI18nProvider lang={lang}>
           <AppReduxProvider>
             <CustomCursor />

@@ -32,7 +32,7 @@ import {
 import { MdAccessibility, MdTouchApp } from 'react-icons/md';
 import { DiResponsive } from 'react-icons/di';
 import { TfiLayoutAccordionList } from 'react-icons/tfi';
-import { SiFreelancer } from 'react-icons/si';
+import { SiBluesky } from 'react-icons/si';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { IconProps } from '@/schemas';
 import { FaXTwitter } from 'react-icons/fa6';
@@ -70,7 +70,7 @@ const iconComponents: { [key: string]: IconType } = {
   responsive: DiResponsive,
   layout: TfiLayoutAccordionList,
   chart: FaChartBar,
-  freelancer: SiFreelancer,
+  bsky: SiBluesky,
   codepen: FaCodepen,
   freecodecamp: FaFreeCodeCamp,
 };

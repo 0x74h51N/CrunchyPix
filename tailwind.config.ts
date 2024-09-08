@@ -93,8 +93,8 @@ module.exports = {
       },
       {
         dark: {
-          primary: '#1E1E1E',
-          secondary: '#2C2C2C',
+          primary: '#202020',
+          secondary: '#2f2f2f',
           accent: '#383838',
           neutral: '#1A1A1A',
           'base-100': '#0c0c0c',

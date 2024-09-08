@@ -79,3 +79,14 @@ export type SimplifiedPrismicLink = {
   url: string;
   link_type: 'Document';
 };
+export type CodeLanguages =
+  | 'typescript'
+  | 'javascript'
+  | 'python'
+  | 'json'
+  | 'html'
+  | 'css'
+  | 'structure'
+  | 'bash'
+  | 'text'
+  | 'table';

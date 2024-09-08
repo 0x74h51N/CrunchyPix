@@ -10,6 +10,11 @@
       "themeToggle": "Temayı Değiştir",
       "expand": "Genişlet"
     },
+    "tipsSlice": {
+      "tips": "İpuçları & Öneriler",
+      "question": "❔ Merak ediyorum da?",
+      "warn": "⚠️ Dikkat!"
+    },
     "share": {
       "share": "Paylaş",
       "twitter": "Tweetle",

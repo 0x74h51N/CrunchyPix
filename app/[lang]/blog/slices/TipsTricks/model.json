@@ -12,6 +12,19 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "option": {
+          "type": "Select",
+          "config": {
+            "label": "Option",
+            "placeholder": "",
+            "options": [
+              "tips",
+              "question",
+              "warn"
+            ],
+            "default_value": "tips"
+          }
+        },
         "tips": {
           "type": "StructuredText",
           "config": {

@@ -42,9 +42,9 @@
   "dragQuinn": { "drag": "Zein" },
   "cookies": {
     "title": "Wir bitten um Ihre Erlaubnis für eine bessere Erfahrung",
-    "description": "Cookies werden verwendet, um unsere Website zu verbessern. Wenn Sie die Erlaubnis erteilen, werden für Leistungszwecke gesammelte Daten von Vercel Analytics und Vercel SpeedInsight verarbeitet, und Cookies wie die Sprachpräferenz werden in Ihrem Browser gespeichert. Die von Vercel verarbeiteten Daten enthalten Informationen zum Land, aus dem Sie zugreifen, und zum verwendeten Browser, während Ihre private IP-Adresse nicht erfasst wird. Wenn Sie auf die Ablehnen-Option klicken, werden alle Cookies deaktiviert, und es werden keine Cookies gesammelt, um unsere Website zu verbessern oder Ihre Benutzererfahrung zu optimieren.\n&nbsp;\nFür weitere Informationen können Sie unsere [Cookie-Richtlinie](/policies/cookie-policy) und [Datenschutzrichtlinie](/policies/terms-of-privacy) überprüfen.",
+    "description": "Diese Website verwendet Cookies. Mit Ihrer Zustimmung werden die gesammelten Daten für Leistungszwecke von Vercel Analytics und Vercel SpeedInsight verarbeitet. Die von Vercel verarbeiteten Daten umfassen Informationen über das Land, von dem aus Sie zugreifen, und den von Ihnen verwendeten Browser, jedoch werden Ihre persönliche IP-Adresse oder andere persönliche Informationen nicht gesammelt. Wenn Sie die Option „Nur Notwendige“ wählen, werden die von Vercel genutzten Dienste zur Verbesserung unserer Website nicht aktiviert, aber Cookies wie Sprach- und Themenpräferenzen werden weiterhin in Ihrem Browser gespeichert.\n&nbsp;\nFür weitere Informationen lesen Sie bitte unsere [Cookie-Richtlinie](/policies/cookie-policy) und [Datenschutzrichtlinie](/policies/terms-of-privacy).",
     "accept": "Akzeptieren",
-    "decline": "Ablehnen"
+    "decline": "Nur Notwendige"
   },
   "notFound": {
     "title": "404 - Seite nicht gefunden",

@@ -28,8 +28,8 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
   const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   useEffect(() => {
-    const handleChange = async (selectedLanguage: string) => {
-      const result = await switchLocaleAction(selectedLanguage as Locales);
+    const handleChange = async (selectedLanguage: Locales) => {
+      const result = await switchLocaleAction(selectedLanguage);
       if (result.status === 'success') {
         const newPath = currentPathname.replace(
           `/${i18n.language}`,
@@ -41,7 +41,7 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
       }
     };
     if (selectedLanguage) {
-      handleChange(selectedLanguage);
+      handleChange(selectedLanguage as Locales);
     }
   }, [selectedLanguage, currentPathname]);
 

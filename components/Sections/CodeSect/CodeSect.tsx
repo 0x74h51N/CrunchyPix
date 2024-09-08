@@ -44,6 +44,7 @@ const CodeSect = () => {
       <motion.div variants={slideIn('right', 'spring', 0.5, 0.5)}>
         <MonitorFrame>
           <div
+            id={'code-sect'}
             onMouseEnter={scrollHandlerEnter}
             onMouseLeave={scrollHandlerLeave}
             className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track !cursor-none bg-cool-gray-800 no-cursor"
@@ -51,19 +52,7 @@ const CodeSect = () => {
             <SyntaxHighlighter
               language="typescript"
               showLineNumbers
-              useInlineStyles={true}
               style={vscDarkPlus}
-              customStyle={{
-                backgroundColor: 'transparent',
-                opacity: '1',
-                overflow: 'scroll',
-                cursor: 'none',
-                fontSize: '0.6rem',
-                lineHeight: '0.7rem',
-              }}
-              codeTagProps={{
-                className: 'lg:text-md md:text-xs',
-              }}
             >
               {codeString}
             </SyntaxHighlighter>

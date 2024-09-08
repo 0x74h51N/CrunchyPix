@@ -141,6 +141,46 @@ export interface NavigationDocumentDataMenuItemsItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
+
+  /**
+   * featured_image field in *Navigation → Menu Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.menu_items[].featured_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_image: prismic.ImageField<never>;
+
+  /**
+   * title field in *Navigation → Menu Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.menu_items[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * description field in *Navigation → Menu Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.menu_items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * publication_date field in *Navigation → Menu Items*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.menu_items[].publication_date
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  publication_date: prismic.DateField;
 }
 
 /**
@@ -495,6 +535,17 @@ export type RichTextSlice = prismic.SharedSlice<
  * Primary content in *TipsTricks → Default → Primary*
  */
 export interface TipsTricksSliceDefaultPrimary {
+  /**
+   * Option field in *TipsTricks → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: tips
+   * - **API ID Path**: tips_tricks.default.primary.option
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  option: prismic.SelectField<'tips' | 'question' | 'warn', 'filled'>;
+
   /**
    * Tips field in *TipsTricks → Default → Primary*
    *

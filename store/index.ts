@@ -6,7 +6,6 @@ import touchReducer from './redux/isTouch';
 import isScrollEnabledReducer from './redux/isScrollEnabled';
 import portfolioReducer from './redux/portfolioItems';
 import sectionReducer from './redux/sectionItems';
-import postsSliceReducer from './redux/postSlice';
 import pathSliceReducer from './redux/pathSlice';
 
 const store = configureStore({
@@ -18,7 +17,6 @@ const store = configureStore({
     isScrollEnabled: isScrollEnabledReducer,
     portfolio: portfolioReducer,
     section: sectionReducer,
-    postSlice: postsSliceReducer,
     pathSlice: pathSliceReducer,
   },
 });

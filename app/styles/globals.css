@@ -23,7 +23,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  @apply repatingLines;
+  @apply repatingLines max-w-[100vw] overflow-x-hidden;
   cursor: auto;
 }
 
@@ -32,21 +32,31 @@ body {
 }
 
 :root {
-  --font-size-xs: 10px;
-  --font-size-sm: 12px;
-  --font-size-md: 14px;
-  --font-size-lg: 16px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
 }
 
 .paragraph,
-#article-content pre .token,
+#code-sect pre .token,
+#code-sect .language-text #article-content pre .token,
 #article-content .language-text {
   font-size: var(--font-size-md) !important;
 }
 
+@media (max-width: 640px) {
+  .paragraph,
+  #code-sect pre .token,
+  #code-sect .language-text #article-content pre .token,
+  #article-content .language-text {
+    font-size: var(--font-size-xs) !important;
+  }
+}
+
 @media (min-width: 640px) {
   .paragraph,
-  #article-content pre .token,
+  #code-sect pre .token,
+  #code-sect .language-text #article-content pre .token,
   #article-content .language-text {
     font-size: var(--font-size-sm) !important;
   }
@@ -54,17 +64,10 @@ body {
 
 @media (min-width: 768px) {
   .paragraph,
-  #article-content pre .token,
+  #code-sect pre .token,
+  #code-sect .language-text #article-content pre .token,
   #article-content .language-text {
     font-size: var(--font-size-md) !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .paragraph,
-  #article-content pre .token,
-  #article-content .language-text {
-    font-size: var(--font-size-lg) !important;
   }
 }
 
@@ -471,4 +474,8 @@ body {
 
 .tooltip-crunchy {
   @apply before:text-white before:text-xs before:bg-cool-gray-700 before:border-[1px] before:py-0.5 before:border-nav-col after:text-nav-col;
+}
+
+.cool-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500;
 }

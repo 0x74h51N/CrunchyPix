@@ -1,29 +1,25 @@
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import {
+  vscDarkPlus,
+  vs,
+} from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import TopTitle from './TopTitle';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import MarkdownTable from './MarkdownTable';
-export const codeLanguages = [
-  'typescript',
-  'javascript',
-  'python',
-  'json',
-  'html',
-  'css',
-  'structure',
-  'bash',
-  'text',
-  'table',
-] as const;
+import { getTheme } from '@/app/actions/setThemeAction';
+import { CodeLanguages } from '@/types/common.types';
 
 interface CodeBlockProps {
-  language: (typeof codeLanguages)[number];
+  language: CodeLanguages;
   code: string;
   title: string;
 }
 
-export const CodeBlock = ({ language, code, title }: CodeBlockProps) => {
+export const CodeBlock = async ({ language, code, title }: CodeBlockProps) => {
+  const theme = await getTheme();
+
+  const highlightStyle = theme === 'light' && theme ? vs : vscDarkPlus;
   return (
     <div>
       {language === 'table' ? (
@@ -38,7 +34,7 @@ export const CodeBlock = ({ language, code, title }: CodeBlockProps) => {
             <TopTitle title={title} code={code} language={language} />
           )}
           <div className="max-h-[400px] overflow-auto">
-            <SyntaxHighlighter language={language} style={vscDarkPlus}>
+            <SyntaxHighlighter language={language} style={highlightStyle}>
               {code}
             </SyntaxHighlighter>
           </div>

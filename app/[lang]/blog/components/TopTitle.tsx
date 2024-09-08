@@ -1,9 +1,34 @@
 'use client';
 
-import LogoImage from '@/components/LogoImage';
 import { memo, useState } from 'react';
 import { LuCopy, LuCopyCheck } from 'react-icons/lu';
+import { IconType } from 'react-icons';
+import {
+  BiLogoJavascript,
+  BiLogoTypescript,
+  BiLogoPython,
+} from 'react-icons/bi';
+import {
+  BsFiletypeJson,
+  BsFiletypeHtml,
+  BsFiletypeCss,
+  BsTerminal,
+} from 'react-icons/bs';
+import { PiTreeStructure } from 'react-icons/pi';
+import { CodeLanguages } from '@/types/common.types';
 
+const iconComponents: { [K in CodeLanguages]: IconType | null } = {
+  typescript: BiLogoTypescript,
+  javascript: BiLogoJavascript,
+  python: BiLogoPython,
+  json: BsFiletypeJson,
+  html: BsFiletypeHtml,
+  css: BsFiletypeCss,
+  structure: PiTreeStructure,
+  bash: BsTerminal,
+  text: null,
+  table: null,
+};
 const TopTitle = ({
   title,
   code,
@@ -11,9 +36,10 @@ const TopTitle = ({
 }: {
   title: string;
   code: string;
-  language: string;
+  language: CodeLanguages;
 }) => {
   const [copied, setCopied] = useState(false);
+  const IconComponent = language && iconComponents[language];
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code).then(() => {
@@ -27,9 +53,7 @@ const TopTitle = ({
   return (
     <div className="bg-base-200 w-full flex -mb-3 px-2 justify-between">
       <div className="flex items-center gap-1 p-3 pb-4">
-        <div className="w-5 h-5 flex grayscale rounded-sm">
-          <LogoImage tooltip={false} logoKey={language} index={0} />
-        </div>
+        {IconComponent && <IconComponent size={19} />}
         <span className="text-sm">
           {title === 'preformatted' ? 'Bash' : title}
         </span>

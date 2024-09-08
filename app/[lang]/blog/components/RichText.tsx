@@ -15,7 +15,7 @@ export const richTextComponents: JSXMapSerializer = {
   heading1: ({ children, node }) => (
     <Heading
       as="h2"
-      size="3xl"
+      size="4xl"
       className="mb-7 mt-12 first:mt-0 last:mb-0 w-full font-bold"
       id={slugifyHeading(node)}
     >

@@ -5,13 +5,11 @@ type FontTypes = {
   xs: null | number;
   sm: null | number;
   md: null | number;
-  lg: null | number;
 };
 const createInitialFontSizes = (): FontTypes => ({
   xs: null,
   sm: null,
   md: null,
-  lg: null,
 });
 const FontSizeChanger = () => {
   const [fontSize, setFontSize] = useState<FontTypes>(createInitialFontSizes);
@@ -21,7 +19,7 @@ const FontSizeChanger = () => {
 
   useEffect(() => {
     const computedStyles = getComputedStyle(document.documentElement);
-    const initialFontSizes = ['xs', 'sm', 'md', 'lg'].reduce((sizes, key) => {
+    const initialFontSizes = ['xs', 'sm', 'md'].reduce((sizes, key) => {
       sizes[key as keyof FontTypes] = parseFloat(
         computedStyles.getPropertyValue(`--font-size-${key}`),
       );
