@@ -50,11 +50,11 @@ const TocNavElement = ({
   return (
     <li
       className={clsx(
-        'list-disc transition-colors hover:underline hover:text-log-col md:text-md text-sm',
+        ' transition-colors hover:underline hover:text-log-col md:text-md text-sm',
         {
-          'pl-2': level === 1,
-          'pl-4': level === 2,
-          'pl-6': level === 3,
+          '': level === 1,
+          'pl-3 list-none': level === 2,
+          'pl-6 list-none': level === 3,
           '': id !== activeId,
           'text-log-col': id === activeId,
         },
@@ -159,7 +159,7 @@ export function Toc({ slices, title }: TocProps) {
             <Heading as="h2" size="xl" id="toc-heading">
               {t('toc')}
             </Heading>
-            <ol className="pl-4 mt-4" ref={headingsList} role="list">
+            <ul className="pl-2 mt-4 list-disc" ref={headingsList} role="list">
               <TocNavElement
                 node={{
                   text: asText(title) || '',
@@ -194,7 +194,17 @@ export function Toc({ slices, title }: TocProps) {
                             {children}
                           </TocNavElement>
                         ),
-                        heading3: () => <></>,
+                        heading3: ({ node, children, key }) => (
+                          <TocNavElement
+                            node={node}
+                            key={key}
+                            level={3}
+                            activeId={activeId}
+                          >
+                            {children}
+                          </TocNavElement>
+                        ),
+                        heading4: () => <></>,
                         paragraph: () => <></>,
                         preformatted: () => <></>,
                         strong: () => <></>,
@@ -210,7 +220,7 @@ export function Toc({ slices, title }: TocProps) {
                     />
                   ),
               )}
-            </ol>
+            </ul>
           </nav>
         </aside>
       </div>

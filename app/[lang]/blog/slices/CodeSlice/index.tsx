@@ -14,7 +14,6 @@ export type CodeSliceProps = SliceComponentProps<Content.CodeSliceSlice>;
 const CodeSlice = ({ slice }: CodeSliceProps): JSX.Element => {
   return (
     <div
-      className="-my-9"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >

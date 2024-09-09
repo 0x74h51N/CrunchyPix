@@ -19,6 +19,15 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em,hyperlink,list-item"
+          }
         }
       },
       "items": {}

@@ -51,23 +51,23 @@ const TopTitle = ({
   };
 
   return (
-    <div className="bg-base-200 w-full flex -mb-3 px-2 justify-between">
-      <div className="flex items-center gap-1 p-3 pb-4">
+    <div className="bg-base-200 w-full flex p-4 justify-between">
+      <div className="flex items-center gap-1">
         {IconComponent && <IconComponent size={19} />}
         <span className="text-sm">
           {title === 'preformatted' ? 'Bash' : title}
         </span>
       </div>
-      <div className="p-4 hover:text-log-col">
+      <div className=" hover:text-log-col">
         {copied ? (
           <LuCopyCheck
-            className="ml-1.5 text-xl font-normal text-log-col h-5 w-5 flex-shrink-0"
+            className="text-xl font-normal text-log-col h-5 w-5 flex-shrink-0"
             aria-hidden="true"
           />
         ) : (
           <div onClick={handleCopy}>
             <LuCopy
-              className="ml-1.5 text-xl font-normal h-5 w-5 flex-shrink-0"
+              className="text-xl font-normal h-5 w-5 flex-shrink-0 cursor-pointer"
               aria-hidden="true"
             />
           </div>

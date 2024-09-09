@@ -32,9 +32,14 @@ body {
 }
 
 :root {
-  --font-size-xs: 12px;
-  --font-size-sm: 14px;
-  --font-size-md: 16px;
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-md: 15px;
+}
+
+pre {
+  margin: 0 !important;
+  border: none !important;
 }
 
 .paragraph,
@@ -147,6 +152,10 @@ body {
 .h1.half {
   @apply text-cool-gray-50 font-black md:text-[45px] sm:text-[40px] xs:text-[36px] text-[32px] antialiased;
 }
+.h1-blog {
+  @apply font-black md:text-[45px] sm:text-[40px] xs:text-[36px] text-[32px] antialiased;
+}
+
 .h2 {
   @apply text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[18px] lg:leading-[40px] antialiased;
 }

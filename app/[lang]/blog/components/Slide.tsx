@@ -6,11 +6,7 @@ import { useRef, useEffect, memo, useMemo } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import {
-  BlogPostDocument,
-  NavigationDocumentDataMenuItemsItem,
-  Simplify,
-} from '@/prismicio-types';
+import { BlogPostDocument } from '@/prismicio-types';
 import { PostCard } from './PostCard';
 
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -18,7 +14,7 @@ SwiperCore.use([Autoplay, Pagination, Navigation]);
 const ProjectSlide = ({
   navigationItems,
 }: {
-  navigationItems: Simplify<NavigationDocumentDataMenuItemsItem>[];
+  navigationItems: BlogPostDocument<string>[];
 }) => {
   const navigation = {
     nextEl: '.swiper-button-next-cus',
@@ -59,7 +55,7 @@ const ProjectSlide = ({
         {extendedPosts.map((post, i) => (
           <SwiperSlide
             className="max-w-[400px] max-h-[400px]"
-            key={`${post.label}-slide-${i}`}
+            key={`${post.uid}-slide-${i}`}
           >
             <PostCard post={post} recomendSec />
           </SwiperSlide>

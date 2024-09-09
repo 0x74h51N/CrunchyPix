@@ -25,6 +25,17 @@
 				"alt": null,
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laborum Lorem sint incididunt eu non eu ex occaecat."
+						}
+					}
+				]
 			}
 		},
 		"items": []

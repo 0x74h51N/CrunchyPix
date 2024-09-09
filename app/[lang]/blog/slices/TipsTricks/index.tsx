@@ -26,11 +26,11 @@ const TipsTricks = async ({ slice }: TipsTricksProps): Promise<JSX.Element> => {
   const boxClasses = () => {
     switch (slice.primary.option) {
       case 'tips':
-        return 'bg-base-200';
+        return 'border-l-4 border-pink-400';
       case 'question':
-        return 'bg-blue-50 border-l-4 border-blue-400';
+        return 'border-l-4 border-blue-400';
       case 'warn':
-        return 'bg-yellow-50 border-l-4 border-yellow-400';
+        return 'border-l-4 border-yellow-400';
       default:
         return '';
     }
@@ -39,14 +39,16 @@ const TipsTricks = async ({ slice }: TipsTricksProps): Promise<JSX.Element> => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-base-300 join-vertical rounded-lg"
+      className="join-vertical rounded-lg my-3"
     >
-      <div className={`bg-base-200 p-4 join-item rounded-t-lg ${boxClasses()}`}>
+      <div
+        className={`bg-gradient-to-r from-base-200 to-transparent p-4 join-item rounded-t-lg ${boxClasses()}`}
+      >
         <span className={`text-lg ${titleClasses()}`}>
           {t(`blog-post.tipsSlice.${slice.primary.option}`)}
         </span>
       </div>
-      <div className={`p-5 join-item ${boxClasses()} bg-opacity-50`}>
+      <div className={`px-5 pt-2 join-item ${boxClasses()}`}>
         <RichText field={slice.primary.tips} />
       </div>
     </section>

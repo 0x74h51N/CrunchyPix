@@ -80,8 +80,8 @@ module.exports = {
           secondary: '#4D4D4D',
           accent: '#666666',
           neutral: '#3D3D3D',
-          'base-100': '#ffffff',
-          'base-200': '#F2F2F2',
+          'base-100': '#f9f9f9',
+          'base-200': '#F0F0F0',
           'base-300': '#dedede',
           'base-content': '#1A1A1A',
           info: '#737373',
@@ -89,6 +89,11 @@ module.exports = {
           warning: '#FFA726',
           error: '#F44336',
           pcolor: 'ffdaf9',
+          // Başlık renkleri
+          h1: '#1A1A1A', // Örneğin, daha koyu bir siyah
+          h2: '#333333', // Biraz daha açık
+          h3: '#4D4D4D', // Daha da açık
+          text: '#3D3D3D', // Genel metin rengi
         },
       },
       {
@@ -97,14 +102,19 @@ module.exports = {
           secondary: '#2f2f2f',
           accent: '#383838',
           neutral: '#1A1A1A',
-          'base-100': '#0c0c0c',
-          'base-200': '#1A1A1A',
+          'base-100': '#131313',
+          'base-200': '#1a1a1a',
           'base-300': '#232323',
           'base-content': '#E0E0E0',
           info: '#616161',
           success: '#388E3C',
           warning: '#FFB74D',
           error: '#E57373',
+          // Başlık renkleri
+          h1: '#E0E0E0', // Örneğin, daha açık bir beyaz
+          h2: '#C0C0C0', // Biraz daha koyu
+          h3: '#A0A0A0', // Daha da koyu
+          text: '#B0B0B0', // Genel metin rengi
         },
       },
     ],

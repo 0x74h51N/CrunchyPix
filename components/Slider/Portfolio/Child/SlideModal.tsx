@@ -1,6 +1,6 @@
 import { RootState } from '@/store';
 import { clearSlide } from '@/store/redux/selectedSlide';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import IconButton from '@/components/Buttons/IconButton';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,24 +12,29 @@ import { CldImage } from 'next-cloudinary';
 import { useTranslation } from 'react-i18next';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import LogoImage from '@/components/LogoImage';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
 
 const SlideModal = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation(['portfolio']);
   const [imageLoading, setImageLoading] = useState(true);
   const isSlider = useSelector((state: RootState) => state.isSlider.slider);
+  const modalRef = useRef(null);
   const selectedSlide = useSelector(
     (state: RootState) => state.selectedSlide.selectedSlide,
   );
   const id =
     selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, '');
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
-  const closeModal = useCallback(() => {
-    dispatch(clearSlide());
-    setTimeout(() => {
-      setImageLoading(true);
-    }, 300);
-  }, [dispatch]);
+
+  const closeModal = () => {
+    if (modalRef.current) {
+      dispatch(clearSlide());
+      setTimeout(() => {
+        setImageLoading(true);
+      }, 300);
+    }
+  };
 
   const modalVariants = {
     hidden: { opacity: 0, scale: 0.5 },
@@ -41,28 +46,14 @@ const SlideModal = () => {
       dispatch(sliderChange(false));
     }
   };
+  useOutsideClick(modalRef, closeModal);
 
-  useEffect(() => {
-    const scrollHandler = () => {
-      closeModal();
-    };
-    if (selectedSlide) {
-      document.addEventListener('scroll', scrollHandler);
-    } else {
-      document.removeEventListener('scroll', scrollHandler);
-    }
-    return () => {
-      document.removeEventListener('scroll', scrollHandler);
-    };
-  }, [selectedSlide, closeModal]);
   return (
     <AnimatePresence>
       {selectedSlide && (
-        <div
-          className="fixed inset-0 flex items-center justify-center backdrop-filter backdrop-blur-lg"
-          onClick={closeModal}
-        >
+        <div className="fixed inset-0 flex items-center justify-center backdrop-filter backdrop-blur-lg">
           <div
+            ref={modalRef}
             className={`absolute flex justify-center items-center top-1/2 left-1/2  xl:w-[75vw] h-auto w-[95vw] translate-x-[-50%] translate-y-[-50%] outline-none`}
           >
             <motion.div

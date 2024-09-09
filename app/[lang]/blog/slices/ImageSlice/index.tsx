@@ -1,27 +1,22 @@
 import { Content } from '@prismicio/client';
-import { PrismicNextImage } from '@prismicio/next';
 import { SliceComponentProps } from '@prismicio/react';
+import { RichText } from '../../components/RichText';
+import ImageModal from '../../components/ImageModal';
 
-/**
- * Props for `ImageSlice`.
- */
 export type ImageSliceProps = SliceComponentProps<Content.ImageSliceSlice>;
 
-/**
- * Component for "ImageSlice" Slices.
- */
 const ImageSlice = ({ slice }: ImageSliceProps): JSX.Element => {
   return (
     <section
       data-slice-type={slice.slice_type}
+      key={slice.id}
       data-slice-variation={slice.variation}
-      className="flex w-full justify-center"
+      className="flex flex-col mb-4 w-full justify-center gap-2"
     >
-      <PrismicNextImage
-        field={slice.primary.image}
-        sizes="auto"
-        className="w-full max-w-4xl self-center h-auto rounded-xl object-cover"
-      />
+      <ImageModal slice={slice} key={slice.id + 'image'} />
+      <div className="px-2">
+        <RichText field={slice.primary.description} />
+      </div>
     </section>
   );
 };

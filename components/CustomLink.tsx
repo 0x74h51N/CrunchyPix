@@ -22,7 +22,7 @@ const CustomLink = ({ children, href }: CustomLinkProps) => {
 
   return (
     <Link
-      href={href as string}
+      href={(href as string) || ''}
       target="_blank"
       className={isBlogReady ? 'cursor-pointer' : 'cursor-none'}
     >

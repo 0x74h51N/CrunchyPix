@@ -118,103 +118,6 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-/**
- * Item in *Navigation → Menu Items*
- */
-export interface NavigationDocumentDataMenuItemsItem {
-  /**
-   * Label field in *Navigation → Menu Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.menu_items[].label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  label: prismic.KeyTextField;
-
-  /**
-   * Link field in *Navigation → Menu Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.menu_items[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
-
-  /**
-   * featured_image field in *Navigation → Menu Items*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.menu_items[].featured_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  featured_image: prismic.ImageField<never>;
-
-  /**
-   * title field in *Navigation → Menu Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.menu_items[].title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  title: prismic.RichTextField;
-
-  /**
-   * description field in *Navigation → Menu Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.menu_items[].description
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * publication_date field in *Navigation → Menu Items*
-   *
-   * - **Field Type**: Date
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.menu_items[].publication_date
-   * - **Documentation**: https://prismic.io/docs/field#date
-   */
-  publication_date: prismic.DateField;
-}
-
-/**
- * Content for Navigation documents
- */
-interface NavigationDocumentData {
-  /**
-   * Menu Items field in *Navigation*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation.menu_items[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  menu_items: prismic.GroupField<Simplify<NavigationDocumentDataMenuItemsItem>>;
-}
-
-/**
- * Navigation document from Prismic
- *
- * - **API ID**: `navigation`
- * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type NavigationDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<
-    Simplify<NavigationDocumentData>,
-    'navigation',
-    Lang
-  >;
-
 type PageDocumentDataSlicesSlice = HeroSlice;
 
 /**
@@ -287,10 +190,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>;
 
-export type AllDocumentTypes =
-  | BlogPostDocument
-  | NavigationDocument
-  | PageDocument;
+export type AllDocumentTypes = BlogPostDocument | PageDocument;
 
 /**
  * Primary content in *Blockquote → Default → Primary*
@@ -454,6 +354,16 @@ export interface ImageSliceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * description field in *ImageSlice → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_slice.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
 }
 
 /**
@@ -600,9 +510,6 @@ declare module '@prismicio/client' {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
-      NavigationDocument,
-      NavigationDocumentData,
-      NavigationDocumentDataMenuItemsItem,
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,

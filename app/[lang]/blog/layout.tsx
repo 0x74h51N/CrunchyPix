@@ -6,11 +6,6 @@ export default async function BlogLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const client = createClient();
-  const navigation = await client.getSingle('navigation');
-
-  const menuItems = navigation.data.menu_items;
-
   return (
     <div className="flex flex-col w-full max-w-[100vw] min-h-[100svh] items-center !select-text !cursor-auto ">
       <div className=" w-full min-h-screen flex flex-col gap-20 items-center">

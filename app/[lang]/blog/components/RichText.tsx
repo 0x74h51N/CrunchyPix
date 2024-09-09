@@ -15,8 +15,7 @@ export const richTextComponents: JSXMapSerializer = {
   heading1: ({ children, node }) => (
     <Heading
       as="h2"
-      size="4xl"
-      className="mb-7 mt-12 first:mt-0 last:mb-0 w-full font-bold"
+      className="!mb-10 !mt-24 w-full h1-blog text-h1"
       id={slugifyHeading(node)}
     >
       {children}
@@ -26,8 +25,8 @@ export const richTextComponents: JSXMapSerializer = {
   heading2: ({ children, node }) => (
     <Heading
       as="h3"
-      size="2xl"
-      className="mb-7 mt-10 last:mb-0"
+      size="4xl"
+      className="mb-3 mt-16 text-h2"
       id={slugifyHeading(node)}
     >
       {children}
@@ -36,8 +35,18 @@ export const richTextComponents: JSXMapSerializer = {
   heading3: ({ children, node }) => (
     <Heading
       as="h4"
+      size="3xl"
+      className="mb-2 mt-10 text-h3"
+      id={slugifyHeading(node)}
+    >
+      {children}
+    </Heading>
+  ),
+  heading4: ({ children, node }) => (
+    <Heading
+      as="h5"
       size="xl"
-      className="mb-5 mt-8 last:mb-0"
+      className="mt-5 underline underline-offset-1"
       id={slugifyHeading(node)}
     >
       {children}
@@ -51,9 +60,13 @@ export const richTextComponents: JSXMapSerializer = {
     return <CodeBlock code={node.text} title={node.type} language={'text'} />;
   },
   list: ({ children }) => (
-    <ul className="p-3 pl-10 list-disc rounded-md paragraph">{children}</ul>
+    <ul className="p-3 pl-8 list-disc paragraph">{children}</ul>
   ),
-  listItem: ({ children }) => <li>{children}</li>,
+  listItem: ({ children }) => <li className="mt-4 first:mt-1">{children}</li>,
+  oList: ({ children }) => (
+    <ol className="p-3 pl-10 paragraph list-decimal">{children}</ol>
+  ),
+  oListItem: ({ children }) => <li className="mt-4 first:mt-1">{children}</li>,
 };
 
 interface RichTextProps {
