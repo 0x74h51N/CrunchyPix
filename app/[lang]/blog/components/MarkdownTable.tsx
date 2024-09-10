@@ -10,16 +10,10 @@ const MarkdownTable: Components = {
     <thead className="table-header-group bg-base-300" {...props} />
   ),
   th: (props: HTMLAttributes<HTMLTableCellElement>) => (
-    <th
-      className="text-lg p-3 text-center first:text-right first:border-none border-l-2 border-base-100"
-      {...props}
-    />
+    <th className="text-lg p-3 text-center first:text-right" {...props} />
   ),
   td: (props: HTMLAttributes<HTMLTableCellElement>) => (
-    <td
-      className="table-cel first:text-right paragraph  first:border-none border-l-2 border-base-100"
-      {...props}
-    />
+    <td className="table-cel first:text-right paragraph" {...props} />
   ),
   tr: (props: HTMLAttributes<HTMLTableRowElement>) => (
     <tr className="paragraph" {...props} />

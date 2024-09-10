@@ -12,7 +12,6 @@ export const PostCard = ({
   recomendSec?: boolean;
 }): JSX.Element => {
   const data = post.data;
-
   return (
     <div
       className={`group !select-none relative hover:z-50 card flex flex-col ${recomendSec ? 'h-[380px] w-[380px]' : 'lg:h-[450px] h-[400px] lg:w-[450px] sm:w-[390px] w-full'} rounded-xl hover:border-log-col border-[1px] border-cool-gray-800 transition-all ease-in-out duration-500 overflow-hidden bg-cool-gray-700 text-stone-300`}

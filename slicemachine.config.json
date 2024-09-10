@@ -1,6 +1,11 @@
 {
   "repositoryName": "crunchypix",
-  "adapter": "@slicemachine/adapter-next",
-  "libraries": ["./app/[lang]/blog/slices"],
+  "adapter": {
+    "resolve": "@slicemachine/adapter-next",
+    "options": {
+      "lazyLoadSlices": true
+    }
+  },
+  "libraries": ["./app/en/blog/slices"],
   "localSliceSimulatorURL": "http://localhost:8080/en/blog/slice-simulator"
 }

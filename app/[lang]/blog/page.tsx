@@ -15,6 +15,7 @@ export const graphQuery = `
         title
         description
         featured_image
+        publication_date
       }
     }`;
 
