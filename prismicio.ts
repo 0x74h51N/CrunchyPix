@@ -40,3 +40,14 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
 
   return client;
 };
+
+export const graphQuery = `
+    {
+      blog_post {
+        uid
+        title
+        description
+        featured_image
+        publication_date
+      }
+    }`;

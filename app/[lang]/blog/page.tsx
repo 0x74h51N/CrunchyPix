@@ -2,22 +2,11 @@ import { Metadata } from 'next';
 
 import { SliceZone } from '@prismicio/react';
 
-import { createClient } from '@/prismicio';
+import { createClient, graphQuery } from '@/prismicio';
 import { components } from '@/app/[lang]/blog/slices';
 import { PostCard } from './components/PostCard';
 import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
-
-export const graphQuery = `
-    {
-      blog_post {
-        uid
-        title
-        description
-        featured_image
-        publication_date
-      }
-    }`;
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();

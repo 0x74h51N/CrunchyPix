@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { PrismicRichText, SliceZone } from '@prismicio/react';
 import * as prismic from '@prismicio/client';
 
-import { createClient } from '@/prismicio';
+import { createClient, graphQuery } from '@/prismicio';
 import { components } from '@/app/[lang]/blog/slices';
 import { PrismicNextImage } from '@prismicio/next';
 
@@ -16,7 +16,6 @@ import { createTranslation } from '@/i18n/server';
 import Slide from '../components/Slide';
 import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
-import { graphQuery } from '../page';
 
 type Params = { uid: string; lang: Locales };
 
