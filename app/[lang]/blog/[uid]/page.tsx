@@ -89,7 +89,7 @@ export default async function Page({ params }: { params: Params }) {
     <div className="flex flex-col items-center bg-base-100 w-full h-full py-36">
       <div
         id={'article-wrapper'}
-        className="flex flex-col gap-10 w-full xl:max-w-[1350px] max-w-[1150px] xl:px-64 lg:px-48 md:px-18 sm:px-8 px-3 transition-all ease-in-out duration-500"
+        className="flex flex-col gap-10 w-full xl:max-w-[1350px] max-w-[1150px] xl:px-64 lg:px-48 md:px-24 sm:px-8 px-3 transition-all ease-in-out duration-500"
       >
         <section className="flex flex-col gap-8 mb-10 relative">
           <div className="flex flex-col items-center gap-3 w-full">

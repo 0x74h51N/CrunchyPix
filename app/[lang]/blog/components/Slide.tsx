@@ -54,7 +54,7 @@ const ProjectSlide = ({
       >
         {extendedPosts.map((post, i) => (
           <SwiperSlide
-            className="max-w-[400px] max-h-[400px]"
+            className="max-w-[400px] max-h-[450px]"
             key={`${post.uid}-slide-${i}`}
           >
             <PostCard post={post} recomendSec />
