@@ -53,7 +53,6 @@ const SlideModal = () => {
       {selectedSlide && (
         <div className="fixed inset-0 flex items-center justify-center backdrop-filter backdrop-blur-lg">
           <div
-            ref={modalRef}
             className={`absolute flex justify-center items-center top-1/2 left-1/2  xl:w-[75vw] h-auto w-[95vw] translate-x-[-50%] translate-y-[-50%] outline-none`}
           >
             <motion.div
@@ -70,6 +69,7 @@ const SlideModal = () => {
                 <CancelButton />
               </button>
               <CldImage
+                ref={modalRef}
                 priority
                 src={`crunchypix/PortfolioSlides/${selectedSlide._id}.png`}
                 alt={selectedSlide._id || ''}

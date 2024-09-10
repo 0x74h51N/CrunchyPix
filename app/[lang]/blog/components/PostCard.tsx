@@ -50,12 +50,12 @@ export const PostCard = ({
           <h2 className="font-bold text-xl hover:text-log-col transition-all ease-in-out duration-500">
             <PrismicText field={data!.title} />
           </h2>
-          <div className="flex justify-between max-w-full max-h-32 pb-5 items-start mt-2 ">
-            <p className="gap-1 flex text-sm flex-wrap h-auto max-w-[250px] max-h-16 overflow-hidden">
+          <div className="flex justify-between max-w-full items-start lg:mt-2 ">
+            <p className="gap-1 flex flex-wrap h-auto max-w-[250px] max-h-28 overflow-hidden">
               {post!.tags!.map((tag, index) => (
                 <span
                   key={post.uid + 'tag' + index}
-                  className="flex badge badge-primary badge-sm h-6 items-center text-gray-700 rounded-lg"
+                  className="badge badge-primary md:min-h-6 min-h-5 pb-0.5 md:badge-md badge-xs text-gray-700"
                 >
                   {tag}
                 </span>

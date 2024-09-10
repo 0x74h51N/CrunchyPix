@@ -43,16 +43,20 @@ pre {
 }
 
 .paragraph,
+#article-content pre span,
+#article-content pre .token,
 #code-sect pre .token,
-#code-sect .language-text #article-content pre .token,
+#code-sect .language-text,
 #article-content .language-text {
   font-size: var(--font-size-md) !important;
 }
 
 @media (max-width: 640px) {
   .paragraph,
+  #article-content pre span,
+  #article-content pre .token,
   #code-sect pre .token,
-  #code-sect .language-text #article-content pre .token,
+  #code-sect .language-text,
   #article-content .language-text {
     font-size: var(--font-size-xs) !important;
   }
@@ -60,8 +64,10 @@ pre {
 
 @media (min-width: 640px) {
   .paragraph,
+  #article-content pre span,
+  #article-content pre .token,
   #code-sect pre .token,
-  #code-sect .language-text #article-content pre .token,
+  #code-sect .language-text,
   #article-content .language-text {
     font-size: var(--font-size-sm) !important;
   }
@@ -70,7 +76,7 @@ pre {
 @media (min-width: 768px) {
   .paragraph,
   #code-sect pre .token,
-  #code-sect .language-text #article-content pre .token,
+  #code-sect .language-text,
   #article-content .language-text {
     font-size: var(--font-size-md) !important;
   }

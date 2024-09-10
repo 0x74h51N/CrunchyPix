@@ -23,12 +23,7 @@ interface TocProps {
   title: RichTextField;
 }
 
-const TocNavElement = ({
-  node,
-  children,
-  level,
-  activeId,
-}: TocNavElementProps) => {
+const TocNavElement = ({ node, level, activeId }: TocNavElementProps) => {
   const id = slugifyHeading(node);
   const handleScroll = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -53,15 +48,15 @@ const TocNavElement = ({
         ' transition-colors hover:underline hover:text-log-col md:text-md text-sm',
         {
           '': level === 1,
-          'pl-3 list-none': level === 2,
-          'pl-6 list-none': level === 3,
+          'list-none': level === 2,
+          'pl-4 list-none': level === 3,
           '': id !== activeId,
           'text-log-col': id === activeId,
         },
       )}
     >
       <a className="line-clamp-1" href={`#${id}`} onClick={handleScroll}>
-        {children ? children : node.text}
+        {level > 1 ? `─${node.text}` : node.text}
       </a>
     </li>
   );
@@ -152,9 +147,9 @@ export function Toc({ slices, title }: TocProps) {
   }, [headings]);
   const { t } = useTranslation('blog');
   return (
-    <div className="lg:sticky lg:top-0 px-4 md:px-6 w-full !select-none">
-      <div className="lg:absolute lg:top-0 2xl:-left-72 lg:-left-64 2xl:ml-3 xl:ml-6 lg:ml-10">
-        <aside className="border p-6 mx-auto max-w-3xl mt-6 md:mt-0 2xl:w-64 xl:w-56 lg:w-52 hover:lg:!w-80 card border-none bg-base-300 transition-all ease-in-out duration-500">
+    <div className="lg:sticky lg:top-0 px-4 md:px-6 w-full !select-none z-50">
+      <div className="lg:absolute lg:top-0 2xl:-left-72 lg:-left-64 2xl:ml-3 xl:ml-6 lg:ml-10 mt-6">
+        <aside className="border p-6 mx-auto max-w-3xl mt-4 md:mt-0 2xl:w-64 xl:w-56 lg:w-52 hover:lg:!w-80 border-base-200 bg-base-300 shadow-md shadow-base-200 transition-all ease-in-out duration-500">
           <nav aria-labelledby="toc-heading">
             <Heading as="h2" size="xl" id="toc-heading">
               {t('toc')}
