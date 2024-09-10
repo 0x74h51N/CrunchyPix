@@ -28,7 +28,7 @@ const Menu = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between bg-base-300 rounded-b-lg sticky top-0 p-2 md:px-6 md:gap-6 z-50 !select-none -mt-12">
+      <div className="flex items-center justify-between backdrop-blur-sm backdrop-filter bg-base-300 bg-opacity-25 rounded-b-lg sticky top-0 p-2 md:px-6 md:gap-6 z-50 !select-none -mt-9">
         <div className="flex gap-4 items-center">
           <div className="tooltip tooltip-bottom tooltip-accent">
             <ThemeToggle />

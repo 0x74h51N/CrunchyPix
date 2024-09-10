@@ -149,7 +149,7 @@ export function Toc({ slices, title }: TocProps) {
   return (
     <div className="lg:sticky lg:top-0 px-4 md:px-6 w-full !select-none z-50">
       <div className="lg:absolute lg:top-0 2xl:-left-72 lg:-left-64 2xl:ml-3 xl:ml-6 lg:ml-10 mt-6">
-        <aside className="border p-6 mx-auto max-w-3xl mt-4 md:mt-0 2xl:w-64 xl:w-56 lg:w-52 hover:lg:!w-80 border-base-200 bg-base-300 shadow-md shadow-base-200 transition-all ease-in-out duration-500">
+        <aside className="border p-6 mx-auto max-w-3xl mt-4 md:mt-0 2xl:w-64 xl:w-56 lg:w-52 hover:lg:!w-80 border-base-200 backdrop-blur-sm backdrop-filter bg-base-300 bg-opacity-25 shadow-md shadow-base-200 transition-all ease-in-out duration-500">
           <nav aria-labelledby="toc-heading">
             <Heading as="h2" size="xl" id="toc-heading">
               {t('toc')}

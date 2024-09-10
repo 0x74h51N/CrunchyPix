@@ -17,7 +17,7 @@ const Blockquote = ({ slice }: BlockquoteProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       {slice.primary.blockquote_richtext && (
-        <div className="p-7 rounded-md rounded-l-none text-sm bg-base-200 border-l-4 border-nav-col">
+        <div className="p-7 rounded-md rounded-l-none text-sm bg-base-200 border-l-4 border-nav-col overflow-auto">
           <PrismicRichText
             field={slice.primary.blockquote_richtext}
             components={richTextComponents}

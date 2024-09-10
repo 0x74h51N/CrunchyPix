@@ -4,6 +4,7 @@ import { PrismicNextImage } from '@prismicio/next';
 import React, { useRef, useState } from 'react';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { Content } from '@prismicio/client';
+import LoadingComponent from '@/components/Loading/Loading';
 
 type ImageModalProps = {
   slice: Content.ImageSliceSlice;

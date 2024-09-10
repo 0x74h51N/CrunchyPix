@@ -32,7 +32,7 @@ export const CodeBlock = async ({ language, code, title }: CodeBlockProps) => {
       ) : (
         <div className="my-3 border border-base-300">
           {language === 'text' ? null : (
-            <TopTitle title={title} code={code} language={language} />
+            <TopTitle title={'Terminal'} code={code} language={language} />
           )}
           <div className="max-h-[450px] overflow-auto">
             <SyntaxHighlighter

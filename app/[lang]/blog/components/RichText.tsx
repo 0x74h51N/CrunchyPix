@@ -57,7 +57,7 @@ export const richTextComponents: JSXMapSerializer = {
     <Hyperlink node={node}>{children}</Hyperlink>
   ),
   preformatted: ({ node }: { node: RTPreformattedNode }) => {
-    return <CodeBlock code={node.text} title={node.type} language={'text'} />;
+    return <CodeBlock code={node.text} title={node.type} language={'bash'} />;
   },
   list: ({ children }) => (
     <ul className="p-3 pl-8 list-disc paragraph">{children}</ul>

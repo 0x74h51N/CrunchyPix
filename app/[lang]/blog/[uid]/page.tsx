@@ -107,7 +107,7 @@ export default async function Page({ params }: { params: Params }) {
           <PrismicNextImage
             field={featured_image}
             sizes="100vw"
-            className="w-full max-w-4xl self-center max-h-96 rounded-t-xl object-cover"
+            className="w-full max-w-4xl self-center h-auto rounded-t-xl object-cover"
           />
           <section id={'article-content'} className="flex flex-col gap-4">
             <Menu />
