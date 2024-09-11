@@ -55,8 +55,8 @@ const TocNavElement = ({ node, level, activeId }: TocNavElementProps) => {
         },
       )}
     >
-      <a className="line-clamp-1" href={`#${id}`} onClick={handleScroll}>
-        {level > 1 ? `─${node.text}` : node.text}
+      <a className="line-clamp-1 mt-0.5" href={`#${id}`} onClick={handleScroll}>
+        {level > 1 ? `─ ${node.text}` : node.text}
       </a>
     </li>
   );
@@ -67,8 +67,8 @@ export function Toc({ slices, title }: TocProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [headings, setHeadings] = useState<
     Array<{ id: string; index: number }>
-  >([]); // Add state to store our heading ID's and their index
-  const scrollRef = useRef(0); // Store the previous scroll position
+  >([]);
+  const scrollRef = useRef(0);
 
   useEffect(() => {
     if (headingsList.current) {
@@ -78,7 +78,6 @@ export function Toc({ slices, title }: TocProps) {
 
       setActiveId(firstHeadingId);
 
-      // Loop over our headings and create an id for each, store it in the new state
       headingsList.current.childNodes.forEach(
         (heading: ChildNode, index: number) => {
           const id = slugifyHeading({ text: heading.textContent || '' });
@@ -91,7 +90,6 @@ export function Toc({ slices, title }: TocProps) {
     }
   }, [headingsList]);
 
-  // Add a new useEffect hook with our IntersectionObserver logic
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -147,9 +145,9 @@ export function Toc({ slices, title }: TocProps) {
   }, [headings]);
   const { t } = useTranslation('blog');
   return (
-    <div className="lg:sticky lg:top-0 px-4 md:px-6 w-full !select-none z-50">
+    <div className="lg:sticky lg:top-0 px-4 md:px-6 w-full !select-none lg:z-50">
       <div className="lg:absolute lg:top-0 2xl:-left-72 lg:-left-64 2xl:ml-3 xl:ml-6 lg:ml-10 mt-6">
-        <aside className="border p-6 mx-auto max-w-3xl mt-4 md:mt-0 2xl:w-64 xl:w-56 lg:w-52 hover:lg:!w-80 border-base-200 backdrop-blur-sm backdrop-filter bg-base-300 bg-opacity-25 shadow-md shadow-base-200 transition-all ease-in-out duration-500">
+        <aside className="border p-6 mx-auto max-w-3xl mt-4 md:mt-0 2xl:w-64 xl:w-56 lg:w-52 hover:lg:!w-80 border-base-300 backdrop-blur-sm backdrop-filter bg-base-300 bg-opacity-25 shadow-md shadow-base-200 transition-all ease-in-out duration-500">
           <nav aria-labelledby="toc-heading">
             <Heading as="h2" size="xl" id="toc-heading">
               {t('toc')}

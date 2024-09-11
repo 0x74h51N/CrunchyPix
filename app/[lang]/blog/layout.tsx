@@ -1,5 +1,5 @@
 import { PrismicPreview } from '@prismicio/next';
-import { createClient, repositoryName } from '@/prismicio';
+import { repositoryName } from '@/prismicio';
 
 export default async function BlogLayout({
   children,

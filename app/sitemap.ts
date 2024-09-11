@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
-import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
+import { generateStaticParams as generatePortfolioStaticParams } from './[lang]/portfolio/[id]/page';
+import { generateStaticParams as generateBlogParams } from './[lang]/blog/[uid]/page';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://crunchypix.com';
@@ -12,7 +12,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 1,
       alternates: {
         languages: {
-          de: `${baseUrl}/de`,
           tr: `${baseUrl}/tr`,
         },
       },
@@ -21,10 +20,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${baseUrl}/en/portfolio`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 0.85,
+      priority: 0.7,
       alternates: {
         languages: {
-          de: `${baseUrl}/de/portfolio`,
           tr: `${baseUrl}/tr/portfolio`,
         },
       },
@@ -36,32 +34,48 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
       alternates: {
         languages: {
-          de: `${baseUrl}/de/about`,
           tr: `${baseUrl}/tr/about`,
         },
       },
     },
+    {
+      url: `${baseUrl}/en/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 1,
+      alternates: {
+        languages: {
+          tr: `${baseUrl}/tr/blog`,
+        },
+      },
+    },
   ];
+  const blogItems = await generateBlogParams();
+  const portfolioItems = await generatePortfolioStaticParams();
 
-  const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
-    'portfolio_schema',
-    'portfolio_items',
-    '*',
-    PortfolioItemSchema,
-  );
-
-  const dynamicUrls = portfolioItems.map((item) => ({
-    url: `${baseUrl}/en/portfolio/${item._id}`,
+  const dynamicPortfolioUrls = portfolioItems.map((item) => ({
+    url: `${baseUrl}/en/portfolio/${item.id}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
-    priority: 0.75,
+    priority: 0.7,
     alternates: {
       languages: {
-        de: `${baseUrl}/de/portfolio/${item._id}`,
-        tr: `${baseUrl}/tr/portfolio/${item._id}`,
+        tr: `${baseUrl}/tr/portfolio/${item.id}`,
       },
     },
   }));
 
-  return [...staticUrls, ...dynamicUrls];
+  const dynamicBlogUrls = blogItems.map((item) => ({
+    url: `${baseUrl}/en/blog/${item.uid}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily' as const,
+    priority: 1,
+    alternates: {
+      languages: {
+        tr: `${baseUrl}/tr/blog/${item.uid}`,
+      },
+    },
+  }));
+
+  return [...staticUrls, ...dynamicBlogUrls, ...dynamicPortfolioUrls];
 }

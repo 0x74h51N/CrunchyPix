@@ -210,7 +210,7 @@ pre {
 }
 
 .footer_copyright {
-  @apply max-sm:flex-col-reverse text-sm font-normal sm:py-7 py-5 max-sm:gap-1 antialiased;
+  @apply max-md:flex-col-reverse text-sm font-normal sm:py-7 py-5 max-sm:gap-1 antialiased;
 }
 
 .footer_column {
@@ -408,7 +408,7 @@ pre {
 }
 
 .mobile-menu.open2 {
-  height: 105px;
+  height: 80px;
   left: unset;
   padding: 7px 12px 7px 12px;
   z-index: 10;

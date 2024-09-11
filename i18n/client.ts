@@ -5,7 +5,6 @@ import { initReactI18next } from 'react-i18next';
 import {
   FALLBACK_LOCALE,
   Locales,
-  NEXT_LOCALE,
   getOptions,
   supportedLocales,
 } from './settings';

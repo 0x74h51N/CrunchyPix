@@ -57,16 +57,20 @@ export const richTextComponents: JSXMapSerializer = {
     <Hyperlink node={node}>{children}</Hyperlink>
   ),
   preformatted: ({ node }: { node: RTPreformattedNode }) => {
-    return <CodeBlock code={node.text} title={node.type} language={'bash'} />;
+    return <CodeBlock code={node.text} title={'Terminal'} language={'bash'} />;
   },
   list: ({ children }) => (
-    <ul className="p-3 pl-8 list-disc paragraph">{children}</ul>
+    <ul className="p-3 md:pl-10 pl-5 list-disc paragraph">{children}</ul>
   ),
-  listItem: ({ children }) => <li className="mt-4 first:mt-1">{children}</li>,
+  listItem: ({ children }) => (
+    <li className="md:mt-4 mt-2 first:mt-1">{children}</li>
+  ),
   oList: ({ children }) => (
-    <ol className="p-3 pl-10 paragraph list-decimal">{children}</ol>
+    <ol className="p-3 md:pl-8 pl-5 paragraph list-decimal">{children}</ol>
   ),
-  oListItem: ({ children }) => <li className="mt-4 first:mt-1">{children}</li>,
+  oListItem: ({ children }) => (
+    <li className="md:mt-4 mt-2 first:mt-1">{children}</li>
+  ),
 };
 
 interface RichTextProps {

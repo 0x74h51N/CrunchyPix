@@ -3,6 +3,7 @@ import { PrismicText } from '@prismicio/react';
 import Link from 'next/link';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { BlogPostDocument } from '@/prismicio-types';
+import clsx from 'clsx';
 
 export const PostCard = ({
   post,
@@ -12,10 +13,12 @@ export const PostCard = ({
   recomendSec?: boolean;
 }): JSX.Element => {
   const data = post.data;
+  const cardClasses = clsx(
+    'group !select-none relative hover:z-50 card flex flex-col lg:h-[450px] h-[400px] rounded-xl hover:border-log-col border-[1px] border-cool-gray-800 transition-all ease-in-out duration-500 overflow-hidden bg-cool-gray-700',
+    recomendSec ? 'md:w-[380px] w-[360px]' : 'lg:w-[450px] sm:w-[390px] w-full',
+  );
   return (
-    <div
-      className={`group !select-none relative hover:z-50 card flex flex-col lg:h-[450px] h-[400px]  ${recomendSec ? 'w-[380px]' : 'lg:w-[450px] sm:w-[390px] w-full'} rounded-xl hover:border-log-col border-[1px] border-cool-gray-800 transition-all ease-in-out duration-500 overflow-hidden bg-cool-gray-700`}
-    >
+    <div className={cardClasses}>
       <div>
         <div className="lg:h-64 h-56">
           <PrismicNextImage
@@ -26,7 +29,7 @@ export const PostCard = ({
         </div>
       </div>
       <div className="min-h-full flex flex-col gap-3 justify-between p-5 card-body group-hover:-translate-y-[58%] translate-y-[0] transition-all ease-in-out duration-700 bg-cool-gray-700 text-stone-300">
-        <h2 className="font-bold text-2xl text-stone-200 hover:text-log-col my-2">
+        <h2 className="font-bold text-2xl text-stone-200 group-hover:text-log-col my-2">
           <PrismicText field={data!.title} />
         </h2>
         <div className="flex justify-between max-w-full items-start lg:mt-2">
@@ -34,7 +37,7 @@ export const PostCard = ({
             {post!.tags!.map((tag, index) => (
               <span
                 key={post.uid + 'tag' + index}
-                className="badge badge-primary md:min-h-6 min-h-5 pb-0.5 md:badge-md badge-xs text-gray-700"
+                className="badge badge-primary min-h-6 pb-0.5 md:badge-md badge-xs text-gray-700"
               >
                 {tag}
               </span>
@@ -45,17 +48,17 @@ export const PostCard = ({
           </span>
         </div>
 
-        <div className="flex flex-col justify-between h-full lg:mt-2">
-          <div className="text-opacity-90 w-full gap-4 lg:h-32 lg:py-1 h-24 md:text-sm text-xs line-clamp-6">
+        <div className="flex flex-col justify-between h-full lg:mt-2 group-hover:mt-0 transition-all ease-in-out duration-500">
+          <div className="text-opacity-90 w-full gap-4 lg:h-32 lg:py-1 h-24 md:text-sm text-xs">
             <PrismicText field={data!.description} />
           </div>
-          <div className="lg:mt-4">
+          <div className="lg:mt-4 self-end">
             <Link
               href={`/${post.lang === 'en-us' ? 'en' : post.lang}/blog/${post.uid}`}
               passHref
-              className="bg-log-col w-[70px] h-[70px] rounded-full flexCenter"
+              className="bg-log-col lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] rounded-full flexCenter"
             >
-              <FaAnglesRight className="text-white text-2xl -rotate-45" />
+              <FaAnglesRight className="text-white text-lg -rotate-45" />
             </Link>
           </div>
         </div>
