@@ -7,11 +7,11 @@ import clsx from 'clsx';
 const CrunchyLogo = ({
   smallNav = false,
   loadingMode = false,
-  theme,
+  theme = 'dark',
 }: {
   smallNav?: boolean;
   loadingMode?: boolean;
-  theme: 'dark' | 'light';
+  theme?: 'dark' | 'light';
 }) => {
   return (
     <>
