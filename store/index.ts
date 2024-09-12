@@ -7,6 +7,7 @@ import isScrollEnabledReducer from './redux/isScrollEnabled';
 import portfolioReducer from './redux/portfolioItems';
 import sectionReducer from './redux/sectionItems';
 import pathSliceReducer from './redux/pathSlice';
+import themeSliceReducer from './redux/theme';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     portfolio: portfolioReducer,
     section: sectionReducer,
     pathSlice: pathSliceReducer,
+    themeSlice: themeSliceReducer,
   },
 });
 

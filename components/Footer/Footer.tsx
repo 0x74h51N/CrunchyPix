@@ -41,7 +41,7 @@ const Footer = () => {
             <div className="flex flex-col lg:flex-row lg:justify-between justify-center lg:items-end items-center lg:gap-4 gap-8 w-full">
               <div className="flex flex-col justify-between lg:items-start items-center z-10 lg:w-1/4 w-full">
                 <Image
-                  src="/LogoL.svg"
+                  src="/large-logo-w.svg"
                   width={250}
                   height={100}
                   loading={'eager'}

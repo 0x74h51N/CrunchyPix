@@ -1,23 +1,29 @@
 'use client';
 
 import { getTheme, setThemeAction } from '@/app/actions/setThemeAction';
+import { setThemeSlice } from '@/store/redux/theme';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState('');
+  const [theme, setTheme] = useState<'dark' | 'light' | null>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const themeTook = async () => {
       const themeCookie = await getTheme();
       if (themeCookie) {
         setTheme(themeCookie);
-      } else setTheme('dark');
+      } else {
+        setTheme('dark');
+      }
     };
     themeTook();
   }, []);
 
   useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
+    document.body.setAttribute('data-theme', theme!);
+    dispatch(setThemeSlice(theme!));
   }, [theme]);
 
   const toggleTheme = () => {

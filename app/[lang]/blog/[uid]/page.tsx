@@ -19,10 +19,6 @@ import { langMap } from '@/utils/langMap';
 
 type Params = { uid: string; lang: Locales };
 
-/**
- * This page renders a Prismic Document dynamically based on the URL.
- */
-
 export async function generateMetadata({
   params,
 }: {

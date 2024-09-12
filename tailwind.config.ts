@@ -89,11 +89,11 @@ module.exports = {
           warning: '#FFA726',
           error: '#F44336',
           pcolor: 'ffdaf9',
-          // Başlık renkleri
-          h1: '#1A1A1A', // Örneğin, daha koyu bir siyah
-          h2: '#333333', // Biraz daha açık
-          h3: '#4D4D4D', // Daha da açık
-          text: '#3D3D3D', // Genel metin rengi
+
+          h1: '#1A1A1A',
+          h2: '#333333',
+          h3: '#4D4D4D',
+          text: '#3D3D3D',
         },
       },
       {
@@ -110,11 +110,11 @@ module.exports = {
           success: '#388E3C',
           warning: '#FFB74D',
           error: '#E57373',
-          // Başlık renkleri
-          h1: '#E0E0E0', // Örneğin, daha açık bir beyaz
-          h2: '#C0C0C0', // Biraz daha koyu
-          h3: '#A0A0A0', // Daha da koyu
-          text: '#B0B0B0', // Genel metin rengi
+
+          h1: '#E0E0E0',
+          h2: '#C0C0C0',
+          h3: '#A0A0A0',
+          text: '#B0B0B0',
         },
       },
     ],

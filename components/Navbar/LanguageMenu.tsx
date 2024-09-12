@@ -53,10 +53,10 @@ const LanguageMenu = ({ smallNav }: { smallNav: boolean }) => {
   const defaultValue = getFlagComponent(i18n.language);
 
   const classes = clsx(
-    'relative flex justify-center mobile-menu text-md font-medium text-neutral-200 w-[72px] right-[15px]',
+    'relative flex justify-center mobile-menu text-md font-medium w-[72px] right-[25px]',
     smallNav
       ? `-mt-2 right-[16px] lg:mt-5 `
-      : `-mt-2 right-[16px] lg:mt-[36px]`,
+      : `-mt-2 right-[16px] lg:mt-[50px]`,
   );
 
   return (

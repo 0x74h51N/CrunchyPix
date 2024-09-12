@@ -8,9 +8,11 @@ import React, {
   useState,
 } from 'react';
 import { useSelector } from 'react-redux';
-import Image from 'next/image';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Option } from '@/types/common.types';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 
 type dropdownProps = {
   classes?: string;
@@ -80,6 +82,8 @@ const Dropdown = ({
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const route = usePathname();
+
   useEffect(() => {
     setSummary(defaultValue);
   }, [defaultValue]);
@@ -125,26 +129,32 @@ const Dropdown = ({
     >
       <button
         onClick={handleToggleDropdown}
-        className={`flex flex-row justify-between items-center gap-1 z-20 bg-transparent w-full h-full ${isBlog ? 'cursor-pointer' : '!cursor-none'}`}
+        className={clsx(
+          'flex flex-row justify-between items-center gap-1 z-20 bg-transparent w-full h-full',
+          isBlog ? 'cursor-pointer' : '!cursor-none',
+        )}
       >
         <div className="p text-start pl-3 truncate ..." style={style}>
           {summary}
         </div>
-        <div>
-          <Image
-            src="/arrow.svg"
-            alt="Arrow"
-            priority
-            width={8}
-            height={8}
-            className={`transition-transform duration-500 ease-in-out ${
-              isRotated ? 'rotate' : ''
-            }`}
-          />
-        </div>
+        <MdKeyboardArrowDown
+          className={clsx(
+            'transition-transform duration-500 ease-in-out',
+            isRotated ? 'rotate' : '',
+            isBlog && route.split('/').length > 3 ? '' : 'text-stone-300',
+          )}
+        />
       </button>
       <div
-        className={`${classes ? classes : 'absolute top-0 left-0 p items-end transition-height ease-in-out duration-500 w-full '} bg-cool-gray-800 rounded-lg shadow-sm shadow-black ${isDropdownOpen ? openClass : closeClass}`}
+        className={clsx(
+          classes
+            ? classes
+            : 'absolute top-0 left-0 p items-end transition-height ease-in-out duration-500 w-full ',
+          isBlog && route.split('/').length > 3
+            ? 'bg-base-200'
+            : 'bg-cool-gray-800 text-cool-gray-300 rounded-lg shadow-sm shadow-black',
+          isDropdownOpen ? openClass : closeClass,
+        )}
       >
         {isDropdownOpen && (
           <ul className={`${ulClasses} ul font-medium leading-6 text-[15px]`}>
@@ -152,7 +162,15 @@ const Dropdown = ({
               <li
                 data-tip={option.disabledTip}
                 key={option.key.toLowerCase() + index}
-                className={`w-full hover:text-log-col hover:brightness-75 transition-text duration-300 ease-in-out ${selectedOption?.toLowerCase() === option.key.toLowerCase() ? 'bg-cool-gray-700' : ''} ${liClass} ${option.disabledTip && 'disabled text-cool-gray-600 hover:!text-cool-gray-400 tooltip tooltip-bottom tooltip-error'}`}
+                className={clsx(
+                  'w-full hover:text-log-col hover:brightness-75 transition-text duration-300 ease-in-out',
+                  selectedOption?.toLowerCase() === option.key.toLowerCase()
+                    ? 'bg-cool-gray-700'
+                    : '',
+                  liClass,
+                  option.disabledTip &&
+                    'disabled hover:!text-cool-gray-400 tooltip tooltip-bottom tooltip-error',
+                )}
                 onClick={() => !option.disabledTip && clickHandler(option)}
               >
                 <div className="flex items-center gap-1">
