@@ -19,16 +19,67 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  user-select: none !important;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  @apply repatingLines;
-  cursor: none !important;
+  @apply repatingLines max-w-[100vw] overflow-x-hidden;
+  cursor: auto;
 }
+
 :root {
   --line-height: 280px;
+}
+
+:root {
+  --font-size-xs: 11px;
+  --font-size-sm: 13px;
+  --font-size-md: 15px;
+}
+
+pre {
+  margin: 0 !important;
+  border: none !important;
+}
+
+.paragraph,
+#article-content pre span,
+#article-content pre .token,
+#code-sect pre .token,
+#code-sect .language-text,
+#article-content .language-text {
+  font-size: var(--font-size-md) !important;
+}
+
+@media (max-width: 640px) {
+  .paragraph,
+  #article-content pre span,
+  #article-content pre .token,
+  #code-sect pre .token,
+  #code-sect .language-text,
+  #article-content .language-text {
+    font-size: var(--font-size-xs) !important;
+  }
+}
+
+@media (min-width: 640px) {
+  .paragraph,
+  #article-content pre span,
+  #article-content pre .token,
+  #code-sect pre .token,
+  #code-sect .language-text,
+  #article-content .language-text {
+    font-size: var(--font-size-sm) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .paragraph,
+  #code-sect pre .token,
+  #code-sect .language-text,
+  #article-content .language-text {
+    font-size: var(--font-size-md) !important;
+  }
 }
 
 @keyframes moveBackground {
@@ -107,6 +158,10 @@ body {
 .h1.half {
   @apply text-cool-gray-50 font-black md:text-[45px] sm:text-[40px] xs:text-[36px] text-[32px] antialiased;
 }
+.h1-blog {
+  @apply font-black md:text-[45px] sm:text-[40px] xs:text-[36px] text-[32px] antialiased;
+}
+
 .h2 {
   @apply text-cool-gray-200 font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[18px] lg:leading-[40px] antialiased;
 }
@@ -155,7 +210,7 @@ body {
 }
 
 .footer_copyright {
-  @apply max-sm:flex-col-reverse text-sm font-normal sm:py-7 py-5 max-sm:gap-1 antialiased;
+  @apply max-md:flex-col-reverse text-sm font-normal max-sm:gap-1 antialiased;
 }
 
 .footer_column {
@@ -226,38 +281,30 @@ body {
 .logo-swiper-wrapper .swiper-wrapper {
   transition-timing-function: linear !important;
 }
-.swiper-button-next,
-.swiper-button-prev {
-  cursor: none !important;
-}
+
 .swiper-button-next::after {
   opacity: 0.5 !important;
   color: white;
-  cursor: none !important;
 }
 
 .swiper-button-prev::after {
   opacity: 0.5 !important;
   color: white;
-  cursor: none !important;
 }
 
 .swiper-button-next:hover::after,
 .swiper-button-prev:hover::after {
   opacity: 1 !important;
   color: #eeb30d !important;
-  cursor: none !important;
 }
 
 .swiper-pagination-bullet {
   background-color: #fff !important;
-  cursor: none !important;
   pointer-events: all !important;
 }
 .swiper-pagination-bullet-active {
   background-color: #eeb30d !important;
   transform: scale(2) !important;
-  cursor: none !important;
   pointer-events: all !important;
 }
 @media (max-width: 600px) {
@@ -361,7 +408,7 @@ body {
 }
 
 .mobile-menu.open2 {
-  height: 105px;
+  height: 80px;
   left: unset;
   padding: 7px 12px 7px 12px;
   z-index: 10;
@@ -423,23 +470,6 @@ body {
   backdrop-filter: blur(5px);
 }
 
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-  background: transparent;
-  cursor: none !important;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-cool-gray-900 rounded-lg;
-  cursor: none !important;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-cool-gray-600;
-  cursor: none !important;
-}
-
 /**Section**/
 .sect-h2 {
   @apply w-full max-xs:w-2/3 max-xs:self-start font-medium lg:text-[22px] sm:text-[20px] text-[14px] lg:leading-[40px] text-cool-gray-300 text-left;
@@ -457,14 +487,10 @@ body {
   @apply tooltip tooltip-top tooltip-error md:before:left-24 before:left-32 md:after:left-14 after:left-24 !flex;
 }
 
-ul,
-li,
-a,
-input,
-button {
-  cursor: none !important;
-}
-
 .tooltip-crunchy {
   @apply before:text-white before:text-xs before:bg-cool-gray-700 before:border-[1px] before:py-0.5 before:border-nav-col after:text-nav-col;
+}
+
+.cool-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500;
 }

@@ -1,3 +1,4 @@
+'use client';
 import { IconType } from 'react-icons';
 import {
   FaDesktop,
@@ -9,7 +10,6 @@ import {
   FaTelegram,
   FaInstagram,
   FaEnvelope,
-  FaTwitter,
   FaLinkedin,
   FaFacebook,
   FaYoutube,
@@ -32,9 +32,12 @@ import {
 import { MdAccessibility, MdTouchApp } from 'react-icons/md';
 import { DiResponsive } from 'react-icons/di';
 import { TfiLayoutAccordionList } from 'react-icons/tfi';
-import { SiFreelancer } from 'react-icons/si';
+import { SiBluesky } from 'react-icons/si';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { IconProps } from '@/schemas';
+import { FaXTwitter } from 'react-icons/fa6';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 const iconComponents: { [key: string]: IconType } = {
   github: FaGithub,
@@ -42,7 +45,7 @@ const iconComponents: { [key: string]: IconType } = {
   telegram: FaTelegram,
   instagram: FaInstagram,
   mail: FaEnvelope,
-  twitter: FaTwitter,
+  twitter: FaXTwitter,
   linkedin: FaLinkedin,
   facebook: FaFacebook,
   youtube: FaYoutube,
@@ -67,7 +70,7 @@ const iconComponents: { [key: string]: IconType } = {
   responsive: DiResponsive,
   layout: TfiLayoutAccordionList,
   chart: FaChartBar,
-  freelancer: SiFreelancer,
+  bsky: SiBluesky,
   codepen: FaCodepen,
   freecodecamp: FaFreeCodeCamp,
 };
@@ -84,12 +87,13 @@ const IconButton = ({
   const iconType = icon.type && icon.type.toLowerCase();
   const IconComponent = icon.type && iconType && iconComponents[iconType];
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   if (iconType && IconComponent) {
     return (
       <div
         data-tip={icon.alt}
-        className={`cursor-none tooltip tooltip-${tooltipDirection} tooltip-crunchy`}
+        className={`tooltip tooltip-${tooltipDirection} tooltip-crunchy !cursor-none`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -97,7 +101,7 @@ const IconButton = ({
           href={icon.link && icon.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="cursor-none"
+          className={isBlog ? 'cursor-pointer' : '!cursor-none'}
         >
           <IconComponent
             size={icon.size ? icon.size : size}

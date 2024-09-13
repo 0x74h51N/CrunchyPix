@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"tips": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Duis sunt ad cillum qui commodo ex cillum ad deserunt cillum."
+						}
+					}
+				]
+			},
+			"option": {
+				"__TYPE__": "FieldContent",
+				"value": "tips",
+				"type": "Select"
+			}
+		},
+		"items": []
+	}
+]

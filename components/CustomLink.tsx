@@ -1,35 +1,40 @@
-import { useDispatch, useSelector } from 'react-redux';
+'use client';
+import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { clickableChange } from '@/store/redux/isClickable';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
 
-const CustomLink = ({
-  children,
-  ...props
-}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  const isClickable = useSelector(
-    (state: RootState) => state.isClickable.clickable,
-  );
-  const dispatch = useDispatch();
-  const handleMouseEnter = () => {
-    if (isClickable == false) {
-      dispatch(clickableChange(true));
-    }
-  };
-  const handleMouseLeave = () => {
-    if (isClickable == true) {
-      dispatch(clickableChange(false));
-    }
-  };
+interface CustomLinkProps {
+  children: JSX.Element | JSX.Element[];
+  href: string;
+}
+
+const CustomLink = ({ children, href }: CustomLinkProps) => {
+  const [isBlogReady, setIsBlogReady] = useState(false);
+
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
+
+  useEffect(() => {
+    setIsBlogReady(isBlog);
+  }, [isBlog]);
+
   return (
     <Link
-      href={props.href as string}
+      href={(href as string) || ''}
       target="_blank"
-      className="text-log-col underline underline-offset-3 cursor-none"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      className={isBlogReady ? 'cursor-pointer' : 'cursor-none'}
     >
-      {children}
+      <span
+        className={`text-log-col underline underline-offset-3 ${
+          isBlogReady ? 'cursor-pointer' : 'cursor-none'
+        }`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {children}
+      </span>
     </Link>
   );
 };

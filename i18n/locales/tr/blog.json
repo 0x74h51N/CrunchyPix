@@ -1,0 +1,25 @@
+{
+  "toc": "İçindekiler",
+  "blog-post": {
+    "recommend": "Önerilen Gönderiler",
+    "menu": {
+      "fontPlus": "Yazı Boyutunu Büyüt",
+      "font": "Yazı Boyutunu Sıfırla",
+      "fontMinus": "Yazı Boyutunu Küçült",
+      "fontSize": "Yazı Boyutu:",
+      "themeToggle": "Temayı Değiştir",
+      "expand": "Genişlet"
+    },
+    "tipsSlice": {
+      "tips": "İpuçları & Öneriler",
+      "question": "❔ Merak ediyorum da?",
+      "warn": "⚠️ Dikkat!"
+    },
+    "share": {
+      "share": "Paylaş",
+      "twitter": "Tweetle",
+      "linkedin": "Linkedin",
+      "facebook": "Facebook"
+    }
+  }
+}

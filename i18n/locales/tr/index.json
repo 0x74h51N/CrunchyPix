@@ -6,7 +6,8 @@
     "policies": "Politikalar",
     "termsofprivacy": "Gizlilik Politikası",
     "cookiepolicy": "Çerez Politikası",
-    "gdpr": "KVKK"
+    "gdpr": "KVKK",
+    "blog": "Blog"
   },
 
   "footerLinks": {
@@ -41,9 +42,9 @@
   "dragQuinn": { "drag": "Kaydır" },
   "cookies": {
     "title": "Daha iyi bir deneyim için izninizi istiyoruz",
-    "description": "İnternet sitemizi geliştirmek amacıyla çerezler kullanılmakta olup, izin vermeniz halinde performans amacıyla toplanan veriler, Vercel Analytics ve Vercel SpeedInsight tarafından işlenecek ve kişisel dil tercihi gibi çerezler tarayıcınıza depolanacaktır. Vercel tarafından işlenecek verilerin arasında erişim yaptığınız ülke bilgisi ve hangi browser'ı kullandığınız bulunmakta ve özel IP adres bilginiz toplanmayacaktır. Reddet seçeneğine tıklamanız halinde, tüm çerezler devre dışı bırakılacak ve sitemizi geliştirmek ya da kullanıcı deneyiminizi iyileştirecek çerezler toplanmayacaktır.\n&nbsp;\nDaha fazla bilgi için [Çerez Politikası](/policies/cookie-policy) ve [Gizlilik Politikası](/policies/terms-of-privacy)'nı inceleyebilirsiniz.",
+    "description": "Bu internet sitesinde çerezler kullanılmaktadır. İzniniz doğrultusunda performans amaçlı toplanan veriler, Vercel Analytics ve Vercel SpeedInsight tarafından işlenecektir. Vercel'in işleyeceği veriler arasında erişim yaptığınız ülke ve kullandığınız tarayıcı bilgileri yer alacak olup, özel IP adresiniz veya kişisel bilgileriniz toplanmayacaktır. 'Gerekli Çerezler' seçeneğine tıklarsanız, sitemizi geliştirmek için kullanılan Vercel hizmetleri aktif olmayacak, ancak dil ve tema tercihi gibi çerezler tarayıcınızda depolanmaya devam edecektir.\n&nbsp;\nDaha fazla bilgi için [Çerez Politikası](/policies/cookie-policy) ve [Gizlilik Politikası](/policies/terms-of-privacy)'nı inceleyebilirsiniz.",
     "accept": "Kabul Et",
-    "decline": "Reddet"
+    "decline": "Gerekli Çerezler"
   },
   "notFound": {
     "title": "404 - Sayfa Bulunamadı",

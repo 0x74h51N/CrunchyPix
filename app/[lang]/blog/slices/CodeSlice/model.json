@@ -1,0 +1,54 @@
+{
+  "id": "code_slice",
+  "type": "SharedSlice",
+  "name": "CodeSlice",
+  "description": "CodeSlice",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "language": {
+          "type": "Select",
+          "config": {
+            "label": "language",
+            "placeholder": "code lang",
+            "options": [
+              "typescript",
+              "javascript",
+              "python",
+              "json",
+              "html",
+              "css",
+              "bash",
+              "structure",
+              "table"
+            ],
+            "default_value": "typescript"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": ""
+          }
+        },
+        "codeblock": {
+          "type": "StructuredText",
+          "config": {
+            "label": "codeblock",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "preformatted"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -38,12 +38,24 @@ export async function generateSubPageMetadata({
       title: `${t('meta.title')} | ${selectedItem[0].title && selectedItem[0].title}`,
       description: selectedItem[0].description && selectedItem[0].description,
       keywords: selectedItem[0].ticks.join(', '),
+      icons: {
+        icon: [
+          {
+            url: '/favicon-light.ico',
+            media: '(prefers-color-scheme: light)',
+          },
+          {
+            url: '/favicon-dark.ico',
+            media: '(prefers-color-scheme: dark)',
+          },
+        ],
+      },
       openGraph: {
         title: `${t('meta.title')} | ${selectedItem[0].title && selectedItem[0].title}`,
         description: selectedItem[0].description2
           ? selectedItem[0].description2
           : '',
-        url: `https://crunchypix.vercel.app/portfolio/${params.id}`,
+        url: `https://crunchypix.com/portfolio/${params.id}`,
         images: [
           {
             url: imageUrl,

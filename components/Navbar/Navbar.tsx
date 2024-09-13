@@ -10,12 +10,19 @@ import CrunchyLogo from './CrunchyLogo';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
 import { useTranslation } from 'react-i18next';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
 
 const Navbar = () => {
   const [isMenuOpen, setMobileMenu] = useState(false);
-  const selectedLink = useSelector(
-    (state: RootState) => state.page.currentPage,
-  );
+  const theme = useSelector((state: RootState) => state.themeSlice.theme);
+  const route = usePathname();
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
+  const fixed = useMemo(() => {
+    const path = route.split('/');
+    return path.length < 3;
+  }, [route]);
+
   const [smallNav, setSmallNav] = useState(false);
   const { t } = useTranslation('index');
 
@@ -23,47 +30,69 @@ const Navbar = () => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         setSmallNav(false);
-      } else {
+      } else if (fixed) {
         setSmallNav(true);
       }
     });
   };
+  const blogChild = useMemo(
+    () => isBlog && route.split('/').length > 3,
+    [route, isBlog],
+  );
+  const superTheme = useMemo(() => {
+    return blogChild && theme ? theme : 'dark';
+  }, [blogChild, theme]);
+
+  const superSmallNav = useMemo(() => {
+    return smallNav || blogChild;
+  }, [smallNav, blogChild]);
 
   const { targetRef } = useIntersectionObserver(observerCallback, {
     threshold: 0,
   });
+
   const navClassName = useMemo(() => {
-    let baseClass =
-      'fixed flex w-auto 2xl:min-w-[1450px] xl:min-w-[75svw] min-w-[100svw] top-0 z-[450] gap-4 bg-cool-gray-900 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5';
+    let baseClass = clsx(
+      fixed ? 'fixed' : 'absolute',
+      isBlog ? 'cursor-auto' : 'cursor-none ',
+      blogChild
+        ? 'border border-base-300 bg-base-100 z-[250]'
+        : 'bg-cool-gray-900 z-[450]',
+      ' flex w-auto 2xl:min-w-[1450px] min-w-full top-0gap-4 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5',
+    );
     if (isMenuOpen) {
-      return `${baseClass} navbar py-5 ${smallNav ? 'h-[250px] bg-opacity-100 py-2 shadow-md shadow-black' : 'h-[280px]  bg-opacity-0'}`;
-    } else if (smallNav) {
-      return `${baseClass} bg-opacity-100 h-[70px] py-2 shadow-md shadow-black`;
+      return `${baseClass} navbar py-5 ${superSmallNav ? 'h-[300px] bg-opacity-100 py-2 shadow-md shadow-black' : 'h-[310px]  bg-opacity-0'}`;
+    } else if (superSmallNav) {
+      return `${baseClass} bg-opacity-100 h-[70px] py-2 ${isBlog && route.split('/').length > 3 ? '' : 'shadow-md shadow-black'}`;
     } else {
       return `${baseClass} pt-12 py-5 bg-opacity-0 h-[100px]`;
     }
-  }, [isMenuOpen, smallNav]);
+  }, [isMenuOpen, superSmallNav, fixed, isBlog, route, blogChild]);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const linkItems = useMemo(() => {
     return Links.map((link) => (
       <Link
         href={link.href}
         key={link.key}
-        className={`hover:text-log-col hover:scale-110 cursor-none ${
-          selectedLink === link.href && link.href !== '/' ? 'text-log-col' : ''
-        } relative group transition-all duration-700 ease-in-out transform origin-bottom whitespace-nowrap`}
+        className={clsx(
+          isBlog ? 'cursor-pointer' : 'cursor-none',
+          route.includes(link.href) && link.href !== '/'
+            ? 'text-log-col scale-110'
+            : 'hover:text-log-col hover:scale-110 ',
+          'relative group transition-all duration-700 ease-in-out transform origin-bottom whitespace-nowrap',
+        )}
       >
         {t(link.text)}
         <span
-          className={`absolute -bottom-1 transition-all duration-500 ease-in-out left-0 h-0.5 bg-log-col ${
-            selectedLink === link.href && link.href !== '/'
-              ? 'w-full'
-              : 'w-0 group-hover:w-full'
-          }`}
+          className={clsx(
+            route.includes(link.href) && link.href !== '/'
+              ? ''
+              : 'absolute -bottom-1 transition-all duration-500 ease-in-out left-0 h-0.5 w-0 group-hover:w-full bg-log-col',
+          )}
         ></span>
       </Link>
     ));
-  }, [selectedLink, t]);
+  }, [route, t, isBlog]);
   return (
     <>
       <div
@@ -76,22 +105,30 @@ const Navbar = () => {
           height: '1px',
         }}
       />
-      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0">
+      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0 !select-none">
         <nav className={navClassName}>
           <Link
             href="/"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="flexCenter absolute top-2 pointer-events-auto cursor-none"
+            className={clsx(
+              `flexCenter absolute top-2 pointer-events-auto  ${isBlog ? 'cursor-pointer' : 'cursor-none'}`,
+            )}
           >
-            <CrunchyLogo smallNav={smallNav} />
+            <CrunchyLogo theme={superTheme} smallNav={superSmallNav} />
           </Link>
           <div
             className={`ml-auto transition-all duration-500 ease-in-out flex`}
           >
-            <div className={`lg:hidden h-full max-h-[70px] flex items-center`}>
+            <div
+              className={clsx(
+                'lg:hidden h-full max-h-[70px] flex items-center',
+                isBlog ? 'cursor-auto' : 'cursor-none',
+              )}
+            >
               <MobileMenu
-                smallNav={smallNav}
+                blogChild={blogChild}
+                smallNav={superSmallNav}
                 isMenuOpen={isMenuOpen}
                 setMobileMenu={setMobileMenu}
               />
@@ -101,11 +138,14 @@ const Navbar = () => {
               <ul
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className={`lg:flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 ${
-                  smallNav
+                className={clsx(
+                  'lg:flex max-lg:text-base max-xl:gap-6 max-lg:gap-5 antialiased gap-12',
+                  isBlog ? 'cursor-auto text-h3' : 'cursor-none',
+                  !blogChild && 'text-stone-200',
+                  superSmallNav
                     ? 'text-md font-medium gap-8'
-                    : 'text-lg font-semibold'
-                }  text-stone-200 antialiased gap-12`}
+                    : 'text-lg font-semibold',
+                )}
               >
                 {linkItems}
                 <div
@@ -113,7 +153,7 @@ const Navbar = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <LanguageMenu smallNav={smallNav} />
+                  <LanguageMenu smallNav={superSmallNav} />
                 </div>
               </ul>
             </div>

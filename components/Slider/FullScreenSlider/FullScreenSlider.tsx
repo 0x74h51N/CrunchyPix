@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Pagination, Autoplay } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SlideCreator from './SlideCreator';
 import { slide } from '@/types/common.types';
@@ -31,19 +31,15 @@ const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
       onHoverEnd={hoverEnd}
     >
       <Swiper
-        modules={[Autoplay, Pagination]}
+        modules={[Autoplay]}
         autoplay={{
           delay: 10000,
           disableOnInteraction: false,
         }}
-        pagination={{
-          dynamicBullets: true,
-          clickable: true,
-        }}
         loop
         onSlideChange={onSlideChange}
         centeredSlides={true}
-        className={`text-center bg-stone-900 ${className} cursor-none`}
+        className={`text-center bg-stone-900 ${className} !cursor-none`}
         lazyPreloadPrevNext={1}
       >
         {slides.map((slide, index) => (

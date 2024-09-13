@@ -33,7 +33,7 @@ const CodeSect = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 'some' }}
-      className="flex 2xl:flex-row flex-col items-center 2xl:justify-between justify-center w-full h-full 2xl:pr-20 pr-0 2xl:gap-20 xl:gap-14 gap-6"
+      className="flex no-cursor 2xl:flex-row flex-col items-center 2xl:justify-between justify-center w-full h-full 2xl:pr-20 pr-0 2xl:gap-20 xl:gap-14 gap-6"
     >
       <motion.div
         variants={slideIn('left', 'spring', 0.5, 0.5)}
@@ -44,26 +44,15 @@ const CodeSect = () => {
       <motion.div variants={slideIn('right', 'spring', 0.5, 0.5)}>
         <MonitorFrame>
           <div
+            id={'code-sect'}
             onMouseEnter={scrollHandlerEnter}
             onMouseLeave={scrollHandlerLeave}
-            className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track cursor-none bg-cool-gray-800"
+            className="h-full w-full overflow-scroll scrollbar-thumb scrollbar-track !cursor-none bg-cool-gray-800 no-cursor"
           >
             <SyntaxHighlighter
               language="typescript"
               showLineNumbers
-              useInlineStyles={true}
               style={vscDarkPlus}
-              customStyle={{
-                backgroundColor: 'transparent',
-                opacity: '1',
-                overflow: 'scroll',
-                cursor: 'none',
-                fontSize: '0.6rem', // font-size ayarı
-                lineHeight: '0.7rem',
-              }}
-              codeTagProps={{
-                className: 'lg:text-md md:text-xs',
-              }}
             >
               {codeString}
             </SyntaxHighlighter>

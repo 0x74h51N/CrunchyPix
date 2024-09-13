@@ -98,7 +98,7 @@ const ServicesSect = () => {
             loop
             pagination={pagination}
             navigation={navigation}
-            className="xl:w-[1030px] lg:w-[900px] md:w-[680px] sm:w-[500px] w-[340px] h-auto cursor-none"
+            className="xl:w-[1030px] lg:w-[900px] md:w-[680px] sm:w-[500px] w-[340px] h-auto !cursor-none"
           >
             {slides}
           </Swiper>
@@ -107,14 +107,14 @@ const ServicesSect = () => {
           <div
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="swiper-button-next"
+            className="swiper-button-next !cursor-none"
           />
         </div>
         <div className="absolute swiper-button-prev-cus top-10 left-1 h-full w-[50px] bg- z-50 ">
           <div
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="swiper-button-prev"
+            className="swiper-button-prev !cursor-none"
           />
         </div>
       </motion.div>
@@ -123,7 +123,7 @@ const ServicesSect = () => {
         whileInView="show"
         viewport={{ once: true, amount: 'some' }}
         variants={polygonIn('down', 'spring', 0.7, 2.2)}
-        className="custom-pagy absolute cursor-none left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
+        className="custom-pagy !cursor-none absolute left-0 bottom-0 z-30 flex 2xl:flex-col flex-row justify-center items-center h-auto 2xl:min-h-[100svh] 
         w-full 2xl:max-w-[180px] 2xl:bg-neutral-900 2xl:p-40 lg:p-10 p-8 2xl:gap-8 gap-4"
       />
     </div>

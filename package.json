@@ -11,15 +11,21 @@
   "license": "GPL-3.0",
   "scripts": {
     "dev": "next dev -p 8080",
-    "build": "next build",
+    "build": "rm -rf .next/cache/fetch-cache && next build",
     "start": "next start -p 8080",
-    "lint": "next lint"
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
+    "@prismicio/client": "^7.8.0",
+    "@prismicio/next": "^1.6.0",
+    "@prismicio/react": "^2.8.0",
+    "@prismicio/types": "^0.2.9",
     "@reduxjs/toolkit": "^2.2.6",
     "@supabase/supabase-js": "^2.44.4",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.1",
+    "clsx": "^2.1.1",
     "country-flag-icons": "^1.5.9",
     "daisyui": "^4.12.10",
     "framer-motion": "^11.0.3",
@@ -40,11 +46,13 @@
     "react-syntax-highlighter": "^15.5.0",
     "redux": "^5.0.1",
     "remark-breaks": "^4.0.0",
+    "remark-gfm": "^4.0.0",
     "swiper": "11.1.10",
     "xss": "^1.0.15",
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@slicemachine/adapter-next": "^0.3.46",
     "@types/debug": "^4.1.12",
     "@types/next": "^9.0.0",
     "@types/node": "^20.14.14",
@@ -61,6 +69,7 @@
     "postcss": "^8.4.41",
     "postcss-import": "^16.1.0",
     "prettier": "^3.2.5",
+    "slice-machine-ui": "^2.7.1",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.4.5"
   }

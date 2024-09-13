@@ -20,12 +20,11 @@ const MainRoutes = ({
   const storeItem = useMemo(() => {
     return portfolioItems.find((a) => a._id === childPage);
   }, [childPage, portfolioItems]);
-
   return (
     <div
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out cursor-none lg:mt-[175px] md:mt-[140px] mt-[120px] line-clamp-1"
+      className="h1 mb-3 hover:scale-105 transition-all duration-500 ease-in-out lg:mt-[175px] md:mt-[140px] mt-[120px] line-clamp-1"
       style={{ textTransform: 'capitalize' }}
     >
       {childPage ? (
@@ -37,7 +36,10 @@ const MainRoutes = ({
         ) : mainPage === 'policies' ? (
           t(`links.${childPage.replaceAll('-', '').toLowerCase()}`)
         ) : (
-          storeItem?.project_overview && storeItem?.project_overview[0].title
+          mainPage === 'portfolio' &&
+          storeItem &&
+          storeItem.project_overview &&
+          storeItem.project_overview[0]!.title
         )
       ) : (
         t(`links.${mainPage}`)

@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"blockquote_richtext": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Exercitation exercitation anim non adipisicing. Aliquip dolor sint dolor ea est est ut adipisicing proident."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

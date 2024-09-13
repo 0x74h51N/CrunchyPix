@@ -8,8 +8,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { checkIfPageExists } from './checkIfPageExist';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
-const AllRoutes = () => {
+const AllRoutes = ({ staticParams }: { staticParams: { id: string }[] }) => {
   const { hoverEnd } = useDragHandler();
   const { handleMouseLeave } = useClickableHandlers();
   const [mainPage, setMainPage] = useState('');
@@ -18,20 +20,26 @@ const AllRoutes = () => {
   const [loading, setLoading] = useState(true);
   const [pageExists, setPageExists] = useState(false);
   const [hasGrandchildPage, setHasGrand] = useState(false);
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
+
   useEffect(() => {
-    const updatePageInfo = async () => {
+    const updatePageInfo = () => {
       const urlParts = pathname.split('/');
-      const currentPage = urlParts[2];
+
+      const currentPage = urlParts[2] || '';
       const currentChildPage = urlParts[3] || '';
 
-      setChildPage(currentChildPage);
       setMainPage(currentPage);
+      setChildPage(currentChildPage);
 
-      const isValidPage = await checkIfPageExists(
+      const isValidPage = checkIfPageExists(
         currentPage,
         currentChildPage,
+        staticParams,
       );
+
       setPageExists(isValidPage);
+      setHasGrand(urlParts.length > 4);
     };
 
     updatePageInfo();
@@ -40,14 +48,12 @@ const AllRoutes = () => {
       updatePageInfo();
     };
 
-    const urlParts = pathname.split('/');
-    urlParts.length > 4 && setHasGrand(true);
     window.addEventListener('popstate', handlePopState);
 
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
-  }, [pathname]);
+  }, [pathname, staticParams]);
 
   useEffect(() => {
     window.scrollTo({
@@ -58,18 +64,13 @@ const AllRoutes = () => {
     handleMouseLeave();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  if (
-    !pageExists ||
-    hasGrandchildPage ||
-    pathname === '' ||
-    pathname === 'home' ||
-    pathname === '/' ||
-    mainPage === ''
-  ) {
+  if (!pageExists || hasGrandchildPage || !mainPage || (isBlog && childPage)) {
     return null;
   } else {
     return (
-      <div className="flexCenter flex-col w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative">
+      <div
+        className={`${isBlog ? 'cursor-auto' : '!cursor-none'} flexCenter flex-col w-full lg:h-[380px] md:h-[330px] h-[270px] md:p-10 p-2 overflow-hidden relative !select-none`}
+      >
         <div
           className="absolute inset-0  w-full z-50"
           style={{

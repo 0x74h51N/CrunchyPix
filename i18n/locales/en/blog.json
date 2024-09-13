@@ -1,0 +1,25 @@
+{
+  "toc": "Table of Content",
+  "blog-post": {
+    "recommend": "Recommended Posts",
+    "menu": {
+      "fontPlus": "Increase Font",
+      "font": "Reset Font",
+      "fontMinus": "Decrease Font",
+      "fontSize": "Font size:",
+      "themeToggle": "Toggle Theme",
+      "expand": "Expand"
+    },
+    "tipsSlice": {
+      "tips": "Tips & Tricks",
+      "question": "❔ Wondering?",
+      "warn": "⚠️ Caution!"
+    },
+    "share": {
+      "share": "Share",
+      "twitter": "Tweet",
+      "linkedin": "LinkedIn",
+      "facebook": "Facebook"
+    }
+  }
+}

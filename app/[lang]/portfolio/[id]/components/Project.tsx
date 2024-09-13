@@ -62,7 +62,7 @@ const Project = memo(({ id }: { id: string }) => {
   );
 
   return (
-    <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden">
+    <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden !select-none">
       {loading ? (
         <LoadingComponent />
       ) : (
@@ -122,7 +122,16 @@ const Project = memo(({ id }: { id: string }) => {
                   >
                     <Markdown
                       remarkPlugins={[breaks]}
-                      components={{ a: CustomLink }}
+                      components={{
+                        a: ({
+                          children,
+                          ...props
+                        }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+                          <CustomLink href={props.href as string}>
+                            {children as JSX.Element}
+                          </CustomLink>
+                        ),
+                      }}
                     >
                       {Item.description2.replace(/\\n/g, '\n')}
                     </Markdown>

@@ -8,7 +8,7 @@ export async function switchLocaleAction(value: Locales) {
     cookies().set(NEXT_LOCALE, value, {
       path: '/',
       maxAge: 365 * 24 * 60 * 60,
-      httpOnly: false,
+      httpOnly: true,
       sameSite: 'strict',
       secure: process.env.NODE_ENV === 'production',
     });

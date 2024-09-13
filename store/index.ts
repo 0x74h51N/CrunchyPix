@@ -1,25 +1,25 @@
 import { configureStore } from '@reduxjs/toolkit';
-import pageReducer from './redux/pageReducer';
 import selectedSlideReducer from './redux/selectedSlide';
 import isSliderReducer from './redux/isSlider';
 import clickableReducer from './redux/isClickable';
 import touchReducer from './redux/isTouch';
-import cursorDisabledReducer from './redux/cursorDisabled';
 import isScrollEnabledReducer from './redux/isScrollEnabled';
 import portfolioReducer from './redux/portfolioItems';
 import sectionReducer from './redux/sectionItems';
+import pathSliceReducer from './redux/pathSlice';
+import themeSliceReducer from './redux/theme';
 
 const store = configureStore({
   reducer: {
-    page: pageReducer,
     selectedSlide: selectedSlideReducer,
     isSlider: isSliderReducer,
     isClickable: clickableReducer,
     isTouch: touchReducer,
-    cursorDisabled: cursorDisabledReducer,
     isScrollEnabled: isScrollEnabledReducer,
     portfolio: portfolioReducer,
     section: sectionReducer,
+    pathSlice: pathSliceReducer,
+    themeSlice: themeSliceReducer,
   },
 });
 

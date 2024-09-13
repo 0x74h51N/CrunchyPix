@@ -72,7 +72,16 @@ const PolicyCreator = ({ id }: { id: string }) => {
           {item.title && <h2 className="h2">{item.title}</h2>}
           <div className="p mt-2 cursor-none">
             <ReactMarkdown
-              components={{ a: CustomLink }}
+              components={{
+                a: ({
+                  children,
+                  ...props
+                }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+                  <CustomLink href={props.href as string}>
+                    {children as JSX.Element}
+                  </CustomLink>
+                ),
+              }}
               remarkPlugins={[breaks]}
             >
               {item.description && item.description.replace(/\\n/g, '\n')}

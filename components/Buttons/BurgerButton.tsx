@@ -14,6 +14,7 @@ interface ComponentProps {
   innerlineSpeed?: number;
   outerLineSpeed?: number;
   animationType?: string;
+  cursor?: string;
 }
 
 const BurgerButton = ({
@@ -30,13 +31,14 @@ const BurgerButton = ({
   innerlineSpeed = 350,
   outerLineSpeed = 500,
   animationType = 'cubic-bezier(0.4, 0.45, 0.5, 1)',
+  cursor = 'none',
 }: ComponentProps) => {
   const transition = `${outerLineSpeed}ms ${animationType}`;
 
   const wrapper: React.CSSProperties = {
     transform: `rotate(${rotate}deg)`,
     margin: '0',
-    cursor: 'none',
+    cursor: cursor,
     WebkitTapHighlightColor: 'transparent',
     touchAction: 'manipulation',
     userSelect: 'none',

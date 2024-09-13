@@ -59,7 +59,7 @@ const Accordiona = ({
         maxHeight: contentHeight,
       }}
     >
-      <div className="w-full flex justify-between items-center">
+      <div className="w-full flex justify-between items-center  text-stone-300">
         <h3
           className={`hover:!text-log-col ml-1 ${!isActive ? 'max-sm:line-clamp-1' : ''}`}
         >

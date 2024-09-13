@@ -4,6 +4,11 @@ module.exports = {
   images: {
     domains: ['res.cloudinary.com'],
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: ['crunchypix.com', 'www.crunchypix.com'],
+    },
+  },
   async redirects() {
     return [
       {

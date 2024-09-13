@@ -1,6 +1,9 @@
 import useClickableHandlers from '@/hooks/useClickableHandlers';
+import { RootState } from '@/store';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 const SubRoutes = ({
   childPage,
@@ -9,15 +12,19 @@ const SubRoutes = ({
   childPage: string;
   mainPage: string;
 }) => {
+  const path = usePathname();
+  const blogPath = path.includes('blog');
   const { t } = useTranslation(['index', 'portfolio']);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
+
   return (
     <div className="flex flex-col md:flex-row justify-center items-center ">
       <div className="flex flex-row items-center">
         <Link
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="md:text-2xl text-lg text-cool-gray-50 font-bold hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+          className={`md:text-2xl text-lg text-cool-gray-50 font-bold hover:scale-105 transition-all duration-500 ease-in-out ${isBlog ? 'curosr-pointer' : 'cursor-none'}`}
           href={`/`}
         >
           <span>Crunchy</span>
@@ -29,7 +36,7 @@ const SubRoutes = ({
           onMouseLeave={handleMouseLeave}
           className={`md:text-2xl text-lg ${
             childPage ? 'text-cool-gray-50' : 'text-log-col'
-          } font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none`}
+          } font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out ${isBlog ? 'curosr-pointer' : 'cursor-none'}`}
           href={`/${mainPage}`}
         >
           {t(`index:links.${mainPage}`)}
@@ -43,10 +50,10 @@ const SubRoutes = ({
           <div
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="md:text-2xl text-lg text-log-col font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out cursor-none"
+            className="md:text-2xl text-lg text-log-col font-bold ml-2 hover:scale-105 transition-all duration-500 ease-in-out "
             style={{ textTransform: 'capitalize' }}
           >
-            {t('portfolio:page.details')}
+            {blogPath ? 'Article' : t('portfolio:page.details')}
           </div>
         </div>
       )}

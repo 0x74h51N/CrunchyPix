@@ -46,7 +46,7 @@ const PolicyPage = async ({ params }: { params: { id: string } }) => {
     notFound();
   } else {
     return (
-      <div className=" flex justify-center items-center w-full h-auto  md:pb-20 pb-5 min-h-[100svh]">
+      <div className=" flex justify-center cursor-none items-center w-full h-auto  md:pb-20 pb-5 min-h-[100svh]">
         <div className="relative bg-cool-gray-900  md:px-28 md:py-16 p-5 rounded-xl max-w-[1100px] z-0 h-auto">
           <PolicyCreator id={params.id} />
         </div>

@@ -22,13 +22,13 @@ import breaks from 'remark-breaks';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { SectionsSchema, SectionsTypes, TranslationTypes } from '@/schemas';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
-import i18next, { getLocale } from '@/i18n/client';
+import i18next from '@/i18n/client';
 import LoadingComponent from '@/components/Loading/Loading';
 
 const AboutMe = () => {
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const { hoverEnd } = useDragHandler();
-  const { i18n, t } = useTranslation('about');
+  const { t } = useTranslation('about');
   const [selectedOption, setSelectedOption] = useState('normal');
   const [filteredData, setFilteredData] = useState<TranslationTypes>();
   const [faqs, setFaqs] = useState<TranslationTypes>();
@@ -66,7 +66,7 @@ const AboutMe = () => {
 
       const filteredDat = filterByLanguage({
         items: data,
-        language,
+        language: language,
         localPath: 'translations',
       });
 
@@ -92,7 +92,7 @@ const AboutMe = () => {
   }
   return (
     <>
-      <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden relative">
+      <div className="flexCenter min-w-[100svw] min-h-[100svh] overflow-hidden relative !select-none !cursor-none">
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -145,7 +145,16 @@ const AboutMe = () => {
               {selectedOption !== 'timeline' && filteredData && !loading && (
                 <div className="p">
                   <ReactMarkdown
-                    components={{ a: CustomLink }}
+                    components={{
+                      a: ({
+                        children,
+                        ...props
+                      }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+                        <CustomLink href={props.href as string}>
+                          {children as JSX.Element}
+                        </CustomLink>
+                      ),
+                    }}
                     remarkPlugins={[breaks]}
                   >
                     {filteredData.description?.replace(/\\n/g, '\n')}

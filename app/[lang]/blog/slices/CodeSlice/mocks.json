@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"language": {
+				"__TYPE__": "FieldContent",
+				"value": "structure",
+				"type": "Select"
+			},
+			"codeblock": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Lorem incididunt amet sit veniam laboris labore."
+						}
+					}
+				]
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "so",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

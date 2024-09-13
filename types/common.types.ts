@@ -1,4 +1,5 @@
 import { IconProps } from '@/schemas';
+import { RichTextField } from '@prismicio/types';
 
 export type Links = {
   href: string;
@@ -72,3 +73,20 @@ export type Option = {
   value?: string | React.ReactNode;
   disabledTip?: string;
 };
+
+export type SimplifiedPrismicLink = {
+  uid: string;
+  url: string;
+  link_type: 'Document';
+};
+export type CodeLanguages =
+  | 'typescript'
+  | 'javascript'
+  | 'python'
+  | 'json'
+  | 'html'
+  | 'css'
+  | 'structure'
+  | 'bash'
+  | 'text'
+  | 'table';

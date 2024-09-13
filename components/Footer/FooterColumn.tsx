@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import { Links } from '@/types/common.types';
-import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { memo } from 'react';
+import clsx from 'clsx';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 interface FooterColumnProps {
   Links: Links[];
@@ -11,35 +13,37 @@ interface FooterColumnProps {
 
 const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
   const { t } = useTranslation(['index']);
-  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   return (
     <div className="footer_column">
       <ul
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="flex flex-col gap-2 font-normal text-white"
+        className={clsx(
+          'flex font-normal',
+          isBlog ? 'gap-4' : 'flex-col gap-2',
+        )}
       >
         {Links.map((link) => (
           <Link
             href={link.href}
             key={link.key}
-            className={`hover:text-log-col hover:scale-110 cursor-none ${
+            className={clsx(
+              'hover:text-log-col hover:scale-110 relative group transition-all duration-1000 ease-in-out transform origin-bottom whitespace-nowrap',
               selectedLink === link.href && link.href !== '/'
                 ? 'text-log-col'
-                : ''
-            } relative group transition-all duration-1000 ease-in-out transform origin-bottom whitespace-nowrap`}
-            onClick={() => {
-              handleMouseLeave;
-            }}
+                : '',
+              !isBlog && 'cursor-none',
+            )}
           >
             {t(link.text)}
             <span
-              className={`absolute -bottom-1 left-0 h-0.5 bg-log-col ${
+              className={clsx(
+                'absolute -bottom-1 left-0 h-0.5 bg-log-col',
                 selectedLink === link.href && link.href !== '/'
                   ? 'w-full'
-                  : 'w-0 transition-all duration-1000 ease-in-out group-hover:w-full'
-              }`}
+                  : 'w-0 transition-all duration-1000 ease-in-out group-hover:w-full',
+                !isBlog && 'cursor-none',
+              )}
             ></span>
           </Link>
         ))}
