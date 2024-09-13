@@ -113,7 +113,7 @@ export default async function Page({ params }: { params: Params }) {
           <div className="min-h-24"></div>
         </section>
         {recomendPosts.length > 0 && (
-          <div className="w-full max-w-[1000px] flexCenter self-center flex-col gap-3">
+          <div className="w-full max-w-[1200px] flexCenter self-center flex-col gap-3">
             <h2 className="font-bold text-lg w-full">
               {t('blog-post.recommend')}
             </h2>

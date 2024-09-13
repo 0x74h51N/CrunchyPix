@@ -29,20 +29,20 @@ export const PostCard = ({
         </div>
       </div>
       <div className="min-h-full flex flex-col gap-3 justify-between p-5 card-body group-hover:-translate-y-[58%] translate-y-[0] transition-all ease-in-out duration-700 bg-cool-gray-700 text-stone-300">
-        <h2 className="font-bold text-2xl text-stone-200 group-hover:text-log-col my-2">
+        <h2 className="font-bold md:text-2xl text-lg text-stone-200 group-hover:text-log-col my-2">
           <PrismicText field={data!.title} />
         </h2>
-        <div className="flex justify-between max-w-full items-start lg:mt-2">
-          <p className="gap-1 flex flex-wrap max-w-[250px] h-20 overflow-hidden">
+        <div className="flex justify-between max-w-full items-start lg:mt-2 min-h-24 max-h-24">
+          <div className="gap-1 flex flex-wrap  max-w-[250px] overflow-hidden">
             {post!.tags!.map((tag, index) => (
               <span
                 key={post.uid + 'tag' + index}
-                className="badge badge-primary min-h-6 pb-0.5 md:badge-md badge-xs text-gray-700"
+                className="badge badge-primary min-h-6 pb-0.5 md:badge-md badge-xs text-gray-700 max-md:p-2"
               >
                 {tag}
               </span>
             ))}
-          </p>
+          </div>
           <span className="text-sm opacity-75 flex w-min">
             {new Date(data?.publication_date || '').toLocaleDateString('en-GB')}
           </span>
@@ -56,9 +56,9 @@ export const PostCard = ({
             <Link
               href={`/${post.lang === 'en-us' ? 'en' : post.lang}/blog/${post.uid}`}
               passHref
-              className="bg-log-col lg:w-[70px] lg:h-[70px] w-[50px] h-[50px] rounded-full flexCenter"
+              className="bg-log-col hover:w-[70px] hover:h-[70px] w-[25px] h-[25px] hover:text-xl text-xs text-white rounded-full flexCenter transition-all duration-300 ease-in-out"
             >
-              <FaAnglesRight className="text-white text-lg -rotate-45" />
+              <FaAnglesRight className="-rotate-45" />
             </Link>
           </div>
         </div>

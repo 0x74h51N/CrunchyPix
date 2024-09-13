@@ -1,6 +1,5 @@
 'use client';
 import Image from 'next/image';
-import IconButton from '../Buttons/IconButton';
 import { footerLinks } from '@/constants';
 import FooterColumn from './FooterColumn';
 import Contact from './Contact';
@@ -8,11 +7,12 @@ import { IconProps, IconSchema } from '@/schemas';
 import { useMemo } from 'react';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { useTranslation } from 'react-i18next';
-import { usePathname } from 'next/navigation';
 import Credits from './Credits';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
+import { RootState } from '@/store';
+import { useSelector } from 'react-redux';
 
 const Footer = () => {
-  const path = usePathname();
   const { t } = useTranslation('index');
   const { data, loading, error } = useSupabaseFetch<IconProps>(
     'public',
@@ -20,6 +20,8 @@ const Footer = () => {
     `*`,
     IconSchema,
   );
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   if (error) {
     console.log(error);
@@ -29,8 +31,15 @@ const Footer = () => {
   }, [data]);
   return loading || !filteredData ? (
     <></>
-  ) : path.includes('blog') ? (
-    <div className="bg-base-100 curosr-auto">
+  ) : isBlog ? (
+    <div className="flexCenter flex-col pt-5 gap-2 bg-base-100 curosr-auto py-4">
+      <div className="flex flex-row gap-8 text-end justify-center">
+        <FooterColumn Links={footerLinks[0].links} />
+        {'·'}
+        <span className="text-start">
+          <FooterColumn Links={footerLinks[1].links} />
+        </span>
+      </div>
       <Credits data={filteredData} />
     </div>
   ) : (
@@ -57,11 +66,15 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-row gap-8 text-end justify-center">
+              <div
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="flex flex-row gap-8 text-end justify-center text-white"
+              >
                 <FooterColumn Links={footerLinks[0].links} />
-                <div className="flex-1 flex flex-col gap-4 text-start">
+                <span className="text-start">
                   <FooterColumn Links={footerLinks[1].links} />
-                </div>
+                </span>
               </div>
               <div className="flex lg:justify-end justify-center h-auto lg:w-2/5 w-full">
                 <div className="flex flex-col items-end justify-end max-lg:items-center w-full lg:max-w-[580px] max-w-[400px]">
@@ -71,7 +84,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="bg-white text-stone-900 !cursor-none">
+        <div className="bg-white text-stone-900 !cursor-none sm:py-7 py-5 ">
           <Credits data={filteredData} />
         </div>
       </div>

@@ -210,7 +210,7 @@ pre {
 }
 
 .footer_copyright {
-  @apply max-md:flex-col-reverse text-sm font-normal sm:py-7 py-5 max-sm:gap-1 antialiased;
+  @apply max-md:flex-col-reverse text-sm font-normal max-sm:gap-1 antialiased;
 }
 
 .footer_column {

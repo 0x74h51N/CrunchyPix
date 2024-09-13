@@ -21,14 +21,17 @@ const ImageModal = ({ slice }: ImageModalProps): JSX.Element => {
         field={slice.primary.image}
         sizes="auto"
         quality={100}
-        className="w-full max-w-6xl self-center h-auto rounded-md object-cover cursor-pointer"
+        className="w-full max-w-6xl self-center h-auto rounded-md object-cover cursor-pointer max-md:pointer-events-none"
         onClick={() => setModal(true)}
       />
       {isModal && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
-          <div ref={modalRef} className="relative">
+          <div
+            ref={modalRef}
+            className="relative 2xl:w-full 2xl:max-w-7xl w-auto max-w-6xl 2xl:h-auto max-lg:max-h-[90svh]"
+          >
             <button
-              className="absolute top-0 -right-5 z-50"
+              className="absolute xl:top-0 top-4 -right-6 z-50"
               onClick={() => setModal(false)}
             >
               <CancelButton />
@@ -39,7 +42,7 @@ const ImageModal = ({ slice }: ImageModalProps): JSX.Element => {
               sizes="full"
               priority
               quality={100}
-              className="w-full max-w-7xl h-auto"
+              className="w-full h-auto object-contain"
             />
           </div>
         </div>

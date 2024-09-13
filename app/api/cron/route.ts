@@ -25,13 +25,8 @@ export async function GET(req: NextRequest) {
         { message: 'Cron jobs completed successfully: ' },
         { status: response.status },
       );
-    } else {
-      console.log('No response from runCronJobs');
-      return NextResponse.json(
-        { error: 'No response from runCronJobs' },
-        { status: response.status },
-      );
-    }
+    } else
+      console.log('Cron job not completed successfully: ', response.status);
   } catch (error) {
     console.error('Error running cron job:', error);
     return NextResponse.json(

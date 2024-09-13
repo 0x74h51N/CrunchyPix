@@ -67,7 +67,7 @@ const Navbar = () => {
     } else {
       return `${baseClass} pt-12 py-5 bg-opacity-0 h-[100px]`;
     }
-  }, [isMenuOpen, superSmallNav, fixed, isBlog, route]);
+  }, [isMenuOpen, superSmallNav, fixed, isBlog, route, blogChild]);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const linkItems = useMemo(() => {
     return Links.map((link) => (

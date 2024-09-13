@@ -61,10 +61,10 @@ const ProjectSlide = ({
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="absolute swiper-button-next-cus bottom-4 right-1 w-[50px] z-50 btn btn-ghost">
+      <div className="absolute swiper-button-next-cus bottom-4 right-1 w-[50px] h-[55px] z-50 btn btn-ghost">
         <div className="swiper-button-next !cursor-pointer" />
       </div>
-      <div className="absolute swiper-button-prev-cus bottom-4 left-1 w-[50px] z-50 btn btn-ghost">
+      <div className="absolute swiper-button-prev-cus bottom-4 left-1 w-[50px] h-[55px] z-50 btn btn-ghost">
         <div className="swiper-button-prev !cursor-pointer" />
       </div>
     </div>

@@ -11,14 +11,11 @@ import {
   setCookiesConsent,
 } from '@/app/actions/setCookiesConsent';
 import { useTranslation } from 'react-i18next';
-import { RootState } from '@/store';
-import { useSelector } from 'react-redux';
 
 const CookieConsent = () => {
   const { t } = useTranslation('index');
   const [showConsent, setShowConsent] = useState(true);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
-  const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   const handleAccept = async () => {
     await setCookiesConsent();
