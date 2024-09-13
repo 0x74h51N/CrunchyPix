@@ -32,10 +32,12 @@ const Footer = () => {
   return loading || !filteredData ? (
     <></>
   ) : isBlog ? (
-    <div className="flexCenter flex-col pt-5 gap-2 bg-base-100 curosr-auto py-4">
-      <div className="flex flex-row gap-8 text-end justify-center">
-        <FooterColumn Links={footerLinks[0].links} />
-        {'·'}
+    <div className="flexCenter flex-col pt-5 gap-2 bg-base-100 cursor-auto py-4">
+      <div className="flex max-md:flex-col md:gap-8 gap-3 text-end md:items-start w-full justify-start items-center xl:px-0 sm:px-16 px-2 max-w-[1300px]">
+        <span>
+          <FooterColumn Links={footerLinks[0].links} />
+        </span>
+        <span className="max-md:hidden">{'·'}</span>
         <span className="text-start">
           <FooterColumn Links={footerLinks[1].links} />
         </span>

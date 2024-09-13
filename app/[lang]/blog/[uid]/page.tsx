@@ -74,8 +74,14 @@ export default async function Page({ params }: { params: Params }) {
   const recomendPosts = await client.getAllByType('blog_post', {
     lang: prismicioLanguacio,
     graphQuery,
+    orderings: [
+      { field: 'my.blog_post.publishDate', direction: 'desc' },
+      { field: 'document.first_publication_date', direction: 'desc' },
+    ],
+    predicates: [prismic.filter.not('my.blog_post.uid', params.uid)],
     limit: 5,
   });
+
   const { slices, title, publication_date, description, featured_image } =
     page.data;
   const { t } = await createTranslation('blog');
