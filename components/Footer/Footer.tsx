@@ -33,14 +33,16 @@ const Footer = () => {
     <></>
   ) : isBlog ? (
     <div className="flexCenter flex-col pt-5 gap-2 bg-base-100 cursor-auto py-4">
-      <div className="flex max-md:flex-col md:gap-8 gap-3 text-end md:items-start w-full justify-start items-center xl:px-0 sm:px-16 px-2 max-w-[1300px]">
-        <span>
-          <FooterColumn Links={footerLinks[0].links} />
-        </span>
-        <span className="max-md:hidden">{'·'}</span>
-        <span className="text-start">
-          <FooterColumn Links={footerLinks[1].links} />
-        </span>
+      <div className="flex justify-center sm:px-16 px-2 w-full">
+        <div className="flex max-md:flex-col justify-start md:items-start items-center footer_copyright w-full max-w-[1300px] md:gap-8 gap-3 text-end">
+          <span>
+            <FooterColumn Links={footerLinks[0].links} />
+          </span>
+          <span className="max-md:hidden">{'·'}</span>
+          <span className="text-start">
+            <FooterColumn Links={footerLinks[1].links} />
+          </span>
+        </div>
       </div>
       <Credits data={filteredData} />
     </div>
