@@ -214,7 +214,7 @@ pre {
 }
 
 .footer_column {
-  @apply flex-1 flex flex-col gap-3 text-sm md:min-w-max;
+  @apply flex-1 flex flex-col gap-3 text-sm;
 }
 
 /* Navbar */
