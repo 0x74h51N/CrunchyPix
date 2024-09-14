@@ -10,12 +10,17 @@ import { PrismicNextImage } from '@prismicio/next';
 
 import { PostCard } from '../components/PostCard';
 import { RichText } from '../components/RichText';
-import { Toc } from '../components/ToC';
-import Menu from '../components/Menu/Menu';
+
 import { createTranslation } from '@/i18n/server';
 import Slide from '../components/Slide';
 import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
+import dynamic from 'next/dynamic';
+
+const Menu = dynamic(() => import('../components/Menu/Menu'), { ssr: false });
+const Toc = dynamic(() => import('../components/ToC').then((mod) => mod.Toc), {
+  ssr: false,
+});
 
 type Params = { uid: string; lang: Locales };
 

@@ -40,34 +40,58 @@ const PolicyCreator = ({ id }: { id: string }) => {
         language,
         localPath: 'translations',
       });
-      setFilteredData(filteredDat);
+
+      const sortedData = filteredDat.map((policy) => {
+        const sortedTranslations = policy.translations!.map((translation) => {
+          const sortedSubSections = translation.sub_sections
+            ? [...translation.sub_sections]
+                .sort((a, b) => a.id - b.id)
+                .map((subSection) => ({
+                  ...subSection,
+                  sub_titles: subSection.sub_titles
+                    ? [...subSection.sub_titles].sort((a, b) => a.id - b.id)
+                    : [],
+                }))
+            : [];
+          return {
+            ...translation,
+            sub_sections: sortedSubSections,
+          };
+        });
+        return {
+          ...policy,
+          translations: sortedTranslations,
+        };
+      });
+
+      setFilteredData(sortedData);
     }
   }, [data, language]);
 
   useEffect(() => {
     document.title = t('meta.title');
   }, [t, language]);
+
   if (error) {
-    console.log(error);
+    console.error(error);
   }
-  return loading ||
-    !filteredData[0] ||
-    !filteredData[0].translations ||
-    !filteredData[0].translations[0].sub_sections ? (
-    <LoadingComponent />
-  ) : (
+
+  const policyData = filteredData[0]?.translations?.[0];
+  const subSections = policyData?.sub_sections || [];
+
+  if (loading || !policyData) {
+    return <LoadingComponent />;
+  }
+
+  return (
     <div className="flex flex-col gap-10">
-      {filteredData[0].translations[0].intro && (
-        <h2 className="h3 text-center">
-          {filteredData[0].translations[0].intro}
-        </h2>
+      {policyData.intro && (
+        <h2 className="h3 text-center">{policyData.intro}</h2>
       )}
-      {filteredData[0].translations[0].title && (
-        <h1 className="h1 text-center -mt-8">
-          {filteredData[0].translations[0].title}
-        </h1>
+      {policyData.title && (
+        <h1 className="h1 text-center -mt-8">{policyData.title}</h1>
       )}
-      {filteredData[0].translations[0].sub_sections.map((item, index) => (
+      {subSections.map((item, index) => (
         <div key={index}>
           {item.title && <h2 className="h2">{item.title}</h2>}
           <div className="p mt-2 cursor-none">
@@ -104,4 +128,5 @@ const PolicyCreator = ({ id }: { id: string }) => {
     </div>
   );
 };
+
 export default memo(PolicyCreator);

@@ -1,76 +1,125 @@
 # Introduction
 
-This project began with the goal of creating a personal website to showcase my skills and portfolio. I have chosen "CrunchyPix" as the website and brand name. This website supports multiple languages through i18n and was built from scratch using Next.js 14. Although Tailwind CSS and DaisyUI are used for styling, the site also includes custom UI elements and components. Localization is handled both on the [server](/i18n/server.ts) and [client](/i18n/client.ts) sides[\*](/i18n/settings.ts). Third-party services like Cloudinary, Supabase, and Vercel Analytics / SpeedInsight have been integrated, ensuring that Vercel Analytics or SpeedInsight are not activated without user consent, and no personal information is collected without permission.
+This repository contains the source code for CrunchyPix, a personal website designed to showcase skills and portfolio projects. Built from scratch using Next.js 14 and TypeScript, the website supports multiple languages through i18next, with localization handled on both the server and client sides.
+
+Styling is implemented using Tailwind CSS and DaisyUI, alongside custom UI elements and components. The project demonstrates the use of modular, dynamic, and custom components to create a long-lasting and easily adaptable design.
+
+# Content Management
+
+- Supabase PostgreSQL: Site content is managed using Supabase with PostgreSQL tables, ensuring secure and efficient data handling.
+- Prismic Headless CMS: The blog section is integrated with Prismic Headless CMS, allowing content creation and management directly through the CMS.
+
+## Blog Functionality
+
+Incremental Static Regeneration (ISR): Employed for the blog pages to efficiently update content without the need for full site rebuilds.
+
+- Webhooks and Rebuild Pipeline:
+
+  - A webhook is set up on Prismic to trigger cache revalidation whenever content is updated.
+  - A rebuild pipeline is configured to refresh staticParams by rebuilding the site, ensuring that new content and changes are reflected promptly.
+
+- Optimized User Experience:
+  - Special design and UX elements have been developed in the blog section to enhance reader engagement.
+  - Client-Side Rendering (CSR) is minimized to improve performance and reduce load times.
 
 ## 📦 Technology Stack
 
-### Frameworks & Libraries
+- ### Frameworks and Languages
 
-- [Next.js 14](https://nextjs.org) - React framework for server-side rendering and static site generation.
-- [React 18](https://reactjs.org) - JavaScript library for building user interfaces.
-- [Redux](https://redux.js.org) & [@reduxjs/toolkit](https://redux-toolkit.js.org) - State management.
-- [React-Redux](https://react-redux.js.org) - Official React bindings for Redux.
-- [Framer Motion](https://www.framer.com/motion/) - Animation library for React.
-- [React Hook Form](https://react-hook-form.com) - Form handling in React.
-- [React Icons](https://react-icons.github.io/react-icons/) - Icon library for React.
-- [React Markdown](https://github.com/remarkjs/react-markdown) - Markdown rendering in React.
-- [React Syntax Highlighter](https://github.com/react-syntax-highlighter/react-syntax-highlighter) - Syntax highlighting component for React.
-- [React PageFlip](https://www.npmjs.com/package/react-pageflip) - React component for creating book-like flip pages.
+  - **Next.js 14**: Used for building the application with server-side rendering, static site generation, and dynamic routing.
+  - **TypeScript**: Provides static typing for improved developer experience and code reliability.
+  - **React**: Powers the component-based architecture for building interactive user interfaces.
 
-### Styling
+- ### Styling
 
-- [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework.
-- [DaisyUI](https://daisyui.com) - Tailwind CSS component library.
-- [PostCSS](https://postcss.org) & [Autoprefixer](https://github.com/postcss/autoprefixer) - CSS processing tools.
-- [PostCSS Nesting](https://github.com/csstools/postcss-nesting) - Support for nested CSS rules.
-- [Swiper](https://swiperjs.com/react) - Modern mobile touch slider with hardware-accelerated transitions.
+  - **Tailwind CSS**: Utilized for rapid and customizable styling throughout the site.
+  - **DaisyUI**: Extends Tailwind CSS with pre-built UI components to accelerate development.
+  - **Custom UI Elements**: Developed for unique user interactions and to enhance the overall design.
 
-### Internationalization (i18n)
+- ### State Management
 
-- [i18next](https://www.i18next.com) - Internationalization framework.
-- [React-i18next](https://react.i18next.com) - React bindings for i18next.
+  - **Redux**: Manages complex application state, including language preferences and custom cursor interactions.
 
-### Data & Content Management
+- ### Data and Content Management
 
-- [Supabase](https://supabase.com) - Open-source alternative to Firebase, used as a backend-as-a-service (BaaS).
-- [Zod](https://zod.dev) - TypeScript-first schema declaration and validation library.
-- [xss](https://www.npmjs.com/package/xss) - A filter to sanitize user input to prevent XSS attacks.
+  - **Supabase (PostgreSQL)**: Manages site content with secure data storage and retrieval using PostgreSQL tables.
+  - **Prismic Headless CMS**: Integrated for managing blog content, allowing for content creation through the CMS with custom slices for unique styles and structures.
+  - **Zod**: Used for schema validation to ensure data integrity when fetching and processing data.
 
-### Utilities
+- ### Animations
 
-- [Nodemailer](https://nodemailer.com) - Email sending library.
-- [Country-Flag-Icons](https://github.com/catamphetamine/country-flag-icons) - Collection of country flag icons.
+  - **Framer Motion**: Implements smooth and engaging animations, adding life to the website and enhancing user engagement.
 
-### Third-party Services
+- ### Form Handling and Validation
 
-- [Cloudinary](https://cloudinary.com) - Image management in the cloud.
-- [Vercel Analytics](https://vercel.com/analytics) & [Speed Insights](https://vercel.com/speed-insights) - Tools for monitoring and analyzing website performance.
+  - **React Hook Form**: Manages form state and validation efficiently.
+  - **Cloudflare Turnstile**: Validates form submissions to prevent spam and ensure security.
+  - **Nodemailer**: Sends emails via SMTP service as part of the contact form functionality.
+  - **Next.js Server Actions**: Processes form data on the server side, integrating with email services and automation tools like Zoho Campaign.
 
-### Development Tools
+- ### Internationalization
 
-- [TypeScript](https://www.typescriptlang.org) - Typed JavaScript at any scale.
-- [ESLint](https://eslint.org) & [eslint-config-next](https://nextjs.org/docs/basic-features/eslint) - Linting tools.
-- [Prettier](https://prettier.io) - Code formatter.
-- [Globals](https://www.npmjs.com/package/globals) - Global variables and functions in Node.js and browser environments.
+  - **i18next**: Manages multiple languages, enhancing the global user experience.
+  - **React-i18next**: Integrates i18next with React components for seamless localization.
 
-### Build & Deployment
+- ### Image Optimization
 
-- [Vercel](https://vercel.com) - Platform for deploying static sites and serverless functions.
+  - **Cloudinary**: Optimizes images to ensure fast loading times and maintains high-quality visuals across the site.
+
+- ### Blog Functionality
+
+  - **Incremental Static Regeneration (ISR)**: Used for blog pages to efficiently update content without full site rebuilds.
+  - **Webhooks and Rebuild Pipeline**:
+    - **Prismic Webhooks**: Trigger cache revalidation whenever content is updated.
+    - **Cron Jobs**: Set up to refresh `staticParams` by rebuilding the site nightly, ensuring new content is promptly reflected.
+  - **Custom Slices and Styles**: Applied in Prismic to create unique styles and structures within blog posts.
+  - **Enhanced UX Elements**: Developed in the blog section, including menu components for adjusting font size and expanding text frames.
+  - **Minimized CSR**: Client-Side Rendering is minimized to improve performance and reduce load times.
+
+- ### DevOps and Security
+
+  - **Cloudflare**: Manages domain and mail services, including DNS routing, Web Application Firewall (WAF), DDoS protection, SSL certificates, and HSTS configuration.
+  - **Vercel**: Handles deployment and provides Continuous Integration/Continuous Deployment (CI/CD) workflows.
+  - **GitHub**: Used for version control and collaboration.
+  - **Dependabot** and **CodeQL**: Employed for dependency management and code scanning to enhance security and maintainability.
+
+- ## Utilities
+
+  - **React Icons**: Provides a library of customizable icons for use in React applications.
+  - **CLSx**: Utility for constructing `className` strings conditionally.
+  - **XSS**: Used for sanitizing user input to prevent Cross-Site Scripting attacks.
+  - **Remark Plugins**:
+    - **remark-gfm**: Supports GitHub Flavored Markdown.
+    - **remark-breaks**: Converts line breaks in markdown files.
 
 ## 🗃️ Directory
 
 ```
 ├── app
-│   ├── actions                 # Contains server-side actions for validating and processing user inputs.
-│   ├── about                   # About page, includes components.
-│   │   └── components          # Specific components used within the About page.
-│   ├── policies                # Contains components and dynamic subpages for each policy ([id]).
-│   │   └── [id]
-│   │       └── components      # Components related to individual policy subpages.
-│   └── portfolio               # Portfolio main page, includes components and dynamically generated subpages.
-│       ├── [id]
-│       │   └── components      # Components for individual portfolio items' subpages.
-│       └── components          # General components used within the Portfolio page.
+│   ├── [lang]
+│   │   ├── [...not_found]
+│   │   ├── about                   # About page, includes components.
+│   │   │   ├── components          # Specific components used within the About page.
+│   │   ├── blog
+│   │   │   ├── [uid]               # ISR blog content pages fetched from Prismic CMS.
+│   │   │   ├── components          # UI elements and components related to Prismic slices.
+│   │   │   ├── slice-simulator     # Slice Simulator for Prismic.
+│   │   │   └── slices              # Custom slices like Code, Image, or RichText components.
+│   │   ├── policies
+│   │   │   └── [id]                # Dynamic subpages for each policy ([id]).
+│   │   │       ├── components      # Components related to individual policy subpages.
+│   │   └── portfolio
+│   │       ├── [id]                # Dynamic subpages for each portfolio item ([id]).
+│   │       │   ├── components      # Components for individual portfolio items' subpages.
+│   │       ├── components          # General components used within the Portfolio page.
+│   │       └── page.tsx
+│   ├── actions                     # Server-side actions for processing inputs and managing cookies.
+│   ├── api
+│   │   ├── cron                    # API endpoint triggered by cron job for Vercel rebuild.
+│   │   ├── exit-preview            # Endpoint to exit Prismic preview mode.
+│   │   ├── preview                 # Prismic preview API endpoint to enter preview mode.
+│   │   └── revalidate              # Webhook endpoint to revalidate 'prismic' tag cached pages.
+│   └── styles                      # Global styles and style utilities.
 ├── components
 │   ├── Buttons                 # Contains various buttons used across the site as like arrow, burger or dropdown buttons.
 │   ├── Cookies                 # Manages user consent for enabling Vercel Analytics and Speedinsight.
@@ -80,20 +129,10 @@ This project began with the goal of creating a personal website to showcase my s
 │   ├── Navbar                  # The site's main navigation, language menu and mobile menu components.
 │   ├── RootTitles              # Displays the current page or subsection title, used on pages other than the homepage.
 │   ├── Sections                # Components that define different sections of the homepage.
-│   │   ├── CodeSect            # Section focused on coding or development content.
-│   │   ├── DesignSect          # Section related to design content.
-│   │   ├── IntroductionSect    # The introduction section of the homepage.
-│   │   ├── LandingSect         # Landing section, typically the first visible section on the homepage.
-│   │   ├── LogoSection         # Displays logos or branding elements.
-│   │   ├── PortfolioSect       # Section showcasing portfolio items.
-│   │   └── ServicesSect        # Section outlining the services offered.
-│   └── Slider
-│       ├── FullScreenSlider    # A slider component that adjusts to the size of the parent div, creating full-screen slides.
-│       └── Portfolio           # Contains a Carousel slider for portfolio items with Modal components for detailed views.
+│   └── Slider                  # Slider components, main page carousel slide. And full-screen slides, which adjusts to the size of the parent div.
 ├── constants               # Stores constant values used throughout the application.
 ├── hooks                   # Contains custom React hooks for managing state and side effects.
 ├── i18n                    # Contains i18next settings, providers, server and client side functions.
-│   ├── actions             # Actions related to internationalization (i18n).
 │   └── locales             # Contains translation files and locale-specific data.
 ├── lib                     # Contains meta data generate functions, Supabase client settings.
 │   └── utils               # Contains server side Supabase fetch function, custom query cache function and language filter function.
@@ -109,37 +148,3 @@ This project began with the goal of creating a personal website to showcase my s
 ## License
 
 This project is licensed under the GNU General Public License v3.0. See the [LICENSE](./LICENSE) file for more details.
-
-## 🚀 Getting Started
-
-### 👜 Requirements
-
-Before you begin, you need to install the following tools:
-
-- [Node (v18 or v20 LTS)](https://nodejs.org/en/download/)
-- npm v6.0.0 or higher
-- [Git](https://git-scm.com/downloads)
-
-### ⚙️ Installation
-
-Install dependencies:
-
-```bash
-npm install
-```
-
-Run on dev mode:
-
-```bash
-npm run dev
-```
-
-Build command:
-
-```bash
-npm run build
-#and
-npm run start
-```
-
-- Open [http://localhost:3000](http://localhost:8080)
