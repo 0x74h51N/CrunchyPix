@@ -11,7 +11,13 @@ export default function middleware(req: NextRequest) {
   const pathLocale = url.pathname.split('/')[1] as Locales;
   const cookieLang = req.cookies.get(NEXT_LOCALE)?.value as Locales;
   const acceptLang = req.headers.get('accept-language');
+  const production = process.env.VERCEL_ENV === 'production';
   let lng: Locales;
+  const host = req.headers.get('host');
+
+  if (production && host && host.endsWith('.vercel.app')) {
+    return NextResponse.redirect(`https://crunchypix.com${url.pathname}`, 301);
+  }
 
   if (supportedLocales.includes(pathLocale)) {
     return NextResponse.next();
