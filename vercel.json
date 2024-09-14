@@ -4,5 +4,21 @@
       "path": "/api/cron",
       "schedule": "0 0 * * *"
     }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
+      ],
+      "destination": "https://crunchypix.com/:1",
+      "statusCode": 301,
+      "condition": {
+        "environment": "production"
+      }
+    }
   ]
 }
