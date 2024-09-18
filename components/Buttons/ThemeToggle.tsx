@@ -32,7 +32,7 @@ export default function ThemeToggle() {
     setThemeAction(newTheme);
   };
   return (
-    <div className="w-12">
+    <div className="w-12 mx-1.5">
       <label className="grid place-items-center !cursor-pointer">
         <input
           type="checkbox"

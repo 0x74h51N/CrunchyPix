@@ -6,7 +6,7 @@ import { clsx } from 'clsx';
 import { asText, SliceZone } from '@prismicio/client';
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { slugifyHeading } from '@/lib/slugifyHeading';
-import { Heading } from './Heading';
+import { Heading } from '../Heading';
 import { RichTextField } from '@prismicio/types';
 import { BlogPostDocumentDataSlicesSlice } from '@/prismicio-types';
 import { useTranslation } from 'react-i18next';
@@ -145,9 +145,9 @@ export function Toc({ slices, title }: TocProps) {
   }, [headings]);
   const { t } = useTranslation('blog');
   return (
-    <div className="lg:sticky lg:top-0 px-4 md:px-6 w-full !select-none lg:z-50">
-      <div className="lg:absolute lg:top-0 2xl:-left-72 lg:-left-64 2xl:ml-3 xl:ml-6 lg:ml-10 mt-6">
-        <aside className="border p-6 mx-auto max-w-3xl mt-4 md:mt-0 2xl:w-64 xl:w-56 lg:w-52 hover:lg:!w-80 border-base-300 backdrop-blur-sm backdrop-filter bg-base-300 bg-opacity-25 shadow-md shadow-base-200 transition-all ease-in-out duration-500">
+    <div className="lg:sticky lg:top-0 w-full !select-none lg:z-50">
+      <div className="lg:absolute lg:top-0 lg:-left-72 lg:ml-3.5">
+        <aside className="border p-6 mx-auto w-full max-md:pl-10 mt-0 lg:w-64 border-base-300 backdrop-blur-sm backdrop-filter bg-base-300 bg-opacity-25 md:shadow-md shadow-base-200 transition-all ease-in-out duration-500">
           <nav aria-labelledby="toc-heading">
             <Heading as="h2" size="xl" id="toc-heading">
               {t('toc')}

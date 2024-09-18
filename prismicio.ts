@@ -10,11 +10,11 @@ const accessToken = process.env.PRISMIC_ACCESS_TOKEN;
 const routes: prismic.ClientConfig['routes'] = [
   {
     type: 'page',
-    path: '/:lang/blog',
+    path: '/blog',
   },
   {
     type: 'blog_post',
-    path: '/:lang/blog/:uid',
+    path: '/blog/:uid',
   },
 ];
 

@@ -8,19 +8,27 @@ import { createClient, graphQuery } from '@/prismicio';
 import { components } from '@/app/[lang]/blog/slices';
 import { PrismicNextImage } from '@prismicio/next';
 
-import { PostCard } from '../components/PostCard';
 import { RichText } from '../components/RichText';
 
 import { createTranslation } from '@/i18n/server';
-import Slide from '../components/Slide';
 import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
 import dynamic from 'next/dynamic';
 
-const Menu = dynamic(() => import('../components/Menu/Menu'), { ssr: false });
-const Toc = dynamic(() => import('../components/ToC').then((mod) => mod.Toc), {
-  ssr: false,
-});
+const PostCard = dynamic(
+  () => import('../components/PostCard').then((mod) => mod.PostCard),
+  {
+    ssr: false,
+  },
+);
+const Slide = dynamic(() => import('../components/Slide'), { ssr: false });
+const Menu = dynamic(() => import('../components/ui/Menu'), { ssr: false });
+const Toc = dynamic(
+  () => import('../components/ui/ToC').then((mod) => mod.Toc),
+  {
+    ssr: false,
+  },
+);
 
 type Params = { uid: string; lang: Locales };
 
@@ -92,13 +100,13 @@ export default async function Page({ params }: { params: Params }) {
   const { t } = await createTranslation('blog');
 
   return (
-    <div className="flex flex-col items-center bg-base-100 w-full h-full py-36">
+    <div className="flex flex-col items-center bg-base-100 w-full h-full lg:py-32 md:py-28 py-20">
       <div
         id={'article-wrapper'}
-        className="flex flex-col gap-10 w-full xl:max-w-[1350px] max-w-[1150px] xl:px-64 lg:px-48 md:px-24 sm:px-8 px-3 transition-all ease-in-out duration-500"
+        className="flex flex-col gap-10 w-full xl:max-w-[1450px] max-w-[1150px] lg:pl-[265px] sm:px-5 px-3 transition-all ease-in-out duration-500"
       >
-        <section className="flex flex-col gap-8 mb-10 relative">
-          <div className="flex flex-col items-center gap-3 w-full">
+        <section className="flex flex-col mb-10 relative">
+          <div className="flex flex-col items-center gap-3 w-full mb-6">
             <div className="flex flex-col gap-3 pb-4 items-center w-full">
               <div className="text-center text-h1 h1-blog">
                 <PrismicRichText field={title} />
@@ -114,14 +122,17 @@ export default async function Page({ params }: { params: Params }) {
           <PrismicNextImage
             field={featured_image}
             sizes="100vw"
-            className="w-full max-w-4xl self-center h-auto rounded-t-xl object-cover"
+            className="w-full max-w-5xl self-center h-auto rounded-t-xl object-cover"
           />
-          <section id={'article-content'} className="flex flex-col gap-4">
-            <Menu />
-            <Toc slices={slices} title={title} />
+          <Menu />
+          <Toc slices={slices} title={title} />
+          <section
+            id={'article-content'}
+            className="flex flex-col md:pt-8 pt-4 sm:border rounded-b-lg border-t-base-100 border-base-300 pb-16 xl:px-10 lg:px-6 md:px-2 gap-4"
+          >
             <SliceZone slices={slices} components={components} />
           </section>
-          <div className="min-h-24"></div>
+          <div className="min-h-14"></div>
         </section>
         {recomendPosts.length > 0 && (
           <div className="w-full max-w-[1200px] flexCenter self-center flex-col gap-3">

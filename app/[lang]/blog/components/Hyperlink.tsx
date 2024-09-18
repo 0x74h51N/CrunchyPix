@@ -1,7 +1,5 @@
-'use client';
-import CustomLink from '@/components/CustomLink';
 import { RTLinkNode } from '@prismicio/client';
-import React from 'react';
+import Link from 'next/link';
 
 const Hyperlink = ({
   children,
@@ -11,7 +9,15 @@ const Hyperlink = ({
   node: RTLinkNode;
 }) => {
   const href = (node.data as { url: string }).url;
-  return <CustomLink href={href}>{children}</CustomLink>;
+  return (
+    <Link
+      href={(href as string) || ''}
+      target="_blank"
+      className="inline-flex hover:text-log-col underline underline-offset-3 group"
+    >
+      {children}
+    </Link>
+  );
 };
 
 export default Hyperlink;
