@@ -14,6 +14,7 @@ import { createTranslation } from '@/i18n/server';
 import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
 import dynamic from 'next/dynamic';
+import ShareButtons from '../components/ui/ShareButtons';
 
 const PostCard = dynamic(
   () => import('../components/PostCard').then((mod) => mod.PostCard),
@@ -103,7 +104,7 @@ export default async function Page({ params }: { params: Params }) {
     <div className="flex flex-col items-center bg-base-100 w-full h-full lg:py-32 md:py-28 py-20">
       <div
         id={'article-wrapper'}
-        className="flex flex-col gap-10 w-full xl:max-w-[1450px] max-w-[1150px] lg:pl-[265px] sm:px-5 px-3 transition-all ease-in-out duration-500"
+        className="flex flex-col gap-10 w-full max-w-[1150px] lg:pl-[265px] sm:px-5 px-3 transition-all ease-in-out duration-500"
       >
         <section className="flex flex-col mb-10 relative">
           <div className="flex flex-col items-center gap-3 w-full mb-6">
@@ -128,9 +129,12 @@ export default async function Page({ params }: { params: Params }) {
           <Toc slices={slices} title={title} />
           <section
             id={'article-content'}
-            className="flex flex-col md:pt-8 pt-4 sm:border rounded-b-lg border-t-base-100 border-base-300 pb-16 xl:px-10 lg:px-6 md:px-2 gap-4"
+            className="flex flex-col md:pt-8 pt-4 sm:border rounded-b-lg border-t-base-100 border-base-300 pb-16 xl:px-10 lg:px-6 md:px-2 gap-4 relative"
           >
             <SliceZone slices={slices} components={components} />
+            <div className="absolute right-3 -bottom-8 bg-base-100 sm:border border-base-300 p-4 ">
+              <ShareButtons textHidden={false} />
+            </div>
           </section>
           <div className="min-h-14"></div>
         </section>
