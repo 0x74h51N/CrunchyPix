@@ -55,7 +55,7 @@ const FontSizeChanger = () => {
   return (
     <div className="join join-horizontal">
       <button
-        className="btn btn-ghost btn-sm join-item text-xs px-2 h-10"
+        className="btn btn-ghost btn-sm join-item text-xs px-3 h-10"
         onClick={() => changeFontSize(-2)}
         aria-label={t('blog-post.menu.fontMinus')}
       >

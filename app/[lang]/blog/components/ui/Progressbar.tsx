@@ -33,9 +33,13 @@ const Progressbar = () => {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const timeoutId = setTimeout(() => {
+      window.addEventListener('scroll', handleScroll);
+      handleScroll();
+    }, 1000);
 
     return () => {
+      clearTimeout(timeoutId);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);

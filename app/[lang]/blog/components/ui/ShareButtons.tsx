@@ -2,6 +2,8 @@ import IconButton from '@/components/Buttons/IconButton';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MdCheck } from 'react-icons/md';
+import { RiShare2Fill } from 'react-icons/ri';
 
 const ShareButtons = () => {
   const [shareUrl, setShareUrl] = useState('');
@@ -13,9 +15,21 @@ const ShareButtons = () => {
     setShareUrl(url);
     console.log(url, 'social url');
   }, [pathname]);
+
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => {
+        setCopied(false);
+      }, 800);
+    });
+  };
+
   return (
     <div className="flex justify-between items-center">
-      <span className="max-xs:hidden cool-text font-bold text-lg antialiased">
+      <span className="max-md:hidden cool-text font-bold text-lg antialiased">
         {t('blog-post.share.share')}
       </span>
       <div className="flex items-center justify-center ml-2">
@@ -59,6 +73,13 @@ const ShareButtons = () => {
             }}
           />
         </div>
+        <button
+          className="btn btn-sm btn-ghost px-1 "
+          onClick={handleCopy}
+          aria-label={t('blog-post.share.facebook')}
+        >
+          {copied ? <MdCheck size={22} /> : <RiShare2Fill size={22} />}
+        </button>
       </div>
     </div>
   );
