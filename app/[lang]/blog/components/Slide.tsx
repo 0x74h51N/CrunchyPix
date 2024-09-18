@@ -42,7 +42,6 @@ const ProjectSlide = ({
           clickable: true,
         }}
         loop
-        spaceBetween={25}
         slidesPerView={'auto'}
         autoplay={{
           delay: 5000,

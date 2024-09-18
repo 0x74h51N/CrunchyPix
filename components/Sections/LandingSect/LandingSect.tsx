@@ -45,7 +45,7 @@ const LandingSect = () => {
         className={`anaDiv relative flex flex-wrap justify-center items-center w-full min-h-[100dvh] overflow-hidden`}
       >
         <div
-          className={`w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 md:pb-40 pb-[220px]`}
+          className={`w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 md:pb-44 pb-[220px]`}
         >
           <div
             className={`font-medium lg:text-[40px] sm:text-[30px] text-[25px] text-white`}

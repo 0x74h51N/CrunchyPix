@@ -36,10 +36,10 @@ const Menu = () => {
       <div
         ref={stickyRef}
         className={clsx(
-          'sticky flex items-center justify-end border border-base-300 backdrop-blur-sm backdrop-filter bg-base-100 top-0 rigth-0 xl:p-2 py-1 !select-none z-50 self-end transition-all ease-in-out duration-500',
+          'sticky flex items-center justify-end border border-base-300 backdrop-blur-sm backdrop-filter bg-base-100 top-0 rigth-0 p-1 py-2 !select-none z-50 self-end transition-all ease-in-out duration-500',
           open
             ? 'w-full md:pl-6 h-[58px] bg-opacity-25'
-            : 'xl:-mr-8 lg:-mr-5  md:-mr-4 -mr-3 xl:w-16 w-12 h-22 bg-opacity-100',
+            : 'xl:-mr-6 lg:-mr-5 md:-mr-4  xl:w-14 w-12 h-22 bg-opacity-100',
         )}
       >
         {open && (
