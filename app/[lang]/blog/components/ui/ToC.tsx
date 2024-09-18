@@ -145,78 +145,76 @@ export function Toc({ slices, title }: TocProps) {
   }, [headings]);
   const { t } = useTranslation('blog');
   return (
-    <div className="lg:sticky lg:top-0 w-full !select-none lg:z-50">
-      <div className="lg:absolute lg:top-0 lg:-left-72 lg:ml-3.5">
-        <aside className="border p-6 mx-auto w-full max-md:pl-10 mt-0 lg:w-64 border-base-300 backdrop-blur-sm backdrop-filter bg-base-300 bg-opacity-25 md:shadow-md shadow-base-200 transition-all ease-in-out duration-500">
-          <nav aria-labelledby="toc-heading">
-            <Heading as="h2" size="xl" id="toc-heading">
-              {t('toc')}
-            </Heading>
-            <ul className="pl-2 mt-4 list-disc" ref={headingsList} role="list">
-              <TocNavElement
-                node={{
-                  text: asText(title) || '',
-                }}
-                level={1}
-                activeId={activeId}
-              />
-              {slices.map(
-                (slice) =>
-                  slice.slice_type === 'rich_text' && (
-                    <PrismicRichText
-                      key={slice.id}
-                      field={slice.primary.content}
-                      components={{
-                        heading1: ({ node, children, key }) => (
-                          <TocNavElement
-                            node={node}
-                            key={key}
-                            level={1}
-                            activeId={activeId}
-                          >
-                            {children}
-                          </TocNavElement>
-                        ),
-                        heading2: ({ node, children, key }) => (
-                          <TocNavElement
-                            node={node}
-                            key={key}
-                            level={2}
-                            activeId={activeId}
-                          >
-                            {children}
-                          </TocNavElement>
-                        ),
-                        heading3: ({ node, children, key }) => (
-                          <TocNavElement
-                            node={node}
-                            key={key}
-                            level={3}
-                            activeId={activeId}
-                          >
-                            {children}
-                          </TocNavElement>
-                        ),
-                        heading4: () => <></>,
-                        paragraph: () => <></>,
-                        preformatted: () => <></>,
-                        strong: () => <></>,
-                        em: () => <></>,
-                        listItem: () => <></>,
-                        oListItem: () => <></>,
-                        list: () => <></>,
-                        oList: () => <></>,
-                        image: () => <></>,
-                        embed: () => <></>,
-                        hyperlink: () => <></>,
-                      }}
-                    />
-                  ),
-              )}
-            </ul>
-          </nav>
-        </aside>
-      </div>
+    <div className="xmd:sticky md:top-0 xmd:mt-72 w-full flex flex-col !select-none">
+      <aside className="border p-6 xmd:pt-9 w-full max-xmd:pl-10 mt-0 border-base-300 bg-base-300 bg-opacity-25 xmd:shadow-md shadow-base-200 transition-all ease-in-out duration-500">
+        <nav aria-labelledby="toc-heading">
+          <Heading as="h2" size="xl" id="toc-heading">
+            {t('toc')}
+          </Heading>
+          <ul className="pl-2 mt-4 list-disc" ref={headingsList} role="list">
+            <TocNavElement
+              node={{
+                text: asText(title) || '',
+              }}
+              level={1}
+              activeId={activeId}
+            />
+            {slices.map(
+              (slice) =>
+                slice.slice_type === 'rich_text' && (
+                  <PrismicRichText
+                    key={slice.id}
+                    field={slice.primary.content}
+                    components={{
+                      heading1: ({ node, children, key }) => (
+                        <TocNavElement
+                          node={node}
+                          key={key}
+                          level={1}
+                          activeId={activeId}
+                        >
+                          {children}
+                        </TocNavElement>
+                      ),
+                      heading2: ({ node, children, key }) => (
+                        <TocNavElement
+                          node={node}
+                          key={key}
+                          level={2}
+                          activeId={activeId}
+                        >
+                          {children}
+                        </TocNavElement>
+                      ),
+                      heading3: ({ node, children, key }) => (
+                        <TocNavElement
+                          node={node}
+                          key={key}
+                          level={3}
+                          activeId={activeId}
+                        >
+                          {children}
+                        </TocNavElement>
+                      ),
+                      heading4: () => <></>,
+                      paragraph: () => <></>,
+                      preformatted: () => <></>,
+                      strong: () => <></>,
+                      em: () => <></>,
+                      listItem: () => <></>,
+                      oListItem: () => <></>,
+                      list: () => <></>,
+                      oList: () => <></>,
+                      image: () => <></>,
+                      embed: () => <></>,
+                      hyperlink: () => <></>,
+                    }}
+                  />
+                ),
+            )}
+          </ul>
+        </nav>
+      </aside>
     </div>
   );
 }

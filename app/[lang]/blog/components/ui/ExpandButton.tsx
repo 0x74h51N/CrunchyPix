@@ -15,8 +15,12 @@ const ExpandButton = ({
   };
   useEffect(() => {
     const articleWrapper = document.getElementById('article-wrapper');
-    if (articleWrapper) {
-      articleWrapper.style.maxWidth = isWide ? '1900px' : '1150px';
+    const gridWrapper = document.getElementById('grid-wrapper');
+    if (articleWrapper && gridWrapper) {
+      articleWrapper.style.maxWidth = isWide ? '1900px' : '';
+      gridWrapper.style.gridTemplateColumns = isWide
+        ? 'minmax(179px, 300px) minmax(670px, 1fr) minmax(0px, 10px)'
+        : '';
       if (isWide) {
         articleWrapper.style.paddingRight = '1rem';
       } else {
@@ -24,6 +28,30 @@ const ExpandButton = ({
       }
     }
   }, [isWide]);
+
+  useEffect(() => {
+    const gridWrapper = document.getElementById('grid-wrapper');
+
+    // Ekran genişliğini takip eden ResizeObserver
+    const handleResize = (entries: ResizeObserverEntry[]) => {
+      const entry = entries[0]; // İlk entry'i alıyoruz çünkü sadece bir eleman dinleniyor
+      if (entry.contentRect.width < 1024) {
+        setWide(false);
+      }
+    };
+
+    const observer = new ResizeObserver(handleResize);
+    if (gridWrapper) {
+      observer.observe(gridWrapper);
+    }
+
+    return () => {
+      if (gridWrapper) {
+        observer.unobserve(gridWrapper);
+      }
+    };
+  }, [setWide]);
+
   return (
     <button
       onClick={toggleWidth}
