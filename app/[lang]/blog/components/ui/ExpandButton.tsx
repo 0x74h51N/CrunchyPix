@@ -32,9 +32,8 @@ const ExpandButton = ({
   useEffect(() => {
     const gridWrapper = document.getElementById('grid-wrapper');
 
-    // Ekran genişliğini takip eden ResizeObserver
     const handleResize = (entries: ResizeObserverEntry[]) => {
-      const entry = entries[0]; // İlk entry'i alıyoruz çünkü sadece bir eleman dinleniyor
+      const entry = entries[0];
       if (entry.contentRect.width < 1024) {
         setWide(false);
       }

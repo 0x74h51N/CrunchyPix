@@ -107,16 +107,16 @@ export default async function Page({ params }: { params: Params }) {
     <div className="flex flex-col items-center bg-base-100 w-full h-full lg:py-32 md:py-28 py-20">
       <section
         id={'grid-wrapper'}
-        className="grid lg:grid-cols-[minmax(179px,350px)_minmax(670px,1fr)_minmax(0px,350px)] xmd:grid-cols-[minmax(150px,280px)_minmax(670px,1fr)] gap-1 grid-cols-1 mb-10 transition-all ease-in-out duration-500 pb-40 max-xmd:px-3 max-sm:px-0"
+        className="grid lg:grid-cols-[minmax(179px,350px)_minmax(670px,1fr)_minmax(0px,350px)] xmd:grid-cols-[minmax(150px,280px)_minmax(670px,1fr)]  xmd:px-0  md:px-4 px-3 gap-1 grid-cols-1 mb-10 transition-all ease-in-out duration-500 xmd:pb-40 pb-32"
       >
         <div className="max-xmd:hidden">
           <Toc slices={slices} title={title} />
         </div>
         <div
           id={'article-wrapper'}
-          className="flex flex-col justify-center w-full lg:min-w-[770px] max-w-[850px] transition-all ease-in-out duration-500 relative"
+          className="flex flex-col justify-center w-full lg:min-w-[765px] max-w-[850px] transition-all ease-in-out duration-500 xmd:pr-7 md:pr-3 relative"
         >
-          <div className="flex flex-col items-center gap-3 w-full mb-6 max-xmd:px-2">
+          <div className="flex flex-col items-center gap-3 w-full mb-6 ">
             <div className="flex flex-col gap-3 pb-4 items-center w-full">
               <div
                 className="text-center text-h1 h1-blog"
@@ -133,6 +133,7 @@ export default async function Page({ params }: { params: Params }) {
             </div>
           </div>
           <PrismicNextImage
+            id={'image-field'}
             field={featured_image}
             sizes="100vw"
             className="w-full max-w-5xl self-center h-auto rounded-t-xl object-cover"
@@ -140,13 +141,13 @@ export default async function Page({ params }: { params: Params }) {
           <Menu />
           <section
             id={'article-content'}
-            className="flex flex-col md:pt-8 pt-4 sm:border rounded-b-lg border-t-base-100 border-base-300 pb-16 xl:px-10 lg:px-6 px-2 gap-4"
+            className="flex flex-col md:pt-8 pt-4 sm:border rounded-b-lg border-t-base-100 border-base-300 pb-16 gap-4 lg:px-6 sm:px-4"
           >
             <div className="xmd:hidden">
               <Toc slices={slices} title={title} />
             </div>
             <SliceZone slices={slices} components={components} />
-            <div className="absolute right-3 -bottom-8 bg-base-100 sm:border border-base-300 p-4 ">
+            <div className="absolute md:right-12 right-3 -bottom-8 bg-base-100 sm:border border-base-300 p-4">
               <ShareButtons textHidden={false} />
             </div>
           </section>
