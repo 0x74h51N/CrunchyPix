@@ -154,7 +154,7 @@ export function Toc({ slices, title }: TocProps) {
           <ul className="pl-2 mt-4 list-disc" ref={headingsList} role="list">
             <TocNavElement
               node={{
-                text: asText(title) || '',
+                text: asText(title),
               }}
               level={1}
               activeId={activeId}
