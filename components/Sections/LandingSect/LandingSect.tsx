@@ -31,7 +31,14 @@ const LandingSect = () => {
     console.log(error);
   }
   const filteredData = useMemo(() => {
-    return data && data.length > 1 && data.sort((a, b) => b.id - a.id).slice(3);
+    return (
+      data &&
+      data.length > 1 &&
+      data
+        .sort((a, b) => a.id - b.id)
+        .slice(0, 4)
+        .reverse()
+    );
   }, [data]);
   return loading || !data || !filteredData ? (
     <FsLoading />
@@ -45,7 +52,7 @@ const LandingSect = () => {
         className={`anaDiv relative flex flex-wrap justify-center items-center w-full min-h-[100dvh] overflow-hidden`}
       >
         <div
-          className={`w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 md:pb-44 pb-[220px]`}
+          className={`w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 md:pb-48 pb-[220px]`}
         >
           <div
             className={`font-medium lg:text-[40px] sm:text-[30px] text-[25px] text-white`}

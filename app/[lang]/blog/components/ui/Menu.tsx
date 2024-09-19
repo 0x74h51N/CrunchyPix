@@ -14,20 +14,28 @@ const Menu = () => {
   const stickyRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (stickyRef.current) {
-        const stickyTop = stickyRef.current.getBoundingClientRect().top;
-        if (stickyTop > 0) {
+    if (typeof window === 'undefined') return;
+
+    const imageField = document.getElementById('image-field');
+    if (!imageField || !stickyRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
           setStickyTop(true);
           setOpen(true);
-        } else setStickyTop(false);
-      }
-    };
+        } else {
+          setStickyTop(false);
+        }
+      },
+      {
+        threshold: 0,
+      },
+    );
 
-    window.addEventListener('scroll', handleScroll);
+    observer.observe(imageField);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      observer.unobserve(imageField);
     };
   }, []);
 
@@ -39,25 +47,22 @@ const Menu = () => {
           'sticky flex items-center justify-end border border-base-300 backdrop-blur-sm backdrop-filter bg-base-100 top-0 rigth-0 p-1 py-2 !select-none z-50 self-end transition-all ease-in-out duration-500',
           open
             ? 'w-full md:pl-6 h-[58px] bg-opacity-25'
-            : 'xl:-mr-6 lg:-mr-5 md:-mr-4  xl:w-14 w-12 h-22 bg-opacity-100',
+            : 'md:-mr-[27px] w-14 h-22 bg-opacity-100',
         )}
       >
-        {open && (
-          <div
-            className={clsx(
-              'justify-between w-full transition-all ease-in-out delay-200 duration-200 flex',
-              open ? 'opacity-100 ' : 'opacity-0 hidden',
-            )}
-          >
-            <div className="flex items-center">
-              <ThemeToggle />
-              <ExpandButton isWide={isWide} setWide={setWide} />
-              <FontSizeChanger />
-            </div>
-            <ShareButtons />
+        <div
+          className={clsx(
+            'justify-between w-full transition-all ease-in-out duration-200 flex',
+            open ? 'opacity-100 delay-300' : 'opacity-0 hidden',
+          )}
+        >
+          <div className="flex items-center">
+            <ThemeToggle />
+            <ExpandButton isWide={isWide} setWide={setWide} />
+            <FontSizeChanger />
           </div>
-        )}
-
+          <ShareButtons />
+        </div>
         <div
           className={clsx(
             'flex flex-col max-w-full cursor-pointer transition-all ease-in-out duration-300',
