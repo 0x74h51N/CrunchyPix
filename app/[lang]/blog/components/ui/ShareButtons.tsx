@@ -15,7 +15,6 @@ const ShareButtons = ({ textHidden = true }) => {
   useEffect(() => {
     const url = `${window.location.origin}${pathname}`;
     setShareUrl(url);
-    console.log(url, 'social url');
   }, [pathname]);
 
   const [copied, setCopied] = useState(false);

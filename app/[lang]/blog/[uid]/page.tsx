@@ -15,6 +15,8 @@ import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
 import dynamic from 'next/dynamic';
 import ShareButtons from '../components/ui/ShareButtons';
+import { slugifyHeading } from '@/lib/slugifyHeading';
+import FsLoading from '@/components/Loading/FsLoading';
 
 const PostCard = dynamic(
   () => import('../components/PostCard').then((mod) => mod.PostCard),
@@ -28,6 +30,7 @@ const Toc = dynamic(
   () => import('../components/ui/ToC').then((mod) => mod.Toc),
   {
     ssr: false,
+    loading: () => <FsLoading />,
   },
 );
 
@@ -104,18 +107,21 @@ export default async function Page({ params }: { params: Params }) {
     <div className="flex flex-col items-center bg-base-100 w-full h-full lg:py-32 md:py-28 py-20">
       <section
         id={'grid-wrapper'}
-        className="grid lg:grid-cols-[minmax(179px,350px)_minmax(670px,1fr)_minmax(0px,350px)] xmd:grid-cols-[minmax(150px,280px)_minmax(670px,1fr)] grid-cols-1 mb-10 transition-all ease-in-out duration-500 pb-40 max-xmd:px-3 max-sm:px-0"
+        className="grid lg:grid-cols-[minmax(179px,350px)_minmax(670px,1fr)_minmax(0px,350px)] xmd:grid-cols-[minmax(150px,280px)_minmax(670px,1fr)] gap-1 grid-cols-1 mb-10 transition-all ease-in-out duration-500 pb-40 max-xmd:px-3 max-sm:px-0"
       >
-        <div className="">
+        <div className="max-xmd:hidden">
           <Toc slices={slices} title={title} />
         </div>
         <div
           id={'article-wrapper'}
           className="flex flex-col justify-center w-full lg:min-w-[770px] max-w-[850px] transition-all ease-in-out duration-500 relative"
         >
-          <div className="flex flex-col items-center gap-3 w-full mb-6">
+          <div className="flex flex-col items-center gap-3 w-full mb-6 max-xmd:px-2">
             <div className="flex flex-col gap-3 pb-4 items-center w-full">
-              <div className="text-center text-h1 h1-blog">
+              <div
+                className="text-center text-h1 h1-blog"
+                id={slugifyHeading({ text: prismic.asText(title) })}
+              >
                 <PrismicRichText field={title} />
               </div>
               <p className="opacity-75 w-full text-right">
@@ -136,6 +142,9 @@ export default async function Page({ params }: { params: Params }) {
             id={'article-content'}
             className="flex flex-col md:pt-8 pt-4 sm:border rounded-b-lg border-t-base-100 border-base-300 pb-16 xl:px-10 lg:px-6 px-2 gap-4"
           >
+            <div className="xmd:hidden">
+              <Toc slices={slices} title={title} />
+            </div>
             <SliceZone slices={slices} components={components} />
             <div className="absolute right-3 -bottom-8 bg-base-100 sm:border border-base-300 p-4 ">
               <ShareButtons textHidden={false} />
