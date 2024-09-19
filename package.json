@@ -22,7 +22,7 @@
     "@prismicio/react": "^2.8.0",
     "@prismicio/types": "^0.2.9",
     "@reduxjs/toolkit": "^2.2.6",
-    "@supabase/supabase-js": "^2.44.4",
+    "@supabase/supabase-js": "^2.45.4",
     "@vercel/analytics": "^1.1.1",
     "@vercel/speed-insights": "^1.0.1",
     "clsx": "^2.1.1",
