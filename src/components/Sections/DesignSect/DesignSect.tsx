@@ -11,11 +11,14 @@ import TitleText from '../TitleText';
 const DesignSect = () => {
   const slides = useMemo(() => {
     const repeatCount = 2;
-    return Array(repeatCount).fill(phoneSlides).flat().map((slide: slide) => ({
-      imageUrl: slide.imageUrlV,
-      title: slide.title,
-      description: slide.description,
-    }));
+    return Array(repeatCount)
+      .fill(phoneSlides)
+      .flat()
+      .map((slide: slide) => ({
+        imageUrl: slide.imageUrlV,
+        title: slide.title,
+        description: slide.description,
+      }));
   }, []);
 
   return (
