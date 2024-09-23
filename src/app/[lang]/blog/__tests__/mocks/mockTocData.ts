@@ -33,12 +33,6 @@ export const mockSlices: prismic.SliceZone<BlogPostDocumentDataSlicesSlice> = [
           direction: 'ltr',
         },
         {
-          type: 'paragraph',
-          text: 'Some paragraph under overview.',
-          spans: [],
-          direction: 'ltr',
-        },
-        {
           type: 'heading3',
           text: 'Details about the Overview',
           spans: [],
