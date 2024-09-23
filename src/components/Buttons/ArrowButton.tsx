@@ -1,7 +1,7 @@
-"use client";
-import Image from "next/image";
-import { scrollToSection } from "@/utils/scrollToSection";
-import useClickableHandlers from "@/hooks/useClickableHandlers";
+'use client';
+import Image from 'next/image';
+import { scrollToSection } from '@/utils/scrollToSection';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
 
 interface ArrowButtonProps {
   index?: number;
@@ -18,7 +18,7 @@ export const ArrowButton = ({
   duration = 0,
   sectionRefs,
 }: ArrowButtonProps) => {
-const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
+  const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const handleButtonClick = () => {
     if (index !== undefined) {
       scrollToSection(index, duration, sectionRefs);
