@@ -2,11 +2,11 @@
 import ThemeToggle from '@/components/Buttons/ThemeToggle';
 import React, { useEffect, useRef, useState } from 'react';
 import ShareButtons from './ShareButtons';
-import Progressbar from './Progressbar';
 import FontSizeChanger from './FontSizeChanger';
 import clsx from 'clsx';
 import BurgerButton from '@/components/Buttons/BurgerButton';
 import ExpandButton from './ExpandButton';
+
 const Menu = () => {
   const [open, setOpen] = useState(true);
   const [stickyTop, setStickyTop] = useState<boolean>(true);
@@ -88,7 +88,6 @@ const Menu = () => {
           {!open && <ExpandButton isWide={isWide} setWide={setWide} />}
         </div>
       </div>
-      <Progressbar />
     </>
   );
 };

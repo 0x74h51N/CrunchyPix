@@ -1,8 +1,6 @@
 'use client';
-
 import { PrismicRichText } from '@prismicio/react';
 import { clsx } from 'clsx';
-
 import { asText, SliceZone } from '@prismicio/client';
 import { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { slugifyHeading } from '@/lib/slugifyHeading';
@@ -62,7 +60,7 @@ const TocNavElement = ({ node, level, activeId }: TocNavElementProps) => {
   );
 };
 
-export function Toc({ slices, title }: TocProps) {
+function Toc({ slices, title }: TocProps) {
   const headingsList = useRef<HTMLOListElement | null>(null);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [headings, setHeadings] = useState<
@@ -218,3 +216,5 @@ export function Toc({ slices, title }: TocProps) {
     </div>
   );
 }
+
+export default Toc;

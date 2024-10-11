@@ -13,26 +13,19 @@ import { RichText } from '../components/RichText';
 import { createTranslation } from '@/i18n/server';
 import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
-import dynamic from 'next/dynamic';
 import ShareButtons from '../components/ui/ShareButtons';
 import { slugifyHeading } from '@/lib/slugifyHeading';
 import FsLoading from '@/components/Loading/FsLoading';
+import dynamic from 'next/dynamic';
+import Menu from '../components/ui/Menu';
+import Progressbar from '../components/ui/Progressbar';
+import { PostCard } from '../components/PostCard';
 
-const PostCard = dynamic(
-  () => import('../components/PostCard').then((mod) => mod.PostCard),
-  {
-    ssr: false,
-  },
-);
 const Slide = dynamic(() => import('../components/Slide'), { ssr: false });
-const Menu = dynamic(() => import('../components/ui/Menu'), { ssr: false });
-const Toc = dynamic(
-  () => import('../components/ui/ToC').then((mod) => mod.Toc),
-  {
-    ssr: false,
-    loading: () => <FsLoading />,
-  },
-);
+const Toc = dynamic(() => import('../components/ui/ToC'), {
+  ssr: false,
+  loading: () => <FsLoading />,
+});
 
 type Params = { uid: string; lang: Locales };
 
@@ -174,6 +167,7 @@ export default async function Page({ params }: { params: Params }) {
           )}
         </div>
       )}
+      <Progressbar />
     </div>
   );
 }
