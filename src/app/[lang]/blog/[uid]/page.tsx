@@ -95,7 +95,7 @@ export default async function Page({ params }: { params: Params }) {
   const { slices, title, publication_date, description, featured_image } =
     page.data;
   const { t } = await createTranslation('blog');
-  console.log(slices);
+
   return (
     <div className="flex flex-col items-center bg-base-100 w-full h-full lg:py-32 md:py-28 py-20">
       <section

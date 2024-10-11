@@ -21,6 +21,7 @@ const ImageModal = ({ slice }: ImageModalProps): JSX.Element => {
         field={slice.primary.image}
         sizes="auto"
         loading="eager"
+        unoptimized
         quality={100}
         className="w-full max-w-6xl self-center h-auto rounded-md object-cover cursor-pointer max-md:pointer-events-none"
         onClick={() => setModal(true)}
