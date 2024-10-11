@@ -1,55 +1,70 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
-const Progressbar = () => {
+const ScrollProgressBar = () => {
   const [progress, setProgress] = useState(0);
+  const rafId = useRef<number | null>(null);
+  const prevScrollY = useRef(0);
 
   useEffect(() => {
-    const blogPostElement = document.getElementById('article-content');
-
-    if (!blogPostElement) {
-      console.log('cannot find');
+    const articleElement = document.getElementById('article-content');
+    if (!articleElement) {
+      console.error('Cannot find article content');
       return;
     }
 
-    const blogPostHeight = blogPostElement.clientHeight;
-    const blogPostTop =
-      blogPostElement.getBoundingClientRect().top + window.scrollY;
+    const updateProgress = () => {
+      const articleRect = articleElement.getBoundingClientRect();
+      const articleTop = articleRect.top + window.scrollY;
+      const articleBottom = articleRect.bottom + window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const scrollY = window.scrollY;
 
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const maxScroll = blogPostTop + blogPostHeight - windowHeight;
+      if (scrollY !== prevScrollY.current) {
+        prevScrollY.current = scrollY;
 
-      if (scrollTop >= blogPostTop && scrollTop <= maxScroll) {
-        const newProgress =
-          ((scrollTop - blogPostTop) / (maxScroll - blogPostTop)) * 100;
-        setProgress(newProgress);
-      } else if (scrollTop < blogPostTop) {
-        setProgress(0);
-      } else if (scrollTop > maxScroll) {
-        setProgress(100);
+        if (scrollY < articleTop) {
+          setProgress(0);
+        } else if (scrollY + viewportHeight >= articleBottom) {
+          setProgress(100);
+        } else {
+          const availableScroll = articleBottom - articleTop - viewportHeight;
+          const currentScroll = scrollY - articleTop;
+          const progressPercentage = (currentScroll / availableScroll) * 100;
+          setProgress(Math.min(100, Math.max(0, progressPercentage)));
+        }
       }
+
+      rafId.current = requestAnimationFrame(updateProgress);
     };
 
-    const timeoutId = setTimeout(() => {
-      window.addEventListener('scroll', handleScroll);
-    }, 2000);
+    rafId.current = requestAnimationFrame(updateProgress);
+
+    const handleResize = () => {
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+      rafId.current = requestAnimationFrame(updateProgress);
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener('scroll', handleScroll);
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current);
+      }
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
 
   return (
-    <div className="fixed z-[250] top-0 left-0 right-0 progress w-full h-1 mb-2 bg-primary">
+    <div className="fixed z-[250] top-0 left-0 right-0 w-full h-1 bg-primary">
       <div
-        className="progress progress-success bg-log-col h-1"
+        className="h-full bg-log-col transition-[width] duration-75 ease-out-expo"
         style={{ width: `${progress}%` }}
         role="progressbar"
-        aria-valuenow={progress}
+        aria-valuenow={Math.round(progress)}
         aria-valuemin={0}
         aria-valuemax={100}
       ></div>
@@ -57,4 +72,4 @@ const Progressbar = () => {
   );
 };
 
-export default Progressbar;
+export default ScrollProgressBar;

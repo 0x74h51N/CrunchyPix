@@ -41,6 +41,7 @@ const ImageModal = ({ slice }: ImageModalProps): JSX.Element => {
             <PrismicNextImage
               field={slice.primary.image}
               key={slice.id + 'modal'}
+              unoptimized
               sizes="full"
               priority
               quality={100}
