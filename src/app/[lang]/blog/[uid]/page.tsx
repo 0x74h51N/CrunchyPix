@@ -1,15 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
 import { PrismicRichText, SliceZone } from '@prismicio/react';
 import * as prismic from '@prismicio/client';
-
 import { createClient, graphQuery } from '@/prismicio';
 import { components } from '@/app/[lang]/blog/slices';
 import { PrismicNextImage } from '@prismicio/next';
-
 import { RichText } from '../components/RichText';
-
 import { createTranslation } from '@/i18n/server';
 import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
@@ -17,7 +13,6 @@ import ShareButtons from '../components/ui/ShareButtons';
 import { slugifyHeading } from '@/lib/slugifyHeading';
 import FsLoading from '@/components/Loading/FsLoading';
 import dynamic from 'next/dynamic';
-import Menu from '../components/ui/Menu';
 import Progressbar from '../components/ui/Progressbar';
 import { PostCard } from '../components/PostCard';
 
@@ -26,6 +21,7 @@ const Toc = dynamic(() => import('../components/ui/ToC'), {
   ssr: false,
   loading: () => <FsLoading />,
 });
+const Menu = dynamic(() => import('../components/ui/Menu'), { ssr: false });
 
 type Params = { uid: string; lang: Locales };
 
@@ -61,7 +57,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: page.data.meta_title || undefined,
-      url: `https://crunchypix.com/blog/${params.uid}`,
+      url: `https://crunchypix.com/${params.lang}/blog/${params.uid}`,
       images: [
         {
           url: page.data.meta_image.url || '',
@@ -100,14 +96,14 @@ export default async function Page({ params }: { params: Params }) {
     <div className="flex flex-col items-center bg-base-100 w-full h-full lg:py-32 md:py-28 py-20">
       <section
         id={'grid-wrapper'}
-        className="grid lg:grid-cols-[minmax(179px,350px)_minmax(670px,1fr)_minmax(0px,350px)] xmd:grid-cols-[minmax(150px,280px)_minmax(670px,1fr)]  xmd:px-0  md:px-4 px-3 gap-1 grid-cols-1 mb-10 transition-all ease-in-out duration-500 xmd:pb-40 pb-32"
+        className="grid lg:grid-cols-[minmax(179px,350px)_minmax(670px,1fr)_minmax(0px,350px)] xmd:grid-cols-[minmax(150px,280px)_minmax(670px,1fr)] xmd:px-0 md:px-4 px-3 gap-1 grid-cols-1 transition-all ease-in-out duration-500 pb-24"
       >
         <div className="max-xmd:hidden">
           <Toc slices={slices} title={title} />
         </div>
         <div
           id={'article-wrapper'}
-          className="flex flex-col justify-center w-full lg:min-w-[765px] max-w-[850px] transition-all ease-in-out duration-500 xmd:pr-7 md:pr-3 relative"
+          className="flex flex-col justify-center w-full lg:min-w-[765px] max-w-[850px] transition-all ease-in-out duration-500 xmd:pr-7 md:pr-3 lg:pr-0 relative"
         >
           <div className="flex flex-col items-center gap-3 w-full mb-6 ">
             <div className="flex flex-col gap-3 pb-4 items-center w-full">
@@ -148,10 +144,8 @@ export default async function Page({ params }: { params: Params }) {
         <div className="min-h-14"></div>
       </section>
       {recomendPosts.length > 0 && (
-        <div className="w-full max-w-[1200px] flexCenter self-center flex-col gap-3 mt-20 md:px-8 px-2">
-          <h2 className="font-bold text-lg w-full">
-            {t('blog-post.recommend')}
-          </h2>
+        <div className="w-full max-w-[1200px] flexCenter self-center flex-col gap-3 md:px-8 px-2">
+          <h2 className="font-bold h2 w-full">{t('blog-post.recommend')}</h2>
           {recomendPosts.length < 3 ? (
             <section className="flex flex-wrap gap-4 w-full xmd:justify-start justify-center items-center">
               {recomendPosts.map((post, i) => (

@@ -12,7 +12,7 @@ module.exports = {
   async redirects() {
     return [
       {
-        source: '/:lang(en|tr|de)/policies',
+        source: '/:lang(en|tr)/policies',
         destination: '/',
         permanent: true,
       },
@@ -21,7 +21,7 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: '/:lang(en|tr|de)/:path*',
+        source: '/:lang(en|tr)/:path*',
         destination: '/:lang/:path*',
       },
       {
