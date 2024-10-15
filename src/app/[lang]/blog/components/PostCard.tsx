@@ -15,7 +15,7 @@ export const PostCard = ({
   const data = post.data;
   const cardClasses = clsx(
     'group !select-none relative hover:z-50 card flex flex-col lg:h-[450px] h-[400px] rounded-xl hover:border-log-col border-[1px] border-cool-gray-800 transition-all ease-in-out duration-500 overflow-hidden bg-cool-gray-700',
-    recomendSec ? 'md:w-[380px] w-[360px]' : 'lg:w-[450px] sm:w-[390px] w-full',
+    recomendSec ? 'md:w-[380px] w-[360px]' : 'lg:w-[450px] xs:w-[390px] w-full',
   );
   return (
     <div className={cardClasses}>
@@ -28,8 +28,12 @@ export const PostCard = ({
           />
         </div>
       </div>
-      <div className="min-h-full flex flex-col gap-1 justify-between p-5 card-body group-hover:-translate-y-[58%] translate-y-[0] transition-all ease-in-out duration-700 bg-cool-gray-700 text-stone-300">
-        <h2 className="font-bold md:text-2xl text-lg text-stone-200 group-hover:text-log-col my-2">
+      <div
+        className={clsx(
+          'min-h-full flex flex-col gap-1 justify-between p-5 card-body group-hover:-translate-y-[58%] translate-y-[0] transition-all ease-in-out duration-700 bg-cool-gray-700 text-stone-300 lg:pt-7',
+        )}
+      >
+        <h2 className="font-bold md:text-2xl text-lg text-stone-200 group-hover:text-log-col my-2 line-clamp-1 h-14">
           <PrismicText field={data!.title} />
         </h2>
         <div className="flex justify-between max-w-full items-start min-h-24 max-h-24">
