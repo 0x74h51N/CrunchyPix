@@ -28,11 +28,11 @@ export const PostCard = ({
           />
         </div>
       </div>
-      <div className="min-h-full flex flex-col gap-3 justify-between p-5 card-body group-hover:-translate-y-[58%] translate-y-[0] transition-all ease-in-out duration-700 bg-cool-gray-700 text-stone-300">
+      <div className="min-h-full flex flex-col gap-1 justify-between p-5 card-body group-hover:-translate-y-[58%] translate-y-[0] transition-all ease-in-out duration-700 bg-cool-gray-700 text-stone-300">
         <h2 className="font-bold md:text-2xl text-lg text-stone-200 group-hover:text-log-col my-2">
           <PrismicText field={data!.title} />
         </h2>
-        <div className="flex justify-between max-w-full items-start lg:mt-2 min-h-24 max-h-24">
+        <div className="flex justify-between max-w-full items-start min-h-24 max-h-24">
           <div className="gap-1 flex flex-wrap  max-w-[250px] overflow-hidden">
             {post!.tags!.map((tag, index) => (
               <span

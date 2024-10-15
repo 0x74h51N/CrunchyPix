@@ -143,7 +143,7 @@ function Toc({ slices, title }: TocProps) {
   }, [headings]);
   const { t } = useTranslation('blog');
   return (
-    <div className="xmd:sticky md:top-0 xmd:mt-72 w-full flex flex-col !select-none">
+    <div className="xmd:sticky md:top-0 xmd:mt-64 w-full flex flex-col !select-none">
       <aside className="border p-6 xmd:pt-9 w-full max-xmd:pl-10 mt-0 border-base-300 bg-base-300 bg-opacity-25 xmd:shadow-md shadow-base-200 transition-all ease-in-out duration-500">
         <nav aria-labelledby="toc-heading">
           <Heading as="h2" size="xl" id="toc-heading">

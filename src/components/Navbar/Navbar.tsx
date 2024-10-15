@@ -22,7 +22,7 @@ const Navbar = () => {
     const path = route.split('/');
     return path.length < 3;
   }, [route]);
-
+  const locale = route.split('/')[1];
   const [smallNav, setSmallNav] = useState(false);
   const { t } = useTranslation('index');
 
@@ -72,7 +72,7 @@ const Navbar = () => {
   const linkItems = useMemo(() => {
     return Links.map((link) => (
       <Link
-        href={link.href}
+        href={`/${locale}${link.href}`}
         key={link.key}
         className={clsx(
           isBlog ? 'cursor-pointer' : 'cursor-none',
@@ -108,7 +108,7 @@ const Navbar = () => {
       <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0 !select-none">
         <nav className={navClassName}>
           <Link
-            href="/"
+            href={`/${locale}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={clsx(
@@ -133,7 +133,6 @@ const Navbar = () => {
                 setMobileMenu={setMobileMenu}
               />
             </div>
-
             <div className="max-lg:hidden flexCenter h-full">
               <ul
                 onMouseEnter={handleMouseEnter}

@@ -8,6 +8,7 @@ import { CldImage } from 'next-cloudinary';
 import { PortfolioItemProps } from '@/schemas';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { FaAnglesRight } from 'react-icons/fa6';
+import { usePathname } from 'next/navigation';
 
 const areEqual = (
   prevProps: PortfolioItemInterface,
@@ -39,6 +40,8 @@ const PortfolioItem = memo(
     const isTouch = useSelector((state: RootState) => state.isTouch.touch);
     const mobileWidth = isSlide ? '300px' : '350px';
     const id = _id.toLowerCase().replace(/\s+/g, '');
+    const route = usePathname();
+    const locale = route.split('/')[1];
     useEffect(() => {
       if (!project_overview) {
         console.warn('Project overview is undefined or missing');
@@ -70,8 +73,7 @@ const PortfolioItem = memo(
           <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
           {isTouch || isSlide ? (
             <Link
-              href={`/portfolio/${id}`}
-              passHref
+              href={`/${locale}/portfolio/${id}`}
               className="absolute cursor-none w-full h-full"
             />
           ) : (
@@ -81,8 +83,7 @@ const PortfolioItem = memo(
                 className="absolute flex justify-center items-center rounded-full bg-log-col opacity-0 group-hover:opacity-70 w-[70px] h-[70px]"
               >
                 <Link
-                  href={`/portfolio/${id}`}
-                  passHref
+                  href={`/${locale}/portfolio/${id}`}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                   className="cursor-none bg-log-col w-[70px] h-[70px] rounded-full flexCenter"
