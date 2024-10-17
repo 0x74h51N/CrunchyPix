@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SectionsTypes } from '@/schemas';
+import { SectionsTypes } from '@/lib/schemas';
 
 interface SectionState {
   items: SectionsTypes[];

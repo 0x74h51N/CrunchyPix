@@ -14,7 +14,7 @@ import ProjectInfo from './ProjectInfo';
 import CatalogueViewer from './CatalogueViewer/CatalogueViewer';
 import CustomLink from '@/components/CustomLink';
 import ImageBoxes from './ImageBoxes';
-import { ProjectPageProps, ProjectPageSchema } from '@/schemas';
+import { ProjectPageProps, ProjectPageSchema } from '@/lib/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import LoadingComponent from '@/components/Loading/Loading';
 import useDragHandler from '@/hooks/useDragHandler';

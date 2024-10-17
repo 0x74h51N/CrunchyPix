@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SlideCreator from './SlideCreator';
-import { slide } from '@/types/common.types';
+import { slide } from '@/lib/types/common.types';
 import { motion } from 'framer-motion';
 import useDragHandler from '@/hooks/useDragHandler';
 
@@ -12,17 +12,7 @@ interface FullScreenSlideProps {
 }
 
 const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const onSlideChange = (swiper: any) => {
-    setActiveIndex(swiper.realIndex);
-  };
   const { hoverStart, hoverEnd } = useDragHandler();
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setActiveIndex(0);
-    }, 1000);
-    return () => clearTimeout(timeout);
-  }, []);
 
   return (
     <motion.div
@@ -37,7 +27,6 @@ const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
           disableOnInteraction: false,
         }}
         loop
-        onSlideChange={onSlideChange}
         centeredSlides={true}
         className={`text-center bg-stone-900 ${className} !cursor-none`}
         lazyPreloadPrevNext={1}

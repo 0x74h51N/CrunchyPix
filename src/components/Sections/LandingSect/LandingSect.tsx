@@ -7,7 +7,7 @@ import { RootState } from '@/store';
 import { SocialIcons } from '../../SocialIcons';
 import TypingText from '../../typeText';
 import useFilteredData from '@/hooks/useFilteredData';
-import { IconProps, IconSchema, SectionsTypes } from '@/schemas';
+import { IconProps, IconSchema, SectionsTypes } from '@/lib/schemas';
 import { memo, useMemo } from 'react';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import FsLoading from '@/components/Loading/FsLoading';

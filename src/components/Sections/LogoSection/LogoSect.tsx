@@ -1,7 +1,7 @@
 'use client';
 import LogoSlider from '../../Slider/LogoSlide';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import { LogoSlideSchema, LogoSlideType } from '@/schemas';
+import { LogoSlideSchema, LogoSlideType } from '@/lib/schemas';
 import { motion } from 'framer-motion';
 import TitleText from '../TitleText';
 import { memo } from 'react';

@@ -1,4 +1,4 @@
-import { SubSectionType } from '@/schemas';
+import { SubSectionType } from '@/lib/schemas';
 import React, { useMemo } from 'react';
 
 const VerticalTimeline = ({ events }: { events: SubSectionType[] }) => {

@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
 import { memo, useEffect, useMemo, useRef, useState } from 'react';
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps } from '@/lib/schemas';
 import SlideMaker from './SlideMaker';
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
@@ -18,7 +18,7 @@ const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
     return 0;
   });
 
-  const onSlideChange = (swiper: any) => {
+  const onSlideChange = (swiper: SwiperCore) => {
     setActiveIndex(swiper.realIndex);
   };
 

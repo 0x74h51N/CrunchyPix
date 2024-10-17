@@ -1,7 +1,7 @@
 import LogoImage from '@/components/LogoImage';
 import { useTranslation } from 'react-i18next';
 import Image from 'next/image';
-import { ProjectCardProps } from '@/schemas';
+import { ProjectCardProps } from '@/lib/schemas';
 
 const ProjectInfo = ({
   ProjectInfo,

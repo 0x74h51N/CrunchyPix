@@ -1,4 +1,9 @@
 {
+  "meta": {
+    "title": "Blog",
+    "description": "Modern web geliştirme çözümleri, güvenilir makale referansları, ayrıntılı eğitimler ve web geliştiriciler için örnek projeler sunar.",
+    "keywords": "Tahsin Önemli, web geliştirme, front-end mühendisliği, JavaScript, TypeScript, React, Next.js, SEO, kodlama eğitimleri, örnek projeler, modern web çözümleri, 0x74h51N, yazılım geliştirme, programlama"
+  },
   "toc": "İçindekiler",
   "blog-post": {
     "recommend": "Önerilen Gönderiler",

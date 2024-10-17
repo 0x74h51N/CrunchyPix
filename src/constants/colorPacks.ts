@@ -1,4 +1,4 @@
-import { ColorPacks } from '@/types/common.types';
+import { ColorPacks } from '@/lib/types/common.types';
 
 export const colorPacks: ColorPacks = {
   purpy: ['#6a7fff', '#ff8c8c', '#88c34a', '#f4d35e'],

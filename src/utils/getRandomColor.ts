@@ -1,4 +1,4 @@
-import { ColorType } from '@/types/common.types';
+import { ColorType } from '@/lib/types/common.types';
 import { randomColor } from './randomColors';
 import { colorPacks } from '@/constants/colorPacks';
 

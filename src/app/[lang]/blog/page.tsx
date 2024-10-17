@@ -7,22 +7,10 @@ import { components } from '@/app/[lang]/blog/slices';
 import { PostCard } from './components/PostCard';
 import { Locales } from '@/i18n/settings';
 import { langMap } from '@/utils/langMap';
+import { generatePageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
-  const home = await client.getByUID('page', 'home');
-
-  return {
-    description: home.data.meta_description,
-    openGraph: {
-      title: home.data.meta_title || undefined,
-      images: [
-        {
-          url: home.data.meta_image.url || '',
-        },
-      ],
-    },
-  };
+  return generatePageMetadata('blog');
 }
 
 export default async function Index({ params }: { params: { lang: Locales } }) {

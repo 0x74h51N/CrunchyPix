@@ -7,12 +7,19 @@ import FlipButton from './FlipButton';
 import { CldImage } from 'next-cloudinary';
 import { getFlipBookConfig } from './config';
 
+interface FlipBookRefType {
+  pageFlip: () => {
+    flipNext: () => void;
+    flipPrev: () => void;
+  };
+}
+
 const CatalogueViewer = ({
   Item,
 }: {
   Item: { folderPath: string; pageNumber: string };
 }) => {
-  const flipBookRef = useRef<any>(null);
+  const flipBookRef = useRef<FlipBookRefType | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [mouseEvent, setMouseEvent] = useState(false);
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);

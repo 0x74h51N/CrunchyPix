@@ -1,5 +1,4 @@
-import { IconProps } from '@/schemas';
-import { RichTextField } from '@prismicio/types';
+import { IconProps } from '@/lib/schemas';
 
 export type Links = {
   href: string;

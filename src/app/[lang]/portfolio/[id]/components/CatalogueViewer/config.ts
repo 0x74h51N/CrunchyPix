@@ -1,5 +1,3 @@
-import { RootState } from '@/store';
-import { useSelector } from 'react-redux';
 import { CSSProperties } from 'react';
 
 interface FlipBookConfig {

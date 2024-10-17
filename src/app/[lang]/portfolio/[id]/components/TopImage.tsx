@@ -1,5 +1,5 @@
 import IconButton from '@/components/Buttons/IconButton';
-import { IconProps } from '@/schemas';
+import { IconProps } from '@/lib/schemas';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';

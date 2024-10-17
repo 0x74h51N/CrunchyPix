@@ -2,7 +2,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 import LogoImage from '../LogoImage';
-import { LogoSlideType } from '@/schemas';
+import { LogoSlideType } from '@/lib/schemas';
 import { useMemo } from 'react';
 
 const LogoSlider = ({ data }: { data: LogoSlideType[] }) => {

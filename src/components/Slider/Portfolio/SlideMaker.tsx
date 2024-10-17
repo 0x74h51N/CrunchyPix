@@ -1,7 +1,6 @@
 import IconButton from '@/components/Buttons/IconButton';
 import LogoImage from '@/components/LogoImage';
-import useDragHandler from '@/hooks/useDragHandler';
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps } from '@/lib/schemas';
 import { setSlide } from '@/store/redux/selectedSlide';
 import { CldImage } from 'next-cloudinary';
 import React, { memo } from 'react';

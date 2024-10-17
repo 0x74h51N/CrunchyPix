@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { memo, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { CldImage } from 'next-cloudinary';
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps } from '@/lib/schemas';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { usePathname } from 'next/navigation';

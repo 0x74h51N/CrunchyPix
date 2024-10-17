@@ -1,4 +1,4 @@
-import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
+import { PortfolioItemProps, PortfolioItemSchema } from '@/lib/schemas';
 import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
 import { notFound } from 'next/navigation';
 import Project from './components/Project';

@@ -3,7 +3,7 @@ import React, { memo, useEffect, useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import breaks from 'remark-breaks';
 import CustomLink from '@/components/CustomLink';
-import { PoliciesSchema, PoliciesTypes } from '@/schemas';
+import { PoliciesSchema, PoliciesTypes } from '@/lib/schemas';
 import i18next, { getLocale } from '@/i18n/client';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
 import { useTranslation } from 'react-i18next';

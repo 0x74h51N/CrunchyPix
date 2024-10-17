@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { Option } from '@/types/common.types';
+import { Option } from '@/lib/types/common.types';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';

@@ -3,10 +3,6 @@ import i18n, { useClientLanguageSetup } from './client';
 import { I18nextProvider } from 'react-i18next';
 import { Locales } from './settings';
 
-type Props = {
-  children: React.ReactNode;
-};
-
 export const AppI18nProvider = function ({
   children,
   lang,

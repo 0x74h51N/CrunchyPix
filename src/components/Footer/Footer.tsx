@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { footerLinks } from '@/constants';
 import FooterColumn from './FooterColumn';
 import Contact from './Contact';
-import { IconProps, IconSchema } from '@/schemas';
+import { IconProps, IconSchema } from '@/lib/schemas';
 import { useMemo } from 'react';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { useTranslation } from 'react-i18next';

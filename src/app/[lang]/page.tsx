@@ -5,7 +5,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { sectionsData } from '@/constants/sections';
-import { SectionsSchema, SectionsTypes } from '@/schemas';
+import { SectionsSchema, SectionsTypes } from '@/lib/schemas';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { memo, useEffect, useState } from 'react';
 import filterByLanguage from '@/lib/utils/filterByLanguage';

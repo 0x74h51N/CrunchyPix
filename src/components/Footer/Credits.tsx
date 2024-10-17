@@ -1,5 +1,5 @@
 import IconButton from '../Buttons/IconButton';
-import { IconProps } from '@/schemas';
+import { IconProps } from '@/lib/schemas';
 import { RiCopyleftLine } from 'react-icons/ri';
 
 const Credits = ({ data }: { data: IconProps[] }) => {

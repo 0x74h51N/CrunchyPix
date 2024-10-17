@@ -22,7 +22,6 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
   @apply repatingLines max-w-[100vw] overflow-x-hidden;
   cursor: auto;
 }

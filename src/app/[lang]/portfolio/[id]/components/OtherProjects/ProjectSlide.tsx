@@ -3,7 +3,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import SwiperCore from 'swiper';
 import PortfolioItem from '../../../components/PortfolioItem';
 import { useRef, useEffect, memo, useMemo } from 'react';
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps } from '@/lib/schemas';
 import 'swiper/css';
 import 'swiper/css/pagination';
 

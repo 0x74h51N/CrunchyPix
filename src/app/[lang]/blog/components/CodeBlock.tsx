@@ -8,7 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import MarkdownTable from './MarkdownTable';
 import { getTheme } from '@/app/actions/setThemeAction';
-import { CodeLanguages } from '@/types/common.types';
+import { CodeLanguages } from '@/lib/types/common.types';
 
 interface CodeBlockProps {
   language: CodeLanguages;

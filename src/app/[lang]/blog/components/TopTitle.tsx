@@ -15,7 +15,7 @@ import {
   BsTerminal,
 } from 'react-icons/bs';
 import { PiTreeStructure } from 'react-icons/pi';
-import { CodeLanguages } from '@/types/common.types';
+import { CodeLanguages } from '@/lib/types/common.types';
 
 const iconComponents: { [K in CodeLanguages]: IconType | null } = {
   typescript: BiLogoTypescript,

@@ -1,5 +1,5 @@
 import { ColorfulHover } from './ColorfulHover';
-import { generateSpanType } from '@/types/common.types';
+import { generateSpanType } from '@/lib/types/common.types';
 
 export const generateSpans = ({
   text,

@@ -2,7 +2,7 @@ import ColorfulBorder from './ColorfulBorder';
 import IconButton from './Buttons/IconButton';
 import { IoIosArrowDroprightCircle } from 'react-icons/io';
 import { Key, memo } from 'react';
-import { CardsTypes, IconProps } from '@/schemas';
+import { CardsTypes, IconProps } from '@/lib/schemas';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 

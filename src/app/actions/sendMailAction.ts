@@ -1,5 +1,5 @@
 'use server';
-import { ContactSchema, ContactTypes } from '@/schemas';
+import { ContactSchema, ContactTypes } from '@/lib/schemas';
 import nodemailer from 'nodemailer';
 import xss from 'xss';
 

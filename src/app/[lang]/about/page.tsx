@@ -1,4 +1,3 @@
-import Construction from '@/components/Construction';
 import { generatePageMetadata } from '@/lib/metadata';
 import { Metadata } from 'next';
 import AboutMe from './components/AboutMe';

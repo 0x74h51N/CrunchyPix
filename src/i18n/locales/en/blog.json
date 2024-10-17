@@ -1,4 +1,9 @@
 {
+  "meta": {
+    "title": "Blog",
+    "description": "Featuring modern web development solutions, trustworthy article references, in-depth tutorials, and sample projects for web developers.",
+    "keywords": "Tahsin Önemli, web development, front-end engineering, JavaScript, TypeScript, React, Next.js, SEO, coding tutorials, sample projects, modern web solutions, 0x74h51N, software development, programming"
+  },
   "toc": "Table of Content",
   "blog-post": {
     "recommend": "Recommended Posts",
