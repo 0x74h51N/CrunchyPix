@@ -2,7 +2,7 @@ import React, { memo, useMemo } from 'react';
 import { generateSpans } from '../GenerateSpans';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
-import { SectionsTypes } from '@/schemas';
+import { SectionsTypes } from '@/lib/schemas';
 import useFilteredData from '@/hooks/useFilteredData';
 import { motion } from 'framer-motion';
 import { fadeIn, textVariant } from '@/utils/motion';

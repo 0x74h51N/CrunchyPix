@@ -1,5 +1,5 @@
 'use client';
-import { ColorfulHoverType } from '@/types/common.types';
+import { ColorfulHoverType } from '@/lib/types/common.types';
 import { getRandomColor } from '@/utils/getRandomColor';
 import { useAnimation, motion } from 'framer-motion';
 import { useState, useEffect } from 'react';

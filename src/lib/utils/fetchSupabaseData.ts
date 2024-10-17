@@ -1,21 +1,20 @@
 import supabase from '@/lib/supabaseClient';
 import { ZodError, ZodSchema } from 'zod';
-import { getCachedData } from './cache';
-import xss from 'xss';
+import { unstable_cache } from 'next/cache';
 
 type Filter = {
   column: string;
   value: string;
 };
 
-export const fetchSupabaseData = async <T>(
-  schemaPath: string,
-  table: string,
-  select: string,
-  schema: ZodSchema<T>,
-  filters?: Filter[],
-): Promise<T[]> => {
-  return getCachedData(table, async () => {
+export const fetchSupabaseData = unstable_cache(
+  async <T>(
+    schemaPath: string,
+    table: string,
+    select: string,
+    schema: ZodSchema<T>,
+    filters?: Filter[],
+  ): Promise<T[] | undefined> => {
     let query = supabase.schema(schemaPath).from(table).select(select);
     if (filters) {
       filters.forEach((filter) => {
@@ -31,20 +30,9 @@ export const fetchSupabaseData = async <T>(
       throw new Error('No data returned');
     }
 
-    const sanitizedData = data.map((item) => {
-      const sanitizedItem = {} as any;
-      for (const key in item) {
-        if (Object.prototype.hasOwnProperty.call(item, key)) {
-          const value = item[key];
-          sanitizedItem[key] = typeof value === 'string' ? xss(value) : value;
-        }
-      }
-      return sanitizedItem;
-    });
-
     try {
-      const validatedData = schema.array().parse(sanitizedData);
-      return validatedData;
+      const validatedData = schema.array().safeParse(data);
+      if (validatedData.success) return validatedData.data;
     } catch (err) {
       if (err instanceof ZodError) {
         throw new Error('Validation error: ' + err);
@@ -52,5 +40,7 @@ export const fetchSupabaseData = async <T>(
         throw new Error('Unknown validation error');
       }
     }
-  });
-};
+  },
+  ['schemaPath', 'table', 'select', 'filters'],
+  { revalidate: 300 },
+);

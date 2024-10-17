@@ -1,4 +1,4 @@
-import { asText, Content } from '@prismicio/client';
+import { Content } from '@prismicio/client';
 import { PrismicRichText, SliceComponentProps } from '@prismicio/react';
 import { richTextComponents } from '../../components/RichText';
 

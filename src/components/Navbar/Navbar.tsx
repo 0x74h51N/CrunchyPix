@@ -52,7 +52,7 @@ const Navbar = () => {
   });
 
   const navClassName = useMemo(() => {
-    let baseClass = clsx(
+    const baseClass = clsx(
       fixed ? 'fixed' : 'absolute',
       isBlog ? 'cursor-auto' : 'cursor-none ',
       blogChild

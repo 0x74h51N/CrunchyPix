@@ -3,7 +3,7 @@ type FilterByLanguageProps<T> = {
   language: string;
   localPath: keyof T | '';
 };
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const filterByLanguage = <T extends { [key: string]: any }>({
   items,
   language,

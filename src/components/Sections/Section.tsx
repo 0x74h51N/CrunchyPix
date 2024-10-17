@@ -1,6 +1,6 @@
 'use client';
 import { createRef, memo, useEffect, useRef, useState } from 'react';
-import { SectionData } from '@/types/common.types';
+import { SectionData } from '@/lib/types/common.types';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { handleScroll } from '@/utils/handleScroll';
 import { useSelector } from 'react-redux';

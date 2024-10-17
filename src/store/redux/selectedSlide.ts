@@ -1,4 +1,4 @@
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps } from '@/lib/schemas';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface SelectedSlideState {

@@ -38,7 +38,7 @@ export async function generateMetadata({
     .catch(() => notFound());
 
   return {
-    title: prismic.asText(page.data.title),
+    title: 'Blog | ' + prismic.asText(page.data.title),
     description: page.data.meta_description,
     keywords: page.tags.join(', '),
     icons: {
@@ -77,7 +77,7 @@ export default async function Page({ params }: { params: Params }) {
     .getByUID('blog_post', params.uid, { lang: prismicioLanguacio })
     .catch(() => notFound());
 
-  let recomendPosts = await client.getAllByType('blog_post', {
+  const recomendPosts = await client.getAllByType('blog_post', {
     lang: prismicioLanguacio,
     graphQuery,
     orderings: [
@@ -144,8 +144,13 @@ export default async function Page({ params }: { params: Params }) {
         <div className="min-h-14"></div>
       </section>
       {recomendPosts.length > 0 && (
-        <div className="w-full max-w-[1200px] flexCenter self-center flex-col gap-3 md:px-8 px-2">
-          <h2 className="font-bold h2 w-full">{t('blog-post.recommend')}</h2>
+        <div className="w-full max-w-[1300px] flexCenter self-center flex-col gap-3 md:px-8 px-4">
+          <div className="self-start max-sm:w-full">
+            <h2 className="font-bold antialiased text-3xl w-full sm:pr-10">
+              {t('blog-post.recommend')}
+            </h2>
+            <hr className="h-1 w-full" />
+          </div>
           {recomendPosts.length < 3 ? (
             <section className="flex flex-wrap gap-4 w-full xmd:justify-start justify-center items-center">
               {recomendPosts.map((post, i) => (

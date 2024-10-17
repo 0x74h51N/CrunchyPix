@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-import { Links } from '@/types/common.types';
+import { Links } from '@/lib/types/common.types';
 import { memo } from 'react';
 import clsx from 'clsx';
 import { RootState } from '@/store';

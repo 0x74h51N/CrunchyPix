@@ -29,11 +29,16 @@ export const useOutsideClick = (
     }
 
     document.addEventListener('click', handleOutsideClick);
-    scroll && window.addEventListener('scroll', handleScroll);
+
+    if (scroll) {
+      window.addEventListener('scroll', handleScroll);
+    }
 
     return () => {
       document.removeEventListener('click', handleOutsideClick);
-      window.removeEventListener('scroll', handleScroll);
+      if (scroll) {
+        window.removeEventListener('scroll', handleScroll);
+      }
     };
-  }, [ref, callback]);
+  }, [ref, callback, scroll]);
 };

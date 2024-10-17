@@ -3,10 +3,10 @@ import { Metadata } from 'next';
 
 export async function generatePageMetadata(page: string): Promise<Metadata> {
   const { t } = await createTranslation(page);
+  const locale = getLocale();
 
   const baseUrl = 'https://crunchypix.com';
-  const pageUrl = `${baseUrl}/${page === 'home' ? '' : page}`;
-  const locale = getLocale();
+  const pageUrl = `${baseUrl}/${locale}${page === 'home' ? '' : '/' + page}`;
   return {
     title: t('meta.title'),
     description: t('meta.description'),

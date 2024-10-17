@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Captcha from './Captcha';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { sendEmail } from '@/app/actions/sendMailAction';
-import { ContactTypes } from '@/schemas';
+import { ContactTypes } from '@/lib/schemas';
 
 const Contact = () => {
   const {

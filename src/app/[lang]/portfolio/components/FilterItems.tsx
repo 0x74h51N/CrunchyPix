@@ -1,14 +1,8 @@
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps } from '@/lib/schemas';
 import Dropdown from '@/components/Buttons/Dropdown';
-import { Option } from '@/types/common.types';
+import { Option } from '@/lib/types/common.types';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];

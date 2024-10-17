@@ -7,7 +7,7 @@ import { polygonIn } from '@/utils/motion';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
 import useFilteredData from '@/hooks/useFilteredData';
-import { CardsTypes, SectionsTypes } from '@/schemas';
+import { CardsTypes, SectionsTypes } from '@/lib/schemas';
 import TitleText from '../TitleText';
 import { memo, useEffect, useMemo, useRef } from 'react';
 import SwiperCore from 'swiper';

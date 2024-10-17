@@ -26,6 +26,7 @@ describe('Toc Component', () => {
     render(<Toc slices={mockSlices} title={mockTitle} />);
 
     // Check only for headings (skip paragraphs and non-heading elements)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (mockSlices[0] as RichTextSlice)!.primary.content.forEach((el: any) => {
       if (el.type.startsWith('heading')) {
         const links = screen.getAllByRole('link', {
@@ -47,6 +48,7 @@ describe('Toc Component', () => {
       <>
         <div>
           {(mockSlices[0] as RichTextSlice)!.primary.content.map(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (node: any, index: number) => {
               const slugifyText = slugifyHeading(node.text);
               if (node.type === 'heading1') {
@@ -78,6 +80,7 @@ describe('Toc Component', () => {
       </>,
     );
     await waitFor(() => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (mockSlices[0] as RichTextSlice)!.primary.content.forEach((el: any) => {
         const links = screen.getAllByRole('link', {
           name: new RegExp(el.text, 'i'),

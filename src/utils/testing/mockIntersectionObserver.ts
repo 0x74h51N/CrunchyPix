@@ -1,6 +1,8 @@
 export function mockIntersectionObserver(
   isIntersectingItems?: Array<boolean>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): [jest.MockedObject<IntersectionObserver>, jest.MockedFn<any>] {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const intersectionObserverInstanceMock: any = {
     root: null,
     rootMargin: '',
@@ -50,6 +52,7 @@ export function mockIntersectionObserver(
 
   return [
     intersectionObserverInstanceMock,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     window.IntersectionObserver as jest.MockedFn<any>,
   ];
 }

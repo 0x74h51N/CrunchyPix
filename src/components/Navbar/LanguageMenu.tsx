@@ -1,6 +1,6 @@
 'use client';
 import i18n from '@/i18n/client';
-import { DE, TR, GB } from 'country-flag-icons/react/3x2';
+import { TR, GB } from 'country-flag-icons/react/3x2';
 import { switchLocaleAction } from '@/app/actions/switch-locale';
 import Dropdown from '../Buttons/Dropdown';
 import { useEffect, useState } from 'react';

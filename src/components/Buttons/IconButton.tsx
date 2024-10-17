@@ -34,7 +34,7 @@ import { DiResponsive } from 'react-icons/di';
 import { TfiLayoutAccordionList } from 'react-icons/tfi';
 import { SiBluesky } from 'react-icons/si';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
-import { IconProps } from '@/schemas';
+import { IconProps } from '@/lib/schemas';
 import { FaXTwitter } from 'react-icons/fa6';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';

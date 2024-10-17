@@ -1,6 +1,6 @@
 import PolicyCreator from '@/app/[lang]/policies/[id]/components/PolicyCreator';
 import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
-import { PoliciesTypes, PoliciesSchema } from '@/schemas';
+import { PoliciesTypes, PoliciesSchema } from '@/lib/schemas';
 import { notFound } from 'next/navigation';
 import { generatePageMetadata } from '@/lib/metadata';
 import { Metadata } from 'next';
@@ -41,18 +41,22 @@ const PolicyPage = async ({ params }: { params: { id: string } }) => {
     `*`,
     PoliciesSchema,
   );
-  const policyItem = policyItems.find((item) => item.policy_name === params.id);
-  if (!policyItem) {
-    notFound();
-  } else {
-    return (
-      <div className=" flex justify-center cursor-none items-center w-full h-auto  md:pb-20 pb-5 min-h-[100svh]">
-        <div className="relative bg-cool-gray-900  md:px-28 md:py-16 p-5 rounded-xl max-w-[1100px] z-0 h-auto">
-          <PolicyCreator id={params.id} />
-        </div>
-      </div>
+  if (policyItems) {
+    const policyItem = policyItems.find(
+      (item) => item.policy_name === params.id,
     );
-  }
+    if (!policyItem) {
+      notFound();
+    } else {
+      return (
+        <div className=" flex justify-center cursor-none items-center w-full h-auto  md:pb-20 pb-5 min-h-[100svh]">
+          <div className="relative bg-cool-gray-900  md:px-28 md:py-16 p-5 rounded-xl max-w-[1100px] z-0 h-auto">
+            <PolicyCreator id={params.id} />
+          </div>
+        </div>
+      );
+    }
+  } else notFound();
 };
 
 export default PolicyPage;

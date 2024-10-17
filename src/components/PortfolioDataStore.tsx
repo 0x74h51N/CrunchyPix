@@ -1,7 +1,7 @@
 'use client';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { PortfolioItemProps, PortfolioItemSchema } from '@/schemas';
+import { PortfolioItemProps, PortfolioItemSchema } from '@/lib/schemas';
 import { setPortfolioItems } from '@/store/redux/portfolioItems';
 import i18next from '@/i18n/client';
 import filterByLanguage from '@/lib/utils/filterByLanguage';

@@ -1,6 +1,6 @@
 import { ColorfulHover } from './ColorfulHover';
-import { ColorfulHoverType } from '@/types/common.types';
-import { IconProps } from '@/schemas';
+import { ColorfulHoverType } from '@/lib/types/common.types';
+import { IconProps } from '@/lib/schemas';
 import IconButton from './Buttons/IconButton';
 import { Fragment } from 'react';
 
@@ -26,7 +26,7 @@ export const SocialIcons = ({
         const y = -iconRadius * Math.sin(angle);
 
         const iconStyle: React.CSSProperties = {
-          position: 'absolute' as 'absolute',
+          position: 'absolute',
           transform: `translate(${x}px, ${y}px)`,
           fontSize: '50px',
           color: 'white',

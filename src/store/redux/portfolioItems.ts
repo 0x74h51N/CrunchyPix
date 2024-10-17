@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps } from '@/lib/schemas';
 
 interface PortfolioState {
   items: PortfolioItemProps[];

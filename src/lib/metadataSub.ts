@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { createTranslation, getLocale } from '@/i18n/server';
 import { fetchSupabaseData } from './utils/fetchSupabaseData';
-import { ProjectPageProps, ProjectPageSchema } from '@/schemas';
+import { ProjectPageProps, ProjectPageSchema } from '@/lib/schemas';
 import { getCldImageUrl } from 'next-cloudinary';
 import { notFound } from 'next/navigation';
 

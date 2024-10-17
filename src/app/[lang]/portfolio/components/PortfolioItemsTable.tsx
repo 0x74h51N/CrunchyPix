@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import PortfolioItem from './PortfolioItem';
 import { CldImage } from 'next-cloudinary';
 import { polygonIn } from '@/utils/motion';
-import { PortfolioItemProps } from '@/schemas';
+import { PortfolioItemProps } from '@/lib/schemas';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 
@@ -34,7 +34,7 @@ const PortfolioItemsTable = () => {
         />
         <div className="relative grid xl:grid-cols-2 grid-cols-1 max-md:gap-5 h-auto overflow-hidden md:gap-14 gap-0 pb-10 pt-8 transition-all ease-in-out duration-300 min-h-[850px]">
           {filteredItems.length > 0 ? (
-            filteredItems.map((item: any, index: number) => {
+            filteredItems.map((item: PortfolioItemProps, index: number) => {
               const initial = index > 1 ? { y: 30, x: 0 } : { y: 0, x: 30 };
 
               return (

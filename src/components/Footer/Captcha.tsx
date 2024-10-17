@@ -3,7 +3,6 @@
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import Script from 'next/script';
 import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 
 /**
  * Coppied from https://gist.github.com/suhaotian/c2851d1938da31d349e8cfe65c97c47e
@@ -29,10 +28,6 @@ export default function Captcha(
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const widgetID = useRef<string>();
   const [isError, setIsError] = useState(false);
-
-  function retry() {
-    setIsError(false);
-  }
 
   function onError(e?: string | Error) {
     console.log(`Captcha error`, e);
