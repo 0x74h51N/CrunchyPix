@@ -64,7 +64,7 @@
     "@types/debug": "^4.1.12",
     "@types/jest": "^29.5.13",
     "@types/next": "^9.0.0",
-    "@types/node": "^20.14.14",
+    "@types/node": "^22.9.0",
     "@types/nodemailer": "^6.4.15",
     "@types/page-flip": "^2.0.3",
     "@types/prop-types": "^15.7.12",
