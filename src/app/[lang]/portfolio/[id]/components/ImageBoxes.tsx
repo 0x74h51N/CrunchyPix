@@ -23,6 +23,7 @@ const ImageBoxes = ({ _id }: { _id: string }) => {
             height={1200}
             src={`crunchypix/portfolioItems/boxes/${_id.replaceAll('_', '').toLowerCase() + image}`}
             alt={_id}
+            format="avif"
             quality="auto"
             fetchPriority="auto"
             key={index + ' image'}

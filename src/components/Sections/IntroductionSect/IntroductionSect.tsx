@@ -10,6 +10,7 @@ const IntroductionSect = () => {
       <CldImage
         src="crunchypix/headColor.png"
         alt="Photo"
+        format="avif"
         quality={100}
         width={250}
         height={250}
