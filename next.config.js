@@ -5,6 +5,7 @@ module.exports = {
     domains: ['res.cloudinary.com'],
   },
   experimental: {
+    reactCompiler: true,
     serverActions: {
       allowedOrigins: ['crunchypix.com', 'www.crunchypix.com'],
     },

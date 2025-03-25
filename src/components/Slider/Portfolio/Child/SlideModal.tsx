@@ -1,35 +1,36 @@
-import { RootState } from '@/store';
-import { clearSlide } from '@/store/redux/selectedSlide';
-import React, { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import IconButton from '@/components/Buttons/IconButton';
-import { motion, AnimatePresence } from 'framer-motion';
-import Loading from '@/components/Loading/Loading';
-import Link from 'next/link';
 import CancelButton from '@/components/Buttons/CancelButton';
-import { sliderChange } from '@/store/redux/isSlider';
-import { CldImage } from 'next-cloudinary';
-import { useTranslation } from 'react-i18next';
-import useClickableHandlers from '@/hooks/useClickableHandlers';
+import IconButton from '@/components/Buttons/IconButton';
+import Loading from '@/components/Loading/Loading';
 import LogoImage from '@/components/LogoImage';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { PortfolioItemProps } from '@/lib/schemas';
+import { AnimatePresence, motion } from 'framer-motion';
+import { CldImage } from 'next-cloudinary';
+import Link from 'next/link';
+import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const SlideModal = () => {
-  const dispatch = useDispatch();
+const SlideModal = ({
+  setState,
+  selectedSlide,
+}: {
+  setState: React.Dispatch<
+    React.SetStateAction<PortfolioItemProps | undefined>
+  >;
+  selectedSlide: PortfolioItemProps;
+}) => {
   const { t } = useTranslation(['portfolio']);
   const [imageLoading, setImageLoading] = useState(true);
-  const isSlider = useSelector((state: RootState) => state.isSlider.slider);
   const modalRef = useRef(null);
-  const selectedSlide = useSelector(
-    (state: RootState) => state.selectedSlide.selectedSlide,
-  );
+
   const id =
     selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, '');
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
 
   const closeModal = () => {
     if (modalRef.current) {
-      dispatch(clearSlide());
+      setState(undefined);
       setTimeout(() => {
         setImageLoading(true);
       }, 300);
@@ -41,11 +42,6 @@ const SlideModal = () => {
     visible: { opacity: 1, scale: 1 },
   };
 
-  const onClickHandler = () => {
-    if (isSlider === true) {
-      dispatch(sliderChange(false));
-    }
-  };
   useOutsideClick(modalRef, closeModal);
 
   return (
@@ -53,6 +49,7 @@ const SlideModal = () => {
       {selectedSlide && (
         <div className="fixed inset-0 flex items-center justify-center backdrop-filter backdrop-blur-lg">
           <div
+            ref={modalRef}
             className={`absolute flex justify-center items-center top-1/2 left-1/2  xl:w-[75vw] h-auto w-[95vw] translate-x-[-50%] translate-y-[-50%] outline-none`}
           >
             <motion.div
@@ -69,7 +66,6 @@ const SlideModal = () => {
                 <CancelButton />
               </button>
               <CldImage
-                ref={modalRef}
                 priority
                 src={`crunchypix/PortfolioSlides/${selectedSlide._id}.png`}
                 alt={selectedSlide._id || ''}
@@ -105,7 +101,6 @@ const SlideModal = () => {
                     key={'portfolio'}
                     data-tip={t('projectSlides.title2')}
                     className="font-extralight hover:text-log-col underline underline-offset-2 cursor-none md:text-[13px] text-[10px] tooltip tooltip-right"
-                    onClick={onClickHandler}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                   >

@@ -1,4 +1,4 @@
-import HomeClient from '@/components/HomeClient';
+import { HomeClient } from '@/components/HomeClient';
 import FsLoading from '@/components/Loading/FsLoading';
 import { Locales } from '@/i18n/settings';
 import { SectionsSchema, SectionsTypes } from '@/lib/schemas';

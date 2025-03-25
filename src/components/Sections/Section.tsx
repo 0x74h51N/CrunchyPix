@@ -1,22 +1,18 @@
 'use client';
-import { createRef, memo, useEffect, useRef, useState } from 'react';
 import { SectionData } from '@/lib/types/common.types';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { handleScroll } from '@/utils/handleScroll';
-import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { ArrowButton } from '../Buttons/ArrowButton';
+import { handleScroll } from '@/utils/handleScroll';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
-
-const areEqual = (prevProps: SectionDataProps, nextProps: SectionDataProps) => {
-  return prevProps.sectionsData === nextProps.sectionsData;
-};
+import { createRef, useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { ArrowButton } from '../Buttons/ArrowButton';
 
 interface SectionDataProps {
   sectionsData: SectionData[];
 }
 
-const Section = memo(({ sectionsData }: SectionDataProps) => {
+const Section = ({ sectionsData }: SectionDataProps) => {
   const sectionRefs = useRef(
     sectionsData.map(() => createRef<HTMLDivElement>()),
   );
@@ -177,6 +173,6 @@ const Section = memo(({ sectionsData }: SectionDataProps) => {
       ))}
     </div>
   );
-}, areEqual);
+};
 Section.displayName = 'Section';
 export default Section;

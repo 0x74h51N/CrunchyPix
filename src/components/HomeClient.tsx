@@ -14,7 +14,7 @@ import 'swiper/css/pagination';
 
 type HomeClientProps = { initialSections: SectionsTypes[] };
 
-export default function HomeClient({ initialSections }: HomeClientProps) {
+export const HomeClient = ({ initialSections }: HomeClientProps) => {
   const dispatch = useDispatch();
   const sectionItems = useSelector((state: RootState) => state.section.items);
 
@@ -27,4 +27,4 @@ export default function HomeClient({ initialSections }: HomeClientProps) {
   }
 
   return <Section sectionsData={sectionsData} />;
-}
+};

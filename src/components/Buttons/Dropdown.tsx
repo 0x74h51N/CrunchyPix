@@ -1,5 +1,9 @@
 import useClickableHandlers from '@/hooks/useClickableHandlers';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { Option } from '@/lib/types/common.types';
 import { RootState } from '@/store';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 import React, {
   Dispatch,
   SetStateAction,
@@ -7,12 +11,8 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { useSelector } from 'react-redux';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { Option } from '@/lib/types/common.types';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
-import clsx from 'clsx';
-import { usePathname } from 'next/navigation';
+import { useSelector } from 'react-redux';
 
 type dropdownProps = {
   classes?: string;
@@ -175,7 +175,13 @@ const Dropdown = ({
               >
                 <div className="flex items-center gap-1">
                   {option.value}
-                  {flagMode && <span>{option.key}</span>}
+                  {flagMode && (
+                    <span>
+                      {option.key.length < 3
+                        ? option.key.toUpperCase()
+                        : option.key}
+                    </span>
+                  )}
                 </div>
               </li>
             ))}

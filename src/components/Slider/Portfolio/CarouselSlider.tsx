@@ -1,14 +1,22 @@
 'use client';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore from 'swiper';
-import { EffectCoverflow, Autoplay } from 'swiper/modules';
-import { memo, useEffect, useMemo, useRef, useState } from 'react';
 import { PortfolioItemProps } from '@/lib/schemas';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import SwiperCore from 'swiper';
+import { Autoplay, EffectCoverflow } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SlideMaker from './SlideMaker';
 
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
-const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
+const CarouselSlider = ({
+  slides,
+  setSelectedSlide,
+}: {
+  slides: PortfolioItemProps[];
+  setSelectedSlide: React.Dispatch<
+    React.SetStateAction<PortfolioItemProps | undefined>
+  >;
+}) => {
   const filteredSlides = useMemo(
     () => slides.filter((slide) => !slide.catalogue),
     [slides],
@@ -22,30 +30,33 @@ const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
     setActiveIndex(swiper.realIndex);
   };
 
-  const breakPoints = useMemo(
-    () => ({
-      0: {
-        slidesPerView: 1.2,
-      },
-      640: {
-        slidesPerView: 1.5,
-      },
-      1020: {
-        slidesPerView: 2,
-      },
-    }),
-    [],
-  );
+  const breakPoints = {
+    0: {
+      slidesPerView: 1.2,
+    },
+    640: {
+      slidesPerView: 1.5,
+    },
+    1020: {
+      slidesPerView: 2,
+    },
+  };
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.update();
     }
   }, [breakPoints]);
+
   const carouselSlides = useMemo(
     () =>
       filteredSlides.map((slide: PortfolioItemProps, index: number) => (
         <SwiperSlide key={index + 1}>
-          <SlideMaker index={index} activeIndex={activeIndex} slide={slide} />
+          <SlideMaker
+            index={index}
+            activeIndex={activeIndex}
+            slide={slide}
+            setState={setSelectedSlide}
+          />
         </SwiperSlide>
       )),
     [filteredSlides, activeIndex],
@@ -81,4 +92,4 @@ const CarouselSlider = ({ slides }: { slides: PortfolioItemProps[] }) => {
     </div>
   );
 };
-export default memo(CarouselSlider);
+export default CarouselSlider;
