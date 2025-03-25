@@ -1,96 +1,91 @@
 # Introduction
 
-This repository contains the source code for CrunchyPix, a personal website designed to showcase skills and portfolio projects. Built from scratch using Next.js 14 and TypeScript, the website supports multiple languages through i18next, with localization handled on both the server and client sides.
-
-Styling is implemented using Tailwind CSS and DaisyUI, alongside custom UI elements and components. The project demonstrates the use of modular, dynamic, and custom components to create a long-lasting and easily adaptable design.
+This repository contains the source code for CrunchyPix, a personal website designed to showcase skills and portfolio projects. Built from scratch using Next.js 15 and TypeScript, the website supports multiple languages through i18next with localization handled on both the server and client sides. The design is modular and dynamic, ensuring long-term adaptability.
 
 # Content Management
 
-- Supabase PostgreSQL: Site content is managed using Supabase with PostgreSQL tables, ensuring secure and efficient data handling.
-- Prismic Headless CMS: The blog section is integrated with Prismic Headless CMS, allowing content creation and management directly through the CMS.
+- **Supabase PostgreSQL**: Site content is managed via Supabase with PostgreSQL tables, ensuring secure and efficient data handling.
+- **Prismic Headless CMS**: The blog content is managed through Prismic, enabling direct content creation and management via a user-friendly interface.
 
-## Blog Functionality
+# Blog Functionality
 
-Incremental Static Regeneration (ISR): Employed for the blog pages to efficiently update content without the need for full site rebuilds.
+The blog section is engineered for performance and seamless updates:
 
-- Webhooks and Rebuild Pipeline:
+- **Incremental Static Regeneration (ISR)**: Updates blog pages efficiently without requiring a full site rebuild.
+- **Webhooks and Rebuild Pipeline**:
+  - **Prismic Webhooks**: Automatically trigger cache revalidation when content is updated.
+  - **Cron Jobs**: Nightly rebuilds refresh static parameters to promptly reflect new content.
+- **Enhanced User Experience**:
+  - Custom slices and unique styles create engaging, tailor-made blog posts.
+  - Specialized UX elements, such as adjustable font sizes and expandable text frames, boost reader engagement.
+  - Minimization of Client-Side Rendering (CSR) improves performance and reduces load times.
 
-  - A webhook is set up on Prismic to trigger cache revalidation whenever content is updated.
-  - A rebuild pipeline is configured to refresh staticParams by rebuilding the site, ensuring that new content and changes are reflected promptly.
+# 📦 Technology Stack
 
-- Optimized User Experience:
-  - Special design and UX elements have been developed in the blog section to enhance reader engagement.
-  - Client-Side Rendering (CSR) is minimized to improve performance and reduce load times.
+### Frameworks and Languages
 
-## 📦 Technology Stack
+- **Next.js 15**: Provides server-side rendering, static site generation, and dynamic routing.
+- **TypeScript**: Enhances developer experience with static typing.
+- **React**: Powers the component-based architecture for interactive UIs.
 
-- ### Frameworks and Languages
+### Styling
 
-  - **Next.js 14**: Used for building the application with server-side rendering, static site generation, and dynamic routing.
-  - **TypeScript**: Provides static typing for improved developer experience and code reliability.
-  - **React**: Powers the component-based architecture for building interactive user interfaces.
+- **Tailwind CSS**: Used for rapid, customizable styling.
+- **DaisyUI**: Extends Tailwind with pre-built UI components.
+- **Custom UI Elements**: Developed to deliver unique user interactions and design enhancements.
 
-- ### Styling
+### State Management
 
-  - **Tailwind CSS**: Utilized for rapid and customizable styling throughout the site.
-  - **DaisyUI**: Extends Tailwind CSS with pre-built UI components to accelerate development.
-  - **Custom UI Elements**: Developed for unique user interactions and to enhance the overall design.
+- **Redux & Redux Toolkit**: Manages complex application state, including language preferences and custom cursor interactions.
 
-- ### State Management
+### Data and Content Management
 
-  - **Redux**: Manages complex application state, including language preferences and custom cursor interactions.
+- **Supabase (PostgreSQL)**: Provides secure data storage and retrieval.
+- **Prismic Headless CMS**: Facilitates blog content creation with custom slices for unique post structures.
+- **Zod**: Ensures data integrity through schema validation.
 
-- ### Data and Content Management
+### Animations & UI Enhancements
 
-  - **Supabase (PostgreSQL)**: Manages site content with secure data storage and retrieval using PostgreSQL tables.
-  - **Prismic Headless CMS**: Integrated for managing blog content, allowing for content creation through the CMS with custom slices for unique styles and structures.
-  - **Zod**: Used for schema validation to ensure data integrity when fetching and processing data.
+- **Framer Motion**: Implements smooth, engaging animations to bring the website to life.
+- **React Markdown**: Renders markdown content for blog posts and documentation.
+- **React Syntax Highlighter**: Displays code snippets with proper formatting and highlighting.
+- **React Pageflip**: Provides interactive page-flipping effects for dynamic content presentation.
+- **Swiper**: Enables the creation of responsive sliders and carousels.
 
-- ### Animations
+### Form Handling and Validation
 
-  - **Framer Motion**: Implements smooth and engaging animations, adding life to the website and enhancing user engagement.
+- **React Hook Form**: Efficiently manages form state and validation.
+- **Cloudflare Turnstile**: Validates form submissions to prevent spam.
+- **Nodemailer**: Sends emails via SMTP as part of the contact form functionality.
 
-- ### Form Handling and Validation
+### Internationalization
 
-  - **React Hook Form**: Manages form state and validation efficiently.
-  - **Cloudflare Turnstile**: Validates form submissions to prevent spam and ensure security.
-  - **Nodemailer**: Sends emails via SMTP service as part of the contact form functionality.
-  - **Next.js Server Actions**: Processes form data on the server side, integrating with email services and automation tools like Zoho Campaign.
+- **i18next & React-i18next**: Seamlessly integrate localization across the application.
 
-- ### Internationalization
+### Image Optimization
 
-  - **i18next**: Manages multiple languages, enhancing the global user experience.
-  - **React-i18next**: Integrates i18next with React components for seamless localization.
+- **Cloudinary**: Optimizes images to ensure fast loading times while maintaining high visual quality.
 
-- ### Image Optimization
+### DevOps and Security
 
-  - **Cloudinary**: Optimizes images to ensure fast loading times and maintains high-quality visuals across the site.
+- **Cloudflare**: Handles DNS routing, Web Application Firewall (WAF), DDoS protection, SSL certificates, and HSTS configuration.
+- **Vercel**: Manages deployment with Continuous Integration/Continuous Deployment (CI/CD) workflows.
+- **GitHub**: Facilitates version control and collaboration.
+- **Dependabot & CodeQL**: Enhance security and maintainability through dependency management and code scanning.
 
-- ### Blog Functionality
+### Utilities
 
-  - **Incremental Static Regeneration (ISR)**: Used for blog pages to efficiently update content without full site rebuilds.
-  - **Webhooks and Rebuild Pipeline**:
-    - **Prismic Webhooks**: Trigger cache revalidation whenever content is updated.
-    - **Cron Jobs**: Set up to refresh `staticParams` by rebuilding the site nightly, ensuring new content is promptly reflected.
-  - **Custom Slices and Styles**: Applied in Prismic to create unique styles and structures within blog posts.
-  - **Enhanced UX Elements**: Developed in the blog section, including menu components for adjusting font size and expanding text frames.
-  - **Minimized CSR**: Client-Side Rendering is minimized to improve performance and reduce load times.
+- **React Icons**: Offers a library of customizable icons.
+- **CLSx**: A utility for constructing conditional `className` strings.
+- **XSS**: Sanitizes user input to prevent Cross-Site Scripting attacks.
+- **Remark Plugins**:
+  - **remark-gfm**: Supports GitHub Flavored Markdown.
+  - **remark-breaks**: Converts line breaks in markdown files.
 
-- ### DevOps and Security
+### Analytics & Performance
 
-  - **Cloudflare**: Manages domain and mail services, including DNS routing, Web Application Firewall (WAF), DDoS protection, SSL certificates, and HSTS configuration.
-  - **Vercel**: Handles deployment and provides Continuous Integration/Continuous Deployment (CI/CD) workflows.
-  - **GitHub**: Used for version control and collaboration.
-  - **Dependabot** and **CodeQL**: Employed for dependency management and code scanning to enhance security and maintainability.
-
-- ## Utilities
-
-  - **React Icons**: Provides a library of customizable icons for use in React applications.
-  - **CLSx**: Utility for constructing `className` strings conditionally.
-  - **XSS**: Used for sanitizing user input to prevent Cross-Site Scripting attacks.
-  - **Remark Plugins**:
-    - **remark-gfm**: Supports GitHub Flavored Markdown.
-    - **remark-breaks**: Converts line breaks in markdown files.
+- **Vercel Analytics**: Offers insights into user interactions and site performance.
+- **Vercel Speed Insights**: Monitors and provides recommendations for improving performance.
 
 ## 🗃️ Directory
 
