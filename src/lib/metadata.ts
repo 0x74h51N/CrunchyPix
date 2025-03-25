@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 
 export async function generatePageMetadata(page: string): Promise<Metadata> {
   const { t } = await createTranslation(page);
-  const locale = getLocale();
+  const locale = await getLocale();
 
   const baseUrl = 'https://crunchypix.com';
   const pageUrl = `${baseUrl}/${locale}${page === 'home' ? '' : '/' + page}`;
@@ -13,14 +13,8 @@ export async function generatePageMetadata(page: string): Promise<Metadata> {
     keywords: t('meta.keywords'),
     icons: {
       icon: [
-        {
-          url: '/favicon-light.ico',
-          media: '(prefers-color-scheme: light)',
-        },
-        {
-          url: '/favicon-dark.ico',
-          media: '(prefers-color-scheme: dark)',
-        },
+        { url: '/favicon-light.ico', media: '(prefers-color-scheme: light)' },
+        { url: '/favicon-dark.ico', media: '(prefers-color-scheme: dark)' },
       ],
     },
     openGraph: {

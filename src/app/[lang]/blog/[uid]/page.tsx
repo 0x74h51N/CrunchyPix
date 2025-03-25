@@ -1,27 +1,19 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { PrismicRichText, SliceZone } from '@prismicio/react';
-import * as prismic from '@prismicio/client';
-import { createClient, graphQuery } from '@/prismicio';
 import { components } from '@/app/[lang]/blog/slices';
-import { PrismicNextImage } from '@prismicio/next';
-import { RichText } from '../components/RichText';
 import { createTranslation } from '@/i18n/server';
 import { Locales } from '@/i18n/settings';
-import { langMap } from '@/utils/langMap';
-import ShareButtons from '../components/ui/ShareButtons';
 import { slugifyHeading } from '@/lib/slugifyHeading';
-import FsLoading from '@/components/Loading/FsLoading';
-import dynamic from 'next/dynamic';
-import Progressbar from '../components/ui/Progressbar';
+import { createClient, graphQuery } from '@/prismicio';
+import { langMap } from '@/utils/langMap';
+import * as prismic from '@prismicio/client';
+import { PrismicNextImage } from '@prismicio/next';
+import { PrismicRichText, SliceZone } from '@prismicio/react';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { Menu, Slide, Toc } from '../components/ClientComponents';
 import { PostCard } from '../components/PostCard';
-
-const Slide = dynamic(() => import('../components/Slide'), { ssr: false });
-const Toc = dynamic(() => import('../components/ui/ToC'), {
-  ssr: false,
-  loading: () => <FsLoading />,
-});
-const Menu = dynamic(() => import('../components/ui/Menu'), { ssr: false });
+import { RichText } from '../components/RichText';
+import Progressbar from '../components/ui/Progressbar';
+import ShareButtons from '../components/ui/ShareButtons';
 
 type Params = { uid: string; lang: Locales };
 
@@ -58,11 +50,7 @@ export async function generateMetadata({
     openGraph: {
       title: page.data.meta_title || undefined,
       url: `https://crunchypix.com/${params.lang}/blog/${params.uid}`,
-      images: [
-        {
-          url: page.data.meta_image.url || '',
-        },
-      ],
+      images: [{ url: page.data.meta_image.url || '' }],
     },
     authors: [{ name: 'Tahsin Önemli', url: 'https://github.com/0x74h51N' }],
   };

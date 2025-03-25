@@ -1,19 +1,19 @@
-import { Metadata } from 'next';
 import { createTranslation, getLocale } from '@/i18n/server';
-import { fetchSupabaseData } from './utils/fetchSupabaseData';
 import { ProjectPageProps, ProjectPageSchema } from '@/lib/schemas';
+import { Metadata } from 'next';
 import { getCldImageUrl } from 'next-cloudinary';
 import { notFound } from 'next/navigation';
+import { fetchSupabaseData } from './utils/fetchSupabaseData';
 
 export async function generateSubPageMetadata({
-  params,
+  id,
   page,
 }: {
-  params: { id: string };
+  id: string;
   page: string;
 }): Promise<Metadata> {
   const { t } = await createTranslation(page);
-  const lang = getLocale();
+  const lang = await getLocale();
   const selectedItem = await fetchSupabaseData<ProjectPageProps>(
     'portfolio_schema',
     'project_page',
@@ -21,7 +21,7 @@ export async function generateSubPageMetadata({
     ProjectPageSchema,
     [
       { column: 'lang', value: lang },
-      { column: 'project_id', value: params.id },
+      { column: 'project_id', value: id },
     ],
   );
 
@@ -29,7 +29,7 @@ export async function generateSubPageMetadata({
     return notFound();
   }
   const imageUrl = getCldImageUrl({
-    src: `crunchypix/portfolioItems/${params.id.replaceAll('_', '') + 'Top'}`,
+    src: `crunchypix/portfolioItems/${id.replaceAll('_', '') + 'Top'}`,
     crop: { type: 'fill', width: 800, height: 600 },
   });
 
@@ -40,14 +40,8 @@ export async function generateSubPageMetadata({
       keywords: selectedItem[0].ticks.join(', '),
       icons: {
         icon: [
-          {
-            url: '/favicon-light.ico',
-            media: '(prefers-color-scheme: light)',
-          },
-          {
-            url: '/favicon-dark.ico',
-            media: '(prefers-color-scheme: dark)',
-          },
+          { url: '/favicon-light.ico', media: '(prefers-color-scheme: light)' },
+          { url: '/favicon-dark.ico', media: '(prefers-color-scheme: dark)' },
         ],
       },
       openGraph: {
@@ -55,7 +49,7 @@ export async function generateSubPageMetadata({
         description: selectedItem[0].description2
           ? selectedItem[0].description2
           : '',
-        url: `https://crunchypix.com/portfolio/${params.id}`,
+        url: `https://crunchypix.com/portfolio/${id}`,
         images: [
           {
             url: imageUrl,

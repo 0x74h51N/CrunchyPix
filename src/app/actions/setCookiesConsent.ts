@@ -4,7 +4,7 @@ import { cookies } from 'next/headers';
 export async function setCookiesConsent() {
   const cookieStore = cookies();
 
-  cookieStore.set('cookiesConsent', 'true', {
+  (await cookieStore).set('cookiesConsent', 'true', {
     path: '/',
     expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
     sameSite: 'strict',
@@ -12,13 +12,11 @@ export async function setCookiesConsent() {
     httpOnly: true,
   });
 
-  return {
-    success: true,
-  };
+  return { success: true };
 }
 
 export async function getCookieConsent(): Promise<string> {
-  const response = await cookies().get('cookiesConsent');
+  const response = await (await cookies()).get('cookiesConsent');
   if (response && response.value === 'true') {
     return 'true';
   }
