@@ -1,6 +1,7 @@
 import IconButton from '@/components/Buttons/IconButton';
 import LogoImage from '@/components/LogoImage';
 import { PortfolioItemProps } from '@/lib/schemas';
+import clsx from 'clsx';
 
 import { CldImage } from 'next-cloudinary';
 
@@ -30,7 +31,10 @@ const SlideMaker = ({
   return (
     <div
       key={`${index}-${slide._id}-slide`}
-      className={`relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto overflow-visible shadow-xl shadow-black mt-6`}
+      className={clsx(
+        'relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto overflow-visible shadow-xl shadow-black mt-6 transition ease-in-out duration-300',
+        index !== activeIndex && 'blur-sm',
+      )}
       onClick={(e) => clickHandler(e, index, slide)}
     >
       <CldImage

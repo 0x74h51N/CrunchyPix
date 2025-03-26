@@ -30,22 +30,25 @@ const CarouselSlider = ({
     setActiveIndex(swiper.realIndex);
   };
 
-  const breakPoints = {
-    0: {
-      slidesPerView: 1.2,
-    },
-    640: {
-      slidesPerView: 1.5,
-    },
-    1020: {
-      slidesPerView: 2,
-    },
-  };
+  const breakpoints = useMemo(
+    () => ({
+      0: {
+        slidesPerView: 1.2,
+      },
+      640: {
+        slidesPerView: 1.5,
+      },
+      1020: {
+        slidesPerView: 2,
+      },
+    }),
+    [],
+  );
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.update();
     }
-  }, [breakPoints]);
+  }, [breakpoints]);
 
   const carouselSlides = useMemo(
     () =>
@@ -68,7 +71,7 @@ const CarouselSlider = ({
         onInit={(swiper) => (swiperRef.current = swiper)}
         effect="coverflow"
         centeredSlides
-        breakpoints={breakPoints}
+        breakpoints={breakpoints}
         spaceBetween={0}
         loop
         coverflowEffect={{

@@ -7,7 +7,7 @@ import { RootState } from '@/store';
 import { polygonIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import SwiperCore from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -37,12 +37,15 @@ const ServicesSect = () => {
     nextEl: '.swiper-button-next-cus',
     prevEl: '.swiper-button-prev-cus',
   };
-  const breakpoints = {
-    640: { slidesPerView: 1.5 },
-    768: { slidesPerView: 2 },
-    1024: { slidesPerView: 2.5 },
-    1280: { slidesPerView: 3 },
-  };
+  const breakpoints = useMemo(
+    () => ({
+      640: { slidesPerView: 1.5 },
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 2.5 },
+      1280: { slidesPerView: 3 },
+    }),
+    [],
+  );
 
   useEffect(() => {
     if (swiperRef.current) {

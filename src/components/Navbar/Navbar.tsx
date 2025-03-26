@@ -1,17 +1,17 @@
 'use client';
 import { Links } from '@/constants/index';
-import Link from 'next/link';
-import React, { useMemo, useState } from 'react';
-import MobileMenu from './MobileMenu';
-import LanguageMenu from './LanguageMenu';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
-import CrunchyLogo from './CrunchyLogo';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
-import { useTranslation } from 'react-i18next';
-import { usePathname } from 'next/navigation';
+import { RootState } from '@/store';
 import clsx from 'clsx';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import CrunchyLogo from './CrunchyLogo';
+import LanguageMenu from './LanguageMenu';
+import MobileMenu from './MobileMenu';
 
 const Navbar = () => {
   const [isMenuOpen, setMobileMenu] = useState(false);
@@ -92,7 +92,7 @@ const Navbar = () => {
         ></span>
       </Link>
     ));
-  }, [route, t, isBlog]);
+  }, [route, t, isBlog, locale]);
   return (
     <>
       <div

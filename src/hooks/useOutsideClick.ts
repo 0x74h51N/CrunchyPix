@@ -5,7 +5,6 @@ import React, { useEffect } from 'react';
  * @param ref - react ref of the element
  * @param callback - callback function to call when clicked outside
  * @param scroll - to run callback function when scrolled, default true
- * @param delay - minimum time (ms) after mount during which outside clicks are ignored
  */
 export const useOutsideClick = (
   ref: React.RefObject<HTMLElement>,

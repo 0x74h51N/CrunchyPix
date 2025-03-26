@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains the source code for CrunchyPix, a personal website designed to showcase skills and portfolio projects. Built from scratch using Next.js 15 and TypeScript, the website supports multiple languages through i18next with localization handled on both the server and client sides. The design is modular and dynamic, ensuring long-term adaptability.
+This repository contains the source code for CrunchyPix, a personal website designed to showcase skills and portfolio projects. Built from scratch using Next.js and TypeScript, the website supports multiple languages through i18next with localization handled on both the server and client sides. The design is modular and dynamic, ensuring long-term adaptability.
 
 # Content Management
 
@@ -14,7 +14,6 @@ The blog section is engineered for performance and seamless updates:
 - **Incremental Static Regeneration (ISR)**: Updates blog pages efficiently without requiring a full site rebuild.
 - **Webhooks and Rebuild Pipeline**:
   - **Prismic Webhooks**: Automatically trigger cache revalidation when content is updated.
-  - **Cron Jobs**: Nightly rebuilds refresh static parameters to promptly reflect new content.
 - **Enhanced User Experience**:
   - Custom slices and unique styles create engaging, tailor-made blog posts.
   - Specialized UX elements, such as adjustable font sizes and expandable text frames, boost reader engagement.
@@ -84,8 +83,7 @@ The blog section is engineered for performance and seamless updates:
 
 ### Analytics & Performance
 
-- **Vercel Analytics**: Offers insights into user interactions and site performance.
-- **Vercel Speed Insights**: Monitors and provides recommendations for improving performance.
+- **Vercel Analytics & Vercel Speed Insights**: Offers insights into user interactions and site performance (with users’ consent).
 
 ## 🗃️ Directory
 
