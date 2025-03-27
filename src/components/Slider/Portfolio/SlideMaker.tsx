@@ -32,7 +32,7 @@ const SlideMaker = ({
     <div
       key={`${index}-${slide._id}-slide`}
       className={clsx(
-        'relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto overflow-visible shadow-xl shadow-black mt-6 transition ease-in-out duration-300',
+        'relative md:w-[600px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-lg:h-[650px] max-md:h-[450px] h-auto overflow-visible shadow-xl shadow-black mt-6 md:transition md:ease-in-out md:duration-300',
         index !== activeIndex && 'blur-sm',
       )}
       onClick={(e) => clickHandler(e, index, slide)}

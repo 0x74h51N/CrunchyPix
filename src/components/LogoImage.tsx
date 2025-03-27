@@ -34,7 +34,7 @@ const LogoImage = ({
         className={clsx(
           'object-contain h-auto w-full',
           blur &&
-            'md:blur-[2px] sm:blur-[1.5px] blur-[1px] transition ease-in-out duration-300 hover:blur-none',
+            'md:blur-[2px] sm:blur-[1.5px] blur-[1px] md:transition md:ease-in-out md:duration-300 hover:blur-none',
           item.text === 'Next.js' && 'bg-blue-400 rounded-full',
         )}
       />
