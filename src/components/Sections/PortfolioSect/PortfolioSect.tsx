@@ -1,11 +1,12 @@
 'use client';
-import { motion } from 'framer-motion';
-import { slideIn } from '@/utils/motion';
-import dynamic from 'next/dynamic';
 import LoadingComponent from '@/components/Loading/Loading';
-import { useSelector } from 'react-redux';
+import { PortfolioItemProps } from '@/lib/schemas';
 import { RootState } from '@/store';
-import { memo, useMemo } from 'react';
+import { slideIn } from '@/utils/motion';
+import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import TitleText from '../TitleText';
 
 const CarouselSlider = dynamic(
@@ -25,12 +26,13 @@ const SlideModal = dynamic(
 );
 
 const PortfolioSect = () => {
+  const [selectedSlide, setSelectedSlide] = useState<
+    PortfolioItemProps | undefined
+  >(undefined);
   const portfolioItems = useSelector(
     (state: RootState) => state.portfolio.items,
   );
-  const extendedPortfolioItems = useMemo(() => {
-    return [...portfolioItems, ...portfolioItems];
-  }, [portfolioItems]);
+  const extendedPortfolioItems = [...portfolioItems, ...portfolioItems];
   return (
     portfolioItems && (
       <div className="h-auto flex flex-col items-center justify-center w-full">
@@ -45,14 +47,20 @@ const PortfolioSect = () => {
           </motion.div>
         </div>
         <div className="w-full sm:h-[700px] h-[580px] min-w-[100sv] z-0 max-w-[2200px]">
-          <CarouselSlider slides={extendedPortfolioItems} />
+          <CarouselSlider
+            slides={extendedPortfolioItems}
+            setSelectedSlide={setSelectedSlide}
+          />
         </div>
         <div className="z-50">
-          <SlideModal />
+          <SlideModal
+            selectedSlide={selectedSlide as PortfolioItemProps}
+            setState={setSelectedSlide}
+          />
         </div>
       </div>
     )
   );
 };
 
-export default memo(PortfolioSect);
+export default PortfolioSect;

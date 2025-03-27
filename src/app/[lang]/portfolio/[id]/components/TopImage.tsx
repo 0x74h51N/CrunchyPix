@@ -2,11 +2,10 @@ import IconButton from '@/components/Buttons/IconButton';
 import { IconProps } from '@/lib/schemas';
 import { slideIn } from '@/utils/motion';
 import { motion } from 'framer-motion';
-import { CldImage } from 'next-cloudinary';
 import { useEffect, useRef, useState } from 'react';
+import { InteractiveImage } from './InteractiveImage';
 
 const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
-  const [loading, setLoading] = useState(true);
   const [mobile, setMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const imageTop = `crunchypix/portfolioItems/${id.replaceAll('_', '') + 'Top'}`;
@@ -32,41 +31,24 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
       }
     };
   }, []);
-
+  const className = `${
+    imageTop.includes('catalog')
+      ? 'lg:h-[870px] md:min-h-[700px]'
+      : 'md:h-[700px]'
+  } md:h-[400px] h-[630px]`;
+  const style = {
+    backgroundImage: imageTop.includes('catalog')
+      ? 'linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)'
+      : 'linear-gradient(to bottom right,  #171717, #334155)',
+  };
   return (
-    <div
+    <InteractiveImage
+      src={mobile ? imageMobile : imageTop}
+      alt={id}
+      className={className}
+      style={style}
       ref={containerRef}
-      className={`relative w-full h-auto overflow-hidden ${
-        imageTop.includes('catalog')
-          ? 'lg:min-h-[870px] md:min-h-[700px]'
-          : 'md:min-h-[700px]'
-      } md:min-h-[400px] min-h-[630px]`}
-      style={{
-        backgroundImage: imageTop.includes('kyk')
-          ? 'linear-gradient(to bottom right,  #e2e8f0, #d6d3d1)'
-          : 'linear-gradient(to bottom right,  #171717, #334155)',
-      }}
     >
-      <CldImage
-        fill
-        fetchPriority="high"
-        format="avif"
-        src={mobile ? imageMobile : imageTop}
-        alt={id}
-        onLoad={() => setLoading(false)}
-        className={`w-full h-full object-cover transition-opacity ease-in-out duration-300`}
-        style={{ opacity: loading ? 0 : 100 }}
-      />
-      {loading && (
-        <CldImage
-          fill
-          quality={5}
-          blur={'250'}
-          src={mobile ? imageMobile : imageTop}
-          alt={id}
-          className={`w-full h-full object-cover transition-opacity ease-in-out duration-300 `}
-        />
-      )}
       {icons &&
         (icons.length > 0 ? (
           <motion.div
@@ -89,7 +71,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
               ))}
           </motion.div>
         ) : null)}
-    </div>
+    </InteractiveImage>
   );
 };
 

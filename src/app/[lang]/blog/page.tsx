@@ -2,21 +2,27 @@ import { Metadata } from 'next';
 
 import { SliceZone } from '@prismicio/react';
 
-import { createClient, graphQuery } from '@/prismicio';
 import { components } from '@/app/[lang]/blog/slices';
-import { PostCard } from './components/PostCard';
 import { Locales } from '@/i18n/settings';
-import { langMap } from '@/utils/langMap';
 import { generatePageMetadata } from '@/lib/metadata';
+import { createClient, graphQuery } from '@/prismicio';
+import { langMap } from '@/utils/langMap';
+import { PostCard } from './components/PostCard';
 
 export async function generateMetadata(): Promise<Metadata> {
   return generatePageMetadata('blog');
 }
 
-export default async function Index({ params }: { params: { lang: Locales } }) {
+export default async function Index({
+  params,
+}: {
+  params: Promise<{ lang: Locales }> | undefined;
+}) {
+  const resolvedParams = params ? await params : { lang: 'en' as Locales };
+
   const client = createClient();
   const home = await client.getByUID('page', 'home');
-  const prismicioLanguacio = langMap(params.lang);
+  const prismicioLanguacio = langMap(resolvedParams.lang);
   const posts = await client.getAllByType('blog_post', {
     lang: prismicioLanguacio,
     graphQuery,

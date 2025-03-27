@@ -1,30 +1,31 @@
 'use client';
+import CustomLink from '@/components/CustomLink';
+import { generateSpans } from '@/components/GenerateSpans';
+import LoadingComponent from '@/components/Loading/Loading';
+import useClickableHandlers from '@/hooks/useClickableHandlers';
+import useDragHandler from '@/hooks/useDragHandler';
+import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import { ProjectPageProps, ProjectPageSchema } from '@/lib/schemas';
 import { RootState } from '@/store';
-import { useTranslation } from 'react-i18next';
 import { fadeIn, polygonIn, slideIn, textVariant } from '@/utils/motion';
 import { motion } from 'framer-motion';
-import { memo, useEffect, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Markdown from 'react-markdown';
+import { useSelector } from 'react-redux';
 import breaks from 'remark-breaks';
-import { generateSpans } from '@/components/GenerateSpans';
+import CatalogueViewer from './CatalogueViewer/CatalogueViewer';
+import ImageBoxes from './ImageBoxes';
+import ProjectInfo from './ProjectInfo';
 import TopImage from './TopImage';
 import Ticks from './ticks';
-import ProjectInfo from './ProjectInfo';
-import CatalogueViewer from './CatalogueViewer/CatalogueViewer';
-import CustomLink from '@/components/CustomLink';
-import ImageBoxes from './ImageBoxes';
-import { ProjectPageProps, ProjectPageSchema } from '@/lib/schemas';
-import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import LoadingComponent from '@/components/Loading/Loading';
-import useDragHandler from '@/hooks/useDragHandler';
 
-const Project = memo(({ id }: { id: string }) => {
+const Project = ({ id }: { id: string }) => {
   const [Item, setItem] = useState<ProjectPageProps>();
   const { i18n, t } = useTranslation('portfolio');
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const storedItems = useSelector((state: RootState) => state.portfolio.items);
-
+  const { handleMouseLeave } = useClickableHandlers();
   const { hoverEnd } = useDragHandler();
   const filters = useMemo(() => [{ column: 'project_id', value: id }], [id]);
   const { data, loading, error } = useSupabaseFetch<ProjectPageProps>(
@@ -40,6 +41,7 @@ const Project = memo(({ id }: { id: string }) => {
   }
   useEffect(() => {
     hoverEnd();
+    handleMouseLeave();
     if (data) {
       setItem(data.find((item) => item.lang === i18n.language));
     }
@@ -104,12 +106,12 @@ const Project = memo(({ id }: { id: string }) => {
                     variants={textVariant(0)}
                     className="relative flex flex-row delay-[1200ms] duration-[1500ms]"
                   >
-                    <span className="absolute h2 bold cool top-0 left-0 bg-log-col -rotate-6 hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-3 py-1">
+                    <span className="absolute h2 bold cool !text-zinc-800 md:-top-1 top-0 left-0 bg-log-col -rotate-6 hover:rotate-0 transition-all duration-500 ease-in-out rounded-md px-1 py-0">
                       {Item.description.charAt(0)}
                     </span>
                     <Markdown
                       remarkPlugins={[breaks]}
-                      className="h4 lg:ml-14 xs:ml-12 ml-10"
+                      className="h4 lg:ml-[39px] md:ml-9 xs:ml-8 ml-6"
                     >
                       {Item.description.slice(1).replace(/\\n/g, '\n')}
                     </Markdown>
@@ -207,6 +209,6 @@ const Project = memo(({ id }: { id: string }) => {
       )}
     </div>
   );
-});
+};
 Project.displayName = 'Project';
-export default memo(Project);
+export default Project;

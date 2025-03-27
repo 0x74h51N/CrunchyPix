@@ -1,15 +1,18 @@
 'use client';
-import { useTranslation } from 'react-i18next';
 import useDragHandler from '@/hooks/useDragHandler';
-import ProjectSlide from './ProjectSlide';
-import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { memo } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import ProjectSlide from './ProjectSlide';
 
-const OtherProjects = () => {
+const OtherProjects = ({ currentId }: { currentId: string }) => {
   const { t } = useTranslation('portfolio');
   const portfolioItems = useSelector(
     (state: RootState) => state.portfolio.items,
+  );
+  const filteredPortfolioItems = portfolioItems.filter(
+    (i) => i._id !== currentId,
   );
 
   const { hoverStart, hoverEnd } = useDragHandler();
@@ -23,7 +26,7 @@ const OtherProjects = () => {
         <h2 className="h1 half w-full mb-2 text-center">
           {t('page.otherProjects')}
         </h2>
-        {portfolioItems && <ProjectSlide Items={portfolioItems} />}
+        {portfolioItems && <ProjectSlide Items={filteredPortfolioItems} />}
       </div>
     </div>
   );

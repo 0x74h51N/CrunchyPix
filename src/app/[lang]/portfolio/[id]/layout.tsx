@@ -1,18 +1,16 @@
-import FsLoading from '@/components/Loading/FsLoading';
+import { use } from 'react';
+import { OtherProjects } from './components/ClintComponents';
 
-import dynamic from 'next/dynamic';
-const OtherProjects = dynamic(
-  () => import('./components/OtherProjects/OtherProjects'),
-  {
-    ssr: false,
-    loading: () => <FsLoading />,
-  },
-);
-const PortfolioLayout = async ({ children }: { children: React.ReactNode }) => {
+const PortfolioLayout = (props: {
+  children: React.ReactNode;
+  params: Promise<{ id: string }>;
+}) => {
+  const params = use(props.params);
+  const id = params.id;
   return (
     <div className="!cursor-none">
-      {children}
-      <OtherProjects />
+      {props.children}
+      <OtherProjects currentId={id} />
     </div>
   );
 };

@@ -27,7 +27,7 @@ const ImageBoxes = ({ _id }: { _id: string }) => {
             quality="auto"
             fetchPriority="auto"
             key={index + ' image'}
-            className="flex max-w-[400px] w-full h-auto object-contain hover:scale-[1.4] transition-all duration-[5000ms] out-expo"
+            className="flex max-w-[400px] w-full h-auto object-contain hover:scale-[2] transition-all duration-[5000ms] out-expo"
             style={{
               backgroundImage:
                 _id == 'kyk_electric'

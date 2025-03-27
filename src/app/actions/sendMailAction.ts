@@ -16,9 +16,7 @@ export async function sendEmail(data: ContactTypes) {
     'https://challenges.cloudflare.com/turnstile/v0/siteverify',
     {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: new URLSearchParams({
         secret: turnstileSecret,
         response: turnstileToken,
@@ -55,9 +53,7 @@ export async function sendEmail(data: ContactTypes) {
     'https://accounts.zoho.com/oauth/v2/token',
     {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: params,
       next: { revalidate: 3600 },
     },

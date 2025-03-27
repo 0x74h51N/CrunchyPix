@@ -1,8 +1,8 @@
+import Dropdown from '@/components/Buttons/Dropdown';
+import { PortfolioItemProps } from '@/lib/schemas';
+import { Option } from '@/lib/types/common.types';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { PortfolioItemProps } from '@/lib/schemas';
-import Dropdown from '@/components/Buttons/Dropdown';
-import { Option } from '@/lib/types/common.types';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];
@@ -19,7 +19,7 @@ const FilterItems = ({
   const [selectedOption, setSortOption] = useState('');
   useEffect(() => {
     setSearchParam('');
-    setSortOption('');
+    setSortOption('new_to_old');
   }, [i18n.language]);
 
   useEffect(() => {
@@ -39,6 +39,7 @@ const FilterItems = ({
   }, [portfolioPageItems, searchParam]);
 
   useEffect(() => {
+    setSortOption('new_to_old');
     setFilteredItems(sortedItems);
   }, [sortedItems, setFilteredItems]);
 

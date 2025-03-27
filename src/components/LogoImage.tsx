@@ -1,13 +1,20 @@
 import { LogoComponent } from '@/utils/logoComponent';
+import clsx from 'clsx';
 import { CldImage } from 'next-cloudinary';
 
 interface LogoImageProps {
   logoKey: string;
   index: number;
   tooltip?: boolean;
+  blur?: boolean;
 }
 
-const LogoImage = ({ logoKey, index, tooltip = true }: LogoImageProps) => {
+const LogoImage = ({
+  logoKey,
+  index,
+  tooltip = true,
+  blur = false,
+}: LogoImageProps) => {
   const item = LogoComponent({ key: logoKey });
 
   return (
@@ -24,9 +31,12 @@ const LogoImage = ({ logoKey, index, tooltip = true }: LogoImageProps) => {
         quality={100}
         priority
         format="svg"
-        className={`object-contain h-auto w-full ${
-          item.text == 'Next.js' && ' bg-blue-400 rounded-full'
-        }`}
+        className={clsx(
+          'object-contain h-auto w-full',
+          blur &&
+            'md:blur-[2px] sm:blur-[1.5px] blur-[1px] transition ease-in-out duration-300 hover:blur-none',
+          item.text === 'Next.js' && 'bg-blue-400 rounded-full',
+        )}
       />
     </div>
   );

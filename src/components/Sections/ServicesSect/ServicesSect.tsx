@@ -1,17 +1,17 @@
 'use client';
-import { Navigation, Pagination } from 'swiper/modules';
-import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { RootState } from '@/store';
-import { polygonIn } from '@/utils/motion';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useDragHandler from '@/hooks/useDragHandler';
 import useFilteredData from '@/hooks/useFilteredData';
 import { CardsTypes, SectionsTypes } from '@/lib/schemas';
-import TitleText from '../TitleText';
-import { memo, useEffect, useMemo, useRef } from 'react';
-import SwiperCore from 'swiper';
+import { RootState } from '@/store';
+import { polygonIn } from '@/utils/motion';
+import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
+import { useEffect, useMemo, useRef } from 'react';
+import SwiperCore from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import TitleText from '../TitleText';
 
 const CardMaker = dynamic(() => import('@/components/CardMaker'), {
   ssr: false,
@@ -46,29 +46,27 @@ const ServicesSect = () => {
     }),
     [],
   );
+
   useEffect(() => {
     if (swiperRef.current) {
       swiperRef.current.update();
     }
   }, [breakpoints]);
 
-  const slides = useMemo(
-    () =>
-      serviceSect[0].translations[0].cards?.map(
-        (section: CardsTypes, index: number) => (
-          <SwiperSlide key={index} className="w-[320px] h-[520px] swiper-lazy">
-            <CardMaker
-              key={index + ' card'}
-              cardSections={section}
-              cardWidth={320}
-              cardHeight={520}
-              className="cursor-none"
-            />
-          </SwiperSlide>
-        ),
-      ),
-    [serviceSect],
+  const slides = serviceSect[0].translations[0].cards?.map(
+    (section: CardsTypes, index: number) => (
+      <SwiperSlide key={index} className="w-[320px] h-[520px] swiper-lazy">
+        <CardMaker
+          key={index + ' card'}
+          cardSections={section}
+          cardWidth={320}
+          cardHeight={520}
+          className="cursor-none"
+        />
+      </SwiperSlide>
+    ),
   );
+
   return (
     <div className="flex justify-center items-center w-full h-full min-h-[100svh]">
       <motion.div
@@ -130,4 +128,4 @@ const ServicesSect = () => {
   );
 };
 
-export default memo(ServicesSect);
+export default ServicesSect;

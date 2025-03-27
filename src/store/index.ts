@@ -1,17 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import selectedSlideReducer from './redux/selectedSlide';
-import isSliderReducer from './redux/isSlider';
 import clickableReducer from './redux/isClickable';
-import touchReducer from './redux/isTouch';
 import isScrollEnabledReducer from './redux/isScrollEnabled';
+import isSliderReducer from './redux/isSlider';
+import touchReducer from './redux/isTouch';
+import pathSliceReducer from './redux/pathSlice';
 import portfolioReducer from './redux/portfolioItems';
 import sectionReducer from './redux/sectionItems';
-import pathSliceReducer from './redux/pathSlice';
 import themeSliceReducer from './redux/theme';
 
 const store = configureStore({
   reducer: {
-    selectedSlide: selectedSlideReducer,
     isSlider: isSliderReducer,
     isClickable: clickableReducer,
     isTouch: touchReducer,

@@ -1,35 +1,41 @@
 import IconButton from '@/components/Buttons/IconButton';
 import LogoImage from '@/components/LogoImage';
 import { PortfolioItemProps } from '@/lib/schemas';
-import { setSlide } from '@/store/redux/selectedSlide';
+import clsx from 'clsx';
+
 import { CldImage } from 'next-cloudinary';
-import React, { memo } from 'react';
-import { useDispatch } from 'react-redux';
 
 const SlideMaker = ({
   slide,
   index,
   activeIndex,
+  setState,
 }: {
   slide: PortfolioItemProps;
   index: number;
   activeIndex: number;
+  setState: React.Dispatch<
+    React.SetStateAction<PortfolioItemProps | undefined>
+  >;
 }) => {
-  const dispatch = useDispatch();
-  const _selectedSlide = (_slide: PortfolioItemProps) => {
-    dispatch(setSlide(_slide));
-  };
-
-  const clickHandler = (index: number, slide: PortfolioItemProps) => {
+  const clickHandler = (
+    e: React.MouseEvent,
+    index: number,
+    slide: PortfolioItemProps,
+  ) => {
+    e.stopPropagation();
     if (index === activeIndex) {
-      _selectedSlide(slide);
+      setState(slide);
     }
   };
   return (
     <div
       key={`${index}-${slide._id}-slide`}
-      className={`relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto overflow-visible shadow-xl shadow-black mt-6`}
-      onClick={() => clickHandler(index, slide)}
+      className={clsx(
+        'relative md:w-[640px] w-auto 2xl:w-[1020px] xl:w-[850px] lg:w-[750px] max-md:h-[450px] h-auto overflow-visible shadow-xl shadow-black mt-6 transition ease-in-out duration-300',
+        index !== activeIndex && 'blur-sm',
+      )}
+      onClick={(e) => clickHandler(e, index, slide)}
     >
       <CldImage
         src={`crunchypix/PortfolioSlides/${slide._id}` || ''}
@@ -73,4 +79,4 @@ const SlideMaker = ({
   );
 };
 
-export default memo(SlideMaker);
+export default SlideMaker;

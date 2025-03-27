@@ -1,13 +1,13 @@
+import Cookies from '@/components/Cookies/Cookies';
+import { Providers } from '@/components/Providers';
+import { Locales, supportedLocales } from '@/i18n/settings';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '../styles/globals.css';
-import Cookies from '@/components/Cookies/Cookies';
 import { generatePageMetadata } from '../../lib/metadata';
-import { Locales, supportedLocales } from '@/i18n/settings';
-import { generateStaticParams as generatePortfolioStaticParams } from './portfolio/[id]/page';
-import { generateStaticParams as generatePoliciesStaticParams } from './policies/[id]/page';
 import { getTheme } from '../actions/setThemeAction';
-import { Providers } from '@/components/Providers';
+import '../styles/globals.css';
+import { generateStaticParams as generatePoliciesStaticParams } from './policies/[id]/page';
+import { generateStaticParams as generatePortfolioStaticParams } from './portfolio/[id]/page';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -22,17 +22,17 @@ export function generateStaticParams() {
   return supportedLocales.map((lang) => ({ lang }));
 }
 
-const RootLayout = async ({
-  children,
-  params: { lang },
-}: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
   params: { lang: Locales };
-}) => {
+}) {
+  const { children, params } = props;
+  const { lang } = await params;
   const policiesStaticParams = await generatePoliciesStaticParams();
   const portfolioStaticParams = await generatePortfolioStaticParams();
   const staticParams = [...portfolioStaticParams, ...policiesStaticParams];
   const theme = (await getTheme()) || 'dark';
+
   return (
     <html lang={lang} data-theme={theme}>
       <body className={inter.className}>
@@ -43,6 +43,4 @@ const RootLayout = async ({
       </body>
     </html>
   );
-};
-
-export default RootLayout;
+}

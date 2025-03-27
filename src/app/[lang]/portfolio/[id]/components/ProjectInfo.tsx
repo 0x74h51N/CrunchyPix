@@ -1,7 +1,7 @@
 import LogoImage from '@/components/LogoImage';
-import { useTranslation } from 'react-i18next';
-import Image from 'next/image';
 import { ProjectCardProps } from '@/lib/schemas';
+import Image from 'next/image';
+import { useTranslation } from 'react-i18next';
 
 const ProjectInfo = ({
   ProjectInfo,
@@ -14,7 +14,7 @@ const ProjectInfo = ({
 
   if (ProjectInfo)
     return (
-      <div className="relative flex lg:h-[570px] lg:w-[390px] md:w-[360px] sm:w-[330px] w-[300px] md:h-[480px] sm:h-[450px] h-[440px] rounded-xl bg-log-col md:ml-6 ml-0">
+      <div className="relative flex lg:h-[570px] lg:w-[390px] md:w-[360px] sm:w-[330px] w-[300px] md:h-[480px] sm:h-[450px] h-[440px] rounded-xl bg-log-col md:ml-6 ml-0 lg:mt-5 mt-0">
         <Image
           src="/projectInfo.png"
           alt="project info background"

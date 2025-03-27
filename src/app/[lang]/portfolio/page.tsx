@@ -10,10 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const PortfolioItemsTable = dynamic(
   () => import('./components/PortfolioItemsTable'),
-  {
-    ssr: false,
-    loading: () => <FsLoading />,
-  },
+  { ssr: true, loading: () => <FsLoading /> },
 );
 const Portfolio = () => {
   return (

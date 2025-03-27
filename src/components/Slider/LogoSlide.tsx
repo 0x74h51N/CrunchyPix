@@ -1,9 +1,9 @@
 'use client';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, FreeMode } from 'swiper/modules';
-import LogoImage from '../LogoImage';
 import { LogoSlideType } from '@/lib/schemas';
 import { useMemo } from 'react';
+import { Autoplay, FreeMode } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import LogoImage from '../LogoImage';
 
 const LogoSlider = ({ data }: { data: LogoSlideType[] }) => {
   const breaks = useMemo(
@@ -43,7 +43,7 @@ const LogoSlider = ({ data }: { data: LogoSlideType[] }) => {
       {data.map((item, index) => (
         <SwiperSlide key={index}>
           <div className="relative w-[84px] h-[84px] max-lg:w-[70px] max-lg:h-[70px] max-sm:w-[55px] max-sm:h-[55px] flex justify-center my-8 grayscale">
-            <LogoImage logoKey={item.logo_name} index={index} />
+            <LogoImage logoKey={item.logo_name} index={index} blur />
           </div>
         </SwiperSlide>
       ))}
