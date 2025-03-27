@@ -32,9 +32,8 @@ const LogoSlider = ({ data }: { data: LogoSlideType[] }) => {
       spaceBetween={0}
       slidesPerView={4}
       autoplay={{
-        delay: 0,
+        delay: 1,
         disableOnInteraction: false,
-        pauseOnMouseEnter: true,
       }}
       speed={3000}
       breakpoints={breaks}

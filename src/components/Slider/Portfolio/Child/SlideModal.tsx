@@ -50,10 +50,10 @@ const SlideModal = ({
         <div className="fixed inset-0 flex items-center justify-center backdrop-filter backdrop-blur-lg">
           <div
             ref={modalRef}
-            className={`absolute flex justify-center items-center top-1/2 left-1/2  xl:w-[75vw] h-auto w-[95vw] translate-x-[-50%] translate-y-[-50%] outline-none`}
+            className="absolute flex justify-center items-center top-1/2 left-1/2 lg:h-auto xsm:h-[70vh] h-[65vh] xl:w-[75vw] md:[85vw] w-[95vw] translate-x-[-50%] translate-y-[-50%] outline-none"
           >
             <motion.div
-              className="relative flex justify-center md:h-auto h-full w-full max-w-[1900px]"
+              className="relative flex justify-center lg:h-auto h-full w-full max-w-[1900px]"
               initial="hidden"
               animate="visible"
               exit="hidden"
