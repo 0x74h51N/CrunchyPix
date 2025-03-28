@@ -36,6 +36,7 @@ export const ProjectPageSchema = z.object({
 });
 
 export const PortfolioItemSchema = z.object({
+  timestamp: z.number().optional(),
   id: z.number(),
   _id: z.string(),
   project_overview: z.array(ProjectOverviewSchema).optional(),

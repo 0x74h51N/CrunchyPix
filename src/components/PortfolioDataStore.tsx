@@ -1,12 +1,12 @@
 'use client';
-import { useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { PortfolioItemProps, PortfolioItemSchema } from '@/lib/schemas';
-import { setPortfolioItems } from '@/store/redux/portfolioItems';
-import i18next from '@/i18n/client';
-import filterByLanguage from '@/lib/utils/filterByLanguage';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import i18next from '@/i18n/client';
+import { PortfolioItemProps, PortfolioItemSchema } from '@/lib/schemas';
+import filterByLanguage from '@/lib/utils/filterByLanguage';
+import { setPortfolioItems } from '@/store/redux/portfolioItems';
+import { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 
 const PortfolioDataStore = () => {
   const dispatch = useDispatch();
@@ -21,8 +21,16 @@ const PortfolioDataStore = () => {
   const updatePortfolioItems = useCallback(
     (language: string) => {
       if (data && !loading && !error) {
+        const itemsWithTimestamp = data.map((data) => ({
+          ...data,
+          timestamp: (() => {
+            const [y, m, d] = data.date.split('-').map(Number);
+            return new Date(y, m - 1, d).getTime();
+          })(),
+        }));
+
         const filteredItems = filterByLanguage({
-          items: data.sort((a, b) => a.id - b.id),
+          items: itemsWithTimestamp.sort((a, b) => b.timestamp - a.timestamp),
           language,
           localPath: 'project_overview',
         });
