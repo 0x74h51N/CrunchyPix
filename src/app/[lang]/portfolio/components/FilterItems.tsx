@@ -1,8 +1,9 @@
 import Dropdown from '@/components/Buttons/Dropdown';
 import { PortfolioItemProps } from '@/lib/schemas';
 import { Option } from '@/lib/types/common.types';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { sortAlphabetically, sortByDate } from './utils';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];
@@ -14,78 +15,51 @@ const FilterItems = ({
   setFilteredItems,
 }: FilterItemsProps) => {
   const { t, i18n } = useTranslation('portfolio');
-  const [sortedItems, setSortedItems] = useState<PortfolioItemProps[]>([]);
   const [searchParam, setSearchParam] = useState('');
   const [selectedOption, setSortOption] = useState('');
+
   useEffect(() => {
     setSearchParam('');
-    setSortOption('new_to_old');
+    setSortOption('');
   }, [i18n.language]);
 
-  useEffect(() => {
-    const filteredItems = portfolioPageItems.filter(
-      (item: PortfolioItemProps) => {
-        const title = item.project_overview?.[0]?.title?.toLowerCase() ?? '';
-        const type =
-          item.project_overview?.[0]?.project_type?.toLowerCase() ?? '';
-        return (
-          title.includes(searchParam) ||
-          type.includes(searchParam) ||
-          item._id.toLowerCase().includes(searchParam)
-        );
-      },
-    );
-    setSortedItems(filteredItems);
-  }, [portfolioPageItems, searchParam]);
+  const filteredAndSortedItems = useMemo(() => {
+    const filteredItems = portfolioPageItems.filter((item) => {
+      const title = item.project_overview?.[0]?.title?.toLowerCase() ?? '';
+      const type =
+        item.project_overview?.[0]?.project_type?.toLowerCase() ?? '';
+      const searchLower = searchParam.toLowerCase();
+      return (
+        title.includes(searchLower) ||
+        type.includes(searchLower) ||
+        item._id.toLowerCase().includes(searchLower)
+      );
+    });
+
+    switch (selectedOption) {
+      case 'new_to_old':
+        return sortByDate(filteredItems, 'new_to_old');
+      case 'old_to_new':
+        return sortByDate(filteredItems, 'old_to_new');
+      case 'alphabetically_a-z':
+        return sortAlphabetically(filteredItems, 'alphabetically_a-z');
+      case 'alphabetically_z-a':
+        return sortAlphabetically(filteredItems, 'alphabetically_z-a');
+      default:
+        return filteredItems;
+    }
+  }, [portfolioPageItems, searchParam, selectedOption]);
 
   useEffect(() => {
-    setSortOption('new_to_old');
-    setFilteredItems(sortedItems);
-  }, [sortedItems, setFilteredItems]);
-
-  useEffect(() => {
-    const handleSortChange = (sortOption: string) => {
-      setSortOption(sortOption);
-      if (sortOption.includes('new')) {
-        const dateSorted = [...sortedItems].sort((a, b) => {
-          const dateA = new Date(a.date);
-          const dateB = new Date(b.date);
-          if (!dateA || !dateB) {
-            return 0;
-          }
-          return dateB.getTime() - dateA.getTime();
-        });
-        if (sortOption === 'new_to_old') {
-          setSortedItems(dateSorted);
-        } else if (sortOption === 'old_to_new') {
-          const rev = dateSorted.reverse();
-          setSortedItems(rev);
-        }
-      } else if (sortOption.includes('alphabetically')) {
-        const alphaSort = [...sortedItems].sort((a, b) => {
-          const aTitle = a.project_overview?.[0]?.title ?? '';
-          const bTitle = b.project_overview?.[0]?.title ?? '';
-          return aTitle.replace('_', '').localeCompare(bTitle);
-        });
-        if (sortOption === 'alphabetically_a-z') {
-          setSortedItems(alphaSort);
-        } else {
-          const aplhRev = alphaSort.reverse();
-          setSortedItems(aplhRev);
-        }
-      }
-    };
-
-    handleSortChange(selectedOption);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedOption]);
+    setFilteredItems(filteredAndSortedItems);
+  }, [filteredAndSortedItems, setFilteredItems]);
 
   const optionsObj = t('sort.options', { returnObjects: true }) as {
     [key: string]: string;
   };
   const options = Object.entries(optionsObj).map(([key, value]) => ({
-    key: key,
-    value: value,
+    key,
+    value,
   })) as Option[];
 
   return (
