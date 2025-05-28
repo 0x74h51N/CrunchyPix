@@ -71,7 +71,8 @@ const Section = ({ sectionsData }: SectionDataProps) => {
           handleScroll({
             event,
             currentSection,
-            sectionRefs: sectionRefs.current,
+            sectionRefs:
+              sectionRefs.current as React.RefObject<HTMLDivElement>[],
           });
         }
       };
@@ -165,7 +166,9 @@ const Section = ({ sectionsData }: SectionDataProps) => {
                 duration={1500}
                 arrow={true}
                 className="opacity-50 hover:opacity-100 transition-opacity animate-bounce-slow z-10"
-                sectionRefs={sectionRefs.current}
+                sectionRefs={
+                  sectionRefs.current as React.RefObject<HTMLDivElement>[]
+                }
               />
             )}
           </div>

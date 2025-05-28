@@ -61,7 +61,6 @@ const ServicesSect = () => {
           cardSections={section}
           cardWidth={320}
           cardHeight={520}
-          className="cursor-none"
         />
       </SwiperSlide>
     ),

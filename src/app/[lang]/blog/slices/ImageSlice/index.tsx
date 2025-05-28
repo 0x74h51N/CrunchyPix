@@ -2,6 +2,7 @@ import { Content } from '@prismicio/client';
 import { SliceComponentProps } from '@prismicio/react';
 import { RichText } from '../../components/RichText';
 import ImageModal from '../../components/ImageModal';
+import { JSX } from 'react';
 
 export type ImageSliceProps = SliceComponentProps<Content.ImageSliceSlice>;
 

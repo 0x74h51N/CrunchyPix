@@ -1,5 +1,5 @@
 import CustomLink from '@/components/CustomLink';
-import { TableHTMLAttributes, HTMLAttributes } from 'react';
+import { TableHTMLAttributes, HTMLAttributes, JSX } from 'react';
 import { Components } from 'react-markdown';
 
 const MarkdownTable: Components = {

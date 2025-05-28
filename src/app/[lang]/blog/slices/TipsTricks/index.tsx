@@ -2,6 +2,7 @@ import { Content } from '@prismicio/client';
 import { SliceComponentProps } from '@prismicio/react';
 import { RichText } from '../../components/RichText';
 import { createTranslation } from '@/i18n/server';
+import { JSX } from 'react';
 
 /**
  * Props for `TipsTricks`.

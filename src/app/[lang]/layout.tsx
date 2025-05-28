@@ -1,3 +1,4 @@
+import '../styles/globals.css';
 import Cookies from '@/components/Cookies/Cookies';
 import { Providers } from '@/components/Providers';
 import { Locales, supportedLocales } from '@/i18n/settings';
@@ -5,7 +6,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { generatePageMetadata } from '../../lib/metadata';
 import { getTheme } from '../actions/setThemeAction';
-import '../styles/globals.css';
 import { generateStaticParams as generatePoliciesStaticParams } from './policies/[id]/page';
 import { generateStaticParams as generatePortfolioStaticParams } from './portfolio/[id]/page';
 
@@ -35,7 +35,9 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={lang} data-theme={theme}>
-      <body className={inter.className}>
+      <body
+        className={`repeatingLines max-w-[100vw] overflow-x-hidden ${inter.className}`}
+      >
         <Cookies />
         <Providers staticParams={staticParams} lang={lang}>
           {children}

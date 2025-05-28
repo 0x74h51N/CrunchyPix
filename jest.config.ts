@@ -7,6 +7,9 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/src/jest.setup.ts'],
   testEnvironment: 'jest-environment-jsdom',
+  transformIgnorePatterns: [
+    '/node_modules/(?!(lodash-es|@prismicio/react|@prismicio/client)/)',
+  ],
   testMatch: [
     '**/__tests__/**/*.test.(ts|tsx|js|jsx)',
     '**/?(*.)+(spec|test).(ts|tsx|js|jsx)',
@@ -18,7 +21,6 @@ const customJestConfig = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
   },
-  transformIgnorePatterns: ['node_modules/'],
 };
 
 export default createJestConfig(customJestConfig);

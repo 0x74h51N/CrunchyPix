@@ -6,6 +6,7 @@ import { Autoplay, EffectCoverflow } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SlideMaker from './SlideMaker';
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 SwiperCore.use([Autoplay, EffectCoverflow]);
 
 const CarouselSlider = ({

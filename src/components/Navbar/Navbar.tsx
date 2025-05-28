@@ -54,18 +54,40 @@ const Navbar = () => {
   const navClassName = useMemo(() => {
     const baseClass = clsx(
       fixed ? 'fixed' : 'absolute',
-      isBlog ? 'cursor-auto' : 'cursor-none ',
+      isBlog ? 'cursor-auto' : 'cursor-none',
       blogChild
         ? 'border border-base-300 bg-base-100 z-[250]'
         : 'bg-cool-gray-900 z-[450]',
-      ' flex w-auto 2xl:min-w-[1450px] min-w-full top-0gap-4 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5',
+      'flex w-auto 2xl:min-w-[1450px] min-w-full top-0 gap-4 transition-all duration-700 ease-in-out rounded-b-xl md:px-10 px-5',
     );
-    if (isMenuOpen) {
-      return `${baseClass} navbar py-5 ${superSmallNav ? 'h-[300px] bg-opacity-100 py-2 shadow-md shadow-black' : 'h-[310px]  bg-opacity-0'}`;
-    } else if (superSmallNav) {
-      return `${baseClass} bg-opacity-100 h-[70px] py-2 ${isBlog && route.split('/').length > 3 ? '' : 'shadow-md shadow-black'}`;
+
+    let bgClass = '';
+    if (blogChild) {
+      bgClass =
+        isMenuOpen || superSmallNav ? 'bg-base-100/100' : 'bg-base-100/0';
     } else {
-      return `${baseClass} pt-12 py-5 bg-opacity-0 h-[100px]`;
+      bgClass =
+        isMenuOpen || superSmallNav
+          ? 'bg-cool-gray-900/100'
+          : 'bg-cool-gray-900/0';
+    }
+
+    if (isMenuOpen) {
+      return clsx(
+        baseClass,
+        bgClass,
+        'navbar py-5',
+        superSmallNav ? 'h-[300px] py-2 shadow-md shadow-black' : 'h-[310px]',
+      );
+    } else if (superSmallNav) {
+      return clsx(
+        baseClass,
+        bgClass,
+        'h-[70px] py-2',
+        isBlog && route.split('/').length > 3 ? '' : 'shadow-md shadow-black',
+      );
+    } else {
+      return clsx(baseClass, bgClass, 'pt-12 py-5 h-[100px]');
     }
   }, [isMenuOpen, superSmallNav, fixed, isBlog, route, blogChild]);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
@@ -105,7 +127,7 @@ const Navbar = () => {
           height: '1px',
         }}
       />
-      <div className="flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0 !select-none">
+      <div className=" flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0 !select-none">
         <nav className={navClassName}>
           <Link
             href={`/${locale}`}
@@ -117,12 +139,10 @@ const Navbar = () => {
           >
             <CrunchyLogo theme={superTheme} smallNav={superSmallNav} />
           </Link>
-          <div
-            className={`ml-auto transition-all duration-500 ease-in-out flex`}
-          >
+          <div className="ml-auto transition-all duration-500 ease-in-out flex">
             <div
               className={clsx(
-                'lg:hidden h-full max-h-[70px] flex items-center',
+                'lg:hidden h-full max-h-[70px] max-lg:flex items-center',
                 isBlog ? 'cursor-auto' : 'cursor-none',
               )}
             >
@@ -133,7 +153,7 @@ const Navbar = () => {
                 setMobileMenu={setMobileMenu}
               />
             </div>
-            <div className="max-lg:hidden flexCenter h-full">
+            <div className="max-lg:hidden lg:flex justify-center items-center h-full">
               <ul
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}

@@ -31,9 +31,6 @@ export const SocialIcons = ({
           fontSize: '50px',
           color: 'white',
         };
-        const mobileStyle: React.CSSProperties = {
-          color: 'white',
-        };
 
         return (
           <Fragment key={icon.alt + ' key'}>
@@ -47,8 +44,7 @@ export const SocialIcons = ({
               className="w-9 h-9 max-md:hidden"
             />
             <div
-              className={`md:hidden flexCenter w-12 h-12 cursor-none pointer-events-auto sm:mt-8 mt-0 sm:ml-2 ml-0 sm:text-[40px] text-[30px]`}
-              style={mobileStyle}
+              className="md:hidden max-md:flexCenter w-12 h-12 cursor-none !max-md:pointer-events-auto sm:mt-8 mt-0 sm:ml-2 ml-0 sm:text-[40px] text-[30px]"
               key={index + ' mobile ' + icon.type}
             >
               {<IconButton icon={icon} key={index + ' mobile icon'} />}

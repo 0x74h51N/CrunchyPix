@@ -1,12 +1,13 @@
 import { RTLinkNode } from '@prismicio/client';
 import Link from 'next/link';
+import { JSX } from 'react';
 
 const Hyperlink = ({
-  children,
   node,
+  children,
 }: {
-  children: JSX.Element[];
   node: RTLinkNode;
+  children: JSX.Element[];
 }) => {
   const href = (node.data as { url: string }).url;
   return (

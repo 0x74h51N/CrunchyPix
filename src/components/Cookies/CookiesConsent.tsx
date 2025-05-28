@@ -1,5 +1,5 @@
 'use client';
-import { memo, useEffect, useState } from 'react';
+import { JSX, memo, useEffect, useState } from 'react';
 import breaks from 'remark-breaks';
 import ReactMarkdown from 'react-markdown';
 import CustomLink from '../CustomLink';
@@ -52,7 +52,7 @@ const CookieConsent = () => {
           whileInView="show"
           viewport={{ once: true, amount: 'some' }}
           variants={fadeIn('up', 'spring', 3, 1)}
-          className="bg-neutral-900 bg-opacity-70 navbar xl:rounded-lg overflow-visible shadow-xl xl:max-w-[1350px] w-full z-50 "
+          className="bg-neutral-900/70 navbar xl:rounded-lg overflow-visible shadow-xl xl:max-w-[1350px] w-full z-50 "
         >
           <div className="md:px-8 md:py-4 p-6 md:pb-6 flex justify-center items-center max-lg:flex-col z-50 lg:gap-8 gap-4">
             <div className="flex flex-col lg:max-w-[80%]">
@@ -81,13 +81,13 @@ const CookieConsent = () => {
               className="flex flex-row-reverse max-lg:self-end max-lg:-mt-10 max-sm:mt-0 max-sm:self-center w-auto gap-3"
             >
               <button
-                className=" bg-neutral-400 hover:bg-green-700 hover:bg-opacity-40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 pointer-events-auto w-full h-auto whitespace-nowrap"
+                className=" bg-neutral-400 hover:bg-green-700/40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 pointer-events-auto w-full h-auto whitespace-nowrap"
                 onClick={handleAccept}
               >
                 {t('cookies.accept')}
               </button>
               <button
-                className="bg-neutral-600 hover:bg-red-800 hover:bg-opacity-40 text-white font-bold sm:text-sm text-[12px] py-2 px-4 rounded  active:bg-red-800 z-50 pointer-events-auto w-full h-auto"
+                className="bg-neutral-600 hover:bg-red-800/40 text-white font-bold sm:text-sm text-[12px] py-2 px-4 rounded  active:bg-red-800 z-50 pointer-events-auto w-full h-auto"
                 onClick={handleReject}
               >
                 {t('cookies.decline')}

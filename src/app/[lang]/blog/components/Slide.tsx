@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import { BlogPostDocument } from '@/prismicio-types';
 import { PostCard } from './PostCard';
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 SwiperCore.use([Autoplay, Pagination, Navigation]);
 
 const ProjectSlide = ({

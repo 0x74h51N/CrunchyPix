@@ -37,7 +37,13 @@ const Accordiona = ({
   const handleClick = () => {
     setActiveIndex(activeIndex === index ? null : index);
   };
-  useOutsideClick(acordionaRef, () => setActiveIndex(null), false);
+
+  useOutsideClick(
+    acordionaRef as React.RefObject<HTMLElement>,
+    () => setActiveIndex(null),
+    false,
+  );
+
   const isActive = activeIndex === index;
   useEffect(() => {
     if (isActive) {

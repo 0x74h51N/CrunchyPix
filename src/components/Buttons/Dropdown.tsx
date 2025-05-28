@@ -92,7 +92,7 @@ const Dropdown = ({
     setIsRotated(!isRotated);
   };
 
-  useOutsideClick(dropdownRef, () => {
+  useOutsideClick(dropdownRef as React.RefObject<HTMLDivElement>, () => {
     setDropdownOpen(false);
     setIsRotated(false);
   });

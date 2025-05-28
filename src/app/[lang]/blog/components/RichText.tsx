@@ -1,10 +1,11 @@
 import { slugifyHeading } from '@/lib/slugifyHeading';
-import { RichTextField } from '@prismicio/client';
+import { RichTextField, RTLinkNode } from '@prismicio/client';
 import { JSXMapSerializer, PrismicRichText } from '@prismicio/react';
 import { Heading } from './Heading';
 import { CodeBlock } from './CodeBlock';
 import { RTPreformattedNode } from '@prismicio/types';
 import Hyperlink from './Hyperlink';
+import { JSX } from 'react';
 
 export const richTextComponents: JSXMapSerializer = {
   label: ({ node, children }) => {
@@ -52,9 +53,9 @@ export const richTextComponents: JSXMapSerializer = {
       {children}
     </Heading>
   ),
-  paragraph: ({ children }) => <div className="paragraph">{children}</div>,
+  paragraph: ({ children }) => <p className="paragraph">{children}</p>,
   hyperlink: ({ children, node }) => (
-    <Hyperlink node={node}>{children}</Hyperlink>
+    <Hyperlink node={node as RTLinkNode}>{children as JSX.Element[]}</Hyperlink>
   ),
   preformatted: ({ node }: { node: RTPreformattedNode }) => {
     return <CodeBlock code={node.text} title={'Terminal'} language={'bash'} />;

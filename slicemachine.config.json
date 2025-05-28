@@ -3,6 +3,6 @@
   "adapter": {
     "resolve": "@slicemachine/adapter-next"
   },
-  "libraries": ["./app/[lang]/blog/slices"],
+  "libraries": ["./src/app/[lang]/blog/slices"],
   "localSliceSimulatorURL": "http://localhost:8080/en/blog/slice-simulator"
 }

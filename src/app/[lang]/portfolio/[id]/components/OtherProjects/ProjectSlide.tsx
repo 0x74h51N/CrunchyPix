@@ -7,6 +7,7 @@ import { PortfolioItemProps } from '@/lib/schemas';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 SwiperCore.use([Autoplay, Pagination]);
 
 const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {

@@ -1,7 +1,7 @@
 'use client';
 import CancelButton from '@/components/Buttons/CancelButton';
 import { PrismicNextImage } from '@prismicio/next';
-import React, { useRef, useState } from 'react';
+import React, { JSX, useRef, useState } from 'react';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { Content } from '@prismicio/client';
 
@@ -9,10 +9,10 @@ type ImageModalProps = {
   slice: Content.ImageSliceSlice;
 };
 const ImageModal = ({ slice }: ImageModalProps): JSX.Element => {
-  const modalRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const [isModal, setModal] = useState(false);
 
-  useOutsideClick(modalRef, () => {
+  useOutsideClick(modalRef as React.RefObject<HTMLElement>, () => {
     setModal(false);
   });
   return (
@@ -27,7 +27,7 @@ const ImageModal = ({ slice }: ImageModalProps): JSX.Element => {
         onClick={() => setModal(true)}
       />
       {isModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-black/75 flex justify-center items-center z-50">
           <div
             ref={modalRef}
             className="relative 2xl:w-full 2xl:max-w-7xl w-auto max-w-6xl 2xl:h-auto max-lg:max-h-[90svh]"

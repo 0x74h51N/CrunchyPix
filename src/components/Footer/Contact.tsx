@@ -149,7 +149,7 @@ const Contact = () => {
             }
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className={`relative w-[85px] h-20 hover:shadow-form rounded-md bg-neutral-500 bg-opacity-70 py-2 px-4 text-base font-semibold text-white outline-none ${!pending && !errors.turnstileToken && 'hover:bg-opacity-100 active:bg-log-col'} cursor-none ${errors.turnstileToken && 'tooltip tooltip-bottom tooltip-error before:-left-5 flexCenter'}`}
+            className={`relative w-[85px] h-20 hover:shadow-form rounded-md bg-neutral-500/70 py-2 px-4 text-base font-semibold text-white outline-none ${!pending && !errors.turnstileToken && 'hover:bg-neutral-500/100 active:bg-log-col'} cursor-none ${errors.turnstileToken && 'tooltip tooltip-bottom tooltip-error before:-left-5 flexCenter'}`}
           >
             {pending ? (
               <span className="loading loading-spinner text-log-col text-xl"></span>

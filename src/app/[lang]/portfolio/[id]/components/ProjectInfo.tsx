@@ -44,7 +44,7 @@ const ProjectInfo = ({
           <div>
             <h3 className="p cool">{t('portfolioItemComp.tech')}</h3>
 
-            <div className="absolute left-0 lg:bottom-12 md:bottom-8 sm:bottom-12 bottom-8 flex flex-row justify-between p-2 lg:px-[4.2rem] md:px-12 px-10 bg-slate-300 bg-opacity-50 w-full ">
+            <div className="absolute left-0 lg:bottom-12 md:bottom-8 sm:bottom-12 bottom-8 flex flex-row justify-between p-2 lg:px-[4.2rem] md:px-12 px-10 bg-slate-300/50 w-full ">
               {Tech.map((tech, index) => (
                 <div
                   key={index + ' key ' + tech}

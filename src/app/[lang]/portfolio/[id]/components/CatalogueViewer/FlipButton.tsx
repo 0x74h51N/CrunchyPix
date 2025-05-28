@@ -30,7 +30,7 @@ const FlipButton = ({ onClick, currentPage, directionLeft }: FlipButton) => {
       onClick={onClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`absolute group hover:bg-opacity-20 bg-stone-50 bg-opacity-0 bottom-0 h-full  ${
+      className={`absolute group hover:bg-stone-50/20 bg-stone-50/0 bottom-0 h-full  ${
         directionLeft ? 'left-0' : 'right-0'
       } `}
     >
