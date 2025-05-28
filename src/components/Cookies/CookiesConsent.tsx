@@ -45,7 +45,7 @@ const CookieConsent = () => {
     return (
       <div
         id="cookie-consent"
-        className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-[599] pointer-events-none w-50 h-50"
+        className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-[599] w-auto h-auto"
       >
         <motion.div
           initial="hidden"
