@@ -57,8 +57,8 @@ describe('Toc Component', () => {
           link.textContent!.trim().includes(el.text.trim()),
         );
 
-        expect(correctLink).not.toBeUndefined;
-        expect(correctLink).toBeInTheDocument;
+        expect(correctLink).not.toBeUndefined();
+        expect(correctLink).toBeInTheDocument();
       }
     });
   });
