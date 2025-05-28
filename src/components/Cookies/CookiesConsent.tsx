@@ -45,14 +45,14 @@ const CookieConsent = () => {
     return (
       <div
         id="cookie-consent"
-        className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-[599] w-auto h-auto"
+        className="fixed inset-0 flex flex-col items-center justify-end py-0 lg:py-10 z-[599] h-full w-full pointer-events-none"
       >
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 'some' }}
           variants={fadeIn('up', 'spring', 3, 1)}
-          className="bg-neutral-900/70 navbar xl:rounded-lg overflow-visible shadow-xl xl:max-w-[1350px] w-full z-50 "
+          className="bg-neutral-900/70 navbar xl:rounded-lg overflow-visible shadow-xl w-full xl:max-w-[1350px] h-auto z-50 "
         >
           <div className="md:px-8 md:py-4 p-6 md:pb-6 flex justify-center items-center max-lg:flex-col z-50 lg:gap-8 gap-4">
             <div className="flex flex-col lg:max-w-[80%]">
