@@ -13,8 +13,13 @@ const PortfolioItemsTable = dynamic(
   () => import('./components/PortfolioItemsTable'),
   { ssr: true, loading: () => <FsLoading /> },
 );
-const Portfolio = async ({ params }: { params: Locales }) => {
-  const lang = await params;
+const Portfolio = async ({
+  params,
+}: {
+  params: Promise<{ lang: Locales }> | undefined;
+}) => {
+  const resolvedParams = params ? await params : { lang: 'en' as Locales };
+  const { lang } = resolvedParams;
   return (
     <div className="flex justify-center items-start w-full min-h-[100svh] !select-none !cursor-none">
       <PortfolioItemsTable lang={lang} />
