@@ -4,24 +4,26 @@ import { Option } from '@/lib/types/common.types';
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { sortAlphabetically, sortByDate } from './utils';
+import { Language } from '@prismicio/client';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];
   setFilteredItems: Dispatch<SetStateAction<PortfolioItemProps[]>>;
+  lang: Language;
 };
 
 const FilterItems = ({
   portfolioPageItems,
   setFilteredItems,
+  lang,
 }: FilterItemsProps) => {
-  const { t, i18n } = useTranslation('portfolio');
+  const { t } = useTranslation('portfolio');
   const [searchParam, setSearchParam] = useState('');
   const [selectedOption, setSortOption] = useState('');
-
   useEffect(() => {
     setSearchParam('');
     setSortOption('');
-  }, [i18n.language]);
+  }, [lang]);
 
   const filteredAndSortedItems = useMemo(() => {
     const filteredItems = portfolioPageItems.filter((item) => {

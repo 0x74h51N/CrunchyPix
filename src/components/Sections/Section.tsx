@@ -104,7 +104,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
               format="avif"
               width={2400}
               height={1860}
-              quality={100}
+              quality={98}
               fetchPriority="high"
               loading="eager"
               priority
@@ -143,7 +143,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
                 src={section.topImage}
                 alt={section.topImage}
                 format="avif"
-                quality={100}
+                quality={98}
                 width={2400}
                 height={1860}
                 fetchPriority="high"

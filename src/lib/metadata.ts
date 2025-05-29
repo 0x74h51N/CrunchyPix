@@ -13,8 +13,9 @@ export async function generatePageMetadata(page: string): Promise<Metadata> {
     keywords: t('meta.keywords'),
     icons: {
       icon: [
+        { url: '/favicon.ico' },
         { url: '/favicon-light.ico', media: '(prefers-color-scheme: light)' },
-        { url: '/favicon-dark.ico', media: '(prefers-color-scheme: dark)' },
+        { url: '/favicon.ico', media: '(prefers-color-scheme: dark)' },
       ],
     },
     openGraph: {

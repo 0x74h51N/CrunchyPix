@@ -111,25 +111,26 @@
   /* Timing Functions */
   --tf-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
   --tf-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
 
-  /* Animation & Keyframes */
-  @keyframes beat {
-    0%,
-    40% {
-      transform: scale(1);
-    }
-    20% {
-      transform: scale(1.2);
-    }
-    60% {
-      transform: scale(1.2);
-    }
-    80%,
-    100% {
-      transform: scale(1);
-    }
+@keyframes beat {
+  0%,
+  40% {
+    transform: scale(1);
   }
-  --animation-beat: beat 2s ease-in-out infinite;
+  20% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  80%,
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-beat {
+  animation: beat 2s ease-in-out infinite;
 }
 
 * {
