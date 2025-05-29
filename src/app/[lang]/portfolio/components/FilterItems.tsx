@@ -4,12 +4,12 @@ import { Option } from '@/lib/types/common.types';
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { sortAlphabetically, sortByDate } from './utils';
-import { Language } from '@prismicio/client';
+import { Locales } from '@/i18n/settings';
 
 type FilterItemsProps = {
   portfolioPageItems: PortfolioItemProps[];
   setFilteredItems: Dispatch<SetStateAction<PortfolioItemProps[]>>;
-  lang: Language;
+  lang: Locales;
 };
 
 const FilterItems = ({

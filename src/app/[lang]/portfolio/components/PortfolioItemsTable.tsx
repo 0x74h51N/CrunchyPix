@@ -9,9 +9,9 @@ import { polygonIn } from '@/utils/motion';
 import { PortfolioItemProps } from '@/lib/schemas';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { Language } from '@prismicio/client';
+import { Locales } from '@/i18n/settings';
 
-const PortfolioItemsTable = ({ lang }: { lang: Language }) => {
+const PortfolioItemsTable = ({ lang }: { lang: Locales }) => {
   const { t } = useTranslation('portfolio');
   const portfolioPageItems = useSelector(
     (state: RootState) => state.portfolio.items,
