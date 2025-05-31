@@ -21,6 +21,7 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
         className={clsx(
           'flex font-normal',
           isBlog ? 'gap-4' : 'flex-col gap-2',
+          !isBlog && 'cursor-none',
         )}
       >
         {Links.map((link) => (
@@ -34,7 +35,11 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
               !isBlog && 'cursor-none',
             )}
           >
-            <Link href={link.href}>
+            <Link
+              target={link.key === 'SourceCode' ? 'blank' : undefined}
+              className={!isBlog ? 'cursor-none' : ''}
+              href={link.href}
+            >
               {t(link.text)}
               <span
                 className={clsx(

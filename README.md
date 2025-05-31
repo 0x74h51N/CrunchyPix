@@ -1,89 +1,33 @@
 # Introduction
 
-This repository contains the source code for CrunchyPix, a personal website designed to showcase skills and portfolio projects. Built from scratch using Next.js and TypeScript, the website supports multiple languages through i18next with localization handled on both the server and client sides. The design is modular and dynamic, ensuring long-term adaptability.
+CrunchyPix is a personal portfolio, built from scratch with Next.js and TypeScript.
+Features include modular design, full localization (i18next), and custom UI components.
 
 # Content Management
 
-- **Supabase PostgreSQL**: Site content is managed via Supabase with PostgreSQL tables, ensuring secure and efficient data handling.
-- **Prismic Headless CMS**: The blog content is managed through Prismic, enabling direct content creation and management via a user-friendly interface.
+- **Supabase (PostgreSQL)**: Fast, secure storage for all non-blog content.
+- **Prismic CMS**: Blog posts managed via a user-friendly editor and custom slices for unique layouts.
 
-# Blog Functionality
+# Blog Features
 
-The blog section is engineered for performance and seamless updates:
-
-- **Incremental Static Regeneration (ISR)**: Updates blog pages efficiently without requiring a full site rebuild.
-- **Webhooks and Rebuild Pipeline**:
-  - **Prismic Webhooks**: Automatically trigger cache revalidation when content is updated.
-- **Enhanced User Experience**:
-  - Custom slices and unique styles create engaging, tailor-made blog posts.
-  - Specialized UX elements, such as adjustable font sizes and expandable text frames, boost reader engagement.
-  - Minimization of Client-Side Rendering (CSR) improves performance and reduces load times.
+- **Incremental Static Regeneration (ISR)**: Instant updates to blog pages, no full rebuild needed.
+- **Prismic Webhooks**: Automatic cache revalidation after content changes.
+- **Custom Blog Slices & UX**: Unique components, adjustable font sizes, expandable text frames.
+- **Optimized Rendering**: Minimal client-side JS, faster load, and smooth reading.
 
 # 📦 Technology Stack
 
-### Frameworks and Languages
-
-- **Next.js 15**: Provides server-side rendering, static site generation, and dynamic routing.
-- **TypeScript**: Enhances developer experience with static typing.
-- **React**: Powers the component-based architecture for interactive UIs.
-
-### Styling
-
-- **Tailwind CSS**: Used for rapid, customizable styling.
-- **DaisyUI**: Extends Tailwind with pre-built UI components.
-- **Custom UI Elements**: Developed to deliver unique user interactions and design enhancements.
-
-### State Management
-
-- **Redux & Redux Toolkit**: Manages complex application state, including language preferences and custom cursor interactions.
-
-### Data and Content Management
-
-- **Supabase (PostgreSQL)**: Provides secure data storage and retrieval.
-- **Prismic Headless CMS**: Facilitates blog content creation with custom slices for unique post structures.
-- **Zod**: Ensures data integrity through schema validation.
-
-### Animations & UI Enhancements
-
-- **Framer Motion**: Implements smooth, engaging animations to bring the website to life.
-- **React Markdown**: Renders markdown content for blog posts and documentation.
-- **React Syntax Highlighter**: Displays code snippets with proper formatting and highlighting.
-- **React Pageflip**: Provides interactive page-flipping effects for dynamic content presentation.
-- **Swiper**: Enables the creation of responsive sliders and carousels.
-
-### Form Handling and Validation
-
-- **React Hook Form**: Efficiently manages form state and validation.
-- **Cloudflare Turnstile**: Validates form submissions to prevent spam.
-- **Nodemailer**: Sends emails via SMTP as part of the contact form functionality.
-
-### Internationalization
-
-- **i18next & React-i18next**: Seamlessly integrate localization across the application.
-
-### Image Optimization
-
-- **Cloudinary**: Optimizes images to ensure fast loading times while maintaining high visual quality.
-
-### DevOps and Security
-
-- **Cloudflare**: Handles DNS routing, Web Application Firewall (WAF), DDoS protection, SSL certificates, and HSTS configuration.
-- **Vercel**: Manages deployment with Continuous Integration/Continuous Deployment (CI/CD) workflows.
-- **GitHub**: Facilitates version control and collaboration.
-- **Dependabot & CodeQL**: Enhance security and maintainability through dependency management and code scanning.
-
-### Utilities
-
-- **React Icons**: Offers a library of customizable icons.
-- **CLSx**: A utility for constructing conditional `className` strings.
-- **XSS**: Sanitizes user input to prevent Cross-Site Scripting attacks.
-- **Remark Plugins**:
-  - **remark-gfm**: Supports GitHub Flavored Markdown.
-  - **remark-breaks**: Converts line breaks in markdown files.
-
-### Analytics & Performance
-
-- **Vercel Analytics & Vercel Speed Insights**: Offers insights into user interactions and site performance (with users’ consent).
+**Frameworks:** Next.js 15, TypeScript, React  
+**Styling:** Tailwind CSS, DaisyUI, Custom UI Elements  
+**State:** Redux, Redux Toolkit  
+**Data:** Supabase, Prismic, Zod  
+**Animations:** Framer Motion, React Markdown, Syntax Highlighter, Pageflip, Swiper  
+**Forms:** Cloudflare Turnstile, Nodemailer  
+**i18n:** i18next, React-i18next  
+**Images:** Cloudinary  
+**DevOps:** Cloudflare, Vercel, GitHub, Dependabot, CodeQL  
+**Utilities:** React Icons, CLSx, XSS, Remark Plugins  
+**Analytics:** Vercel Analytics, Speed Insights
 
 ## 🗃️ Directory
 
