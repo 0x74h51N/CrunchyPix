@@ -31,7 +31,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const PolicyPage = async ({ params }: { params: { id: string } }) => {
-  if (typeof params.id !== 'string') {
+  const resolvedParams = params ? await params : null;
+  const { id } = resolvedParams || {};
+  if (typeof id !== 'string') {
     notFound();
   }
 
@@ -42,16 +44,14 @@ const PolicyPage = async ({ params }: { params: { id: string } }) => {
     PoliciesSchema,
   );
   if (policyItems) {
-    const policyItem = policyItems.find(
-      (item) => item.policy_name === params.id,
-    );
+    const policyItem = policyItems.find((item) => item.policy_name === id);
     if (!policyItem) {
       notFound();
     } else {
       return (
         <div className=" flex justify-center cursor-none items-center w-full h-auto  md:pb-20 pb-5 min-h-[100svh]">
           <div className="relative bg-cool-gray-900  md:px-28 md:py-16 p-5 rounded-xl max-w-[1100px] z-0 h-auto">
-            <PolicyCreator id={params.id} />
+            <PolicyCreator id={id} />
           </div>
         </div>
       );
