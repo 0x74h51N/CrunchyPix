@@ -551,7 +551,7 @@ pre {
 }
 
 .contactBox {
-  @apply w-full cursor-none rounded-md border border-transparent bg-nav-col py-3 px-6 text-base font-medium text-cool-gray-50 outline-none;
+  @apply w-full cursor-none rounded-md border bg-nav-col py-3 px-6 text-base font-medium text-cool-gray-50 outline-none;
 }
 
 .grayscale {
@@ -592,4 +592,12 @@ pre {
 
 .cool-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500;
+}
+
+.input-error-tooltip {
+  @apply tooltip tooltip-top tooltip-error !flex;
+}
+
+.tooltip-offset::before {
+  left: -2.5rem !important;
 }

@@ -30,9 +30,11 @@
     "submitFail": "Your message couldn't send succesfully, please try again later.",
     "data-tips": {
       "required": "Input is required",
+      "invalidName": "Invalid name format",
+      "invalidMessage": "Invalid message format",
       "invalidChars": "Invalid characters",
       "invalidMail": "Invalid email format",
-      "tooLong": "Too long. Maximum characters allowed:",
+      "tooLong": "Too long. Maximum characters allowed: {{max}}",
       "chaptcha": "CAPTCHA could not be verified"
     }
   },

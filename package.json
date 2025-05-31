@@ -1,6 +1,6 @@
 {
   "name": "crunchypix",
-  "version": "0.9.8",
+  "version": "1.0.0",
   "private": false,
   "description": "A project showcasing 0x74h51N skills and portfolio.",
   "author": "Tahsin Onemli aka 0x74h51N <mr.tahsin@windowslive.com>",
@@ -40,7 +40,6 @@
     "nodemailer": "^7.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-hook-form": "^7.56.4",
     "react-i18next": "^15.5.2",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
