@@ -22,7 +22,7 @@ const CustomCursor = () => {
   );
   const { t } = useTranslation(['index']);
   const dispatch = useDispatch();
-  const requestRef = useRef<number>();
+  const requestRef = useRef<number | null>(null);
   const pathname = usePathname();
   useEffect(() => {
     if (isBrowser && !isTouchDevice) {

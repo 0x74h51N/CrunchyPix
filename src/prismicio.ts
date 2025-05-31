@@ -1,7 +1,7 @@
 import * as prismic from '@prismicio/client';
 import * as prismicNext from '@prismicio/next';
 import config from '../slicemachine.config.json';
-
+import { ClientConfig } from '@prismicio/client';
 export const repositoryName =
   process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || config.repositoryName;
 
@@ -18,7 +18,7 @@ const routes: prismic.ClientConfig['routes'] = [
   },
 ];
 
-export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
+export const createClient = (config: ClientConfig = {}) => {
   if (!accessToken) {
     console.log('Access Token Error');
   }
@@ -32,11 +32,7 @@ export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
     ...config,
   });
 
-  prismicNext.enableAutoPreviews({
-    client,
-    previewData: config.previewData,
-    req: config.req,
-  });
+  prismicNext.enableAutoPreviews({ client });
 
   return client;
 };

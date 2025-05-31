@@ -21,31 +21,37 @@ const FooterColumn = ({ Links, selectedLink }: FooterColumnProps) => {
         className={clsx(
           'flex font-normal',
           isBlog ? 'gap-4' : 'flex-col gap-2',
+          !isBlog && 'cursor-none',
         )}
       >
         {Links.map((link) => (
-          <Link
-            href={link.href}
+          <li
             key={link.key}
             className={clsx(
-              'hover:text-log-col hover:scale-110 relative group transition-all duration-1000 ease-in-out transform origin-bottom whitespace-nowrap',
+              'hover:text-log-col list-none hover:scale-110 relative group transition-all duration-1000 ease-in-out transform origin-bottom whitespace-nowrap',
               selectedLink === link.href && link.href !== '/'
                 ? 'text-log-col'
                 : '',
               !isBlog && 'cursor-none',
             )}
           >
-            {t(link.text)}
-            <span
-              className={clsx(
-                'absolute -bottom-1 left-0 h-0.5 bg-log-col',
-                selectedLink === link.href && link.href !== '/'
-                  ? 'w-full'
-                  : 'w-0 transition-all duration-1000 ease-in-out group-hover:w-full',
-                !isBlog && 'cursor-none',
-              )}
-            ></span>
-          </Link>
+            <Link
+              target={link.key === 'SourceCode' ? 'blank' : undefined}
+              className={!isBlog ? 'cursor-none' : ''}
+              href={link.href}
+            >
+              {t(link.text)}
+              <span
+                className={clsx(
+                  'absolute -bottom-1 left-0 h-0.5 bg-log-col',
+                  selectedLink === link.href && link.href !== '/'
+                    ? 'w-full'
+                    : 'w-0 transition-all duration-1000 ease-in-out group-hover:w-full',
+                  !isBlog && 'cursor-none',
+                )}
+              ></span>
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

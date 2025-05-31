@@ -71,7 +71,8 @@ const Section = ({ sectionsData }: SectionDataProps) => {
           handleScroll({
             event,
             currentSection,
-            sectionRefs: sectionRefs.current,
+            sectionRefs:
+              sectionRefs.current as React.RefObject<HTMLDivElement>[],
           });
         }
       };
@@ -103,7 +104,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
               format="avif"
               width={2400}
               height={1860}
-              quality={100}
+              quality={98}
               fetchPriority="high"
               loading="eager"
               priority
@@ -142,7 +143,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
                 src={section.topImage}
                 alt={section.topImage}
                 format="avif"
-                quality={100}
+                quality={98}
                 width={2400}
                 height={1860}
                 fetchPriority="high"
@@ -165,7 +166,9 @@ const Section = ({ sectionsData }: SectionDataProps) => {
                 duration={1500}
                 arrow={true}
                 className="opacity-50 hover:opacity-100 transition-opacity animate-bounce-slow z-10"
-                sectionRefs={sectionRefs.current}
+                sectionRefs={
+                  sectionRefs.current as React.RefObject<HTMLDivElement>[]
+                }
               />
             )}
           </div>

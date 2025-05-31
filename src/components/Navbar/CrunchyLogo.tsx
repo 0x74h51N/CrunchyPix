@@ -24,7 +24,7 @@ const CrunchyLogo = ({
         alt="Crunchypix"
         priority
         className={clsx(
-          'h-auto hover:scale-105 transition-all duration-1000 ease-in-out pb-3',
+          'h-auto hover:scale-105 transition-all duration-700 ease-in-out pb-3',
           smallNav
             ? 'w-[12.5px]'
             : 'navImage lg:w-[32.5px] md:w-[27.5px] w-[18.5px]',
@@ -33,7 +33,7 @@ const CrunchyLogo = ({
       {smallNav ? null : (
         <div
           className={clsx(
-            'flex items-center logo_text lg:mt-0 -mt-1 lg:-ml-2 -ml-1 text-stone-50 hover:scale-105 transition-all duration-1000 ease-in-out',
+            'flex items-center logo_text lg:mt-0 -mt-1 lg:-ml-2 -ml-1 text-stone-50 hover:scale-105 transition-all duration-700 ease-in-out',
             smallNav
               ? 'text-[25px]'
               : 'text-[30px] md:text-[45px] lg:text-[55px]',
@@ -63,7 +63,7 @@ const CrunchyLogo = ({
         alt="Crunchypix"
         priority
         className={clsx(
-          'h-auto hover:scale-105 transition-all duration-1000 ease-in-out',
+          'h-auto hover:scale-105 transition-all duration-700 ease-in-out',
           smallNav
             ? 'mt-2 w-[19.3px]'
             : 'navImage lg:translate-y-6 translate-y-[22px] -translate-x-2 lg:w-[50px] md:w-[40px] w-[28px]',

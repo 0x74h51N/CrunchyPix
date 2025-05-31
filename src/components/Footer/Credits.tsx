@@ -7,7 +7,7 @@ const Credits = ({ data }: { data: IconProps[] }) => {
     <div className="flex justify-center sm:px-16 px-2 w-full">
       <div className=" flex flex-row justify-between items-center footer_copyright w-full max-w-[1300px]">
         <p className="flex items-center">
-          <span>@ 2024 ·</span>
+          <span>@ 2025 ·</span>
           <a
             target="_blank"
             rel="noopener noreferrer"

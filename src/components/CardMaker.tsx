@@ -6,20 +6,10 @@ import { CardsTypes, IconProps } from '@/lib/schemas';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 
-const areEqual = (prevProps: CardMakerProps, nextProps: CardMakerProps) => {
-  return (
-    prevProps.cardSections === nextProps.cardSections &&
-    prevProps.cardHeight === nextProps.cardHeight &&
-    prevProps.cardWidth === nextProps.cardWidth &&
-    prevProps.className === nextProps.className
-  );
-};
-
 interface CardMakerProps {
   cardSections: CardsTypes;
   cardHeight: number;
   cardWidth: number;
-  className: string;
 }
 const createIcon = (type: string): IconProps => ({
   type,
@@ -28,17 +18,12 @@ const createIcon = (type: string): IconProps => ({
   id: 0,
 });
 const CardMaker = memo(
-  ({
-    cardSections,
-    cardHeight = 340,
-    cardWidth = 260,
-    className,
-  }: CardMakerProps) => {
+  ({ cardSections, cardHeight = 340, cardWidth = 260 }: CardMakerProps) => {
     const isTouch = useSelector((state: RootState) => state.isTouch.touch);
     return (
       <ColorfulBorder enabled={!isTouch}>
         <div
-          className={`${className} flex justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none`}
+          className="flex justify-start gap-8 items-start flex-col p-12 relative overflow-hidden cursor-none"
           style={{ width: cardWidth, height: cardHeight }}
         >
           <div className="flex flex-col w-full gap-12 justify-start items-start">
@@ -66,7 +51,6 @@ const CardMaker = memo(
       </ColorfulBorder>
     );
   },
-  areEqual,
 );
 CardMaker.displayName = 'CardMaker';
 export default CardMaker;

@@ -1,7 +1,57 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@import 'tailwindcss';
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  /* LIGHT THEME */
+
+  name: 'light';
+  default: false;
+  color-scheme: light;
+
+  --color-primary: #333333;
+  --color-secondary: #4d4d4d;
+  --color-accent: #666666;
+  --color-neutral: #3d3d3d;
+  --color-base-100: #f9f9f9;
+  --color-base-200: #f0f0f0;
+  --color-base-300: #dedede;
+  --color-base-content: #1a1a1a;
+  --color-info: #737373;
+  --color-success: #4caf50;
+  --color-warning: #ffa726;
+  --color-error: #f44336;
+
+  --color-h1: #1a1a1a;
+  --color-h2: #333333;
+  --color-h3: #4d4d4d;
+  --color-text: #3d3d3d;
+  --color-pcolor: #ffdaf9;
+
+  name: 'dark';
+  default: true;
+  color-scheme: dark;
+
+  --color-primary: #202020;
+  --color-secondary: #2f2f2f;
+  --color-accent: #383838;
+  --color-neutral: #1a1a1a;
+  --color-base-100: #131313;
+  --color-base-200: #1a1a1a;
+  --color-base-300: #232323;
+  --color-base-content: #e0e0e0;
+  --color-info: #616161;
+  --color-success: #388e3c;
+  --color-warning: #ffb74d;
+  --color-error: #e57373;
+
+  --color-h1: #e0e0e0;
+  --color-h2: #c0c0c0;
+  --color-h3: #a0a0a0;
+  --color-text: #b0b0b0;
+}
+@config "../../../tailwind.config.ts";
+
 @font-face {
   font-family: 'Britannic Bold';
   src: url('/fonts/britannic-bold/britannic-bold.eot');
@@ -15,15 +65,76 @@
   font-display: swap;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@theme {
+  /* Colors */
+  --color-cool-gray-50: #f7f7f7;
+  --color-cool-gray-100: #e1e1e1;
+  --color-cool-gray-200: #cfcfcf;
+  --color-cool-gray-300: #b1b1b1;
+  --color-cool-gray-400: #737373;
+  --color-cool-gray-500: #525252;
+  --color-cool-gray-600: #404040;
+  --color-cool-gray-700: #2d2d2d;
+  --color-cool-gray-800: #161616;
+  --color-cool-gray-900: #111111;
+
+  --color-nav-border: #ebeaea;
+  --color-back-col: #111111;
+  --color-nav-col: #2a2a2a;
+  --color-log-col: #eeb30d;
+  --color-gra-blue: #3f4183;
+  --color-gra-black: #050816;
+  --color-light-white: #fafafb;
+  --color-light-white-100: #f1f4f5;
+  --color-light-white-200: #d7d7d7;
+  --color-light-white-300: #f3f3f4;
+  --color-light-white-400: #e2e5f1;
+  --color-light-white-500: #e0e0e0;
+  --color-gray: #4d4a4a;
+  --color-gray-100: #3d3d4e;
+  --color-black-100: #252525;
+  --color-primary-purple: #9747ff;
+  --color-gray-50: #d9d9d9;
+
+  /* Shadows */
+  --shadow-menu:
+    0px 159px 95px rgba(13, 12, 34, 0.01), 0px 71px 71px rgba(13, 12, 34, 0.02),
+    0px 18px 39px rgba(13, 12, 34, 0.02), 0px 0px 0px rgba(13, 12, 34, 0.02);
+  --shadow-card: 0px 15px 12px -15px #211e35;
+
+  /* Breakpoints */
+  --breakpoint-xs: 400px;
+  --breakpoint-xsm: 500px;
+  --breakpoint-xmd: 850px;
+  --breakpoint-10xl: 1680px;
+
+  /* Timing Functions */
+  --tf-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --tf-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-body {
-  @apply repatingLines max-w-[100vw] overflow-x-hidden;
-  cursor: auto;
+@keyframes beat {
+  0%,
+  40% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  80%,
+  100% {
+    transform: scale(1);
+  }
+}
+.animate-beat {
+  animation: beat 2s ease-in-out infinite;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 :root {
@@ -93,7 +204,7 @@ pre {
   }
 }
 
-.repatingLines {
+.repeatingLines {
   background-image: repeating-linear-gradient(
     to right,
     #262626,
@@ -242,11 +353,8 @@ pre {
   height: 500px;
   top: -50%;
   left: 0%;
-  background-image: radial-gradient(
-      circle at center,
-      #8f8f8f 1px,
-      transparent 0
-    ),
+  background-image:
+    radial-gradient(circle at center, #8f8f8f 1px, transparent 0),
     radial-gradient(circle at center, #8f8f8f 1px, transparent 0);
   background-size: 1.3rem 1.3rem;
   background-position:
@@ -259,7 +367,7 @@ pre {
 }
 
 .dotted-background:hover::before {
-  transform: translate(-50%, 0%); /* Aşağıya kaydırmak için */
+  transform: translate(-50%, 0%);
   opacity: 1;
 }
 
@@ -361,7 +469,7 @@ pre {
   animation: bounce 2s infinite;
 }
 .logo_text {
-  @apply font-britannic;
+  @apply font-['Britannic_Bold',sans-serif];
 }
 .logo_text.color {
   color: #eeb30d;
@@ -443,12 +551,12 @@ pre {
 }
 
 .contactBox {
-  @apply w-full cursor-none rounded-md border border-transparent bg-nav-col py-3 px-6 text-base font-medium text-cool-gray-50 outline-none;
+  @apply w-full cursor-none rounded-md border bg-nav-col py-3 px-6 text-base font-medium text-cool-gray-50 outline-none;
 }
 
 .grayscale {
   filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  transition: filter 1s ease-in-out;
 }
 
 .grayscale:hover {
@@ -482,14 +590,14 @@ pre {
   @apply text-cool-gray-200 font-medium lg:text-[16px] sm:text-[14px] text-[12px] ml-0 w-full xl:leading-[30px] text-left;
 }
 
-.input-error-tooltip {
-  @apply tooltip tooltip-top tooltip-error md:before:left-24 before:left-32 md:after:left-14 after:left-24 !flex;
-}
-
-.tooltip-crunchy {
-  @apply before:text-white before:text-xs before:bg-cool-gray-700 before:border-[1px] before:py-0.5 before:border-nav-col after:text-nav-col;
-}
-
 .cool-text {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500;
+}
+
+.input-error-tooltip {
+  @apply tooltip tooltip-top tooltip-error !flex;
+}
+
+.tooltip-offset::before {
+  left: -2.5rem !important;
 }

@@ -103,10 +103,16 @@ export const PoliciesSchema = z.object({
 });
 
 export const ContactSchema = z.object({
-  name: z.string().min(1).max(25),
-  email: z.string().email(),
-  message: z.string().min(1).max(500),
-  turnstileToken: z.string().min(1),
+  name: z
+    .string()
+    .min(3, { message: 'contact.data-tips.invalidName' })
+    .max(25, { message: 'contact.data-tips.tooLong' }),
+  email: z.string().email({ message: 'contact.data-tips.invalidMail' }),
+  message: z
+    .string()
+    .min(1, { message: 'contact.data-tips.required' })
+    .max(900, { message: 'contact.data-tips.tooLong' }),
+  turnstileToken: z.string().min(1, { message: 'contact.data-tips.chaptcha' }),
 });
 
 export type ContactTypes = z.infer<typeof ContactSchema>;

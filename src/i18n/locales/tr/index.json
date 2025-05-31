@@ -17,7 +17,8 @@
     "Contact": "İletişim",
     "TermsOfPrivacy": "Gizlilik Politikası",
     "CookiePolicy": "Çerez Politikası",
-    "kvkk": "KVKK"
+    "kvkk": "KVKK",
+    "SourceCode": "Kaynak Kodu"
   },
   "contact": {
     "title": "Benimle İletişime Geç",
@@ -28,10 +29,12 @@
     "submit": "Mesajınız başarıyla gönderildi, bizimle iletişime geçtiğiniz için teşekkürler!",
     "submitFail": "Mesajınız gönderilemedi, lütfen daha sonra tekrar deneyin.",
     "data-tips": {
-      "required": "Zorunlu alan",
-      "invalidChars": "Geçersiz karakter",
+      "required": "Bu alan zorunludur",
+      "invalidName": "Geçersiz isim formatı",
+      "invalidMessage": "Geçersiz mesaj formatı",
+      "invalidChars": "Geçersiz karakterler",
       "invalidMail": "Geçersiz e-posta formatı",
-      "tooLong": "Çok uzun. Maksimum karakter sayısı:",
+      "tooLong": "Çok uzun. Maksimum karakter: {{max}}",
       "chaptcha": "CAPTCHA doğrulanamadı"
     }
   },

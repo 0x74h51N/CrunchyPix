@@ -26,7 +26,7 @@ export default function Captcha(
 ) {
   const { sitekey, errorCallback, expiredCallback, ...rest } = props;
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
-  const widgetID = useRef<string>();
+  const widgetID = useRef<string | undefined>(undefined);
   const [isError, setIsError] = useState(false);
 
   function onError(e?: string | Error) {

@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "types": ["jest", "@testing-library/jest-dom", "node"],
+    "types": [],
     "plugins": [
       {
         "name": "next"
@@ -33,7 +33,7 @@
     ".next/types/**/*.ts",
     "src/utils/motion.js",
     "src/jest.setup.ts",
-    "babel.config.js"
+    "jest.config.js"
   ],
   "exclude": ["node_modules"]
 }

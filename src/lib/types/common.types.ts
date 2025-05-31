@@ -89,3 +89,22 @@ export type CodeLanguages =
   | 'bash'
   | 'text'
   | 'table';
+
+export type ContactFormData =
+  | {
+      errors?: {
+        email?: string[];
+        name?: string[];
+        message?: string[];
+        turnstileToken?: string[];
+      };
+      message?: string;
+      success?: boolean | undefined;
+    }
+  | undefined;
+
+export type ToastType = {
+  id: number;
+  type: 'success' | 'error';
+  msg: string;
+};

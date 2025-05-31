@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { BlogPostDocument } from '@/prismicio-types';
 import clsx from 'clsx';
+import { JSX } from 'react';
 
 export const PostCard = ({
   post,
@@ -41,7 +42,7 @@ export const PostCard = ({
             {post!.tags!.map((tag, index) => (
               <span
                 key={post.uid + 'tag' + index}
-                className="badge badge-primary min-h-6 pb-0.5 md:badge-md badge-xs text-gray-700 max-md:p-2"
+                className="badge badge-primary min-h-6 pb-0.5 md:badge-md badge-xs text-cool-gray-300 max-md:p-2"
               >
                 {tag}
               </span>

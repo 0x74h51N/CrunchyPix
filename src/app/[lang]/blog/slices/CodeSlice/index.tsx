@@ -2,6 +2,7 @@ import { Content } from '@prismicio/client';
 import { SliceComponentProps } from '@prismicio/react';
 import { CodeBlock } from '../../components/CodeBlock';
 import { asText } from '@prismicio/client/richtext';
+import { JSX } from 'react';
 
 /**
  * Props for `CodeSlice`.

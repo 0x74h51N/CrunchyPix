@@ -17,6 +17,11 @@ export const footerLinks = [
   {
     links: [
       {
+        href: 'https://github.com/0x74h51N/CrunchyPix',
+        key: 'SourceCode',
+        text: 'footerLinks.SourceCode',
+      },
+      {
         href: '/policies/terms-of-privacy',
         key: 'TermsOfPrivacy',
         text: 'footerLinks.TermsOfPrivacy',

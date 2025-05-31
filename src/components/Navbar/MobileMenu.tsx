@@ -24,7 +24,7 @@ const MobileMenu = ({
   blogChild,
 }: MobileMenuProps) => {
   const path = usePathname();
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const isBlog = useSelector((state: RootState) => state.pathSlice.isBlogPage);
 
   const toggleMenu = () => {
@@ -33,7 +33,9 @@ const MobileMenu = ({
 
   const { t } = useTranslation('index');
 
-  useOutsideClick(menuRef, () => setMobileMenu(false));
+  useOutsideClick(menuRef as React.RefObject<HTMLDivElement>, () =>
+    setMobileMenu(false),
+  );
 
   return (
     <div ref={menuRef} className="flex flex-col">

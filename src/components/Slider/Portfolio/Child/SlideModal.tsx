@@ -22,7 +22,7 @@ const SlideModal = ({
 }) => {
   const { t } = useTranslation(['portfolio']);
   const [imageLoading, setImageLoading] = useState(true);
-  const modalRef = useRef(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const id =
     selectedSlide && selectedSlide._id.toLowerCase().replace(/\s+/g, '');
@@ -42,7 +42,7 @@ const SlideModal = ({
     visible: { opacity: 1, scale: 1 },
   };
 
-  useOutsideClick(modalRef, closeModal);
+  useOutsideClick(modalRef as React.RefObject<HTMLDivElement>, closeModal);
 
   return (
     <AnimatePresence>
@@ -85,7 +85,7 @@ const SlideModal = ({
                   <Loading />
                 </div>
               ) : (
-                <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
+                <div className="absolute bottom-0 bg-black/50 w-full p-4 text-stone-200">
                   {selectedSlide.project_overview && (
                     <>
                       <h2 className="text-lg font-bold">

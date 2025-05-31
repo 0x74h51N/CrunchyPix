@@ -38,6 +38,7 @@ import { IconProps } from '@/lib/schemas';
 import { FaXTwitter } from 'react-icons/fa6';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
+import clsx from 'clsx';
 
 const iconComponents: { [key: string]: IconType } = {
   github: FaGithub,
@@ -93,7 +94,11 @@ const IconButton = ({
     return (
       <div
         data-tip={icon.alt}
-        className={`tooltip tooltip-${tooltipDirection} tooltip-crunchy !cursor-none`}
+        className={clsx(
+          'tooltip',
+          `tooltip-${tooltipDirection}`,
+          '!cursor-none',
+        )}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >

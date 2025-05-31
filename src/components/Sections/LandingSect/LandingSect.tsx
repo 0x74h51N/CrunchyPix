@@ -49,14 +49,10 @@ const LandingSect = () => {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.1 }}
-        className={`anaDiv relative flex flex-wrap justify-center items-center w-full min-h-[100dvh] overflow-hidden`}
+        className="relative flex flex-wrap justify-center items-center w-full min-h-[100dvh] overflow-hidden"
       >
-        <div
-          className={`w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 md:pb-48 pb-[220px]`}
-        >
-          <div
-            className={`font-medium lg:text-[40px] sm:text-[30px] text-[25px] text-white`}
-          >
+        <div className="w-full flex flex-col text-center justify-center items-center p-8 max-xs:px-4 z-0 md:pb-48 pb-[220px]">
+          <div className="font-medium lg:text-[40px] sm:text-[30px] text-[25px] text-white">
             <TypingText
               generateSpan={isTouchDevice ? false : true}
               text={landSect[0].translations[0].intro}
@@ -64,7 +60,7 @@ const LandingSect = () => {
               colorType="vibrantColors"
             />
           </div>
-          <div className=" lg:text-[19px] text-[18px] leading-[30px] max-lg:leading-[20px] whitespace-pre-wrap text-white">
+          <div className="lg:text-[19px] text-[18px] leading-[30px] max-lg:leading-[20px] whitespace-pre-wrap text-white">
             <TypingText
               generateSpan={isTouchDevice ? false : true}
               text={landSect[0].translations[0].description ?? 'null'}
@@ -88,7 +84,7 @@ const LandingSect = () => {
         </div>
         <motion.div
           variants={polygonIn('down', 'spring', 2, 2.5)}
-          className={`absolute h-full w-full pointer-events-none max-md:pb-10 pt-0 pb-0 lg:z-0 z-30`}
+          className="absolute h-full w-full pointer-events-none max-md:pb-10 pt-0 pb-0 lg:z-0 z-30"
         >
           <SocialIcons
             colorful={true}

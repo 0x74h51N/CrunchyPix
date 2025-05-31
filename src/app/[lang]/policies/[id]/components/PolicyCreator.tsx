@@ -1,5 +1,5 @@
 'use client';
-import React, { memo, useEffect, useMemo, useState } from 'react';
+import React, { JSX, memo, useEffect, useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import breaks from 'remark-breaks';
 import CustomLink from '@/components/CustomLink';

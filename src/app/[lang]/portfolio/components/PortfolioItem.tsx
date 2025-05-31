@@ -70,7 +70,7 @@ const PortfolioItem = memo(
             className={`object-cover object-center rounded-xl  ${isSlide ? 'md:h-[250px]' : 'md:h-full md:min-h-[450px]'} w-full h-[280px]`}
           />
 
-          <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-500 ease-in-out rounded-xl " />
+          <div className="absolute w-full h-full  group-hover:backdrop-filter group-hover:backdrop-blur-sm bg-black/0 group-hover:bg-black/30 transition-all duration-500 ease-in-out rounded-xl " />
           {isTouch || isSlide ? (
             <Link
               href={`/${locale}/portfolio/${id}`}
@@ -97,7 +97,7 @@ const PortfolioItem = memo(
         <div
           className={`absolute bottom-0 rounded-b-xl z-10 w-full flex justify-start ${
             isSlide
-              ? 'left-0 bg-black bg-opacity-50 h-auto'
+              ? 'left-0 bg-black/50 h-auto'
               : 'md:-bottom-4 -bottom-2 md:h-32 h-22'
           }`}
         >

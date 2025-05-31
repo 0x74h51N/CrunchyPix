@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import VerticalTimeline from './timeline/VerticalTimeline';
 import useDragHandler from '@/hooks/useDragHandler';
-import { useEffect, useMemo, useState } from 'react';
+import { JSX, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Option, slide } from '@/lib/types/common.types';
 import Dropdown from '@/components/Buttons/Dropdown';
@@ -57,12 +57,11 @@ const AboutMe = () => {
     if (data) {
       const i = data.findIndex((i) => i.name === 'photos');
       const maxLength = data[i].id;
-      for (let i = 840; i <= maxLength; i++) {
-        const img = {
-          imageUrl: `crunchypix/photos/000${i}`,
-        };
-        setPhotos((prevPhotos) => [...prevPhotos, img]);
+      const newPhotos = [];
+      for (let idx = 840; idx <= maxLength; idx++) {
+        newPhotos.push({ imageUrl: `crunchypix/photos/000${idx}` });
       }
+      setPhotos(newPhotos);
 
       const filteredDat = filterByLanguage({
         items: data,

@@ -22,11 +22,14 @@ export async function generateMetadata({
 }: {
   params: Params;
 }): Promise<Metadata> {
+  const paramss = await params;
+  const lang = paramss.lang;
+  const uid = paramss.uid;
   const client = createClient();
-  const prismicioLanguacio = langMap(params.lang);
+  const prismicioLanguacio = langMap(lang);
 
   const page = await client
-    .getByUID('blog_post', params.uid, { lang: prismicioLanguacio })
+    .getByUID('blog_post', uid, { lang: prismicioLanguacio })
     .catch(() => notFound());
 
   return {
@@ -49,7 +52,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title: page.data.meta_title || undefined,
-      url: `https://crunchypix.com/${params.lang}/blog/${params.uid}`,
+      url: `https://crunchypix.com/${lang}/blog/${uid}`,
       images: [{ url: page.data.meta_image.url || '' }],
     },
     authors: [{ name: 'Tahsin Önemli', url: 'https://github.com/0x74h51N' }],
@@ -58,11 +61,13 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
-
-  const prismicioLanguacio = langMap(params.lang);
+  const paramss = await params;
+  const lang = paramss.lang;
+  const uid = paramss.uid;
+  const prismicioLanguacio = langMap(lang);
 
   const page = await client
-    .getByUID('blog_post', params.uid, { lang: prismicioLanguacio })
+    .getByUID('blog_post', uid, { lang: prismicioLanguacio })
     .catch(() => notFound());
 
   const recomendPosts = await client.getAllByType('blog_post', {
@@ -72,7 +77,7 @@ export default async function Page({ params }: { params: Params }) {
       { field: 'my.blog_post.publishDate', direction: 'desc' },
       { field: 'document.first_publication_date', direction: 'desc' },
     ],
-    predicates: [prismic.filter.not('my.blog_post.uid', params.uid)],
+    predicates: [prismic.filter.not('my.blog_post.uid', uid)],
     limit: 5,
   });
 
@@ -116,7 +121,7 @@ export default async function Page({ params }: { params: Params }) {
             className="w-full max-w-5xl self-center h-auto rounded-t-xl object-cover"
           />
           <Menu />
-          <section
+          <article
             id={'article-content'}
             className="flex flex-col md:pt-8 pt-4 sm:border rounded-b-lg border-t-base-100 border-base-300 pb-16 gap-4 lg:px-6 sm:px-4"
           >
@@ -127,7 +132,7 @@ export default async function Page({ params }: { params: Params }) {
             <div className="absolute md:right-12 right-3 -bottom-8 bg-base-100 sm:border border-base-300 p-4">
               <ShareButtons textHidden={false} />
             </div>
-          </section>
+          </article>
         </div>
         <div className="min-h-14"></div>
       </section>

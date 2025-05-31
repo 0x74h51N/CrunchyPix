@@ -1,14 +1,34 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Toc from '../components/ui/ToC';
 import { RichTextField } from '@prismicio/client';
-import { mockSlices, mockTitle } from './mocks/mockTocData';
+import { mockSlices, mockTitle } from '../mocks/mockTocData';
 import { slugifyHeading } from '@/lib/slugifyHeading';
 import { RichTextSlice } from '@/prismicio-types';
 import { mockIntersectionObserver } from '@/utils/testing/mockIntersectionObserver';
 
+const originalWarn = console.warn;
+beforeAll(() => {
+  jest.spyOn(console, 'warn').mockImplementation((msg) => {
+    if (
+      typeof msg === 'string' &&
+      msg.includes(
+        'react-i18next:: useTranslation: You will need to pass in an i18next instance',
+      )
+    ) {
+      return;
+    }
+    originalWarn(msg);
+  });
+});
+
 jest.mock('@/lib/slugifyHeading', () => ({
   slugifyHeading: jest.fn((node) => {
-    const text = typeof node === 'string' ? node : node?.text || '';
+    const text =
+      typeof node === 'string'
+        ? node
+        : node && typeof node === 'object' && 'text' in node
+          ? (node as { text: string }).text
+          : '';
     return `slug-${text
       .toLowerCase()
       .replace(/[^\w\s]/gi, '')
@@ -50,7 +70,7 @@ describe('Toc Component', () => {
           {(mockSlices[0] as RichTextSlice)!.primary.content.map(
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (node: any, index: number) => {
-              const slugifyText = slugifyHeading(node.text);
+              const slugifyText = slugifyHeading({ text: node.text });
               if (node.type === 'heading1') {
                 return (
                   <h1 key={index} id={slugifyText}>

@@ -9,7 +9,7 @@ import { ProjectPageProps, ProjectPageSchema } from '@/lib/schemas';
 import { RootState } from '@/store';
 import { fadeIn, polygonIn, slideIn, textVariant } from '@/utils/motion';
 import { motion } from 'framer-motion';
-import { useEffect, useMemo, useState } from 'react';
+import { JSX, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Markdown from 'react-markdown';
 import { useSelector } from 'react-redux';
@@ -111,7 +111,14 @@ const Project = ({ id }: { id: string }) => {
                     </span>
                     <Markdown
                       remarkPlugins={[breaks]}
-                      className="h4 lg:ml-[39px] md:ml-9 xs:ml-8 ml-6"
+                      components={{
+                        p: ({ ...props }) => (
+                          <span
+                            className="h4 lg:ml-[39px] md:ml-9 xs:ml-8 ml-6"
+                            {...props}
+                          />
+                        ),
+                      }}
                     >
                       {Item.description.slice(1).replace(/\\n/g, '\n')}
                     </Markdown>
@@ -183,7 +190,7 @@ const Project = ({ id }: { id: string }) => {
               <ImageBoxes _id={Item.project_id} />
             )}
             {Item.techDescription && (
-              <motion.div
+              <motion.section
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
@@ -202,7 +209,7 @@ const Project = ({ id }: { id: string }) => {
                     {Item.techDescription.replace(/\\n/g, '\n')}
                   </Markdown>
                 </motion.div>
-              </motion.div>
+              </motion.section>
             )}
           </motion.div>
         )

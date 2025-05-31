@@ -53,7 +53,7 @@ const TopImage = ({ id, icons }: { id: string; icons?: IconProps[] }) => {
         (icons.length > 0 ? (
           <motion.div
             variants={slideIn('right', 'spring', 2, 1)}
-            className="absolute flex flex-row sm:gap-4 gap-3 bottom-5 sm:py-3 py-2 sm:right-0 -right-3 pr-7 pl-4 bg-black bg-opacity-50 rounded-l-lg"
+            className="absolute flex flex-row sm:gap-4 gap-3 bottom-5 sm:py-3 py-2 sm:right-0 -right-3 pr-7 pl-4 bg-black/50 rounded-l-lg"
           >
             {icons
               .sort((a, b) => a.id - b.id)

@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, JSX } from 'react';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 
 interface CustomLinkProps {

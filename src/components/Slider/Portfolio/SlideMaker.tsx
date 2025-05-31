@@ -46,7 +46,7 @@ const SlideMaker = ({
         quality="auto"
         fetchPriority="auto"
       />
-      <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4 text-stone-200">
+      <div className="absolute bottom-0 bg-black/50 w-full p-4 text-stone-200">
         <h2 className="text-lg font-bold">
           {slide.project_overview && slide.project_overview[0].title}
         </h2>
