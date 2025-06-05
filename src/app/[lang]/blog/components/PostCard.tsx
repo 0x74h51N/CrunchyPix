@@ -19,7 +19,7 @@ export const PostCard = ({
     recomendSec ? 'md:w-[380px] w-[360px]' : 'lg:w-[450px] xs:w-[390px] w-full',
   );
   return (
-    <div className={cardClasses}>
+    <div className={cardClasses} tabIndex={1}>
       <div>
         <div className="lg:h-64 h-56">
           <PrismicNextImage
@@ -31,10 +31,10 @@ export const PostCard = ({
       </div>
       <div
         className={clsx(
-          'min-h-full flex flex-col gap-1 justify-between p-5 card-body group-hover:-translate-y-[58%] translate-y-[0] transition-all ease-in-out duration-700 bg-cool-gray-700 text-stone-300 lg:pt-7',
+          'min-h-full flex flex-col gap-1 justify-between p-5 card-body group-hover:-translate-y-[58%] max-md:group-focus:-translate-y-[58%] translate-y-[0] transition-all ease-in-out duration-700 bg-cool-gray-700 text-stone-300 lg:pt-7',
         )}
       >
-        <h2 className="font-bold md:text-2xl text-lg text-stone-200 group-hover:text-log-col my-2 line-clamp-1 h-14">
+        <h2 className="font-bold md:text-2xl text-lg text-stone-200 group-hover:text-log-col max-md:group-focus:text-log-col my-2 line-clamp-1 h-14">
           <PrismicText field={data!.title} />
         </h2>
         <div className="flex justify-between max-w-full items-start min-h-24 max-h-24">
@@ -59,9 +59,11 @@ export const PostCard = ({
           </div>
           <div className="lg:mt-4 self-end">
             <Link
+              tabIndex={-1}
+              aria-label="Read more"
               href={`/${post.lang === 'en-us' ? 'en' : post.lang}/blog/${post.uid}`}
               passHref
-              className="bg-log-col hover:w-[70px] hover:h-[70px] w-[25px] h-[25px] hover:text-xl text-xs text-white rounded-full flexCenter transition-all duration-300 ease-in-out"
+              className="bg-log-col hover:w-17 hover:h-17 md:w-7 md:h-7 w-14 h-14 hover:text-xl text-xs text-white rounded-full flexCenter transition-all duration-300 ease-in-out"
             >
               <FaAnglesRight className="-rotate-45" />
             </Link>
