@@ -44,10 +44,9 @@
   },
   "dragQuinn": { "drag": "Kaydır" },
   "cookies": {
-    "title": "Daha iyi bir deneyim için izninizi istiyoruz",
-    "description": "Bu internet sitesinde çerezler kullanılmaktadır. İzniniz doğrultusunda performans amaçlı toplanan veriler, Vercel Analytics ve Vercel SpeedInsight tarafından işlenecektir. Vercel'in işleyeceği veriler arasında erişim yaptığınız ülke ve kullandığınız tarayıcı bilgileri yer alacak olup, özel IP adresiniz veya kişisel bilgileriniz toplanmayacaktır. 'Gerekli Çerezler' seçeneğine tıklarsanız, sitemizi geliştirmek için kullanılan Vercel hizmetleri aktif olmayacak, ancak dil ve tema tercihi gibi çerezler tarayıcınızda depolanmaya devam edecektir.\n&nbsp;\nDaha fazla bilgi için [Çerez Politikası](/policies/cookie-policy) ve [Gizlilik Politikası](/policies/terms-of-privacy)'nı inceleyebilirsiniz.",
-    "accept": "Kabul Et",
-    "decline": "Gerekli Çerezler"
+    "title": "Verilerinizi Takip Etmiyoruz",
+    "description": "Yalnızca dil ve tema tercihlerinizi hatırlamak için çerez kullanıyoruz. Analiz, takip veya reklam amaçlı hiçbir çerez kullanılmaz.\nDaha fazla bilgi için lütfen [Çerez Politikası](/policies/cookie-policy) ve [Gizlilik Politikası](/policies/terms-of-privacy) sayfalarımıza göz atın.",
+    "accept": "Kabul Et"
   },
   "notFound": {
     "title": "404 - Sayfa Bulunamadı",

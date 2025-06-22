@@ -45,10 +45,9 @@
   },
   "dragQuinn": { "drag": "Drag" },
   "cookies": {
-    "title": "We Request Your Permission for a Better Experience",
-    "description": "This website uses cookies. With your consent, data collected for performance purposes will be processed by Vercel Analytics and Vercel SpeedInsight. The data processed by Vercel will include information about the country you are accessing from and the browser you are using, but your personal IP address or other personal information will not be collected. If you select the 'Only Necessary' option, Vercel services used to improve our site will not be enabled, but cookies such as language and theme preferences will continue to be stored in your browser.\n&nbsp;\nFor more information, please review our [Cookie Policy](/policies/cookie-policy) and [Privacy Policy](/policies/terms-of-privacy).",
-    "accept": "Accept",
-    "decline": "Only Necessary"
+    "title": "We Don't Track Your Data",
+    "description": "We only use cookies to remember your language and theme preferences. No analytics, no tracking, no ads.\nFor more information, please review our [Cookie Policy](/policies/cookie-policy) and [Privacy Policy](/policies/terms-of-privacy).",
+    "accept": "Accept"
   },
   "notFound": {
     "title": "404 - Page Not Found",
