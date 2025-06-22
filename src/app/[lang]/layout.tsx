@@ -1,5 +1,4 @@
 import '../styles/globals.css';
-import Cookies from '@/components/Cookies/Cookies';
 import { Providers } from '@/components/Providers';
 import { Locales, supportedLocales } from '@/i18n/settings';
 import type { Metadata } from 'next';
@@ -38,7 +37,6 @@ export default async function RootLayout(props: {
       <body
         className={`repeatingLines max-w-[100vw] overflow-x-hidden ${inter.className}`}
       >
-        <Cookies />
         <Providers staticParams={staticParams} lang={lang}>
           {children}
         </Providers>

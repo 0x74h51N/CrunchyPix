@@ -6,11 +6,11 @@ import CustomLink from '../CustomLink';
 import { motion } from 'framer-motion';
 import { fadeIn } from '@/utils/motion';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
-import {
-  getCookieConsent,
-  setCookiesConsent,
-} from '@/app/actions/setCookiesConsent';
 import { useTranslation } from 'react-i18next';
+import {
+  setCookiesConsent,
+  getCookieConsent,
+} from '@/app/actions/setCookiesConsent';
 
 const CookieConsent = () => {
   const { t } = useTranslation('index');
@@ -19,11 +19,6 @@ const CookieConsent = () => {
 
   const handleAccept = async () => {
     await setCookiesConsent();
-    setShowConsent(true);
-    handleMouseLeave();
-  };
-
-  const handleReject = () => {
     setShowConsent(true);
     handleMouseLeave();
   };
@@ -52,12 +47,12 @@ const CookieConsent = () => {
           whileInView="show"
           viewport={{ once: true, amount: 'some' }}
           variants={fadeIn('up', 'spring', 3, 1)}
-          className="bg-neutral-900/70 navbar xl:rounded-lg overflow-visible shadow-xl w-full xl:max-w-[1350px] h-auto z-50 "
+          className="bg-neutral-900/70 navbar xl:rounded-lg overflow-visible shadow-xl w-full xl:max-w-[1000px] h-auto z-50 "
         >
           <div className="md:px-8 md:py-4 p-6 md:pb-6 flex justify-center items-center max-lg:flex-col z-50 lg:gap-8 gap-4">
-            <div className="flex flex-col lg:max-w-[80%]">
+            <div className="flex flex-col">
               <h1 className="p">{t('cookies.title')}</h1>
-              <div className="p half  mt-1 pointer-events-auto">
+              <div className="p text-sm! mt-1 pointer-events-auto">
                 <ReactMarkdown
                   components={{
                     a: ({
@@ -75,24 +70,14 @@ const CookieConsent = () => {
                 </ReactMarkdown>
               </div>
             </div>
-            <div
+            <button
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="flex flex-row-reverse max-lg:self-end max-lg:-mt-10 max-sm:mt-0 max-sm:self-center w-auto gap-3"
+              className="btn btn-lg bg-neutral-400 hover:bg-green-700/40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 pointer-events-auto whitespace-nowrap"
+              onClick={handleAccept}
             >
-              <button
-                className=" bg-neutral-400 hover:bg-green-700/40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 pointer-events-auto w-full h-auto whitespace-nowrap"
-                onClick={handleAccept}
-              >
-                {t('cookies.accept')}
-              </button>
-              <button
-                className="bg-neutral-600 hover:bg-red-800/40 text-white font-bold sm:text-sm text-[12px] py-2 px-4 rounded  active:bg-red-800 z-50 pointer-events-auto w-full h-auto"
-                onClick={handleReject}
-              >
-                {t('cookies.decline')}
-              </button>
-            </div>
+              {t('cookies.accept')}
+            </button>
           </div>
         </motion.div>
       </div>
