@@ -26,8 +26,7 @@ Features include modular design, full localization (i18next), and custom UI comp
 **i18n:** i18next, React-i18next  
 **Images:** Cloudinary  
 **DevOps:** Cloudflare, Vercel, GitHub, Dependabot, CodeQL  
-**Utilities:** React Icons, CLSx, XSS, Remark Plugins  
-**Analytics:** Vercel Analytics, Speed Insights
+**Utilities:** React Icons, CLSx, XSS, Remark Plugins
 
 ## 🗃️ Directory
 
@@ -50,7 +49,7 @@ Features include modular design, full localization (i18next), and custom UI comp
 │   │       │   ├── components      # Components for individual portfolio items' subpages.
 │   │       ├── components          # General components used within the Portfolio page.
 │   │       └── page.tsx
-│   ├── actions                     # Server-side actions for processing inputs and managing cookies.
+│   ├── actions                     # Server-side actions.
 │   ├── api
 │   │   ├── cron                    # API endpoint triggered by cron job for Vercel rebuild.
 │   │   ├── exit-preview            # Endpoint to exit Prismic preview mode.
@@ -59,7 +58,7 @@ Features include modular design, full localization (i18next), and custom UI comp
 │   └── styles                      # Global styles and style utilities.
 ├── components
 │   ├── Buttons                 # Contains various buttons used across the site as like arrow, burger or dropdown buttons.
-│   ├── Cookies                 # Manages user consent for enabling Vercel Analytics and Speedinsight.
+│   ├── Cookies
 │   ├── Footer                  # The footer component for the site, typically includes site links and credits.
 │   ├── Frames                  # Contains components for displaying monitor and phone frames with embedded content.
 │   ├── Loading                 # Components that display custom loading component.
