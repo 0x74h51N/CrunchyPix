@@ -20,7 +20,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@prismicio/client": "^7.17.2",
+    "@prismicio/client": "^7.18.0",
     "@prismicio/next": "^2.0.1",
     "@prismicio/react": "^3.2.1",
     "@prismicio/types": "^0.2.9",
