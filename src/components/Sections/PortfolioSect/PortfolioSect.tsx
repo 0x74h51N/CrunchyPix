@@ -2,8 +2,6 @@
 import LoadingComponent from '@/components/Loading/Loading';
 import { PortfolioItemProps } from '@/lib/schemas';
 import { RootState } from '@/store';
-import { slideIn } from '@/utils/motion';
-import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
