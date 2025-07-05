@@ -50,10 +50,10 @@ const TitleText = ({ sectName }: { sectName: string }) => {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 'some' }}
-      variants={staggerContainer(1.2, 1)}
+      viewport={{ once: true, amount: 0.6 }}
+      variants={staggerContainer(1.2, 0)}
     >
-      <motion.h1 variants={fadeIn('up', 'spring', 0.5, 1)}>
+      <motion.h1 variants={fadeIn('up', 'spring', 0.5, 1.2)}>
         <div className={h2Class}>
           {isTouchDevice
             ? section[0].translations[0].intro
@@ -74,7 +74,7 @@ const TitleText = ({ sectName }: { sectName: string }) => {
       </motion.h1>
       {section[0].translations[0].description &&
         section[0].translations[0].description !== 'NULL' && (
-          <motion.p variants={textVariant(0.7, 0.5)} className={`${pClass}`}>
+          <motion.p variants={textVariant(0.7, 0.9)} className={`${pClass}`}>
             {section[0].translations[0].description}
           </motion.p>
         )}

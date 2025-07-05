@@ -32,7 +32,7 @@ const CodeSect = () => {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 'some' }}
+      viewport={{ once: true, amount: 0.6 }}
       variants={staggerContainer(1, 0.2)}
       className="flex no-cursor 2xl:flex-row flex-col items-center 2xl:justify-between justify-center w-full h-full 2xl:pr-20 pr-0 2xl:gap-20 xl:gap-14 gap-6"
     >

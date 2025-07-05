@@ -25,7 +25,7 @@ const DesignSect = () => {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.6 }}
       variants={staggerContainer(1, 0.2)}
       className="flex 2xl:flex-row flex-col-reverse xl:justify-between justify-center items-center w-full h-full 2xl:pl-20 pl-0 2xl:gap-[100px] xl:gap-24 gap-4 max-xl:my-10"
     >

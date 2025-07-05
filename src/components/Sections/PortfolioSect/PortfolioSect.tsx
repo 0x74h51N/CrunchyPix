@@ -35,16 +35,8 @@ const PortfolioSect = () => {
   const extendedPortfolioItems = [...portfolioItems, ...portfolioItems];
   return (
     portfolioItems && (
-      <div className="h-auto flex flex-col items-center justify-center w-full">
-        <motion.div
-          variants={slideIn('up', 'spring', 0.5, 1.4)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 'all' }}
-          className="flex flex-col text-center"
-        >
-          <TitleText sectName="portfolio_sect" />
-        </motion.div>
+      <div className="h-auto flex flex-col items-center justify-center w-full text-center">
+        <TitleText sectName="portfolio_sect" />
         <div className="w-full md:h-[750px] sm:h-[700px] h-[580px] min-w-[100sv] z-0 max-w-[2200px]">
           <CarouselSlider
             slides={extendedPortfolioItems}

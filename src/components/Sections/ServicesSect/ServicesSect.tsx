@@ -71,7 +71,7 @@ const ServicesSect = () => {
       <motion.div
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 'some' }}
+        viewport={{ once: true, amount: 0.6 }}
         variants={staggerContainer(1, 0.7)}
       >
         <motion.div
