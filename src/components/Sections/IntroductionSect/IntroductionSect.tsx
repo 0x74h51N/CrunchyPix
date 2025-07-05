@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
 import TitleText from '../TitleText';
 import { memo } from 'react';
