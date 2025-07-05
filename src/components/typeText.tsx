@@ -1,5 +1,5 @@
 'use client';
-import React, { memo, useCallback, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { generateSpans } from './GenerateSpans';
 import { generateSpanType } from '@/lib/types/common.types';
 
@@ -12,6 +12,7 @@ type TypingTextProps = {
   loadingMode?: boolean;
   reverseDelay?: number;
 };
+
 /**
  * TypingText Component
  *
@@ -45,65 +46,68 @@ const TypingText = ({
   const [isWriting, setIsWriting] = useState(true);
   const [charIndex, setCharIndex] = useState(0);
 
-  const handleTyping = useCallback(() => {
-    if (isWriting && !isDelayed) {
-      if (charIndex < text.length) {
-        setDisplayText((prev) => prev + text[charIndex]);
-        setCharIndex((prev) => prev + 1);
-      } else if (!loadingMode) {
-        setIsWriting(false);
-      } else {
-        setTimeout(() => setIsWriting(false), reverseDelay);
-      }
-    } else if (loadingMode && !isWriting) {
-      if (charIndex > 0) {
-        setDisplayText((prev) => prev.slice(0, -1));
-        setCharIndex((prev) => prev - 1);
-      } else {
-        setTimeout(() => setIsWriting(true), reverseDelay);
-      }
-    }
-  }, [isWriting, isDelayed, charIndex, text, reverseDelay, loadingMode]);
+  useEffect(() => {
+    setDisplayText('');
+    setCharIndex(0);
+    setIsWriting(true);
+    setIsDelayed(true);
+  }, [text, loadingMode]);
 
   useEffect(() => {
-    const interval = setInterval(handleTyping, typingSpeed);
-    return () => clearInterval(interval);
-  }, [typingSpeed, handleTyping]);
-
-  useEffect(() => {
-    const delayTimeout = setTimeout(() => {
-      setIsDelayed(false);
-    }, delay);
-
-    return () => {
-      clearTimeout(delayTimeout);
-    };
+    const id = setTimeout(() => setIsDelayed(false), delay);
+    return () => clearTimeout(id);
   }, [delay]);
 
   useEffect(() => {
-    if (!isWriting && !loadingMode && charIndex === text.length) {
-      setDisplayText(text);
-    }
-  }, [text, isWriting, loadingMode, charIndex]);
-  useEffect(() => {
-    if (!isWriting && !loadingMode && text !== displayText) {
-      setDisplayText(text);
-    }
-  }, [text, displayText, isWriting, loadingMode]);
+    if (isDelayed) return;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const run = () => {
+      if (isWriting) {
+        if (charIndex < text.length) {
+          setDisplayText(text.slice(0, charIndex + 1));
+          setCharIndex((idx) => idx + 1);
+          timeoutId = setTimeout(run, typingSpeed);
+        } else if (loadingMode) {
+          timeoutId = setTimeout(() => setIsWriting(false), reverseDelay);
+        }
+      } else {
+        if (charIndex > 0) {
+          setDisplayText(text.slice(0, charIndex - 1));
+          setCharIndex((idx) => idx - 1);
+          timeoutId = setTimeout(run, typingSpeed);
+        } else {
+          timeoutId = setTimeout(() => setIsWriting(true), reverseDelay);
+        }
+      }
+    };
+
+    timeoutId = setTimeout(run, typingSpeed);
+    return () => clearTimeout(timeoutId);
+  }, [
+    charIndex,
+    isWriting,
+    isDelayed,
+    text,
+    typingSpeed,
+    loadingMode,
+    reverseDelay,
+  ]);
+
   if (generateSpan) {
     return (
       <div className={textClass}>
         {generateSpans({
           text: displayText,
-          colorType: colorType,
-          randomCount: randomCount,
-          zeroColor: zeroColor,
+          colorType,
+          randomCount,
+          zeroColor,
         })}
       </div>
     );
-  } else {
-    return <span className={textClass}>{displayText}</span>;
   }
+
+  return <span className={textClass}>{displayText}</span>;
 };
 
 export default memo(TypingText);
