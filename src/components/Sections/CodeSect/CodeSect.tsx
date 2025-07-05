@@ -1,7 +1,7 @@
 'use client';
 import React, { memo } from 'react';
 import MonitorFrame from '@/components/Frames/MonitorFrame/MonitorFrame';
-import { slideIn } from '@/utils/motion';
+import { slideIn, staggerContainer } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { RootState } from '@/store';
 import { useSelector, useDispatch } from 'react-redux';
@@ -33,15 +33,16 @@ const CodeSect = () => {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 'some' }}
+      variants={staggerContainer(1, 0.2)}
       className="flex no-cursor 2xl:flex-row flex-col items-center 2xl:justify-between justify-center w-full h-full 2xl:pr-20 pr-0 2xl:gap-20 xl:gap-14 gap-6"
     >
       <motion.div
-        variants={slideIn('left', 'spring', 0.5, 0.5)}
+        variants={slideIn('left', 'spring', 0, 1)}
         className="flex flex-col w-full 2xl:max-w-[1000px] justify-center 2xl:p-20 lg:p-14 md:p-10 max-sm:px-4 p-8 h-auto 2xl:min-h-[700px] bg-cool-gray-800 2xl:rounded-r-3xl"
       >
         <TitleText sectName="code_sect" />
       </motion.div>
-      <motion.div variants={slideIn('right', 'spring', 0.5, 0.5)}>
+      <motion.div variants={slideIn('right', 'spring', 0, 1)}>
         <MonitorFrame>
           <div
             id={'code-sect'}
