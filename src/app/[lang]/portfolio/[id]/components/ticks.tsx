@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FiCheckCircle } from 'react-icons/fi';
 
@@ -40,4 +39,4 @@ const Ticks = ({ ticks }: { ticks: string[] }) => {
   );
 };
 
-export default memo(Ticks);
+export default Ticks;

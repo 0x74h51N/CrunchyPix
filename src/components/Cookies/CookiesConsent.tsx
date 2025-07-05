@@ -49,7 +49,7 @@ const CookieConsent = () => {
           variants={fadeIn('up', 'spring', 3, 1)}
           className="bg-neutral-900/70 navbar xl:rounded-lg overflow-visible shadow-xl w-full xl:max-w-[1000px] h-auto z-50 "
         >
-          <div className="md:px-8 md:py-4 p-6 md:pb-6 flex justify-center items-center max-lg:flex-col z-50 lg:gap-8 gap-4">
+          <div className="md:px-8 md:py-4 p-6 flex justify-between w-full items-center max-lg:flex-col z-50 lg:gap-8 gap-4">
             <div className="flex flex-col">
               <h1 className="p">{t('cookies.title')}</h1>
               <div className="p text-sm! mt-1 pointer-events-auto">
@@ -73,7 +73,7 @@ const CookieConsent = () => {
             <button
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="btn btn-lg bg-neutral-400 hover:bg-green-700/40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 pointer-events-auto whitespace-nowrap"
+              className="btn btn-lg md:w-30 bg-neutral-400 hover:bg-green-700/40 text-white sm:text-sm text-[12px] font-bold py-2 px-4 rounded  active:bg-green-800 z-50 pointer-events-auto whitespace-nowrap"
               onClick={handleAccept}
             >
               {t('cookies.accept')}
