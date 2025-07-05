@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { SectionsTypes } from '@/lib/schemas';
 import useFilteredData from '@/hooks/useFilteredData';
 import { motion } from 'framer-motion';
-import { fadeIn, textVariant } from '@/utils/motion';
+import { fadeIn, staggerContainer, textVariant } from '@/utils/motion';
 
 const getClassNames = (
   sectName: string,
@@ -50,12 +50,10 @@ const TitleText = ({ sectName }: { sectName: string }) => {
     <motion.div
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 'some' }}
+      viewport={{ once: true, amount: 0.6 }}
+      variants={staggerContainer(1.2, 0)}
     >
-      <motion.h1
-        variants={fadeIn('up', 'spring', 0, 0)}
-        className="duration-1000 delay-500"
-      >
+      <motion.h1 variants={fadeIn('up', 'spring', 0.5, 1.2)}>
         <div className={h2Class}>
           {isTouchDevice
             ? section[0].translations[0].intro
@@ -76,10 +74,7 @@ const TitleText = ({ sectName }: { sectName: string }) => {
       </motion.h1>
       {section[0].translations[0].description &&
         section[0].translations[0].description !== 'NULL' && (
-          <motion.p
-            variants={textVariant(0)}
-            className={`${pClass} duration-[1500ms] delay-700`}
-          >
+          <motion.p variants={textVariant(0.7, 0.9)} className={`${pClass}`}>
             {section[0].translations[0].description}
           </motion.p>
         )}

@@ -2,11 +2,9 @@
 import LogoSlider from '../../Slider/LogoSlide';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { LogoSlideSchema, LogoSlideType } from '@/lib/schemas';
-import { motion } from 'framer-motion';
 import TitleText from '../TitleText';
 import { memo } from 'react';
 import LoadingComponent from '@/components/Loading/Loading';
-import { slideIn } from '@/utils/motion';
 
 const LogoSect = () => {
   const { data, loading } = useSupabaseFetch<LogoSlideType>(
@@ -22,15 +20,7 @@ const LogoSect = () => {
   if (data) {
     return (
       <div className="h-auto flex flex-col items-center justify-center w-full">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.6 }}
-          variants={slideIn('up', 'spring', 0.5, 1.4)}
-          className="flex flex-col text-center"
-        >
-          <TitleText sectName="logo_sect" />
-        </motion.div>
+        <TitleText sectName="logo_sect" />
         <div className="w-full h-auto flex flex-row justify-center items-center py-3 bg-neutral-950 z-20">
           <LogoSlider data={data.sort((a, b) => a.id - b.id)} />
         </div>

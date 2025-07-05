@@ -1,5 +1,4 @@
 'use client';
-import { motion } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
 import TitleText from '../TitleText';
 import { memo } from 'react';
@@ -17,14 +16,9 @@ const IntroductionSect = () => {
         loading="lazy"
         className="object-center grayscale w-auto max-lg:w-[230px] max-md:w-[200px] h-auto z-30"
       />
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.6 }}
-        className="flex flex-col items-start h-full w-auto p-5 z-10"
-      >
+      <div className="flex flex-col items-start h-full w-auto p-5 z-10">
         <TitleText sectName={'introduction_sect'} />
-      </motion.div>
+      </div>
     </div>
   );
 };
