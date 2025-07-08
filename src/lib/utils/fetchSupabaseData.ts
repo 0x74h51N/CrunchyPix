@@ -1,20 +1,26 @@
 import supabase from '@/lib/supabaseClient';
-import { ZodError, ZodSchema } from 'zod';
 import { unstable_cache } from 'next/cache';
+import { ZodError, ZodSchema } from 'zod';
 
 type Filter = {
   column: string;
   value: string;
 };
 
-export const fetchSupabaseData = unstable_cache(
-  async <T>(
-    schemaPath: string,
-    table: string,
-    select: string,
-    schema: ZodSchema<T>,
-    filters?: Filter[],
-  ): Promise<T[] | undefined> => {
+export const fetchSupabaseData = async <T>(
+  schemaPath: string,
+  table: string,
+  select: string,
+  schema: ZodSchema<T>,
+  filters?: Filter[],
+): Promise<T[] | undefined> => {
+  const filterKey = filters
+    ? filters.map((f) => `${f.column}:${f.value}`).join('-')
+    : 'no-filters';
+
+  const cacheKey = `${schemaPath}-${table}-${select}-${filterKey}`;
+
+  const cachedFetch = unstable_cache(async () => {
     let query = supabase.schema(schemaPath).from(table).select(select);
     if (filters) {
       filters.forEach((filter) => {
@@ -33,6 +39,7 @@ export const fetchSupabaseData = unstable_cache(
     try {
       const validatedData = schema.array().safeParse(data);
       if (validatedData.success) return validatedData.data;
+      throw new Error('Validation failed');
     } catch (err) {
       if (err instanceof ZodError) {
         throw new Error('Validation error: ' + err);
@@ -40,7 +47,7 @@ export const fetchSupabaseData = unstable_cache(
         throw new Error('Unknown validation error');
       }
     }
-  },
-  ['schemaPath', 'table', 'select', 'filters'],
-  { revalidate: 300 },
-);
+  }, [cacheKey]);
+
+  return cachedFetch();
+};

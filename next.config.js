@@ -2,7 +2,15 @@
 module.exports = {
   reactStrictMode: process.env.VERCEL_ENV !== 'production',
   images: {
-    domains: ['res.cloudinary.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/crunchypix/**',
+        search: '',
+      },
+    ],
   },
   experimental: {
     reactCompiler: true,

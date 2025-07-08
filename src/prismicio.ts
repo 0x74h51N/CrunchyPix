@@ -1,7 +1,7 @@
 import * as prismic from '@prismicio/client';
+import { ClientConfig } from '@prismicio/client';
 import * as prismicNext from '@prismicio/next';
 import config from '../slicemachine.config.json';
-import { ClientConfig } from '@prismicio/client';
 export const repositoryName =
   process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || config.repositoryName;
 
@@ -26,7 +26,8 @@ export const createClient = (config: ClientConfig = {}) => {
     accessToken: accessToken,
     routes,
     fetchOptions:
-      process.env.NODE_ENV === 'production'
+      process.env.NODE_ENV === 'production' ||
+      process.env.VERCEL_ENV === 'production'
         ? { next: { tags: ['prismic'] }, cache: 'force-cache' }
         : { next: { revalidate: 5 } },
     ...config,

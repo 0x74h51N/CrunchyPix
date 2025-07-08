@@ -15,7 +15,7 @@ export const manifest = async ({ params }: { params: { lang: Locales } }) => {
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/favicon-dark.ico',
+        url: '/favicon.ico',
         media: '(prefers-color-scheme: dark)',
       },
     ],

@@ -1,7 +1,7 @@
 'use client';
 import supabase from '@/lib/supabaseClient';
-import { ZodSchema } from 'zod';
 import { useQuery } from '@tanstack/react-query';
+import { ZodSchema } from 'zod';
 
 type Filter = {
   column: string;
@@ -24,7 +24,7 @@ type Filter = {
  * fetch specific records that match certain conditions. Each filter consists of a
  * column name and a value to match.
  * @param {number} [cacheDuration=1000 * 60 * 60] - Optional cache duration in milliseconds.
- * The default is 10 minutes. This duration controls how long the fetched data is cached
+ * The default is an hour. This duration controls how long the fetched data is cached
  * before making a new request.
  *
  * @returns {Object} - Returns an object containing the following properties:
@@ -82,10 +82,20 @@ const useSupabaseFetch = <T>(
     ? filters.map((f) => `${f.column}:${f.value}`).join(',')
     : 'no-filter';
 
+  const queryKey = ['supabaseData', schemaPath, table, select, filterKey];
+
   const { data, isLoading, error } = useQuery<T[]>({
-    queryKey: ['supabaseData', schemaPath, table, select, filterKey],
-    queryFn: () =>
-      fetchSupabaseData(schemaPath, table, select, schema, filters),
+    queryKey,
+    queryFn: async () => {
+      const result = await fetchSupabaseData(
+        schemaPath,
+        table,
+        select,
+        schema,
+        filters,
+      );
+      return result;
+    },
     staleTime: cacheDuration,
     refetchOnWindowFocus: false,
   });

@@ -1,13 +1,13 @@
 import { components } from '@/app/[lang]/blog/slices';
 import { createTranslation } from '@/i18n/server';
 import { Locales } from '@/i18n/settings';
+import { generateBlogMetadata } from '@/lib/blogMetaData';
 import { slugifyHeading } from '@/lib/slugifyHeading';
 import { createClient, graphQuery } from '@/prismicio';
 import { langMap } from '@/utils/langMap';
 import * as prismic from '@prismicio/client';
 import { PrismicNextImage } from '@prismicio/next';
 import { PrismicRichText, SliceZone } from '@prismicio/react';
-import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Menu, Slide, Toc } from '../components/ClientComponents';
 import { PostCard } from '../components/PostCard';
@@ -16,48 +16,6 @@ import Progressbar from '../components/ui/Progressbar';
 import ShareButtons from '../components/ui/ShareButtons';
 
 type Params = { uid: string; lang: Locales };
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
-  const paramss = await params;
-  const lang = paramss.lang;
-  const uid = paramss.uid;
-  const client = createClient();
-  const prismicioLanguacio = langMap(lang);
-
-  const page = await client
-    .getByUID('blog_post', uid, { lang: prismicioLanguacio })
-    .catch(() => notFound());
-
-  return {
-    title: 'Blog | ' + prismic.asText(page.data.title),
-    description: page.data.meta_description,
-    keywords: page.tags.join(', '),
-    icons: {
-      icon: [
-        {
-          rel: 'icon',
-          url: '/favicon-light.ico',
-          media: '(prefers-color-scheme: light)',
-        },
-        {
-          rel: 'icon',
-          url: '/favicon-dark.ico',
-          media: '(prefers-color-scheme: dark)',
-        },
-      ],
-    },
-    openGraph: {
-      title: page.data.meta_title || undefined,
-      url: `https://crunchypix.com/${lang}/blog/${uid}`,
-      images: [{ url: page.data.meta_image.url || '' }],
-    },
-    authors: [{ name: 'Tahsin Önemli', url: 'https://github.com/0x74h51N' }],
-  };
-}
 
 export default async function Page({ params }: { params: Params }) {
   const client = createClient();
@@ -162,6 +120,10 @@ export default async function Page({ params }: { params: Params }) {
       <Progressbar />
     </div>
   );
+}
+
+export async function generateMetadata({ params }: { params: Params }) {
+  return generateBlogMetadata({ params });
 }
 
 export async function generateStaticParams() {

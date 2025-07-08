@@ -1,16 +1,16 @@
 'use client';
-import Image from 'next/image';
 import { footerLinks } from '@/constants';
-import FooterColumn from './FooterColumn';
-import Contact from './Contact';
-import { IconProps, IconSchema } from '@/lib/schemas';
-import { useMemo } from 'react';
-import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import { useTranslation } from 'react-i18next';
-import Credits from './Credits';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
+import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import { IconProps, IconSchema } from '@/lib/schemas';
 import { RootState } from '@/store';
+import Image from 'next/image';
+import { useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import Contact from './Contact';
+import Credits from './Credits';
+import FooterColumn from './FooterColumn';
 
 const Footer = () => {
   const { t } = useTranslation('index');

@@ -85,27 +85,30 @@ const SlideModal = ({
                   <Loading />
                 </div>
               ) : (
-                <div className="absolute bottom-0 bg-black/50 w-full p-4 text-stone-200">
+                <div className="absolute bottom-0 bg-black/50 w-full p-4 text-stone-200 text-start backdrop-blur-sm group">
                   {selectedSlide.project_overview && (
                     <>
                       <h2 className="text-lg font-bold">
                         {selectedSlide.project_overview[0].title}
                       </h2>
-                      <p className="font-extralight overflow-hidden md:text-[13px] text-[10px] md:line-clamp-3 line-clamp-2">
-                        {selectedSlide.project_overview[0].slide_description}
-                      </p>
+                      <div className="overflow-hidden transition-all duration-300 ease-in-out md:max-h-0 md:group-hover:max-h-32 ">
+                        <p className="overflow-hidden md:text-[13px] text-[10px] md:line-clamp-3 line-clamp-2 pt-2">
+                          {selectedSlide.project_overview[0].slide_description}
+                        </p>
+                        <Link
+                          href={`/portfolio/${id}`}
+                          key={'portfolio'}
+                          data-tip={t('projectSlides.title2')}
+                          className="font-bold hover:text-log-col underline underline-offset-2 cursor-none md:text-[13px] text-[10px] tooltip tooltip-right"
+                          onMouseEnter={handleMouseEnter}
+                          onMouseLeave={handleMouseLeave}
+                        >
+                          {t('projectSlides.click')}
+                        </Link>
+                      </div>
                     </>
                   )}
-                  <Link
-                    href={`/portfolio/${id}`}
-                    key={'portfolio'}
-                    data-tip={t('projectSlides.title2')}
-                    className="font-extralight hover:text-log-col underline underline-offset-2 cursor-none md:text-[13px] text-[10px] tooltip tooltip-right"
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {t('projectSlides.click')}
-                  </Link>
+
                   <div className="flex mt-2">
                     <div className="flex flex-wrap items-start mr-auto">
                       {selectedSlide.tech &&
