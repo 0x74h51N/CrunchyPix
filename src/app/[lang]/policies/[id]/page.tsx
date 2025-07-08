@@ -1,9 +1,9 @@
 import PolicyCreator from '@/app/[lang]/policies/[id]/components/PolicyCreator';
-import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
-import { PoliciesTypes, PoliciesSchema } from '@/lib/schemas';
-import { notFound } from 'next/navigation';
 import { generatePageMetadata } from '@/lib/metadata';
+import { PoliciesSchema, PoliciesTypes } from '@/lib/schemas';
+import { fetchSupabaseData } from '@/lib/utils/fetchSupabaseData';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 export async function generateStaticParams() {
   try {

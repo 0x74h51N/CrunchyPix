@@ -1,17 +1,17 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { AppReduxProvider } from '@/store/provider';
-import { ReactNode } from 'react';
+import CookieConsent from '@/components/Cookies/CookiesConsent';
 import { AppI18nProvider } from '@/i18n/i18Provider';
+import { Locales } from '@/i18n/settings';
+import { AppReduxProvider } from '@/store/provider';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactNode } from 'react';
 import { ArrowToTop } from './Buttons/ArrowToTop';
 import CustomCursor from './CustomCursor';
 import Footer from './Footer/Footer';
 import Navbar from './Navbar/Navbar';
 import PortfolioDataStore from './PortfolioDataStore';
 import AllRoutes from './RooteTitles/AllRoutes';
-import CookieConsent from '@/components/Cookies/CookiesConsent';
-import { Locales } from '@/i18n/settings';
 
 const queryClient = new QueryClient();
 
@@ -33,7 +33,7 @@ export const Providers = ({
           <CustomCursor />
           <CookieConsent />
           <PortfolioDataStore />
-          <Navbar />
+          <Navbar lang={lang} />
           <AllRoutes staticParams={staticParams} />
           {children}
           <Footer />

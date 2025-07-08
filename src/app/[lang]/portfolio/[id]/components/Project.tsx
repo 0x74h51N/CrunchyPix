@@ -11,8 +11,8 @@ import {
   fadeIn,
   polygonIn,
   slideIn,
-  textVariant,
   staggerContainer,
+  textVariant,
 } from '@/utils/motion';
 import { motion } from 'framer-motion';
 import { JSX, useEffect, useMemo, useState } from 'react';
@@ -33,7 +33,14 @@ const Project = ({ id }: { id: string }) => {
   const storedItems = useSelector((state: RootState) => state.portfolio.items);
   const { handleMouseLeave } = useClickableHandlers();
   const { hoverEnd } = useDragHandler();
-  const filters = useMemo(() => [{ column: 'project_id', value: id }], [id]);
+  const filters = useMemo(
+    () => [
+      { column: 'project_id', value: id },
+      { column: 'lang', value: i18n.language },
+    ],
+    [id, i18n.language],
+  );
+
   const { data, loading, error } = useSupabaseFetch<ProjectPageProps>(
     'portfolio_schema',
     'project_page',
@@ -41,17 +48,19 @@ const Project = ({ id }: { id: string }) => {
     ProjectPageSchema,
     filters,
   );
+
   const pageTitle = t('meta.title');
+
   if (error) {
     console.log(error);
   }
+
   useEffect(() => {
     hoverEnd();
     handleMouseLeave();
-    if (data) {
-      setItem(data.find((item) => item.lang === i18n.language));
+    if (data && data.length > 0) {
+      setItem(data[0]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, i18n.language]);
 
   useEffect(() => {
@@ -88,7 +97,7 @@ const Project = ({ id }: { id: string }) => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 'some' }}
-              variants={staggerContainer(1.2, 1)}
+              variants={staggerContainer(1, 0)}
               className="lg:relative flex flex-wrap w-full h-auto lg:min-h-[590px] md:items-start md:justify-between justify-start items-center lg:mt-14 sm:mt-6 mt-4"
             >
               <div className="lg:w-2/3 w-full lg:pr-[120px] ">
@@ -167,7 +176,7 @@ const Project = ({ id }: { id: string }) => {
                   </motion.div>
                 )}
                 <motion.div
-                  variants={slideIn('right', 'spring', 1.4, 1.5)}
+                  variants={slideIn('right', 'spring', 1, 1.5)}
                   className="lg:absolute right-0 lg:top-0 flex self-center"
                 >
                   {Item.project_card && (

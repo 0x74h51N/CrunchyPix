@@ -1,10 +1,10 @@
-import '../styles/globals.css';
 import { Providers } from '@/components/Providers';
 import { Locales, supportedLocales } from '@/i18n/settings';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { generatePageMetadata } from '../../lib/metadata';
 import { getTheme } from '../actions/setThemeAction';
+import '../styles/globals.css';
 import { generateStaticParams as generatePoliciesStaticParams } from './policies/[id]/page';
 import { generateStaticParams as generatePortfolioStaticParams } from './portfolio/[id]/page';
 

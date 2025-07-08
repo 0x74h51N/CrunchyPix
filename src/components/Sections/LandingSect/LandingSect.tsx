@@ -1,16 +1,16 @@
 'use client';
-import { slideIn, staggerContainer, polygonIn } from '@/utils/motion';
-import { motion } from 'framer-motion';
-import { generateSpans } from '../../GenerateSpans';
-import { useSelector } from 'react-redux';
+import FsLoading from '@/components/Loading/FsLoading';
+import useFilteredData from '@/hooks/useFilteredData';
+import useSupabaseFetch from '@/hooks/useSupabaseFetch';
+import { IconProps, IconSchema, SectionsTypes } from '@/lib/schemas';
 import { RootState } from '@/store';
+import { polygonIn, slideIn, staggerContainer } from '@/utils/motion';
+import { motion } from 'framer-motion';
+import { memo, useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { generateSpans } from '../../GenerateSpans';
 import { SocialIcons } from '../../SocialIcons';
 import TypingText from '../../typeText';
-import useFilteredData from '@/hooks/useFilteredData';
-import { IconProps, IconSchema, SectionsTypes } from '@/lib/schemas';
-import { memo, useMemo } from 'react';
-import useSupabaseFetch from '@/hooks/useSupabaseFetch';
-import FsLoading from '@/components/Loading/FsLoading';
 
 const LandingSect = () => {
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);

@@ -1,16 +1,18 @@
 import { Links } from '@/constants';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { Locales } from '@/i18n/settings';
+import { RootState } from '@/store';
+import clsx from 'clsx';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React, { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import BurgerButton from '../Buttons/BurgerButton';
 import LanguageMenu from './LanguageMenu';
-import { useOutsideClick } from '@/hooks/useOutsideClick';
-import { useTranslation } from 'react-i18next';
-import { usePathname } from 'next/navigation';
-import clsx from 'clsx';
-import { RootState } from '@/store';
-import { useSelector } from 'react-redux';
 
 type MobileMenuProps = {
+  locale: Locales;
   smallNav: boolean;
   isMenuOpen: boolean;
   setMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,6 +20,7 @@ type MobileMenuProps = {
 };
 
 const MobileMenu = ({
+  locale,
   smallNav,
   isMenuOpen,
   setMobileMenu,
@@ -63,7 +66,7 @@ const MobileMenu = ({
               {Links.map((link) => (
                 <li key={link.key}>
                   <Link
-                    href={link.href}
+                    href={`/${locale}${link.href}`}
                     key={link.key}
                     onClick={toggleMenu}
                     className={clsx(

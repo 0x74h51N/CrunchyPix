@@ -2,6 +2,7 @@
 import { Links } from '@/constants/index';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import useIntersectionObserver from '@/hooks/useIntersectionObserver';
+import { Locales } from '@/i18n/settings';
 import { RootState } from '@/store';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -13,7 +14,7 @@ import CrunchyLogo from './CrunchyLogo';
 import LanguageMenu from './LanguageMenu';
 import MobileMenu from './MobileMenu';
 
-const Navbar = () => {
+const Navbar = ({ lang }: { lang: Locales }) => {
   const [isMenuOpen, setMobileMenu] = useState(false);
   const theme = useSelector((state: RootState) => state.themeSlice.theme);
   const route = usePathname();
@@ -22,7 +23,7 @@ const Navbar = () => {
     const path = route.split('/');
     return path.length < 3;
   }, [route]);
-  const locale = route.split('/')[1];
+  const locale = lang || (route.split('/')[1] as Locales);
   const [smallNav, setSmallNav] = useState(false);
   const { t } = useTranslation('index');
 
@@ -147,6 +148,7 @@ const Navbar = () => {
               )}
             >
               <MobileMenu
+                locale={locale}
                 blogChild={blogChild}
                 smallNav={superSmallNav}
                 isMenuOpen={isMenuOpen}
