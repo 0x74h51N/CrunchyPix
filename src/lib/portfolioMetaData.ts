@@ -34,7 +34,7 @@ export async function generatePortfolioMetadata({
     icons: {
       icon: [
         { url: '/favicon-light.ico', media: '(prefers-color-scheme: light)' },
-        { url: '/favicon-dark.ico', media: '(prefers-color-scheme: dark)' },
+        { url: '/favicon.ico', media: '(prefers-color-scheme: dark)' },
       ],
     },
     openGraph: {

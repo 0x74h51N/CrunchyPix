@@ -33,7 +33,7 @@ export async function generateBlogMetadata({
         },
         {
           rel: 'icon',
-          url: '/favicon-dark.ico',
+          url: '/favicon.ico',
           media: '(prefers-color-scheme: dark)',
         },
       ],
