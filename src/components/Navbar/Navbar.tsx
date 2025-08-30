@@ -93,28 +93,33 @@ const Navbar = ({ lang }: { lang: Locales }) => {
   }, [isMenuOpen, superSmallNav, fixed, isBlog, route, blogChild]);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const linkItems = useMemo(() => {
-    return Links.map((link) => (
-      <Link
-        href={`/${locale}${link.href}`}
-        key={link.key}
-        className={clsx(
-          isBlog ? 'cursor-pointer' : 'cursor-none',
-          route.includes(link.href) && link.href !== '/'
-            ? 'text-log-col scale-110'
-            : 'hover:text-log-col hover:scale-110 ',
-          'relative group transition-all duration-700 ease-in-out transform origin-bottom whitespace-nowrap',
-        )}
-      >
-        {t(link.text)}
-        <span
+    return Links.map((link) => {
+      const href = link.href === '/' ? `/${locale}` : `/${locale}${link.href}`;
+      const isActive =
+        link.href !== '/' && route.startsWith(`/${locale}${link.href}`);
+      return (
+        <Link
+          href={href}
+          key={link.key}
           className={clsx(
-            route.includes(link.href) && link.href !== '/'
-              ? ''
-              : 'absolute -bottom-1 transition-all duration-500 ease-in-out left-0 h-0.5 w-0 group-hover:w-full bg-log-col',
+            isBlog ? 'cursor-pointer' : 'cursor-none',
+            isActive
+              ? 'text-log-col scale-110'
+              : 'hover:text-log-col hover:scale-110',
+            'relative group transition-all duration-700 ease-in-out transform origin-bottom whitespace-nowrap',
           )}
-        ></span>
-      </Link>
-    ));
+        >
+          {t(link.text)}
+          <span
+            className={clsx(
+              route.includes(link.href) && link.href !== '/'
+                ? ''
+                : 'absolute -bottom-1 transition-all duration-500 ease-in-out left-0 h-0.5 w-0 group-hover:w-full bg-log-col',
+            )}
+          ></span>
+        </Link>
+      );
+    });
   }, [route, t, isBlog, locale]);
   return (
     <>
@@ -131,7 +136,7 @@ const Navbar = ({ lang }: { lang: Locales }) => {
       <div className=" flex justify-center w-[100svw] md:mt-0 lg:mt-0 xl:mt-0 !select-none">
         <nav className={navClassName}>
           <Link
-            href={`/${locale}`}
+            href={`/`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={clsx(

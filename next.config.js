@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-  reactStrictMode: process.env.VERCEL_ENV !== 'production',
   images: {
     remotePatterns: [
       {
@@ -15,7 +14,11 @@ module.exports = {
   experimental: {
     reactCompiler: true,
     serverActions: {
-      allowedOrigins: ['crunchypix.com', 'www.crunchypix.com'],
+      allowedOrigins: [
+        'staging.crunchypix.com',
+        'crunchypix.com',
+        'www.crunchypix.com',
+      ],
     },
   },
   async redirects() {
@@ -24,18 +27,6 @@ module.exports = {
         source: '/:lang(en|tr)/policies',
         destination: '/',
         permanent: true,
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/:lang(en|tr)/:path*',
-        destination: '/:lang/:path*',
-      },
-      {
-        source: '/:path*',
-        destination: '/en/:path*',
       },
     ];
   },

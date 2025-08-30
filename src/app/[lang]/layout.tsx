@@ -21,11 +21,10 @@ export function generateStaticParams() {
   return supportedLocales.map((lang) => ({ lang }));
 }
 
-export default async function RootLayout(props: {
-  children: React.ReactNode;
-  params: { lang: Locales };
-}) {
-  const { children, params } = props;
+export default async function RootLayout({
+  children,
+  params,
+}: LayoutProps<'/[lang]'>) {
   const { lang } = await params;
   const policiesStaticParams = await generatePoliciesStaticParams();
   const portfolioStaticParams = await generatePortfolioStaticParams();
@@ -33,11 +32,11 @@ export default async function RootLayout(props: {
   const theme = (await getTheme()) || 'dark';
 
   return (
-    <html lang={lang} data-theme={theme}>
+    <html lang={lang as Locales} data-theme={theme}>
       <body
         className={`repeatingLines max-w-[100vw] overflow-x-hidden ${inter.className}`}
       >
-        <Providers staticParams={staticParams} lang={lang}>
+        <Providers staticParams={staticParams} lang={lang as Locales}>
           {children}
         </Providers>
       </body>
