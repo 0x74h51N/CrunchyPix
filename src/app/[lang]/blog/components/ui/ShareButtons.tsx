@@ -2,20 +2,24 @@
 import IconButton from '@/components/Buttons/IconButton';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdCheck } from 'react-icons/md';
 import { RiShare2Fill } from 'react-icons/ri';
 
+const subscribeOrigin = () => () => {};
+const getOriginSnapshot = () => window.location.origin;
+const getOriginServerSnapshot = () => '';
+
 const ShareButtons = ({ textHidden = true }) => {
-  const [shareUrl, setShareUrl] = useState('');
   const pathname = usePathname();
   const { t } = useTranslation('blog');
-
-  useEffect(() => {
-    const url = `${window.location.origin}${pathname}`;
-    setShareUrl(url);
-  }, [pathname]);
+  const origin = useSyncExternalStore(
+    subscribeOrigin,
+    getOriginSnapshot,
+    getOriginServerSnapshot,
+  );
+  const shareUrl = origin ? `${origin}${pathname}` : '';
 
   const [copied, setCopied] = useState(false);
 

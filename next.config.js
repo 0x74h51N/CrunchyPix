@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   images: {
+    qualities: [75, 98, 100],
     remotePatterns: [
       {
         protocol: 'https',
@@ -11,8 +12,8 @@ module.exports = {
       },
     ],
   },
+  reactCompiler: true,
   experimental: {
-    reactCompiler: true,
     serverActions: {
       allowedOrigins: [
         'staging.crunchypix.com',

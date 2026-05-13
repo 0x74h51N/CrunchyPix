@@ -1,4 +1,5 @@
 'use client';
+import { createElement } from 'react';
 import { IconType } from 'react-icons';
 import {
   FaDesktop,
@@ -108,10 +109,10 @@ const IconButton = ({
           rel="noopener noreferrer"
           className={isBlog ? 'cursor-pointer' : '!cursor-none'}
         >
-          <IconComponent
-            size={icon.size ? icon.size : size}
-            color={icon.color}
-          />
+          {createElement(IconComponent, {
+            size: icon.size ? icon.size : size,
+            color: icon.color,
+          })}
         </a>
       </div>
     );

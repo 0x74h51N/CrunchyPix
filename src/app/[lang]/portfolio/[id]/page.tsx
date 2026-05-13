@@ -38,31 +38,32 @@ export async function generateMetadata({ params }: { params: Params }) {
 }
 
 export default async function Page(props: { params: Params }) {
-  try {
-    const params = await props.params;
-    const id = params.id;
-    if (!params || typeof id !== 'string') {
-      notFound();
-    }
+  const params = await props.params;
+  const id = params.id;
+  if (!params || typeof id !== 'string') {
+    notFound();
+  }
 
-    const portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
+  let portfolioItems: PortfolioItemProps[] | undefined;
+  try {
+    portfolioItems = await fetchSupabaseData<PortfolioItemProps>(
       'portfolio_schema',
       'portfolio_items',
       '*',
       PortfolioItemSchema,
       undefined,
     );
-
-    const portfolioItem = portfolioItems!.find((item) => item._id === id);
-    if (!portfolioItem) {
-      notFound();
-    }
-
-    return <Project id={id} />;
   } catch (error) {
     console.error('Error portfolio item on page:', error);
     notFound();
   }
+
+  const portfolioItem = portfolioItems!.find((item) => item._id === id);
+  if (!portfolioItem) {
+    notFound();
+  }
+
+  return <Project id={id} />;
 }
 
 export const dynamicParams = false;

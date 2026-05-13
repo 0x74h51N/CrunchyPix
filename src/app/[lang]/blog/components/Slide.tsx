@@ -1,12 +1,12 @@
 'use client';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import SwiperCore from 'swiper';
-import { useRef, useEffect, memo, useMemo } from 'react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { BlogPostDocument } from '@/prismicio-types';
+import { memo, useEffect, useMemo, useRef } from 'react';
+import SwiperCore from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { PostCard } from './PostCard';
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -36,7 +36,6 @@ const ProjectSlide = ({
       <Swiper
         navigation={navigation}
         onInit={(swiper) => (swiperRef.current = swiper)}
-        centeredSlides={true}
         modules={[Pagination, Autoplay, Navigation]}
         pagination={{
           dynamicBullets: true,

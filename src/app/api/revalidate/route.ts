@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ status: 401 });
   }
 
-  revalidateTag('prismic');
+  revalidateTag('prismic', 'default');
 
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }

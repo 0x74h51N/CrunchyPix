@@ -21,8 +21,8 @@ const CatalogueViewer = ({
 }) => {
   const flipBookRef = useRef<FlipBookRefType | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const [mouseEvent, setMouseEvent] = useState(false);
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
+  const mouseEvent = isTouch === true;
 
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
 
@@ -37,13 +37,10 @@ const CatalogueViewer = ({
     };
   }, []);
 
-  const [flipBookConfig, setFlipBookConfig] = useState(() =>
-    getFlipBookConfig(screenWidth),
+  const flipBookConfig = useMemo(
+    () => getFlipBookConfig(screenWidth),
+    [screenWidth],
   );
-  useEffect(() => {
-    const flipBookConfig = getFlipBookConfig(screenWidth);
-    setFlipBookConfig(flipBookConfig);
-  }, [screenWidth, setFlipBookConfig]);
 
   const imagePaths = useMemo(() => {
     const folderPath = Item.folderPath;
@@ -72,13 +69,6 @@ const CatalogueViewer = ({
     }
   };
 
-  useEffect(() => {
-    if (isTouch === true) {
-      setMouseEvent(true);
-    } else if (isTouch === false) {
-      setMouseEvent(false);
-    }
-  }, [isTouch]);
   return (
     <div className="w-full h-auto relative">
       <HTMLFlipBook

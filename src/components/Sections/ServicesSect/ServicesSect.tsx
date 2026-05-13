@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { useEffect, useMemo, useRef } from 'react';
 import SwiperCore from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import TitleText from '../TitleText';
 
@@ -55,7 +55,7 @@ const ServicesSect = () => {
 
   const slides = serviceSect[0].translations[0].cards?.map(
     (section: CardsTypes, index: number) => (
-      <SwiperSlide key={index} className="w-[320px] h-[520px] swiper-lazy">
+      <SwiperSlide key={index}>
         <CardMaker
           key={index + ' card'}
           cardSections={section}
@@ -90,11 +90,11 @@ const ServicesSect = () => {
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
-              modules={[Pagination, Navigation]}
+              modules={[Autoplay, Pagination, Navigation]}
               breakpoints={breakpoints}
               spaceBetween={30}
-              centeredSlides
               initialSlide={1}
+              autoplay={{ delay: 3000, disableOnInteraction: true }}
               loop
               pagination={pagination}
               navigation={navigation}
