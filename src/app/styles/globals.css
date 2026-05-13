@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @import 'tailwindcss';
-@plugin "daisyui";
+@plugin "daisyui" {
+  themes: false;
+}
 @plugin "daisyui/theme" {
   /* LIGHT THEME */
-
-  name: 'light';
+  name: "light";
   default: false;
+  prefersdark: false;
   color-scheme: light;
 
   --color-primary: #333333;
@@ -27,9 +29,12 @@
   --color-h3: #4d4d4d;
   --color-text: #3d3d3d;
   --color-pcolor: #ffdaf9;
-
-  name: 'dark';
+}
+@plugin "daisyui/theme" {
+  /* DARK THEME */
+  name: "dark";
   default: true;
+  prefersdark: true;
   color-scheme: dark;
 
   --color-primary: #202020;

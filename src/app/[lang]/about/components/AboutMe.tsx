@@ -1,40 +1,33 @@
 'use client';
 
-import FullScreenSlider from '@/components/Slider/FullScreenSlider/FullScreenSlider';
-import { polygonIn } from '@/utils/motion';
-import { motion } from 'framer-motion';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import Accordiona from './Accordiona';
-import { generateSpans } from '@/components/GenerateSpans';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
-import VerticalTimeline from './timeline/VerticalTimeline';
-import useDragHandler from '@/hooks/useDragHandler';
-import { JSX, useEffect, useMemo, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Option, slide } from '@/lib/types/common.types';
 import Dropdown from '@/components/Buttons/Dropdown';
 import CustomLink from '@/components/CustomLink';
-import ReactMarkdown from 'react-markdown';
-import breaks from 'remark-breaks';
+import { generateSpans } from '@/components/GenerateSpans';
+import LoadingComponent from '@/components/Loading/Loading';
+import FullScreenSlider from '@/components/Slider/FullScreenSlider/FullScreenSlider';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { SectionsSchema, SectionsTypes, TranslationTypes } from '@/lib/schemas';
+import { Option, slide } from '@/lib/types/common.types';
 import filterByLanguage from '@/lib/utils/filterByLanguage';
-import i18next from '@/i18n/client';
-import LoadingComponent from '@/components/Loading/Loading';
+import { RootState } from '@/store';
+import { polygonIn } from '@/utils/motion';
+import { motion } from 'framer-motion';
+import { JSX, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import ReactMarkdown from 'react-markdown';
+import { useSelector } from 'react-redux';
+import breaks from 'remark-breaks';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import Accordiona from './Accordiona';
+import VerticalTimeline from './timeline/VerticalTimeline';
 
 const AboutMe = () => {
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
-  const { hoverEnd } = useDragHandler();
-  const { t } = useTranslation('about');
+  const { t, i18n } = useTranslation('about');
   const [selectedOption, setSelectedOption] = useState('normal');
-  const [filteredData, setFilteredData] = useState<TranslationTypes>();
-  const [faqs, setFaqs] = useState<TranslationTypes>();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [photos, setPhotos] = useState<slide[]>([]);
-  const [options, setOptions] = useState<Option[]>([]);
 
   const { data, loading, error } = useSupabaseFetch<SectionsTypes>(
     'about_me',
@@ -43,41 +36,48 @@ const AboutMe = () => {
     SectionsSchema,
   );
 
-  useEffect(() => {
-    hoverEnd();
-    const language = i18next.language;
-    const optionsObj = t('page.options', { returnObjects: true }) as string[];
-    setOptions(
-      Object.entries(optionsObj).map(([key, value]) => ({
-        key: key,
-        value: value,
-        disabledTip: key === 'full' && t('page.list-tip'),
-      })) as Option[],
-    );
-    if (data) {
-      const i = data.findIndex((i) => i.name === 'photos');
-      const maxLength = data[i].id;
-      const newPhotos = [];
-      for (let idx = 840; idx <= maxLength; idx++) {
-        newPhotos.push({ imageUrl: `crunchypix/photos/000${idx}` });
-      }
-      setPhotos(newPhotos);
+  const options = useMemo<Option[]>(() => {
+    const optionsObj = t('page.options', { returnObjects: true }) as Record<
+      string,
+      string
+    >;
+    return Object.entries(optionsObj).map(([key, value]) => ({
+      key,
+      value,
+      disabledTip: key === 'full' && t('page.list-tip'),
+    })) as Option[];
+  }, [t]);
 
-      const filteredDat = filterByLanguage({
-        items: data,
-        language: language,
-        localPath: 'translations',
-      });
-
-      if (filteredDat) {
-        const i = filteredDat.findIndex((item) => item.name === selectedOption);
-        const fI = filteredDat.findIndex((item) => item.name === 'faqs');
-        setFilteredData(filteredDat[i].translations[0]);
-        setFaqs(filteredDat[fI].translations[0]);
-      }
+  const photos = useMemo<slide[]>(() => {
+    if (!data) return [];
+    const i = data.findIndex((d) => d.name === 'photos');
+    if (i === -1) return [];
+    const maxLength = data[i].id;
+    const result: slide[] = [];
+    for (let idx = 840; idx <= maxLength; idx++) {
+      result.push({ imageUrl: `crunchypix/photos/000${idx}` });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, selectedOption, i18next.language]);
+    return result;
+  }, [data]);
+
+  const { filteredData, faqs } = useMemo<{
+    filteredData?: TranslationTypes;
+    faqs?: TranslationTypes;
+  }>(() => {
+    if (!data) return {};
+    const filteredDat = filterByLanguage({
+      items: data,
+      language: i18n.language,
+      localPath: 'translations',
+    });
+    if (!filteredDat) return {};
+    const i = filteredDat.findIndex((item) => item.name === selectedOption);
+    const fI = filteredDat.findIndex((item) => item.name === 'faqs');
+    return {
+      filteredData: filteredDat[i]?.translations[0],
+      faqs: filteredDat[fI]?.translations[0],
+    };
+  }, [data, selectedOption, i18n.language]);
 
   const sortedFaqs = useMemo(() => {
     if (faqs) {

@@ -1,11 +1,11 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import SwiperCore from 'swiper';
-import PortfolioItem from '../../../components/PortfolioItem';
-import { useRef, useEffect, memo, useMemo } from 'react';
 import { PortfolioItemProps } from '@/lib/schemas';
+import { memo, useEffect, useMemo, useRef } from 'react';
+import SwiperCore from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import PortfolioItem from '../../../components/PortfolioItem';
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 SwiperCore.use([Autoplay, Pagination]);
@@ -43,7 +43,6 @@ const ProjectSlide = ({ Items }: { Items: PortfolioItemProps[] }) => {
   return (
     <Swiper
       onInit={(swiper) => (swiperRef.current = swiper)}
-      centeredSlides={true}
       modules={[Pagination, Autoplay]}
       pagination={{
         dynamicBullets: true,

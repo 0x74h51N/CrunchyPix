@@ -1,5 +1,5 @@
 import { t } from 'i18next';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 type FontTypes = {
   xs: null | number;
@@ -12,10 +12,8 @@ const createInitialFontSizes = (): FontTypes => ({
   md: null,
 });
 const FontSizeChanger = () => {
-  const [fontSize, setFontSize] = useState<FontTypes>(createInitialFontSizes);
-  const [originalFontSizes, setOriginalFontSizes] = useState<FontTypes>(
-    createInitialFontSizes,
-  );
+  const fontSizeRef = useRef<FontTypes>(createInitialFontSizes());
+  const originalFontSizesRef = useRef<FontTypes>(createInitialFontSizes());
 
   useEffect(() => {
     const computedStyles = getComputedStyle(document.documentElement);
@@ -26,8 +24,8 @@ const FontSizeChanger = () => {
       return sizes;
     }, {} as FontTypes);
 
-    setOriginalFontSizes(initialFontSizes);
-    setFontSize(initialFontSizes);
+    originalFontSizesRef.current = initialFontSizes;
+    fontSizeRef.current = initialFontSizes;
   }, []);
 
   const applyFontSizes = (sizes: FontTypes) => {
@@ -41,15 +39,18 @@ const FontSizeChanger = () => {
 
   const changeFontSize = (delta: number) => {
     const newFontSizes = Object.fromEntries(
-      Object.entries(fontSize).map(([key, value]) => [key, value! + delta]),
+      Object.entries(fontSizeRef.current).map(([key, value]) => [
+        key,
+        value! + delta,
+      ]),
     ) as FontTypes;
     applyFontSizes(newFontSizes);
-    setFontSize(newFontSizes);
+    fontSizeRef.current = newFontSizes;
   };
 
   const resetFontSize = () => {
-    applyFontSizes(originalFontSizes);
-    setFontSize(originalFontSizes);
+    applyFontSizes(originalFontSizesRef.current);
+    fontSizeRef.current = originalFontSizesRef.current;
   };
 
   return (

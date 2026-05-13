@@ -22,6 +22,7 @@ const OtherProjects = ({ currentId }: { currentId: string }) => {
         className="w-full max-w-[1300px] h-auto mb-24 px-8 "
         onMouseEnter={hoverStart}
         onMouseLeave={hoverEnd}
+        onClick={hoverEnd}
       >
         <h2 className="h1 half w-full mb-2 text-center">
           {t('page.otherProjects')}

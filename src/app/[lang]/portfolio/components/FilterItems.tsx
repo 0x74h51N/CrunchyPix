@@ -20,10 +20,12 @@ const FilterItems = ({
   const { t } = useTranslation('portfolio');
   const [searchParam, setSearchParam] = useState('');
   const [selectedOption, setSortOption] = useState('');
-  useEffect(() => {
+  const [prevLang, setPrevLang] = useState(lang);
+  if (lang !== prevLang) {
+    setPrevLang(lang);
     setSearchParam('');
     setSortOption('');
-  }, [lang]);
+  }
 
   const filteredAndSortedItems = useMemo(() => {
     const filteredItems = portfolioPageItems.filter((item) => {

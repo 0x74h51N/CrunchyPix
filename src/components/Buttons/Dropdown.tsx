@@ -4,13 +4,7 @@ import { Option } from '@/lib/types/common.types';
 import { RootState } from '@/store';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { Dispatch, SetStateAction, useRef, useState } from 'react';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 
@@ -76,17 +70,11 @@ const Dropdown = ({
 }: dropdownProps) => {
   const [isRotated, setIsRotated] = useState(false);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [summary, setSummary] = useState<string | React.ReactNode>(
-    defaultValue,
-  );
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
   const isTouch = useSelector((state: RootState) => state.isTouch.touch);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const route = usePathname();
 
-  useEffect(() => {
-    setSummary(defaultValue);
-  }, [defaultValue]);
   const handleToggleDropdown = () => {
     setDropdownOpen(!isDropdownOpen);
     setIsRotated(!isRotated);
@@ -113,7 +101,6 @@ const Dropdown = ({
 
   const clickHandler = (option: Option) => {
     setSelectedOption(option.key.toLowerCase());
-    setSummary(option.value);
     setDropdownOpen(false);
     setIsRotated(false);
     handleMouseLeave();
@@ -134,8 +121,12 @@ const Dropdown = ({
           isBlog ? 'cursor-pointer' : '!cursor-none',
         )}
       >
-        <div className="p text-start pl-3 truncate ..." style={style}>
-          {summary}
+        <div
+          className="p text-start pl-3 truncate ..."
+          style={style}
+          suppressHydrationWarning
+        >
+          {defaultValue}
         </div>
         <MdKeyboardArrowDown
           className={clsx(

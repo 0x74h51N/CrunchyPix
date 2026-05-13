@@ -45,13 +45,17 @@ const TypingText = ({
   const [isDelayed, setIsDelayed] = useState(true);
   const [isWriting, setIsWriting] = useState(true);
   const [charIndex, setCharIndex] = useState(0);
+  const [prevText, setPrevText] = useState(text);
+  const [prevLoadingMode, setPrevLoadingMode] = useState(loadingMode);
 
-  useEffect(() => {
+  if (text !== prevText || loadingMode !== prevLoadingMode) {
+    setPrevText(text);
+    setPrevLoadingMode(loadingMode);
     setDisplayText('');
     setCharIndex(0);
     setIsWriting(true);
     setIsDelayed(true);
-  }, [text, loadingMode]);
+  }
 
   useEffect(() => {
     const id = setTimeout(() => setIsDelayed(false), delay);
@@ -62,27 +66,26 @@ const TypingText = ({
     if (isDelayed) return;
     let timeoutId: ReturnType<typeof setTimeout>;
 
-    const run = () => {
-      if (isWriting) {
-        if (charIndex < text.length) {
+    if (isWriting) {
+      if (charIndex < text.length) {
+        timeoutId = setTimeout(() => {
           setDisplayText(text.slice(0, charIndex + 1));
-          setCharIndex((idx) => idx + 1);
-          timeoutId = setTimeout(run, typingSpeed);
-        } else if (loadingMode) {
-          timeoutId = setTimeout(() => setIsWriting(false), reverseDelay);
-        }
-      } else {
-        if (charIndex > 0) {
-          setDisplayText(text.slice(0, charIndex - 1));
-          setCharIndex((idx) => idx - 1);
-          timeoutId = setTimeout(run, typingSpeed);
-        } else {
-          timeoutId = setTimeout(() => setIsWriting(true), reverseDelay);
-        }
+          setCharIndex(charIndex + 1);
+        }, typingSpeed);
+      } else if (loadingMode) {
+        timeoutId = setTimeout(() => setIsWriting(false), reverseDelay);
       }
-    };
+    } else {
+      if (charIndex > 0) {
+        timeoutId = setTimeout(() => {
+          setDisplayText(text.slice(0, charIndex - 1));
+          setCharIndex(charIndex - 1);
+        }, typingSpeed);
+      } else {
+        timeoutId = setTimeout(() => setIsWriting(true), reverseDelay);
+      }
+    }
 
-    timeoutId = setTimeout(run, typingSpeed);
     return () => clearTimeout(timeoutId);
   }, [
     charIndex,

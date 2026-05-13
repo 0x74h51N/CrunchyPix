@@ -4,7 +4,7 @@ import { RootState } from '@/store';
 import { handleScroll } from '@/utils/handleScroll';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { CldImage } from 'next-cloudinary';
-import { createRef, useEffect, useRef, useState } from 'react';
+import { createRef, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ArrowButton } from '../Buttons/ArrowButton';
 
@@ -13,8 +13,9 @@ interface SectionDataProps {
 }
 
 const Section = ({ sectionsData }: SectionDataProps) => {
-  const sectionRefs = useRef(
-    sectionsData.map(() => createRef<HTMLDivElement>()),
+  const sectionRefs = useMemo(
+    () => sectionsData.map(() => createRef<HTMLDivElement>()),
+    [sectionsData.length],
   );
   const [currentSection, setCurrentSection] = useState(() => 0);
   const { scrollY } = useScroll();
@@ -30,7 +31,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
       const observerCallback = (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = sectionRefs.current.findIndex(
+            const index = sectionRefs.findIndex(
               (ref) => ref.current === entry.target,
             );
             setCurrentSection(index);
@@ -41,7 +42,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
       const observer = new IntersectionObserver(observerCallback, {
         threshold: 0.5,
       });
-      const currentSectionRefs = sectionRefs.current;
+      const currentSectionRefs = sectionRefs;
 
       currentSectionRefs.forEach((ref, index) => {
         if (ref.current && index !== 0) {
@@ -57,7 +58,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
         });
       };
     }
-  }, [isTouchDevice]);
+  }, [isTouchDevice, sectionRefs]);
 
   /**Wheel event listener */
   useEffect(() => {
@@ -72,7 +73,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
             event,
             currentSection,
             sectionRefs:
-              sectionRefs.current as React.RefObject<HTMLDivElement>[],
+              sectionRefs as React.RefObject<HTMLDivElement>[],
           });
         }
       };
@@ -90,7 +91,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
         <section
           key={index}
           id={section.name.toLowerCase().replaceAll(' ', '-')}
-          ref={sectionRefs.current[index]}
+          ref={sectionRefs[index]}
           className={`!select-none 
             ${section.className} 
             w-full min-w-[350px] flex items-center justify-center overflow-hidden
@@ -167,7 +168,7 @@ const Section = ({ sectionsData }: SectionDataProps) => {
                 arrow={true}
                 className="opacity-50 hover:opacity-100 transition-opacity animate-bounce-slow z-10"
                 sectionRefs={
-                  sectionRefs.current as React.RefObject<HTMLDivElement>[]
+                  sectionRefs as React.RefObject<HTMLDivElement>[]
                 }
               />
             )}

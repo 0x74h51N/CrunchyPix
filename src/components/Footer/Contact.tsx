@@ -1,6 +1,6 @@
 'use client';
 import { useTranslation } from 'react-i18next';
-import { useActionState, useEffect, useRef, useState } from 'react';
+import { useActionState, useState } from 'react';
 import Captcha from './Captcha';
 import useClickableHandlers from '@/hooks/useClickableHandlers';
 import { sendEmail } from '@/app/actions/sendMailAction';
@@ -23,7 +23,7 @@ const Contact = () => {
   const [toast, setToasts] = useState<ToastType[]>([]);
 
   const { t } = useTranslation(['index']);
-  const [captchaKey, setCaptchaKey] = useState(Date.now());
+  const [captchaKey, setCaptchaKey] = useState(0);
   const { handleMouseEnter, handleMouseLeave } = useClickableHandlers();
 
   const [formValues, setFormValues] = useState({
@@ -39,30 +39,34 @@ const Contact = () => {
     setFormValues((v) => ({ ...v, [name]: value }));
     setHasChange((prev) => ({ ...prev, [name]: true }));
   }
-  const toastId = useRef(0);
+  const [nextToastId, setNextToastId] = useState(0);
 
   function showToast(type: ToastType['type'], msg: ToastType['msg']) {
-    setToasts((prev) => [...prev, { id: toastId.current++, type, msg }]);
+    setToasts((prev) => [...prev, { id: nextToastId, type, msg }]);
+    setNextToastId((n) => n + 1);
   }
 
-  useEffect(() => {
-    if (!state) return;
-    if (state.success === true) {
-      showToast('success', t('contact.submit'));
-      setFormValues({ name: '', email: '', message: '' });
+  const [prevActionState, setPrevActionState] = useState(state);
+  if (state !== prevActionState) {
+    setPrevActionState(state);
+    if (state) {
+      if (state.success === true) {
+        showToast('success', t('contact.submit'));
+        setFormValues({ name: '', email: '', message: '' });
+      }
+      if (state.success === false && state.message === 'contact.submitFail') {
+        showToast('error', t('contact.submitFail'));
+      }
+      setHasChange({
+        name: false,
+        email: false,
+        message: false,
+        turnstileToken: false,
+      });
+      setTurnstileToken('');
+      setCaptchaKey((k) => k + 1);
     }
-    if (state.success === false && state.message === 'contact.submitFail') {
-      showToast('error', t('contact.submitFail'));
-    }
-    setHasChange({
-      name: false,
-      email: false,
-      message: false,
-      turnstileToken: false,
-    });
-    setTurnstileToken('');
-    setCaptchaKey(Date.now());
-  }, [state]);
+  }
   const turnstileHasError =
     !hasChange.turnstileToken &&
     state?.errors?.turnstileToken &&

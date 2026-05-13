@@ -6,7 +6,7 @@ import {
   supportedLocales,
 } from './i18n/settings';
 
-export default function middleware(req: NextRequest) {
+export default function proxy(req: NextRequest) {
   const url = req.nextUrl.clone();
   const pathLocale = url.pathname.split('/')[1] as Locales;
   const cookieLang = req.cookies.get(NEXT_LOCALE)?.value as Locales;

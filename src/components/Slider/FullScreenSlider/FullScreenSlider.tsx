@@ -1,10 +1,9 @@
-import React from 'react';
+import useDragHandler from '@/hooks/useDragHandler';
+import { slide } from '@/lib/types/common.types';
+import { motion } from 'framer-motion';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SlideCreator from './SlideCreator';
-import { slide } from '@/lib/types/common.types';
-import { motion } from 'framer-motion';
-import useDragHandler from '@/hooks/useDragHandler';
 
 interface FullScreenSlideProps {
   slides: slide[];
@@ -27,7 +26,6 @@ const FullScreenSlider = ({ slides, className }: FullScreenSlideProps) => {
           disableOnInteraction: false,
         }}
         loop
-        centeredSlides={true}
         className={`text-center bg-stone-900 ${className} !cursor-none`}
         lazyPreloadPrevNext={1}
       >

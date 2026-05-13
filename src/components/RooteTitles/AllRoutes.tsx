@@ -6,14 +6,10 @@ import SubRoutes from './SubRoutes';
 import { CldImage } from 'next-cloudinary';
 import { AnimatePresence, motion } from 'framer-motion';
 import { checkIfPageExists } from './checkIfPageExist';
-import useClickableHandlers from '@/hooks/useClickableHandlers';
-import useDragHandler from '@/hooks/useDragHandler';
 import { RootState } from '@/store';
 import { useSelector } from 'react-redux';
 
 const AllRoutes = ({ staticParams }: { staticParams: { id: string }[] }) => {
-  const { hoverEnd } = useDragHandler();
-  const { handleMouseLeave } = useClickableHandlers();
   const [mainPage, setMainPage] = useState('');
   const [childPage, setChildPage] = useState('');
   const pathname = usePathname();
@@ -60,9 +56,6 @@ const AllRoutes = ({ staticParams }: { staticParams: { id: string }[] }) => {
       top: 0,
       behavior: 'smooth',
     });
-    hoverEnd();
-    handleMouseLeave();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   if (!pageExists || hasGrandchildPage || !mainPage || (isBlog && childPage)) {
     return null;

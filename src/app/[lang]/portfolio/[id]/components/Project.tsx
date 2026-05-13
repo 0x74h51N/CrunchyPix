@@ -2,8 +2,6 @@
 import CustomLink from '@/components/CustomLink';
 import { generateSpans } from '@/components/GenerateSpans';
 import LoadingComponent from '@/components/Loading/Loading';
-import useClickableHandlers from '@/hooks/useClickableHandlers';
-import useDragHandler from '@/hooks/useDragHandler';
 import useSupabaseFetch from '@/hooks/useSupabaseFetch';
 import { ProjectPageProps, ProjectPageSchema } from '@/lib/schemas';
 import { RootState } from '@/store';
@@ -15,7 +13,7 @@ import {
   textVariant,
 } from '@/utils/motion';
 import { motion } from 'framer-motion';
-import { JSX, useEffect, useMemo, useState } from 'react';
+import { JSX, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import Markdown from 'react-markdown';
 import { useSelector } from 'react-redux';
@@ -27,12 +25,9 @@ import TopImage from './TopImage';
 import Ticks from './ticks';
 
 const Project = ({ id }: { id: string }) => {
-  const [Item, setItem] = useState<ProjectPageProps>();
   const { i18n, t } = useTranslation('portfolio');
   const isTouchDevice = useSelector((state: RootState) => state.isTouch.touch);
   const storedItems = useSelector((state: RootState) => state.portfolio.items);
-  const { handleMouseLeave } = useClickableHandlers();
-  const { hoverEnd } = useDragHandler();
   const filters = useMemo(
     () => [
       { column: 'project_id', value: id },
@@ -55,13 +50,7 @@ const Project = ({ id }: { id: string }) => {
     console.log(error);
   }
 
-  useEffect(() => {
-    hoverEnd();
-    handleMouseLeave();
-    if (data && data.length > 0) {
-      setItem(data[0]);
-    }
-  }, [data, i18n.language]);
+  const Item = data && data.length > 0 ? data[0] : undefined;
 
   useEffect(() => {
     if (Item?.lang === i18n.language) {
@@ -191,7 +180,7 @@ const Project = ({ id }: { id: string }) => {
               {storeItem?.catalogue ? (
                 <motion.div
                   variants={fadeIn('up', 'spring', 1, 1)}
-                  className="w-full my-14 cursor-none "
+                  className="w-full xl:my-44 lg:my-32 md:my-6 my-3 cursor-none "
                 >
                   <CatalogueViewer Item={storeItem.catalogue} />
                 </motion.div>

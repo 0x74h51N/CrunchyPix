@@ -21,7 +21,6 @@ const PolicyCreator = ({ id }: { id: string }) => {
     filters,
   );
 
-  const [filteredData, setFilteredData] = useState<PoliciesTypes[]>([]);
   const [language, setLanguage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -33,39 +32,37 @@ const PolicyCreator = ({ id }: { id: string }) => {
     fetchLanguage();
   }, []);
 
-  useEffect(() => {
-    if (data && language) {
-      const filteredDat = filterByLanguage({
-        items: data,
-        language,
-        localPath: 'translations',
-      });
+  const filteredData = useMemo<PoliciesTypes[]>(() => {
+    if (!data || !language) return [];
 
-      const sortedData = filteredDat.map((policy) => {
-        const sortedTranslations = policy.translations!.map((translation) => {
-          const sortedSubSections = translation.sub_sections
-            ? [...translation.sub_sections]
-                .sort((a, b) => a.id - b.id)
-                .map((subSection) => ({
-                  ...subSection,
-                  sub_titles: subSection.sub_titles
-                    ? [...subSection.sub_titles].sort((a, b) => a.id - b.id)
-                    : [],
-                }))
-            : [];
-          return {
-            ...translation,
-            sub_sections: sortedSubSections,
-          };
-        });
+    const filteredDat = filterByLanguage({
+      items: data,
+      language,
+      localPath: 'translations',
+    });
+
+    return filteredDat.map((policy) => {
+      const sortedTranslations = policy.translations!.map((translation) => {
+        const sortedSubSections = translation.sub_sections
+          ? [...translation.sub_sections]
+              .sort((a, b) => a.id - b.id)
+              .map((subSection) => ({
+                ...subSection,
+                sub_titles: subSection.sub_titles
+                  ? [...subSection.sub_titles].sort((a, b) => a.id - b.id)
+                  : [],
+              }))
+          : [];
         return {
-          ...policy,
-          translations: sortedTranslations,
+          ...translation,
+          sub_sections: sortedSubSections,
         };
       });
-
-      setFilteredData(sortedData);
-    }
+      return {
+        ...policy,
+        translations: sortedTranslations,
+      };
+    });
   }, [data, language]);
 
   useEffect(() => {
