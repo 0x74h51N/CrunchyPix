@@ -57,7 +57,7 @@ export async function sendEmail(
 
     const mailOptionsToSelf = {
       from: process.env.SMTP_USER!,
-      to: 'info@crunchypix.com',
+      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER!,
       subject: `New message from ${sanitizedName}`,
       text: `You have received a new message from: ${sanitizedEmail}\n\n${sanitizedMessage}`,
       replyTo: sanitizedEmail,

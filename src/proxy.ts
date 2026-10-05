@@ -5,6 +5,7 @@ import {
   NEXT_LOCALE,
   supportedLocales,
 } from './i18n/settings';
+import { SITE_HOST, SITE_URL } from './lib/siteUrl';
 
 export default function proxy(req: NextRequest) {
   const url = req.nextUrl.clone();
@@ -15,8 +16,16 @@ export default function proxy(req: NextRequest) {
   let lng: Locales;
   const host = req.headers.get('host');
 
-  if (production && host && host.endsWith('.vercel.app')) {
-    return NextResponse.redirect(`https://crunchypix.com${url.pathname}`, 301);
+  if (
+    production &&
+    host &&
+    host !== SITE_HOST &&
+    host.endsWith('.vercel.app')
+  ) {
+    return NextResponse.redirect(
+      `${SITE_URL}${url.pathname}${url.search}`,
+      301,
+    );
   }
 
   if (supportedLocales.includes(pathLocale)) {

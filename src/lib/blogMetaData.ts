@@ -3,6 +3,7 @@ import { createClient } from '@/prismicio';
 import { langMap } from '@/utils/langMap';
 import * as prismic from '@prismicio/client';
 import { Metadata } from 'next';
+import { SITE_URL } from './siteUrl';
 import { notFound } from 'next/navigation';
 
 export async function generateBlogMetadata({
@@ -40,7 +41,7 @@ export async function generateBlogMetadata({
     },
     openGraph: {
       title: page.data.meta_title || undefined,
-      url: `https://crunchypix.com/${lang}/blog/${uid}`,
+      url: `${SITE_URL}/${lang}/blog/${uid}`,
       images: [{ url: page.data.meta_image.url || '' }],
     },
     authors: [{ name: 'Tahsin Önemli', url: 'https://github.com/0x74h51N' }],

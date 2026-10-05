@@ -2,6 +2,7 @@ import { createTranslation } from '@/i18n/server';
 import { Locales } from '@/i18n/settings';
 import { ProjectPageProps } from '@/lib/schemas';
 import { Metadata } from 'next';
+import { SITE_URL } from './siteUrl';
 import { getCldImageUrl } from 'next-cloudinary';
 import { notFound } from 'next/navigation';
 
@@ -40,7 +41,7 @@ export async function generatePortfolioMetadata({
     openGraph: {
       title: `${t('meta.title')} | ${projectData.title && projectData.title}`,
       description: projectData.description2 ? projectData.description2 : '',
-      url: `https://crunchypix.com/${lang}/portfolio/${id}`,
+      url: `${SITE_URL}/${lang}/portfolio/${id}`,
       images: [
         {
           url: imageUrl,
