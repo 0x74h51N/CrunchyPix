@@ -7,6 +7,14 @@ type Filter = {
   value: string;
 };
 
+// Upstream outages (e.g. Cloudflare 5xx pages) come back as full HTML
+// documents; keep only the <title> so build logs stay readable.
+const shortenErrorMessage = (message: string) => {
+  const title = message.match(/<title>([^<]*)<\/title>/i)?.[1];
+  if (title) return title.trim();
+  return message.length > 300 ? `${message.slice(0, 300)}…` : message;
+};
+
 export const fetchSupabaseData = async <T>(
   schemaPath: string,
   table: string,
@@ -30,7 +38,7 @@ export const fetchSupabaseData = async <T>(
 
     const { data, error } = await query;
     if (error) {
-      throw new Error(error.message);
+      throw new Error(shortenErrorMessage(error.message));
     }
     if (!data) {
       throw new Error('No data returned');
