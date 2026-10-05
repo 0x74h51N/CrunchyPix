@@ -51,7 +51,7 @@ Features include modular design, full localization (i18next), and custom UI comp
 │   │       └── page.tsx
 │   ├── actions                     # Server-side actions.
 │   ├── api
-│   │   ├── cron                    # Daily cron endpoint that pings Supabase so it doesn't pause.
+│   │   ├── cron                    # API endpoint triggered by cron job for Vercel rebuild.
 │   │   ├── exit-preview            # Endpoint to exit Prismic preview mode.
 │   │   ├── preview                 # Prismic preview API endpoint to enter preview mode.
 │   │   └── revalidate              # Webhook endpoint to revalidate 'prismic' tag cached pages.
