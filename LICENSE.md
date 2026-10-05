@@ -1,4 +1,4 @@
-crunchypix.com
+crunchypix.vercel.app
 
 Copyright (C) 2024 Tahsin Önemli
 

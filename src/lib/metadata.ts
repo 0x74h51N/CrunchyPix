@@ -1,11 +1,12 @@
 import { createTranslation, getLocale } from '@/i18n/server';
 import { Metadata } from 'next';
+import { SITE_URL } from './siteUrl';
 
 export async function generatePageMetadata(page: string): Promise<Metadata> {
   const { t } = await createTranslation(page);
   const locale = await getLocale();
 
-  const baseUrl = 'https://crunchypix.com';
+  const baseUrl = SITE_URL;
   const pageUrl = `${baseUrl}/${locale}${page === 'home' ? '' : '/' + page}`;
   return {
     title: t('meta.title'),

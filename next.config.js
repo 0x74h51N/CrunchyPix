@@ -1,3 +1,6 @@
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
+const siteHost = siteUrl ? new URL(siteUrl).host : undefined;
+
 /** @type {import('next').NextConfig} */
 module.exports = {
   images: {
@@ -15,11 +18,9 @@ module.exports = {
   reactCompiler: true,
   experimental: {
     serverActions: {
-      allowedOrigins: [
-        'staging.crunchypix.com',
-        'crunchypix.com',
-        'www.crunchypix.com',
-      ],
+      // Same-origin requests are always allowed; this covers a custom domain
+      // set via NEXT_PUBLIC_SITE_URL when it differs from the request host.
+      allowedOrigins: siteHost ? [siteHost] : [],
     },
   },
   async redirects() {

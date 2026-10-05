@@ -1,9 +1,10 @@
 import type { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/siteUrl';
 import { generateStaticParams as generatePortfolioStaticParams } from './[lang]/portfolio/[id]/page';
 import { generateStaticParams as generateBlogParams } from './[lang]/blog/[uid]/page';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://crunchypix.com';
+  const baseUrl = SITE_URL;
   const staticUrls = [
     {
       url: `${baseUrl}/en`,

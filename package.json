@@ -17,7 +17,7 @@
     "check-types": "tsc --noEmit --incremental",
     "slicemachine": "startN-slicemachine",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@prismicio/client": "^7.21.8",
@@ -27,7 +27,7 @@
     "@reduxjs/toolkit": "^2.11.2",
     "@supabase/supabase-js": "^2.105.4",
     "@tanstack/react-query": "^5.100.10",
-    "babel-plugin-react-compiler": "^19.1.0-rc.2",
+    "babel-plugin-react-compiler": "^1.0.0",
     "clsx": "^2.1.1",
     "country-flag-icons": "^1.6.17",
     "daisyui": "^5.5.19",
@@ -60,7 +60,6 @@
     "@testing-library/react": "^16.3.2",
     "@types/debug": "^4.1.13",
     "@types/jest": "^29.5.14",
-    "@types/next": "^9.0.0",
     "@types/node": "^22.19.19",
     "@types/nodemailer": "^6.4.23",
     "@types/page-flip": "^2.0.4",
