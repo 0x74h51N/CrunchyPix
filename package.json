@@ -34,7 +34,7 @@
     "framer-motion": "^12.38.0",
     "i18next": "^25.10.10",
     "next": "^16.2.6",
-    "next-cloudinary": "^6.17.5",
+    "next-cloudinary": "^7.0.0",
     "next-navigation": "^1.0.6",
     "nodemailer": "^10.0.15",
     "react": "^19.2.6",
@@ -50,7 +50,7 @@
     "remark-gfm": "^4.0.1",
     "swiper": "^12.1.4",
     "xss": "^1.0.15",
-    "zod": "^3.25.30"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
